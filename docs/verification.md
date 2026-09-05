@@ -50,9 +50,9 @@ scripts/verify-palomar.sh
 
 | Component | Pin |
 | --- | --- |
-| Project Lean | `leanprover/lean4:v4.33.1`, compiler `819816b2e0a3bf405af45ae5c7af2491d8f5bee6` |
-| Mathlib | `0df444a360eaa60ab8c11dca51a86af692955474` (`v4.33.1`) |
-| AlgebraicAnalysis | `2fdc928835347a2638b6c85a4bfa770e3f70ed9e` |
+| Project Lean | `leanprover/lean4:v4.33.0` |
+| Mathlib | `db584cd6d46c92f209a44c0f1c829460d327499d` (`v4.33.0`), on `master` |
+| AlgebraicAnalysis | `dfdd2da091a9d67e7a29cc7914f192d746a2400d` |
 
 AlgebraicAnalysis is fetched from its public Git repository. Its source is
 external to this package and subject to the same foundational-axiom boundary.

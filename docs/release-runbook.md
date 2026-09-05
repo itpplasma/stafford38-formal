@@ -19,7 +19,7 @@ embedding a commit's own hash in its contents.
 ```bash
 proof_commit='219668ef77b4ffddc1a503fd1ce61dbd48aa4b17'
 formal_commit=$(git rev-parse HEAD)
-aa_commit='2fdc928835347a2638b6c85a4bfa770e3f70ed9e'
+aa_commit='dfdd2da091a9d67e7a29cc7914f192d746a2400d'
 paper_commit='b3f3edf0741b6a70b6e5011690e16bf58561cffb'
 [[ "$formal_commit" =~ ^[0-9a-f]{40}$ ]] || exit 1
 git fetch origin

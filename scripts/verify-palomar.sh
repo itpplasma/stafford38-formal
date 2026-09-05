@@ -23,7 +23,7 @@ ComparatorLean leanprover/lean4:v4.34.0-rc1
 lean4export 15f6055e299ad5b89345e533cc2192f4cc00f659
 NanoDa 68d5ca9db226849b41a6fff59d796ff19d0a8840
 Landrun 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
-Lean leanprover/lean4:v4.33.1'
+Lean leanprover/lean4:v4.33.0'
 actual_revisions=$(cat "$tool_root/revisions.txt")
 if [ "$actual_revisions" != "$expected_revisions" ]; then
   echo "Palomar tool revision record does not match the release verifier" >&2

@@ -22,9 +22,9 @@ and journal review are separate; neither is claimed complete.
 
 | Dependency | Exact version |
 | --- | --- |
-| Lean | `leanprover/lean4:v4.33.1` |
-| Mathlib | `0df444a360eaa60ab8c11dca51a86af692955474` (`v4.33.1`) |
-| [AlgebraicAnalysis](https://github.com/itpplasma/algebraic-analysis) | `2fdc928835347a2638b6c85a4bfa770e3f70ed9e` |
+| Lean | `leanprover/lean4:v4.33.0` |
+| Mathlib | `db584cd6d46c92f209a44c0f1c829460d327499d` (`v4.33.0`) |
+| [AlgebraicAnalysis](https://github.com/itpplasma/algebraic-analysis) | `dfdd2da091a9d67e7a29cc7914f192d746a2400d` |
 
 From the checked-out commit with Lean installed through Elan:
 

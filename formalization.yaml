@@ -10,9 +10,11 @@ project:
     proves an exact Bernstein-degree fixed-source strengthening and derived
     localization, adjoint, and evolutionary results.
   authors:
-    - "Christopher Albert"
+    - name: "Christopher Albert"
+      orcid: "0000-0003-4773-416X"
   responsible_maintainers:
-    - "Christopher Albert"
+    - name: "Christopher Albert"
+      orcid: "0000-0003-4773-416X"
   license: "Apache-2.0"
 
 repository:
@@ -32,7 +34,8 @@ classification:
 sources:
   - title: "Original proof of Stafford's Conjecture 3.8 in this formalization"
     authors:
-      - "Christopher Albert"
+      - name: "Christopher Albert"
+        orcid: "0000-0003-4773-416X"
     type: "original-proof"
     relationship: "other"
     note: >-

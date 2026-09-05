@@ -11,7 +11,7 @@ snapshot, with source inventory and extraction correspondence retained.
 
 | Repository | Authority |
 | --- | --- |
-| [algebraic-analysis](https://github.com/itpplasma/algebraic-analysis) | Public reusable mathematics, pinned at `2fdc928835347a2638b6c85a4bfa770e3f70ed9e` |
+| [algebraic-analysis](https://github.com/itpplasma/algebraic-analysis) | Public reusable mathematics, pinned at `dfdd2da091a9d67e7a29cc7914f192d746a2400d` |
 | [stafford38-formal](https://github.com/itpplasma/stafford38-formal) | Public canonical Stafford-specific proof, Palomar interface, and reproducibility documentation |
 | [stafford38-paper](https://github.com/itpplasma/stafford38-paper) | Private synchronized backup of the Overleaf manuscript authority |
 | [stafford38](https://github.com/itpplasma/stafford38) | Private research history and provenance archive |
@@ -40,9 +40,9 @@ literature axioms.
 
 ## Dependencies and assistance
 
-The project uses Lean `4.33.1`, Mathlib
-`0df444a360eaa60ab8c11dca51a86af692955474`, and AlgebraicAnalysis
-`2fdc928835347a2638b6c85a4bfa770e3f70ed9e`. Exact verification-tool revisions
+The project uses Lean `4.33.0`, Mathlib
+`db584cd6d46c92f209a44c0f1c829460d327499d`, and AlgebraicAnalysis
+`dfdd2da091a9d67e7a29cc7914f192d746a2400d`. Exact verification-tool revisions
 and the separate Comparator toolchain are recorded in [verification](verification.md).
 
 Christopher Albert is the recorded human author and maintainer. AI assistance

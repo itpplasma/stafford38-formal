@@ -16,10 +16,10 @@ import re
 import tomllib
 from pathlib import Path
 
-expected_toolchain = "leanprover/lean4:v4.33.1"
-expected_mathlib = "0df444a360eaa60ab8c11dca51a86af692955474"
+expected_toolchain = "leanprover/lean4:v4.33.0"
+expected_mathlib = "db584cd6d46c92f209a44c0f1c829460d327499d"
 expected_aa_url = "https://github.com/itpplasma/algebraic-analysis.git"
-expected_aa = "2fdc928835347a2638b6c85a4bfa770e3f70ed9e"
+expected_aa = "dfdd2da091a9d67e7a29cc7914f192d746a2400d"
 
 toolchain = Path("lean-toolchain").read_text(encoding="utf-8").strip()
 if toolchain != expected_toolchain:
@@ -37,8 +37,8 @@ for name in ("mathlib", "algebraicAnalysis"):
         raise SystemExit(f"missing required dependency: {name}")
 
 mathlib = packages["mathlib"]
-if requires["mathlib"].get("rev") != "v4.33.1":
-    raise SystemExit("lakefile.toml does not pin Mathlib v4.33.1")
+if requires["mathlib"].get("rev") != expected_mathlib:
+    raise SystemExit("lakefile.toml does not pin the expected Mathlib commit")
 if mathlib.get("rev") != expected_mathlib:
     raise SystemExit(f"unexpected resolved Mathlib commit: {mathlib.get('rev')!r}")
 

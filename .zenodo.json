@@ -24,7 +24,7 @@
   "language": "eng",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/itpplasma/algebraic-analysis/tree/2fdc928835347a2638b6c85a4bfa770e3f70ed9e",
+      "identifier": "https://github.com/itpplasma/algebraic-analysis/tree/dfdd2da091a9d67e7a29cc7914f192d746a2400d",
       "relation": "requires",
       "resource_type": "software"
     },

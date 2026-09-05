@@ -10,7 +10,7 @@ source_root=$tool_root/src
 bin_root=$tool_root/bin
 mkdir -p "$source_root" "$bin_root"
 
-lean_toolchain=leanprover/lean4:v4.33.1
+lean_toolchain=leanprover/lean4:v4.33.0
 comparator_rev=575674928e239f5bc452aab72d1dd7b0f1326494
 lean4export_rev=15f6055e299ad5b89345e533cc2192f4cc00f659
 nanoda_rev=68d5ca9db226849b41a6fff59d796ff19d0a8840
