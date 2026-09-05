@@ -52,6 +52,21 @@ sources:
     note: >-
       This article states Conjecture 3.8 and supplies historical background; it
       does not contain the proof formalized here.
+  - title: "Module structure of Weyl algebras"
+    authors:
+      - "Gwyn Bellamy"
+    type: "paper"
+    id: "10.1112/jlms.70373"
+    location: >-
+      Journal of the London Mathematical Society 113 (2026), no. 1, e70373,
+      Section 3, Conjecture 3.4
+    relationship: "background"
+    note: >-
+      A 2026 survey of module structure over Weyl algebras. It states the
+      weaker cyclicity form of the conjecture, notes that Stafford's
+      formulation is stronger, and reports the problem as open. It records the
+      state of the art against which the result formalized here is read; it
+      contains no proof of Conjecture 3.8.
 
 related_formalizations: []
 

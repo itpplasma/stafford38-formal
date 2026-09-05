@@ -13,7 +13,7 @@
     },
     {
       "path": "CITATION.cff",
-      "sha256": "6a1c81679aa6047ea8a4f7c011e62860e773ac5f69075e9f3bd6895de45a264f"
+      "sha256": "0c34355c5cbb8dc26eeb93725c07a076aa4522adda6bd998e68521a01d43453c"
     },
     {
       "path": "Challenge.lean",
@@ -29,7 +29,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "0ce897ee0973470008905b855bb291f996c1e29e0a8861c343ebec0485e23044"
+      "sha256": "e5c0b315c856c84e58cd6b8a1d82ea6295d5ebf1b654ea32fabb2be492f7f15c"
     },
     {
       "path": "Solution.lean",
@@ -1149,7 +1149,7 @@
     },
     {
       "path": "formalization.yaml",
-      "sha256": "8c9fd31d1ab0703b8d434f9512ee99f7da32cf606d8495db48b464b426c5eb80"
+      "sha256": "a90f0e3d1aade635a14f99cb2ed0ca8f85d3007b32ce21771bce1bc353ce5f39"
     },
     {
       "path": "lake-manifest.json",

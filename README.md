@@ -88,11 +88,26 @@ with the chosen Weyl pair; coefficients need not commute with one another.
 ## Stafford 1978
 
 J. T. Stafford, *Module structure of Weyl algebras*, Journal of the London
-Mathematical Society (2) 18 (1978), 429–442, states Conjecture 3.8. That article
-is the source of the conjecture and its historical context. This repository
-supplies a new proof and the additional exact Bernstein-degree fixed-source
-conclusion. No priority, novelty, or journal endorsement is inferred from
-kernel verification.
+Mathematical Society (2) 18 (1978), 429–442, states Conjecture 3.8 on page 438.
+That article is the source of the conjecture and its historical context. It
+proves the conjecture for `n = 1` and for monomial `d`, not in general.
+
+Gwyn Bellamy, *Module structure of Weyl algebras*, Journal of the London
+Mathematical Society **113** (2026), no. 1, e70373,
+[10.1112/jlms.70373](https://doi.org/10.1112/jlms.70373), surveys the area. Its
+Section 3 states the weaker cyclicity form as Conjecture 3.4, observes that
+Stafford's formulation is stronger, and reports the problem as open. That is
+the state of the art this development is measured against.
+
+This repository supplies a new proof of the general case, together with the
+exact Bernstein-degree fixed-source strengthening. The literature search behind
+that reading covers Stafford's article, Bellamy's survey, and the D-module and
+Stacks Project sources named in the [proof guide](docs/proof-guide.md); it found
+no earlier proof of Conjecture 3.8 in general. Whether the argument is genuinely
+new is therefore unknown rather than established: the search was not exhaustive,
+no expert has confirmed it, and priority is not claimed. Kernel verification
+establishes that the Lean proof is correct, and nothing about novelty or
+significance.
 
 ## Palomar
 
