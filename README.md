@@ -17,7 +17,7 @@ The checked scope includes both theorems, the manuscript's general geometric
 theorems, and the corollaries below. The allowed foundational axioms are
 exactly `propext`, `Classical.choice`, and `Quot.sound`; no project or literature
 axioms are used. The [verification report](docs/verification-results.json)
-records the checks: `61f1ef7be6fcdc12ec4ef177c5dc0d8e0c00390778985884d5d90c052048553e`. Independent human expert review
+records the checks: `df7c23125820af9a23e8c2f01e4fa9873341f2d29be6dc46eb833180d183166a`. Independent human expert review
 and journal review are separate; neither is claimed complete.
 
 | Dependency | Exact version |

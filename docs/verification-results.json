@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "result": "passed",
-  "verified_utc": "2026-09-05T19:13:27.901180+00:00",
+  "verified_utc": "2026-09-05T19:19:52.304321+00:00",
   "repository": "itpplasma/stafford38-formal",
   "verified_commit": {
-    "sha": "44ded18f9f44257f5e8d8bf5f33790bd0583fd70",
-    "tree_sha": "08b83fbcc3daf95830bceded94d9a95277253055",
+    "sha": "219668ef77b4ffddc1a503fd1ce61dbd48aa4b17",
+    "tree_sha": "ada1f0b5f859fc19478dff2500fc15cf36665147",
     "remote_branch": "refs/heads/main",
-    "remote_branch_sha_at_clone": "44ded18f9f44257f5e8d8bf5f33790bd0583fd70",
+    "remote_branch_sha_at_clone": "649c126424bbf0e278661b1d2a1d29a77969d9ec",
     "signature": {
       "verified": true,
       "format": "ssh",
@@ -19,7 +19,7 @@
   "clone_state": {
     "fresh_clone": true,
     "lake_absent_before_dependency_fetch": true,
-    "tracked_file_count": 305,
+    "tracked_file_count": 304,
     "local_lean_file_count": 276,
     "resolved_local_import_count": 703,
     "tracked_symlink_count": 0,
@@ -187,10 +187,10 @@
         "lake",
         "build"
       ],
-      "started_utc": "2026-09-05T19:12:39.377768+00:00",
-      "elapsed_seconds": 2.2854094519279897,
+      "started_utc": "2026-09-05T18:47:55.840956+00:00",
+      "elapsed_seconds": 1103.0178144739475,
       "exit_code": 0,
-      "external_evidence_log_sha256": "ba93bcdc0a657227814e84756e0d8813a578277b8c3a15db197d07f388d59c96",
+      "external_evidence_log_sha256": "4c167a213b9d8133f57248ee74d749a0ad23039ec7cdc04e90692c81b3901e35",
       "jobs_completed": 9021
     },
     {
@@ -200,8 +200,8 @@
         "bash",
         "scripts/verify.sh"
       ],
-      "started_utc": "2026-09-05T19:12:41.714733+00:00",
-      "elapsed_seconds": 24.729780209017918,
+      "started_utc": "2026-09-05T19:06:18.944177+00:00",
+      "elapsed_seconds": 41.25025575107429,
       "exit_code": 0,
       "external_evidence_log_sha256": "b0855392272a0b47432dedaf6b6fb63e35dd2ebaad126c789e0d8c9cc35f5422"
     },
@@ -308,6 +308,6 @@
   "verification_log_sha256": {
     "axioms.log": "46c4c21a62365f99276bf1adac5bdba9e8c569e628c513e50ea3095bcc529d00",
     "independent-consumers.log": "fe0d535e27a65ec976185fd03f287c0315d8dc2a07987f254b36f4c5869ca507",
-    "comparator.log": "9a4048a19267cb8b1f54efcef6756f82f530dd6704732aaf07fc4dbe8826f316"
+    "comparator.log": "79e8f61c31d347027ae9725480d1e1ce867ce13d296ac543ab5d3f9c9e7520e2"
   }
 }

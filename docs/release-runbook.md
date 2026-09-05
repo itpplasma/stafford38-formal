@@ -10,7 +10,7 @@ the author's release decision remain separate from the machine checks.
 Use a Bash terminal in the canonical formal checkout. The independently
 checked proof snapshot is `219668ef77b4ffddc1a503fd1ce61dbd48aa4b17`, recorded
 in the [verification report](verification-results.json) as
-`61f1ef7be6fcdc12ec4ef177c5dc0d8e0c00390778985884d5d90c052048553e`. Select the final metadata-bearing HEAD for release,
+`df7c23125820af9a23e8c2f01e4fa9873341f2d29be6dc46eb833180d183166a`. Select the final metadata-bearing HEAD for release,
 not the earlier snapshot's descriptive metadata. Its proof, build, and verifier
 bytes must be identical to that checked snapshot, and the latest authorized
 external release receipt must approve the exact selected HEAD. This avoids

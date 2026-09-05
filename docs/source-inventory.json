@@ -29,7 +29,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "af8263a369cd46d59f15e2f6f2e52b03763c543977365f62e4278dca8e434273"
+      "sha256": "3f82624026ea48c708c85aaefc3f5b298ac370938b9f5c59ddc8afb725e3b098"
     },
     {
       "path": "Solution.lean",
@@ -1133,23 +1133,23 @@
     },
     {
       "path": "docs/provenance.md",
-      "sha256": "c32f0013bab8fed2430fd0d658eb28a51055affc0e7cda10d1b1feec65beadfe"
+      "sha256": "5b722fbb74a7027fb5ce5ea1ebfdf8140daa21e108e100e890edf945f073bb6c"
     },
     {
       "path": "docs/release-runbook.md",
-      "sha256": "07cc7ff0575adcb91d2a3897de5c0fbd33676d37f485a92c28011a84840bebcd"
+      "sha256": "28c69276090e3bdab80e469d3b52a975f44846d142f181f473ab9dac26bfb8bb"
     },
     {
       "path": "docs/verification-results.json",
-      "sha256": "61f1ef7be6fcdc12ec4ef177c5dc0d8e0c00390778985884d5d90c052048553e"
+      "sha256": "df7c23125820af9a23e8c2f01e4fa9873341f2d29be6dc46eb833180d183166a"
     },
     {
       "path": "docs/verification.md",
-      "sha256": "33b9054edac852ed6a23cd79979d9d524844a961715ad7e47638ee4c2d6c1b8c"
+      "sha256": "52bc5cba7132383ec4d87bb1c37c1a5e1deed1ffeacdde3a9749d625f6e102fb"
     },
     {
       "path": "formalization.yaml",
-      "sha256": "c2498095b427675d9fbd171690606d9f5fbc69037a683846b5c920541ca7547e"
+      "sha256": "8c9fd31d1ab0703b8d434f9512ee99f7da32cf606d8495db48b464b426c5eb80"
     },
     {
       "path": "lake-manifest.json",

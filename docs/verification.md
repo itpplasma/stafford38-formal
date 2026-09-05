@@ -2,7 +2,7 @@
 
 The independent clone of commit `219668ef77b4ffddc1a503fd1ce61dbd48aa4b17` passed the checks recorded
 in the [machine-readable report](verification-results.json):
-`61f1ef7be6fcdc12ec4ef177c5dc0d8e0c00390778985884d5d90c052048553e`. The report fixes the source commit, dependency pins,
+`df7c23125820af9a23e8c2f01e4fa9873341f2d29be6dc46eb833180d183166a`. The report fixes the source commit, dependency pins,
 tool revisions, commands, exit statuses, and evidence hashes. Kernel checking
 and independent human mathematical review are separate assessments.
 
