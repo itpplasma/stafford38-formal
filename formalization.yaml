@@ -56,8 +56,8 @@ sources:
 related_formalizations: []
 
 verification:
-  commit: "96edc734fdfbba4f80841cfea9a2a508525a3814"
-  report: "d05137421f0a21fcb8c97865af256098beeb1481648ed841178e27aa2233b9c2"
+  commit: "219668ef77b4ffddc1a503fd1ce61dbd48aa4b17"
+  report: "61f1ef7be6fcdc12ec4ef177c5dc0d8e0c00390778985884d5d90c052048553e"
   machine_readable_report: "docs/verification-results.json"
   statement_correspondence: "docs/paper-lean-specification.md"
   source_commit: "8cc7802cd4355d819d2df4f680ba26d4a339f80e"

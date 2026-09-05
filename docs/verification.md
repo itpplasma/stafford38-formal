@@ -1,8 +1,8 @@
 # Verification
 
-The independent clone of commit `96edc734fdfbba4f80841cfea9a2a508525a3814` passed the checks recorded
+The independent clone of commit `219668ef77b4ffddc1a503fd1ce61dbd48aa4b17` passed the checks recorded
 in the [machine-readable report](verification-results.json):
-`d05137421f0a21fcb8c97865af256098beeb1481648ed841178e27aa2233b9c2`. The report fixes the source commit, dependency pins,
+`61f1ef7be6fcdc12ec4ef177c5dc0d8e0c00390778985884d5d90c052048553e`. The report fixes the source commit, dependency pins,
 tool revisions, commands, exit statuses, and evidence hashes. Kernel checking
 and independent human mathematical review are separate assessments.
 

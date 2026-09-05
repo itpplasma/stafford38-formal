@@ -8,12 +8,16 @@
       "sha256": "604c7de6af9c26e7fd4da7ee92a536bd70963f688bb3b1e5bc899c6de3471592"
     },
     {
+      "path": ".zenodo.json",
+      "sha256": "f014b713f90f4ec79250845430bf1f4c4d025c40ae70ef4bbe196bc9bfa3e242"
+    },
+    {
       "path": "CITATION.cff",
       "sha256": "de1fef7fa936101e2a8dafbb1b2786e775d676ac1731abebb9348fb286641013"
     },
     {
       "path": "Challenge.lean",
-      "sha256": "0012477c4b8be9f999d20146eea5d156b1076f8c3a8c9b070c755c80ddddf661"
+      "sha256": "5a832e8a6f292e58a68dddd48e03541f5228c3f15cc9a1063e88c057439346f0"
     },
     {
       "path": "LICENSE",
@@ -25,7 +29,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "0e916e87eae5161c57269b2b0b1fbaef725ab2a549aa658d3f4ec1e52b13d742"
+      "sha256": "af8263a369cd46d59f15e2f6f2e52b03763c543977365f62e4278dca8e434273"
     },
     {
       "path": "Solution.lean",
@@ -1112,6 +1116,10 @@
       "sha256": "d05a395a0a8d2d93de18a91cb5cb2ba7541067cf4a0f979caaa143ae333e49d9"
     },
     {
+      "path": "docs/dossier/stafford38-challenge-dossier.tex",
+      "sha256": "d39525d8f7a08d6f1f5f600e229066fdf19fbe9dedf7f95f0881ac234e56cafe"
+    },
+    {
       "path": "docs/paper-lean-specification.md",
       "sha256": "b31fb10d3731f5e8c7fa0b5ede20dfd1e8c43a9cb28dbc1da4f85f0390748dc2"
     },
@@ -1125,23 +1133,23 @@
     },
     {
       "path": "docs/provenance.md",
-      "sha256": "be491b886a9e939807203283f89a3987075c5591c0a0f1186616eb95dda68e81"
+      "sha256": "c32f0013bab8fed2430fd0d658eb28a51055affc0e7cda10d1b1feec65beadfe"
     },
     {
       "path": "docs/release-runbook.md",
-      "sha256": "8212a548764961c0a3a27efa1094dd54626fe3dee8f8a57c48743743c90d7932"
+      "sha256": "07cc7ff0575adcb91d2a3897de5c0fbd33676d37f485a92c28011a84840bebcd"
     },
     {
       "path": "docs/verification-results.json",
-      "sha256": "d05137421f0a21fcb8c97865af256098beeb1481648ed841178e27aa2233b9c2"
+      "sha256": "61f1ef7be6fcdc12ec4ef177c5dc0d8e0c00390778985884d5d90c052048553e"
     },
     {
       "path": "docs/verification.md",
-      "sha256": "2085b22f103f2af704ba1abbe28ac009b7b739b2d03213877f24b409485fb831"
+      "sha256": "33b9054edac852ed6a23cd79979d9d524844a961715ad7e47638ee4c2d6c1b8c"
     },
     {
       "path": "formalization.yaml",
-      "sha256": "1c9cd0ce3b77ab253d7df3b92185240073ba42ac3543c8a33e52088c9e6c6dc2"
+      "sha256": "c2498095b427675d9fbd171690606d9f5fbc69037a683846b5c920541ca7547e"
     },
     {
       "path": "lake-manifest.json",

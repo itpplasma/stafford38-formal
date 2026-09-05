@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "result": "passed",
-  "verified_utc": "2026-09-05T14:46:28.327666+00:00",
+  "verified_utc": "2026-09-05T19:13:27.901180+00:00",
   "repository": "itpplasma/stafford38-formal",
   "verified_commit": {
-    "sha": "96edc734fdfbba4f80841cfea9a2a508525a3814",
-    "tree_sha": "c4e8b23d790dab5228fead00837b9967380620d9",
+    "sha": "44ded18f9f44257f5e8d8bf5f33790bd0583fd70",
+    "tree_sha": "08b83fbcc3daf95830bceded94d9a95277253055",
     "remote_branch": "refs/heads/main",
-    "remote_branch_sha_at_clone": "96edc734fdfbba4f80841cfea9a2a508525a3814",
+    "remote_branch_sha_at_clone": "44ded18f9f44257f5e8d8bf5f33790bd0583fd70",
     "signature": {
       "verified": true,
       "format": "ssh",
@@ -19,31 +19,27 @@
   "clone_state": {
     "fresh_clone": true,
     "lake_absent_before_dependency_fetch": true,
-    "tracked_file_count": 301,
+    "tracked_file_count": 305,
     "local_lean_file_count": 276,
     "resolved_local_import_count": 703,
     "tracked_symlink_count": 0,
     "final_git_status_porcelain": "",
     "final_head_matches_verified_commit": true,
-    "final_source_inventory_sha256": "069520218b110ce75ac06720f6139515cd5cab987778b02a13dcf508454560ac",
-    "source_inventory_entry_count": 300,
     "working_tree_symlinks": {
       "count": 3,
       "tracked_count": 0,
-      "absolute_target_count": 0,
-      "private_path_reference_count": 0,
       "entries": [
         {
-          "path": ".lake/packages/batteries/docs/README.md",
-          "target": "../README.md"
+          "path": ".lake/packages/mathlib/scripts/bench/size/run.py",
+          "target": "run"
         },
         {
           "path": ".lake/packages/mathlib/scripts/bench/build/fake-root/bin/lean.py",
           "target": "lean"
         },
         {
-          "path": ".lake/packages/mathlib/scripts/bench/size/run.py",
-          "target": "run"
+          "path": ".lake/packages/batteries/docs/README.md",
+          "target": "../README.md"
         }
       ]
     }
@@ -173,46 +169,63 @@
     {
       "stage": "cache",
       "working_directory": ".",
-      "argv": ["lake", "exe", "cache", "get"],
-      "started_utc": "2026-09-05T14:19:00.944123+00:00",
-      "elapsed_seconds": 116.38891128799878,
+      "argv": [
+        "lake",
+        "exe",
+        "cache",
+        "get"
+      ],
+      "started_utc": "2026-09-05T18:46:07.604331+00:00",
+      "elapsed_seconds": 108.18496228498407,
       "exit_code": 0,
-      "external_evidence_log_sha256": "968253352f4798f069fe0bac9a71a65bd94812de04077c8e62043803e98f1a06"
+      "external_evidence_log_sha256": "2f4dc0539cc7aa256c04dbd1a0aa7d72684768d791d3451b0a4248939c1dde4f"
     },
     {
       "stage": "build",
       "working_directory": ".",
-      "argv": ["lake", "build"],
-      "started_utc": "2026-09-05T14:21:09.107105+00:00",
-      "elapsed_seconds": 1108.7034142080229,
+      "argv": [
+        "lake",
+        "build"
+      ],
+      "started_utc": "2026-09-05T19:12:39.377768+00:00",
+      "elapsed_seconds": 2.2854094519279897,
       "exit_code": 0,
-      "jobs_completed": 9021,
-      "external_evidence_log_sha256": "642f8787cf79f7ba1da378fe1e98910545cdbb76cb658b5453a52be30fee1d9c"
+      "external_evidence_log_sha256": "ba93bcdc0a657227814e84756e0d8813a578277b8c3a15db197d07f388d59c96",
+      "jobs_completed": 9021
     },
     {
       "stage": "verify",
       "working_directory": ".",
-      "argv": ["bash", "scripts/verify.sh"],
-      "started_utc": "2026-09-05T14:40:06.543298+00:00",
-      "elapsed_seconds": 41.17035698494874,
+      "argv": [
+        "bash",
+        "scripts/verify.sh"
+      ],
+      "started_utc": "2026-09-05T19:12:41.714733+00:00",
+      "elapsed_seconds": 24.729780209017918,
       "exit_code": 0,
       "external_evidence_log_sha256": "b0855392272a0b47432dedaf6b6fb63e35dd2ebaad126c789e0d8c9cc35f5422"
     },
     {
       "stage": "bootstrap",
       "working_directory": ".",
-      "argv": ["bash", "scripts/bootstrap-palomar-tools.sh"],
-      "started_utc": "2026-09-05T14:40:56.351011+00:00",
-      "elapsed_seconds": 51.70952123403549,
+      "argv": [
+        "bash",
+        "scripts/bootstrap-palomar-tools.sh"
+      ],
+      "started_utc": "2026-09-05T19:07:00.244844+00:00",
+      "elapsed_seconds": 43.38153527490795,
       "exit_code": 0,
-      "external_evidence_log_sha256": "49f5e8c99eaed3b8343de45aa6acc875116fccfccb23657a039fb78b572bb479"
+      "external_evidence_log_sha256": "558d923f0c4520372727dd51e8fae3a2568851f7eb76ecf9465e5f8d7c382d96"
     },
     {
       "stage": "palomar",
       "working_directory": ".",
-      "argv": ["bash", "scripts/verify-palomar.sh"],
-      "started_utc": "2026-09-05T14:41:52.956227+00:00",
-      "elapsed_seconds": 275.3714390649693,
+      "argv": [
+        "bash",
+        "scripts/verify-palomar.sh"
+      ],
+      "started_utc": "2026-09-05T19:07:43.677167+00:00",
+      "elapsed_seconds": 266.2526545020519,
       "exit_code": 0,
       "external_evidence_log_sha256": "7810fd664da01e35062d91d1b3f21868727b337b7d439d484136b7e15dfc352e"
     }
@@ -227,9 +240,9 @@
     },
     "axiom_boundary": {
       "allowed_axioms": [
-        "propext",
+        "Classical.choice",
         "Quot.sound",
-        "Classical.choice"
+        "propext"
       ],
       "endpoint_report_count": 19,
       "endpoint_reports_passed": true,
@@ -279,43 +292,22 @@
         "wrong_sign_control": "rejected"
       }
     },
-    "loaded_module_isolation": {
-      "Challenge": {
-        "result": "passed",
-        "loaded_module_count": 3511,
-        "forbidden_transitive_import_count": 0
-      },
-      "Solution": {
-        "result": "passed",
-        "loaded_module_count": 10785,
-        "challenge_module_import_count": 0
-      }
+    "import_closure": {
+      "challenge_loaded_modules": 3511,
+      "solution_loaded_modules": 10785,
+      "challenge_permits": "Lean core and the pinned Mathlib closure only",
+      "solution_excludes": "Challenge"
     },
-    "palomar": {
-      "configuration": {
-        "challenge_module": "Challenge",
-        "solution_module": "Solution",
-        "theorem_names": ["Stafford38Challenge.universalStatement"],
-        "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
-        "enable_nanoda": true
-      },
-      "comparator": "accepted",
-      "nanoda_kernel": "accepted",
-      "lean_default_kernel": "accepted"
+    "comparator": {
+      "configuration": "comparator.json",
+      "theorem": "Stafford38Challenge.universalStatement",
+      "nanoda": "passed",
+      "lean_kernel": "passed"
     }
   },
   "verification_log_sha256": {
-    ".lake/verification/layout.log": "debeb01a12865c7aaf0929f0392ee01bfd000105bb2aa5e4c47a9f120da9e06e",
-    ".lake/verification/pages-oracle.log": "8baf95f793a5529158730b1fabc524feec5f98bf00cabf19943be3aa6537071f",
-    ".lake/verification/pbw-oracle.log": "524e0c6b0be4e2535e098b7cf41b1bd828c03f5a58b375936325089f35df6c40",
-    ".lake/verification/independent-consumers.log": "fe0d535e27a65ec976185fd03f287c0315d8dc2a07987f254b36f4c5869ca507",
-    ".lake/verification/axioms.log": "46c4c21a62365f99276bf1adac5bdba9e8c569e628c513e50ea3095bcc529d00",
-    ".lake/verification/Challenge-imports.log": "db43af04ab7e1987b79712c3f456daea3f59a94b60e39c04f2d5c7431913e3e1",
-    ".lake/verification/Solution-imports.log": "20feea468d5ae676ab90b52470f2fe6676e317a509db4c63a6cdcf2b62ecba44",
-    ".lake/verification/build.log": "cc3c048bd25262c8e403e48f9ab83eea77ba8151eb4e59520c7cf990c929f98a",
-    ".lake/verification/challenge-build.log": "254c92f0ef32185a791a5450d694b134bfc940819860e0c945a56b5d9f86f1c0",
-    ".lake/verification/solution-build.log": "c77269ce49fc2fa2502b2b7b72b419b4ca02707e74b9daf84967dc2f54a2d868",
-    ".lake/verification/solution.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    ".lake/verification/comparator.log": "d829ce35cef31ba6796031b8bdb62d73e2ad2b29bae14ef46a4e8bb4f6f78289"
+    "axioms.log": "46c4c21a62365f99276bf1adac5bdba9e8c569e628c513e50ea3095bcc529d00",
+    "independent-consumers.log": "fe0d535e27a65ec976185fd03f287c0315d8dc2a07987f254b36f4c5869ca507",
+    "comparator.log": "9a4048a19267cb8b1f54efcef6756f82f530dd6704732aaf07fc4dbe8826f316"
   }
 }
