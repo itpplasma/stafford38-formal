@@ -1,22 +1,56 @@
 cff-version: 1.2.0
 message: >-
-  This is metadata for a private preparation draft. Cite the immutable release
-  commit after the formal repository has been created and released.
-title: "Stafford's Conjecture 3.8 for Weyl algebras"
+  If you use this formalization, please cite it using the metadata below. The
+  concept DOI always resolves to the newest version; the version DOI cites this
+  exact release.
+title: "Stafford's Conjecture 3.8 for Weyl algebras: Lean 4 formalization"
 type: software
 authors:
   - family-names: Albert
     given-names: Christopher
+    orcid: "https://orcid.org/0000-0003-4773-416X"
+    affiliation: "Graz University of Technology"
+version: v1.0.0
+date-released: "2026-09-05"
+doi: 10.5281/zenodo.22390721
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22390721
+    description: Concept DOI, resolving to the newest version
+  - type: doi
+    value: 10.5281/zenodo.22390722
+    description: Version DOI of release v1.0.0
+repository-code: "https://github.com/itpplasma/stafford38-formal"
 license: Apache-2.0
 abstract: >-
   A Lean 4 and Mathlib formalization of Stafford's Conjecture 3.8. For every
   characteristic-zero field, every Weyl-algebra rank, and every nonzero d, it
   proves the existence of F, R, and S satisfying 1 = dR + FdS. It also proves
-  an exact Bernstein-degree fixed-source strengthening and localization,
-  adjoint, differential-operator, evolutionary, and tensor corollaries.
+  an exact Bernstein-degree fixed-source strengthening, the general
+  tangent-limit, asymptotic-conormal and coisotropic-exclusion theorems, and
+  localization, adjoint, differential-operator, evolutionary, and tensor
+  corollaries. Every endpoint depends only on the axioms propext,
+  Classical.choice and Quot.sound.
 keywords:
   - Lean
+  - Mathlib
   - Weyl algebra
+  - Stafford's conjecture
   - noncommutative algebra
   - D-module
+  - characteristic variety
   - formal mathematics
+references:
+  - type: article
+    authors:
+      - family-names: Stafford
+        given-names: J. T.
+    title: "Module structure of Weyl algebras"
+    journal: "Journal of the London Mathematical Society"
+    volume: 18
+    issue: 3
+    start: 429
+    end: 442
+    year: 1978
+    doi: 10.1112/jlms/s2-18.3.429
+    notes: "States Conjecture 3.8 on page 438."
