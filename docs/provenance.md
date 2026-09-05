@@ -12,7 +12,7 @@ snapshot, with source inventory and extraction correspondence retained.
 | Repository | Authority |
 | --- | --- |
 | [algebraic-analysis](https://github.com/itpplasma/algebraic-analysis) | Public reusable mathematics, pinned at `2fdc928835347a2638b6c85a4bfa770e3f70ed9e` |
-| [stafford38-formal](https://github.com/itpplasma/stafford38-formal) | Canonical Stafford-specific proof, Palomar interface, and reproducibility documentation |
+| [stafford38-formal](https://github.com/itpplasma/stafford38-formal) | Public canonical Stafford-specific proof, Palomar interface, and reproducibility documentation |
 | [stafford38-paper](https://github.com/itpplasma/stafford38-paper) | Private synchronized backup of the Overleaf manuscript authority |
 | [stafford38](https://github.com/itpplasma/stafford38) | Private research history and provenance archive |
 
@@ -26,7 +26,7 @@ the research workspace nor the paper repository is a build input.
 
 ## Manuscript correspondence
 
-The paper mirror at `56533c8d71c28d2c6bac002331c4b49f184d5a6a` was verified
+The paper mirror at `b3f3edf0741b6a70b6e5011690e16bf58561cffb` was verified
 as synchronized with Overleaf. The manuscript, bibliography, and proof-map
 supplement remain under that separate authority. This formal package includes
 the [statement correspondence](paper-lean-specification.md), without copying

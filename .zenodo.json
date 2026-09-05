@@ -1,0 +1,38 @@
+{
+  "title": "Stafford's Conjecture 3.8 for Weyl algebras: Lean 4 formalization",
+  "upload_type": "software",
+  "description": "Lean 4 formalization, verified against Mathlib, of Stafford's Conjecture 3.8: for every field k of characteristic zero, every n, and every nonzero d in the Weyl algebra A_n(k), there exist F, R, S with 1 = d R + F d S. The development also proves the exact Bernstein-degree fixed-source strengthening, the general tangent-limit, asymptotic-conormal and coisotropic-exclusion theorems of the accompanying manuscript, and the localization, adjoint and evolutionary corollaries. Every endpoint depends only on the axioms propext, Classical.choice and Quot.sound. The repository contains the Palomar Challenge/Solution pair, the Comparator configuration, the verification scripts and the machine-readable verification record.",
+  "creators": [
+    {
+      "name": "Albert, Christopher",
+      "affiliation": "Graz University of Technology",
+      "orcid": "0000-0003-4773-416X"
+    }
+  ],
+  "license": "Apache-2.0",
+  "access_right": "open",
+  "keywords": [
+    "Weyl algebra",
+    "Stafford's conjecture",
+    "Lean 4",
+    "Mathlib",
+    "formal verification",
+    "D-modules",
+    "characteristic variety",
+    "involutivity"
+  ],
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/itpplasma/algebraic-analysis/tree/2fdc928835347a2638b6c85a4bfa770e3f70ed9e",
+      "relation": "requires",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "10.1112/jlms/s2-18.3.429",
+      "relation": "references",
+      "resource_type": "publication-article"
+    }
+  ],
+  "notes": "Kernel-checked Lean proof. Independent human expert review of the mathematics and the accompanying manuscript are separate; see docs/verification.md for the exact scope of the machine check."
+}

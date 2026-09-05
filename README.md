@@ -104,6 +104,11 @@ transports the substantive theorem to that presentation.
 The independent check uses Comparator, NanoDa, and Lean's kernel; see
 [verification](docs/verification.md) for the pinned tools and sandbox boundary.
 
+The [challenge dossier](docs/dossier/stafford38-challenge-dossier.tex) defines
+every object before the statement, in the manuscript's words and in Lean's, and
+lists the Challenge, the Solution and the Comparator configuration from the
+repository files.
+
 This repository is not registered with Palomar and has no Palomar ID.
 [Later release actions](docs/release-runbook.md) require separate human
 authorization.
@@ -113,7 +118,7 @@ authorization.
 | Artifact | Canonical home |
 | --- | --- |
 | Reusable application-independent mathematics | Public [algebraic-analysis](https://github.com/itpplasma/algebraic-analysis), an external immutable dependency |
-| Stafford-specific formal proof, interface, and reproducibility documentation | Private [stafford38-formal](https://github.com/itpplasma/stafford38-formal) |
+| Stafford-specific formal proof, interface, and reproducibility documentation | Public [stafford38-formal](https://github.com/itpplasma/stafford38-formal), this repository |
 | Manuscript, bibliography, and proof-map supplement | Overleaf authority, backed up in private [stafford38-paper](https://github.com/itpplasma/stafford38-paper) |
 | Research history and provenance records | Private [stafford38](https://github.com/itpplasma/stafford38) |
 
@@ -130,3 +135,5 @@ records the source and dependency revisions.
 
 Formal code and documentation are Apache-2.0; see [LICENSE](LICENSE) and
 [NOTICE](NOTICE). The separate manuscript and supplements are CC BY 4.0.
+Cite this repository with [CITATION.cff](CITATION.cff); Zenodo archives of
+tagged releases use the metadata in [.zenodo.json](.zenodo.json).

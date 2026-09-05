@@ -20,7 +20,7 @@ embedding a commit's own hash in its contents.
 proof_commit='96edc734fdfbba4f80841cfea9a2a508525a3814'
 formal_commit=$(git rev-parse HEAD)
 aa_commit='2fdc928835347a2638b6c85a4bfa770e3f70ed9e'
-paper_commit='56533c8d71c28d2c6bac002331c4b49f184d5a6a'
+paper_commit='b3f3edf0741b6a70b6e5011690e16bf58561cffb'
 [[ "$formal_commit" =~ ^[0-9a-f]{40}$ ]] || exit 1
 git fetch origin
 git verify-commit "$formal_commit"
@@ -49,21 +49,14 @@ If an authorized manuscript correction changes the paper commit, update its
 correspondence record and repeat the affected checks before selecting a new
 release snapshot. Preserve existing Git history.
 
-## Publish formal repository visibility
+## Repository visibility
 
-After explicit human approval of the exact public snapshot, run:
-
-```bash
-gh repo edit itpplasma/stafford38-formal \
-  --visibility public --accept-visibility-change-consequences
-gh repo view itpplasma/stafford38-formal --json nameWithOwner,visibility
-```
-
-These are the current [GitHub CLI visibility options](https://cli.github.com/manual/gh_repo_edit).
-AlgebraicAnalysis is already public; no further library visibility change is
-needed. The paper mirror and research archive remain private. Record the
-authorization and resulting public commit separately, and update descriptive
-visibility metadata without changing the verified proof sources.
+The formal repository was made public on 2026-09-05 under the author's
+explicit authorization, so that the Zenodo GitHub integration can archive a
+release and Palomar can read the commit. AlgebraicAnalysis is public. The paper
+mirror and the research archive remain private. Public visibility is not a
+release: a release is the signed tag below, and registration is the separate
+Palomar submission.
 
 ## Sign release tags
 
@@ -147,17 +140,33 @@ before any upload; the source archives are not generated paper PDFs.
 
 ## Zenodo
 
-Only after explicit deposit approval, use the [Zenodo portal](https://zenodo.org/)
-to create a new upload. Upload the approved archives and checksums, identify
-their exact commits, and enter the responsible author, version, and licenses.
-Use separate software and manuscript records so that Apache-2.0 and CC BY 4.0
-are represented accurately. Review the preview with the author before pressing
-Publish and confirming it. This follows Zenodo's [upload procedure](https://help.zenodo.org/docs/deposit/create-new-upload/).
+Zenodo archives GitHub releases through its GitHub integration and reads the
+deposit metadata from [`.zenodo.json`](../.zenodo.json) at the released
+commit. The procedure, once, for the repository:
 
-No DOI has been assigned here. If the human chooses to reserve one in the
-portal, use only the identifier actually issued for that record. Do not use
-an unrelated article DOI. Add the issued identifiers to citation metadata only
-after that authorized step.
+1. Sign in at <https://zenodo.org/> with the GitHub account that owns
+   `itpplasma/stafford38-formal`, open
+   <https://zenodo.org/account/settings/github/>, and switch the repository
+   on. The repository must be public for it to be listed.
+2. Publish a GitHub release for the signed tag:
+
+```bash
+gh release create "$formal_tag" --verify-tag \
+  --title "Stafford 3.8 formal release candidate $formal_tag" \
+  --notes "Kernel-checked Lean 4 formalization of Stafford's Conjecture 3.8. See docs/verification.md." \
+  "$release_dir/stafford38-formal.tar.gz" "$release_dir/SHA256SUMS"
+```
+
+3. Zenodo receives the release event, archives the tagged source tree, and
+   mints a version DOI and a concept DOI within minutes. Read both from the
+   Zenodo record page or from the badge on the GitHub settings page.
+4. Record the DOIs in a follow-up commit: add `doi:` to `CITATION.cff` and
+   the concept DOI to the README citation line. Do not edit `.zenodo.json`
+   with the DOI; Zenodo assigns it.
+
+Use only the identifiers Zenodo actually issues. The manuscript is not part of
+this deposit; it remains CC BY 4.0 and is archived separately if ever
+released.
 
 ## Palomar
 

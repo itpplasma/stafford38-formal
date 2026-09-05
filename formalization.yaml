@@ -18,9 +18,9 @@ project:
 repository:
   role: "substantive-development"
   url: "https://github.com/itpplasma/stafford38-formal"
-  registration_status: "private-candidate-not-registered"
+  registration_status: "public-candidate-not-registered"
   note: >-
-    This private repository is the canonical substantive Stafford-specific
+    This public repository is the canonical substantive Stafford-specific
     formal development. It is not registered with Palomar.
 
 classification:
@@ -61,7 +61,7 @@ verification:
   machine_readable_report: "docs/verification-results.json"
   statement_correspondence: "docs/paper-lean-specification.md"
   source_commit: "8cc7802cd4355d819d2df4f680ba26d4a339f80e"
-  manuscript_commit: "56533c8d71c28d2c6bac002331c4b49f184d5a6a"
+  manuscript_commit: "b3f3edf0741b6a70b6e5011690e16bf58561cffb"
   allowed_axioms: ["propext", "Classical.choice", "Quot.sound"]
 
 status:
