@@ -1145,7 +1145,7 @@
     },
     {
       "path": "docs/verification.md",
-      "sha256": "52bc5cba7132383ec4d87bb1c37c1a5e1deed1ffeacdde3a9749d625f6e102fb"
+      "sha256": "ffde14db43882a774b7a01cf3c80fd927c1d097d2764b27f445ada6358c9df49"
     },
     {
       "path": "formalization.yaml",

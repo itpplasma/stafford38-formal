@@ -6,6 +6,22 @@ in the [machine-readable report](verification-results.json):
 tool revisions, commands, exit statuses, and evidence hashes. Kernel checking
 and independent human mathematical review are separate assessments.
 
+A commit cannot state its own hash, so the verified snapshot named here is an
+ancestor of the current `main` rather than its tip. Every commit after it
+changes documentation and release metadata only; their proof sources, build
+files, dependency pins and verifier scripts are byte-identical to that
+snapshot, which
+
+```sh
+git diff --exit-code 219668ef77b4ffddc1a503fd1ce61dbd48aa4b17 HEAD -- . \
+  ':(exclude)README.md' ':(exclude)formalization.yaml' ':(exclude)docs/**' \
+  ':(exclude).zenodo.json'
+```
+
+confirms at any later commit. Each of those commits was itself replayed in the
+same isolated clone, and the release procedure in the
+[runbook](release-runbook.md) repeats this comparison before a tag is signed.
+
 ## Logical scope
 
 The universal certificate, exact-degree strengthening, general geometric
