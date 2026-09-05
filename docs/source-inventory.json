@@ -13,7 +13,7 @@
     },
     {
       "path": "CITATION.cff",
-      "sha256": "0c34355c5cbb8dc26eeb93725c07a076aa4522adda6bd998e68521a01d43453c"
+      "sha256": "fc0f6e6d6b67a53110f40828443002e2848bc0936f71bed77829eede333ddbbe"
     },
     {
       "path": "Challenge.lean",
@@ -29,7 +29,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "e5c0b315c856c84e58cd6b8a1d82ea6295d5ebf1b654ea32fabb2be492f7f15c"
+      "sha256": "0a897219d11a89efa4f0672dc84eeda647de91ee1e5a7d5650fa1f130212966c"
     },
     {
       "path": "Solution.lean",

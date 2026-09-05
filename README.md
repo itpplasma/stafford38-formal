@@ -150,9 +150,9 @@ records the source and dependency revisions.
 
 Formal code and documentation are Apache-2.0; see [LICENSE](LICENSE) and
 [NOTICE](NOTICE). The separate manuscript and supplements are CC BY 4.0.
-Cite this repository with [CITATION.cff](CITATION.cff). Release `v1.0.0` is
-archived on Zenodo: the concept DOI
+Cite this repository with [CITATION.cff](CITATION.cff). Releases are archived
+on Zenodo. The concept DOI
 [10.5281/zenodo.22390721](https://doi.org/10.5281/zenodo.22390721) always
-resolves to the newest version, and
-[10.5281/zenodo.22390722](https://doi.org/10.5281/zenodo.22390722) cites that
-exact release.
+resolves to the newest version;
+[10.5281/zenodo.22391362](https://doi.org/10.5281/zenodo.22391362) cites
+`v1.0.1` exactly.

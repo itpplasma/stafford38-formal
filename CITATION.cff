@@ -18,6 +18,9 @@ identifiers:
     value: 10.5281/zenodo.22390721
     description: Concept DOI, resolving to the newest version
   - type: doi
+    value: 10.5281/zenodo.22391362
+    description: Version DOI of release v1.0.1
+  - type: doi
     value: 10.5281/zenodo.22390722
     description: Version DOI of release v1.0.0
 repository-code: "https://github.com/itpplasma/stafford38-formal"
