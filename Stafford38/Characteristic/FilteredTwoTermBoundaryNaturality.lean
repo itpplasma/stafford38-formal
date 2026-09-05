@@ -1,0 +1,11 @@
+import AlgebraicAnalysis.Module.FilteredTwoTermBoundaryNaturality
+import Stafford38.Characteristic.FilteredTwoTermTotalActions
+import Stafford38.Characteristic.FilteredTwoTermBoundaryExhaustion
+
+/- Compatibility exports for the neutral AlgebraicAnalysis API. -/
+
+namespace Stafford38.Characteristic.FilteredTwoTermPages
+
+export AlgebraicAnalysis.FilteredTwoTermPages (FilteredTwoTerm.PageOperator.targetBoundaryMap_naturality FilteredTwoTerm.PageOperator.totalBoundaryMap_naturality)
+
+end Stafford38.Characteristic.FilteredTwoTermPages

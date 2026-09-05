@@ -1,0 +1,10 @@
+import AlgebraicAnalysis.Module.FilteredTwoTermSuccessorNaturality
+import Stafford38.Characteristic.FilteredTwoTermTotalActions
+
+/- Compatibility exports for the neutral AlgebraicAnalysis API. -/
+
+namespace Stafford38.Characteristic.FilteredTwoTermPages
+
+export AlgebraicAnalysis.FilteredTwoTermPages (FilteredTwoTerm.PageOperator.sourceTotalSuccMap_naturality FilteredTwoTerm.PageOperator.targetTotalSuccMap_naturality)
+
+end Stafford38.Characteristic.FilteredTwoTermPages

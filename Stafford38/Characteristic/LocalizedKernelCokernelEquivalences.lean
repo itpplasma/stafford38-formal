@@ -1,0 +1,9 @@
+import AlgebraicAnalysis.Module.LocalizedKernelCokernelEquivalences
+
+/- Compatibility exports for the neutral AlgebraicAnalysis API. -/
+
+namespace Stafford38.Characteristic.LocalizedKernelCokernelEquivalences
+
+export AlgebraicAnalysis.LocalizedKernelCokernelEquivalences (localizedMap localizedMap_apply localizedEquiv localizedKernelEquiv localizedCokernelEquiv)
+
+end Stafford38.Characteristic.LocalizedKernelCokernelEquivalences

@@ -1,0 +1,10 @@
+import AlgebraicAnalysis.Module.StableTorsionResidualSupport
+import Stafford38.Characteristic.PrincipalKoszulPositivity
+
+/- Compatibility exports for the neutral AlgebraicAnalysis API. -/
+
+namespace Stafford38.Characteristic.StableTorsionResidualSupport
+
+export AlgebraicAnalysis.StableTorsionResidualSupport (residual_nontrivial_of_support)
+
+end Stafford38.Characteristic.StableTorsionResidualSupport

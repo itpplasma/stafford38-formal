@@ -1,0 +1,182 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Stafford 3.8"
+  description: >-
+    Lean formalization of Stafford's Conjecture 3.8 for every
+    characteristic-zero field and every Weyl-algebra rank, proving that each
+    nonzero d admits F, R, and S with 1 = d*R + F*d*S. The development also
+    proves an exact Bernstein-degree fixed-source strengthening and derived
+    localization, adjoint, and evolutionary results.
+  authors:
+    - "Christopher Albert"
+  responsible_maintainers:
+    - "Christopher Albert"
+  license: "Apache-2.0"
+
+repository:
+  role: "substantive-development"
+  url: "https://github.com/itpplasma/stafford38-formal"
+  registration_status: "candidate-not-registered"
+  note: >-
+    This is the intended canonical repository URL. At the date of this
+    metadata draft the private repository has not been created or registered.
+
+classification:
+  arxiv:
+    - "math.RA"
+  msc2020:
+    - "16S32"
+
+sources:
+  - title: "Original proof of Stafford's Conjecture 3.8 in this formalization"
+    authors:
+      - "Christopher Albert"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The private manuscript and formal development are the first presentation
+      of this proof. No public preprint or stable bibliographic identifier has
+      been registered.
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "Module structure of Weyl algebras"
+    authors:
+      - "J. T. Stafford"
+    type: "article"
+    location: >-
+      Journal of the London Mathematical Society (2) 18 (1978), 429-442,
+      Conjecture 3.8
+    relationship: "background"
+    note: >-
+      This article states Conjecture 3.8 and supplies historical background; it
+      does not contain the proof formalized here.
+
+related_formalizations: []
+
+status:
+  scope: >-
+    The substantive development proves the universal right-ideal certificate
+    for all characteristic-zero fields and all n >= 0, including the rank-zero
+    field case, and proves the positive-rank fixed-source strengthening and the
+    listed immediate corollaries. The snapshot also includes the manuscript's
+    general tangent-limit, asymptotic-conormal, and coisotropic-set statements
+    and independent consumers. This preparation snapshot awaits a fresh full
+    build, consumer and axiom audit, Comparator replay, and final manuscript
+    correspondence confirmation before canonical cutover.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Stafford38.universalStatement"
+      file: "Stafford38/FoundationClosure.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "Stafford38.universalFixedSourceStatement"
+      file: "Stafford38/FoundationClosure.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: >-
+        Human mathematical direction, source checking, integration, and
+        release control, with Lean kernel checking and project-specific replay
+        scripts.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "not tracked"
+        hardware: "local workstation and research host"
+      prompting_notes: "n/a"
+    - method: "agent"
+      models:
+        - "gpt-5.5"
+        - "gpt-5.6-luna"
+        - "gpt-5.6-sol"
+        - "gpt-6-astra"
+        - "claude-fable-5"
+        - "claude-haiku-4-5-20251001"
+        - "claude-opus-5[1m]"
+        - "claude-opus-5"
+      framework: "Codex and Claude Code"
+      tool_setup: >-
+        Project-scoped agents assisted research, Lean formalization, proof
+        audits, countermodel construction, and reproducibility checks. Exact
+        model identifiers here are limited to identifiers corroborated by the
+        project's source metadata inventory.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "not tracked"
+        hardware: "local workstation, research host, and API services"
+      prompting_notes: >-
+        A human controller maintained the live plan, assigned bounded proof and
+        audit tasks, integrated accepted work, and retained rejected routes in
+        the research history.
+  spend_usd: "not tracked"
+  notes: >-
+    Model use records process assistance and does not assign authorship of a
+    mathematical idea. The private evidence register preserves the exact
+    project-scoped metadata and its coverage limits.
+
+fidelity:
+  divergences: >-
+    The formal theorem keeps the written noncommutative order
+    1 = d*R + F*d*S and works over every characteristic-zero field. It includes
+    n = 0 and replaces the manuscript's nonzero-nonunit restriction by the
+    slightly stronger d != 0 restriction, since units are immediate. The
+    fixed-source theorem is stated separately and requires positive rank for
+    its linear Weyl coordinate.
+
+review:
+  status: "agent-reviewed"
+  reviewers: []
+  notes: >-
+    The proof has extensive automated replay, kernel checking, scoped agent
+    audits, and source-correspondence checks. Independent human expert review
+    and author release approval remain open release gates.
+
+alignment:
+  namespace: "Stafford38"
+  statements:
+    - source: "Original proof: universal Stafford 3.8 theorem"
+      lean: "Stafford38.universalStatement"
+      module: "Stafford38.FoundationClosure"
+      status: "proved"
+      note: >-
+        For every characteristic-zero field, every n >= 0, and every nonzero d,
+        proves the literal identity 1 = d*R + F*d*S.
+    - source: "Stafford 1978, Conjecture 3.8"
+      lean: "Stafford38.universalStatement"
+      module: "Stafford38.FoundationClosure"
+      status: "proved"
+      note: >-
+        The 1978 article is the background source of the conjecture, not a
+        source for the new proof.
+    - source: "Original proof: exact Bernstein-degree fixed-source theorem"
+      lean: "Stafford38.universalFixedSourceStatement"
+      module: "Stafford38.FoundationClosure"
+      status: "proved"
+      note: >-
+        At positive rank, the source is a power of a linear Weyl coordinate
+        with exponent equal to the Bernstein degree; the scalar branch has
+        degree zero.
+
+acknowledgements: >-
+  The formalization builds on Lean, Mathlib, and the AlgebraicAnalysis library.
+  Comparator, lean4export, NanoDa, and Landrun provide the independent
+  submission-checking path.

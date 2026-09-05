@@ -1,0 +1,15 @@
+import Stafford38.FoundationClosure
+import Stafford38.LocalizedDifferentialCorollaries
+import Stafford38.LocalizationCorollaries
+import Stafford38.LeftHandedCorollary
+import Stafford38.EvolutionaryCorollary
+import Stafford38.Geometry.GeneralAsymptoticConormal
+import Stafford38.Geometry.GeneralCoisotropicSets
+import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
+import Stafford38.Geometry.GeneralComponentConormalContainment
+import Stafford38.Geometry.GeneralTangentLimitCriterion
+import Stafford38.Geometry.GeneralTangentLatticePresentation
+import Stafford38.Geometry.GeneralCoisotropicSetsTest
+import Stafford38.Geometry.GeneralTangentLimitCriterionTest
+
+/-! Stafford theorem, advertised corollaries, and independent geometry consumers. -/

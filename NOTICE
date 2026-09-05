@@ -1,0 +1,18 @@
+Copyright 2026 Christopher Albert
+
+This project is distributed under the Apache License, Version 2.0. The full
+license text is provided in LICENSE.
+
+The project depends on Lean, Mathlib, and the separately distributed
+AlgebraicAnalysis library. Those projects retain their own copyright notices
+and licenses.
+
+scripts/landrun-wrapper.sh is adapted from PalomarRegistry/PalomarTemplate
+at commit 128a6c5ce5f48622e69927ccd639cbff401022e8, under Apache-2.0:
+https://github.com/PalomarRegistry/PalomarTemplate/blob/128a6c5ce5f48622e69927ccd639cbff401022e8/scripts/landrun-wrapper.sh
+The adaptation accepts an outer command delimiter already supplied by
+Comparator while preserving the rejection of unrestricted sandbox flags.
+
+The Stafford 3.8 manuscript, bibliography, figures, and supplements are
+separate works maintained under the private Overleaf authority and licensed
+CC BY 4.0. They are not included in this repository.

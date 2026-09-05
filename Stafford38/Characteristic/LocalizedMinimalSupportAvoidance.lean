@@ -1,0 +1,9 @@
+import AlgebraicAnalysis.Module.LocalizedMinimalSupportAvoidance
+
+/- Compatibility exports for the neutral AlgebraicAnalysis API. -/
+
+namespace Stafford38.Characteristic.LocalizedMinimalSupportAvoidance
+
+export AlgebraicAnalysis.LocalizedMinimalSupportAvoidance (annihilator_localizedModule localized_minimalPrime_avoids)
+
+end Stafford38.Characteristic.LocalizedMinimalSupportAvoidance

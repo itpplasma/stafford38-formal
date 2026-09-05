@@ -1,0 +1,10 @@
+import AlgebraicAnalysis.Module.FilteredTwoTermPageEquivalences
+import Stafford38.Characteristic.FilteredTwoTermPages
+
+/- Compatibility exports for the neutral AlgebraicAnalysis API. -/
+
+namespace Stafford38.Characteristic.FilteredTwoTermPages
+
+export AlgebraicAnalysis.FilteredTwoTermPages (FilteredTwoTerm.sourceSuccMap FilteredTwoTerm.sourceSuccMap_mk FilteredTwoTerm.sourceSuccKernelMap FilteredTwoTerm.sourceSuccEquivKerDrop FilteredTwoTerm.targetSuccMap FilteredTwoTerm.targetSuccMap_surjective FilteredTwoTerm.ker_targetSuccMap_eq_range_drop FilteredTwoTerm.targetCokernelMap FilteredTwoTerm.targetSuccEquivCokerDrop)
+
+end Stafford38.Characteristic.FilteredTwoTermPages

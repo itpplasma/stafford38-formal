@@ -1,0 +1,48 @@
+schema_version: 1
+root: certificate
+nodes:
+  - id: monicization
+    module: Stafford38.Weyl.MonicNormalization
+    depends_on: []
+  - id: quotient_euler
+    module: Stafford38.Weyl.EulerRemainder
+    depends_on: [monicization]
+  - id: characteristic_avoidance
+    module: Stafford38.Characteristic.CanonicalKoszulContradiction
+    depends_on: [quotient_euler]
+  - id: involutivity
+    module: Stafford38.Characteristic.GabberGlobalAssembly
+    depends_on: []
+  - id: tangent_limit
+    module: Stafford38.Geometry.GeneralTangentLimitCriterion
+    depends_on: []
+  - id: asymptotic_conormal
+    module: Stafford38.Geometry.GeneralAsymptoticConormal
+    depends_on: [tangent_limit]
+  - id: coisotropic_exclusion
+    module: Stafford38.Geometry.GeneralCoisotropicSets
+    depends_on: [involutivity, asymptotic_conormal]
+  - id: component_conormal_containment
+    module: Stafford38.Geometry.GeneralComponentConormalContainment
+    depends_on: [involutivity]
+  - id: canonical_support
+    module: Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
+    depends_on: [characteristic_avoidance, coisotropic_exclusion]
+  - id: certificate
+    module: Stafford38.FoundationClosure
+    depends_on: [canonical_support, monicization]
+  - id: fixed_source
+    module: Stafford38.FixedSourceAssembly
+    depends_on: [canonical_support, monicization]
+  - id: right_ore_localization
+    module: Stafford38.LocalizationCorollaries
+    depends_on: [certificate]
+  - id: localized_differential_operators
+    module: Stafford38.LocalizedDifferentialCorollaries
+    depends_on: [certificate]
+  - id: formal_adjoint
+    module: Stafford38.LeftHandedCorollary
+    depends_on: [certificate]
+  - id: evolutionary_and_tensor
+    module: Stafford38.EvolutionaryCorollary
+    depends_on: []

@@ -1,0 +1,10 @@
+import AlgebraicAnalysis.Module.PrincipalKoszulMinimalSupportPositivity
+import Stafford38.Characteristic.PrincipalKoszulSupportOverBase
+
+/- Compatibility exports for the neutral AlgebraicAnalysis API. -/
+
+namespace Stafford38.Characteristic.PrincipalKoszulMinimalSupportPositivity
+
+export AlgebraicAnalysis.PrincipalKoszulMinimalSupportPositivity (length_cokernel_gt_kernel_of_minimal_support)
+
+end Stafford38.Characteristic.PrincipalKoszulMinimalSupportPositivity

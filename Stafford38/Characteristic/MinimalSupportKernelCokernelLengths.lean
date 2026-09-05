@@ -1,0 +1,11 @@
+import AlgebraicAnalysis.Module.MinimalSupportKernelCokernelLengths
+import Stafford38.Characteristic.EndomorphismKernelSupportOverBase
+import Stafford38.Characteristic.MinimalPrimeFiniteLengthLocalization
+
+/- Compatibility exports for the neutral AlgebraicAnalysis API. -/
+
+namespace Stafford38.Characteristic
+
+export AlgebraicAnalysis (localized_kernel_and_cokernel_isFiniteLength)
+
+end Stafford38.Characteristic

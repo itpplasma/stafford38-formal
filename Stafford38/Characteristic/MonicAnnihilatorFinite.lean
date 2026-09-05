@@ -1,0 +1,9 @@
+import AlgebraicAnalysis.Module.MonicAnnihilatorFinite
+
+/- Compatibility exports for the neutral AlgebraicAnalysis API. -/
+
+namespace Stafford38.Characteristic.MonicAnnihilatorFinite
+
+export AlgebraicAnalysis.MonicAnnihilatorFinite (finite_of_monic_annihilator finite_of_variable_annihilates finite_kernel_and_cokernel_variable)
+
+end Stafford38.Characteristic.MonicAnnihilatorFinite

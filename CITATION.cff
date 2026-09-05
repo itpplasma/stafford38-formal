@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: >-
+  This is metadata for a private preparation draft. Cite the immutable release
+  commit after the formal repository has been created and released.
+title: "Stafford's Conjecture 3.8 for Weyl algebras"
+type: software
+authors:
+  - family-names: Albert
+    given-names: Christopher
+license: Apache-2.0
+abstract: >-
+  A Lean 4 and Mathlib formalization of Stafford's Conjecture 3.8. For every
+  characteristic-zero field, every Weyl-algebra rank, and every nonzero d, it
+  proves the existence of F, R, and S satisfying 1 = dR + FdS. It also proves
+  an exact Bernstein-degree fixed-source strengthening and localization,
+  adjoint, differential-operator, evolutionary, and tensor corollaries.
+keywords:
+  - Lean
+  - Weyl algebra
+  - noncommutative algebra
+  - D-module
+  - formal mathematics
