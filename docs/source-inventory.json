@@ -9,7 +9,7 @@
     },
     {
       "path": ".zenodo.json",
-      "sha256": "f014b713f90f4ec79250845430bf1f4c4d025c40ae70ef4bbe196bc9bfa3e242"
+      "sha256": "6b1de5bdeaeb73b82e86168208b4dc989d327151173b3850bacf1e307e6e8651"
     },
     {
       "path": "CITATION.cff",
@@ -29,7 +29,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "0a897219d11a89efa4f0672dc84eeda647de91ee1e5a7d5650fa1f130212966c"
+      "sha256": "3ecfefd64df68f19909b18a5041fb36faa859b686a4675bf45585c6ede68c549"
     },
     {
       "path": "Solution.lean",
@@ -1117,7 +1117,7 @@
     },
     {
       "path": "docs/dossier/stafford38-challenge-dossier.tex",
-      "sha256": "d39525d8f7a08d6f1f5f600e229066fdf19fbe9dedf7f95f0881ac234e56cafe"
+      "sha256": "ae81b743f8de8180d08df5eaf2165ea2955140eab2be53f7715bd68e68843461"
     },
     {
       "path": "docs/paper-lean-specification.md",
@@ -1133,35 +1133,35 @@
     },
     {
       "path": "docs/provenance.md",
-      "sha256": "5b722fbb74a7027fb5ce5ea1ebfdf8140daa21e108e100e890edf945f073bb6c"
+      "sha256": "2b781fb818ba5e8c56ecb8a351b7ead3de0186ba18ba716bc2705f08666d9e6e"
     },
     {
       "path": "docs/release-runbook.md",
-      "sha256": "28c69276090e3bdab80e469d3b52a975f44846d142f181f473ab9dac26bfb8bb"
+      "sha256": "30f2f782e73e3ec5c41f7ddde307e33ffed80d4454c18d99c26d4daf9e80a901"
     },
     {
       "path": "docs/verification-results.json",
-      "sha256": "df7c23125820af9a23e8c2f01e4fa9873341f2d29be6dc46eb833180d183166a"
+      "sha256": "96de78e238a25ca62f7e5c18f51e360c77bf49a2daa8b8f81d862e10e897becf"
     },
     {
       "path": "docs/verification.md",
-      "sha256": "ffde14db43882a774b7a01cf3c80fd927c1d097d2764b27f445ada6358c9df49"
+      "sha256": "6188a828f1213a9ed866a5f6bc74c4eb4682d7a8916045c061e3e253e47e281d"
     },
     {
       "path": "formalization.yaml",
-      "sha256": "a90f0e3d1aade635a14f99cb2ed0ca8f85d3007b32ce21771bce1bc353ce5f39"
+      "sha256": "c1400c8bef9cbb774a0838d9f13c41ef9778e2eaafde51c40d2207d807acba7b"
     },
     {
       "path": "lake-manifest.json",
-      "sha256": "4ae5aad3bb727506fcad012de476ea5ca8496add8ed803b6bd52c8ef24ab8290"
+      "sha256": "ac78f99942c07f7f937606a265da2208f747644d6fc60f1043b726a3db427876"
     },
     {
       "path": "lakefile.toml",
-      "sha256": "84921f266bfdab36409062588c04b100466bd8f791e4dd54259f9ccce2e90b27"
+      "sha256": "fd2d80a48c738d4f66c6204b2d77e951653e0a59aec6cf69d5ec79f979846ed0"
     },
     {
       "path": "lean-toolchain",
-      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+      "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b"
     },
     {
       "path": "proofs/stafford38_reduction.lean",
@@ -1177,7 +1177,7 @@
     },
     {
       "path": "scripts/bootstrap-palomar-tools.sh",
-      "sha256": "4f5cfc4ac4114678aa6c8856545cba13a2e2950efbd69f01924781d0069d0fa6"
+      "sha256": "06da951744d9e59b420de938d3e891f98a6b13d2a37e76f74719e551c1eff1ff"
     },
     {
       "path": "scripts/check-consumers.sh",
@@ -1197,11 +1197,11 @@
     },
     {
       "path": "scripts/verify-palomar.sh",
-      "sha256": "fb651d3e347f518c2c48a976c1b53b578b02c17e1ab909279b6819d72b615770"
+      "sha256": "79ba7c77b7fc350414042b53f1f07cebd5ee5ae0463625215bffe3e0946fd253"
     },
     {
       "path": "scripts/verify.sh",
-      "sha256": "3da7885d4b50bf41af51ad5eb8137838f06ee5d30f2be0c830d94b38a54de19f"
+      "sha256": "644083a242b7942ed104036dafb6d916c7817f321d71e423f37a89744885f8e3"
     },
     {
       "path": "tests/CorollaryConsumer.lean",

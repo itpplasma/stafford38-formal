@@ -8,16 +8,16 @@ the author's release decision remain separate from the machine checks.
 ## Select the verified snapshot
 
 Use a Bash terminal in the canonical formal checkout. The independently
-checked proof snapshot is `219668ef77b4ffddc1a503fd1ce61dbd48aa4b17`, recorded
+checked proof snapshot is `79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7`, recorded
 in the [verification report](verification-results.json) as
-`df7c23125820af9a23e8c2f01e4fa9873341f2d29be6dc46eb833180d183166a`. Select the final metadata-bearing HEAD for release,
+`96de78e238a25ca62f7e5c18f51e360c77bf49a2daa8b8f81d862e10e897becf`. Select the final metadata-bearing HEAD for release,
 not the earlier snapshot's descriptive metadata. Its proof, build, and verifier
 bytes must be identical to that checked snapshot, and the latest authorized
 external release receipt must approve the exact selected HEAD. This avoids
 embedding a commit's own hash in its contents.
 
 ```bash
-proof_commit='219668ef77b4ffddc1a503fd1ce61dbd48aa4b17'
+proof_commit='79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7'
 formal_commit=$(git rev-parse HEAD)
 aa_commit='dfdd2da091a9d67e7a29cc7914f192d746a2400d'
 paper_commit='b3f3edf0741b6a70b6e5011690e16bf58561cffb'

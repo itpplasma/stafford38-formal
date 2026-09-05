@@ -1,7 +1,7 @@
 # Provenance
 
-Formal commit `219668ef77b4ffddc1a503fd1ce61dbd48aa4b17` was checked from an independent clone; its
-[verification record](verification-results.json) is `df7c23125820af9a23e8c2f01e4fa9873341f2d29be6dc46eb833180d183166a`.
+Formal commit `79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7` was checked from an independent clone; its
+[verification record](verification-results.json) is `96de78e238a25ca62f7e5c18f51e360c77bf49a2daa8b8f81d862e10e897becf`.
 The Stafford sources derive from signed private source commit
 `8cc7802cd4355d819d2df4f680ba26d4a339f80e`, which passed the complete
 229-checker manuscript regression. The canonical repository is a clean source

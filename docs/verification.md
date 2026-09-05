@@ -1,8 +1,8 @@
 # Verification
 
-The independent clone of commit `219668ef77b4ffddc1a503fd1ce61dbd48aa4b17` passed the checks recorded
+The independent clone of commit `79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7` passed the checks recorded
 in the [machine-readable report](verification-results.json):
-`df7c23125820af9a23e8c2f01e4fa9873341f2d29be6dc46eb833180d183166a`. The report fixes the source commit, dependency pins,
+`96de78e238a25ca62f7e5c18f51e360c77bf49a2daa8b8f81d862e10e897becf`. The report fixes the source commit, dependency pins,
 tool revisions, commands, exit statuses, and evidence hashes. Kernel checking
 and independent human mathematical review are separate assessments.
 
@@ -13,7 +13,7 @@ files, dependency pins and verifier scripts are byte-identical to that
 snapshot, which
 
 ```sh
-git diff --exit-code 219668ef77b4ffddc1a503fd1ce61dbd48aa4b17 HEAD -- . \
+git diff --exit-code 79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7 HEAD -- . \
   ':(exclude)README.md' ':(exclude)formalization.yaml' ':(exclude)docs/**' \
   ':(exclude).zenodo.json'
 ```

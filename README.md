@@ -12,12 +12,12 @@ order. The [exact-degree strengthening](Stafford38/FixedSourceStatement.lean)
 chooses, at positive rank, a linear Weyl coordinate `ℓ` and takes
 `F = ℓ^(bernsteinDegree k d)`. Rank zero is the field case.
 
-Commit **`219668ef77b4ffddc1a503fd1ce61dbd48aa4b17`** was verified from a fresh independent clone.
+Commit **`79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7`** was verified from a fresh independent clone.
 The checked scope includes both theorems, the manuscript's general geometric
 theorems, and the corollaries below. The allowed foundational axioms are
 exactly `propext`, `Classical.choice`, and `Quot.sound`; no project or literature
 axioms are used. The [verification report](docs/verification-results.json)
-records the checks: `df7c23125820af9a23e8c2f01e4fa9873341f2d29be6dc46eb833180d183166a`. Independent human expert review
+records the checks: `96de78e238a25ca62f7e5c18f51e360c77bf49a2daa8b8f81d862e10e897becf`. Independent human expert review
 and journal review are separate; neither is claimed complete.
 
 | Dependency | Exact version |
