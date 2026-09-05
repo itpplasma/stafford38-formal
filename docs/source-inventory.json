@@ -25,11 +25,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "c048b22cb36acf1a1901a1fa0173110a328b9958d7868c412bc3d731b44de777"
+      "sha256": "0e916e87eae5161c57269b2b0b1fbaef725ab2a549aa658d3f4ec1e52b13d742"
     },
     {
       "path": "Solution.lean",
       "sha256": "a9ba322514e5c63ae4ba961a04c1a6e3d25f607412c2fd18eff9de15fff0a75e"
+    },
+    {
+      "path": "Stafford38.lean",
+      "sha256": "3d040d3845e6329434c42edb76456c333116ba79f9ebc6dc09c99d6985433665"
     },
     {
       "path": "Stafford38/CanonicalSupportVanishingReduction.lean",
@@ -1104,10 +1108,6 @@
       "sha256": "4a2a1a5cb624e795031e4fd3907db73c0e224c81fa9a854f4ed7e42682d82e66"
     },
     {
-      "path": "Stafford38.lean",
-      "sha256": "3d040d3845e6329434c42edb76456c333116ba79f9ebc6dc09c99d6985433665"
-    },
-    {
       "path": "comparator.json",
       "sha256": "d05a395a0a8d2d93de18a91cb5cb2ba7541067cf4a0f979caaa143ae333e49d9"
     },
@@ -1125,15 +1125,23 @@
     },
     {
       "path": "docs/provenance.md",
-      "sha256": "9a8d8489837779327ce9ef8e34f8409014c5ea552da9f7acf34db9eea56cb6d3"
+      "sha256": "be491b886a9e939807203283f89a3987075c5591c0a0f1186616eb95dda68e81"
+    },
+    {
+      "path": "docs/release-runbook.md",
+      "sha256": "8212a548764961c0a3a27efa1094dd54626fe3dee8f8a57c48743743c90d7932"
+    },
+    {
+      "path": "docs/verification-results.json",
+      "sha256": "d05137421f0a21fcb8c97865af256098beeb1481648ed841178e27aa2233b9c2"
     },
     {
       "path": "docs/verification.md",
-      "sha256": "955832f9fee765f021e343533f2a00f5a6a8c55a7a79459797acdffec9e4b7e0"
+      "sha256": "2085b22f103f2af704ba1abbe28ac009b7b739b2d03213877f24b409485fb831"
     },
     {
       "path": "formalization.yaml",
-      "sha256": "4de578788c097c04656e5478aa659398578ba6264338510bfaa9f122fc7b3f34"
+      "sha256": "1c9cd0ce3b77ab253d7df3b92185240073ba42ac3543c8a33e52088c9e6c6dc2"
     },
     {
       "path": "lake-manifest.json",

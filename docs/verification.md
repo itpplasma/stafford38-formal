@@ -1,180 +1,117 @@
 # Verification
 
-The release check has three layers. Lean checks the proof terms, repository
-checks fix the source and dependency graph, and Comparator independently checks
-the small Palomar statement against the substantive theorem. Mathematical and
-journal review are separate assessments of the proof's meaning, novelty, and
-exposition.
+The independent clone of commit `96edc734fdfbba4f80841cfea9a2a508525a3814` passed the checks recorded
+in the [machine-readable report](verification-results.json):
+`d05137421f0a21fcb8c97865af256098beeb1481648ed841178e27aa2233b9c2`. The report fixes the source commit, dependency pins,
+tool revisions, commands, exit statuses, and evidence hashes. Kernel checking
+and independent human mathematical review are separate assessments.
 
-## Trusted base
+## Logical scope
 
-The final theorem's transitive logical base may contain only Lean, Mathlib, and
-these standard axioms:
+The universal certificate, exact-degree strengthening, general geometric
+theorems, and advertised corollaries use only `propext`, `Classical.choice`,
+and `Quot.sound`. The audited declarations contain no project or literature
+axioms, proof placeholders, or `Lean.ofReduceBool` dependency.
 
-```text
-propext
-Quot.sound
-Classical.choice
-```
+The ordinary result quantifies over every characteristic-zero field and all
+ranks, including zero. The fixed-source result specifies the exact Bernstein
+degree at positive rank. The geometric scope includes the tangent-limit
+criterion, arbitrary relevant affine asymptotic conormals, component conormal
+containment, and exclusion for closed fibre-conical coisotropic sets. Their
+precise hypotheses are recorded in the [statement correspondence](paper-lean-specification.md).
 
-AlgebraicAnalysis is a pinned source dependency whose relevant declarations
-must satisfy the same axiom boundary. The axiom audit rejects `sorryAx`,
-`admitAx`, `Lean.ofReduceBool`, project axioms, and literature axioms. The
-universal theorem, fixed-source theorem, advertised corollaries, and general
-geometric endpoints are all included in the audit.
+## Reproduction
 
-| Component | Required release pin |
-| --- | --- |
-| Lean | `v4.33.1`, compiler commit `819816b2e0a3bf405af45ae5c7af2491d8f5bee6` |
-| Mathlib | `v4.33.1`, resolved commit `0df444a360eaa60ab8c11dca51a86af692955474` |
-| AlgebraicAnalysis | Public signed commit `2fdc928835347a2638b6c85a4bfa770e3f70ed9e`; package checks and anonymous exact-SHA fetch passed |
-
-The manifest check requires this exact AlgebraicAnalysis revision in
-`lakefile.toml` and `lake-manifest.json`. It does not accept a branch name,
-tag, moving default branch, or a different full commit.
-
-## Clean-checkout replay
-
-Run the following from the repository root:
+From the selected commit with Elan and the build tools installed:
 
 ```sh
 lake exe cache get
 lake build
 scripts/verify.sh
-```
-
-The first command downloads Mathlib's build cache. `lake build` then builds the
-complete root target. The verification script performs the checks whose
-results are advertised for this repository:
-
-1. confirm the Lean, Mathlib, and AlgebraicAnalysis pins;
-2. build the root theorem, both universal endpoints, every advertised
-   corollary, and the general tangent, asymptotic-conormal, and coisotropic
-   endpoints, plus every retained compatibility module;
-3. compile an independent consumer with `--trust=0`;
-4. parse `#print axioms` for every public result and reject any axiom outside
-   the permitted three;
-5. scan Lean source for proof holes, excluding the single deliberate
-   placeholder in `Challenge.lean`;
-6. verify that the Challenge imports only its three Mathlib modules and that
-   the Solution contains no proof hole or import of Challenge.
-
-The script also runs independent finite oracles for 1,792 filtered-page
-kernel/cokernel cases and 252 PBW projection cases, with a wrong-sign control.
-These are regression examples, not proofs of the universal theorem. The
-independent general-geometry consumers include the exact complex-manuscript
-coisotropic statement and the tangent-limit statement; their axiom reports
-are checked explicitly.
-
-The script writes logs below `.lake/verification/`, which is generated build
-state and is not committed.
-
-## Audited declarations
-
-The release axiom consumer covers these endpoints:
-
-- `Stafford38.universalStatement`;
-- `Stafford38.universalFixedSourceStatement`;
-- `Stafford38.LocalizationCorollaries.s38_rightOreLocalization`;
-- `Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement`;
-- `Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential`;
-- its principal-open, partial-Laurent, and fraction-field specializations;
-- `Stafford38.Evolution.evolutionaryCorollary`;
-- `Stafford38.Evolution.tensorEvolutionaryCorollary`;
-- `Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand`;
-- `Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions`;
-- `Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical`;
-- `Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic`.
-
-The exact consumer source is generated by `scripts/verify.sh`, so the list
-checked by Lean and the list parsed by the axiom audit remain together.
-
-## Palomar comparison
-
-The Palomar verification uses these official source revisions:
-
-| Tool | Revision |
-| --- | --- |
-| Comparator | `575674928e239f5bc452aab72d1dd7b0f1326494` |
-| lean4export | `15f6055e299ad5b89345e533cc2192f4cc00f659` |
-| NanoDa | `68d5ca9db226849b41a6fff59d796ff19d0a8840` |
-| Landrun | `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4` |
-
-Comparator is built under its pinned repository's Lean `4.34.0-rc1` toolchain,
-as in the official Palomar workflow. The submitted proof and lean4export use
-Lean `4.33.1`. The official PalomarTemplate Landrun wrapper supplies the outer
-command delimiter and rejects unrestricted sandbox flags; its provenance is
-recorded in `NOTICE`.
-
-Palomar's current policy first seeks a lean4export `v4.33.1` release. Since
-that tag is absent, its documented stable-patch rule selects the `v4.33.0`
-release-line commit above and builds it under the project's exact Lean
-`v4.33.1` toolchain.
-
-The repository-local commands are:
-
-```sh
 scripts/bootstrap-palomar-tools.sh
 scripts/verify-palomar.sh
 ```
 
-The bootstrap checks out each exact revision beneath `.lake/palomar-tools` and
-builds it locally. Before entering Comparator's read-only Landrun sandbox, the
-verification script builds both `Challenge` and `Solution` into the
-repository-local `.lake` tree and checks that the Solution import closure does
-not reach Challenge. The comparison then runs the configured declaration
-through Comparator, NanoDa, and Lean's default kernel. No external path to the
-private research checkout is used.
-
-`Challenge.lean` defines the public theorem from FreeAlgebra, RingQuot, and
-`Matrix.J`; it does not import Stafford modules or AlgebraicAnalysis.
-`Solution.lean` imports the substantive proof and applies
-`Stafford38.universalStatement`, with a definitional algebra equivalence to the
-challenge presentation. Comparator verifies the type and allowed axioms. It
-does not verify the prose proof, novelty, source attribution, or journal
-suitability.
-
-An isolated prototype using the same transport was accepted by NanoDa and
-Lean's kernel before this documentation draft. That run used an earlier frozen
-Stafford interface and is design evidence only. It is not recorded as a result
-for the final formal repository.
-
-## Verification record
-
-The preparation artifact must pass its own fresh build and independent
-consumers. Historical source-workspace checks do not replace those checks.
-The exact extraction revision and patch are recorded in [provenance](provenance.md).
-
-| Evidence | Current state |
+| Component | Pin |
 | --- | --- |
-| Private proof source | Signed commit `8cc7802cd4355d819d2df4f680ba26d4a339f80e` |
-| Complete manuscript proof replay | 229/229 checkers passed after extraction repairs |
-| Formalization phase state | Phase I open `[]`; Phase II open `[]` |
-| Independent tangent-limit review | `PASS` |
-| AlgebraicAnalysis dependency | Public signed commit `2fdc928835347a2638b6c85a4bfa770e3f70ed9e`; library release checks and anonymous exact-SHA fetch passed |
-| Formal repository commit | Pending clean cutover snapshot |
-| `lake exe cache get` | Passed in independent preparation checkout |
-| `lake build` | Passed 9,024 jobs in independent preparation checkout |
-| `scripts/verify.sh` | Passed 19 endpoint and nine literal consumer axiom reports, source audits, both finite oracles, and loaded-module import boundaries |
-| Comparator with NanoDa and Lean kernel | Passed in independent preparation checkout with freshly bootstrapped pinned tools |
-| Secret, path, case, license, and reachable-object audit | Pending final clean checkout |
-| Manuscript-to-Lean correspondence | Final correspondence and cross-repository links await cutover |
-| Independent mathematical review | Tangent-limit review passed; other review records remain separate from machine verification |
-| Journal review | No review claimed |
+| Project Lean | `leanprover/lean4:v4.33.1`, compiler `819816b2e0a3bf405af45ae5c7af2491d8f5bee6` |
+| Mathlib | `0df444a360eaa60ab8c11dca51a86af692955474` (`v4.33.1`) |
+| AlgebraicAnalysis | `2fdc928835347a2638b6c85a4bfa770e3f70ed9e` |
 
-Six module comments were clarified after the preparation replay. An exact
-token comparison confirms that their Lean code is unchanged. The final
-canonical clone must replay those final source bytes; preparation results do
-not substitute for that final verification.
+AlgebraicAnalysis is fetched from its public Git repository. Its source is
+external to this package and subject to the same foundational-axiom boundary.
+The build needs neither the private research repository nor the paper mirror.
+Generated logs and tool builds remain under `.lake/` and are excluded from Git.
 
-Preparing and checking a private artifact does not require a human approval
-checkpoint. Creating a public repository, registering with Palomar, releasing
-a preprint, or submitting to a journal is a separate external action.
+## Theorem and consumer gates
 
-## Interpreting the result
+[`scripts/verify.sh`](../scripts/verify.sh) resolves every source import against
+the checkout, Lean core, or its pinned dependencies. It builds every retained
+Stafford module and the aggregate theorem, checks pins, scans for proof holes,
+and audits 19 exact endpoint reports under `--trust=0`:
 
-A successful replay establishes that the named Lean declarations type-check
-from the pinned trusted base and that the Palomar statement matches the formal
-theorem. It does not establish priority or novelty and does not substitute for
-an expert reading of the geometric and D-module arguments. Those conclusions
-must cite their own review records rather than the build result.
+| Group | Reports |
+| --- | --- |
+| Universal and exact-degree theorems | 2 |
+| Ore localization, formal adjoint, four intrinsic differential-operator results, and two evolutionary results | 8 |
+| Tangent limit, asymptotic conormal, component containment, coisotropic exclusion, and canonical application | 5 |
+| Independent tangent/coisotropic consumers and the involutive/non-Poisson negative control | 4 |
+
+The separate [`check-consumers.sh`](../scripts/check-consumers.sh) is a required
+step of that verifier. Its nine axiom reports come from literal statements in
+[`CorollaryConsumer.lean`](../tests/CorollaryConsumer.lean) and
+[`LocalizedDifferentialConsumer.lean`](../tests/LocalizedDifferentialConsumer.lean).
+They check the exact exponent, multiplication order, Ore transport, potential
+coefficient hypotheses, and actual intrinsic differential-operator types.
+
+Two finite regression oracles supply independent computational checks:
+1,792 filtered-page kernel/cokernel cases and 252 PBW projection cases, including
+a wrong-sign control. These examples check behavior; the universal results
+are established by their Lean proofs.
+
+## Import separation and sandbox
+
+[`check-import-closure.sh`](../scripts/check-import-closure.sh) asks Lean for
+`env.header.moduleNames`, so it checks the actual loaded transitive environment.
+The Challenge permits Lean core and the pinned Mathlib dependency closure,
+and excludes Stafford and AlgebraicAnalysis. The Solution excludes Challenge.
+The exact loaded-module counts are in the verification report.
+
+The only deliberate proof placeholder is in [`Challenge.lean`](../Challenge.lean).
+Its Weyl presentation uses `FreeAlgebra`, `RingQuot`, and the standard
+symplectic matrix. [`Solution.lean`](../Solution.lean) transports the proved
+Stafford theorem by an algebra equivalence.
+
+Comparator exports and compares `Stafford38Challenge.universalStatement` in
+separate environments, checks the permitted axioms, and submits the exported
+proof to both NanoDa and Lean's default kernel. Its subprocesses use Landrun's
+restricted sandbox. The adapted [wrapper](../scripts/landrun-wrapper.sh)
+preserves a single outer command delimiter and rejects unrestricted flags.
+The adaptation and upstream license are recorded in [NOTICE](../NOTICE).
+
+## Verification tools
+
+| Tool | Source revision | Build toolchain |
+| --- | --- | --- |
+| Comparator | `575674928e239f5bc452aab72d1dd7b0f1326494` | Lean `4.34.0-rc1`, as fixed by its repository |
+| lean4export | `15f6055e299ad5b89345e533cc2192f4cc00f659` | Project Lean `4.33.1` |
+| NanoDa | `68d5ca9db226849b41a6fff59d796ff19d0a8840` | Rust, locked Cargo dependencies |
+| Landrun | `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4` | Go, readonly module resolution |
+
+The bootstrap builds these exact source revisions. Comparator's own Lean
+version differs from the project/exporter version because its kernel API
+requires that version. Palomar's documented stable-patch selection gives the
+listed exporter revision for project Lean `4.33.1`.
+
+## Source regression and review
+
+The signed private source commit
+`8cc7802cd4355d819d2df4f680ba26d4a339f80e` passed its full 229-checker
+manuscript regression. That record supports extraction provenance; the
+independent canonical-clone result above verifies this repository's own files.
+
+The [paper/Lean specification](paper-lean-specification.md) records the
+statement mapping. Automated and scoped agent reviews do not establish
+independent human expert approval, journal acceptance, novelty, or priority.
+Those statuses require their own human review records. Palomar registration
+and all public release actions require separate authorization.

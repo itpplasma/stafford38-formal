@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "result": "passed",
+  "verified_utc": "2026-09-05T14:46:28.327666+00:00",
+  "repository": "itpplasma/stafford38-formal",
+  "verified_commit": {
+    "sha": "96edc734fdfbba4f80841cfea9a2a508525a3814",
+    "tree_sha": "c4e8b23d790dab5228fead00837b9967380620d9",
+    "remote_branch": "refs/heads/main",
+    "remote_branch_sha_at_clone": "96edc734fdfbba4f80841cfea9a2a508525a3814",
+    "signature": {
+      "verified": true,
+      "format": "ssh",
+      "algorithm": "ED25519",
+      "signer": "albert@tugraz.at",
+      "key_fingerprint": "SHA256:ARNu2jnP8I1sJSIRgpYCbp5/cwEB8FqKnMf0gYdIy5U"
+    }
+  },
+  "clone_state": {
+    "fresh_clone": true,
+    "lake_absent_before_dependency_fetch": true,
+    "tracked_file_count": 301,
+    "local_lean_file_count": 276,
+    "resolved_local_import_count": 703,
+    "tracked_symlink_count": 0,
+    "final_git_status_porcelain": "",
+    "final_head_matches_verified_commit": true,
+    "final_source_inventory_sha256": "069520218b110ce75ac06720f6139515cd5cab987778b02a13dcf508454560ac",
+    "source_inventory_entry_count": 300,
+    "working_tree_symlinks": {
+      "count": 3,
+      "tracked_count": 0,
+      "absolute_target_count": 0,
+      "private_path_reference_count": 0,
+      "entries": [
+        {
+          "path": ".lake/packages/batteries/docs/README.md",
+          "target": "../README.md"
+        },
+        {
+          "path": ".lake/packages/mathlib/scripts/bench/build/fake-root/bin/lean.py",
+          "target": "lean"
+        },
+        {
+          "path": ".lake/packages/mathlib/scripts/bench/size/run.py",
+          "target": "run"
+        }
+      ]
+    }
+  },
+  "isolation": {
+    "negative_read_probe": "passed",
+    "denied_target_count": 2,
+    "denied_target_classes": [
+      "private research checkout",
+      "formal staging checkout"
+    ],
+    "credential_environment": "disabled",
+    "source_or_build_artifacts_copied_from_denied_trees": false,
+    "probe_log_sha256": "dc2118c9ef3433908b9768f0e708310e916adc11faa3756d5613d0afcfc473f3",
+    "sandbox_launcher_sha256": "f3dd8344d63682b369c8cacd8a04a20a979827098ce256004f51023be7ed6307"
+  },
+  "toolchains": {
+    "submission_lean": {
+      "toolchain": "leanprover/lean4:v4.33.1",
+      "version": "4.33.1",
+      "commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+      "lake_version": "5.0.0-src+819816b"
+    },
+    "comparator_lean": {
+      "toolchain": "leanprover/lean4:v4.34.0-rc1",
+      "version": "4.34.0-rc1",
+      "commit": "3447a668783dbce1a8fdb97101dd067687b2b418",
+      "lake_version": "5.0.0-src+3447a66"
+    },
+    "rust": {
+      "rustc": "1.94.1 (e408947bf 2026-03-25)",
+      "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+    },
+    "go": "go1.27.0-X:nodwarf5 linux/amd64"
+  },
+  "manifest_pins": [
+    {
+      "name": "algebraicAnalysis",
+      "url": "https://github.com/itpplasma/algebraic-analysis.git",
+      "input_revision": "2fdc928835347a2638b6c85a4bfa770e3f70ed9e",
+      "resolved_revision": "2fdc928835347a2638b6c85a4bfa770e3f70ed9e"
+    },
+    {
+      "name": "mathlib",
+      "url": "https://github.com/leanprover-community/mathlib4",
+      "input_revision": "v4.33.1",
+      "resolved_revision": "0df444a360eaa60ab8c11dca51a86af692955474"
+    },
+    {
+      "name": "plausible",
+      "url": "https://github.com/leanprover-community/plausible",
+      "input_revision": "main",
+      "resolved_revision": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+    },
+    {
+      "name": "LeanSearchClient",
+      "url": "https://github.com/leanprover-community/LeanSearchClient",
+      "input_revision": "main",
+      "resolved_revision": "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+    },
+    {
+      "name": "importGraph",
+      "url": "https://github.com/leanprover-community/import-graph",
+      "input_revision": "main",
+      "resolved_revision": "16f02aa7642864af59f1ff0e384a015994db9118"
+    },
+    {
+      "name": "proofwidgets",
+      "url": "https://github.com/leanprover-community/ProofWidgets4",
+      "input_revision": "main",
+      "resolved_revision": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+    },
+    {
+      "name": "aesop",
+      "url": "https://github.com/leanprover-community/aesop",
+      "input_revision": "master",
+      "resolved_revision": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+    },
+    {
+      "name": "Qq",
+      "url": "https://github.com/leanprover-community/quote4",
+      "input_revision": "master",
+      "resolved_revision": "92c15be17b7caf78c2ad767ec40f89052d908d81"
+    },
+    {
+      "name": "batteries",
+      "url": "https://github.com/leanprover-community/batteries",
+      "input_revision": "main",
+      "resolved_revision": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+    },
+    {
+      "name": "Cli",
+      "url": "https://github.com/leanprover/lean4-cli",
+      "input_revision": "v4.33.0",
+      "resolved_revision": "6130a47896ce867c6a4a55373441e59e565bad0f"
+    }
+  ],
+  "manifest_file_sha256": {
+    "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "lakefile.toml": "84921f266bfdab36409062588c04b100466bd8f791e4dd54259f9ccce2e90b27",
+    "lake-manifest.json": "4ae5aad3bb727506fcad012de476ea5ca8496add8ed803b6bd52c8ef24ab8290",
+    "comparator.json": "d05a395a0a8d2d93de18a91cb5cb2ba7541067cf4a0f979caaa143ae333e49d9"
+  },
+  "palomar_tools": {
+    "revisions": {
+      "Comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+      "ComparatorLean": "leanprover/lean4:v4.34.0-rc1",
+      "lean4export": "15f6055e299ad5b89345e533cc2192f4cc00f659",
+      "NanoDa": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+      "Landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+      "Lean": "leanprover/lean4:v4.33.1"
+    },
+    "binary_sha256": {
+      "comparator": "f25185592ce22b0d12c5801553c7caa5a5f7731a30a14226de2be68b27382430",
+      "lean4export": "805ab4cc6a88dcef109644d201c3142261f524aecaf58b04913a9f029e21e9b5",
+      "nanoda": "e026104f92897642903ab230bea7d73c77a85d051ab1710568b6fe0123c97009",
+      "landrun": "f3dd8344d63682b369c8cacd8a04a20a979827098ce256004f51023be7ed6307"
+    },
+    "reported_versions": {
+      "lean4export": "3.1.0",
+      "lean4export_format": "3.1.0",
+      "nanoda_crate": "0.4.6-beta",
+      "landrun": "0.1.18"
+    }
+  },
+  "commands": [
+    {
+      "stage": "cache",
+      "working_directory": ".",
+      "argv": ["lake", "exe", "cache", "get"],
+      "started_utc": "2026-09-05T14:19:00.944123+00:00",
+      "elapsed_seconds": 116.38891128799878,
+      "exit_code": 0,
+      "external_evidence_log_sha256": "968253352f4798f069fe0bac9a71a65bd94812de04077c8e62043803e98f1a06"
+    },
+    {
+      "stage": "build",
+      "working_directory": ".",
+      "argv": ["lake", "build"],
+      "started_utc": "2026-09-05T14:21:09.107105+00:00",
+      "elapsed_seconds": 1108.7034142080229,
+      "exit_code": 0,
+      "jobs_completed": 9021,
+      "external_evidence_log_sha256": "642f8787cf79f7ba1da378fe1e98910545cdbb76cb658b5453a52be30fee1d9c"
+    },
+    {
+      "stage": "verify",
+      "working_directory": ".",
+      "argv": ["bash", "scripts/verify.sh"],
+      "started_utc": "2026-09-05T14:40:06.543298+00:00",
+      "elapsed_seconds": 41.17035698494874,
+      "exit_code": 0,
+      "external_evidence_log_sha256": "b0855392272a0b47432dedaf6b6fb63e35dd2ebaad126c789e0d8c9cc35f5422"
+    },
+    {
+      "stage": "bootstrap",
+      "working_directory": ".",
+      "argv": ["bash", "scripts/bootstrap-palomar-tools.sh"],
+      "started_utc": "2026-09-05T14:40:56.351011+00:00",
+      "elapsed_seconds": 51.70952123403549,
+      "exit_code": 0,
+      "external_evidence_log_sha256": "49f5e8c99eaed3b8343de45aa6acc875116fccfccb23657a039fb78b572bb479"
+    },
+    {
+      "stage": "palomar",
+      "working_directory": ".",
+      "argv": ["bash", "scripts/verify-palomar.sh"],
+      "started_utc": "2026-09-05T14:41:52.956227+00:00",
+      "elapsed_seconds": 275.3714390649693,
+      "exit_code": 0,
+      "external_evidence_log_sha256": "7810fd664da01e35062d91d1b3f21868727b337b7d439d484136b7e15dfc352e"
+    }
+  ],
+  "verification": {
+    "result": "passed",
+    "source_audit": {
+      "challenge_deliberate_placeholder_count": 1,
+      "solution_imports_challenge": false,
+      "other_sorry_or_admit_count": 0,
+      "project_axiom_declaration_count": 0
+    },
+    "axiom_boundary": {
+      "allowed_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "endpoint_report_count": 19,
+      "endpoint_reports_passed": true,
+      "endpoints": [
+        "Stafford38.universalStatement",
+        "Stafford38.universalFixedSourceStatement",
+        "Stafford38.LocalizationCorollaries.s38_rightOreLocalization",
+        "Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement",
+        "Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential",
+        "Stafford38.LocalizedDifferentialCorollaries.s38_principal_open_differential",
+        "Stafford38.LocalizedDifferentialCorollaries.s38_partial_laurent_differential",
+        "Stafford38.LocalizedDifferentialCorollaries.s38_fraction_ring_differential",
+        "Stafford38.Evolution.evolutionaryCorollary",
+        "Stafford38.Evolution.tensorEvolutionaryCorollary",
+        "Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand",
+        "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions",
+        "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+        "Stafford38.Geometry.GeneralCoisotropicSets.smoothConormalClosure_minimalPrime_subset_of_isFibreConical",
+        "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+        "Stafford38.Geometry.GeneralTangentLimitCriterionTest.paper_shape_consumer",
+        "Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer",
+        "Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_isInvolutive",
+        "Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson"
+      ],
+      "literal_consumer_report_count": 9,
+      "literal_consumer_reports_passed": true,
+      "literal_consumers": [
+        "exactDegreePaperConsumer",
+        "leftPaperConsumer",
+        "evolutionConsumer",
+        "orePaperConsumer",
+        "Stafford38.Evolution.tensorEvolutionaryCorollary",
+        "actualLocalizedOperatorConsumer",
+        "actualPrincipalOpenConsumer",
+        "actualPartialLaurentConsumer",
+        "actualRationalOperatorConsumer"
+      ]
+    },
+    "finite_oracles": {
+      "filtered_page": {
+        "result": "passed",
+        "exact_successor_kernel_cokernel_cases": 1792
+      },
+      "operator_projection": {
+        "result": "passed",
+        "exact_pbw_cases": 252,
+        "wrong_sign_control": "rejected"
+      }
+    },
+    "loaded_module_isolation": {
+      "Challenge": {
+        "result": "passed",
+        "loaded_module_count": 3511,
+        "forbidden_transitive_import_count": 0
+      },
+      "Solution": {
+        "result": "passed",
+        "loaded_module_count": 10785,
+        "challenge_module_import_count": 0
+      }
+    },
+    "palomar": {
+      "configuration": {
+        "challenge_module": "Challenge",
+        "solution_module": "Solution",
+        "theorem_names": ["Stafford38Challenge.universalStatement"],
+        "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+        "enable_nanoda": true
+      },
+      "comparator": "accepted",
+      "nanoda_kernel": "accepted",
+      "lean_default_kernel": "accepted"
+    }
+  },
+  "verification_log_sha256": {
+    ".lake/verification/layout.log": "debeb01a12865c7aaf0929f0392ee01bfd000105bb2aa5e4c47a9f120da9e06e",
+    ".lake/verification/pages-oracle.log": "8baf95f793a5529158730b1fabc524feec5f98bf00cabf19943be3aa6537071f",
+    ".lake/verification/pbw-oracle.log": "524e0c6b0be4e2535e098b7cf41b1bd828c03f5a58b375936325089f35df6c40",
+    ".lake/verification/independent-consumers.log": "fe0d535e27a65ec976185fd03f287c0315d8dc2a07987f254b36f4c5869ca507",
+    ".lake/verification/axioms.log": "46c4c21a62365f99276bf1adac5bdba9e8c569e628c513e50ea3095bcc529d00",
+    ".lake/verification/Challenge-imports.log": "db43af04ab7e1987b79712c3f456daea3f59a94b60e39c04f2d5c7431913e3e1",
+    ".lake/verification/Solution-imports.log": "20feea468d5ae676ab90b52470f2fe6676e317a509db4c63a6cdcf2b62ecba44",
+    ".lake/verification/build.log": "cc3c048bd25262c8e403e48f9ab83eea77ba8151eb4e59520c7cf990c929f98a",
+    ".lake/verification/challenge-build.log": "254c92f0ef32185a791a5450d694b134bfc940819860e0c945a56b5d9f86f1c0",
+    ".lake/verification/solution-build.log": "c77269ce49fc2fa2502b2b7b72b419b4ca02707e74b9daf84967dc2f54a2d868",
+    ".lake/verification/solution.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".lake/verification/comparator.log": "d829ce35cef31ba6796031b8bdb62d73e2ad2b29bae14ef46a4e8bb4f6f78289"
+  }
+}
