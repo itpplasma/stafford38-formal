@@ -86,24 +86,41 @@ This declaration is field-generic and is proved from Lean and Mathlib. In the
 terminal proof it is applied to the canonical right ideal; no citation-shaped
 axiom remains in the theorem's dependency graph.
 
-## Tangent limits and asymptotic conormals
+## Visible frames and asymptotic conormals
 
-The geometric block studies an irreducible affine variety avoiding a
-coordinate hyperplane. Its normalized projective closure has a boundary
-divisor at which the selected coordinate has a strict order gap. A formal arc
-through that divisor supplies a lattice of projective tangent columns.
+The terminal proof enters the geometry through the general coisotropic
+adapter and uses the visible-frame and finite-gradient route. For a
+transcendental selected coordinate,
+[`GeneralConormalAxis`](../Stafford38/Geometry/GeneralConormalAxis.lean)
+obtains a normalized compatible visible divisor frame from
+[`generalDivisorialVisibleFrameExistence`](../Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean),
+which is built on the retained-valuation data of
+[`ExactDivisorialVisibleFrameExistence`](../Stafford38/Geometry/ExactDivisorialVisibleFrameExistence.lean)
+and the generic divisorial frame construction of
+[`DivisorialVisibleFrameStageAssembly`](../Stafford38/Geometry/DivisorialVisibleFrameStageAssembly.lean).
+It then applies
+`exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame` from
+[`FiniteGradientResidueExtension`](../Stafford38/Geometry/FiniteGradientResidueExtension.lean),
+which supplies the finite-gradient boundary certificate over the residue
+extension, and descends the resulting conormal axis to the ground field.
+The same module `ExactDivisorialVisibleFrameExistence` also proves
+`higherDimensionalCanonicalVisibleDivisorFrameProduction`, the frame producer
+that `FoundationClosure` records in the separately proved paper-inputs
+assembly `PaperInputs.Inputs`; the terminal theorems themselves take the
+general coisotropic route described here.
 
-[`Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand`](../Stafford38/Geometry/GeneralTangentLimitCriterion.lean)
-turns a direct-summand tangent lattice whose reduction lies in the selected
-coordinate hyperplane into the corresponding projective conormal direction.
-The statement includes the formal arc, generic smoothness, lattice splitting,
-dehomogenization, and closure data used in the argument.
+[`GeneralAsymptoticLaurentAxis`](../Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean)
+combines that branch with the algebraic-coordinate branch. Smooth conormal
+fibre vanishing and scalar-extension descent then yield
+[`coordinate_axis_mem_projective_conormal_directions`](../Stafford38/Geometry/GeneralAsymptoticConormal.lean).
+Base points may tend to infinity; this conclusion is membership in projective
+closure, not necessarily in a finite affine conormal fibre.
 
-The global result is
-[`Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions`](../Stafford38/Geometry/GeneralAsymptoticConormal.lean).
-It places the coordinate covector in the projective closure of smooth
-conormal directions. Base points may tend to infinity; the argument does not
-claim that a finite affine conormal fibre already contains this direction.
+The separately proved
+[`tangent_limit_criterion_of_directSummand`](../Stafford38/Geometry/GeneralTangentLimitCriterion.lean)
+formalizes an auxiliary manuscript lemma. It is retained and checked, but is
+not a dependency of this terminal asymptotic-conormal proof. Its former place
+in the recorded dependency chain was inaccurate.
 
 ## Coisotropic exclusion
 
@@ -167,8 +184,7 @@ The separate manuscript expresses characteristic support and conormal geometry
 in conventional geometric notation. Lean uses prime spectra, polynomial zero
 loci, homogeneous ideals, and explicit projective closure predicates. The
 release correspondence audit must match these formulations theorem by theorem.
-The signed private source checkpoint contains the declarations above and has
-passed the full 229-checker manuscript replay. Both formalization phase-open
-lists are empty, and the independent tangent-limit review returned `PASS`.
-Only the clean-repository extraction and its fresh reproducibility run remain
-to be recorded after cutover.
+The historical checkpoint and subsequent independent clone verification are
+recorded in [verification.md](verification.md). Release verification must be
+repeated after dependency or Challenge changes; historical passes do not
+certify those changes.

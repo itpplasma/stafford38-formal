@@ -8,7 +8,12 @@
 \setmainfont{DejaVu Serif}
 \setmonofont{DejaVu Sans Mono}[Scale=0.86]
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{fancyvrb}
+\usepackage{fvextra}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\fvset{breaklines=true,breakanywhere=true}
+\usepackage[obeyspaces]{xurl}
+\newcommand{\file}[1]{\path{#1}}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black}
@@ -21,7 +26,7 @@
 \newcommand{\lean}[1]{\texttt{#1}}
 \title{Stafford's Conjecture 3.8\\[0.3em]\large Challenge dossier}
 \author{Christopher Albert}
-\date{5 September 2026}
+\date{8 September 2026}
 \begin{document}
 \maketitle
 
@@ -30,8 +35,9 @@ This dossier fixes the meaning of every symbol before it is used. Section 1
 defines the objects in the words of the manuscript. Section 2 quotes the
 conjecture and states the theorem. Section 3 defines every Lean and Mathlib
 construction that the challenge file uses, then lists the file. Section 4
-does the same for the solution file. Section 5 records how the pair was
-checked.
+does the same for the solution file. Section 5 lists the second, exact-source
+Challenge and its Solution. Section 6 is a clickable map of the imported
+proof architecture. Section 7 records how the pairs are checked.
 
 \section{The objects, as defined in the manuscript}
 
@@ -140,7 +146,7 @@ The first sentence is the conjecture for nonzero $d$. The second sentence is
 the exact-degree strengthening: the multiplier can be taken to be a power of a
 single linear Weyl coordinate, and the exponent is the Bernstein degree of
 $d$. Both sentences are proved in Lean from Mathlib. The challenge below
-states the first sentence, and includes $n=0$, where a nonzero $d$ is a unit
+states the first sentence; the separate exact-source Challenge in Section~\ref{sec:fixed-source} states the strengthening. The original Challenge includes $n=0$, where a nonzero $d$ is a unit
 and one may take $R=d^{-1}$, $F=S=0$.
 
 \section{The challenge}
@@ -275,18 +281,128 @@ theorem along the identity isomorphism and returns the witnesses. No
 hypothesis is added and no factor is moved.
 \end{sloppypar}
 
-\section{How the pair was checked}
+
+\section{The exact-source Challenge}\label{sec:fixed-source}
+
+The original pair asks for an arbitrary multiplier $F$. The new pair asks for
+$F=\ell^{\deg_B d}$, with $\ell$ a linear symplectic coordinate and $n\ge1$.
+The Challenge imports only Mathlib and presents the Weyl algebra exactly as
+in Section 3. Its degree is intrinsic to the presented element: $\deg_B d$ is
+the least $N$ such that $d$ lies in the $k$-span of the images of the ordered
+words $x^{a}\partial^{p}$ with $|a|+|p|\le N$, where the ordered words are
+built recursively from the generators in the free algebra. The coordinate
+$\ell$ is the first coordinate of an invertible linear symplectic change of
+the generators, given by matrices $M$, $N$ with $MJM^{\mathsf T}=J$,
+$NJN^{\mathsf T}=J$, $MN=NM=1$. Neither a degree, nor a normal form, nor an
+equivalence is supplied as a hypothesis; the file below is the whole
+statement. The transport module
+\file{Stafford38/FixedSourceChallengeTransport.lean} repeats these
+definitions without importing the Challenge and proves that the intrinsic
+filtration is the development's Bernstein filtration and that its least level
+is the checked PBW normal-form degree; the two coordinate predicates are
+definitionally equal. The Solution combines that with the proved theorem. The
+consumer file \file{tests/FixedSourceChallengeConsumer.lean} evaluates the
+intrinsic degree at the unit ($0$, once without the transport) and at a
+coordinate ($1$), and instantiates the compared theorem at both.
+
+\VerbatimInput[fontsize=\scriptsize,frame=single,label=FixedSourceChallenge.lean]{\srcroot/FixedSourceChallenge.lean}
+\VerbatimInput[fontsize=\small,frame=single,label=FixedSourceSolution.lean]{\srcroot/FixedSourceSolution.lean}
+\VerbatimInput[fontsize=\small,frame=single,label=comparator-fixed-source.json]{\srcroot/comparator-fixed-source.json}
+
+\section{Architecture of the imported proof}\label{sec:architecture}
+
+The arrows below point from a prerequisite to the step that uses it. Each
+box links to its explanation. This is a summary of the terminal route in
+\texttt{docs/proof-graph.yaml}; the separately checked tangent-limit lemma is
+auxiliary and has no edge into this route.
+
+\begin{center}
+\begin{tikzpicture}[node distance=6mm,
+ box/.style={draw,rounded corners,text width=11cm,align=center,minimum height=9mm},
+ edge/.style={-{Stealth}}]
+\node[box] (a) {\hyperref[arch:normal]{Symplectic monicization and quotient--Euler calculation}};
+\node[box,below=of a] (b) {\hyperref[arch:support]{Characteristic support avoidance and involutivity}};
+\node[box,below=of b] (c) {\hyperref[arch:frame]{Visible divisor frame and finite-gradient boundary certificate}};
+\node[box,below=of c] (d) {\hyperref[arch:axis]{Conormal-axis descent and asymptotic conormal direction}};
+\node[box,below=of d] (e) {\hyperref[arch:exclude]{Component conormal containment and coisotropic exclusion}};
+\node[box,below=of e] (f) {\hyperref[arch:extract]{Empty support, certificate extraction, exact-source transport}};
+\draw[edge] (a)--(b);
+\draw[edge] (c)--(d);
+\draw[edge] (b.east) to[out=0,in=0,looseness=1.5] (e.east);
+\draw[edge] (d)--(e);
+\draw[edge] (e)--(f);
+\end{tikzpicture}
+\end{center}
+
+\subsection{Normalization}\label{arch:normal}
+An invertible linear symplectic change makes the selected coordinate monic
+with exponent equal to the Bernstein degree. The quotient--Euler calculation
+retains the original operator as the right divisor in the second generator.
+See \file{Stafford38/Weyl/MonicNormalization.lean} and
+\file{Stafford38/Weyl/EulerRemainder.lean}.
+
+\subsection{Support}\label{arch:support}
+The canonical Koszul argument gives characteristic support avoidance.
+\file{Stafford38/Characteristic/GabberGlobalAssembly.lean} proves involutivity
+of the radical graded annihilator. Both feed the canonical coisotropic
+application in \file{Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean}.
+
+\subsection{Visible frame}\label{arch:frame}
+In the transcendental-coordinate branch,
+\file{Stafford38/Geometry/GeneralConormalAxis.lean} obtains a normalized
+compatible visible divisor frame from
+\file{Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean}, which is built
+on the retained-valuation data of
+\file{Stafford38/Geometry/ExactDivisorialVisibleFrameExistence.lean} and the
+generic divisorial frame construction of
+\file{Stafford38/Geometry/DivisorialVisibleFrameStageAssembly.lean}. It then
+applies the finite-gradient boundary certificate of
+\file{Stafford38/Geometry/FiniteGradientResidueExtension.lean}. This is the
+imported route; the earlier proof account cited the separately proved
+tangent-limit lemma here, which this route does not import.
+
+\subsection{Axis and descent}\label{arch:axis}
+The certificate gives a conormal axis over the ground field.
+\file{Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean} combines this
+with the separate algebraic-coordinate branch. Smooth-fibre vanishing and
+scalar-extension descent yield the projective conormal direction in
+\file{Stafford38/Geometry/GeneralAsymptoticConormal.lean}.
+
+\subsection{Exclusion}\label{arch:exclude}
+\file{Stafford38/Geometry/GeneralComponentConormalContainment.lean} supplies
+the component containment step. Together with asymptotic conormal geometry it
+gives the coisotropic exclusion theorem
+(\file{Stafford38/Geometry/GeneralCoisotropicExclusion.lean},
+\file{Stafford38/Geometry/GeneralCoisotropicSets.lean}), which makes the
+canonical support empty.
+
+\subsection{Extraction}\label{arch:extract}
+Certificate extraction and the inverse symplectic change give
+$1=dR+\ell^{\deg_Bd}dS$ in the written order. The exact-source Challenge
+transport proves equality of the intrinsic filtration degree and the PBW
+normal-form degree; it does not merely restate an arbitrary-$F$ result.
+
+\section{How the pairs are checked}
 
 \VerbatimInput[fontsize=\small,frame=single,label=comparator.json]{\srcroot/comparator.json}
 
-Comparator exports \lean{Stafford38Challenge.universalStatement} from the
-challenge and solution environments separately, checks that the two
-statements agree, checks that the solution's proof uses only \lean{propext},
-\lean{Quot.sound} and \lean{Classical.choice}, and submits the exported proof
-to NanoDa and to Lean's own kernel. Both accepted it. The challenge's
-transitive import closure was checked to contain only Lean core and the
-pinned Mathlib; the solution's closure was checked not to contain the
-challenge.
+Comparator exports the compared theorem
+(\file{Stafford38Challenge.universalStatement} for the original pair,
+\file{Stafford38FixedSourceChallenge.universalFixedSourceStatement} for the
+exact-source pair) from the challenge and solution environments separately,
+checks that the two statements agree, checks that the solution's proof uses
+only \lean{propext}, \lean{Quot.sound} and \lean{Classical.choice}, and
+submits the exported proof to NanoDa and to Lean's own kernel. Each
+challenge's transitive import closure is checked to contain only Lean core
+and the pinned Mathlib; each solution's closure is checked not to contain
+either challenge.
+
+For the original pair, both kernels accepted the exported proof in the
+recorded run at commit \lean{79188b4b}, released as \lean{v1.0.2}. The
+exact-source pair is new in \lean{v1.1.0}; its run belongs to the release
+replay of that snapshot and is recorded in the repository's verification
+record only once that replay has completed. This document does not certify
+it.
 
 \begin{center}
 \begin{tabular}{@{}p{5.2cm}l@{}}
@@ -294,7 +410,8 @@ challenge.
 Repository & \lean{itpplasma/stafford38-formal} \\
 Lean & \lean{leanprover/lean4:v4.33.0} \\
 Mathlib & \lean{db584cd6d46c92f209a44c0f1c829460d327499d} \\
-AlgebraicAnalysis, public dependency of the solution & \lean{dfdd2da091a9d67e7a29cc7914f192d746a2400d} \\
+AlgebraicAnalysis \lean{v0.3.0}, public dependency of the solutions from \lean{v1.1.0} & \lean{4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8} \\
+AlgebraicAnalysis \lean{v0.2.0}, in the recorded \lean{v1.0.2} run & \lean{dfdd2da091a9d67e7a29cc7914f192d746a2400d} \\
 Comparator / lean4export / NanoDa & \lean{5756749} / \lean{15f6055} / \lean{68d5ca9} \\
 Permitted axioms & \lean{propext}, \lean{Quot.sound}, \lean{Classical.choice} \\
 \bottomrule
@@ -302,9 +419,10 @@ Permitted axioms & \lean{propext}, \lean{Quot.sound}, \lean{Classical.choice} \\
 \end{center}
 
 \begin{sloppypar}
-The verified commit and the machine-readable record of the run are in the
-repository file \lean{docs/verification-results.json}. The check ran in a fresh
-clone inside a sandbox with no access to the private research tree and no Git
-credentials.
+The verified commit and the machine-readable record of the recorded run are
+in the repository file \lean{docs/verification-results.json}. That check ran
+in a fresh clone inside a sandbox with no access to the private research tree
+and no Git credentials. The \lean{v1.1.0} snapshot is checked by the same
+procedure before its release.
 \end{sloppypar}
 \end{document}

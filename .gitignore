@@ -3,3 +3,10 @@
 *.ilean
 *.trace
 __pycache__/
+
+# LaTeX build products of the challenge dossier (the PDF is kept)
+docs/dossier/*.aux
+docs/dossier/*.log
+docs/dossier/*.out
+docs/dossier/*.fls
+docs/dossier/*.fdb_latexmk

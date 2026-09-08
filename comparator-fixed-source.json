@@ -1,0 +1,9 @@
+{
+  "challenge_module": "FixedSourceChallenge",
+  "solution_module": "FixedSourceSolution",
+  "theorem_names": [
+    "Stafford38FixedSourceChallenge.universalFixedSourceStatement"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}

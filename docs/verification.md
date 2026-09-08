@@ -1,26 +1,35 @@
 # Verification
 
-The independent clone of commit `79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7` passed the checks recorded
+The controller-host verification of commit `79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7` passed the checks recorded
 in the [machine-readable report](verification-results.json):
 `96de78e238a25ca62f7e5c18f51e360c77bf49a2daa8b8f81d862e10e897becf`. The report fixes the source commit, dependency pins,
 tool revisions, commands, exit statuses, and evidence hashes. Kernel checking
 and independent human mathematical review are separate assessments.
 
 A commit cannot state its own hash, so the verified snapshot named here is an
-ancestor of the current `main` rather than its tip. Every commit after it
-changes documentation and release metadata only; their proof sources, build
-files, dependency pins and verifier scripts are byte-identical to that
-snapshot, which
+ancestor of the current `main` rather than its tip. Every commit up to release
+`v1.0.2` (`784b59925beb9a480519142336bd6434f6eeef16`) changed documentation
+and release metadata only; their proof sources, build files, dependency pins
+and verifier scripts are byte-identical to that snapshot, which
 
 ```sh
-git diff --exit-code 79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7 HEAD -- . \
+git diff --exit-code 79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7 v1.0.2 -- . \
   ':(exclude)README.md' ':(exclude)formalization.yaml' ':(exclude)docs/**' \
   ':(exclude).zenodo.json'
 ```
 
-confirms at any later commit. Each of those commits was itself replayed in the
-same isolated clone, and the release procedure in the
-[runbook](release-runbook.md) repeats this comparison before a tag is signed.
+confirms. Release `v1.1.0` changes proof sources and pins: it adds the
+exact-source Challenge/Solution pair, the transport module
+`Stafford38/FixedSourceChallengeTransport.lean`, the consumer test
+`tests/FixedSourceChallengeConsumer.lean`, the second Comparator
+configuration, extends the verifier scripts, and moves the AlgebraicAnalysis
+pin to `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8` (`v0.3.0`). The historical
+report does not certify these changes. Their verification is a fresh replay of
+the commands below at the `v1.1.0` snapshot; the release procedure in the
+[runbook](release-runbook.md) records that replay before a tag is signed, and
+until it is recorded the `v1.1.0` snapshot is a candidate, not a verified one.
+The original `Challenge.lean` and `Solution.lean` are byte-identical to the
+verified snapshot.
 
 ## Logical scope
 
@@ -31,10 +40,16 @@ axioms, proof placeholders, or `Lean.ofReduceBool` dependency.
 
 The ordinary result quantifies over every characteristic-zero field and all
 ranks, including zero. The fixed-source result specifies the exact Bernstein
-degree at positive rank. The geometric scope includes the tangent-limit
-criterion, arbitrary relevant affine asymptotic conormals, component conormal
-containment, and exclusion for closed fibre-conical coisotropic sets. Their
-precise hypotheses are recorded in the [statement correspondence](paper-lean-specification.md).
+degree at positive rank; its Mathlib-only compared form
+`Stafford38FixedSourceChallenge.universalFixedSourceStatement` uses the
+intrinsic ordered-word filtration degree of the presented element. The
+geometric scope includes arbitrary relevant affine asymptotic conormals,
+component conormal containment, and exclusion for closed fibre-conical
+coisotropic sets, which the terminal proof imports, and the separately proved
+auxiliary tangent-limit criterion, which it does not. Their precise hypotheses
+are recorded in the [statement correspondence](paper-lean-specification.md);
+the imported route is recorded in the [proof guide](proof-guide.md) and
+[proof graph](proof-graph.yaml).
 
 ## Reproduction
 
@@ -46,13 +61,14 @@ lake build
 scripts/verify.sh
 scripts/bootstrap-palomar-tools.sh
 scripts/verify-palomar.sh
+scripts/verify-palomar.sh comparator-fixed-source.json
 ```
 
 | Component | Pin |
 | --- | --- |
 | Project Lean | `leanprover/lean4:v4.33.0` |
 | Mathlib | `db584cd6d46c92f209a44c0f1c829460d327499d` (`v4.33.0`), on `master` |
-| AlgebraicAnalysis | `dfdd2da091a9d67e7a29cc7914f192d746a2400d` |
+| AlgebraicAnalysis | `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8` (`v0.3.0`) from `v1.1.0`; `dfdd2da091a9d67e7a29cc7914f192d746a2400d` (`v0.2.0`) in the historical report |
 
 AlgebraicAnalysis is fetched from its public Git repository. Its source is
 external to this package and subject to the same foundational-axiom boundary.
@@ -63,22 +79,28 @@ Generated logs and tool builds remain under `.lake/` and are excluded from Git.
 
 [`scripts/verify.sh`](../scripts/verify.sh) resolves every source import against
 the checkout, Lean core, or its pinned dependencies. It builds every retained
-Stafford module and the aggregate theorem, checks pins, scans for proof holes,
-and audits 19 exact endpoint reports under `--trust=0`:
+Stafford module, the aggregate theorem and both Solutions, checks pins, scans
+for proof holes, and audits 20 exact endpoint reports under `--trust=0` (the
+historical report audited the first 19; the Mathlib-only exact-source
+statement is added in `v1.1.0`):
 
 | Group | Reports |
 | --- | --- |
-| Universal and exact-degree theorems | 2 |
+| Universal, exact-degree, and Mathlib-only exact-source theorems | 3 |
 | Ore localization, formal adjoint, four intrinsic differential-operator results, and two evolutionary results | 8 |
 | Tangent limit, asymptotic conormal, component containment, coisotropic exclusion, and canonical application | 5 |
 | Independent tangent/coisotropic consumers and the involutive/non-Poisson negative control | 4 |
 
 The separate [`check-consumers.sh`](../scripts/check-consumers.sh) is a required
-step of that verifier. Its nine axiom reports come from literal statements in
-[`CorollaryConsumer.lean`](../tests/CorollaryConsumer.lean) and
-[`LocalizedDifferentialConsumer.lean`](../tests/LocalizedDifferentialConsumer.lean).
-They check the exact exponent, multiplication order, Ore transport, potential
-coefficient hypotheses, and actual intrinsic differential-operator types.
+step of that verifier. Its fourteen axiom reports come from literal statements in
+[`CorollaryConsumer.lean`](../tests/CorollaryConsumer.lean),
+[`LocalizedDifferentialConsumer.lean`](../tests/LocalizedDifferentialConsumer.lean),
+and, from `v1.1.0`, [`FixedSourceChallengeConsumer.lean`](../tests/FixedSourceChallengeConsumer.lean)
+(the historical report lists the first nine). They check the exact exponent,
+multiplication order, Ore transport, potential coefficient hypotheses, actual
+intrinsic differential-operator types, and, for the exact-source Challenge,
+the intrinsic degree of the unit (`0`, once computed without the transport) and
+of a coordinate (`1`) together with the compared theorem instantiated at both.
 
 Two finite regression oracles supply independent computational checks:
 1,792 filtered-page kernel/cokernel cases and 252 PBW projection cases, including
@@ -89,21 +111,31 @@ are established by their Lean proofs.
 
 [`check-import-closure.sh`](../scripts/check-import-closure.sh) asks Lean for
 `env.header.moduleNames`, so it checks the actual loaded transitive environment.
-The Challenge permits Lean core and the pinned Mathlib dependency closure,
-and excludes Stafford and AlgebraicAnalysis. The Solution excludes Challenge.
-The exact loaded-module counts are in the verification report.
+Each Challenge permits Lean core and the pinned Mathlib dependency closure,
+and excludes Stafford and AlgebraicAnalysis. Each Solution excludes both
+Challenges. The exact loaded-module counts are in the verification report.
 
-The only deliberate proof placeholder is in [`Challenge.lean`](../Challenge.lean).
-Its Weyl presentation uses `FreeAlgebra`, `RingQuot`, and the standard
+The only deliberate proof placeholders are the compared theorems of
+[`Challenge.lean`](../Challenge.lean) and
+[`FixedSourceChallenge.lean`](../FixedSourceChallenge.lean), one in each.
+Both Weyl presentations use `FreeAlgebra`, `RingQuot`, and the standard
 symplectic matrix. [`Solution.lean`](../Solution.lean) transports the proved
 Stafford theorem by an algebra equivalence.
+[`FixedSourceSolution.lean`](../FixedSourceSolution.lean) uses the
+[transport module](../Stafford38/FixedSourceChallengeTransport.lean), which
+repeats the Challenge definitions without importing the Challenge and proves
+that the intrinsic ordered-word filtration and its least level coincide with
+the development's Bernstein filtration and checked PBW normal-form degree.
 
-Comparator exports and compares `Stafford38Challenge.universalStatement` in
-separate environments, checks the permitted axioms, and submits the exported
-proof to both NanoDa and Lean's default kernel. Its subprocesses use Landrun's
-restricted sandbox. The adapted [wrapper](../scripts/landrun-wrapper.sh)
-preserves a single outer command delimiter and rejects unrestricted flags.
-The adaptation and upstream license are recorded in [NOTICE](../NOTICE).
+Comparator exports and compares `Stafford38Challenge.universalStatement`
+(`comparator.json`) and
+`Stafford38FixedSourceChallenge.universalFixedSourceStatement`
+(`comparator-fixed-source.json`) in separate environments, checks the
+permitted axioms, and submits the exported proofs to both NanoDa and Lean's
+default kernel. Its subprocesses use Landrun's restricted sandbox. The adapted
+[wrapper](../scripts/landrun-wrapper.sh) preserves a single outer command
+delimiter and rejects unrestricted flags. The adaptation and upstream license
+are recorded in [NOTICE](../NOTICE).
 
 ## Verification tools
 

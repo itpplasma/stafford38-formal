@@ -1,0 +1,33 @@
+{
+  "scope": "Frozen inputs to the one-shot Fable audit/correction run; subsequent controller changes and release verification are recorded separately.",
+  "original_manifest_sha256": "855dd993f6f6a91fd9a167fb49df9f896ce95fe8a1c4151886ac3bb569fe51d9",
+  "inputs": [
+    {
+      "repository": "aa-release-v030",
+      "base_commit": "44921f5914c5dbd40d2d532c2867adce0f519cb9",
+      "tracked_patch_sha256": "f054a98d749f0bd7950299383a116e46244c302930c1e4d3767b279baafa78c5",
+      "untracked_source_sha256": {
+        ".zenodo.json": "0a5441d2526dc7d523c538f8f89273f44b99ef62693becd4b939a880eb73c7fb",
+        "docs/release-history.md": "61ec52b68e8a00c47903611940eae1ec1caf83a52fe9bb7d2e18612db7ef958f"
+      }
+    },
+    {
+      "repository": "stafford38-formal",
+      "base_commit": "784b59925beb9a480519142336bd6434f6eeef16",
+      "tracked_patch_sha256": "6f4bb816482ee4f71ebf72b96a79a179a312ce72859094beb04e011195bc8053",
+      "untracked_source_sha256": {
+        "FixedSourceChallenge.lean": "1e428a5a6cca05566b3ca5b70e9461c9491947e5de1df5da435c8d681a9391ca",
+        "FixedSourceSolution.lean": "f21c52035160e1d34db7c116d49e0b51830262e2655f43b7451a3ce1ae900496",
+        "Stafford38/FixedSourceChallengeTransport.lean": "6e35be830d1b630f2460df023de445b1a8fb05bf4f0b6361b8ce9c5d2dfc25e0",
+        "comparator-fixed-source.json": "e4595939e14804a437fb4bbadca2ec4a61567f228e5772dcbf929d5216eeeafa",
+        "tests/FixedSourceChallengeConsumer.lean": "721684887af7ce4b62680e5a3ae20c05e669f97f8b8f7da3a9f150764c484338"
+      }
+    },
+    {
+      "repository": "global-stafford-formal",
+      "base_commit": "b7328c987f261a5867bd214c4be39e16258f22f1",
+      "tracked_patch_sha256": "0b98f3a4e3659f4429d65ea813b6e5a7b6a677abec962e34b47e3678d653fc42",
+      "untracked_source_sha256": {}
+    }
+  ]
+}

@@ -16,12 +16,24 @@ nodes:
   - id: tangent_limit
     module: Stafford38.Geometry.GeneralTangentLimitCriterion
     depends_on: []
+  - id: visible_frame
+    module: Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
+    depends_on: []
+  - id: finite_gradient
+    module: Stafford38.Geometry.FiniteGradientResidueExtension
+    depends_on: []
+  - id: conormal_axis
+    module: Stafford38.Geometry.GeneralConormalAxis
+    depends_on: [visible_frame, finite_gradient]
+  - id: laurent_axis
+    module: Stafford38.Geometry.GeneralAsymptoticLaurentAxis
+    depends_on: [conormal_axis]
   - id: asymptotic_conormal
     module: Stafford38.Geometry.GeneralAsymptoticConormal
-    depends_on: [tangent_limit]
+    depends_on: [laurent_axis]
   - id: coisotropic_exclusion
     module: Stafford38.Geometry.GeneralCoisotropicSets
-    depends_on: [involutivity, asymptotic_conormal]
+    depends_on: [involutivity, asymptotic_conormal, component_conormal_containment]
   - id: component_conormal_containment
     module: Stafford38.Geometry.GeneralComponentConormalContainment
     depends_on: [involutivity]

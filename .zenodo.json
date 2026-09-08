@@ -1,7 +1,7 @@
 {
   "title": "Stafford's Conjecture 3.8 for Weyl algebras: Lean 4 formalization",
   "upload_type": "software",
-  "description": "Lean 4 formalization, verified against Mathlib, of Stafford's Conjecture 3.8: for every field k of characteristic zero, every n, and every nonzero d in the Weyl algebra A_n(k), there exist F, R, S with 1 = d R + F d S. The development also proves the exact Bernstein-degree fixed-source strengthening, the general tangent-limit, asymptotic-conormal and coisotropic-exclusion theorems of the accompanying manuscript, and the localization, adjoint and evolutionary corollaries. Every endpoint depends only on the axioms propext, Classical.choice and Quot.sound. The repository contains the Palomar Challenge/Solution pair, the Comparator configuration, the verification scripts and the machine-readable verification record.",
+  "description": "Lean 4 formalization of Stafford's Conjecture 3.8 over every characteristic-zero field. The original Challenge states existence of F, R, S with 1 = dR + FdS for nonzero d in every Weyl rank, including rank zero. The additional exact-source Challenge states the manuscript strengthening in positive rank: F is a linear symplectic coordinate raised to the intrinsic Bernstein degree of d. The proof account records the visible-divisor-frame and finite-gradient conormal-axis route actually used by the terminal proof; the separately proved tangent-limit theorem is auxiliary. The repository includes both Challenge/Solution pairs, their Comparator configurations, a proof map and Challenge dossier, consumer checks, and exact verification records. Verification scope and permitted foundational axioms are recorded in docs/verification.md.",
   "creators": [
     {
       "name": "Albert, Christopher",
@@ -24,7 +24,7 @@
   "language": "eng",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/itpplasma/algebraic-analysis/tree/dfdd2da091a9d67e7a29cc7914f192d746a2400d",
+      "identifier": "https://github.com/itpplasma/algebraic-analysis/tree/4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8",
       "relation": "requires",
       "resource_type": "software"
     },
@@ -34,5 +34,6 @@
       "resource_type": "publication-article"
     }
   ],
-  "notes": "Kernel-checked Lean proof. Independent human expert review of the mathematics and the accompanying manuscript are separate; see docs/verification.md for the exact scope of the machine check."
+  "notes": "Kernel-checked Lean proof. Independent human expert review of the mathematics and the accompanying manuscript are separate; see docs/verification.md for the exact scope of the machine check.",
+  "version": "v1.1.0"
 }

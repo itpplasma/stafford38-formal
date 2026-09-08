@@ -12,7 +12,7 @@ order. The [exact-degree strengthening](Stafford38/FixedSourceStatement.lean)
 chooses, at positive rank, a linear Weyl coordinate `ℓ` and takes
 `F = ℓ^(bernsteinDegree k d)`. Rank zero is the field case.
 
-Commit **`79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7`** was verified from a fresh independent clone.
+Commit **`79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7`** (release `v1.0.2`) was verified from a fresh independent clone.
 The checked scope includes both theorems, the manuscript's general geometric
 theorems, and the corollaries below. The allowed foundational axioms are
 exactly `propext`, `Classical.choice`, and `Quot.sound`; no project or literature
@@ -20,11 +20,16 @@ axioms are used. The [verification report](docs/verification-results.json)
 records the checks: `96de78e238a25ca62f7e5c18f51e360c77bf49a2daa8b8f81d862e10e897becf`. Independent human expert review
 and journal review are separate; neither is claimed complete.
 
+Release `v1.1.0` adds the [exact-source comparison](#exact-source-comparison),
+upgrades the AlgebraicAnalysis pin, and corrects the proof account. Those
+changes are not covered by the historical report above; their own replay is
+recorded in the [verification](docs/verification.md) documents when complete.
+
 | Dependency | Exact version |
 | --- | --- |
 | Lean | `leanprover/lean4:v4.33.0` |
 | Mathlib | `db584cd6d46c92f209a44c0f1c829460d327499d` (`v4.33.0`) |
-| [AlgebraicAnalysis](https://github.com/itpplasma/algebraic-analysis) | `dfdd2da091a9d67e7a29cc7914f192d746a2400d` |
+| [AlgebraicAnalysis](https://github.com/itpplasma/algebraic-analysis) | `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8` (`v0.3.0`); the historical report used `dfdd2da091a9d67e7a29cc7914f192d746a2400d` (`v0.2.0`) |
 
 From the checked-out commit with Lean installed through Elan:
 
@@ -55,10 +60,21 @@ scripts/verify-palomar.sh
 5. **Involutivity.** Prove the radical of the graded annihilator involutive
    for every cyclic Weyl quotient:
    [`weylAssociatedGradedRadicalInvolutivity`](Stafford38/Characteristic/GabberGlobalAssembly.lean).
-6. **Asymptotic conormal geometry.** Construct the tangent lattice and boundary
-   divisor, then obtain the projective conormal direction:
-   [`tangent_limit_criterion_of_directSummand`](Stafford38/Geometry/GeneralTangentLimitCriterion.lean)
-   and [`coordinate_axis_mem_projective_conormal_directions`](Stafford38/Geometry/GeneralAsymptoticConormal.lean).
+6. **Asymptotic conormal geometry.** For a transcendental selected coordinate,
+   produce a visible divisor frame
+   ([`generalDivisorialVisibleFrameExistence`](Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean),
+   built on [`ExactDivisorialVisibleFrameExistence`](Stafford38/Geometry/ExactDivisorialVisibleFrameExistence.lean)),
+   turn it into a finite-gradient boundary certificate
+   ([`FiniteGradientResidueExtension`](Stafford38/Geometry/FiniteGradientResidueExtension.lean)),
+   and descend its conormal axis to the ground field
+   ([`GeneralConormalAxis`](Stafford38/Geometry/GeneralConormalAxis.lean)).
+   Combine with the algebraic-coordinate branch
+   ([`GeneralAsymptoticLaurentAxis`](Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean))
+   and obtain the projective conormal direction:
+   [`coordinate_axis_mem_projective_conormal_directions`](Stafford38/Geometry/GeneralAsymptoticConormal.lean).
+   The separately proved
+   [tangent-limit criterion](Stafford38/Geometry/GeneralTangentLimitCriterion.lean)
+   is auxiliary and is not imported by this route.
 7. **Coisotropic exclusion.** Apply the general fibre-conical set theorem with
    its self-involutive vanishing-ideal hypothesis:
    [`exists_zero_base_coordinate_of_isFibreConical`](Stafford38/Geometry/GeneralCoisotropicSets.lean)
@@ -116,13 +132,16 @@ Mathlib presentation of the Weyl algebra. [`Solution.lean`](Solution.lean)
 transports the substantive theorem to that presentation.
 [`comparator.json`](comparator.json) compares
 `Stafford38Challenge.universalStatement` with only the three permitted axioms.
+The second pair, described under [exact-source comparison](#exact-source-comparison),
+is compared through [`comparator-fixed-source.json`](comparator-fixed-source.json).
 The independent check uses Comparator, NanoDa, and Lean's kernel; see
 [verification](docs/verification.md) for the pinned tools and sandbox boundary.
 
 The [challenge dossier](docs/dossier/stafford38-challenge-dossier.tex) defines
-every object before the statement, in the manuscript's words and in Lean's, and
-lists the Challenge, the Solution and the Comparator configuration from the
-repository files.
+every object before the statement, in the manuscript's words and in Lean's,
+lists both Challenges, both Solutions and both Comparator configurations from
+the repository files, and contains a clickable map of the imported proof
+architecture.
 
 This repository is not registered with Palomar and has no Palomar ID.
 [Later release actions](docs/release-runbook.md) require separate human
@@ -156,3 +175,31 @@ on Zenodo. The concept DOI
 resolves to the newest version;
 [10.5281/zenodo.22391362](https://doi.org/10.5281/zenodo.22391362) cites
 `v1.0.1` exactly.
+
+## Exact-source comparison
+
+The original `Challenge.lean` and `Solution.lean` are byte-identical to the
+verified `v1.0.2` files. They compare Stafford's arbitrary-multiplier
+statement, including rank zero. The additional
+[FixedSourceChallenge.lean](FixedSourceChallenge.lean) and
+[FixedSourceSolution.lean](FixedSourceSolution.lean), new in `v1.1.0`, compare
+the stronger positive-rank manuscript statement with
+`F = ell ^ bernsteinDegree k d`. The Challenge imports only Mathlib. Its Weyl
+algebra is the same `RingQuot` presentation; `ell` is the first coordinate of
+an invertible linear symplectic change of the generators; and
+`bernsteinDegree k d` is intrinsic to the presented element: the least `N`
+such that `d` lies in the span of the ordered PBW words of total degree at
+most `N`. No degree, normal form, or equivalence is supplied as a hypothesis.
+The [transport module](Stafford38/FixedSourceChallengeTransport.lean) proves
+that this filtration is the development's Bernstein filtration and that the
+least level is the checked PBW normal-form degree, and the Solution combines
+that with the proved theorem. The
+[consumer test](tests/FixedSourceChallengeConsumer.lean) evaluates the
+intrinsic degree at the unit (`0`, once without the transport) and at a
+coordinate (`1`), and instantiates the compared theorem at both.
+
+Run `scripts/verify-palomar.sh` for the original pair and
+`scripts/verify-palomar.sh comparator-fixed-source.json` for the strengthening.
+Each Challenge contains one deliberate placeholder; neither Solution imports
+either Challenge. Historical verification reports certify their recorded
+snapshots, not subsequent changes.

@@ -19,7 +19,7 @@ from pathlib import Path
 expected_toolchain = "leanprover/lean4:v4.33.0"
 expected_mathlib = "db584cd6d46c92f209a44c0f1c829460d327499d"
 expected_aa_url = "https://github.com/itpplasma/algebraic-analysis.git"
-expected_aa = "dfdd2da091a9d67e7a29cc7914f192d746a2400d"
+expected_aa = "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8"
 
 toolchain = Path("lean-toolchain").read_text(encoding="utf-8").strip()
 if toolchain != expected_toolchain:
@@ -54,7 +54,7 @@ if aa_rev != expected_aa:
 if aa_manifest.get("rev") != aa_rev or aa_manifest.get("inputRev") != aa_rev:
     raise SystemExit("AlgebraicAnalysis lakefile and manifest revisions differ")
 
-print(f"pins: Lean 4.33.1, Mathlib {expected_mathlib}, AlgebraicAnalysis {aa_rev}")
+print(f"pins: Lean 4.33.0, Mathlib {expected_mathlib}, AlgebraicAnalysis {aa_rev}")
 PY
 
 python3 tests/noncharacteristic_pages_oracle.py >"$log_dir/pages-oracle.log" 2>&1
@@ -78,7 +78,7 @@ lake build "${retained_modules[@]}" \
   Stafford38.Geometry.GeneralAsymptoticConormal \
   Stafford38.Geometry.GeneralCoisotropicSets \
   Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter \
-  Solution \
+  Solution FixedSourceSolution \
   >"$log_dir/build.log" 2>&1
 
 bash scripts/check-consumers.sh
@@ -154,16 +154,36 @@ expected_imports = [
 if imports != expected_imports:
     raise SystemExit(f"unexpected Challenge imports: {imports!r}")
 
-solution = Path("Solution.lean")
-if not solution.is_file():
-    raise SystemExit("Solution.lean is missing")
-solution_code = code_without_comments_or_strings(solution.read_text(encoding="utf-8"))
-solution_imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", solution_code)
-if any(name == "Challenge" or name.startswith("Challenge.") for name in solution_imports):
-    raise SystemExit("Solution.lean must not import Challenge or a Challenge submodule")
+strong_challenge = Path("FixedSourceChallenge.lean")
+if not strong_challenge.is_file():
+    raise SystemExit("FixedSourceChallenge.lean is missing")
+strong_code = code_without_comments_or_strings(strong_challenge.read_text(encoding="utf-8"))
+if re.findall(r"\b(?:sorry|admit)\b", strong_code) != ["sorry"]:
+    raise SystemExit("FixedSourceChallenge.lean must contain exactly one deliberate sorry and no admit")
+strong_imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", strong_code)
+expected_strong_imports = [
+    "Mathlib.Algebra.RingQuot",
+    "Mathlib.Algebra.FreeAlgebra",
+    "Mathlib.LinearAlgebra.SymplecticGroup",
+    "Mathlib.Order.Lattice.Nat",
+]
+if strong_imports != expected_strong_imports:
+    raise SystemExit(f"unexpected FixedSourceChallenge imports: {strong_imports!r}")
+
+# Neither Solution may import either Challenge, at source level; the loaded
+# environment audit below repeats this for the transitive closure.
+challenge_roots = {"Challenge", "FixedSourceChallenge"}
+for solution_name in ("Solution.lean", "FixedSourceSolution.lean"):
+    solution = Path(solution_name)
+    if not solution.is_file():
+        raise SystemExit(f"{solution_name} is missing")
+    solution_code = code_without_comments_or_strings(solution.read_text(encoding="utf-8"))
+    solution_imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", solution_code)
+    if any(name.split(".")[0] in challenge_roots for name in solution_imports):
+        raise SystemExit(f"{solution_name} must not import Challenge, FixedSourceChallenge, or a submodule")
 
 for path in Path(".").rglob("*.lean"):
-    if path == challenge or any(part in excluded_parts for part in path.parts):
+    if path in {challenge, Path('FixedSourceChallenge.lean')} or any(part in excluded_parts for part in path.parts):
         continue
     code = code_without_comments_or_strings(path.read_text(encoding="utf-8"))
     hole = re.search(r"\b(?:sorry|admit)\b", code)
@@ -175,11 +195,12 @@ for path in Path(".").rglob("*.lean"):
         line = code.count("\n", 0, axiom.start()) + 1
         raise SystemExit(f"project axiom declaration in {path}:{line}")
 
-print("source audit: one Challenge placeholder; Solution is independent of Challenge; no other sorry, admit, or axiom declaration")
+print("source audit: one deliberate placeholder in each Challenge; neither Solution imports either Challenge; no other sorry, admit, or axiom declaration")
 PY
 
 cat >"$log_dir/AxiomAudit.lean" <<'LEAN'
 import Stafford38
+import FixedSourceSolution
 import Stafford38.Geometry.GeneralTangentLimitCriterion
 import Stafford38.Geometry.GeneralAsymptoticConormal
 import Stafford38.Geometry.GeneralCoisotropicSets
@@ -189,6 +210,7 @@ import Stafford38.Geometry.GeneralTangentLimitCriterionTest
 
 #print axioms Stafford38.universalStatement
 #print axioms Stafford38.universalFixedSourceStatement
+#print axioms Stafford38FixedSourceChallenge.universalFixedSourceStatement
 #print axioms Stafford38.LocalizationCorollaries.s38_rightOreLocalization
 #print axioms Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement
 #print axioms Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential
@@ -220,6 +242,7 @@ text = Path(sys.argv[1]).read_text(encoding="utf-8")
 expected = {
     "Stafford38.universalStatement",
     "Stafford38.universalFixedSourceStatement",
+    "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
     "Stafford38.LocalizationCorollaries.s38_rightOreLocalization",
     "Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement",
     "Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential",
@@ -257,11 +280,14 @@ if re.search(r"sorryAx|admitAx|Lean\.ofReduceBool", text):
 print(f"axiom audit: {len(expected)} declarations use only {sorted(allowed)}")
 PY
 
-lake build Challenge >"$log_dir/challenge-build.log" 2>&1
+lake build Challenge FixedSourceChallenge >"$log_dir/challenge-build.log" 2>&1
 bash scripts/check-import-closure.sh Challenge
 bash scripts/check-import-closure.sh Solution
+bash scripts/check-import-closure.sh FixedSourceChallenge
+bash scripts/check-import-closure.sh FixedSourceSolution
 
 lake env lean --trust=0 Solution.lean >"$log_dir/solution.log" 2>&1
+lake env lean --trust=0 FixedSourceSolution.lean >>"$log_dir/solution.log" 2>&1
 
 if grep -Eq "sorryAx|admitAx|Lean\.ofReduceBool|declaration uses 'sorry'|(^|:) error:" \
     "$log_dir/build.log" "$log_dir/axioms.log" "$log_dir/solution.log"; then

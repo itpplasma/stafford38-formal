@@ -23,7 +23,7 @@ repository:
   registration_status: "public-candidate-not-registered"
   note: >-
     This public repository is the canonical substantive Stafford-specific
-    formal development. It is not registered with Palomar.
+    formal development. No registration receipt is retained in this repository.
 
 classification:
   arxiv:
@@ -88,12 +88,21 @@ status:
     for all characteristic-zero fields and all n >= 0, including the rank-zero
     field case, and proves the positive-rank fixed-source strengthening and the
     listed immediate corollaries. The snapshot also includes the manuscript's
-    general tangent-limit, asymptotic-conormal, and coisotropic-set statements
-    and independent consumers. The verified commit has passed an independent
-    clone build, 19 endpoint axiom reports, nine literal consumer reports,
-    finite regression oracles, transitive import audits, and Comparator with
-    NanoDa and Lean kernel verification. Exact statement correspondence and
-    verification evidence are linked in the verification metadata above.
+    asymptotic-conormal and coisotropic-set statements, which the terminal
+    proof imports, the separately proved auxiliary general tangent-limit
+    statement, which it does not, and independent consumers. The verified
+    commit named above has passed a controller-host build, 19 endpoint
+    axiom reports, nine literal consumer reports, finite regression oracles,
+    transitive import audits, and Comparator with NanoDa and Lean kernel
+    verification. Release v1.1.0 adds a second, Mathlib-only Challenge/Solution
+    pair for the exact-source strengthening with an intrinsic Bernstein
+    degree, a transport module, five further consumer reports and a twentieth
+    endpoint report; its replay is recorded separately and is not certified by
+    the historical report. Each Challenge file contains exactly one deliberate
+    placeholder for the compared theorem, filled by its Solution; as in the
+    earlier releases these compared placeholders are not counted below. Exact
+    statement correspondence and verification evidence are linked in the
+    verification metadata above.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -117,6 +126,7 @@ status:
         - "propext"
         - "Quot.sound"
         - "Classical.choice"
+      comparator_config: "comparator-fixed-source.json"
       literature_dependencies: []
 
 automation:
@@ -176,8 +186,8 @@ review:
   reviewers: []
   notes: >-
     The proof has extensive automated replay, kernel checking, scoped agent
-    audits, and source-correspondence checks. Independent human expert review
-    and author release approval remain open release gates.
+    audits, and source-correspondence checks. Independent human expert review remains open. The author authorized
+    publication on 2026-09-08; the release requires the recorded automated checks.
 
 alignment:
   namespace: "Stafford38"
@@ -203,7 +213,10 @@ alignment:
       note: >-
         At positive rank, the source is a power of a linear Weyl coordinate
         with exponent equal to the Bernstein degree; the scalar branch has
-        degree zero.
+        degree zero. The Mathlib-only compared form
+        Stafford38FixedSourceChallenge.universalFixedSourceStatement, proved
+        in FixedSourceSolution.lean, defines the degree intrinsically as the
+        least span level of ordered PBW words containing the element.
 
 acknowledgements: >-
   The formalization builds on Lean, Mathlib, and the AlgebraicAnalysis library.

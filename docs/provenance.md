@@ -11,7 +11,7 @@ snapshot, with source inventory and extraction correspondence retained.
 
 | Repository | Authority |
 | --- | --- |
-| [algebraic-analysis](https://github.com/itpplasma/algebraic-analysis) | Public reusable mathematics, pinned at `dfdd2da091a9d67e7a29cc7914f192d746a2400d` |
+| [algebraic-analysis](https://github.com/itpplasma/algebraic-analysis) | Public reusable mathematics, pinned at `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8` (`v0.3.0`) from release `v1.1.0`; the historical verification record used `dfdd2da091a9d67e7a29cc7914f192d746a2400d` (`v0.2.0`) |
 | [stafford38-formal](https://github.com/itpplasma/stafford38-formal) | Public canonical Stafford-specific proof, Palomar interface, and reproducibility documentation |
 | [stafford38-paper](https://github.com/itpplasma/stafford38-paper) | Private synchronized backup of the Overleaf manuscript authority |
 | [stafford38](https://github.com/itpplasma/stafford38) | Private research history and provenance archive |
@@ -42,7 +42,8 @@ literature axioms.
 
 The project uses Lean `4.33.0`, Mathlib
 `db584cd6d46c92f209a44c0f1c829460d327499d`, and AlgebraicAnalysis
-`dfdd2da091a9d67e7a29cc7914f192d746a2400d`. Exact verification-tool revisions
+`4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8` (`v0.3.0`; the historical record
+was checked against `dfdd2da091a9d67e7a29cc7914f192d746a2400d`). Exact verification-tool revisions
 and the separate Comparator toolchain are recorded in [verification](verification.md).
 
 Christopher Albert is the recorded human author and maintainer. AI assistance
