@@ -397,12 +397,10 @@ challenge's transitive import closure is checked to contain only Lean core
 and the pinned Mathlib; each solution's closure is checked not to contain
 either challenge.
 
-For the original pair, both kernels accepted the exported proof in the
-recorded run at commit \lean{79188b4b}, released as \lean{v1.0.2}. The
-exact-source pair is new in \lean{v1.1.0}; its run belongs to the release
-replay of that snapshot and is recorded in the repository's verification
-record only once that replay has completed. This document does not certify
-it.
+Both compared pairs passed Comparator, NanoDa and Lean kernel checking at
+source commit \lean{cbb2396d}. The controller-host verifier also passed all
+20 endpoint and 14 consumer reports. The original pair remains unchanged;
+the exact-source pair exposes the stronger manuscript conclusion.
 
 \begin{center}
 \begin{tabular}{@{}p{5.2cm}l@{}}
@@ -419,10 +417,9 @@ Permitted axioms & \lean{propext}, \lean{Quot.sound}, \lean{Classical.choice} \\
 \end{center}
 
 \begin{sloppypar}
-The verified commit and the machine-readable record of the recorded run are
-in the repository file \lean{docs/verification-results.json}. That check ran
-in a fresh clone inside a sandbox with no access to the private research tree
-and no Git credentials. The \lean{v1.1.0} snapshot is checked by the same
-procedure before its release.
+The source commit and machine-readable evidence are in
+\lean{docs/verification-results.json}. This release records controller-host
+checks. A separate isolated public-clone replay and human expert review are
+not claimed. The author authorized publication before that additional replay.
 \end{sloppypar}
 \end{document}

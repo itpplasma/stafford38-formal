@@ -12,18 +12,7 @@ order. The [exact-degree strengthening](Stafford38/FixedSourceStatement.lean)
 chooses, at positive rank, a linear Weyl coordinate `ℓ` and takes
 `F = ℓ^(bernsteinDegree k d)`. Rank zero is the field case.
 
-Commit **`79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7`** (release `v1.0.2`) was verified from a fresh independent clone.
-The checked scope includes both theorems, the manuscript's general geometric
-theorems, and the corollaries below. The allowed foundational axioms are
-exactly `propext`, `Classical.choice`, and `Quot.sound`; no project or literature
-axioms are used. The [verification report](docs/verification-results.json)
-records the checks: `96de78e238a25ca62f7e5c18f51e360c77bf49a2daa8b8f81d862e10e897becf`. Independent human expert review
-and journal review are separate; neither is claimed complete.
-
-Release `v1.1.0` adds the [exact-source comparison](#exact-source-comparison),
-upgrades the AlgebraicAnalysis pin, and corrects the proof account. Those
-changes are not covered by the historical report above; their own replay is
-recorded in the [verification](docs/verification.md) documents when complete.
+Release `v1.1.0` adds the exact-source comparison and corrects the imported proof architecture. Source commit `cbb2396dc21c789365af6ee56b41320d9246f8f7` passed the full controller-host verifier, 20 endpoint axiom reports, 14 consumer reports, and both Comparator configurations with NanoDa and Lean kernel acceptance. See the [verification record](docs/verification-results.json). A separate isolated clone replay and human review are not claimed.
 
 | Dependency | Exact version |
 | --- | --- |
@@ -143,7 +132,7 @@ lists both Challenges, both Solutions and both Comparator configurations from
 the repository files, and contains a clickable map of the imported proof
 architecture.
 
-This repository is not registered with Palomar and has no Palomar ID.
+No Palomar registration receipt or identifier is retained in this repository.
 [Later release actions](docs/release-runbook.md) require separate human
 authorization.
 

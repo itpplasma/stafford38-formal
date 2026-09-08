@@ -1,35 +1,8 @@
 # Verification
 
-The controller-host verification of commit `79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7` passed the checks recorded
-in the [machine-readable report](verification-results.json):
-`96de78e238a25ca62f7e5c18f51e360c77bf49a2daa8b8f81d862e10e897becf`. The report fixes the source commit, dependency pins,
-tool revisions, commands, exit statuses, and evidence hashes. Kernel checking
-and independent human mathematical review are separate assessments.
+Source `cbb2396dc21c789365af6ee56b41320d9246f8f7` passed `scripts/verify.sh` and both Comparator configurations on the controller host. The report SHA-256 is `100afbd3b7653ef3f2f4a5338ba9bf9cdd9990f74d0be1b20ca116dfb8a12556`. All 20 endpoints and 14 consumers use only ordinary foundations; both NanoDa and Lean accepted both compared solutions. A separate isolated public-clone replay is pending.
 
-A commit cannot state its own hash, so the verified snapshot named here is an
-ancestor of the current `main` rather than its tip. Every commit up to release
-`v1.0.2` (`784b59925beb9a480519142336bd6434f6eeef16`) changed documentation
-and release metadata only; their proof sources, build files, dependency pins
-and verifier scripts are byte-identical to that snapshot, which
-
-```sh
-git diff --exit-code 79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7 v1.0.2 -- . \
-  ':(exclude)README.md' ':(exclude)formalization.yaml' ':(exclude)docs/**' \
-  ':(exclude).zenodo.json'
-```
-
-confirms. Release `v1.1.0` changes proof sources and pins: it adds the
-exact-source Challenge/Solution pair, the transport module
-`Stafford38/FixedSourceChallengeTransport.lean`, the consumer test
-`tests/FixedSourceChallengeConsumer.lean`, the second Comparator
-configuration, extends the verifier scripts, and moves the AlgebraicAnalysis
-pin to `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8` (`v0.3.0`). The historical
-report does not certify these changes. Their verification is a fresh replay of
-the commands below at the `v1.1.0` snapshot; the release procedure in the
-[runbook](release-runbook.md) records that replay before a tag is signed, and
-until it is recorded the `v1.1.0` snapshot is a candidate, not a verified one.
-The original `Challenge.lean` and `Solution.lean` are byte-identical to the
-verified snapshot.
+The old report remains in `verification/history/79188b4b-verification-results.json`. Release metadata and the dossier follow the checked source without changing Lean files, dependency pins or verifier scripts.
 
 ## Logical scope
 

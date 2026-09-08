@@ -1,240 +1,176 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "result": "passed",
-  "verified_utc": "2026-09-05T20:34:12.319143+00:00",
-  "repository": "itpplasma/stafford38-formal",
   "verified_commit": {
-    "sha": "79188b4b6c1ca7d21a50d6e965d0fb070f69b3d7",
-    "tree_sha": "78916cfeec40b67154dec3f6d5d93e81b68f1137"
+    "sha": "cbb2396dc21c789365af6ee56b41320d9246f8f7"
   },
+  "verified_utc": "2026-09-08T21:15:54.204391+00:00",
   "environment": {
     "kind": "controller-host",
-    "note": "This record is a verification run on the maintainer host, not inside the isolated clean-clone sandbox used for earlier releases. The build, the project verifier and Comparator were run against the working tree at the recorded commit with a clean git status. An isolated clean-clone replay and the Palomar registry verification are separate and are not claimed by this record.",
-    "git_status_porcelain": ""
+    "note": "Proof/build/verifier files at cbb2396; subsequent edits are documentation only. Separate isolated public-clone replay pending and not claimed."
   },
-  "toolchains": {
-    "submission_lean": {
-      "toolchain": "leanprover/lean4:v4.33.0"
+  "commands": {
+    "verify": {
+      "exit": 0,
+      "sha256": "ede16e5e85045f877813f34529c6d757461461a93b69bd5049c9fe069f65bb76",
+      "output": "pins: Lean 4.33.0, Mathlib db584cd6d46c92f209a44c0f1c829460d327499d, AlgebraicAnalysis 4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8\nIndependent literal consumers: 14 axiom reports passed\nsource audit: one deliberate placeholder in each Challenge; neither Solution imports either Challenge; no other sorry, admit, or axiom declaration\naxiom audit: 20 declarations use only ['Classical.choice', 'Quot.sound', 'propext']\nChallenge: audited 3511 loaded modules\nSolution: audited 10785 loaded modules\nFixedSourceChallenge: audited 3511 loaded modules\nFixedSourceSolution: audited 10786 loaded modules\nStafford38 verification passed\n"
     },
-    "comparator_lean": {
-      "toolchain": "leanprover/lean4:v4.34.0-rc1",
-      "version": "4.34.0-rc1",
-      "commit": "3447a668783dbce1a8fdb97101dd067687b2b418",
-      "lake_version": "5.0.0-src+3447a66"
+    "palomar": {
+      "exit": 0,
+      "sha256": "7810fd664da01e35062d91d1b3f21868727b337b7d439d484136b7e15dfc352e",
+      "output": "Palomar configuration: exact theorem, three permitted axioms, NanoDa enabled\nChallenge: audited 3511 loaded modules\nSolution: audited 10785 loaded modules\nPalomar Comparator, NanoDa, and Lean kernel verification passed\n"
     },
-    "rust": {
-      "rustc": "1.94.1 (e408947bf 2026-03-25)",
-      "cargo": "1.94.1 (29ea6fb6a 2026-03-24)"
+    "palomar-fixed-source": {
+      "exit": 0,
+      "sha256": "754cbbd0c1c00fa4d649ea3aa52f866d67fa2afce13fe36e94b4e48e073c8757",
+      "output": "Palomar configuration: exact theorem, three permitted axioms, NanoDa enabled\nFixedSourceChallenge: audited 3511 loaded modules\nFixedSourceSolution: audited 10786 loaded modules\nPalomar Comparator, NanoDa, and Lean kernel verification passed\n"
+    }
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "axiom_reports": "'Stafford38.universalStatement' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38.universalFixedSourceStatement' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38FixedSourceChallenge.universalFixedSourceStatement' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.LocalizationCorollaries.s38_rightOreLocalization' depends on axioms: [propext, Quot.sound]\n'Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.LocalizedDifferentialCorollaries.s38_principal_open_differential' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.LocalizedDifferentialCorollaries.s38_partial_laurent_differential' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.LocalizedDifferentialCorollaries.s38_fraction_ring_differential' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Evolution.evolutionaryCorollary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38.Evolution.tensorEvolutionaryCorollary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicSets.smoothConormalClosure_minimalPrime_subset_of_isFibreConical' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralTangentLimitCriterionTest.paper_shape_consumer' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_isInvolutive' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "consumer_reports": "'exactDegreePaperConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'leftPaperConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'evolutionConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'orePaperConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38.Evolution.tensorEvolutionaryCorollary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'actualLocalizedOperatorConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'actualPrincipalOpenConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'actualPartialLaurentConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'actualRationalOperatorConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38FixedSourceChallengeConsumer.unit_degree_intrinsic' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38FixedSourceChallengeConsumer.unit_degree' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38FixedSourceChallengeConsumer.coordinate_degree' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38FixedSourceChallengeConsumer.rank_one_unit_consumer' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38FixedSourceChallengeConsumer.rank_one_coordinate_consumer' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "comparator_evidence": {
+    "comparator.log": {
+      "sha256": "0ff00cda3db436f1db41bf2c9b01d3a0831ed23bc412d0eb8b4dc137267d151f",
+      "acceptance": [
+        "nanoda kernel accepts the solution",
+        "Lean default kernel accepts the solution",
+        "Your solution is okay!"
+      ]
     },
-    "go": "go1.27.0-X:nodwarf5 linux/amd64"
+    "comparator-fixed-source.log": {
+      "sha256": "62fa01873d846ba7163eacb13d6106cd25bf9257d7636417640edd69d11d2356",
+      "acceptance": [
+        "nanoda kernel accepts the solution",
+        "Lean default kernel accepts the solution",
+        "Your solution is okay!"
+      ]
+    }
   },
   "manifest_pins": [
     {
-      "name": "algebraicAnalysis",
       "url": "https://github.com/itpplasma/algebraic-analysis.git",
-      "input_revision": "dfdd2da091a9d67e7a29cc7914f192d746a2400d",
-      "resolved_revision": "dfdd2da091a9d67e7a29cc7914f192d746a2400d"
+      "type": "git",
+      "subDir": null,
+      "scope": "",
+      "rev": "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8",
+      "name": "algebraicAnalysis",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8",
+      "inherited": false,
+      "configFile": "lakefile.toml"
     },
     {
-      "name": "mathlib",
       "url": "https://github.com/leanprover-community/mathlib4",
-      "input_revision": "db584cd6d46c92f209a44c0f1c829460d327499d",
-      "resolved_revision": "db584cd6d46c92f209a44c0f1c829460d327499d"
+      "type": "git",
+      "subDir": null,
+      "scope": "",
+      "rev": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "name": "mathlib",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "inherited": false,
+      "configFile": "lakefile.lean"
     },
     {
-      "name": "plausible",
       "url": "https://github.com/leanprover-community/plausible",
-      "input_revision": "main",
-      "resolved_revision": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "name": "plausible",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
     },
     {
-      "name": "LeanSearchClient",
       "url": "https://github.com/leanprover-community/LeanSearchClient",
-      "input_revision": "main",
-      "resolved_revision": "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "name": "LeanSearchClient",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
     },
     {
-      "name": "importGraph",
       "url": "https://github.com/leanprover-community/import-graph",
-      "input_revision": "main",
-      "resolved_revision": "16f02aa7642864af59f1ff0e384a015994db9118"
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "name": "importGraph",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
     },
     {
-      "name": "proofwidgets",
       "url": "https://github.com/leanprover-community/ProofWidgets4",
-      "input_revision": "main",
-      "resolved_revision": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "name": "proofwidgets",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.lean"
     },
     {
-      "name": "aesop",
       "url": "https://github.com/leanprover-community/aesop",
-      "input_revision": "master",
-      "resolved_revision": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "name": "aesop",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "master",
+      "inherited": true,
+      "configFile": "lakefile.toml"
     },
     {
-      "name": "Qq",
       "url": "https://github.com/leanprover-community/quote4",
-      "input_revision": "master",
-      "resolved_revision": "92c15be17b7caf78c2ad767ec40f89052d908d81"
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "name": "Qq",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "master",
+      "inherited": true,
+      "configFile": "lakefile.toml"
     },
     {
-      "name": "batteries",
       "url": "https://github.com/leanprover-community/batteries",
-      "input_revision": "main",
-      "resolved_revision": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "name": "batteries",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
     },
     {
-      "name": "Cli",
       "url": "https://github.com/leanprover/lean4-cli",
-      "input_revision": "v4.33.0",
-      "resolved_revision": "6130a47896ce867c6a4a55373441e59e565bad0f"
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover",
+      "rev": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "name": "Cli",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "v4.33.0",
+      "inherited": true,
+      "configFile": "lakefile.toml"
     }
-  ],
-  "manifest_file_sha256": {
-    "lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
-    "lakefile.toml": "fd2d80a48c738d4f66c6204b2d77e951653e0a59aec6cf69d5ec79f979846ed0",
-    "lake-manifest.json": "ac78f99942c07f7f937606a265da2208f747644d6fc60f1043b726a3db427876",
-    "comparator.json": "d05a395a0a8d2d93de18a91cb5cb2ba7541067cf4a0f979caaa143ae333e49d9"
-  },
-  "palomar_tools": {
-    "revisions": {
-      "Comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
-      "ComparatorLean": "leanprover/lean4:v4.34.0-rc1",
-      "lean4export": "15f6055e299ad5b89345e533cc2192f4cc00f659",
-      "NanoDa": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
-      "Landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
-      "Lean": "leanprover/lean4:v4.33.1"
-    },
-    "binary_sha256": {
-      "comparator": "f25185592ce22b0d12c5801553c7caa5a5f7731a30a14226de2be68b27382430",
-      "lean4export": "805ab4cc6a88dcef109644d201c3142261f524aecaf58b04913a9f029e21e9b5",
-      "nanoda": "e026104f92897642903ab230bea7d73c77a85d051ab1710568b6fe0123c97009",
-      "landrun": "f3dd8344d63682b369c8cacd8a04a20a979827098ce256004f51023be7ed6307"
-    },
-    "reported_versions": {
-      "lean4export": "3.1.0",
-      "lean4export_format": "3.1.0",
-      "nanoda_crate": "0.4.6-beta",
-      "landrun": "0.1.18"
-    }
-  },
-  "commands": [
-    {
-      "stage": "build",
-      "argv": [
-        "lake",
-        "build"
-      ],
-      "exit_code": 0
-    },
-    {
-      "stage": "verify",
-      "argv": [
-        "bash",
-        "scripts/verify.sh"
-      ],
-      "exit_code": 0
-    },
-    {
-      "stage": "bootstrap",
-      "argv": [
-        "bash",
-        "scripts/bootstrap-palomar-tools.sh"
-      ],
-      "exit_code": 0
-    },
-    {
-      "stage": "palomar",
-      "argv": [
-        "bash",
-        "scripts/verify-palomar.sh"
-      ],
-      "exit_code": 0
-    }
-  ],
-  "verification": {
-    "result": "passed",
-    "source_audit": {
-      "challenge_deliberate_placeholder_count": 1,
-      "solution_imports_challenge": false,
-      "other_sorry_or_admit_count": 0,
-      "project_axiom_declaration_count": 0
-    },
-    "build": {
-      "jobs_completed": 9021,
-      "resolved_local_import_count": 703,
-      "local_lean_file_count": 276
-    },
-    "axiom_boundary": {
-      "allowed_axioms": [
-        "Classical.choice",
-        "Quot.sound",
-        "propext"
-      ],
-      "endpoint_report_count": 19,
-      "endpoint_reports_passed": true,
-      "endpoints": [
-        "Stafford38.universalStatement",
-        "Stafford38.universalFixedSourceStatement",
-        "Stafford38.LocalizationCorollaries.s38_rightOreLocalization",
-        "Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement",
-        "Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential",
-        "Stafford38.LocalizedDifferentialCorollaries.s38_principal_open_differential",
-        "Stafford38.LocalizedDifferentialCorollaries.s38_partial_laurent_differential",
-        "Stafford38.LocalizedDifferentialCorollaries.s38_fraction_ring_differential",
-        "Stafford38.Evolution.evolutionaryCorollary",
-        "Stafford38.Evolution.tensorEvolutionaryCorollary",
-        "Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand",
-        "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions",
-        "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
-        "Stafford38.Geometry.GeneralCoisotropicSets.smoothConormalClosure_minimalPrime_subset_of_isFibreConical",
-        "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
-        "Stafford38.Geometry.GeneralTangentLimitCriterionTest.paper_shape_consumer",
-        "Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer",
-        "Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_isInvolutive",
-        "Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson"
-      ],
-      "literal_consumer_report_count": 9,
-      "literal_consumer_reports_passed": true,
-      "literal_consumers": [
-        "exactDegreePaperConsumer",
-        "leftPaperConsumer",
-        "evolutionConsumer",
-        "orePaperConsumer",
-        "Stafford38.Evolution.tensorEvolutionaryCorollary",
-        "actualLocalizedOperatorConsumer",
-        "actualPrincipalOpenConsumer",
-        "actualPartialLaurentConsumer",
-        "actualRationalOperatorConsumer"
-      ]
-    },
-    "finite_oracles": {
-      "filtered_page": {
-        "result": "passed",
-        "exact_successor_kernel_cokernel_cases": 1792
-      },
-      "operator_projection": {
-        "result": "passed",
-        "exact_pbw_cases": 252,
-        "wrong_sign_control": "rejected"
-      }
-    },
-    "import_closure": {
-      "challenge_loaded_modules": 3511,
-      "solution_loaded_modules": 10785,
-      "challenge_permits": "Lean core and the pinned Mathlib closure only",
-      "solution_excludes": "Challenge"
-    },
-    "comparator": {
-      "configuration": "comparator.json",
-      "theorem": "Stafford38Challenge.universalStatement",
-      "nanoda": "passed",
-      "lean_kernel": "passed"
-    }
-  },
-  "verification_log_sha256": {
-    "axioms.log": "46c4c21a62365f99276bf1adac5bdba9e8c569e628c513e50ea3095bcc529d00",
-    "independent-consumers.log": "fe0d535e27a65ec976185fd03f287c0315d8dc2a07987f254b36f4c5869ca507",
-    "comparator.log": "9a4048a19267cb8b1f54efcef6756f82f530dd6704732aaf07fc4dbe8826f316"
-  }
+  ]
 }
