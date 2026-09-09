@@ -1,5 +1,5 @@
 name = "stafford38Formal"
-version = "1.1.0"
+version = "1.1.1"
 defaultTargets = ["Stafford38", "Solution", "FixedSourceSolution"]
 
 [[require]]

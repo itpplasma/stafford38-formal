@@ -6,7 +6,15 @@ import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
 
 /-! The paper's three assembly interfaces and both universal statements are
 proved from Lean and Mathlib without project or literature axioms. The final
-canonical-support proof uses the general coisotropic-set theorem. -/
+canonical-support proof uses the general coisotropic-set theorem.
+
+## References and proof context
+
+[Sta78] J. T. Stafford, *Module Structure of Weyl Algebras*, Journal of the London Mathematical Society (2) 18 (1978), 429–442.
+https://doi.org/10.1112/jlms/s2-18.3.429
+
+Conjecture 3.8, p. 438, is the source problem. This project proves the general case and exact-degree strengthening. See docs/literature.md for the imported involutivity and visible-frame route.
+-/
 
 namespace Stafford38.FoundationClosure
 

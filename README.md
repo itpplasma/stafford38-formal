@@ -12,6 +12,26 @@ order. The [exact-degree strengthening](Stafford38/FixedSourceStatement.lean)
 chooses, at positive rank, a linear Weyl coordinate `ℓ` and takes
 `F = ℓ^(bernsteinDegree k d)`. Rank zero is the field case.
 
+Current documentation release: **v1.1.1**. Adds the literature/source index and
+module references; mathematical declarations and dependency pins are unchanged.
+
+## Literature and source index
+
+**[Literature → proof ingredients → Lean modules](docs/literature.md)** is the
+starting point for tracing the mathematical foundations. It gives full
+citations, source roles, module links, and the distinction between proved
+imports, project constructions, background, and prior art.
+
+**[Sta78]** J. T. Stafford, *[Module Structure of Weyl Algebras](https://doi.org/10.1112/jlms/s2-18.3.429)*, Journal of the London Mathematical Society (2) 18 (1978), 429–442. Source of Conjecture 3.8 (p. 438). The 1978 conjecture is the target, not a proof of its general case.
+
+**[Gab81]** Ofer Gabber, *[The Integrability of the Characteristic Variety](https://doi.org/10.2307/2374101)*, American Journal of Mathematics 103 (1981), no. 3, 445–468. Classical involutivity theorem. The required Weyl-quotient version is proved in Lean by the Gabber block; the citation is not an axiom.
+
+**[HTT08]** Ryoshi Hotta, Kiyoshi Takeuchi, and Toshiyuki Tanisaki, *[D-Modules, Perverse Sheaves, and Representation Theory](https://doi.org/10.1007/978-0-8176-4523-6)*, Progress in Mathematics 236, Birkhäuser, 2008. Background for differential operators, good filtrations and characteristic varieties (Chapters 1–2). No claim of a line-by-line formalization of this book.
+
+**[Bel26]** Gwyn Bellamy, *[Module structure of Weyl algebras](https://doi.org/10.1112/jlms.70373)*, Journal of the London Mathematical Society 113 (2026), no. 1, e70373. Historical status and adjacent results, especially Sections 3 and 6; not an imported proof theorem.
+
+## Verification snapshot
+
 Release `v1.1.0` adds the exact-source comparison and corrects the imported proof architecture. Source commit `cbb2396dc21c789365af6ee56b41320d9246f8f7` passed the full controller-host verifier, 20 endpoint axiom reports, 14 consumer reports, and both Comparator configurations with NanoDa and Lean kernel acceptance. See the [verification record](docs/verification-results.json). A separate isolated clone replay and human review are not claimed.
 
 | Dependency | Exact version |
@@ -106,8 +126,7 @@ the state of the art this development is measured against.
 
 This repository supplies a new proof of the general case, together with the
 exact Bernstein-degree fixed-source strengthening. The literature search behind
-that reading covers Stafford's article, Bellamy's survey, and the D-module and
-Stacks Project sources named in the [proof guide](docs/proof-guide.md); it found
+that reading covers the sources in the [literature index](docs/literature.md); it found
 no earlier proof of Conjecture 3.8 in general. Whether the argument is genuinely
 new is therefore unknown rather than established: the search was not exhaustive,
 no expert has confirmed it, and priority is not claimed. Kernel verification

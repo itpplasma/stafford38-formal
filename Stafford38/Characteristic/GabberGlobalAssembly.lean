@@ -9,6 +9,14 @@ deformation at each minimal prime. Contract bracket membership, then intersect
 the minimal primes. The final theorem is field-generic and has no literature
 or project assumption. The opposite-ring lifts are swapped explicitly to
 preserve the right-module bracket orientation.
+
+
+## References and proof context
+
+[Gab81] Ofer Gabber, *The Integrability of the Characteristic Variety*, American Journal of Mathematics 103 (1981), no. 3, 445–468.
+https://doi.org/10.2307/2374101
+
+This is the classical theorem implemented for cyclic Weyl quotients. Its exact radical-involutivity interface is proved here; see docs/literature.md and docs/proof-guide.md.
 -/
 
 namespace Stafford38.Characteristic.GabberGlobalAssembly

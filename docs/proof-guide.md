@@ -1,5 +1,8 @@
 # Proof guide
 
+The [literature and source index](literature.md) maps published sources and
+project constructions to the proof modules described here.
+
 The theorem concerns right ideals in a Weyl algebra. Throughout the formal
 development, products retain their written order. In particular, the target
 

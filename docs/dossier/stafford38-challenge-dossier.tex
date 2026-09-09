@@ -310,6 +310,7 @@ coordinate ($1$), and instantiates the compared theorem at both.
 \VerbatimInput[fontsize=\small,frame=single,label=comparator-fixed-source.json]{\srcroot/comparator-fixed-source.json}
 
 \section{Architecture of the imported proof}\label{sec:architecture}
+\hyperref[sec:literature]{Literature and source roles for this map}.
 
 The arrows below point from a prerequisite to the step that uses it. Each
 box links to its explanation. This is a summary of the terminal route in
@@ -422,4 +423,26 @@ The source commit and machine-readable evidence are in
 checks. A separate isolated public-clone replay and human expert review are
 not claimed. The author authorized publication before that additional replay.
 \end{sloppypar}
+
+\section{Literature and proof sources}\label{sec:literature}
+Documentation release v1.1.1, 9 September 2026. Mathematical declarations and dependency pins are unchanged.
+
+The conjecture node refers to \cite{Sta78}. The involutivity node implements
+the classical theorem \cite{Gab81}; characteristic varieties have the background
+\cite{HTT08}. Ore division has the ancestry \cite{Ore33}. The Euler certificate
+and visible-frame/finite-gradient route are project constructions. The
+auxiliary tangent-limit theorem is outside that terminal route. The survey
+\cite{Bel26} and constructive work \cite{Ley04} give historical context.
+
+Full source roles and clickable Lean entry points are indexed at \url{https://github.com/itpplasma/stafford38-formal/blob/main/docs/literature.md}.
+
+\begin{thebibliography}{StacksS}
+\bibitem[Sta78]{Sta78} J. T. Stafford, \emph{Module Structure of Weyl Algebras}, Journal of the London Mathematical Society (2) 18 (1978), 429–442. \url{https://doi.org/10.1112/jlms/s2-18.3.429}.
+\bibitem[Gab81]{Gab81} Ofer Gabber, \emph{The Integrability of the Characteristic Variety}, American Journal of Mathematics 103 (1981), no. 3, 445–468. \url{https://doi.org/10.2307/2374101}.
+\bibitem[HTT08]{HTT08} Ryoshi Hotta, Kiyoshi Takeuchi, and Toshiyuki Tanisaki, \emph{D-Modules, Perverse Sheaves, and Representation Theory}, Progress in Mathematics 236, Birkhäuser, 2008. \url{https://doi.org/10.1007/978-0-8176-4523-6}.
+\bibitem[Ore33]{Ore33} {\O}ystein Ore, \emph{Theory of Non-Commutative Polynomials}, Annals of Mathematics (2) 34 (1933), no. 3, 480–508. \url{https://doi.org/10.2307/1968173}.
+\bibitem[StacksD]{StacksD} The Stacks Project Authors, \emph{Finite order differential operators}, The Stacks Project, Section 10.133, tag 09CH (accessed 2026-09-09). \url{https://stacks.math.columbia.edu/tag/09CH}.
+\bibitem[Bel26]{Bel26} Gwyn Bellamy, \emph{Module structure of Weyl algebras}, Journal of the London Mathematical Society 113 (2026), no. 1, e70373. \url{https://doi.org/10.1112/jlms.70373}.
+\bibitem[Ley04]{Ley04} Anton Leykin, \emph{Algorithmic Proofs of Two Theorems of Stafford}, Journal of Symbolic Computation 38 (2004), 1535–1550. \url{https://doi.org/10.1016/j.jsc.2004.07.003}.
+\end{thebibliography}
 \end{document}

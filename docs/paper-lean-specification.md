@@ -1,5 +1,8 @@
 # Paper and Lean specification
 
+The [literature and source index](literature.md) maps published sources and
+project constructions to the proof modules described here.
+
 This maps the manuscript assertions to the formal statements. It is a
 preparation snapshot; final replay and human correspondence review are pending.
 

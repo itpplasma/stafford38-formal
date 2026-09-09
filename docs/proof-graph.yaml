@@ -1,60 +1,99 @@
 schema_version: 1
 root: certificate
+literature_index: docs/literature.md
 nodes:
   - id: monicization
     module: Stafford38.Weyl.MonicNormalization
+    source_role: project construction
+    references: []
     depends_on: []
   - id: quotient_euler
     module: Stafford38.Weyl.EulerRemainder
+    source_role: project construction
+    references: []
     depends_on: [monicization]
   - id: characteristic_avoidance
     module: Stafford38.Characteristic.CanonicalKoszulContradiction
+    source_role: project construction
+    references: []
     depends_on: [quotient_euler]
   - id: involutivity
     module: Stafford38.Characteristic.GabberGlobalAssembly
+    source_role: classical theorem proved for Weyl quotients
+    references: [Gab81]
     depends_on: []
   - id: tangent_limit
     module: Stafford38.Geometry.GeneralTangentLimitCriterion
+    source_role: auxiliary; not in terminal proof route
+    references: []
     depends_on: []
   - id: visible_frame
     module: Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
+    source_role: project construction
+    references: []
     depends_on: []
   - id: finite_gradient
     module: Stafford38.Geometry.FiniteGradientResidueExtension
+    source_role: project construction
+    references: []
     depends_on: []
   - id: conormal_axis
     module: Stafford38.Geometry.GeneralConormalAxis
+    source_role: project construction
+    references: []
     depends_on: [visible_frame, finite_gradient]
   - id: laurent_axis
     module: Stafford38.Geometry.GeneralAsymptoticLaurentAxis
+    source_role: project construction
+    references: []
     depends_on: [conormal_axis]
   - id: asymptotic_conormal
     module: Stafford38.Geometry.GeneralAsymptoticConormal
+    source_role: project construction
+    references: []
     depends_on: [laurent_axis]
   - id: coisotropic_exclusion
     module: Stafford38.Geometry.GeneralCoisotropicSets
+    source_role: project construction
+    references: []
     depends_on: [involutivity, asymptotic_conormal, component_conormal_containment]
   - id: component_conormal_containment
     module: Stafford38.Geometry.GeneralComponentConormalContainment
+    source_role: project construction
+    references: []
     depends_on: [involutivity]
   - id: canonical_support
     module: Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
+    source_role: project construction
+    references: []
     depends_on: [characteristic_avoidance, coisotropic_exclusion]
   - id: certificate
     module: Stafford38.FoundationClosure
+    source_role: project construction
+    references: [Sta78]
     depends_on: [canonical_support, monicization]
   - id: fixed_source
     module: Stafford38.FixedSourceAssembly
+    source_role: project construction
+    references: [Sta78]
     depends_on: [canonical_support, monicization]
   - id: right_ore_localization
     module: Stafford38.LocalizationCorollaries
+    source_role: project construction
+    references: []
     depends_on: [certificate]
   - id: localized_differential_operators
     module: Stafford38.LocalizedDifferentialCorollaries
+    source_role: project construction
+    references: []
     depends_on: [certificate]
   - id: formal_adjoint
     module: Stafford38.LeftHandedCorollary
+    source_role: project construction
+    references: []
     depends_on: [certificate]
   - id: evolutionary_and_tensor
     module: Stafford38.EvolutionaryCorollary
+    source_role: project construction
+    references: []
     depends_on: []
