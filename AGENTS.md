@@ -1,8 +1,9 @@
 # Agent guidance
 
-- This repository is the completed Stafford 3.8 formalization. The README,
-  `docs/verification-results.json`, and `docs/proof-graph.yaml` are the status
-  authorities; there is no open theorem-formalization PLAN here.
+- This repository is the completed Stafford 3.8 formalization. `PLAN.md` is a
+  pointer-only status file; the README, `docs/verification-results.json`, and
+  `docs/proof-graph.yaml` are the detailed authorities. There is no open
+  theorem-formalization task here.
 - Preserve the pinned Lean/Mathlib/AlgebraicAnalysis revisions and recorded
   verification receipts. Do not add axioms, `sorry`, or terminal wrappers.
 - Workers may prepare bounded documentation or proof-map changes, but the
