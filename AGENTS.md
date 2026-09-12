@@ -13,3 +13,13 @@
 - Remaining work is human review, release hygiene, and publication, not a new
   formal proof obligation. Report adjacent documentation inconsistencies rather
   than silently changing mathematical status.
+
+## Proof-source provenance
+
+Read `docs/proof-source-provenance.md` before any work that touches theorem,
+manuscript, or provenance status. The canonical proof is already this formal
+repository. `itpplasma/stafford38` is the private research archive and
+`itpplasma/stafford38-paper` is the manuscript mirror; they are not build
+dependencies and do not create a new open formalization task. For manuscript
+correspondence use the recorded paper revision and `main.tex` / `proof_map.tex`
+as listed in the provenance document.
