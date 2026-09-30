@@ -97,3 +97,19 @@ nodes:
     source_role: project construction
     references: []
     depends_on: []
+
+  - id: weyl_domain
+    module: Stafford38.Weyl.Domain
+    source_role: multiplicativity of the top Bernstein symbol
+    references: []
+    depends_on: [monicization]
+  - id: torsion_cyclicity
+    module: Stafford38.TorsionCyclicity
+    source_role: downstream manuscript corollary
+    references: [Sta78, Bel26]
+    depends_on: [certificate, weyl_domain]
+  - id: noncharacteristic_hyperplane
+    module: Stafford38.NoncharacteristicHyperplane
+    source_role: manuscript finite-restriction and conormal corollaries
+    references: []
+    depends_on: [quotient_euler]

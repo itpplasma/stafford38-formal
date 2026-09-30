@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-case "${1:-}" in Challenge|Solution|FixedSourceChallenge|FixedSourceSolution) module=$1 ;; *) exit 2 ;; esac
+case "${1:-}" in Challenge|Solution|FixedSourceChallenge|FixedSourceSolution|CorollaryChallenge) module=$1 ;; *) exit 2 ;; esac
 mkdir -p .lake/verification
 audit=".lake/verification/${module}Imports.lean"
 log=".lake/verification/${module}-imports.log"

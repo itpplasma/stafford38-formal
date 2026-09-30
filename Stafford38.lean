@@ -1,4 +1,6 @@
 import Stafford38.FoundationClosure
+import Stafford38.TorsionCyclicity
+import Stafford38.NoncharacteristicHyperplane
 import Stafford38.LocalizedDifferentialCorollaries
 import Stafford38.LocalizationCorollaries
 import Stafford38.LeftHandedCorollary

@@ -78,7 +78,7 @@ lake build "${retained_modules[@]}" \
   Stafford38.Geometry.GeneralAsymptoticConormal \
   Stafford38.Geometry.GeneralCoisotropicSets \
   Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter \
-  Solution FixedSourceSolution \
+  Solution FixedSourceSolution CorollaryChallenge \
   >"$log_dir/build.log" 2>&1
 
 bash scripts/check-consumers.sh
@@ -208,6 +208,17 @@ import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
 import Stafford38.Geometry.GeneralCoisotropicSetsTest
 import Stafford38.Geometry.GeneralTangentLimitCriterionTest
 
+#print axioms Stafford38.WeylDomain.mul_ne_zero
+#print axioms Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair
+#print axioms Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion
+#print axioms Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator
+#print axioms Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection
+#print axioms Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRing_surjective
+#print axioms Stafford38.NoncharacteristicHyperplane.canonical_finite_restrictedCoordinateQuotient
+#print axioms Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRing_mk
+#print axioms Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRing_injective
+#print axioms Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRingEquiv
+#print axioms Stafford38.NoncharacteristicHyperplane.isNoncharacteristic_iff_finite_restrictedCoordinateQuotient
 #print axioms Stafford38.universalStatement
 #print axioms Stafford38.universalFixedSourceStatement
 #print axioms Stafford38FixedSourceChallenge.universalFixedSourceStatement
@@ -240,6 +251,17 @@ from pathlib import Path
 
 text = Path(sys.argv[1]).read_text(encoding="utf-8")
 expected = {
+    "Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRing_mk",
+    "Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRing_injective",
+    "Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRingEquiv",
+    "Stafford38.NoncharacteristicHyperplane.isNoncharacteristic_iff_finite_restrictedCoordinateQuotient",
+    "Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRing_surjective",
+    "Stafford38.NoncharacteristicHyperplane.canonical_finite_restrictedCoordinateQuotient",
+    "Stafford38.WeylDomain.mul_ne_zero",
+    "Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair",
+    "Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion",
+    "Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator",
+    "Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection",
     "Stafford38.universalStatement",
     "Stafford38.universalFixedSourceStatement",
     "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
@@ -280,8 +302,9 @@ if re.search(r"sorryAx|admitAx|Lean\.ofReduceBool", text):
 print(f"axiom audit: {len(expected)} declarations use only {sorted(allowed)}")
 PY
 
-lake build Challenge FixedSourceChallenge >"$log_dir/challenge-build.log" 2>&1
+lake build Challenge FixedSourceChallenge CorollaryChallenge >"$log_dir/challenge-build.log" 2>&1
 bash scripts/check-import-closure.sh Challenge
+bash scripts/check-import-closure.sh CorollaryChallenge
 bash scripts/check-import-closure.sh Solution
 bash scripts/check-import-closure.sh FixedSourceChallenge
 bash scripts/check-import-closure.sh FixedSourceSolution

@@ -12,8 +12,9 @@ order. The [exact-degree strengthening](Stafford38/FixedSourceStatement.lean)
 chooses, at positive rank, a linear Weyl coordinate `ℓ` and takes
 `F = ℓ^(bernsteinDegree k d)`. Rank zero is the field case.
 
-Current documentation release: **v1.1.1**. Adds the literature/source index and
-module references; mathematical declarations and dependency pins are unchanged.
+Release in preparation: **v1.2.0**. It adds the manuscript torsion-cyclicity
+and noncharacteristic corollaries, their independent consumers, and a pinned
+[paper/Lean audit](docs/paper-lean-audit/README.md). Dependency versions are unchanged.
 
 ## Literature and source index
 

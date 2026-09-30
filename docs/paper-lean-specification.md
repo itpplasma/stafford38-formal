@@ -91,3 +91,27 @@ hypotheses. The proof constructs the Weyl action, generates all operators, and
 clears a left denominator. It does not rename a Weyl presentation as a
 differential-operator ring or assume an Ore isomorphism. No theorem for arbitrary
 operators on an arbitrary smooth affine variety is claimed.
+
+## Additional manuscript corollaries
+
+The cyclicity statement is independently written using Mathlib's `RingQuot`
+Weyl presentation in `CorollaryChallenge.lean`.
+`Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion` proves that
+every finitely generated torsion right module over any characteristic-zero
+Weyl algebra is cyclic. The pair-span lemma preserves right scalar order;
+`Stafford38.WeylDomain.mul_ne_zero` supplies the domain input from Bernstein
+symbol multiplication. The literal consumer is
+`tests/TorsionCyclicityConsumer.lean`.
+
+`Stafford38.NoncharacteristicHyperplane.IsNoncharacteristic` expresses the
+finite projection of the restricted characteristic coordinate ring to the
+tangential symbol ring.
+`canonical_isNoncharacteristic_annihilator` proves it for the canonical
+quotient, and `canonicalSupport_conormal_subset_zeroSection` proves the
+pointwise normal-covariable consequence. Their hypotheses retain the actual
+PBW monicity condition. The source-to-paper audit lists the declarations,
+statement relations, proof routes and remaining review issues at pinned revisions.
+
+The existing Palomar record checks its registered universal theorem. The
+archive's additional declarations are verified locally; this release makes
+no new Palomar submission or claim that the registry rechecked them.

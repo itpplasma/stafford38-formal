@@ -10,9 +10,15 @@ authors:
     given-names: Christopher
     orcid: "https://orcid.org/0000-0003-4773-416X"
     affiliation: "Graz University of Technology"
-version: v1.1.1
-date-released: "2026-09-09"
+version: v1.2.0
+date-released: "2026-10-01"
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22669443
+    description: Historical release v1.1.1
+  - type: url
+    value: "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=2"
+    description: Palomar theorem record, version 2; independently scoped from this archive
   - type: doi
     value: 10.5281/zenodo.22390721
     description: Concept DOI, resolving to the newest version

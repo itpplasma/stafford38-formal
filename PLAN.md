@@ -7,10 +7,13 @@ phase_ii_status: done at the recorded verification snapshot
 paper_status: complete
 formal_status: terminal theorem and documented corollaries verified
 open_theorem_holes: []
-public_release: human review and publication only
+public_release: v1.2.0 authorized by the author
+active_task: manuscript corollaries, auditable correspondence, verifier replay and release
 ```
 
 The README, `docs/proof-guide.md`, `docs/proof-graph.yaml`, and
 `docs/verification-results.json` contain the detailed architecture and
-evidence. No new theorem formalization is scheduled; preserve the pinned
-dependencies and report release/documentation work separately from proof work.
+evidence. The author requested the manuscript cyclicity and noncharacteristic
+corollaries, complete cross-links, a verifier replay and an archived release.
+The main theorem is complete; these additions retain the pinned dependencies.
+Release/documentation checks and mathematical verification are recorded separately.

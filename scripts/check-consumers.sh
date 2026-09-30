@@ -4,7 +4,7 @@ cd "$(dirname "$0")/.."
 mkdir -p .lake/verification
 log=.lake/verification/independent-consumers.log
 : > "$log"
-for source in tests/CorollaryConsumer.lean tests/LocalizedDifferentialConsumer.lean tests/FixedSourceChallengeConsumer.lean; do
+for source in tests/CorollaryConsumer.lean tests/LocalizedDifferentialConsumer.lean tests/FixedSourceChallengeConsumer.lean tests/TorsionCyclicityConsumer.lean tests/NoncharacteristicConsumer.lean; do
   lake env lean --trust=0 "$source" >> "$log" 2>&1
 done
 python3 - "$log" <<'PY'
@@ -14,6 +14,9 @@ from pathlib import Path
 
 text = Path(sys.argv[1]).read_text()
 expected = {
+    'rankOne_literal_restricted_coordinate_ring_finite',
+    'rankOne_conormal_support_zero_momentum',
+    'Stafford38CorollaryChallenge.torsionCyclicStatement_consumer',
     'Stafford38FixedSourceChallengeConsumer.unit_degree_intrinsic',
     'Stafford38FixedSourceChallengeConsumer.unit_degree',
     'Stafford38FixedSourceChallengeConsumer.coordinate_degree',

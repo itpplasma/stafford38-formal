@@ -20,10 +20,15 @@ project:
 repository:
   role: "substantive-development"
   url: "https://github.com/itpplasma/stafford38-formal"
-  registration_status: "public-candidate-not-registered"
+  registration_status: "registered"
+  palomar_id: "PALOMAR-2026-09-05-000007"
+  palomar_version: 2
+  palomar_url: "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=2"
   note: >-
     This public repository is the canonical substantive Stafford-specific
-    formal development. No registration receipt is retained in this repository.
+    formal development. The Palomar record checks its registered universal
+    theorem at the source revision stated there; later archive additions are
+    verified separately and do not change that registration.
 
 classification:
   arxiv:
@@ -39,9 +44,9 @@ sources:
     type: "original-proof"
     relationship: "other"
     note: >-
-      The private manuscript and formal development are the first presentation
-      of this proof. No public preprint or stable bibliographic identifier has
-      been registered.
+      The manuscript and formal development are records of the same research
+      proof. The checked theorem is registered as PALOMAR-2026-09-05-000007,
+      version 2; newer archived auxiliary declarations are verified separately.
     license: "CC-BY-4.0"
     author_endorsement: "participated"
   - title: "Module structure of Weyl algebras"
