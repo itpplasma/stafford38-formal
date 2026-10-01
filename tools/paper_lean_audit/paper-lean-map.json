@@ -1,21 +1,21 @@
 {
  "schema": 1,
- "version": "2026-10-01.10",
+ "version": "2026-10-01.11",
  "title": "Stafford 3.8: paper \u2194 Lean correspondence audit",
  "subtitle": "Current annotated manuscript mapped to the signed formal release and pinned dependencies.",
  "sources": {
   "paper": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "857bd374af271b88aec3ae81cfef30e4d158be8a",
+   "commit": "86f630da1b316d9a0c35aec03defee55ef7c92f3",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
    "note": "Consolidated author-review draft; proposals and unresolved actions explicitly marked. Supplement preserves readable formal-proof accounts.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "b2fb68cfb5f8b9f2dd8769d10af36e3ae508ab75"
+   "origin_commit": "7d10c6297f8367b3f0061d61bda5ae86f9945c2c"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "739162753aff996cc565659aefca23c6865d79b0",
-   "note": "Checked paper-facing adapters; terminal proof and pinned dependencies unchanged. Full verifier and independent paper consumers pass."
+   "commit": "ea641a110adea654262c03ef930772645a2401b9",
+   "note": "Signed v1.2.2 archive, DOI 10.5281/zenodo.23079259; checked paper-facing adapters and terminal proof; printed tangent-lattice construction remains a correspondence gap."
   },
   "library": {
    "repo": "itpplasma/algebraic-analysis",

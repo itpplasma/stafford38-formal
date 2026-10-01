@@ -6,9 +6,9 @@
   "katexErrors": 0,
   "fieldLink": "opens exact field definition",
   "version": {
-    "version": "2026-10-01.10",
-    "paper": "857bd374af271b88aec3ae81cfef30e4d158be8a",
-    "formal": "739162753aff996cc565659aefca23c6865d79b0",
+    "version": "2026-10-01.11",
+    "paper": "86f630da1b316d9a0c35aec03defee55ef7c92f3",
+    "formal": "ea641a110adea654262c03ef930772645a2401b9",
     "checks": [
       "statement",
       "route",
