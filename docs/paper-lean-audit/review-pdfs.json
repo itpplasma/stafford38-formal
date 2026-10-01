@@ -1,0 +1,28 @@
+{
+  "paper_commit": "422de897b3ae211c5c77caf53c9d175e0178e4e6",
+  "editing_authority": "Overleaf / itpplasma/stafford38-paper",
+  "pdfs": {
+    "human_readable_main.pdf": "5ff5c7b6f2e5487f21190359b83c23b0df1996eca826331c558c452d843151d1",
+    "lean_proof_details.pdf": "8f6c82d84dbee654d72b6b6f19c8e71ab840a95b76460daef00a8988d77db1f0"
+  },
+  "source_files": [
+    "human_readable_main.tex",
+    "main.tex",
+    "ai_review.tex",
+    "lean_proof_details.tex",
+    "proof_map.tex",
+    "references.bib",
+    "LICENSE.txt"
+  ],
+  "retired_files": [
+    "lean_refs.tex",
+    "ai_annotations.tex",
+    "ai_workflow.tex",
+    "cyclicity.tex",
+    "global_stafford.tex",
+    "literature_extras.tex",
+    "lean_proof_details_main.tex"
+  ],
+  "human_acceptance": "pending; red text remains proposed; action boxes remain unresolved",
+  "verification": "Author-prose preservation passed; both TeX targets compile without unresolved references; proof sources unchanged."
+}

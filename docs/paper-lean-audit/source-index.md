@@ -3,7 +3,7 @@
 | Paper content | Auditable source |
 | --- | --- |
 | Main text, introduction, proofs and appendices | [Manuscript snapshot](manuscript/human_readable_main.tex), [snapshot hashes](manuscript/provenance.json) |
-| Detailed formal comparisons retained separately | [Technical supplement](manuscript/lean_proof_details.tex), [standalone TeX](manuscript/lean_proof_details_main.tex), [compact-review receipt](../audits/paper-lean-display/compact-human-review.md) |
+| Detailed formal comparisons retained separately | [Technical supplement](manuscript/lean_proof_details.tex), [standalone TeX](manuscript/lean_proof_details.tex), [compact-review receipt](../audits/paper-lean-display/compact-human-review.md) |
 | Numbered claims and proof steps | [Correspondence map](../../tools/paper_lean_audit/paper-lean-map.json), [proof specification](../paper-lean-specification.md) |
 | Every named Lean declaration in the paper | [Declaration manifest](linked-declarations.json), checked by [the kernel gate](../../scripts/check-paper-declarations.sh) |
 | Literature, libraries and registered proofs | [Bibliography](references.bib), [archive receipts](../releases/zenodo.md) |

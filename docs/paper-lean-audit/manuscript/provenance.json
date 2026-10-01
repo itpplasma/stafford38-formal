@@ -1,60 +1,78 @@
 {
   "schema_version": 1,
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
-  "paper_base_commit": "6f98f5d07d71f9e169cb2e65b0eca0258b7df0e5",
-  "snapshot_scope": "Exact committed manuscript TeX, bibliography and visible annotations. Overleaf remains the editing authority.",
+  "paper_base_commit": "422de897b3ae211c5c77caf53c9d175e0178e4e6",
+  "snapshot_scope": "Committed active manuscript sources plus explicitly retired fragments preserved for history. Overleaf remains editing authority.",
   "files": [
     {
       "path": "human_readable_main.tex",
-      "sha256": "16ad2e01168f5ed2203deff9f5b7d2fee17280563f84f2ccd783466c4aca2fe0"
+      "sha256": "c95f7d15ad143e7f39a3f04ae18d7fe3de4bc999665ac8028ce25085708d8f3b",
+      "status": "active"
     },
     {
       "path": "main.tex",
-      "sha256": "66fbde4dbf8bcb7944bfcae22bb5858833ffe11ce0716f56075ab1eb478524e0"
+      "sha256": "66fbde4dbf8bcb7944bfcae22bb5858833ffe11ce0716f56075ab1eb478524e0",
+      "status": "active"
     },
     {
       "path": "lean_refs.tex",
-      "sha256": "2831d8279f7aab7fe3aa51fe2a8021bf2b2140c55623f3e364e219d8dec13d74"
+      "sha256": "2831d8279f7aab7fe3aa51fe2a8021bf2b2140c55623f3e364e219d8dec13d74",
+      "status": "retired; retained for historical provenance, not an Overleaf editing target"
     },
     {
       "path": "ai_annotations.tex",
-      "sha256": "8566bcd42311a9ab4c9c2cfdc128427d565f789fe9856fb1b948bb8b4b97a968"
+      "sha256": "8566bcd42311a9ab4c9c2cfdc128427d565f789fe9856fb1b948bb8b4b97a968",
+      "status": "retired; retained for historical provenance, not an Overleaf editing target"
     },
     {
       "path": "ai_workflow.tex",
-      "sha256": "8d2d829f5412a14fa371bf4cb663a85ab3787da1120ee0bc887bd32678f8c55a"
+      "sha256": "8d2d829f5412a14fa371bf4cb663a85ab3787da1120ee0bc887bd32678f8c55a",
+      "status": "retired; retained for historical provenance, not an Overleaf editing target"
     },
     {
       "path": "cyclicity.tex",
-      "sha256": "5353198b6d2eadf921d5ab5545e439dfa04834472c54a9b4d2fcbf80941c9690"
+      "sha256": "5353198b6d2eadf921d5ab5545e439dfa04834472c54a9b4d2fcbf80941c9690",
+      "status": "retired; retained for historical provenance, not an Overleaf editing target"
     },
     {
       "path": "global_stafford.tex",
-      "sha256": "5910e0bed20e296a33d05915b8137a9904dbe861d4ee15d48547df12aa130837"
+      "sha256": "5910e0bed20e296a33d05915b8137a9904dbe861d4ee15d48547df12aa130837",
+      "status": "retired; retained for historical provenance, not an Overleaf editing target"
     },
     {
       "path": "literature_extras.tex",
-      "sha256": "d985e821632ec9c355f3f4cbb63dd8bf1e03ab46076c162057d9823c56347d22"
+      "sha256": "d985e821632ec9c355f3f4cbb63dd8bf1e03ab46076c162057d9823c56347d22",
+      "status": "retired; retained for historical provenance, not an Overleaf editing target"
     },
     {
       "path": "proof_map.tex",
-      "sha256": "168062f6f7e42fa39b20afc64486e42a3c112001d5e1b3dd7fb322799472dff4"
+      "sha256": "6bce233c2c1c92e793b5d856617de31ab36e776fda1ea389d01eb655e5dd7695",
+      "status": "active"
     },
     {
       "path": "references.bib",
-      "sha256": "022c2e928e14ca4a6d5f84875a3bd2c50ad9876975de04224581bb1a41fedcd6"
+      "sha256": "022c2e928e14ca4a6d5f84875a3bd2c50ad9876975de04224581bb1a41fedcd6",
+      "status": "active"
     },
     {
       "path": "LICENSE.txt",
-      "sha256": "98b6fde2693d4044dce4a071640e90bd8d250dd789d9033dbd5b77c79f389de4"
+      "sha256": "98b6fde2693d4044dce4a071640e90bd8d250dd789d9033dbd5b77c79f389de4",
+      "status": "active"
     },
     {
       "path": "lean_proof_details.tex",
-      "sha256": "4f8e742556fa5187507dbbabd69fb304ff85b9b152589eed5120be79243310e8"
+      "sha256": "a741417d615128cd75132c8162d36c71d1612012933f894c85dcc9813708d6bf",
+      "status": "active"
     },
     {
       "path": "lean_proof_details_main.tex",
-      "sha256": "78ec53cfcf143cc2726bace4c78e0eb1c166622e169cc91fbf687b7b138b7185"
+      "sha256": "78ec53cfcf143cc2726bace4c78e0eb1c166622e169cc91fbf687b7b138b7185",
+      "status": "retired; retained for historical provenance, not an Overleaf editing target"
+    },
+    {
+      "path": "ai_review.tex",
+      "sha256": "bf3a677267d401b61c6c5f7f55a40fc8e74bdbcf187f5d8b6b57fc0f521fcc38",
+      "status": "active"
     }
   ]
 }

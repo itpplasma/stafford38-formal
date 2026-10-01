@@ -1,0 +1,72 @@
+% Shared review markup and formal links; the human draft hides declaration names.
+% Review annotations, following the red-add/blue-remove convention used in
+% the Varenna 2016 papers. These commands keep the original wording visible.
+% Accept an insertion by removing its AIaddition environment or AIadd wrapper.
+% Accept a replacement by deleting AIremove{old} and unwrapping AIadd{new}.
+% Resolve a comment by deleting its complete AIcomment{ID}{text} command.
+% There is deliberately no global switch that hides unresolved comments.
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[normalem]{ulem}
+% AI compile repair: the retained draft uses the undefined typo \cots.
+% EDIT-02 beside that occurrence makes this repair visible in the PDF.
+\providecommand{\cots}{\cdots}
+\definecolor{AIadded}{RGB}{160,25,25}
+\definecolor{AIreview}{RGB}{25,70,145}
+\newcommand{\AIadd}[1]{{\color{AIadded}#1}}
+\newcommand{\AIremove}[1]{{\color{AIreview}\sout{#1}}}
+\newcommand{\AIreplace}[2]{\AIremove{#1}\AIadd{#2}}
+\newenvironment{AIaddition}[1]
+  {\par\begingroup\color{AIadded}\noindent
+   \textbf{AI addition: #1.}\par\smallskip\ignorespaces}
+  {\par\endgroup}
+\newcommand{\AIcomment}[2]{%
+  \par\smallskip\noindent
+  \fcolorbox{AIreview}{AIreview!4}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+      \normalfont\small\color{AIreview}\textbf{AI comment #1.} #2}}%
+  \par\smallskip}
+\newcommand{\AIreviewlegend}{%
+  \AIcomment{Review guide}{\textbf{Suggested changes.} Red text is proposed
+  wording, not an accepted correction. Blue strike-through preserves the
+  original text. Accept or revise the proposal before removing its wrappers.
+  \textbf{Comments and action.} Every box states its status: \emph{Proposed
+  change} awaits author acceptance; \emph{Action required} needs a proof repair
+  or drafting decision; \emph{Information} requests no manuscript edit;
+  \emph{Optional refinement} may be omitted. A different verified proof does
+  not close a gap in the printed proof.
+  \textbf{Who reviews.} Johanna can edit wording and integrate agreed changes;
+  Max checks mathematical gaps and the correspondence audit. Authors decide
+  the geometric proof route. Follow \emph{Mathematical proof} links for the
+  readable comparison; no Lean code is needed. Resolve a box only after its
+  stated task is done, by deleting its \texttt{\string\AIcomment} command.}}
+
+% Lean cross-references (AI addition, 2026-09-30 paper--Lean audit).
+% Each formalized result is followed by \formalref{...}; every \leandecl or
+% \leanlib names one declaration by file, line and fully qualified name at
+% the pinned revisions below. The review generator in itpplasma/stafford38-formal
+% (tools/paper_lean_audit) checks every such reference against the Lean
+% source, so a stale file, line or name fails its build.
+% Accepting: keep this file and the \formalref lines, or delete both.
+\newcommand{\leanrepo}{https://github.com/itpplasma/stafford38-formal/blob/591d4e11e3971577be169e428ac73c44a4ac8a32}
+\newcommand{\leanlibrepo}{https://github.com/itpplasma/algebraic-analysis/blob/4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8}
+% \leandecl{file}{line}{Fully.Qualified.Name}: declaration in stafford38-formal.
+\newcommand{\leandecl}[3]{\href{\leanrepo/#1\#L#2}{\nolinkurl{#3}}}
+% \leanlib{file}{line}{Fully.Qualified.Name}: declaration in AlgebraicAnalysis.
+\newcommand{\leanlib}[3]{\href{\leanlibrepo/#1\#L#2}{\nolinkurl{#3}}}
+% The human-readable paper displays only substantive mathematical qualifications.
+% Full file paths and declaration names remain in source and in the supplement.
+\newif\ifshowleandetails
+\showleandetailsfalse
+% \formalref[relation to the printed statement]{declarations}
+\newcommand{\formalref}[2][]{%
+  \ifshowleandetails
+    \par\smallskip\noindent
+    {\small\textsf{Lean}\if\relax\detokenize{#1}\relax\else\ (#1)\fi: #2}%
+    \par\smallskip
+  \else
+    \if\relax\detokenize{#1}\relax\else
+      \par\smallskip\noindent{\small\textsf{Formal comparison:} #1}%
+      \par\smallskip
+    \fi
+  \fi}
