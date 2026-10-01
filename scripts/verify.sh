@@ -81,6 +81,7 @@ lake build "${retained_modules[@]}" \
   Solution FixedSourceSolution CorollaryChallenge \
   >"$log_dir/build.log" 2>&1
 
+lake env lean --trust=0 tests/PaperAdaptersConsumer.lean >"$log_dir/paper-adapters.log" 2>&1
 bash scripts/check-consumers.sh
 bash scripts/check-paper-declarations.sh
 

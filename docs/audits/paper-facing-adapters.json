@@ -1,0 +1,15 @@
+{
+  "base_commit": "a8eaabb37dbf333276f78560b6386663d5a268ed",
+  "tracked_patch_sha256": "8ed77b6e723d1494b5042bf8c2746f0a280ca320fd85bb6d79769e27cd377522",
+  "source_sha256": {
+    "Stafford38/TorsionCyclicity.lean": "fc220fdad03ff1e48af36de59daed1d5022ab7ea53f6ea3f7f54b28695a6526c",
+    "Stafford38/Weyl/FilteredScalarLifting.lean": "30dc3a66ebede3be185386b5aee690fd58d7d2dbfb761c1f5fa23a2af87cd0aa",
+    "scripts/verify.sh": "d03b2200c69971ce2d0f2f9050d0cf7606c0a443f3a2d79962d7cd51a682e6cc",
+    "tests/PaperAdaptersConsumer.lean": "518a2ad7fe4df5dd4a65b6fe81e8464d0bd92330eaaa625a1f7e34ecda561ffe"
+  },
+  "result": "passed",
+  "scope": "Two paper-facing adapters; existing terminal statements unchanged; no certification of printed tangent-lattice construction",
+  "verifier": "scripts/verify.sh",
+  "output": "pins: Lean 4.33.0, Mathlib db584cd6d46c92f209a44c0f1c829460d327499d, AlgebraicAnalysis 4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8\nIndependent literal consumers: 17 axiom reports passed\nPaper-linked declarations: 101 exact names and axiom reports passed\nsource audit: one deliberate placeholder in each Challenge; neither Solution imports either Challenge; no other sorry, admit, or axiom declaration\naxiom audit: 36 declarations use only ['Classical.choice', 'Quot.sound', 'propext']\nChallenge: audited 3511 loaded modules\nCorollaryChallenge: audited 3511 loaded modules\nSolution: audited 10785 loaded modules\nFixedSourceChallenge: audited 3511 loaded modules\nFixedSourceSolution: audited 10786 loaded modules\nStafford38 verification passed\n",
+  "consumer_output": "'Stafford38.TorsionCyclicity.exists_span_adjusted_pair' depends on axioms: [propext, Quot.sound]\n'Stafford38.Weyl.FilteredScalarLifting.presentedWeylScalarExtension_map_orderInitialIdeal_eq' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n"
+}

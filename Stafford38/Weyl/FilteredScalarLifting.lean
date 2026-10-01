@@ -441,6 +441,22 @@ theorem target_orderInitialIdeal_le_map_source_orderInitialIdeal
     rw [map_smul, Algebra.smul_def]
     exact Ideal.mul_mem_left M _ (SetLike.mem_coe.mp ha)
 
+/-- Paper-facing equality: symbols of the canonical right ideal commute
+with field extension. Both filtered inclusions have already been proved. -/
+theorem presentedWeylScalarExtension_map_orderInitialIdeal_eq
+    (n N : Nat) (d : PresentedWeyl k (n + 1)) :
+    (orderInitialIdeal k
+        (canonicalRightIdeal (presentedCoordinate k n) d N)).map
+        (symbolScalarExtension (k := k) (K := K) (n + 1)).toRingHom =
+      orderInitialIdeal K
+        (canonicalRightIdeal (presentedCoordinate K n)
+          (presentedWeylScalarExtension (k := k) (K := K) (n + 1) d) N) := by
+  exact le_antisymm
+    (presentedWeylScalarExtension_map_orderInitialIdeal_le
+      (k := k) (K := K) n N d)
+    (target_orderInitialIdeal_le_map_source_orderInitialIdeal
+      (k := k) (K := K) n N d)
+
 /-- Flat filtered lifting discharges the exact algebraic-closure descent
 contract isolated by `PresentedScalarExtension`. -/
 theorem filteredInitialLifting : FilteredInitialLifting.{u} := by

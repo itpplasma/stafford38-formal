@@ -24,13 +24,13 @@ variable {A : Type u} {M : Type v} [Ring A]
 
 /-- Under the two-generator identity, any two elements of a torsion right
 module generate the same submodule as one element. -/
-theorem exists_span_singleton_eq_span_pair
+theorem exists_span_adjusted_pair
     (hmul : ∀ a b : A, a ≠ 0 → b ≠ 0 → a * b ≠ 0)
     (hone : ∀ d : A, d ≠ 0 →
       ∃ F R S : A, (1 : A) = d * R + F * d * S)
     (htorsion : IsRightTorsion (A := A) (M := M)) (x y : M) :
-    ∃ z : M,
-      Submodule.span Aᵐᵒᵖ ({z} : Set M) =
+    ∃ F : A,
+      Submodule.span Aᵐᵒᵖ ({x - (MulOpposite.op F : Aᵐᵒᵖ) • y} : Set M) =
         Submodule.span Aᵐᵒᵖ ({x, y} : Set M) := by
   classical
   obtain ⟨d₂, hd₂, hdy⟩ := htorsion y
@@ -119,7 +119,20 @@ theorem exists_span_singleton_eq_span_pair
     rcases hz with rfl | rfl
     · exact hxG
     · exact hyG
-  exact ⟨g, le_antisymm hGP hPG⟩
+  exact ⟨F, le_antisymm hGP hPG⟩
+
+/-- The adjusted generator has the paper's explicit form `x - yF`.
+Forgetting its coefficient recovers the original cyclicity interface. -/
+theorem exists_span_singleton_eq_span_pair
+    (hmul : ∀ a b : A, a ≠ 0 → b ≠ 0 → a * b ≠ 0)
+    (hone : ∀ d : A, d ≠ 0 →
+      ∃ F R S : A, (1 : A) = d * R + F * d * S)
+    (htorsion : IsRightTorsion (A := A) (M := M)) (x y : M) :
+    ∃ z : M,
+      Submodule.span Aᵐᵒᵖ ({z} : Set M) =
+        Submodule.span Aᵐᵒᵖ ({x, y} : Set M) := by
+  obtain ⟨F, hF⟩ := exists_span_adjusted_pair hmul hone htorsion x y
+  exact ⟨x - (MulOpposite.op F : Aᵐᵒᵖ) • y, hF⟩
 
 private theorem finite_span_is_cyclic
     (hmul : ∀ a b : A, a ≠ 0 → b ≠ 0 → a * b ≠ 0)
@@ -172,6 +185,7 @@ theorem weyl_isCyclic_of_isRightTorsion
     (Stafford38.universalStatement (k := k) n)
     hM
 
+#print axioms exists_span_adjusted_pair
 #print axioms exists_span_singleton_eq_span_pair
 #print axioms weyl_isCyclic_of_isRightTorsion
 
