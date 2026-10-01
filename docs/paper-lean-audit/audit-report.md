@@ -80,3 +80,14 @@ requires a pin refresh and another map check; human review remains a separate
 release gate.
 
 Archive citation update: Stafford38 v1.2.0 DOI 10.5281/zenodo.23072839; Global Stafford v1.0.6 DOI 10.5281/zenodo.22669444; AlgebraicAnalysis v0.3.2 DOI 10.5281/zenodo.22710109. The proof dependency remains v0.3.0, DOI 10.5281/zenodo.22666517. Final manuscript compilation preserved all 62 existing label numbers; source rendering and declaration checks are rerun against the updated pins.
+
+
+## Lean panel display repair
+
+The current generator displays named theorem propositions, complete pattern-match
+definitions, and expandable supporting/proof-step signatures. Convention 3.2 is
+marked partial because its two definitions cover only the ambient ring and grading;
+DUP-01 is now linked to its historical editorial issue. Missing named definitions
+and truncated excerpts are visible. Both repository copies pass 37 tests with no
+skips; the interactive abstract and convention were also checked in Chromium.
+The immutable release verification receipt retains its original 34-test count.

@@ -251,3 +251,30 @@ test('review hashes cover card metadata and proof bodies referenced only from a 
   html = fs.readFileSync(f.htmlPath, 'utf8');
   assert.match(html, /<span class="muted">partial<\/span>/);
 });
+
+test('theorem cards show named propositions and full proof-step signatures', (t) => {
+  const f = fixture(t);
+  fs.writeFileSync(path.join(f.formal.repo, 'Target.lean'), [
+    'namespace Foo',
+    'def Statement : Prop :=',
+    '  ∀ n : Nat, ∃ m : Nat, m = n + 1',
+    '',
+    'theorem target : Statement := by',
+    '  intro n',
+    '  exact ⟨n + 1, rfl⟩',
+    'end Foo',
+  ].join('\n'));
+  git(f.formal.repo, 'add', 'Target.lean');
+  execFileSync('git', ['-C', f.formal.repo, '-c', 'user.name=Audit Test', '-c', 'user.email=audit@example.test', 'commit', '-qm', 'named proposition fixture']);
+  f.map.sources.formal.commit = git(f.formal.repo, 'rev-parse', 'HEAD');
+  f.map.items[0].lean = [{ file: 'Target.lean', name: 'Foo.target', line: 5, role: 'statement' }];
+  const result = f.run();
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  const html = fs.readFileSync(f.htmlPath, 'utf8');
+  assert.match(html, /Definitions used in theorem statements/);
+  assert.match(html, /∀<\/span> n : Nat, <span class="lo">∃<\/span> m : Nat, m = n \+ 1/);
+  assert.match(html, /Target\.lean#L2-L3/);
+  assert.match(html, /Lean declarations for the proof steps/);
+  assert.match(html, /theorem<\/span> helper : True :=/);
+  assert.doesNotMatch(html, /intro n|exact ⟨n \+ 1/);
+});

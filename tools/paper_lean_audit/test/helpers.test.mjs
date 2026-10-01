@@ -1,7 +1,7 @@
 // Behavioural tests for the source helpers with hand-written oracles.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { findDeclaration, extractStatement, namespaceAt } from '../lean.mjs';
+import { findDeclaration, extractStatement, namespaceAt, namedResultType, definitionNames } from '../lean.mjs';
 import { TexRenderer, stripComments, readGroup } from '../texhtml.mjs';
 
 const lean = `namespace A.B
@@ -118,4 +118,18 @@ test('statement extraction does not stop at assignment text inside comments', ()
   const st = extractStatement(src, 1);
   assert.match(st.text, /commentSafe[\s\S]*-\/ :=$/);
   assert.doesNotMatch(st.text, /\n\s*trivial$/);
+});
+
+test('pattern-matching definitions retain all branches and stop at scope commands', () => {
+  const lines = ['def weight : Sum Nat Nat → Nat', '  | Sum.inl _ => 0', '  | Sum.inr _ => 1', 'end Example'];
+  assert.equal(extractStatement(lines, 1, 45, true).text, lines.slice(0, 3).join('\n'));
+  assert.equal(extractStatement(lines, 1, 2, true).truncated, true);
+});
+
+test('named result detection respects binders, universes and comments', () => {
+  const lines = ['theorem target (x : Nat) (h : x = 0) : Fixed.Statement.{u} := by', '  exact proof'];
+  assert.equal(namedResultType(lines, 1), 'Fixed.Statement');
+  assert.equal(namedResultType(['theorem explicit : ∀ n : Nat, n = n := by'], 1), null);
+  assert.equal(namedResultType(['theorem equality : Ring.value = 0 := by'], 1), null);
+  assert.deepEqual(definitionNames('namespace A\nprivate def hidden : Prop := True\ndef Statement : Prop := True\nend A'), [{ name: 'A.Statement', line: 3 }]);
 });

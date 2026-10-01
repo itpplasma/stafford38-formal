@@ -44,3 +44,20 @@ prose. The formal repository owns mathematical declarations and release
 verification. The research repository retains the discovery history. The
 formal release includes a copy of this audit generator and its pinned map;
 correspondence updates after DOI assignment do not change the released proofs.
+
+
+## What the Lean panel shows
+
+Theorems and lemmas show their full signatures, with proof bodies linked at the
+pinned revision. Definitions include their bodies and pattern-match branches.
+Named result predicates are resolved through enclosing namespaces in mapped
+source files; `expands` can list exact repository/file/name references when a
+predicate is imported under another namespace. Their source excerpts appear
+beside the theorem, and enter its review hash and reverse index. Unresolved
+named results and truncated excerpts are explicitly marked. This source view
+is not a kernel-generated semantic unfolding.
+
+Each card explains whether it displays a theorem, notation/definitions only,
+or no mapped declaration. Supporting and proof-step signatures can be opened
+without leaving the card. Historical issue status is retained; an AI comment
+addressing an issue is linked without treating it as human approval.

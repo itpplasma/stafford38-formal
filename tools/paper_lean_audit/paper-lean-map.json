@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": "2026-10-01.2",
+ "version": "2026-10-01.3",
  "title": "Stafford 3.8: paper \u2194 Lean correspondence audit",
  "subtitle": "Current annotated manuscript mapped to the signed formal release and pinned dependencies.",
  "sources": {
@@ -240,20 +240,49 @@
    ],
    "statement_relation": "exact",
    "route_relation": "n/a",
-   "correspondence": null,
+   "correspondence": "The two theorems prove the universal identity and the exact Bernstein-degree strengthening. The displayed proposition definitions spell out the fields, quantifiers and coefficients; the coordinate refinement is for positive Weyl rank.",
    "route": null,
    "lean": [
     {
      "file": "Stafford38/FoundationClosure.lean",
      "role": "statement",
      "name": "Stafford38.universalStatement",
-     "line": 53
+     "line": 53,
+     "expands": [
+      {
+       "file": "Stafford38/Statement.lean",
+       "name": "Stafford38.UniversalStatement",
+       "line": 19
+      },
+      {
+       "file": "Stafford38/Statement.lean",
+       "name": "Stafford38.WeylAlg",
+       "line": 15
+      }
+     ]
     },
     {
      "file": "Stafford38/FoundationClosure.lean",
      "role": "statement",
      "name": "Stafford38.universalFixedSourceStatement",
-     "line": 57
+     "line": 57,
+     "expands": [
+      {
+       "file": "Stafford38/FixedSourceStatement.lean",
+       "name": "Stafford38.FixedSource.UniversalFixedSourceStatement",
+       "line": 36
+      },
+      {
+       "file": "Stafford38/FixedSourceStatement.lean",
+       "name": "Stafford38.FixedSource.IsLinearWeylCoordinate",
+       "line": 23
+      },
+      {
+       "file": "Stafford38/FixedSourceStatement.lean",
+       "name": "Stafford38.FixedSource.bernsteinDegree",
+       "line": 18
+      }
+     ]
     }
    ],
    "issues": [
@@ -340,6 +369,18 @@
      "role": "main-proof",
      "name": "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
      "line": 37
+    },
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "name": "Stafford38.universalStatement",
+     "line": 53,
+     "role": "proved statement"
+    },
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "name": "Stafford38.universalFixedSourceStatement",
+     "line": 57,
+     "role": "proved statement"
     }
    ],
    "issues": [
@@ -394,7 +435,15 @@
      "file": "GlobalStafford/Assembly/Closure.lean",
      "role": "statement",
      "name": "GlobalStafford.universalStatement",
-     "line": 221
+     "line": 221,
+     "expands": [
+      {
+       "repo": "global",
+       "file": "GlobalStafford/Assembly/ChallengeTransport.lean",
+       "name": "GlobalStaffordChallenge.UniversalStatement",
+       "line": 66
+      }
+     ]
     }
    ],
    "issues": [],
@@ -599,9 +648,9 @@
     256,
     268
    ],
-   "statement_relation": "exact",
+   "statement_relation": "partial",
    "route_relation": "n/a",
-   "correspondence": null,
+   "correspondence": "The links cover the ambient cotangent ring and grading only. There is no single mapped Lean declaration for all the geometric notation in this convention.",
    "route": null,
    "lean": [
     {
@@ -622,10 +671,11 @@
      "severity": "editorial",
      "summary": "H, its conormal and pi defined twice",
      "fix": "Delete Convention 3.2 or the duplicate paragraph.",
-     "aicomment": null,
+     "aicomment": "DUP-01",
      "auditor": "A",
      "id": "S3-03",
-     "status": "historical finding; recheck against current excerpt"
+     "status": "historical finding; recheck against current excerpt",
+     "aicomment_verdict": "red correction present; human decision pending"
     }
    ],
    "depends_on": [],
@@ -635,7 +685,8 @@
    "auditors": [
     "A"
    ],
-   "label": "conv:H"
+   "label": "conv:H",
+   "lean_explanation": "Notation convention, not a theorem. SymbolRing models the cotangent coordinate ring; fibreWeight gives the base/fibre grading. These definitions alone do not identify H, its conormal or the projection pi."
   },
   {
    "id": "cotangent",

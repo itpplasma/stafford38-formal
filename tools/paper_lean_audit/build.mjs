@@ -13,7 +13,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { TexRenderer, escapeHtml, stripComments } from './texhtml.mjs';
-import { findDeclaration, extractStatement, highlightLean } from './lean.mjs';
+import { findDeclaration, extractStatement, highlightLean, namedResultType, definitionNames } from './lean.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const argv = process.argv.slice(2);
@@ -269,18 +269,20 @@ function resolveLean(ref, userId) {
       errors.push(`Lean: ${ref.name} not found in ${repoKey}:${ref.file} (${userId})`);
       return info;
     }
-   if (!found.exact) errors.push(`Lean: ${ref.name} resolves as ${found.qualified} in ${ref.file}:${found.line} (${userId})`);
+    if (!found.exact) errors.push(`Lean: ${ref.name} resolves as ${found.qualified} in ${ref.file}:${found.line} (${userId})`);
     const explicitlyInternal = ref.visibility === 'module-private' && found.exported === false
       && ['main-proof', 'helper', 'verification provenance'].includes(ref.role);
     if (found.exported === false && !explicitlyInternal) {
       errors.push('Lean: ' + ref.name + ' is ' + found.visibility + '; add visibility:module-private only for a local proof/helper link, not a public FQN claim (' + userId + ')');
     }
-   if (ref.line && ref.line !== found.line) warnings.push(`Lean: ${ref.name} is at line ${found.line}, map says ${ref.line}`);
-    const st = extractStatement(found.lines, found.line, 45, ['def', 'abbrev', 'structure', 'class', 'inductive'].includes(found.keyword));
+    if (ref.line && ref.line !== found.line) warnings.push(`Lean: ${ref.name} is at line ${found.line}, map says ${ref.line}`);
+    const st = extractStatement(found.lines, found.line, 160, ['def', 'abbrev', 'structure', 'class', 'inductive'].includes(found.keyword));
     info = { ...info, ok: found.exact && (found.exported !== false || explicitlyInternal), exported: found.exported,
       private: found.exported === false,
       visibility: found.visibility, line: found.line, qualified: found.qualified, keyword: found.keyword,
-      statement: st.text, stLines: [st.startLine, st.endLine], url: ghBlob(repoKey, ref.file, st.startLine, st.endLine) };
+      statement: st.text, truncated: st.truncated,
+      resultType: ['theorem', 'lemma'].includes(found.keyword) ? namedResultType(found.lines, found.line) : null,
+      stLines: [st.startLine, st.endLine], url: ghBlob(repoKey, ref.file, st.startLine, st.endLine) };
   }
   info.sourceHash = crypto.createHash('sha256').update(text).digest('hex');
   info.sourceCommit = map.sources[repoKey].commit;
@@ -288,6 +290,36 @@ function resolveLean(ref, userId) {
   if (!leanIndex.has(idx)) leanIndex.set(idx, { info, users: new Map() });
   leanIndex.get(idx).users.set(userId, ref.role ?? '');
   return info;
+}
+
+// Index definitions in the already mapped, pinned files. Never guess by a
+// short-name match: resolve through enclosing namespaces, or explicit expands.
+let definitionCatalog;
+function statementDefinitions(info, userId) {
+  if (!definitionCatalog) {
+    definitionCatalog = new Map();
+    const indexedFiles = new Set();
+    const refs = [...items.flatMap((it) => [...(it.lean ?? []), ...(it.steps ?? []).flatMap((st) => st.lean ?? [])]), ...(map.lean_only ?? []).flatMap((it) => it.lean ?? [])];
+    for (const ref of refs.flatMap((ref) => [ref, ...(ref.expands ?? [])])) {
+      const repo = ref.repo ?? 'formal', key = `${repo}:${ref.file}`;
+      if (indexedFiles.has(key)) continue;
+      indexedFiles.add(key);
+      if (!fileCache.has(key)) fileCache.set(key, gitShow(repo, ref.file));
+      const source = fileCache.get(key);
+      if (source == null) continue;
+      for (const decl of definitionNames(source)) definitionCatalog.set(`${repo}:${decl.name}`, { ...decl, repo, file: ref.file });
+    }
+  }
+  const explicit = (info.expands ?? []).map((ref) => resolveLean({ ...ref, repo: ref.repo ?? info.repo }, userId));
+  if (!info.resultType || explicit.length) return { definitions: explicit, unavailable: null };
+  const ns = info.name.split('.').slice(0, -1);
+  for (let n = ns.length; n >= 0; n--) {
+    const name = [...ns.slice(0, n), info.resultType].join('.');
+    const ref = definitionCatalog.get(`${info.repo}:${name}`);
+    if (ref) return { definitions: [resolveLean(ref, userId)], unavailable: null };
+  }
+  // Built-in logical/type constructors are already legible in the signature.
+  return { definitions: [], unavailable: /^[A-Z]/.test(info.resultType) && !['True', 'False', 'Nonempty', 'Exists', 'And', 'Or', 'Iff', 'Eq'].includes(info.resultType) ? info.resultType : null };
 }
 
 // The mapping intentionally pins an older, reviewable paper snapshot. Also
@@ -339,11 +371,11 @@ function checkManuscriptLinks(rawSource, revisionLabel) {
     const found = findDeclaration(leanSource, name, sourceLine);
     if (!found) {
       errors.push(`Paper (${revisionLabel}): \\${m[1]} ${name} not found in ${repoKey}:${file} (reference at ${paperFile}:${line})`);
-   } else if (!found.exact) {
-     errors.push(`Paper (${revisionLabel}): \\${m[1]} ${name} resolves as ${found.qualified} in ${file}:${found.line} (reference at ${paperFile}:${line})`);
+    } else if (!found.exact) {
+      errors.push(`Paper (${revisionLabel}): \\${m[1]} ${name} resolves as ${found.qualified} in ${file}:${found.line} (reference at ${paperFile}:${line})`);
     } else if (found.exported === false) {
       errors.push('Paper (' + revisionLabel + '): \\' + m[1] + ' ' + name + ' is ' + found.visibility + ' and is not exported from ' + file + ' (reference at ' + paperFile + ':' + line + ')');
-   } else if (found.line !== sourceLine) {
+    } else if (found.line !== sourceLine) {
       errors.push(`Paper (${revisionLabel}): \\${m[1]} ${name} points to ${file}:${sourceLine}, declaration is at line ${found.line} (reference at ${paperFile}:${line})`);
     } else {
       leanMacroRefs.set(leanMacroKey(m[1], file, sourceLine, name), ghBlob(repoKey, file, found.line));
@@ -411,6 +443,7 @@ function leanBlock(info, role) {
       <span class="muted"> · ${repoTag} · ${escapeHtml(info.file)}:${info.line ?? 1}</span>
       <a class="xref" href="#${anchor}" title="All paper items using this declaration">⇄</a></div>
     ${info.statement ? `<pre class="lean-src">${highlightLean(info.statement)}</pre>` : ''}
+    ${info.truncated ? '<p class="lean-note">Excerpt truncated; follow the pinned source link for the complete declaration.</p>' : ''}
     ${info.note ? `<div class="lean-note">${md(info.note)}</div>` : ''}
   </div>`;
 }
@@ -419,7 +452,7 @@ function issueBlock(iss, ownerId) {
   const sev = SEV[iss.severity] ?? { label: iss.severity, color: 'grey' };
   return `<li class="issue sev-${escapeHtml(iss.severity)}" id="issue-${slug(iss.id)}">
     <span class="badge b-${sev.color}">${escapeHtml(sev.label)}</span> <b>${escapeHtml(iss.id)}</b>
-    ${iss.aicomment ? `<span class="aic">AIcomment ${escapeHtml(iss.aicomment)}${iss.aicomment_verdict ? ' — ' + escapeHtml(iss.aicomment_verdict) : ''}</span>` : '<span class="aic new">not covered by an AIcomment</span>'}
+    ${iss.status ? `<span class="muted">${escapeHtml(iss.status)}</span> ` : ''}${iss.aicomment ? `<span class="aic">AIcomment ${escapeHtml(iss.aicomment)}${iss.aicomment_verdict ? ' — ' + escapeHtml(iss.aicomment_verdict) : ''}</span>` : '<span class="aic new">not covered by an AIcomment</span>'}
     <div>${md(iss.summary)}</div>
     ${iss.fix ? `<div class="fix"><b>Suggested fix.</b> ${md(iss.fix)}</div>` : ''}
     ${iss.lean_help ? `<div class="fix"><b>How Lean handles it.</b> ${md(iss.lean_help)}</div>` : ''}
@@ -466,6 +499,24 @@ function card(it) {
   const leanInfos = (it.lean ?? []).map((ref) => [resolveLean(ref, it.id), ref.role]);
   const stepInfos = (it.steps ?? []).map((st) => (st.lean ?? []).map((ref) => [resolveLean(ref, it.id), ref.role]));
   const allLeanInfos = [...leanInfos, ...stepInfos.flat()];
+  const expansions = allLeanInfos.map(([info]) => ({ info, ...statementDefinitions(info, it.id) }));
+  const shownNames = new Set(leanInfos.map(([info]) => leanIndexKey(info)));
+  const definitions = expansions.flatMap((entry) => entry.definitions).filter((info) => {
+    const key = leanIndexKey(info);
+    if (shownNames.has(key)) return false;
+    shownNames.add(key); return true;
+  });
+  const theoremInfos = allLeanInfos.filter(([info]) => ['theorem', 'lemma'].includes(info.keyword));
+  const primary = leanInfos.filter(([, role]) => role !== 'helper');
+  const coverage = it.lean_explanation ?? (!allLeanInfos.length
+    ? 'No Lean declaration is mapped to this passage; the paper text is not certified by this card.'
+    : allLeanInfos.every(([info]) => info.module_only)
+      ? 'Source/documentation links only: no theorem signature is mapped to this passage.'
+    : !theoremInfos.length
+      ? 'Definitions and notation only: this card does not display a proved theorem for the passage.'
+      : !primary.some(([info]) => ['theorem', 'lemma'].includes(info.keyword))
+        ? 'The main display gives statement definitions; the proved results are shown under supporting declarations or proof steps below.'
+        : 'The theorem signatures below state the proved results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.');
   const stepRows = (it.steps ?? []).map((st, k) => {
     const infos = stepInfos[k];
     return `<tr><td class="step-n">${k + 1}</td><td><b>${escapeHtml(st.title)}</b>${st.tex_lines ? ` <span class="muted">tex ${st.tex_lines[0]}–${st.tex_lines[1]}</span>` : ''}
@@ -492,21 +543,25 @@ function card(it) {
     </div>
     <div class="col formal">
       <div class="col-title">Lean <span class="muted">(stafford38-formal @ ${map.sources.formal.commit.slice(0, 7)})</span></div>
-      ${leanInfos.length ? leanInfos.filter(([, role]) => role !== 'helper').map(([info, role]) => leanBlock(info, role)).join('') : '<p class="none">No Lean counterpart.</p>'}
-      ${leanInfos.some(([, role]) => role === 'helper') ? `<div class="helpers"><div class="col-title">Supporting declarations</div><ul>${leanInfos.filter(([, role]) => role === 'helper').map(([info]) => `<li>${info.url ? `<a href="${info.url}">${escapeHtml(info.module_only ? info.file : info.name)}</a>${info.private ? ' <span class="muted">(module-private; not an exported FQN)</span>' : ''}` : `<span class="err">${escapeHtml(info.name ?? info.file)}</span>`} <span class="muted">${escapeHtml(info.file)}:${info.line ?? 1}</span></li>`).join('')}</ul></div>` : ''}
+      <p class="lean-coverage">${escapeHtml(coverage)}</p>
+      ${leanInfos.length ? leanInfos.filter(([, role]) => role !== 'helper').map(([info, role]) => leanBlock(info, role)).join('') : `<p class="none">${stepInfos.flat().length ? 'See the Lean declarations for the proof steps below.' : 'No Lean counterpart is mapped.'}</p>`}
+      ${leanInfos.some(([, role]) => role === 'helper') ? `<details class="helpers"><summary>Supporting declarations (full signatures)</summary>${leanInfos.filter(([, role]) => role === 'helper').map(([info, role]) => leanBlock(info, role)).join('')}</details>` : ''}
+      ${definitions.length ? `<div class="statement-definitions"><div class="col-title">Definitions used in theorem statements</div>${definitions.map((info) => leanBlock(info, 'statement definition')).join('')}</div>` : ''}
+      ${expansions.filter((entry) => entry.unavailable).map((entry) => `<p class="lean-note">Named result <code>${escapeHtml(entry.unavailable)}</code> is not expanded here: its definition could not be resolved in the mapped files. Follow ${entry.info.url ? `<a href="${entry.info.url}">${escapeHtml(entry.info.name)}</a>` : escapeHtml(entry.info.name)} for its source and imports.</p>`).join('')}
     </div>
   </div>
   <div class="assess">
     ${it.correspondence ? `<div class="corr"><b>Statement correspondence.</b> ${md(it.correspondence)}</div>` : ''}
     ${it.route ? `<div class="corr"><b>Proof route.</b> ${md(it.route)}</div>` : ''}
     ${stepRows ? `<table class="steps"><thead><tr><th>#</th><th>Proof step</th><th>Lean</th></tr></thead><tbody>${stepRows}</tbody></table>` : ''}
+    ${stepInfos.flat().length ? `<details class="step-statements"><summary>Lean declarations for the proof steps</summary>${stepInfos.flat().map(([info, role]) => leanBlock(info, role)).join('')}</details>` : ''}
     ${(it.issues ?? []).length ? `<div class="issues-title">Issues</div><ul class="issues">${it.issues.map((iss) => issueBlock(iss, it.id)).join('')}</ul>` : ''}
     <div class="deps">${deps ? `Uses: ${deps}` : ''}${deps && usedBy ? ' · ' : ''}${usedBy ? `Used by: ${usedBy}` : ''}</div>
   </div>
   ${(() => {
     const paperText = it.tex_lines ? texLines.slice(it.tex_lines[0] - 1, it.tex_lines[1]).join('\n') : '';
     const reviewBasis = [Object.fromEntries(Object.entries(map.sources).map(([key, source]) => [key, source.commit])),
-      it, paperText, allLeanInfos.map(([info, role]) => ({ ...info, role }))];
+      it, paperText, allLeanInfos.map(([info, role]) => ({ ...info, role })), expansions];
     const h = sha(JSON.stringify(reviewBasis));
     it._hash = h;
     return recordedBlock(it.id, h) + reviewBlock(it, h);
@@ -580,7 +635,7 @@ const issueTable = allIssues.map((iss) => `<tr class="sev-${escapeHtml(iss.sever
 const leanIndexRows = [...leanIndex.entries()].sort((a, b) => (a[1].info.file + a[0]).localeCompare(b[1].info.file + b[0])).map(([key, { info, users }]) => {
   const anchor = `lean-${slug(key)}`;
   const u = [...users.entries()].map(([id, role]) => id === 'lean-only' ? '<a href="#lean-only">Lean-only register</a>' : `<a href="#item-${slug(id)}">${escapeHtml(itemById[id]?.short ?? id)}</a>${role ? ` <span class="muted">(${escapeHtml(role)})</span>` : ''}`).join(', ');
-  return `<tr id="${anchor}"><td>${info.url ? `<a href="${info.url}">${escapeHtml(info.module_only ? info.file : info.name)}</a>${info.private ? ' <span class="muted">(private; module-local)</span>' : ''}` : escapeHtml(info.name ?? info.file)}</td><td class="muted">${escapeHtml(({ library: 'AA', global: 'GlobalStafford' })[info.repo] ?? 'S38')} ${escapeHtml(info.file)}:${info.line ?? ''}</td><td>${u}</td></tr>`;
+  return `<tr id="${anchor}"><td>${info.url ? `<a href="${info.url}">${escapeHtml(info.module_only ? info.file : info.name)}</a>${info.private ? ' <span class="muted">(module-private; not an exported FQN)</span>' : ''}` : escapeHtml(info.name ?? info.file)}</td><td class="muted">${escapeHtml(({ library: 'AA', global: 'GlobalStafford' })[info.repo] ?? 'S38')} ${escapeHtml(info.file)}:${info.line ?? ''}</td><td>${u}</td></tr>`;
 }).join('');
 
 const aicRows = (map.aicomments ?? []).map((a) => `<tr><td><a href="#aic-${slug(a.id)}">${escapeHtml(a.id)}</a></td><td>${a.line}</td><td>${escapeHtml(a.verdict)}</td><td>${md(a.note)}</td></tr>`).join('');
@@ -678,6 +733,8 @@ if (flag('--pdf')) {
   // A4 width minus the 12 mm side margins, so print layout is measured at its real width.
   const page = await browser.newPage({ viewport: { width: Math.round((210 - 24) / 25.4 * 96), height: 1100 } });
   await page.goto('file://' + htmlPath, { waitUntil: 'networkidle' });
+  // A printed audit must include the signatures hidden behind screen controls.
+  await page.evaluate(() => document.querySelectorAll('details').forEach((el) => { el.open = true; }));
   await page.emulateMedia({ media: 'print' });
   // Printing before the embedded KaTeX fonts are ready yields a PDF laid out
   // with fallback metrics (observed: silently shortened output).

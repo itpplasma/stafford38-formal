@@ -134,7 +134,7 @@ export function extractStatement(lines, declLine, maxLines = 45, withBody = fals
     const line = lines[i];
     const codeLine = codeLines[i];
     if (out.length >= maxLines) { truncated = true; break; }
-    if (i > declLine - 1 && (DECL_RE.test(codeLine) || /^\s*\|/.test(codeLine))) break;
+    if (i > declLine - 1 && (DECL_RE.test(codeLine) || /^\s*(?:end|namespace|section|variable|open|#check|#print)\b/.test(codeLine))) break;
     if (inBody) {
       // Definition bodies: stop at a blank line or at the first tactic proof.
       if (/^\s*$/.test(line)) break;
@@ -146,6 +146,10 @@ export function extractStatement(lines, declLine, maxLines = 45, withBody = fals
       if (withBody && !/:=\s*by\b/.test(codeLine.slice(cut))) { out.push(line); end = i; inBody = true; continue; }
       out.push(line.slice(0, cut + 2)); end = i; break;
     }
+    if (withBody && /^\s*\|/.test(codeLine)) {
+      inBody = true;
+      out.push(line); end = i; continue;
+    }
     if (/\bwhere\s*$/.test(codeLine)) {
       out.push(line); end = i;
       if (withBody) { inBody = true; continue; }
@@ -154,7 +158,37 @@ export function extractStatement(lines, declLine, maxLines = 45, withBody = fals
     out.push(line); end = i;
   }
   const body = [...lines.slice(start, declLine - 1), ...out];
-  return { text: body.join('\n').replace(/\s+$/, '') + (truncated ? '\n  …' : ''), startLine: start + 1, endLine: end + 1 };
+  return { text: body.join('\n').replace(/\s+$/, '') + (truncated ? '\n  …' : ''), startLine: start + 1, endLine: end + 1, truncated };
+}
+
+// A theorem whose result is a named predicate needs that predicate's source
+// beside its signature. This is source navigation, not semantic unfolding.
+export function namedResultType(lines, declLine) {
+  const signature = maskLeanCommentsAndStrings(extractStatement(lines, declLine, 160).text);
+  let depth = 0;
+  for (let i = 0; i < signature.length; i++) {
+    const c = signature[i];
+    if ('([{⟨'.includes(c)) depth++;
+    else if (')]}⟩'.includes(c)) depth--;
+    else if (c === ':' && signature[i + 1] !== '=' && depth === 0) {
+      const result = signature.slice(i + 1).replace(/:=\s*$/, '').trim();
+      // An explicit equality/implication already states its conclusion; its
+      // first term is not an opaque proposition alias.
+      if (/[=↔→∧∨∀∃≤≥≠∈∉⊆⊂]/.test(result)) return null;
+      return /^([A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*)/.exec(result)?.[1] ?? null;
+    }
+  }
+  return null;
+}
+
+export function definitionNames(text) {
+  const lines = text.split('\n');
+  return maskLeanCommentsAndStrings(text).split('\n').flatMap((line, i) => {
+    const m = DECL_RE.exec(line);
+    if (!m || !['def', 'abbrev'].includes(m[1]) || /\b(?:private|local)\b/.test(m[0])) return [];
+    const name = m[2].startsWith('_root_.') ? m[2].slice(7) : [...namespaceAt(lines, i), m[2]].join('.');
+    return [{ name, line: i + 1 }];
+  });
 }
 
 const KEYWORDS = new Set(['theorem', 'lemma', 'def', 'abbrev', 'structure', 'class', 'instance', 'inductive', 'where',
