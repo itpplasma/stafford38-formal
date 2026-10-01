@@ -1,8 +1,20 @@
 # Verification
 
-Source `cbb2396dc21c789365af6ee56b41320d9246f8f7` passed `scripts/verify.sh` and both Comparator configurations on the controller host. The report SHA-256 is `100afbd3b7653ef3f2f4a5338ba9bf9cdd9990f74d0be1b20ca116dfb8a12556`. All 20 endpoints and 14 consumers use only ordinary foundations; both NanoDa and Lean accepted both compared solutions. A separate isolated public-clone replay is pending.
+Source `f6915782d2281e3d3b51011b97ace866928053b9` passed the full verifier and
+both Comparator configurations in an isolated clean checkout fetched from
+GitHub. Compiled caches were reused; this was not a cold rebuild. All 36
+endpoint reports, 17 literal consumers and 101 paper-linked declarations use
+only ordinary foundations. Both NanoDa and Lean accepted both compared
+solutions. The audit tool passed 34 tests without skips and its complete
+snapshot rendering check passed without warnings.
 
-The old report remains in `verification/history/79188b4b-verification-results.json`. Release metadata and the dossier follow the checked source without changing Lean files, dependency pins or verifier scripts.
+The [receipt](verification-results.json), SHA-256 `a1cca54a8c46df89797b85dfa24359e3e0b640caa414bcac29c4fd3cc7a81f9d`, records exact
+commands, source pins, counts and [compressed logs](verification/f6915782/).
+Historical reports remain under `verification/history/`. Subsequent release
+metadata and the dossier do not change the tested Lean sources, dependency
+pins, Comparator configurations or verifier scripts. Independent AI reviews
+are retained in [the review index](audits/manuscript-corollaries.md); human
+mathematical review remains open.
 
 ## Logical scope
 
@@ -53,7 +65,7 @@ Generated logs and tool builds remain under `.lake/` and are excluded from Git.
 [`scripts/verify.sh`](../scripts/verify.sh) resolves every source import against
 the checkout, Lean core, or its pinned dependencies. It builds every retained
 Stafford module, the aggregate theorem and both Solutions, checks pins, scans
-for proof holes, and audits 20 exact endpoint reports under `--trust=0` (the
+for proof holes, and audits 36 exact endpoint reports under `--trust=0` (the
 historical report audited the first 19; the Mathlib-only exact-source
 statement is added in `v1.1.0`):
 
@@ -68,7 +80,9 @@ The separate [`check-consumers.sh`](../scripts/check-consumers.sh) is a required
 step of that verifier. Its fourteen axiom reports come from literal statements in
 [`CorollaryConsumer.lean`](../tests/CorollaryConsumer.lean),
 [`LocalizedDifferentialConsumer.lean`](../tests/LocalizedDifferentialConsumer.lean),
-and, from `v1.1.0`, [`FixedSourceChallengeConsumer.lean`](../tests/FixedSourceChallengeConsumer.lean)
+and [`FixedSourceChallengeConsumer.lean`](../tests/FixedSourceChallengeConsumer.lean),
+[`TorsionCyclicityConsumer.lean`](../tests/TorsionCyclicityConsumer.lean), and
+[`NoncharacteristicConsumer.lean`](../tests/NoncharacteristicConsumer.lean)
 (the historical report lists the first nine). They check the exact exponent,
 multiplication order, Ore transport, potential coefficient hypotheses, actual
 intrinsic differential-operator types, and, for the exact-source Challenge,

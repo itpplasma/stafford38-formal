@@ -12,7 +12,7 @@ order. The [exact-degree strengthening](Stafford38/FixedSourceStatement.lean)
 chooses, at positive rank, a linear Weyl coordinate `ℓ` and takes
 `F = ℓ^(bernsteinDegree k d)`. Rank zero is the field case.
 
-Release in preparation: **v1.2.0**. It adds the manuscript torsion-cyclicity
+Release: **v1.2.0**. It adds the manuscript torsion-cyclicity
 and noncharacteristic corollaries, their independent consumers, and a pinned
 [paper/Lean audit](docs/paper-lean-audit/README.md). Dependency versions are unchanged.
 
@@ -33,7 +33,7 @@ imports, project constructions, background, and prior art.
 
 ## Verification snapshot
 
-Release `v1.1.0` adds the exact-source comparison and corrects the imported proof architecture. Source commit `cbb2396dc21c789365af6ee56b41320d9246f8f7` passed the full controller-host verifier, 20 endpoint axiom reports, 14 consumer reports, and both Comparator configurations with NanoDa and Lean kernel acceptance. See the [verification record](docs/verification-results.json). A separate isolated clone replay and human review are not claimed.
+Release `v1.2.0` adds manuscript cyclicity, noncharacteristic and literal hypersurface proofs, public Euler product links, and the paper correspondence hub. Source `f6915782d2281e3d3b51011b97ace866928053b9` passed an isolated clean-checkout replay with a reused compiled cache: 36 endpoint reports, 17 consumers, 101 paper-linked declarations and both Comparator configurations accepted by NanoDa and Lean. The audit tool passed 34 tests without skips. See the [verification receipt](docs/verification-results.json) and [paper source index](docs/paper-lean-audit/source-index.md). Human review remains open.
 
 | Dependency | Exact version |
 | --- | --- |

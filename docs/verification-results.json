@@ -1,19 +1,22 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "result": "passed",
   "verified_commit": {
-    "sha": "cbb2396dc21c789365af6ee56b41320d9246f8f7"
+    "sha": "f6915782d2281e3d3b51011b97ace866928053b9"
   },
-  "verified_utc": "2026-09-08T21:15:54.204391+00:00",
+  "verified_utc": "2026-10-01T00:43:20.691295+00:00",
   "environment": {
-    "kind": "controller-host",
-    "note": "Proof/build/verifier files at cbb2396; subsequent edits are documentation only. Separate isolated public-clone replay pending and not claimed."
+    "kind": "isolated clean clone",
+    "origin": "https://github.com/itpplasma/stafford38-formal",
+    "clean_checkout": true,
+    "compiled_cache_reused": true,
+    "note": "Clone seeded from the local public-repository checkout, then fetched the published source from GitHub. Exact package pins were checked; compiled package and project caches were reused. This is a clean checkout replay, not a cold rebuild."
   },
   "commands": {
     "verify": {
       "exit": 0,
-      "sha256": "ede16e5e85045f877813f34529c6d757461461a93b69bd5049c9fe069f65bb76",
-      "output": "pins: Lean 4.33.0, Mathlib db584cd6d46c92f209a44c0f1c829460d327499d, AlgebraicAnalysis 4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8\nIndependent literal consumers: 14 axiom reports passed\nsource audit: one deliberate placeholder in each Challenge; neither Solution imports either Challenge; no other sorry, admit, or axiom declaration\naxiom audit: 20 declarations use only ['Classical.choice', 'Quot.sound', 'propext']\nChallenge: audited 3511 loaded modules\nSolution: audited 10785 loaded modules\nFixedSourceChallenge: audited 3511 loaded modules\nFixedSourceSolution: audited 10786 loaded modules\nStafford38 verification passed\n"
+      "sha256": "de73c7c270375a196247e21033bbfa16227b275714800c13f5a9690194bf9a9f",
+      "output": "pins: Lean 4.33.0, Mathlib db584cd6d46c92f209a44c0f1c829460d327499d, AlgebraicAnalysis 4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8\nIndependent literal consumers: 17 axiom reports passed\nPaper-linked declarations: 101 exact names and axiom reports passed\nsource audit: one deliberate placeholder in each Challenge; neither Solution imports either Challenge; no other sorry, admit, or axiom declaration\naxiom audit: 36 declarations use only ['Classical.choice', 'Quot.sound', 'propext']\nChallenge: audited 3511 loaded modules\nCorollaryChallenge: audited 3511 loaded modules\nSolution: audited 10785 loaded modules\nFixedSourceChallenge: audited 3511 loaded modules\nFixedSourceSolution: audited 10786 loaded modules\nStafford38 verification passed\n"
     },
     "palomar": {
       "exit": 0,
@@ -26,24 +29,77 @@
       "output": "Palomar configuration: exact theorem, three permitted axioms, NanoDa enabled\nFixedSourceChallenge: audited 3511 loaded modules\nFixedSourceSolution: audited 10786 loaded modules\nPalomar Comparator, NanoDa, and Lean kernel verification passed\n"
     }
   },
+  "counts": {
+    "build_jobs": 9034,
+    "endpoint_axiom_reports": 36,
+    "independent_consumer_reports": 17,
+    "paper_linked_declarations": 101,
+    "audit_tool_tests": 34,
+    "audit_tool_skipped_tests": 0
+  },
   "allowed_axioms": [
     "propext",
     "Classical.choice",
     "Quot.sound"
   ],
-  "axiom_reports": "'Stafford38.universalStatement' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38.universalFixedSourceStatement' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38FixedSourceChallenge.universalFixedSourceStatement' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.LocalizationCorollaries.s38_rightOreLocalization' depends on axioms: [propext, Quot.sound]\n'Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.LocalizedDifferentialCorollaries.s38_principal_open_differential' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.LocalizedDifferentialCorollaries.s38_partial_laurent_differential' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.LocalizedDifferentialCorollaries.s38_fraction_ring_differential' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Evolution.evolutionaryCorollary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38.Evolution.tensorEvolutionaryCorollary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicSets.smoothConormalClosure_minimalPrime_subset_of_isFibreConical' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralTangentLimitCriterionTest.paper_shape_consumer' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_isInvolutive' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
-  "consumer_reports": "'exactDegreePaperConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'leftPaperConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'evolutionConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'orePaperConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38.Evolution.tensorEvolutionaryCorollary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'actualLocalizedOperatorConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'actualPrincipalOpenConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'actualPartialLaurentConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'actualRationalOperatorConsumer' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38FixedSourceChallengeConsumer.unit_degree_intrinsic' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38FixedSourceChallengeConsumer.unit_degree' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38FixedSourceChallengeConsumer.coordinate_degree' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Stafford38FixedSourceChallengeConsumer.rank_one_unit_consumer' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Stafford38FixedSourceChallengeConsumer.rank_one_coordinate_consumer' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "logs": {
+    "verify": {
+      "sha256": "de73c7c270375a196247e21033bbfa16227b275714800c13f5a9690194bf9a9f",
+      "compressed_path": "docs/verification/f6915782/verify.log.gz",
+      "compressed_sha256": "861108600efe75ee1699fba0ea869233a13e220213ede1e0873f28061b5b876e"
+    },
+    "palomar": {
+      "sha256": "7810fd664da01e35062d91d1b3f21868727b337b7d439d484136b7e15dfc352e",
+      "compressed_path": "docs/verification/f6915782/palomar.log.gz",
+      "compressed_sha256": "e3856a0eb8c1cd24a5222a141808c54be0d976d07fb21ba7129470c4b72a8007"
+    },
+    "palomar-fixed-source": {
+      "sha256": "754cbbd0c1c00fa4d649ea3aa52f866d67fa2afce13fe36e94b4e48e073c8757",
+      "compressed_path": "docs/verification/f6915782/palomar-fixed-source.log.gz",
+      "compressed_sha256": "74a0dd257cd4ba8678a6e923f83d6fdacd8a4e14812ecd1a521e73c41b5cdee5"
+    },
+    "build": {
+      "sha256": "a7b7ee87b112d3054a1ba8c0a0c27639cd2a284c22950f2330692869520b2c12",
+      "compressed_path": "docs/verification/f6915782/build.log.gz",
+      "compressed_sha256": "1fd96c756ea0083367082f7b872a663c1a1c4bece7f49a1d1d76e74283e26819"
+    },
+    "axioms": {
+      "sha256": "f10e134431c0ef3ab67f7aab88ca69a8c4bf26f998cf89ceaab0352d73cf5f7f",
+      "compressed_path": "docs/verification/f6915782/axioms.log.gz",
+      "compressed_sha256": "2510058685f3ff2cc29c57e007eb02f0abfb7785e28775f14da219405a16dab2"
+    },
+    "independent-consumers": {
+      "sha256": "0c79014eb69e9dc90088c466005f6b9df66085e4a010929807829e721523f47d",
+      "compressed_path": "docs/verification/f6915782/independent-consumers.log.gz",
+      "compressed_sha256": "659120eaa965d62cdfcb8d17cf7201b5c60f702970ed0b3a52e287f969380ca5"
+    },
+    "paper-declarations": {
+      "sha256": "7bfdbc105f88b19257eee135e471bdb290513037dd407f1416a3a6f2ed0fa96b",
+      "compressed_path": "docs/verification/f6915782/paper-declarations.log.gz",
+      "compressed_sha256": "19f59511e19918c19da95c48ea6929b8dd4dc5047340efc22d99aeb99226b97d"
+    },
+    "comparator": {
+      "sha256": "207e5587a8b52be298f0ed4da068d3610412ce28fd76ab4107e31c59060748cf",
+      "compressed_path": "docs/verification/f6915782/comparator.log.gz",
+      "compressed_sha256": "c7b3286a34272fb304ecdb984d2bb6c06d789ad9edbf261d18a3743d01d71c9d"
+    },
+    "comparator-fixed-source": {
+      "sha256": "a022bf9379da92b9a9cfd6bc5ec01812896151465135bf4c936f858a6853221d",
+      "compressed_path": "docs/verification/f6915782/comparator-fixed-source.log.gz",
+      "compressed_sha256": "2099d682721e374b4a02298ec3c67e0d332df69eef48c0e8f46f373ff7571db2"
+    }
+  },
   "comparator_evidence": {
-    "comparator.log": {
-      "sha256": "0ff00cda3db436f1db41bf2c9b01d3a0831ed23bc412d0eb8b4dc137267d151f",
+    "comparator": {
+      "sha256": "207e5587a8b52be298f0ed4da068d3610412ce28fd76ab4107e31c59060748cf",
       "acceptance": [
         "nanoda kernel accepts the solution",
         "Lean default kernel accepts the solution",
         "Your solution is okay!"
       ]
     },
-    "comparator-fixed-source.log": {
-      "sha256": "62fa01873d846ba7163eacb13d6106cd25bf9257d7636417640edd69d11d2356",
+    "comparator-fixed-source": {
+      "sha256": "a022bf9379da92b9a9cfd6bc5ec01812896151465135bf4c936f858a6853221d",
       "acceptance": [
         "nanoda kernel accepts the solution",
         "Lean default kernel accepts the solution",
@@ -172,5 +228,13 @@
       "inherited": true,
       "configFile": "lakefile.toml"
     }
-  ]
+  ],
+  "paper_correspondence": {
+    "paper_commit": "385f968875c02dfc8357c36b1813c6fbc7434609",
+    "public_snapshot_commit": "72190b62dc52186024cf87a2c52edd4bb2e74a1e",
+    "formal_declaration_commit": "475881e326f456c497afdc8a8420e84c550a45ba",
+    "map": "tools/paper_lean_audit/paper-lean-map.json"
+  },
+  "registry_scope": "Existing Palomar entry PALOMAR-2026-09-05-000007 v2 certifies its named headline theorem and source. New auxiliary declarations and local Comparator replays do not create a new registry record.",
+  "human_review": "Open; independent AI review and kernel checks do not constitute human manuscript approval."
 }
