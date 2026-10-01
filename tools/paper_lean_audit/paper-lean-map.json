@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": "2026-10-01.8",
+ "version": "2026-10-01.9",
  "title": "Stafford 3.8: paper \u2194 Lean correspondence audit",
  "subtitle": "Current annotated manuscript mapped to the signed formal release and pinned dependencies.",
  "sources": {
@@ -1429,7 +1429,11 @@
     "D"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-01)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-01) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the [mathematical account (COMP-01)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-01) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
+   "publication_tex_lines": [
+    399,
+    408
+   ]
   },
   {
    "id": "monic-scalar",
@@ -1640,7 +1644,11 @@
     "A"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-02)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-02) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the [mathematical account (COMP-02)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-02) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
+   "publication_tex_lines": [
+    472,
+    476
+   ]
   },
   {
    "id": "prop:monic",
@@ -1749,7 +1757,11 @@
     "A"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-03)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-03) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the [mathematical account (COMP-03)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-03) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
+   "publication_tex_lines": [
+    513,
+    521
+   ]
   },
   {
    "id": "reduction-k0",
@@ -2363,7 +2375,11 @@
     "B"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-04)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-04) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the [mathematical account (COMP-04)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-04) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
+   "publication_tex_lines": [
+    681,
+    685
+   ]
   },
   {
    "id": "prop:x-surjective",
@@ -2450,7 +2466,11 @@
     "B"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-05)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-05) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the [mathematical account (COMP-05)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-05) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
+   "publication_tex_lines": [
+    709,
+    711
+   ]
   },
   {
    "id": "vc-setup",
@@ -2985,7 +3005,11 @@
     "C"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-07)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-07) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the [mathematical account (COMP-07)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-07) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
+   "publication_tex_lines": [
+    895,
+    901
+   ]
   },
   {
    "id": "lem:Uzero",
@@ -3229,7 +3253,11 @@
     "C"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-08)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-08) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the [mathematical account (COMP-08)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-08) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
+   "publication_tex_lines": [
+    1011,
+    1019
+   ]
   },
   {
    "id": "dir-def",
@@ -3984,7 +4012,11 @@
     "D"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-13)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-13) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the [mathematical account (COMP-13)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-13) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
+   "publication_tex_lines": [
+    1283,
+    1291
+   ]
   },
   {
    "id": "proof-main",
@@ -4455,7 +4487,11 @@
    ],
    "label": "cor:cyclic",
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-16)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-16) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the [mathematical account (COMP-16)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-16) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
+   "publication_tex_lines": [
+    1464,
+    1466
+   ]
   },
   {
    "id": "outlook",
