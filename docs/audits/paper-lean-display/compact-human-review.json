@@ -1,0 +1,25 @@
+{
+  "paper_commit": "6f98f5d07d71f9e169cb2e65b0eca0258b7df0e5",
+  "public_snapshot_commit": "50c526b51205c285409bf0c65e63461d4824f3b6",
+  "human_pdf_pages_before": 46,
+  "human_pdf_pages_after": 35,
+  "technical_pdf_pages": 14,
+  "moved_ai_blocks": 13,
+  "retained_mathematical_ai_blocks": 3,
+  "original_author_prose": "preserved; compared after stripping AI additions and retaining original replacement/removal wording",
+  "numbered_main_labels_preserved": 62,
+  "technical_step_labels_moved": 18,
+  "source_declarations_retained": 101,
+  "paper_declaration_kernel_check": "101 exact names passed, only standard axioms",
+  "audit_checks": "both copies passed; 55 ranges and current PDF pages",
+  "tool_tests_passed": 48,
+  "human_pdf_declaration_names": 0,
+  "human_pdf_lean_reference_lines": 0,
+  "human_acceptance": "pending; comments and proposed corrections remain visible",
+  "paper_files": {
+    "human_readable_main.tex": "16ad2e01168f5ed2203deff9f5b7d2fee17280563f84f2ccd783466c4aca2fe0",
+    "lean_refs.tex": "2831d8279f7aab7fe3aa51fe2a8021bf2b2140c55623f3e364e219d8dec13d74",
+    "lean_proof_details.tex": "4f8e742556fa5187507dbbabd69fb304ff85b9b152589eed5120be79243310e8",
+    "lean_proof_details_main.tex": "78ec53cfcf143cc2726bace4c78e0eb1c166622e169cc91fbf687b7b138b7185"
+  }
+}
