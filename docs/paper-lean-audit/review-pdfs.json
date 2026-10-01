@@ -1,9 +1,9 @@
 {
-  "paper_commit": "624bb81fd3f60cf52ac37a6f12f9eb5a3d0bfb20",
+  "paper_commit": "deb1a792db619eb0494a2a9c3445efe2ba0ab2cc",
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
   "pdfs": {
-    "human_readable_main.pdf": "3fb6dc52d0ea6eb700f9f1d5a4d9c71046905a2a5450ace0e7659df57a76dcf2",
-    "lean_proof_details.pdf": "49e47064d52ddc5b1e7fe49a1d0acac5901cb9a162601efe955c57534fd645e5"
+    "human_readable_main.pdf": "ddea3c66a4f0f7577f6a092509611e3222696becb0ad13eed3bae3d4718293fc",
+    "lean_proof_details.pdf": "3591f3c8b4b1c4abe1f086f7c0e529173c2971f8b64680f70e657191d81118d0"
   },
   "source_files": [
     "human_readable_main.tex",
@@ -24,5 +24,5 @@
     "lean_proof_details_main.tex"
   ],
   "human_acceptance": "pending; red text remains proposed; action boxes remain unresolved",
-  "verification": "Author-prose preservation passed; both TeX targets compile without unresolved references; proof sources unchanged."
+  "verification": "Author prose preserved; concurrent Overleaf author-list edit merged; both TeX targets compile. Two new Lean paper-facing adapters pass full verifier and independent consumers."
 }
