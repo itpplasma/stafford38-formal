@@ -1,0 +1,840 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\CharVar}{\operatorname{Char}}
+
+\title{Draft v1-2: Stafford's conjecture for Weyl algebras}
+\author{Christopher Albert et al.}
+\address{Graz University of Technology}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+Let $A_n(k)$ be the Weyl algebra over a field of characteristic zero.  We prove
+that every nonzero $d\in A_n(k)$ admits $F,R,S\in A_n(k)$ such that
+$1=dR+FdS$.  Thus Stafford's Conjecture 3.8 holds.  The multiplier $F$ may be
+chosen as $x^N$, after a linear symplectic change of variables, where $N$ is
+the Bernstein degree of $d$.  The proof studies a cyclic quotient through its
+characteristic variety and excludes nonzero quotients by conormal geometry at
+infinity.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Let $k$ be a field of characteristic zero, and let
+\[
+ A_n(k)=k\langle x_1,\ldots,x_n,\partial_1,\ldots,\partial_n\rangle
+\]
+be the $n$th Weyl algebra, with
+$[\partial_i,x_j]=\delta_{ij}$ and all other pairs of standard generators
+commuting. All ideals of Weyl algebras in this paper are right ideals. The
+ideals $I(Y)$ and $I(W)$ used below are commutative vanishing ideals in
+coordinate rings.
+
+Stafford asked in 1978 whether, for every nonzero $d\in A_n(k)$, one can find
+$F\in A_n(k)$ such that
+\[
+ A_n(k)=dA_n(k)+FdA_n(k).
+ \tag{1.1}\label{eq:stafford-ideal}
+\]
+This is the intended nonzero form of Conjecture~3.8 of
+\cite[p.~438]{Stafford1978}.\footnote{The printed conjecture omits the
+necessary condition $d\ne0$; the discussion immediately following it uses
+this condition.} Bellamy's 2026 survey
+formulated the weaker statement that every finitely generated torsion
+$A_n$-module is cyclic, noted that Stafford's formulation is slightly
+stronger, and reported the cyclicity problem as open
+\cite[Section~3, Conjecture~3.4]{Bellamy2026}.
+
+Every statement of this paper, including
+Theorems~\ref{thm:asymptotic-conormal} and \ref{thm:coisotropic-exclusion}
+at the generality stated, is formalized and verified in Lean~4 against
+Mathlib, with no axiom beyond Lean's three standard ones. The formal
+development is at \url{https://github.com/itpplasma/stafford38-formal}; the
+accompanying proof-map supplement names the Lean declaration for each step.
+
+\begin{theorem}\label{thm:main}
+For every characteristic-zero field $k$, every $n\geq 1$, and every nonzero
+$d\in A_n(k)$, there exist $F,R,S\in A_n(k)$ such that
+\[
+ 1=dR+FdS.
+\]
+Moreover, one may choose $F=\ell^{\deg_B d}$ for a linear Weyl coordinate
+$\ell$, obtained by an invertible linear symplectic change of generators.
+\end{theorem}
+\textit{Proof sketch:}
+Give each standard generator Bernstein degree one and
+let $N=\deg_B d$.  A linear symplectic change of variables makes $d$ monic of
+degree $N$ in a momentum $p$, whose conjugate coordinate we denote by $x$.  It is
+enough to prove that the cyclic right module
+\[
+ Q=A_n/(dA_n+x^NdA_n).
+ \tag{1.2}\label{eq:Q-intro}
+\]
+vanishes.  An Euler identity makes $x$ surjective on $Q$, while monicity makes
+$H=\{x=0\}$ noncharacteristic and places $\CharVar(Q)$ in a hypersurface
+$V(P)$ with $P(dx)\ne0$.  A filtered-page length argument shows that
+$\CharVar(Q)$ has no point over $H$.  Gabber's theorem and the conormal
+argument of Sections 4 and 5 then force $\CharVar(Q)$ to be empty.  The same
+argument gives the more precise identity $A_n=dA_n+x^NdA_n$ in the chosen
+symplectic coordinates.
+
+\section{The monic quotient and the Euler identity}
+
+Fix a nonzero $d\in A_n(k)$ of Bernstein degree $N$. If $N=0$, then $d$ is a
+unit and the theorem is immediate. We assume $N\geq1$.
+
+\subsection{Monic Weyl coordinates}
+
+Let $s$ be the top Bernstein symbol of $d$. It is a nonzero homogeneous
+polynomial on the $2n$-dimensional symplectic vector space of linear Weyl
+generators. %=Spec k[x,\xi]
+Since $k$ is infinite, a nonzero polynomial does not vanish identically on
+$k^{2n}$, so there is a vector $v\in k^{2n}$ with $s(v)\neq0$. Let
+$\omega(u,v)=[u,v]$ be the commutator form on $k^{2n}$; it is alternating and
+nondegenerate. Complete $v$ to a symplectic basis
+$e_1,\dots,e_n,f_1,\dots,f_n$ of $k^{2n}$, that is, a basis with
+$\omega(e_i,f_j)=\delta_{ij}$ and $\omega(e_i,e_j)=\omega(f_i,f_j)=0$, in
+which $v=f_1$. Substituting this basis for the standard generators preserves
+the Weyl relations and so defines a linear symplectic automorphism of
+$A_n(k)$; apply it. After multiplication by the central unit $s(v)^{-1}$,
+which rescales the leading coefficient to $1$, we may write
+\[
+ A_n=C[p;\delta],\qquad C=A_{n-1}(k)[x],
+ \tag{2.1}\label{eq:ore-chart}
+\]
+and
+\[
+ d=p^N+\sum_{j=0}^{N-1}a_jp^j,\qquad a_j\in C.
+ \tag{2.2}\label{eq:monic-d}
+\]
+Here $pc=cp+\delta(c)$ for $c\in C$, where $\delta(x)=1$ and $\delta$ vanishes
+on the transverse Weyl algebra. Thus $[p,x]=1$, the transverse Weyl algebra
+commutes with $x,p$, and the
+Bernstein degree bound gives $\deg_B(a_j)\leq N-j$. All coefficients involved
+belong to a finitely generated subfield $k_0\subset k$, namely the subfield
+generated by the finitely many coefficients of $d$ in the new generators.
+Proving the identity
+over $k_0$ suffices, since it then extends to $k$. We therefore replace $k$
+by $k_0$, retain the notation $k$ for this smaller field, and fix an embedding
+$k\hookrightarrow\mathbb C$.
+
+We define $E=xp$ and
+\[
+ I=dA_n+x^NdA_n,\qquad Q=A_n/I.
+ \tag{2.3}\label{eq:I-Q}
+\]
+
+\subsection{The Euler residue}
+
+The adjoint action of $E$ defines a $\mathbb Z$-grading for the chosen Weyl
+pair: $x$ has degree $1$, $p$ has degree $-1$, and the transverse Weyl algebra
+has degree zero. Let $A_{\geq0}$ denote the nonnegative part. In PBW form,
+$A_{\geq0}$ is generated by the transverse algebra, $E$, and $x$. The element
+$x$ is normal in this subring, and every element of strictly positive degree
+belongs to $A_{\geq0}x$.
+
+Indeed, for $\alpha\geq\beta$,
+\[
+ x^\alpha p^\beta
+ =x^{\alpha-\beta}\prod_{r=0}^{\beta-1}(E-r),
+ \qquad Ex=x(E+1),\qquad xE=(E-1)x.
+ \tag{2.4}\label{eq:nonnegative-pbw}
+\]
+These identities give all three assertions, coefficient by coefficient in the
+transverse Weyl algebra.
+
+\begin{lemma}[Euler residue]\label{lem:euler-residue}
+There is an element $U\in A_{\geq0}$ such that
+\[
+ 1+Ux\in I.
+ \tag{2.5}\label{eq:euler-residue}
+\]
+\end{lemma}
+
+\begin{proof}
+The Weyl relation gives
+\[
+ p^Nx^N=\prod_{r=1}^N(E+r)=:R_+(E),\qquad
+ x^Np^N=\prod_{r=0}^{N-1}(E-r)=:R_-(E).
+\]
+The roots of $R_+$ and $R_-$ are disjoint. Since the prime field of $k$ is
+$\mathbb Q$, there are $u,v\in\mathbb Q[E]\subset k[E]$ with
+\[
+ R_+(E)u(E)+R_-(E)v(E)=1.
+\]
+Write $d=p^N+\Sigma$. Then
+\[
+ (dx^N)u(E)+(x^Nd)v(E)=1+W\in I,
+\]
+where
+\[
+ W=\Sigma x^Nu(E)+x^N\Sigma v(E).
+\]
+Write each $a_j$ in powers of $x$, with coefficients in the transverse Weyl
+algebra. Every homogeneous term of $W$ has positive Euler degree. Indeed, a term
+$bx^rp^j$ coming from $a_jp^j$ has $r\geq0$, and multiplication by
+$x^N$ gives Euler degree at least $N-j>0$. The same calculation applies to
+the other summand. Thus $W\in A_{\geq0}x$, so $W=Ux$.
+\end{proof}
+
+\begin{proposition}\label{prop:x-surjective}
+Right multiplication by $x$ on $Q$ is surjective.
+\end{proposition}
+
+\begin{proof}
+Let $e$ be the class of $1$. Equation \eqref{eq:euler-residue} gives
+$e=-eUx$, hence $e\in(eA_{\geq0})x$. Normality of $x$ shows
+\[
+ eA_{\geq0}=(eA_{\geq0})x.
+ \tag{2.6}\label{eq:normal-surj}
+\]
+This submodule is stable under right multiplication by $p$. If $m=m'x$, then
+\[
+ mp=m'(xp)=m'E\in eA_{\geq0}.
+\]
+It is already stable under $C$. Since $C,p$ generate $A_n$, we have
+$eA_{\geq0}=eA_n=Q$. Equation \eqref{eq:normal-surj} is therefore $Q=Qx$.
+\end{proof}
+
+\section{Restriction to the coordinate hyperplane}
+
+We use the order filtration on $A_n$: coordinates have degree zero and
+derivatives have degree one. The quotient filtration on the cyclic module
+$Q$ is good. We write $\CharVar(Q)$ for the support of its associated graded
+module in $T^*\mathbb A^n$. In the chosen monic chart, the term $p^N$ shows
+that the order of $d$ is $N$. Since its Bernstein degree is also $N$, every
+PBW monomial of order $N$ contains no coordinate factor. Thus its order
+principal symbol in the chosen polarization is
+\[
+ \sigma_{\mathrm{ord}}(d)(x,\xi)=P(\xi),\qquad
+ P\in k[\xi_1,\ldots,\xi_n],\qquad \deg P=N.
+ \tag{3.1}\label{eq:P}
+\]
+Choose $\xi_1$ dual to the coordinate $x$. Monicity in \eqref{eq:monic-d}
+gives
+\[
+ P(1,0,\ldots,0)=1.
+ \tag{3.2}\label{eq:P-e1}
+\]
+Since $dA_n\subseteq I$, the induced good filtration satisfies
+$P\operatorname{gr}A_n\subseteq\operatorname{gr}I$. Hence
+$\operatorname{gr}Q\cdot P=0$, and therefore
+\[
+ \CharVar(Q)\subseteq V(P)\subset T^*\mathbb A^n.
+ \tag{3.3}\label{eq:char-contained}
+\]
+
+Let $H=\{x=0\}$. Its nonzero conormal covectors are the multiples
+$\lambda\,dx$, with $\lambda\ne0$. Since $P$ is homogeneous and
+$P(1,0,\ldots,0)=1$, we have
+$P(\lambda,0,\ldots,0)=\lambda^N\ne0$. By \eqref{eq:char-contained},
+$\CharVar(Q)$ contains no nonzero conormal covector to $H$. More precisely,
+the projection
+\[
+ V(P)\cap T^*\mathbb A^n|_H\longrightarrow T^*H
+\]
+is finite: on coordinate rings it adjoins $\xi_1$ subject to the monic
+equation $P(\xi_1,\ldots,\xi_n)=0$. Its restriction to $\CharVar(Q)$ is
+therefore finite, which is the noncharacteristic condition
+\cite[Definition~15.6]{SchnellNotes}.
+
+\subsection{Tangential kernel and cokernel}
+
+Put $M=\operatorname{gr}Q$ and
+\[
+ \begin{gathered}
+ T=k[x_2,\ldots,x_n,\xi_2,\ldots,\xi_n],\qquad C=T[x,\xi_1],\\
+ V=\ker(x:M\to M),\qquad U=M/xM.
+ \end{gathered}.
+\]
+For $n=1$ we mean $T=k$. We shall prove that $U=0$ by comparing
+two lengths over a localization of $T$. This uses finiteness of $U$ and $V$
+over $T$, not finiteness of $M$ over $T$.
+
+\begin{lemma}[Tangential finiteness]\label{lem:tangential-finiteness}
+The modules $U$ and $V$ are finite over $T$, and
+$\operatorname{Supp}_T V\subseteq\operatorname{Supp}_T U$.
+If $\mathfrak q$ is a minimal prime in $\operatorname{Supp}_T U$, then
+$U_{\mathfrak q}$ and $V_{\mathfrak q}$ have finite length over
+$T_{\mathfrak q}$.
+\end{lemma}
+\begin{proof}
+The good quotient filtration makes $M$ a finite $C$-module.
+Since $P$ is monic in $\xi_1$ and annihilates $M$, this action factors
+through $C/(P)$, which is generated over $T[x]$ by
+$1,\xi_1,\ldots,\xi_1^{N-1}$. Thus $M$ is finite over $T[x]$.
+The kernel and cokernel of multiplication by $x$ are finite over the
+Noetherian ring $T[x]$ and are annihilated by $x$, hence are finite over $T$.
+At a prime of $T$ where the cokernel vanishes, multiplication by $x$ is a
+surjective endomorphism of the finite module over the corresponding
+localization of $C$. That ring is Noetherian, so this endomorphism is
+injective. This proves the support inclusion.
+After localization at a minimal support prime of $U$, both finite
+$T$-modules have support contained in the closed point. They therefore have
+finite length.
+\end{proof}
+
+\subsection{The filtered-page inequality}
+
+\begin{lemma}[The page inequality]\label{lem:page-inequality}
+For every minimal prime $\mathfrak q$ in $\operatorname{Supp}_T U$,
+\[
+ \ell_{T_{\mathfrak q}}(U_{\mathfrak q})
+ \le \ell_{T_{\mathfrak q}}(V_{\mathfrak q}).
+\]
+\end{lemma}
+\begin{proof}
+Consider the actual filtered complex $Q\xrightarrow{R_x}Q$, with decreasing
+filtration $G^p=F_{-p}Q$, where $F$ is the order quotient filtration.
+Its source and target pages can be written explicitly as
+\[
+ A_r=\bigoplus_{p\in\mathbb Z}
+ \frac{G^p\cap R_x^{-1}(G^{p+r})}
+ {G^{p+1}\cap R_x^{-1}(G^{p+r})},\qquad
+ B_r=\bigoplus_{p\in\mathbb Z}
+ \frac{G^p}{(G^p\cap R_x(G^{p-r+1}))+G^{p+1}}.
+\]
+Applying $R_x$ to representatives gives $d_r:A_r\to B_r$, shifting
+the summand index by $r$. Directly from these quotients,
+\[
+ A_0=B_0=M,\quad d_0=x,\quad
+ A_{r+1}=\ker d_r,\quad B_{r+1}=\operatorname{coker}d_r.
+\]
+These identifications are $T$-linear. Indeed the transverse coordinates and
+momenta commute with $x$ and induce their degree-zero and degree-one actions
+on the pages. Their Weyl commutators lower order and therefore vanish on
+these quotients, giving the stated polynomial-ring action.
+
+In particular $A_1=V$ and $B_1=U$. Localize all pages at
+$T\setminus\mathfrak q$. Localization preserves the displayed kernels
+and cokernels. All later pages have finite length, and additivity gives
+\[
+ \ell(B_r)+\ell(A_{r+1})=\ell(A_r)+\ell(B_{r+1})\qquad(r\ge1).
+\]
+The maps $B_1\to B_r$ are surjective. Their kernels increase and exhaust
+$B_1$: by Proposition~\ref{prop:x-surjective}, every representative has an
+$x$-preimage in $Q$, and that preimage lies in some finite filtration step.
+The same holds after localization. Noetherianity of $(B_1)_{\mathfrak q}$
+therefore makes one later target page zero. Telescoping yields
+\[
+ \ell_{T_{\mathfrak q}}(U_{\mathfrak q})
+ \le \ell_{T_{\mathfrak q}}(V_{\mathfrak q}).
+\]
+
+\end{proof}
+
+\subsection{The strict support inequality}
+
+\begin{lemma}[The strict inequality]\label{lem:strict-support-inequality}
+For every minimal prime $\mathfrak q$ in $\operatorname{Supp}_T U$,
+\[
+ \ell_{T_{\mathfrak q}}(U_{\mathfrak q})
+ > \ell_{T_{\mathfrak q}}(V_{\mathfrak q}).
+\]
+\end{lemma}
+\begin{proof}
+By Gabber involutivity \cite{Gabber1981,Gabber1982},\footnote{The erratum
+\cite{Gabber1982} corrects cross-references and notation only and changes no
+statement. The algebraic form of the theorem, for a finitely generated
+filtered module over an almost-commutative algebra, is proved in
+\cite{SinghKumar2014}; that is the form verified in Lean.} every minimal
+prime of $\operatorname{Ann}_C M$ is involutive. None contains $x$: otherwise
+bracketing its element $P$ with $x$ repeatedly would put the nonzero
+constant $N!$ in that prime. Here $P$ is homogeneous of degree $N$ and
+monic in $\xi_1$, so its $N$th $\xi_1$-derivative is exactly $N!$.
+This avoidance persists under localization at $T\setminus\mathfrak q$.
+
+Write $M'=M_{\mathfrak q}$, a finite module over
+$C'=(T\setminus\mathfrak q)^{-1}C$. Let $K=\ker(x^m:M'\to M')$
+at a stage where the kernel chain stabilizes. It is finite length over
+$T_{\mathfrak q}$: successive quotients of the kernel chain inject into
+$V_{\mathfrak q}$. Moreover $x^{-1}K=K$, so $K\cap xM'=xK$.
+Thus
+\[
+ 0\longrightarrow K/xK\longrightarrow U_{\mathfrak q}
+ \longrightarrow (M'/K)/x(M'/K)\longrightarrow0,
+ \qquad \ell(K/xK)=\ell(V_{\mathfrak q}).
+\]
+The last quotient is nonzero. To see this, choose
+$\mathfrak P\in\operatorname{Supp}_{C'}(M'/xM')$ and a minimal support
+prime $\mathfrak p\subseteq\mathfrak P$ of $M'$. Since $x\notin\mathfrak p$,
+$K_{\mathfrak p}=0$ and $(M'/K)_{\mathfrak p}\ne0$. Hence
+$\mathfrak P$ also belongs to the support of $M'/K$. As $x\in\mathfrak P$,
+Nakayama's lemma at $\mathfrak P$ makes its quotient by $x$ nonzero.
+The exact sequence now gives
+$\ell(U_{\mathfrak q})>\ell(V_{\mathfrak q})$.
+
+\end{proof}
+
+\begin{proposition}[Canonical support avoidance]\label{prop:char-avoids}
+The canonical quotient satisfies
+\[
+ \CharVar(Q)\cap\pi^{-1}(H)=\varnothing,
+ \tag{3.5}\label{eq:char-avoids}
+\]
+where $\pi:T^*\mathbb A^n\to\mathbb A^n$ is the cotangent projection.
+\end{proposition}
+\begin{proof}
+If $U\ne0$, it has a minimal support prime $\mathfrak q$.
+Lemma~\ref{lem:tangential-finiteness} makes the relevant lengths finite,
+and Lemmas~\ref{lem:page-inequality} and
+\ref{lem:strict-support-inequality} contradict one another.
+Thus $M/xM=0$. Since $M$ is finite over $C$, its quotient by $x$ has
+support $\operatorname{Supp}_C(M)\cap V(x)$, proving the assertion.
+Formal adjoint changes $(x,\xi)$ to $(x,-\xi)$ and fixes $x$, so the same
+avoidance holds for the corresponding left module.
+\end{proof}
+
+\section{A conormal direction at infinity}
+
+Let $X=\mathbb A^n_{\mathbb C}$, set $x=x_1$, and retain $H=\{x_1=0\}$. Using
+$T^*X=X\times(\mathbb C^n)^*$, identify all cotangent fibres with
+$(\mathbb C^n)^*$. Write $[Z_0:\cdots:Z_n]$ for homogeneous coordinates on
+$\mathbb P^n$. For an
+irreducible closed subvariety $Y\subset X$, let $\operatorname{Dir}(Y)$ be the
+Zariski closure in $\mathbb P((\mathbb C^n)^*)$ of the projectivized nonzero
+conormal vectors at smooth affine points of $Y$.
+
+\begin{lemma}[Tangent-limit criterion]\label{lem:tangent-limit}
+Suppose a formal arc in the projective closure of $Y$ has generic point in the
+smooth affine locus, and put $m=\dim Y$. Let
+$L\subset\mathbb C[[t]]^{n+1}$ be a direct summand of rank $m+1$ whose generic
+fibre is the affine cone over the embedded projective tangent $m$-plane. If
+the reduction $L_0$ satisfies $L_0\subset\{Z_1=0\}$, then
+$[dx_1]\in\operatorname{Dir}(Y)$.
+\end{lemma}
+
+\begin{proof}
+The annihilator $L^\perp$ is a direct summand and reduces onto $L_0^\perp$.
+Lift $Z_1^\vee\in L_0^\perp$ to $\ell(t)\in L^\perp$. At the generic point,
+$\ell(t)$ annihilates the cone over the projective tangent space. In the
+affine chart $Z_0\ne0$, its fibre coordinates
+$(\ell_1(t),\ldots,\ell_n(t))$ therefore form a nonzero affine conormal
+covector. Their reduction is $(1,0,\ldots,0)$ because
+$\ell(0)=Z_1^\vee$. Thus their projective direction extends over
+$\mathbb C[[t]]$ with special fibre $[dx_1]$. Since
+$\operatorname{Dir}(Y)$ is closed, the valuative criterion gives the assertion.
+\end{proof}
+
+\begin{theorem}[Asymptotic conormal theorem]\label{thm:asymptotic-conormal}
+If $Y$ is nonempty and $Y\cap H=\varnothing$, then
+\[
+ [dx_1]\in\operatorname{Dir}(Y).
+\]
+\end{theorem}
+
+\begin{proof}
+If $Y$ is zero-dimensional, every cotangent direction occurs in its conormal
+fibre. If $x_1|_Y$ is constant, it is a nonzero constant and $dx_1$ annihilates
+every tangent space. We may therefore assume that $m=\dim Y>0$ and that
+$x_1|_Y$ is nonconstant.
+
+Let $\overline Y\subset\mathbb P^n$ be the projective closure and let
+$\nu:\widetilde Y\to\overline Y$ be its normalization. Normalization is
+finite in this setting \cite[Tag 0BXQ, Lemma~33.27.1]{Stacks}. The rational
+function
+\[
+ x_1=Z_1/Z_0
+\]
+has a zero prime divisor $D$ on $\widetilde Y$. Otherwise $x_1^{-1}$ would
+have no pole at any codimension-one point. Normality would make it globally
+regular \cite[Tag 031T]{Stacks}, and projectivity would make it constant
+\cite[Tag 04L0, Lemma~33.26.2]{Stacks}. Since $x_1$ is a unit on $Y$, the generic point
+of $D$ lies outside $\nu^{-1}(Y)$, hence above the hyperplane at infinity.
+
+Choose $Z_j$ nonzero at the generic point of $D$, and put
+$q_i=Z_i/Z_j$. With respect to the divisorial valuation at $D$,
+\[
+ a=\operatorname{ord}_D(q_0)>0,\qquad
+ b=\operatorname{ord}_D(q_1)>a.
+\tag{4.1}\label{eq:ab}
+\]
+Indeed $b-a=\operatorname{ord}_D(x_1)>0$. Here $b$ is finite, since $Z_1$
+does not vanish identically on $\overline Y$.
+Shrink a neighbourhood $U$ of the generic point of $D$ so that $Z_j$ is
+invertible, $D\cap U=(s)$, and
+\[
+ q_0=s^aw_0,\qquad q_1=s^bw_1,
+\]
+where $w_0,w_1$ are regular and do not vanish identically on $D$. The finite
+morphism $D\to\nu(D)$ is generically finite, and its function-field extension
+is separable in characteristic zero, hence the morphism is generically
+\'{e}tale \cite[Tags 0322 and 07ND]{Stacks}. Choose
+a closed point of $D\cap U$ in the smooth loci of both $D$ and
+$\widetilde Y$, where the differential of $D\to\nu(D)$ has rank $m-1$, and
+outside $V(w_0w_1)$. These are dense open conditions on $D$; normality of
+$\widetilde Y$ ensures that its singular locus does not contain $D$.
+
+In the completed local ring at this point, choose regular parameters
+$(t,z_2,\ldots,z_m)$ with $t=s$. The lowest nonzero homogeneous part of one
+nonzero element of the local ideal of the proper closed set
+$\widetilde Y\setminus\nu^{-1}(Y_{\mathrm{sm}})$ does not vanish at
+$(1,c_2,\ldots,c_m)$ for general constants $c_\alpha$. Replacing
+$z_\alpha$ by $z_\alpha-c_\alpha t$ therefore makes the formal $t$-axis
+leave that closed set. We have
+\[
+ q_0=t^au_0,\qquad q_1=t^bu_1,
+ \tag{4.2}\label{eq:q-orders}
+\]
+where $u_0,u_1$ are units. Set $z_2=\cdots=z_m=0$. By construction, the
+resulting transverse map
+$\gamma:\operatorname{Spec}\mathbb C[[t]]\to\widetilde Y$ has generic
+point in the smooth affine locus of $Y$.
+
+In the chart $Z_j\neq0$, write $v=(q_0,\ldots,q_n)^t$, so that $q_j=1$.
+Set
+\[
+ V_\alpha=\frac{\partial v}{\partial z_\alpha},\qquad
+ T=\frac{\partial v}{\partial t}.
+\]
+The reductions of the $V_\alpha$ vanish in rows $0$, $1$, and $j$. They are
+the images of a tangent basis of $D$ under the differential of
+$D\to\nu(D)\subset\mathbb P^n$, and hence are independent by the choice of
+the point. Choose $m-1$ other coordinate rows in which they have an
+invertible minor. Choose
+coefficients in $\mathbb C[[t]]$ so that subtracting the
+corresponding linear combination of $V_2,\ldots,V_m$ from $T$ makes the
+selected entries vanish. Call the resulting column $T'$. Equations
+\eqref{eq:ab} and \eqref{eq:q-orders} give
+\[
+ \operatorname{ord}_t(T'_0)=a-1,\qquad
+ \operatorname{ord}_t(T'_1)=b-1.
+ \tag{4.3}\label{eq:T-orders}
+\]
+The entries of $V_\alpha$ in rows $0$ and $1$ have valuations at least $a$
+and $b$, whereas
+\[
+ \partial_tq_0=a t^{a-1}u_0+O(t^a),\qquad
+ \partial_tq_1=b t^{b-1}u_1+O(t^b).
+\]
+Characteristic zero makes the displayed leading coefficients nonzero, so the
+tangential columns cannot change the two orders in \eqref{eq:T-orders}.
+
+Let $c$ be the minimum valuation of the entries of $T'$. Then $c\leq a-1$,
+and $\widehat T=t^{-c}T'$ is regular with nonzero reduction. Moreover
+\[
+ \operatorname{ord}_t(\widehat T_1)\geq b-a>0.
+ \tag{4.4}\label{eq:T1-vanish}
+\]
+Over $\mathbb C((t))$, normalization is an isomorphism above
+$Y_{\mathrm{sm}}$. Differentiating the completed local parametrization shows
+that $v,V_2,\ldots,V_m,T$ are actual projective tangent vectors. The parameter
+derivatives form a tangent basis, and $\dim Y=m$, so these vectors span the
+projective tangent $m$-plane along $\gamma$. Replacing $T$ by $T'$ and then by
+$\widehat T$ does not change this generic span. The columns
+$v,V_2,\ldots,V_m,\widehat T$ reduce to independent vectors. Indeed,
+$v_j=1$, while the other reduced columns have $j$th coordinate zero; the
+selected minor separates the $V_\alpha$; and $\widehat T$ has zero selected
+entries and nonzero reduction. They therefore span the direct-summand tangent
+lattice $L$ required by Lemma~\ref{lem:tangent-limit}.
+Its reduction $L_0$ is the Grassmannian limit. Every reduced column
+has zero $Z_1$-coordinate, so
+\[
+ L_0\subset\{Z_1=0\}.
+\]
+Lemma~\ref{lem:tangent-limit} proves the assertion.
+\end{proof}
+
+\section{The coisotropic obstruction}
+
+We use ``coisotropic'' in the algebraic sense: the radical ideal of the
+reduced closed subset is stable under the Poisson bracket. This is equivalent
+to the usual generic tangent-space condition in the present smooth symplectic
+ambient space. See \cite[Lemma~11.9]{SchnellNotes}.
+
+\begin{theorem}[Coisotropic exclusion]\label{thm:coisotropic-exclusion}
+Let $W\subset T^*X$ be a reduced closed fibre-conical coisotropic subset. Let
+$P\in \mathbb C[\xi_1,\ldots,\xi_n]$ be homogeneous and suppose
+$P(1,0,\ldots,0)\neq0$.
+There is no nonempty $W$ satisfying
+\[
+ W\cap\pi^{-1}(H)=\varnothing,\qquad W\subset V(P).
+\]
+\end{theorem}
+
+\begin{proof}
+Suppose that such a $W$ exists, and put $Y=\overline{\pi(W)}$. Write $I(Y)$
+and $I(W)$ for the radical vanishing ideals, and put
+$W_y=W\cap T_y^*X$. Closedness and
+fibre-conicality imply
+\[
+ Y\times\{0\}\subset W.
+ \tag{5.1}\label{eq:zero-section}
+\]
+Every nonempty conical fibre contains its origin, so in fact
+$\pi(W)=\{y:(y,0)\in W\}$ is closed and equals $Y$. In particular,
+$Y\cap H=\varnothing$.
+
+For $f\in I(Y)$, its pullback belongs to $I(W)$. Coisotropy gives
+$\{f,I(W)\}\subset I(W)$. The Hamiltonian derivation of $f$ is
+\[
+ H_f=\{-,f\}=\sum_i\frac{\partial f}{\partial x_i}
+ \frac{\partial}{\partial\xi_i}.
+\]
+This derivation is locally nilpotent, and its exponential is vertical
+translation by $t\,df$. Hence it preserves $W$. These translations commute.
+Composing them for varying $f\in I(Y)$ and $t\in\mathbb C$, and starting from
+\eqref{eq:zero-section}, shows that $W_y$ contains the span of
+$\{df_y:f\in I(Y)\}$.
+
+Let $Y_0$ be an irreducible component of $Y$. At a general smooth point of
+$Y_0$ outside the other components, $I(Y)_y=I(Y_0)_y$. The preceding
+differentials span $N_y^*Y_0$. Since $W$ is closed,
+\[
+ T^*_{Y_0}X\subset W,
+ \tag{5.2}\label{eq:conormal-in-W}
+\]
+where the left side denotes the closure of the conormal bundle over the smooth
+locus.
+
+Theorem \ref{thm:asymptotic-conormal} puts $[dx_1]$ in the closure of the
+projective fibre directions of $T^*_{Y_0}X$, hence of $W$. Since $P$ is a
+homogeneous polynomial in the fibre variables alone, every projectivized
+fibre direction of $W$ lies in the same closed hypersurface $V_+(P)$, even
+when its base point escapes to infinity. Thus $[dx_1]\in V_+(P)$, so
+$P(1,0,\ldots,0)=0$, a contradiction.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:main}}
+
+Over $\mathbb C$, put
+\[
+ W=\CharVar(Q)_{\mathrm{red}}
+\].
+Under the right-to-left equivalence used above, $(x,\xi)\mapsto(x,-\xi)$
+carries $W$ to the characteristic variety of the corresponding left module.
+Gabber's involutivity theorem \cite{Gabber1981,Gabber1982} therefore makes
+$W$ coisotropic; see also \cite[Theorem~2.3.1 and Appendix D]{HTT} and
+\cite{SinghKumar2014}. Closedness and fibre-conicality are preserved, as is
+containment in $V(P)$, because $P$ is homogeneous of degree $N$ and so
+$P(-\xi)=(-1)^NP(\xi)$. Equations
+\eqref{eq:char-contained}, \eqref{eq:P-e1}, and \eqref{eq:char-avoids}
+satisfy the hypotheses of Theorem \ref{thm:coisotropic-exclusion}. Thus $W$ is
+empty.
+
+A nonzero coherent filtered module has nonempty associated-graded support.
+Consequently $\CharVar(Q)=\varnothing$ implies $Q=0$. Faithful flatness descends
+this vanishing from $\mathbb C$ to the finitely generated field $k$ used after
+the reduction in Section 2 \cite[Tag 00HP]{Stacks}. Equation \eqref{eq:I-Q}
+then gives $R,S\in A_n(k)$ with
+\[
+ 1=dR+x^NdS.
+\]
+Extend this identity to the original field. Apply the inverse of the
+symplectic automorphism used in Section 2 and absorb the initial scalar
+normalization into the right cofactors. The resulting identity has the form
+$1=dR_0+FdS_0$, with $F$ the $N$th power of a linear Weyl coordinate.
+This proves Theorem \ref{thm:main}.
+
+
+\section{Right Ore localizations}\label{sec:ore-localization}
+
+The identity persists when denominators are introduced; no characteristic-variety
+argument is needed for this step. Write $\mathsf{S38}(A)$ for the assertion that
+each nonzero $d\in A$ admits $1=dR+FdS$.
+
+\begin{proposition}\label{prop:ore-localization}
+Let $A$ be a unital ring satisfying $\mathsf{S38}(A)$. Every right Ore
+localization $AS^{-1}$ satisfies $\mathsf{S38}(AS^{-1})$.
+\end{proposition}
+\begin{proof}
+Let $\iota:A\to AS^{-1}$ be the numerator map. For $0\ne q\in AS^{-1}$ choose
+$a\in A$ and $s\in S$ with $q=\iota(a)\iota(s)^{-1}$.
+Since $\iota(s)$ is a unit, $q\iota(s)=\iota(a)$ implies $a\ne0$.
+Choose $1=aR+FaT$ in $A$. Applying $\iota$ gives
+\[
+ 1=q\bigl(\iota(s)\iota(R)\bigr)
+   +\iota(F)q\bigl(\iota(s)\iota(T)\bigr).
+\]
+The denominator multiplies each right cofactor on its left.
+The argument does not require $\iota$ to be injective.
+\end{proof}
+
+\begin{corollary}\label{cor:localized-weyl}\label{sec:localized-weyl}
+Every right Ore localization of $A_n(k)$, for $\operatorname{char}k=0$,
+satisfies $\mathsf{S38}$.
+\end{corollary}
+\begin{proof}
+Apply Proposition~\ref{prop:ore-localization} to Theorem~\ref{thm:main}.
+\end{proof}
+
+\subsection{Polynomial coefficient localizations}\label{sec:coefficient-open-examples}
+Let $R=k[x_1,\ldots,x_n]$ and let $S\subset R\setminus\{0\}$ be multiplicative.
+Then $\mathsf{S38}$ holds for the ring $\mathcal D_k(S^{-1}R)$ of
+$k$-linear differential operators. In particular this includes
+\[
+ \mathcal D_k(R_f),\qquad
+ \mathcal D_k\bigl(k[x_1^{\pm1},\ldots,x_r^{\pm1},x_{r+1},\ldots,x_n]\bigr),
+\]
+\[
+ k(x_1,\ldots,x_n)\langle\partial_1,\ldots,\partial_n\rangle .
+\]
+Here $f\ne0$ and $0\le r\le n$; geometrically the first two rings belong to
+a principal open subset of affine space and to
+$(\mathbb G_m)^r\times\mathbb A^{n-r}$.
+
+Here is a direct argument on the actual operators, without identifying two
+ring presentations. Put $B=S^{-1}R$. The derivations $\partial_i$ extend to
+$B$ by the quotient rule. Every finite-order $k$-linear differential operator
+on $B$ is a finite sum
+\[
+ q=\sum_\alpha b_\alpha\partial^\alpha,\qquad b_\alpha\in B.
+\]
+Only existence of this expression is needed. To verify it, put
+$\delta_i(P)=[P,x_i]$ on endomorphisms of $B$. These commuting operators
+lower differential order. For order at most $m$, the finite projector
+\[
+ \Pi_i(P)=\sum_{j=0}^{m}\frac{(-1)^j}{j!}
+             \delta_i^j(P)\partial_i^j
+\]
+commutes with $x_i$: the commutator of the $j$th summand cancels the
+derivative term of the next, using $[\partial_i,x_i]=1$ and
+$\delta_i^{m+1}(P)=0$. Binomial cancellation gives the reconstruction
+\[
+ P=\sum_{j=0}^{m}\frac{1}{j!}\Pi_i(\delta_i^j(P))\partial_i^j.
+\]
+Apply this successively to the coordinates. Projection in one coordinate
+preserves commutation with the preceding coordinates. The resulting
+coefficients commute with every $x_i$, hence with every element of $R$
+and with every inverse denominator. They are therefore $B$-linear
+endomorphisms of $B$, that is, multiplication by their value at $1$.
+This proves the displayed finite expression.
+
+Let $\rho:A_n(k)\to\mathcal D_k(B)$ be the Weyl action and choose
+$s\in S$ clearing the finitely many coefficients $b_\alpha$ on the left.
+Then $u q=\rho(a)$ for some $a\in A_n(k)$, where $u$ is multiplication
+by $s$. The operator $u$ is a unit, with inverse multiplication by $s^{-1}$.
+For $q\ne0$ we have $a\ne0$. Apply Theorem~\ref{thm:main} to obtain
+$1=aR+FaT$, apply $\rho$, and multiply on the left by $u^{-1}$ and on
+the right by $u$. This gives the required identity
+\[
+ 1=q\bigl(\rho(R)u\bigr)
+   +\bigl(u^{-1}\rho(F)u\bigr)q\bigl(\rho(T)u\bigr).
+\]
+Principal opens invert $f$; partial Laurent rings invert a product of the
+chosen coordinates; the rational function field inverts every nonzero
+polynomial. All are covered by this argument.
+
+The numerator $a$ supplies a fixed-source multiplier, conjugated by the
+clearing unit as displayed. Its degree depends on the chosen clearing;
+no denominator-independent Bernstein degree is asserted.
+
+\section{The left-handed identity}\label{sec:left-handed}
+
+\begin{corollary}\label{cor:left-handed}
+For every nonzero $d\in A_n(k)$ in characteristic zero there are $R,S,F$ with
+\[
+ 1=Rd+SdF.
+\]
+\end{corollary}
+\begin{proof}
+Formal adjoint is the involutive anti-automorphism
+$x_i^*=x_i$, $\partial_i^*=-\partial_i$.
+Apply Theorem~\ref{thm:main} to $d^*$ and take adjoints:
+$1=R_0^*d+S_0^*dF_0^*$.
+\end{proof}
+
+\section{Evolution operators with arbitrary coefficients}\label{sec:evolutionary}
+
+The following result is independent of the geometric proof of
+Theorem~\ref{thm:main}. Its coefficients may lie in a noncommutative algebra.
+
+\begin{theorem}\label{thm:evolutionary}
+Let $D$ be a unital algebra over a characteristic-zero field $k$, and let
+$x,p\in D$ satisfy $px=xp+1$. Let $r>0$ and
+\[
+ d=p^r-\sum_{i=1}^s a_i x^{n_i},\qquad n_i\ge0,
+\]
+where each $a_i$ commutes with $x$ and with $p$.
+Then there are $R,S\in D$ such that $1=dR+x^r dS$.
+No commutativity among the $a_i$ is required.
+\end{theorem}
+\begin{proof}
+Put $E=xp$, $F=x^r$, and define scalar polynomials
+\[
+ R_+(T)=\prod_{u=1}^r(T+u),\quad
+ R_-(T)=\prod_{u=0}^{r-1}(T-u),\quad C=R_+-R_- .
+\]
+Induction on powers using $px=xp+1$ gives
+$p^r x^r=R_+(E)$, $x^r p^r=R_-(E)$, and
+$f(E)x^m=x^m f(E+m)$ for $f\in k[T]$.
+In particular $dF-Fd=C(E)$.
+
+Set $m_i=n_i+r>0$, $L_i(T)=\prod_{\ell=i}^s C(T+m_\ell)$,
+$L_{s+1}=1$, $L=L_1$, and $H=R_+L$.
+Define $q_{s+1}=0$ and, successively from the end of the list,
+\[
+ q_i=a_i x^{m_i}L_{i+1}(E)+q_{i+1}C(E+m_i).
+\]
+The shift identity and the commutation of each $a_i$ with $E$ give
+\[
+ \left(\sum_i a_i x^{m_i}\right)L(E)=C(E)q_1,\qquad
+ dF L(E)=H(E)-C(E)q_1.
+\]
+Indeed, in the induction step the first summand moves across $C(E)$
+by the shift identity, and the remaining sum uses the induction hypothesis.
+No two coefficients are interchanged.
+
+We claim that $C$ and $H$ are coprime over $\mathbb Q$.
+For $z\in\mathbb C$ and $u\ge0$,
+\[
+ |z+(u+1)|^2-|z-u|^2=(2u+1)(2\operatorname{Re}z+1).
+\]
+Strict factorwise comparison of the products shows that every root of $C$
+has real part $-1/2$. The roots of $R_+$ are negative integers, whereas
+those of $C(T+m_i)$ have real part $-m_i-1/2$.
+None is a root of $C$. This proves coprimality over $\mathbb C$, hence over
+$\mathbb Q$. A rational B\'ezout identity maps to $k$, giving
+$C\alpha+H\beta=1$ for some $\alpha,\beta\in k[T]$.
+
+Write $q=q_1$, $a=\alpha(E)$, $b=\beta(E)$ and $\lambda=L(E)$.
+Take
+\[
+ R=Fa+F(\lambda+q)b,\qquad S=-a-qb.
+\]
+Keeping the factors in their written order,
+\[
+\begin{aligned}
+ dR+FdS
+  &=(dF-Fd)a+dF\lambda b+(dF-Fd)qb\\
+  &=C(E)a+\bigl(H(E)-C(E)q\bigr)b+C(E)qb=1.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{corollary}\label{cor:tensor-evolution}
+Let $B$ be any unital $k$-algebra. In $D=B\otimes_k A_1(k)$, every
+$d=p^r-\sum_i(a_i\otimes1)x^{n_i}$ with $r>0$ satisfies
+$1=dR+x^r dS$, where $x=1\otimes x_1$ and $p=1\otimes\partial_1$.
+\end{corollary}
+\begin{proof}
+The two tensor factors commute, so Theorem~\ref{thm:evolutionary} applies.
+\end{proof}
+
+This includes the choice $B=\mathcal D_k(Y)$ as a coefficient algebra.
+It makes no assertion for arbitrary operators on an arbitrary smooth affine
+variety, or for arbitrary monic operators outside the displayed evolution form.
+
+\clearpage
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

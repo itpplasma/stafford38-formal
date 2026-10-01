@@ -1,0 +1,110 @@
+{
+  "as_of": "2026-09-05",
+  "scope": {
+    "codex_root": "restricted local Codex session store",
+    "claude_root": "restricted local Claude project store",
+    "project_cwds": ["current Stafford38 checkout", "legacy Stafford checkout"],
+    "raw_prompts_read": false,
+    "private_paths_published": false
+  },
+  "codex": {
+    "validated_day": {
+      "date": "2026-09-05",
+      "stafford38_session_files": 60,
+      "source_file_set_sha256": "142915501f50ea4ab4d3a115d853498b0b3e74c87fd48d23873e80cd842fafab",
+      "models": {
+        "gpt-5.6-luna": {
+          "sessions": 35,
+          "model_events": 74,
+          "first_event": "2026-09-04T23:38:01.536Z",
+          "last_event": "2026-09-05T09:19:56.169Z"
+        },
+        "gpt-5.6-sol": {
+          "sessions": 25,
+          "model_events": 52,
+          "first_event": "2026-09-04T23:40:21.520Z",
+          "last_event": "2026-09-05T09:18:37.263Z"
+        }
+      }
+    },
+    "all_date_exact_cwd_scan": {
+      "scan_interval": ["2026-09-05T09:38:45.783769Z", "2026-09-05T09:40:01.447647Z"],
+      "session_files": 1439,
+      "unique_metadata_session_ids": 14,
+      "project_file_counts": {"stafford": 1341, "stafford38": 98},
+      "mutable_source_snapshots": 1439,
+      "source_hash_manifest_sha256": "18a0d68c0ee76354d9041e9c32b550d8e5c2631490c7425b3f10128cfc5fb321",
+      "models": {
+        "gpt-5.5": {"sessions": 1, "model_events": 1, "first_event": "2026-08-18T02:17:22.972Z", "last_event": "2026-08-18T02:17:22.972Z"},
+        "gpt-5.6-luna": {"metadata_session_ids": 13, "model_events": 9103, "first_event": "2026-08-14T08:00:30.523Z", "last_event": "2026-09-05T09:37:06.084Z"},
+        "gpt-5.6-sol": {"metadata_session_ids": 9, "model_events": 1223, "first_event": "2026-08-14T08:00:05.208Z", "last_event": "2026-09-05T09:38:15.435Z"},
+        "gpt-6-astra": {"sessions": 1, "model_events": 18, "first_event": "2026-09-04T22:36:27.934Z", "last_event": "2026-09-05T09:33:40.511Z"}
+      },
+      "classification": "bounded exact session_meta cwd inventory; model events come only from source turn_context model fields",
+      "counting_note": "session_files counts distinct source paths, while metadata_session_ids deduplicates the source-declared identifier. Copied and forked rollouts can share a metadata identifier, so metadata-ID counts are not comparable to the initial day's file-level session count.",
+      "hash_note": "Every hash is a mutable-source snapshot read during the stated scan interval; no source was inferred complete. The digest commits to the restricted per-source session-ID/hash manifest without publishing its filesystem location."
+    },
+    "limitations": [
+      "The all-date scan selected Codex files by the first session_meta record's exact cwd; it did not inspect prompts or tool outputs for model identities.",
+      "All source hashes are bounded mutable snapshots, not completion claims.",
+      "Model event counts count source records carrying a model field, not unique turns or ideas."
+    ]
+  },
+  "claude": {
+    "stafford38_exact_cwd": {
+      "session_ids": [
+        "5ccdb74e-fcae-471b-8056-bcf89fabdee3",
+        "agent-ad47b91bc26bcdb43"
+      ],
+      "source_sha256": {
+        "5ccdb74e-fcae-471b-8056-bcf89fabdee3": "8ef86f74f1dee49b9b437612b383d2771b6e18aa6e5aac8bd3d243fde688b3fd",
+        "agent-ad47b91bc26bcdb43": "bd022c4e0d466ccbb2a95925892479fe3a4d922e71d6b16bdb4487f0c856f53a"
+      },
+      "date_range": ["2026-09-01T07:18:06.871Z", "2026-09-01T09:38:21.633Z"],
+      "models": {
+        "claude-fable-5": {"sessions": 1},
+        "claude-haiku-4-5-20251001": {"sessions": 1},
+        "claude-opus-5[1m]": {"sessions": 1}
+      },
+      "subagent_model_metadata": "no modelUsage identifier"
+    },
+    "legacy_stafford_cwd": {
+      "validated_model_bearing_session_counts": {
+        "claude-haiku-4-5-20251001": 5,
+        "claude-fable-5": 3,
+        "claude-opus-5[1m]": 2,
+        "claude-opus-5": 2
+      },
+      "date_range": ["2026-08-24T13:56:40.912Z", "2026-09-01T09:38:21.633Z"]
+    },
+    "broader_unmatched_identifiers": [
+      "claude-fable-5-1",
+      "claude-opus-4-8",
+      "claude-sonnet-5"
+    ],
+    "exact_cwd_snapshot": {
+      "scan_interval": ["2026-09-05T09:38:45.783769Z", "2026-09-05T09:40:01.447647Z"],
+      "source_files": 144,
+      "project_file_counts": {"stafford": 142, "stafford38": 2},
+      "source_hash_manifest_sha256": "fde15ad69a562fff6325858e64236e47f0a70af62fcc0e204f3464eb63cc9b43",
+      "hash_note": "Every hash is a mutable-source snapshot read during the scan interval.",
+      "selection_note": "Claude files were searched across all encoded project directories and retained only when a source record declared an exact project cwd; parent-directory storage therefore does not exclude a matching session."
+    },
+    "classification": "exact modelUsage identifiers; broader unmatched identifiers are not attributed to Stafford38"
+  },
+  "archive_coverage": {
+    "checked_in_manifests": {
+      "local_workstation": {"codex_sessions": 224, "records": 35188, "timestamp_range": ["2026-08-29T21:38:40.003Z", "2026-08-30T14:53:36.957Z"]},
+      "research_host": {"codex_sessions": 1341, "claude_sessions": 14, "records": 151999, "timestamp_range": ["2026-08-13T20:25:40.353Z", "2026-08-29T13:11:36.655Z"]},
+      "research_host_tmp": {"claude_sessions": 1, "records": 25, "timestamp_range": ["2026-08-16T20:15:18.579Z", "2026-08-16T20:51:55.907Z"]}
+    },
+    "private_originals": "retained in the restricted evidence vault; exact vault locator is intentionally not published",
+    "exporter": "tools/archive_agent_transcripts.py",
+    "coverage_cutoff": "checked-in archive ends 2026-08-30; private source sessions reach 2026-09-05"
+  },
+  "recollection_status": {
+    "corroborated_exact_ids": ["gpt-5.6-luna", "gpt-5.6-sol", "gpt-6-astra", "claude-opus-5", "claude-fable-5"],
+    "not_project_attributed_by_exact_metadata": ["gpt-5.6-terra", "gpt-5.6-astra", "claude-fable-5-1", "claude-opus-4-8", "claude-sonnet-5"],
+    "do_not_infer": "aliases, task labels, prose mentions, and model-family recollections do not establish backend execution"
+  }
+}

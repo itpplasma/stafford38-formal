@@ -152,9 +152,10 @@ lists both Challenges, both Solutions and both Comparator configurations from
 the repository files, and contains a clickable map of the imported proof
 architecture.
 
-No Palomar registration receipt or identifier is retained in this repository.
-[Later release actions](docs/release-runbook.md) require separate human
-authorization.
+The registered headline theorem is [Palomar PALOMAR-2026-09-05-000007 v2](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=2).
+The newer auxiliary declarations and manuscript audit are checked locally and
+archived with the software; they do not change that registry record. See the
+[release procedure](docs/release-runbook.md) and [archive citations](docs/releases/zenodo.md).
 
 ## Repository ownership
 
@@ -162,7 +163,7 @@ authorization.
 | --- | --- |
 | Reusable application-independent mathematics | Public [algebraic-analysis](https://github.com/itpplasma/algebraic-analysis), an external immutable dependency |
 | Stafford-specific formal proof, interface, and reproducibility documentation | Public [stafford38-formal](https://github.com/itpplasma/stafford38-formal), this repository |
-| Manuscript, bibliography, and proof-map supplement | Overleaf authority, backed up in private [stafford38-paper](https://github.com/itpplasma/stafford38-paper) |
+| Manuscript, bibliography, and proof-map supplement | Overleaf editing authority, with a [versioned audit snapshot](docs/paper-lean-audit/manuscript/) here |
 | Research history and provenance records | Private [stafford38](https://github.com/itpplasma/stafford38) |
 
 The formal package contains no manuscript source and uses no research archive

@@ -1,24 +1,24 @@
 # Release procedure
 
-The author authorized the public Apache-2.0 software releases and confirmed
-that the Zenodo integration is enabled on 2026-09-08. This procedure covers
-Stafford38 v1.1.0; manuscript publication and Palomar submission are separate
-human actions. Human mathematical review remains open.
+The author authorized pulling, verifying, signing and publishing Stafford38
+v1.2.0, including the manuscript correspondence snapshot, and updating the
+paper's archive citations. Overleaf remains the manuscript editing authority.
+Human mathematical review remains open. This release does not resubmit to Palomar.
 
 ## Verify the source
 
-Use the exact source commit in `docs/verification-results.json`. The release
+Use the exact source commit in `docs/verification-results.json`. A later release
 commit may add documentation, citation metadata, verification evidence and the
-built dossier after that snapshot. Its Lean sources, dependency pins,
-Comparator configurations and verifier scripts must match the verified source.
-Preserve the v1.0.2 report under `docs/verification/history/`.
+built dossier. Its Lean sources, dependency pins, Comparator configurations and
+verifier scripts must match the verified source. Preserve historical reports
+under `docs/verification/history/`.
 
-The shared library dependency is AlgebraicAnalysis v0.3.0 at
-`4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`. Lean and Mathlib remain v4.33.0;
-the exact Mathlib commit is in `lake-manifest.json`. Its official public cache
-was tested during release preparation.
+The dependency remains AlgebraicAnalysis v0.3.0 at
+`4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`, with Lean v4.33.0 and the exact
+Mathlib commit in `lake-manifest.json`. Newer library releases do not silently
+replace the dependency used by this proof.
 
-Run in a clean public clone with fixed dependencies:
+Run in an isolated clean clone at the selected commit:
 
 ```bash
 bash scripts/verify.sh
@@ -26,45 +26,36 @@ bash scripts/verify-palomar.sh
 bash scripts/verify-palomar.sh comparator-fixed-source.json
 ```
 
-All three commands passed on the controller host. On 2026-09-08 the author explicitly requested publication before the additional isolated-clone replay; that replay remains pending. Retain command exit statuses and log hashes,
-20 endpoint axiom reports, 14 consumer reports, import audits, and the two
-Comparator logs with both NanoDa and Lean acceptance. The one-shot Fable audit
-and corrections are recorded in `docs/audits/exact-source-review-2026-09-08.md`;
-they supplement the kernel checks.
+Retain exit statuses, log hashes, endpoint and consumer axiom reports, the
+paper-linked declaration audit, import audits, and both Comparator logs with
+NanoDa and Lean acceptance. State whether the clone reused a compiled cache;
+a warm cache is not a cold rebuild. Independent AI proof reviews supplement
+kernel checks and are distinct from human review.
 
 ## Build and publish
 
 Build `docs/dossier/stafford38-challenge-dossier.tex` twice with LuaLaTeX.
-Check references and layout, retain the PDF in the Git tree for Zenodo's source
-archive, and attach the PDF and verification report to the GitHub release.
-Check that the original `Challenge.lean` and `Solution.lean` match v1.0.2.
-Commit and push the verified source and release metadata before signing:
+Check references and layout, retain its PDF in the Git tree for Zenodo, and
+attach the PDF and verification receipt to the GitHub release. Preserve both
+compared theorem interfaces and their fixed dependency pins.
 
-```bash
-formal_commit=$(git rev-parse HEAD)
-test -z "$(git status --porcelain)"
-git tag -s v1.1.0 "$formal_commit" -m 'Stafford38 v1.1.0: exact-source comparison'
-git verify-tag v1.1.0
-git push origin refs/tags/v1.1.0
-```
+Commit and push the verified source and release metadata. Sign a new immutable
+`v1.2.0` tag, verify its signature, push it, and create the GitHub release with
+the release notes and assets. Do not move an existing tag. Wait for Zenodo,
+download its source ZIP, and compare every archived file with the tagged Git
+tree. Record the version DOI in a subsequent citation commit without moving
+the release tag. Refresh the paper's bibliography and the formal repository's
+manuscript snapshot together, and push both paper remotes.
 
-Create the GitHub release at that tag with the reviewed notes and assets.
-Do not move an existing tag. Wait for the Zenodo record, download its source
-ZIP, and compare every archived file with the tagged Git tree. Record the
-version DOI in a subsequent citation commit without moving the release tag.
-Upload the final dossier to Slopbox for the author's review.
+## Registry scope
 
-## Palomar submission
+The existing Stafford38 registry entry is
+[PALOMAR-2026-09-05-000007 v2](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=2).
+It certifies the theorem and source revision named by that entry. Local replay
+of both Comparator configurations and publication of newer auxiliary proofs
+do not constitute a new registry version.
 
-The author submits Stafford38 before Global Stafford, using the complete
-40-character v1.1.0 release commit and `comparator-fixed-source.json`. This
-configuration compares the stronger exact-source statement. The original
-`comparator.json` remains available and is verified for compatibility.
-Use `formalization.yaml` as metadata and the repository root as the project
-directory. Use an existing Palomar identifier only when a registration receipt
-confirms it. No submission receipt is retained in this repository.
-
-Global Stafford then pins the exact Stafford38 release commit and the same
-AlgebraicAnalysis release, passes its own Phase I/full/Comparator replay, and
-publishes its release. AlgebraicAnalysis is a dependency library; this release
-procedure does not create a separate Palomar theorem submission for it.
+The separate Global Stafford archive is v1.0.6 at
+[10.5281/zenodo.22669444](https://doi.org/10.5281/zenodo.22669444), alongside
+[PALOMAR-2026-09-09-000001 v2](https://palomar-registry.org/entry?id=PALOMAR-2026-09-09-000001&version=2).
+Its exact version remains pinned in the manuscript correspondence map.

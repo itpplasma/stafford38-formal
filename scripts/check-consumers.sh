@@ -36,7 +36,7 @@ for name in expected:
     axioms = {x.strip() for x in reports[name].split(',') if x.strip()}
     if axioms - {'propext', 'Classical.choice', 'Quot.sound'}:
         raise SystemExit(f'Forbidden consumer axioms: {name}: {axioms}')
-if re.search(r'sorryAx|admitAx|Lean\.ofReduceBool|declaration uses .sorry|(^|:) error:', text):
+if re.search(r'sorryAx|admitAx|Lean\.ofReduceBool|declaration uses .sorry|(^|:) error(\([^)]*\))?:', text):
     raise SystemExit('Forbidden proof mechanism or Lean error in consumer output')
 print(f'Independent literal consumers: {len(expected)} axiom reports passed')
 PY

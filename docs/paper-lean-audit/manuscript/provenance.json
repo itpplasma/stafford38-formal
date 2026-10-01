@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "editing_authority": "Overleaf / itpplasma/stafford38-paper",
+  "paper_base_commit": "385f968875c02dfc8357c36b1813c6fbc7434609",
+  "snapshot_scope": "Exact committed manuscript TeX, bibliography and visible annotations. Overleaf remains the editing authority.",
+  "files": [
+    {
+      "path": "human_readable_main.tex",
+      "sha256": "9cf88e57d414d80dd9ae37cb2fce093665af86df198a20a1f972f880111d0643"
+    },
+    {
+      "path": "main.tex",
+      "sha256": "66fbde4dbf8bcb7944bfcae22bb5858833ffe11ce0716f56075ab1eb478524e0"
+    },
+    {
+      "path": "lean_refs.tex",
+      "sha256": "4c4ac0e187e5a4720912a767339c8ff4d24756b6fbf39db548b0807e3c5c8f01"
+    },
+    {
+      "path": "ai_annotations.tex",
+      "sha256": "8566bcd42311a9ab4c9c2cfdc128427d565f789fe9856fb1b948bb8b4b97a968"
+    },
+    {
+      "path": "ai_workflow.tex",
+      "sha256": "e239702eeda6b5c1487c412ee6d9fb66c7e3b86686695de24a775f42c0ed5a63"
+    },
+    {
+      "path": "cyclicity.tex",
+      "sha256": "5353198b6d2eadf921d5ab5545e439dfa04834472c54a9b4d2fcbf80941c9690"
+    },
+    {
+      "path": "global_stafford.tex",
+      "sha256": "4ccb627b97d265f8c7df706ee27a2b912848291bb5735ba3ee7de5c83312f21a"
+    },
+    {
+      "path": "literature_extras.tex",
+      "sha256": "75e4c69e4b17a7c317925c5610e43fae9f66cc5ee735eb502968b0c6be8ae6c5"
+    },
+    {
+      "path": "proof_map.tex",
+      "sha256": "767f153989111b2972844f49ecbe09bd47bf5676cb350c40cc88e083ba3c8c40"
+    },
+    {
+      "path": "references.bib",
+      "sha256": "35c389c8ab9a70bf95787d9d883d0ad59fc4b383d08f9278af4e42a2b29064c9"
+    },
+    {
+      "path": "LICENSE.txt",
+      "sha256": "98b6fde2693d4044dce4a071640e90bd8d250dd789d9033dbd5b77c79f389de4"
+    }
+  ]
+}

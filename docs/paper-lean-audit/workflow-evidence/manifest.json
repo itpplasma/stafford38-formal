@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "research_repository": "itpplasma/stafford38",
+  "research_commit": "c054831150c6d0b46ad1a331c2957de3c07dbcf5",
+  "files": [
+    {
+      "path": "archive/research-skills/LICENSE-CC0-1.0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "archive/research-skills/CHECKSUMS.sha256",
+      "sha256": "22eef1462c5c9143ee20b785c922242fc08cb33f77d052183b6414c2907fae19"
+    },
+    {
+      "path": "archive/research-skills/README.md",
+      "sha256": "959ada0f7ff62518106c71c71d1c887a2f603be3d441680ffdd511b76aed92cc"
+    },
+    {
+      "path": "archive/research-skills/v4-proof-repair/math-frontier/SKILL.md",
+      "sha256": "9c005138a2048f4abec734e03d4d4dab0dccc80ec44a927c82efaa2d08e734e6"
+    },
+    {
+      "path": "archive/research-skills/v4-proof-repair/proof-audit/SKILL.md",
+      "sha256": "76183704f4e0296cb3b0927b09e68fb922d69c0f8bf1e9ef9ec567d395bb0f3d"
+    },
+    {
+      "path": "archive/research-skills/v3-scoped-promotion/evidence-gate/SKILL.md",
+      "sha256": "76bfb6b9a307ce53aa69356ddb797fe80b971439896682d178dbac5fb116ab29"
+    },
+    {
+      "path": "archive/research-skills/v3-scoped-promotion/math-frontier/SKILL.md",
+      "sha256": "5ebff5103122ed1a69f17d620ac9ceb89591b6ae281700f5b0c96427315d83dc"
+    },
+    {
+      "path": "archive/research-skills/v3-scoped-promotion/parallel-luna/SKILL.md",
+      "sha256": "212822ad2e745fd2135c412b25af0b217e3bc87bb81c5396c594aacff0faddec"
+    },
+    {
+      "path": "archive/research-skills/v3-scoped-promotion/program-loop/SKILL.md",
+      "sha256": "bd99542149f6501c34cd796d26a02782fea5cd3bd0a0dcf68bf350b82c2c1588"
+    },
+    {
+      "path": "archive/research-skills/v2-trigger-driven/bounded-exploration/SKILL.md",
+      "sha256": "75b87e04cd4d26c580d622b4dccb731afde6e47f5d606df014ff589fbeeca703"
+    },
+    {
+      "path": "archive/research-skills/v2-trigger-driven/evidence-gate/SKILL.md",
+      "sha256": "925ecde3e198275fecd8f5888454fbe5971808b394d4edecb2c9631eb38a4b36"
+    },
+    {
+      "path": "archive/research-skills/v2-trigger-driven/expert-escalation/SKILL.md",
+      "sha256": "cfb91d52ae80c522ede16008c405bcce1fb82fe6275453aedf7782973fb35f04"
+    },
+    {
+      "path": "archive/research-skills/v2-trigger-driven/math-frontier/SKILL.md",
+      "sha256": "40ae7d7dc94c65984d5bb71cc4f3a7eec95854bbb3ed895499eb79ce6bb5c661"
+    },
+    {
+      "path": "archive/research-skills/v2-trigger-driven/parallel-luna/SKILL.md",
+      "sha256": "199f7327c08c54748ceefeff53488162c20ff051216943f532bcf94be85e86e4"
+    },
+    {
+      "path": "archive/research-skills/v2-trigger-driven/program-loop/SKILL.md",
+      "sha256": "8093b8ed9f2ac10e651384d8d3b8ffa7711fe97c7f10d9daf14fe66ca7f2d501"
+    },
+    {
+      "path": "archive/research-skills/v1-initial/bounded-exploration/SKILL.md",
+      "sha256": "1b644bbe5a5c504a2a8fb7cba92c7bcbb9414285c87cbb234a2e308911f56ff4"
+    },
+    {
+      "path": "archive/research-skills/v1-initial/evidence-gate/SKILL.md",
+      "sha256": "21864d3b42b8ff903887c4116d109a55721a20dccb20d99525d6b6e5334e1e14"
+    },
+    {
+      "path": "archive/research-skills/v1-initial/expert-escalation/SKILL.md",
+      "sha256": "6628154aa48677bff677c12e9421683a326e917261ffd3fea6563c2d12c10d89"
+    },
+    {
+      "path": "archive/research-skills/v1-initial/math-frontier/SKILL.md",
+      "sha256": "aa1f9638df8fccb0443609dec506ea84f64b4f80fc9a1aa19baa80bdda03b810"
+    },
+    {
+      "path": "archive/research-skills/v1-initial/parallel-luna/SKILL.md",
+      "sha256": "e46d2fc5c3e1f7cff5c7f7d50ae22e3f54458ff20b717105aea2c5efaf17fff5"
+    },
+    {
+      "path": "archive/research-skills/v1-initial/program-loop/SKILL.md",
+      "sha256": "170dcd5d75f8c1c95cd013ac92edbcd70b7d96b51874dd35665385c485759d34"
+    },
+    {
+      "path": "notes/history/operating-loop.md",
+      "sha256": "24a6eec320ed1cd4847548b03b44cffc91fa306ee41de02c5175ea4f6d6b8865"
+    },
+    {
+      "path": "notes/history/research-protocol.md",
+      "sha256": "9c09c31c19c51c9963febc16a637614273939a28e843238e783aa90637ae637c"
+    },
+    {
+      "path": "notes/history/luna-review-protocol.md",
+      "sha256": "048b22d317105a0d8ec739ef3f9790567bac6769e9d1831e9471556c0a0de1c8"
+    },
+    {
+      "path": "notes/history/luna-review-template.md",
+      "sha256": "204daa1d1f7c1e5ce2a2d3cbb9535884c92e47918269e0497ba45be3fc66530a"
+    },
+    {
+      "path": "notes/history/gpt-sol-consult-protocol.md",
+      "sha256": "f043646e0912239b780dc3438438f92e39f3fe9feb78e9664c5a81438db4da4a"
+    },
+    {
+      "path": "notes/history/sol-consult-template.md",
+      "sha256": "a5913078221cdf073c22b488603d920cdc051f4504af545c27ff44a0ab3eb22b"
+    },
+    {
+      "path": "archive/research-history/cutover-2026-09-05/original-tree/docs/model-use.md",
+      "sha256": "d216f768dabd6bb4931de96107f646af3a5d19152c277d8592f53a2a59a6be91"
+    },
+    {
+      "path": "archive/research-history/cutover-2026-09-05/original-tree/docs/model-use-evidence.json",
+      "sha256": "e1cfc3898227a21bc1d80e8e09271c54a6259661c25ff33ed4a8d9287277883a"
+    },
+    {
+      "path": "workflow-history.txt",
+      "sha256": "09b7e8f141a8944761af5d2a17fa12f6618e1404f9221e43a43091b90ffe3e8b",
+      "kind": "AI reconstruction report; primary sources identified within"
+    },
+    {
+      "path": "workflow-prompts.txt",
+      "sha256": "52d47d44e26a9efa2eecb74c705b68779631371067ed18125ed6acbdaa5d0ccd",
+      "kind": "AI reconstruction report; primary sources identified within"
+    },
+    {
+      "path": "workflow-prompts.tex",
+      "sha256": "34032fc52e340504bab9d4d854ff4782e6cf946e3ac70f493df13c10a4258534",
+      "kind": "AI reconstruction report; primary sources identified within"
+    }
+  ]
+}

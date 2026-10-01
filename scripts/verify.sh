@@ -82,6 +82,7 @@ lake build "${retained_modules[@]}" \
   >"$log_dir/build.log" 2>&1
 
 bash scripts/check-consumers.sh
+bash scripts/check-paper-declarations.sh
 
 python3 - <<'PY'
 import re
@@ -208,6 +209,11 @@ import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
 import Stafford38.Geometry.GeneralCoisotropicSetsTest
 import Stafford38.Geometry.GeneralTangentLimitCriterionTest
 
+#print axioms Stafford38.Weyl.EulerProductIdentities.eval_fallingEulerProduct
+#print axioms Stafford38.Weyl.EulerProductIdentities.eval_risingEulerProduct
+#print axioms Stafford38.NoncharacteristicHypersurface.normalMomentumPolynomialEquiv_normalCoordinate
+#print axioms Stafford38.NoncharacteristicHypersurface.normalMomentumPolynomialEquiv_tangentialMap
+#print axioms Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite
 #print axioms Stafford38.WeylDomain.mul_ne_zero
 #print axioms Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair
 #print axioms Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion
@@ -251,6 +257,11 @@ from pathlib import Path
 
 text = Path(sys.argv[1]).read_text(encoding="utf-8")
 expected = {
+    "Stafford38.NoncharacteristicHypersurface.normalMomentumPolynomialEquiv_normalCoordinate",
+    "Stafford38.NoncharacteristicHypersurface.normalMomentumPolynomialEquiv_tangentialMap",
+    "Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite",
+    "Stafford38.Weyl.EulerProductIdentities.eval_fallingEulerProduct",
+    "Stafford38.Weyl.EulerProductIdentities.eval_risingEulerProduct",
     "Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRing_mk",
     "Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRing_injective",
     "Stafford38.NoncharacteristicHyperplane.cokerToRestrictedCoordinateRingEquiv",
@@ -312,7 +323,7 @@ bash scripts/check-import-closure.sh FixedSourceSolution
 lake env lean --trust=0 Solution.lean >"$log_dir/solution.log" 2>&1
 lake env lean --trust=0 FixedSourceSolution.lean >>"$log_dir/solution.log" 2>&1
 
-if grep -Eq "sorryAx|admitAx|Lean\.ofReduceBool|declaration uses 'sorry'|(^|:) error:" \
+if grep -Eq "sorryAx|admitAx|Lean\.ofReduceBool|declaration uses 'sorry'|(^|:) error(\([^)]*\))?:" \
     "$log_dir/build.log" "$log_dir/axioms.log" "$log_dir/solution.log"; then
   echo "compiled verification logs contain a forbidden marker or Lean error" >&2
   exit 1

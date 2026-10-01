@@ -1,0 +1,9 @@
+{
+  "base_commit": "1e234855eee36d2541dd69580501408288760e21",
+  "paper_commit": "808605b07c768ff628fee0868ada5f6a8b2b727e",
+  "files": {
+    "Stafford38/NoncharacteristicHyperplane.lean": "0c27bd9d6b55ee088223998369813234d0e5cdd473d0b0a356b717c5a70d4895",
+    "tests/NoncharacteristicConsumer.lean": "69db37dccd60a71eaf0068b60b892f3c028196c548571f3e727cad7447cf827a"
+  },
+  "patch_digest": "3dad8103866fb842a064c37fc18f3a6a24a88b2e1725d33ac87ce88c5e4fd900"
+}

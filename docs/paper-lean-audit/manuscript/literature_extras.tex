@@ -1,0 +1,86 @@
+% Optional related-work insertion near the end of the introduction:
+% \input{literature_extras}
+% All citation keys below are in references.bib. Keep only the paragraphs
+% appropriate to the final paper; the broader generator context is optional.
+% Sources checked 2026-09-30 against primary papers/publisher records,
+% the formal proof graph, documented intakes and the live Stacks Project.
+
+\paragraph{Related work and proof sources.}
+Stafford's original paper proves two-generation of finitely generated torsion
+right Weyl-algebra modules and identifies Conjecture~3.8 with their stable
+cyclicity~\cite[Theorem~3.7 and pp.~437--438]{Stafford1978}.
+Bellamy's 2026 survey records the weaker ordinary-cyclicity question for
+finitely generated torsion $A_n(\mathbb C)$-modules as open, and distinguishes
+it from Stafford's stronger identity~\cite[Section~3, Conjecture~3.4]{Bellamy2026}.
+The machine-checked Stafford38 proof is recorded in Palomar
+\cite{Stafford38Palomar2026}.
+
+Constructive predecessors address Stafford's established generator theorems.
+Hillebrand--Schmale and Leykin develop effective two-generator methods, and
+Leykin also constructs cyclic generators of holonomic modules
+\cite{HillebrandSchmale2001,Leykin2004}. Quadrat--Robertz give constructive
+module-decomposition and basis algorithms~\cite{QuadratRobertz2007,
+QuadratRobertz2014}. Caro--Levcovitz and Caro-Tuesta--Levcovitz study
+two-generation and module structure for differential-operator rings with
+formal or convergent series coefficients~\cite{CaroLevcovitz2010,
+CaroTuestaLevcovitz2020}. These results concern ideal generation, holonomic
+cyclicity, and projective-module computation. The constrained identity
+$1=dR+FdS$ for arbitrary nonzero $d$ is a further assertion.
+
+The wider generator-theory context includes Stafford's stable-range theorem
+and noncommutative Forster--Swan and algebraic $K$-theory results
+\cite{StaffordStableRange1981,StaffordGenerating1981}; the latter article
+has a corrigendum~\cite{StaffordGeneratingCorrigendum1983} and a related
+chapter exposition~\cite{StaffordGeneratingChapter1982}. Stafford also
+constructed nontrivial stably free projective right ideals over Weyl
+algebras~\cite{StaffordStablyFree1985}. These are surrounding module-structure
+results. The OreModules package provides homological and Gr\"obner-basis
+methods for multidimensional linear systems over Ore algebras
+\cite{OreModules2007} and belongs to the computational background.
+
+For the proof's algebraic framework, Ore's skew-polynomial construction
+\cite{Ore1933} supplies historical context for the derivation Ore presentation;
+Bj\"ork and Hotta--Takeuchi--Tanisaki develop differential operators, good
+filtrations and characteristic varieties~\cite{Bjork,HTT}. The involutivity
+input is Gabber's theorem, together with its erratum and the algebraic
+formulation of Singh--Kumar~\cite{Gabber1981,Gabber1982,SinghKumar2014}.
+Schnell's notes give the noncharacteristic framework
+\cite[Lecture~15]{SchnellNotes}. The particular Euler residue, localized
+filtered-length contradiction, and asymptotic conormal construction are
+developed in this project; the cited background does not attribute those
+arguments to the textbooks.
+
+The standard geometric steps can be cited precisely in the Stacks Project:
+finite normalization and preservation of projectivity (Lemmas~33.27.1--2,
+Tag~0BXQ), the height-one criterion for regularity in a Noetherian normal
+domain (Tag~031T), separability of field extensions in characteristic zero
+(Tag~0322), and regular functions on proper
+geometrically integral varieties (Lemma~33.26.2, Tag~04L2)
+\cite[Tags~0BXQ, 031T, 0322, 04L2]{Stacks}.
+Normalization is an isomorphism over the smooth locus by the finite
+birational normal-target criterion (Tag~0AB1), and completed regular
+equicharacteristic local rings have the needed power-series description
+(Tag~0C0S)~\cite[Tags~0AB1, 0C0S]{Stacks}. The tangent-lattice limit uses
+the valuative criterion~\cite[Chapter~II, Section~4]{hartshorne}.
+Faithfully flat descent is covered by Tag~00HP; the recursive finite-order
+differential-operator definition and extension to localizations are covered
+by Tag~09CH, Lemma~10.133.12~\cite[Tags~00HP, 09CH]{Stacks}.
+
+% Precise edits for the current drafts, to apply during manual polishing:
+% human_readable_main.tex: change "every right torsion module" to
+% "every finitely generated torsion right A_n(C)-module" when describing
+% Bellamy's question. Retain the stronger, arbitrary-field theorem separately.
+% Replace \cite{SinghKumar} by \cite{SinghKumar2014}; Bjork is now in the .bib.
+% Replace the faithful-flatness \cite{somewhere} by \cite[Tag~00HP]{Stacks}.
+% For the other \cite{somewhere}, cite HTT Chapter 1 and give the elementary
+% argument: an exhaustive filtration with F_{-1}Q=0 and gr Q=0 has every
+% filtration step zero, hence Q=0. A nonzero finite graded module over the
+% symbol ring has nonempty support.
+% Both paper versions: replace Tag 04L0, Lemma 33.26.2 by Tag 04L2,
+% Lemma 33.26.2. Tag 04L0 names the section rather than that lemma.
+% Cite Tag 0AB1 at the smooth-locus normalization assertion; Tag 0C0S at
+% the completed-local-ring assertion; and Lemma 33.27.2 for projectivity.
+% In main.tex's localization section add \cite[Tag~09CH, Lemma~10.133.12]{Stacks}
+% at the first definition of finite-order differential operators.
+% The exact Euler and filtered-length proofs and the Stafford denominator
+% transport remain project arguments, rather than imported textbook results.

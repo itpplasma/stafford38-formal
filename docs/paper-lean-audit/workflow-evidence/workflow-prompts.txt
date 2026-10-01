@@ -1,0 +1,144 @@
+# Stafford 3.8 workflow prompt recovery
+
+Scratch evidence for the paper appendix; canonical repositories are untouched.
+This record separates repository-authored protocol from later reusable skills
+and from a reconstructed example. The transcript excerpt below is exact as
+stored in the sanitized archive, with archive redactions preserved.
+
+Scope caveat: `stafford38/PROVENANCE.md` and the formal repository's
+`docs/proof-source-provenance.md` identify `stafford38` as the private research
+archive and `stafford38-formal` as canonical proof source. The formal
+repository's current `PLAN.md` says there is no open theorem-formalization
+task. These prompt examples document historical workflow, not a current task.
+
+## Project-native protocol and prompt sources
+
+- `stafford38/notes/history/operating-loop.md`: added 2026-08-16 in
+  `71ed073f`; current excerpt last changed 2026-09-02 in `073f2fd8`.
+  Exact project protocol: one active task; workers return evidence; controller
+  owns authoritative integration/promotion; lanes receive a frozen statement
+  and return command, version, input digest, output/certificate, and scope.
+- `stafford38/notes/history/luna-review-protocol.md` and
+  `luna-review-template.md`: added 2026-08-16; current review packet/template
+  updated 2026-08-24 (`37e1fe8e`). Reviews test scope, sidedness, circularity,
+  theorem hypotheses, execution, and whether the named leaf was closed.
+- `stafford38/notes/history/gpt-sol-consult-protocol.md` and
+  `sol-consult-template.md`: added 2026-08-16; latest protocol/template update
+  2026-08-24 (`37e1fe8e`). Sol is advisory, not evidence. Escalation follows
+  two distinct failed falsifiable attacks; ask for at most three mechanisms,
+  each with an exact intermediate lemma, noncircularity, adversarial test,
+  first bottleneck, and executable next action. Verify suggestions
+  independently; Luna review remains required for resulting claims.
+- `stafford38/notes/history/research-protocol.md`: added 2026-08-16, revised
+  2026-08-30 (`482b1d70`). It defines valid deltas and explicitly rejects
+  unexecuted scripts, bounded ansatz, unrestricted q selection, and a premise
+  that already contains the conclusion.
+- `stafford/AGENTS.md` introduced the historical same-q witness wording in
+  commit `8fc7d260` on 2026-08-30; that is the latest change recorded for
+  this file in its repository history.
+
+## Exact surviving session prompt excerpt
+
+Source: sanitized Codex transcript archive,
+`stafford38/archive/transcripts/remote/research-host/codex/rollout-2026-08-16T09-51-31-01a0098d-ecb9-7573-89cc-ec98b71422aa.jsonl`, user message at
+2026-08-16T07:51:32Z. Exact excerpt (not a reconstruction):
+
+> You are GPT-Sol, advisory only. Work on exactly this Stafford A2 active leaf:
+>
+> STRICT COMPATIBLE RIGHT-IDEAL ENLARGEMENT (SEL-001)
+> Let A=A2(k), char(k)=0, M=A/dA. Suppose finite-defect data satisfy
+> `y - x*a - y*q*d*b = d*u` and `J(q)=dA+(x+y*q*d)A` is proper.
+> The proposed target is to find `h,t,w` with
+> `y*h*d*b = x*t + d*w` and `J(q) ⊊ J(q+h)`.
+>
+> Request at most three genuinely distinct mechanisms. For each provide an
+> exact intermediate lemma strictly weaker than the enlargement target; why
+> it is noncircular; the strongest exact Weyl counterexample test; first
+> bottleneck; and one executable verifier using existing Lean/M2/literature
+> infrastructure. Do not claim universal Stafford 3.8.
+
+The quoted portions are exact spans from one longer message, with only a
+small amount of intervening context omitted. The archive README says exports
+exclude tool results, attachments, system instructions, and hidden reasoning;
+therefore this supports the surviving user prompt, not a claim about every
+instruction seen by the model.
+
+## Same-q and right-cofactor discipline
+
+Exact project rule in `stafford/AGENTS.md` (repository snapshot; see line 33
+onward): equalities in `M=A/dA` retain explicit right-`dA` cofactors, and the
+historical compatible-witness target uses the same single `q` in both
+equations:
+
+```text
+y - x*a - y*q*d*b = d*u
+x - (x + y*q*d)*r = d*v
+```
+
+The file also assigns Luna straightforward implementation/replay and Sol
+novel proof architecture. This is project-specific guidance, not a generic
+skill inference.
+
+## Frozen review and producer/consumer example
+
+The 2026-08-23 review record `stafford/notes/reviews/review-lower-tail-rescue-all-r.md`
+identifies an exact base commit and a SHA-256 digest covering the patch,
+including then-untracked files. This is direct evidence that an exact base
+plus a hashed worktree patch was accepted as a reproducible review input
+before commit. In the 2026-09-02 source audit
+`stafford38/notes/reviews/review-gabber-adic-connection-source-audit-2026-09-02.md`,
+the recorded distinction is: “The focused Lane B checkers passed; they certify
+conditional consumers, not the missing producer.” The audit then states the
+missing bridge and a smallest honest producer obligation. This supports the
+workflow rule to formalize the hypothesis-producing theorem separately from
+its conditional consumer.
+
+## Generic skill history; attribution limit
+
+In the reusable-skill repository, `skills/math-frontier/SKILL.md` first appears
+in commit `8b5ca3f` on 2026-08-16 and is substantially rewritten in `48c4c90` on
+2026-08-30. The initial version says to write a falsification condition before
+a proof attempt and, for experiments, to prefer counterexample search before
+broad proof machinery. `skills/proof-audit/SKILL.md` first appears in the
+2026-08-30 rewrite. The local installed skill mirror is dated 2026-09-11.
+These shared skills help interpret the workflow but do not prove they were
+invoked in a particular earlier session; project-native files and transcript
+records are the evidence for historical Stafford practice.
+
+Exact historical generic skill excerpt from `8b5ca3f` (2026-08-16),
+`skills/math-frontier/SKILL.md`:
+
+```text
+Before attacking a new frontier leaf:
+1. Freeze the exact theorem statement: quantifiers, domains, conventions,
+   side conditions, ambient structures, permitted tools, and terminal success
+   condition.
+2. Audit the claim ledger: established, conditional, failed, blacklisted, and
+   active-leaf entries.
+3. Identify the first unresolved dependency, not merely a restatement of the
+   terminal theorem.
+4. Write a falsification condition for the proposed route before investing in a proof attempt.
+```
+
+This generic shared-skill excerpt is separate from the project-authored
+protocol and is not evidence that the skill was invoked in the archived session.
+
+## Representative formalization prompt (reconstructed, not verbatim)
+
+I did not recover an exact session prompt for this formalization task. The
+draft below is a representative synthesis of project protocols, not a quotation:
+
+> You are the Lean worker for one named Stafford 3.8 task. Formalize only the
+> exact producer claim and hypotheses supplied below. A checked conditional
+> consumer does not supply its missing producer hypothesis: prove that
+> hypothesis as a separate theorem, or report the first unsupported bridge.
+> Preserve right-sided multiplication and explicit cofactors; introduce no
+> axioms, `sorry`, or terminal wrappers. Run the declared verifier and return
+> the exact command, tool version, output, dependency list, theorem scope, and
+> remaining open obligations. Do not edit the plan, task pool, ledger, or
+> promotion status; return evidence to the controller.
+
+This wording is reconstructed from `stafford38-formal/AGENTS.md`,
+`stafford38/notes/history/operating-loop.md`, and the dated source audit above.
+It describes a historical workflow; the current formal repository records
+that theorem formalization is complete and no theorem task is open.

@@ -10,3 +10,14 @@ docs/dossier/*.log
 docs/dossier/*.out
 docs/dossier/*.fls
 docs/dossier/*.fdb_latexmk
+
+# Paper correspondence generator caches and rendered artifacts
+tools/paper_lean_audit/node_modules/
+tools/paper_lean_audit/build/
+docs/paper-lean-audit/manuscript/*.aux
+docs/paper-lean-audit/manuscript/*.log
+docs/paper-lean-audit/manuscript/*.out
+docs/paper-lean-audit/manuscript/*.fls
+docs/paper-lean-audit/manuscript/*.fdb_latexmk
+docs/paper-lean-audit/manuscript/*.bbl
+docs/paper-lean-audit/manuscript/*.blg

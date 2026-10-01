@@ -1,0 +1,17 @@
+{
+  "name": "stafford38-paper-lean-audit",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Generates the paper/Lean correspondence review document (HTML and PDF) from a pinned mapping.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node build.mjs --check",
+    "test": "node --test test/*.test.mjs",
+    "pdf": "node build.mjs --check --pdf"
+  },
+  "dependencies": {
+    "katex": "0.18.10",
+    "playwright-core": "1.63.0"
+  }
+}

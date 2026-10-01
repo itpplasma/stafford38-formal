@@ -56,8 +56,12 @@ completed expert review or journal acceptance is claimed.
 
 ## Licenses
 
-Formal code and documentation are Apache-2.0. Dependency licenses and
+Formal code and original documentation are Apache-2.0. Copied manuscript,
+research protocols and the audit generator retain their CC BY 4.0 notices. Dependency licenses and
 attributions remain with their respective projects; [NOTICE](../NOTICE)
 records the adapted Palomar wrapper. The separate manuscript and supplements
-remain CC BY 4.0. No research conversations, private correspondence, third-party
-literature files, or generated manuscript artifacts form part of this package.
+remain CC BY 4.0, including the [versioned manuscript snapshot](paper-lean-audit/manuscript/).
+The [workflow evidence](paper-lean-audit/workflow-evidence/README.md) retains
+historical project protocols, model-use records and scoped reconstruction
+reports, including a surviving prompt excerpt. Full raw sessions, private
+correspondence and third-party literature files are not included.

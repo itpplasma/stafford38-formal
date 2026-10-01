@@ -1,0 +1,34 @@
+% Review annotations, following the red-add/blue-remove convention used in
+% the Varenna 2016 papers. These commands keep the original wording visible.
+% Accept an insertion by removing its AIaddition environment or AIadd wrapper.
+% Accept a replacement by deleting AIremove{old} and unwrapping AIadd{new}.
+% Resolve a comment by deleting its complete AIcomment{ID}{text} command.
+% There is deliberately no global switch that hides unresolved comments.
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[normalem]{ulem}
+% AI compile repair: the retained draft uses the undefined typo \cots.
+% EDIT-02 beside that occurrence makes this repair visible in the PDF.
+\providecommand{\cots}{\cdots}
+\definecolor{AIadded}{RGB}{160,25,25}
+\definecolor{AIreview}{RGB}{25,70,145}
+\newcommand{\AIadd}[1]{{\color{AIadded}#1}}
+\newcommand{\AIremove}[1]{{\color{AIreview}\sout{#1}}}
+\newcommand{\AIreplace}[2]{\AIremove{#1}\AIadd{#2}}
+\newenvironment{AIaddition}[1]
+  {\par\begingroup\color{AIadded}\noindent
+   \textbf{AI addition: #1.}\par\smallskip\ignorespaces}
+  {\par\endgroup}
+\newcommand{\AIcomment}[2]{%
+  \par\smallskip\noindent
+  \fcolorbox{AIreview}{AIreview!4}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+      \normalfont\small\color{AIreview}\textbf{AI comment #1.} #2}}%
+  \par\smallskip}
+\newcommand{\AIreviewlegend}{%
+  \AIcomment{Review guide}{Red text is a proposed AI addition; blue
+  strike-through preserves text proposed for removal. Blue boxes contain
+  unresolved AI comments. Johanna's original text remains visible. Edit
+  additions directly; accept them by removing the marking wrapper, and
+  resolve each box by deleting its \texttt{\string\AIcomment} command.
+  This review draft is synchronized through Overleaf Git.}}

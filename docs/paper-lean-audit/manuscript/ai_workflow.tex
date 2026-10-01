@@ -1,0 +1,80 @@
+% Optional short paragraph: \input{ai_workflow}
+% Optional appendix: \begingroup\def\StaffordWorkflowAppendix{}
+% \input{ai_workflow}\endgroup
+% The manuscript contains an inline adaptation for direct editing.
+
+\ifdefined\StaffordWorkflowAppendix
+% Evidence: project ledgers, archived outward session messages, model-use
+% records, independent reviews, and canonical formal-proof provenance.
+\section*{Appendix: AI-assisted research and formalization}
+
+Under Christopher Albert's direction, AI agents supported proof discovery,
+counterexample searches, review, and formalization. The work began with
+cyclic-extension computations in Macaulay2 and Maple. Attempts to construct
+universal cofactors directly produced special cases and reductions but
+eventually stalled. The decisive change was to study the canonical quotient
+$Q=A_n/(dA_n+x^N dA_n)$: Euler surjectivity and monicity constrained its
+characteristic support, while Gabber's involutivity and asymptotic conormal
+geometry forced that support to be empty. This turned cofactor selection
+into a quotient-vanishing problem. Full Lean formalization was deferred
+until the paper argument was complete, although small formal checks
+continued throughout. In the final formal development, support avoidance
+over the coordinate hyperplane was proved by a localized filtered Koszul
+length contradiction.
+
+The workflow separated proposed ideas from verified claims. One controller
+maintained the authoritative proof state, while parallel workers explored
+distinct mechanisms and returned evidence with an explicit scope.
+Independent reviewers checked fixed revisions for quantifiers, sidedness,
+circularity, and missing hypotheses. The project protocols followed the
+same discipline as the shared \texttt{math-frontier} skill: freeze the
+claim, identify its first unresolved dependency, and specify how a route
+could fail. Conceptual prompts requested a small number of distinct
+mechanisms; paper-only tasks sought complete arguments before implementation.
+A condensed representative prompt, adapted from the archived protocols, is:
+\begin{quote}\small
+Work on one precisely stated unresolved claim. Propose at most three
+distinct mechanisms, each with an intermediate lemma, a noncircular
+justification, and an adversarial test. Preserve the quantifiers and
+right-sided cofactors. For a paper task, supply a complete argument; for
+formalization, prove the required hypotheses without adding axioms or
+using \texttt{sorry}. Return evidence and the first unsupported bridge; do not
+promote a conditional result to a theorem.
+\end{quote}
+
+Recorded research and review sessions used GPT-5.5, GPT-5.6 Luna and Sol,
+GPT-6 Astra, and Claude Fable 5, Haiku 4.5 and Opus 5. The project protocols
+assigned routine implementation and replay to Luna and conceptual
+consultation to Sol; independent reports also record Opus reviews.
+Subsequent manuscript, proof-map, build and release work used Fable 5.1,
+Opus 5 and Sonnet 5. These records establish participation and task roles,
+without assigning a particular mathematical idea to one model.
+
+The completed proof uses Lean~4, Mathlib and AlgebraicAnalysis
+\cite{Lean4,Mathlib2020,AlgebraicAnalysis030}.
+Formalization distinguished theorems proving required inputs from
+conditional theorems merely consuming them. Statement comparison and
+independent NanoDa and Lean kernel checks verified the submitted declarations
+\cite{Comparator,NanoDa,PalomarDocs}; their proofs use only
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+The Stafford38 and Global Stafford proofs are registered separately in
+Palomar~\cite{Stafford38Palomar2026,GlobalStaffordPalomar2026}.
+These checks certify the formal declarations; human review of the paper's
+exposition and its correspondence with them remains a separate task.
+
+\else
+\paragraph{AI-assisted research and formalization.}
+Under Christopher Albert's direction, AI agents supported discovery,
+counterexample searches, independent review, and formalization. Early
+cofactor-selection approaches stalled; the proof advanced by reframing
+the problem as vanishing of the canonical quotient, using Euler
+surjectivity, monicity and characteristic-support geometry. Full Lean
+formalization followed the completed paper argument, while bounded checks
+continued during discovery. Parallel workers returned scoped evidence to
+one controller, and reviewers checked quantifiers, sidedness and unsupported
+bridges independently. The Lean/Mathlib development uses AlgebraicAnalysis
+\cite{Lean4,Mathlib2020,AlgebraicAnalysis030}; its registered proof and
+statement/kernel checks are recorded by Palomar
+\cite{Stafford38Palomar2026,Comparator,NanoDa,PalomarDocs}.
+The appendix describes the models, proof history, and prompt strategy.
+\fi

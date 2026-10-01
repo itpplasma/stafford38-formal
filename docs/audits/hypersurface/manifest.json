@@ -1,0 +1,8 @@
+{
+  "base_commit": "9974316fc3d4b9447cd67a4e28966f4ed30b15f6",
+  "paper_commit": "55ed8ce4cb54e37d3e45d4f99ac8a688c0280edc",
+  "files": {
+    "Stafford38/NoncharacteristicHypersurface.lean": "41e9de66aab5b9b927dfe7442935cf626c5503402945373b1e82a5d1780519cb"
+  },
+  "patch_digest": "0e8346f5e4c7a2fa30a379196f4f11cc6d3c456a0d33ee10c1cbeb5487ccff88"
+}

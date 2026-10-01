@@ -1,0 +1,11 @@
+{
+  "base_commit": "1e234855eee36d2541dd69580501408288760e21",
+  "paper_commit": "808605b07c768ff628fee0868ada5f6a8b2b727e",
+  "files": {
+    "Stafford38/Weyl/Domain.lean": "2528e06c79f3330359e631cd095f6bf593943862e6968290640ec6304f9d30dd",
+    "Stafford38/TorsionCyclicity.lean": "c1edd50628b61b91ef50a482754276b063b6222534a60fcd46f77474b041b3df",
+    "CorollaryChallenge.lean": "5336554c0549d206256934c0a40e33fa5c97c5eafbf028641259b9f2d1c5d3fd",
+    "tests/TorsionCyclicityConsumer.lean": "6374afa5184c21bed5b44f31b3ada630e618f1fe2a3088816ffe96351db2bba6"
+  },
+  "patch_digest": "3dc63a20a5f6530c89fe901a71fbab8d88760ca703722aec6b19124d70fef561"
+}

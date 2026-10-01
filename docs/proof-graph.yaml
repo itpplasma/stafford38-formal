@@ -112,4 +112,14 @@ nodes:
     module: Stafford38.NoncharacteristicHyperplane
     source_role: manuscript finite-restriction and conormal corollaries
     references: []
-    depends_on: [quotient_euler]
+    depends_on: [monicization]
+  - id: noncharacteristic_hypersurface
+    module: Stafford38.NoncharacteristicHypersurface
+    source_role: literal principal-symbol hypersurface finite projection
+    references: []
+    depends_on: [monicization]
+  - id: euler_products
+    module: Stafford38.Weyl.EulerProductIdentities
+    source_role: public polynomial-product identities for paper links
+    references: []
+    depends_on: []

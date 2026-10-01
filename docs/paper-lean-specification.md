@@ -115,3 +115,12 @@ statement relations, proof routes and remaining review issues at pinned revision
 The existing Palomar record checks its registered universal theorem. The
 archive's additional declarations are verified locally; this release makes
 no new Palomar submission or claim that the registry rechecked them.
+
+`Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite`
+also proves the intermediate finite projection for the actual principal-symbol
+hypersurface: the literal ring `R/(P,x₀)` is finite over the tangential coordinate
+ring with its canonical action. The proof splits the normal covariable and base
+coordinate, then applies the monic-annihilator and variable-annihilator finite
+module lemmas. It does not use vanishing of the canonical quotient. Degree zero
+is included. This closes the first assertion of Appendix B Proposition B.2,
+beyond the canonical characteristic-ring conclusion already recorded above.
