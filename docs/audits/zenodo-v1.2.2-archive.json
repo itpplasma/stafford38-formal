@@ -1,0 +1,12 @@
+{
+  "doi": "10.5281/zenodo.23079259",
+  "version": "v1.2.2",
+  "archive_file": "itpplasma/stafford38-formal-v1.2.2.zip",
+  "archive_md5": "1cd77ee87048449992116dc93595f2d3",
+  "checked_files": [
+    "Stafford38/TorsionCyclicity.lean",
+    "Stafford38/Weyl/FilteredScalarLifting.lean",
+    "tests/PaperAdaptersConsumer.lean"
+  ],
+  "result": "Archive bytes match checked adapter sources and correct release metadata"
+}

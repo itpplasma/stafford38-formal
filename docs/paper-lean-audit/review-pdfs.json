@@ -1,9 +1,9 @@
 {
-  "paper_commit": "b2fb68cfb5f8b9f2dd8769d10af36e3ae508ab75",
+  "paper_commit": "7d10c6297f8367b3f0061d61bda5ae86f9945c2c",
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
   "pdfs": {
-    "human_readable_main.pdf": "dc86c1dee22305c4cc0c99f619ee98b2ce358dc0ef98dfbb4f80c4a8bd3bd1b0",
-    "lean_proof_details.pdf": "c1d0e97311a2eedafbff6a6aa79352bcfb38b0dda9ea3ae933487ff8404d4155"
+    "human_readable_main.pdf": "5a2ab2ed26e017e7912cc7c54a14ec2102bc96f43ca642dbd29e18c2bffa78cb",
+    "lean_proof_details.pdf": "d4464e6c34f7fd0b9394cef70a5853b8e13a1b088ef46b1d7f6ac91406757db6"
   },
   "source_files": [
     "human_readable_main.tex",
@@ -24,5 +24,5 @@
     "lean_proof_details_main.tex"
   ],
   "human_acceptance": "pending; red text remains proposed; action boxes remain unresolved",
-  "verification": "Both paper targets compile; concurrent human author-list edit preserved. Two paper-facing adapters pass full verifier and independent consumers. Human review of printed geometric construction remains open."
+  "verification": "Both paper targets compile; human author-list edit preserved. Full verifier and independent paper-facing consumers pass. v1.2.2 archive bytes verified; tangent-lattice construction remains a correspondence gap."
 }
