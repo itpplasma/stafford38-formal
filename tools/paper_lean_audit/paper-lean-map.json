@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": "2026-10-01.4",
+ "version": "2026-10-01.5",
  "title": "Stafford 3.8: paper \u2194 Lean correspondence audit",
  "subtitle": "Current annotated manuscript mapped to the signed formal release and pinned dependencies.",
  "sources": {
@@ -2182,8 +2182,8 @@
    "issues": [
     {
      "severity": "critical",
-     "summary": "Both displayed formulas are wrong by a shift for E=x_1p: m=1 gives x_1p=E (paper: E-1) and px_1=E+1 (paper: E). Correct: x^m p^m=prod_{i=0}^{m-1}(E-i), p^m x^m=prod_{i=1}^m(E+i) (= Lean fallingPoly/risingPoly). Induction step silently uses x_1p=E-1. Formulas are proof_map's, valid for E=px. Downstream only disjointness of roots is used, so the section's conclusion survives.",
-     "fix": "Adopt ALG-02's formulas; end induction with prod_{i=1}^m(E-i)*E; second identity via p f(E)=f(E+1)p and px_1=E+1.",
+     "summary": "Both displayed formulas are shifted for $E=x_1p$. At $m=1$, $x_1p=E$ (the original paper formula gives $E-1$), and $px_1=E+1$ (the original gives $E$). The correct identities are:\n\n$\\displaystyle x_1^m p^m=\\prod_{i=0}^{m-1}(E-i)$ and $\\displaystyle p^m x_1^m=\\prod_{i=1}^{m}(E+i)$ (`fallingPoly` and `risingPoly` in Lean).\n\nThe original induction silently uses $x_1p=E-1$. Its formulas come from `proof_map` and apply to the convention $E=px_1$. Downstream only disjointness of the roots is used, so the section's conclusion survives.",
+     "fix": "Adopt ALG-02's formulas. End the first induction with $\\displaystyle\\left(\\prod_{i=1}^{m}(E-i)\\right)E$. For the second identity, use $p f(E)=f(E+1)p$ and $px_1=E+1$.",
      "aicomment": "ALG-02 (agree)",
      "auditor": "B",
      "id": "S5-05",
