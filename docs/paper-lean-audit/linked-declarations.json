@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "paper_commit": "385f968875c02dfc8357c36b1813c6fbc7434609",
-  "formal_source_commit": "475881e326f456c497afdc8a8420e84c550a45ba",
+  "paper_commit": "cb25e8efad82add86898f30fbcf17daf267c0101",
+  "formal_source_commit": "591d4e11e3971577be169e428ac73c44a4ac8a32",
   "library_commit": "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8",
   "declarations": [
     {

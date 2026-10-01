@@ -21,6 +21,8 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,calc}
 \usepackage{xcolor}
+\input{ai_annotations}
+\input{lean_refs}
 \usepackage{array}
 \usepackage{enumitem}
 \usepackage{tcolorbox}
@@ -335,8 +337,8 @@ named in the box that closes each section and collected in the index table at
 the end.
 
 \begin{provbox}[Provenance --- document]
-The Lean formalization is the repository
-\texttt{github.com/itpplasma/stafford38-formal}. Its
+The Lean formalization \AIreplace{is the repository
+\texttt{github.com/itpplasma/stafford38-formal}}{is recorded in Palomar~\cite{Stafford38Palomar2026} and archived at Zenodo~\cite{Stafford38Zenodo120}}. Its
 \texttt{docs/proof-graph.yaml} records the module dependencies, its
 \texttt{docs/paper-lean-specification.md} the statement correspondence, and
 its \texttt{docs/verification-results.json} the machine-readable record of
@@ -732,10 +734,10 @@ theorems of the leading-symbol and PBW-bridge modules of
 \texttt{Stafford38.WeylPBWMonicBridge}); the containment \eqref{eq:charinP}
 is the symbol-containment step consumed by
 \texttt{Stafford38.Characteristic.CanonicalKoszulContradiction}. Proposition~\ref{prop:noncar} is
-\texttt{Stafford38.\allowbreak NoncharacteristicHyperplane.\allowbreak canonical\_isNoncharacteristic}
+\texttt{Stafford38.\allowbreak NoncharacteristicHyperplane.\allowbreak \AIreplace{canonical\_isNoncharacteristic}{canonical\_isNoncharacteristic\_annihilator}}
 (finiteness of $k[T^*H]\to k[x,\xi]/(\Ann\gr Q+(x_1))$) and
 \texttt{canonicalSupport\_conormal\_subset\_zeroSection}
-(\texttt{Stafford38/NoncharacteristicHyperplane.lean}). The AlgebraicAnalysis
+(\texttt{Stafford38/NoncharacteristicHyperplane.lean}). \AIadd{The finite hypersurface projection is \leandecl{Stafford38/NoncharacteristicHypersurface.lean}{129}{Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite}, for the literal quotient by $(P,x_1)$.} The AlgebraicAnalysis
 module \texttt{AlgebraicAnalysis.Module.HyperplaneRestriction} proves the
 different statement $M/xM=0\iff x$ surjective, used in
 \S\ref{sec:inverse-image-vanishing}.
@@ -1829,6 +1831,13 @@ J. T. Stafford, \emph{Module structure of Weyl algebras}, J.~London Math.\ Soc.\
 (2) \textbf{18} (1978), 429--442. The statement proved here is the conjecture
 numbered 3.8 on page 438 of that paper, in its intended nonzero form; see also
 \cite{Bellamy}.
+\bibitem{Stafford38Palomar2026}
+C. Albert, \emph{Stafford38 proof registry record}, Palomar,
+PALOMAR-2026-09-05-000007, version 2.
+\url{https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=2}.
+\bibitem{Stafford38Zenodo120}
+C. Albert, \emph{Stafford's Conjecture 3.8 for Weyl algebras: Lean 4 formalization},
+v1.2.0, Zenodo. DOI: \url{https://doi.org/10.5281/zenodo.23072839}.
 \end{thebibliography}
 
 \vspace{1ex}

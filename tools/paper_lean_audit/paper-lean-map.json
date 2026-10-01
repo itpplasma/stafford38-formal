@@ -1,21 +1,21 @@
 {
  "schema": 1,
- "version": "2026-10-01.3",
+ "version": "2026-10-01.2",
  "title": "Stafford 3.8: paper \u2194 Lean correspondence audit",
- "subtitle": "Public manuscript snapshot mapped to immutable Lean sources. Visible AI annotations remain proposals for human review.",
+ "subtitle": "Current annotated manuscript mapped to the signed formal release and pinned dependencies.",
  "sources": {
   "paper": {
    "repo": "itpplasma/stafford38-formal",
    "commit": "72190b62dc52186024cf87a2c52edd4bb2e74a1e",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-   "note": "Exact public audit snapshot of Overleaf paper 385f968875c02dfc8357c36b1813c6fbc7434609; Overleaf remains the editing authority.",
+   "note": "Public snapshot; final citation snapshot pin is set in the following documentation commit.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "385f968875c02dfc8357c36b1813c6fbc7434609"
+   "origin_commit": "cb25e8efad82add86898f30fbcf17daf267c0101"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "475881e326f456c497afdc8a8420e84c550a45ba",
-   "note": "(signed source A3; includes public Euler-product identities and the canonical principal-hypersurface finiteness result; no human sign-off implied)"
+   "commit": "591d4e11e3971577be169e428ac73c44a4ac8a32",
+   "note": "Signed v1.2.0 archive; checked auxiliary declarations and immutable release source. Human review remains open."
   },
   "library": {
    "repo": "itpplasma/algebraic-analysis",
@@ -4058,7 +4058,7 @@
    "number": "10.2",
    "short": "Cyclicity",
    "title": "Finitely generated torsion modules are cyclic",
-   "pdf_page": 36,
+   "pdf_page": 39,
    "tex_lines": [
     1985,
     2034

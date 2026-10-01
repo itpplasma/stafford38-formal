@@ -64,7 +64,7 @@ infinity.
 \maketitle
 \AIreviewlegend
 \AIcomment{AUDIT-01}{Paper--Lean correspondence audit (versioned manuscript snapshot,
-Lean \texttt{stafford38-formal} \texttt{475881e}). Every formalized result is
+Lean \texttt{stafford38-formal} \texttt{591d4e1}). Every formalized result is
 now followed by a red line \textsf{Lean: \dots} whose names link to the
 declaration at that revision; the relation to the printed statement is given
 in parentheses when it is not exact. Where the formal proof differs from the
@@ -126,8 +126,8 @@ Mathlib-only statements compared by Comparator:
 \leandecl{FixedSourceChallenge.lean}{116}{Stafford38FixedSourceChallenge.UniversalFixedSourceStatement}.}}
 
 \AIadd{The machine-checked proof of this result is registered in
-Palomar~\cite{Stafford38Palomar2026}. Its Global Stafford extension
-\cite{GlobalStaffordPalomar2026} proves the same-divisor identity
+Palomar~\cite{Stafford38Palomar2026,Stafford38Zenodo120}. Its Global Stafford extension
+\cite{GlobalStaffordPalomar2026,GlobalStaffordZenodo106} proves the same-divisor identity
 $1=dR+FdS$ in $D_k(A)$ for every smooth integral finitely generated
 characteristic-zero $k$-algebra $A$ and every nonzero finite-order
 $k$-linear differential operator $d$. Polynomial $A$ recovers the
@@ -192,8 +192,8 @@ theorem is proved in full; Theorem~\ref{thm:asymptotic-conormal} is proved by
 a valuation (Laurent-axis) argument; and instead of passing to a finitely
 generated subfield of $\mathbb C$ the formalization works over an algebraic
 closure of $k$ and descends initial ideals.}
-\AIadd{The formal proof is registered in Palomar~\cite{Stafford38Palomar2026};
-the registry record identifies the checked statement and links its source.}
+\AIadd{The headline theorem is registered in Palomar~\cite{Stafford38Palomar2026};
+the current Lean sources and auxiliary results are archived~\cite{Stafford38Zenodo120}.}
 The accompanying proof-map supplement names the Lean declaration for each step.
 \AIcomment{WF-01}{\emph{Updated after the Lean audit of 2026-09-30.} The
 printed claim was false (cyclicity consequence, Appendix~B, the $k_0\subset\mathbb C$
@@ -2124,18 +2124,18 @@ GPT-6 Astra, and Claude Fable 5, Haiku 4.5 and Opus 5. The project protocols
 assigned routine implementation and replay to Luna and conceptual
 consultation to Sol; independent reports also record Opus reviews.
 Subsequent manuscript, proof-map, build and release work used Fable 5.1,
-Opus 5 and Sonnet 5. These records establish participation and task roles,
+Opus 5, Sonnet 5 and GPT-6 Luna. These records establish participation and task roles,
 without assigning a particular mathematical idea to one model.
 
-The completed proof uses Lean~4, Mathlib and AlgebraicAnalysis
-\cite{Lean4,Mathlib2020,AlgebraicAnalysis030}.
+The completed proof uses Lean~4 and Mathlib and pins AlgebraicAnalysis v0.3.0
+\cite{Lean4,Mathlib2020,AlgebraicAnalysis030}; the later library archive is v0.3.2~\cite{AlgebraicAnalysis032}.
 Formalization distinguished theorems proving required inputs from
 conditional theorems merely consuming them. Statement comparison and
 independent NanoDa and Lean kernel checks verified the submitted declarations
 \cite{Comparator,NanoDa,PalomarDocs}; their proofs use only
 \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
-The Stafford38 and Global Stafford proofs are registered separately in
-Palomar~\cite{Stafford38Palomar2026,GlobalStaffordPalomar2026}.
+The Stafford38 and Global Stafford headline proofs are registered separately in
+Palomar~\cite{Stafford38Palomar2026,GlobalStaffordPalomar2026}; their Lean developments are archived~\cite{Stafford38Zenodo120,GlobalStaffordZenodo106}.
 
 \section{Further work}
 \AIcomment{REF-01}{The original appendix's undefined labels

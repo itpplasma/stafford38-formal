@@ -2,9 +2,9 @@
 
 This update maps `human_readable_main.tex` at
 `itpplasma/stafford38-paper` commit
-`385f968875c02dfc8357c36b1813c6fbc7434609`. The primary formal source is
+`cb25e8efad82add86898f30fbcf17daf267c0101`. The primary formal source is
 pinned to signed `itpplasma/stafford38-formal` commit
-`475881e326f456c497afdc8a8420e84c550a45ba`; AlgebraicAnalysis remains pinned
+`591d4e11e3971577be169e428ac73c44a4ac8a32`; AlgebraicAnalysis remains pinned
 at `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`. The separately maintained
 Global Stafford extension is linked to
 `itpplasma/global-stafford-formal` commit
@@ -78,3 +78,5 @@ from `tools/paper_lean_audit/`, with the paper, formal, library, and Global
 Stafford checkouts available at the commits in the map. Any later source update
 requires a pin refresh and another map check; human review remains a separate
 release gate.
+
+Archive citation update: Stafford38 v1.2.0 DOI 10.5281/zenodo.23072839; Global Stafford v1.0.6 DOI 10.5281/zenodo.22669444; AlgebraicAnalysis v0.3.2 DOI 10.5281/zenodo.22710109. The proof dependency remains v0.3.0, DOI 10.5281/zenodo.22666517. Final manuscript compilation preserved all 62 existing label numbers; source rendering and declaration checks are rerun against the updated pins.

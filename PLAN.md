@@ -8,7 +8,7 @@ paper_status: complete
 formal_status: terminal theorem and documented corollaries verified
 open_theorem_holes: []
 public_release: v1.2.0 authorized by the author
-active_task: release publication and archive citation synchronization; human review remains open
+active_task: human manuscript and correspondence review; release v1.2.0 and archive verification complete
 ```
 
 The README, `docs/proof-guide.md`, `docs/proof-graph.yaml`, and
