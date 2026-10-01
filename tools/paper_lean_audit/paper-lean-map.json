@@ -1,21 +1,21 @@
 {
  "schema": 1,
- "version": "2026-10-01.9",
+ "version": "2026-10-01.10",
  "title": "Stafford 3.8: paper \u2194 Lean correspondence audit",
  "subtitle": "Current annotated manuscript mapped to the signed formal release and pinned dependencies.",
  "sources": {
   "paper": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "f44adfc7d395a524e87483b016ad55bd0d78dea2",
+   "commit": "857bd374af271b88aec3ae81cfef30e4d158be8a",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
    "note": "Consolidated author-review draft; proposals and unresolved actions explicitly marked. Supplement preserves readable formal-proof accounts.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "624bb81fd3f60cf52ac37a6f12f9eb5a3d0bfb20"
+   "origin_commit": "b2fb68cfb5f8b9f2dd8769d10af36e3ae508ab75"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "591d4e11e3971577be169e428ac73c44a4ac8a32",
-   "note": "Signed v1.2.0 archive; checked auxiliary declarations and immutable release source. Human review remains open."
+   "commit": "739162753aff996cc565659aefca23c6865d79b0",
+   "note": "Checked paper-facing adapters; terminal proof and pinned dependencies unchanged. Full verifier and independent paper consumers pass."
   },
   "library": {
    "repo": "itpplasma/algebraic-analysis",
@@ -671,7 +671,7 @@
    "auditors": [
     "A"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "conv:H",
@@ -724,7 +724,7 @@
    ],
    "label": "conv:H",
    "lean_explanation": "Notation convention, not a theorem. SymbolRing models the cotangent coordinate ring; fibreWeight gives the base/fibre grading. These definitions alone do not identify H, its conormal or the projection pi.",
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "cotangent",
@@ -759,7 +759,7 @@
     "current-map"
    ],
    "label": "sec:cotangent",
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "def:filtration",
@@ -855,7 +855,7 @@
     "A"
    ],
    "label": "def:filtration",
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "def:good-filtration",
@@ -915,7 +915,7 @@
     "A"
    ],
    "label": "def:good-filtration",
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "def:char-variety",
@@ -990,7 +990,7 @@
     "A"
    ],
    "label": "def:char-variety",
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "def:symplectic-poisson",
@@ -1056,7 +1056,7 @@
    "auditors": [
     "A"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "def:involutive",
@@ -1144,7 +1144,7 @@
     "D"
    ],
    "label": "def:involutive",
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "ithm:gabber",
@@ -1429,11 +1429,7 @@
     "D"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-01)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-01) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
-   "publication_tex_lines": [
-    399,
-    408
-   ]
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "monic-scalar",
@@ -1489,7 +1485,7 @@
    "auditors": [
     "A"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "phi-g",
@@ -1586,7 +1582,7 @@
    "auditors": [
     "A"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "lem:sympcompl",
@@ -1644,11 +1640,7 @@
     "A"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-02)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-02) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
-   "publication_tex_lines": [
-    472,
-    476
-   ]
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "prop:monic",
@@ -1757,11 +1749,7 @@
     "A"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-03)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-03) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
-   "publication_tex_lines": [
-    513,
-    521
-   ]
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "reduction-k0",
@@ -1796,7 +1784,7 @@
      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
      "role": "main-proof",
      "name": "Stafford38.Weyl.FilteredScalarLifting.filteredInitialLifting",
-     "line": 446,
+     "line": 462,
      "expands": [
       {
        "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
@@ -1845,7 +1833,7 @@
    "auditors": [
     "A"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "rem:transport",
@@ -1914,7 +1902,7 @@
     "A"
    ],
    "lean_explanation": "Transport prose, not a standalone theorem here. The displayed assembly results are downstream context; the inverse-generator lemma is a supporting identity.",
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "def:monic-xi1",
@@ -1955,7 +1943,7 @@
     "A"
    ],
    "label": "def:monic-xi1",
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "lem:order-symbol",
@@ -2098,7 +2086,7 @@
    "auditors": [
     "B"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "euler-grading",
@@ -2185,7 +2173,7 @@
    "auditors": [
     "B"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "lem:euler",
@@ -2375,11 +2363,7 @@
     "B"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-04)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-04) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
-   "publication_tex_lines": [
-    681,
-    685
-   ]
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "prop:x-surjective",
@@ -2466,11 +2450,7 @@
     "B"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-05)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-05) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
-   "publication_tex_lines": [
-    709,
-    711
-   ]
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "vc-setup",
@@ -2535,7 +2515,7 @@
    "auditors": [
     "C"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "def:length",
@@ -2588,7 +2568,7 @@
     "C"
    ],
    "label": "def:length",
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "lem:tangential-finiteness",
@@ -2606,7 +2586,7 @@
    "statement_relation": "exact",
    "route_relation": "similar",
    "correspondence": "Lean proves support inclusion over C (Noetherian Hopfian) and descends to T by prime avoidance.",
-   "route": "Lean proves the finiteness result through support inclusion and Noetherian Hopfian descent. The current paper proof is incomplete after its annihilator sentence; ALG-04 refers to a proposed correction which is not actually included in the snapshot. The theorem is proved in Lean, but this printed argument remains open for human repair.",
+   "route": "The current printed proof supplies the monic quotient and finite-T arguments, followed by Noetherian Hopfian support inclusion. ALG-04 is resolved on finiteness; its later-page scalar-action/localization concern is a separate correspondence check.",
    "lean": [
     {
      "file": "Stafford38/Characteristic/CanonicalOldTangentialFiniteness.lean",
@@ -2840,7 +2820,7 @@
     "C"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-06)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-06) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "lem:strict-support-inequality",
@@ -3005,11 +2985,7 @@
     "C"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-07)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-07) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
-   "publication_tex_lines": [
-    895,
-    901
-   ]
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "lem:Uzero",
@@ -3253,11 +3229,7 @@
     "C"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-08)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-08) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
-   "publication_tex_lines": [
-    1011,
-    1019
-   ]
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "dir-def",
@@ -3340,7 +3312,7 @@
    "auditors": [
     "E"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "lem:tangent-limit",
@@ -3455,7 +3427,7 @@
    "auditors": [
     "E"
    ],
-   "review_scope": "alternative"
+   "review_scope": "publication"
   },
   {
    "id": "thm:asymptotic-conormal",
@@ -3521,7 +3493,7 @@
     "E"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-11)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-11) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "thm:asymptotic-conormal-proof",
@@ -3537,7 +3509,7 @@
    ],
    "statement_relation": "n/a",
    "route_relation": "different",
-   "correspondence": "Hidden Lean steps without paper counterpart: residue-field extension kappa(D) and scalar-extension vanishing; equation-conormal vs smooth-conormal closure (PerfectField generic smoothness); coefficient field + Cohen completion; Kaehler finiteness and residue-kernel description; valuation-ring chart selection replacing properness. The tilting step is unnecessary in Lean because smoothness of the generic point is never used.",
+   "correspondence": "The printed tangent-lattice argument is part of this review, not an unselected alternative. Lean proves the conclusion via Laurent series and checks a conditional tangent-limit criterion and local minor arithmetic. No adapter yet constructs DirectSummandInput from the paper normalization/completed chart, especially the generic tangent-cone equality. GEO-01/02 and the scalar-extension repair address concrete printed gaps; a checked conclusion does not certify those intermediate geometric steps.",
    "route": "different: constant vs transcendental split; in the transcendental case a valuation ring with x_1 in m, a valuation-chosen chart, affine normalization of k[Z_a/Z_j, x_1] and Krull PIT give a divisorial DVR V; q_0 is a nonunit via the polynomial inverse; order gap; residue field algebraic over the coordinate residues plus char 0 gives Kaehler visibility; Nakayama gives dx_1 = sum c_j dx_j with c_j in m_V; completion to kappa(D)[[t]] gives a Laurent equation-conormal point with fibre residue e_1; scalar-extension vanishing and closure(all equation-conormal) = closure(smooth) conclude. No closed point p, tilted arc, minors, T-hat or tangent lattice; Lemma 8.1 is unused",
    "lean": [
     {
@@ -3760,7 +3732,7 @@
    "auditors": [
     "E"
    ],
-   "review_scope": "alternative"
+   "review_scope": "publication"
   },
   {
    "id": "def:fibre-can",
@@ -3801,7 +3773,7 @@
    "auditors": [
     "D"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "thm:coisotropic-exclusion",
@@ -4012,11 +3984,7 @@
     "D"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-13)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-13) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
-   "publication_tex_lines": [
-    1283,
-    1291
-   ]
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "proof-main",
@@ -4028,7 +3996,7 @@
    "pdf_page": 28,
    "tex_lines": [
     1379,
-    1462
+    1463
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "different",
@@ -4087,13 +4055,13 @@
      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
      "role": "main-proof",
      "name": "Stafford38.Weyl.FilteredScalarLifting.canonicalSupportDescent",
-     "line": 453
+     "line": 469
     },
     {
      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
      "role": "helper",
      "name": "Stafford38.Weyl.FilteredScalarLifting.filteredInitialLifting",
-     "line": 446,
+     "line": 462,
      "expands": [
       {
        "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
@@ -4313,7 +4281,7 @@
     "F"
    ],
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-15)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-15) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "lem:initial-base-change",
@@ -4325,18 +4293,24 @@
    "pdf_page": 29,
    "tex_lines": [
     1430,
-    1460
+    1461
    ],
    "statement_relation": "partial",
    "route_relation": "different",
-   "correspondence": "The manuscript states equality of initial ideals after scalar extension. At the frozen formal pin, `FilteredInitialLifting` gives the target-initial-ideal inclusion consumed by descent; the exact standalone equality is not exposed as the cited theorem. Treat as partial correspondence until the controller verifies the full derivation.",
+   "correspondence": "The paper states scalar-extension equality for a general right ideal. The new checked equality adapter proves its canonical-ideal specialization, exactly the case used in the main theorem, by combining both existing inclusions. The general formulation remains a scope difference for Max to assess; no rewrite is required merely to match the canonical use.",
    "route": null,
    "lean": [
     {
      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
+     "role": "statement",
+     "name": "Stafford38.Weyl.FilteredScalarLifting.presentedWeylScalarExtension_map_orderInitialIdeal_eq",
+     "line": 446
+    },
+    {
+     "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
      "role": "input",
      "name": "Stafford38.Weyl.FilteredScalarLifting.filteredInitialLifting",
-     "line": 446,
+     "line": 462,
      "expands": [
       {
        "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
@@ -4378,12 +4352,12 @@
    "title": "Finitely generated torsion modules are cyclic",
    "pdf_page": 30,
    "tex_lines": [
-    1464,
-    1497
+    1465,
+    1499
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "similar",
-   "correspondence": "The paper states the result for positive n; the formal theorem also covers n=0. Both statements concern finitely generated right torsion modules over a characteristic-zero Weyl algebra. The Lean route proves a two-generator collapse from Stafford's identity and inducts on a finite generating set; it avoids the original proof's Stafford Theorem 3.7 and Ore common-multiple step. The red Lean-proof sketch describes this route. The exact statement has a Mathlib-only consumer at this pin; this records source correspondence, not human approval.",
+   "correspondence": "Both assert cyclicity of finitely generated torsion right modules. The formal pair theorem now exposes exactly the paper generator t1-t2F. Its induction avoids the separate two-generator theorem and Ore step; those implementation differences do not make the printed generator calculation incorrect. Ordinary cyclicity is what this corollary states; Stafford defines stable generation separately on p.435.",
    "route": null,
    "lean": [
     {
@@ -4394,9 +4368,15 @@
     },
     {
      "file": "Stafford38/TorsionCyclicity.lean",
+     "role": "paper generator",
+     "name": "Stafford38.TorsionCyclicity.exists_span_adjusted_pair",
+     "line": 27
+    },
+    {
+     "file": "Stafford38/TorsionCyclicity.lean",
      "role": "helper",
      "name": "Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair",
-     "line": 27
+     "line": 126
     },
     {
      "file": "Stafford38/Weyl/Domain.lean",
@@ -4408,7 +4388,7 @@
      "file": "Stafford38/TorsionCyclicity.lean",
      "role": "statement",
      "name": "Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion",
-     "line": 161
+     "line": 174
     },
     {
      "file": "CorollaryChallenge.lean",
@@ -4487,11 +4467,7 @@
    ],
    "label": "cor:cyclic",
    "review_scope": "publication",
-   "publication_proof": "Read the [mathematical account (COMP-16)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-16) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps.",
-   "publication_tex_lines": [
-    1464,
-    1466
-   ]
+   "publication_proof": "Read the linked mathematical comparison and the full printed proof below. Check intermediate claims as well as the conclusion. Prefer a checked paper-facing variant or adapter over changing a valid paper argument; a proof-route difference alone is not a mathematical defect."
   },
   {
    "id": "outlook",
@@ -4502,8 +4478,8 @@
    "title": "Outlook",
    "pdf_page": 31,
    "tex_lines": [
-    1498,
-    1510
+    1500,
+    1512
    ],
    "statement_relation": "none",
    "route_relation": "n/a",
@@ -4539,8 +4515,8 @@
    "title": "AI-assisted research, formalization and verification provenance",
    "pdf_page": 33,
    "tex_lines": [
-    1549,
-    1602
+    1551,
+    1604
    ],
    "statement_relation": "n/a",
    "route_relation": "n/a",
@@ -4583,8 +4559,8 @@
    "title": "Further work and corollaries",
    "pdf_page": 34,
    "tex_lines": [
-    1603,
-    1637
+    1605,
+    1639
    ],
    "statement_relation": "none",
    "route_relation": "n/a",
@@ -4672,8 +4648,8 @@
    "title": "Identity in every right Ore localization",
    "pdf_page": 34,
    "tex_lines": [
-    1608,
-    1609
+    1610,
+    1611
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "same",
@@ -4695,7 +4671,7 @@
    "auditors": [
     "current-map"
    ],
-   "review_scope": "alternative"
+   "review_scope": "publication"
   },
   {
    "id": "appendix-left-handed",
@@ -4706,8 +4682,8 @@
    "title": "Left-handed identity via formal adjoint",
    "pdf_page": 34,
    "tex_lines": [
-    1610,
-    1611
+    1612,
+    1613
    ],
    "statement_relation": "exact",
    "route_relation": "same",
@@ -4729,7 +4705,7 @@
    "auditors": [
     "current-map"
    ],
-   "review_scope": "alternative"
+   "review_scope": "publication"
   },
   {
    "id": "appendix-localized-differential",
@@ -4740,8 +4716,8 @@
    "title": "Differential operators over polynomial localizations",
    "pdf_page": 34,
    "tex_lines": [
-    1612,
-    1613
+    1614,
+    1615
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "same",
@@ -4763,7 +4739,7 @@
    "auditors": [
     "current-map"
    ],
-   "review_scope": "alternative"
+   "review_scope": "publication"
   },
   {
    "id": "appendix-evolutionary",
@@ -4774,8 +4750,8 @@
    "title": "Evolutionary version with coefficients commuting with a Weyl pair",
    "pdf_page": 34,
    "tex_lines": [
-    1614,
-    1615
+    1616,
+    1617
    ],
    "statement_relation": "exact",
    "route_relation": "same",
@@ -4797,7 +4773,7 @@
    "auditors": [
     "current-map"
    ],
-   "review_scope": "alternative"
+   "review_scope": "publication"
   },
   {
    "id": "def:noncar",
@@ -4808,8 +4784,8 @@
    "title": "Noncharacteristic",
    "pdf_page": 35,
    "tex_lines": [
-    1638,
-    1648
+    1640,
+    1650
    ],
    "label": "def:noncar",
    "statement_relation": "partial",
@@ -4850,7 +4826,7 @@
    "auditors": [
     "C"
    ],
-   "review_scope": "reference"
+   "review_scope": "publication"
   },
   {
    "id": "prop:noncar",
@@ -4861,8 +4837,8 @@
    "title": "H = {x = 0} is noncharacteristic for Q",
    "pdf_page": 35,
    "tex_lines": [
-    1649,
-    1676
+    1651,
+    1678
    ],
    "label": "prop:noncar",
    "statement_relation": "exact",
@@ -5276,8 +5252,8 @@
   {
    "id": "ALG-04",
    "line": 788,
-   "verdict": "Action required --- unresolved proof or drafting issue.",
-   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
+   "verdict": "Max \u2014 whole correspondence check; no automatic paper rewrite",
+   "note": "Finiteness argument already present; remaining proof steps require precise correspondence review."
   },
   {
    "id": "ALG-09",
@@ -5312,8 +5288,8 @@
   {
    "id": "ROUTE-01",
    "line": 1125,
-   "verdict": "Action required --- approve the publication proof.",
-   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
+   "verdict": "Max \u2014 whole correspondence check; no automatic paper rewrite",
+   "note": "Preserve printed argument where a checked adapter can support it; tangent-lattice construction is not yet formally mapped."
   },
   {
    "id": "GEO-03",
@@ -5335,25 +5311,25 @@
   },
   {
    "id": "ALG-06",
-   "line": 1467,
+   "line": 1468,
    "verdict": "Proposed change --- author acceptance pending.",
    "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "EDIT-01",
-   "line": 1506,
+   "line": 1508,
    "verdict": "Action required --- unresolved proof or drafting issue.",
    "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "REF-01",
-   "line": 1604,
+   "line": 1606,
    "verdict": "Proposed change --- author acceptance pending.",
    "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "SCOPE-01",
-   "line": 1616,
+   "line": 1618,
    "verdict": "Proposed change --- author acceptance pending.",
    "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
@@ -5425,13 +5401,13 @@
   },
   {
    "id": "COMP-15",
-   "line": 1461,
+   "line": 1462,
    "verdict": "Information --- proof comparison; no edit requested.",
    "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-16",
-   "line": 1492,
+   "line": 1493,
    "verdict": "Information --- proof comparison; no edit requested.",
    "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   }
@@ -5498,9 +5474,9 @@
    "status": "resolved at pinned paper/formal commits"
   }
  ],
- "overview": "This is the current publication review. The default queue contains proposed publication claims and their proved endpoints. Begin with **Challenge: meaning and soundness**: inspect the exact definitions, field and characteristic assumptions, Weyl relations, and factor order. The goal is that every published claim matches a machine-proved statement. Retained proof alternatives and historical implementation material are available on demand; they are not a second review assignment. The reusable generator is [Paper\u2013Lean Audit](https://github.com/itpplasma/paper-lean-audit); the frozen reviewer bundle is [Stafford38 supplementary material](https://github.com/itpplasma/stafford38-supplementary).",
- "how_to_use": "Johanna edits the human-readable paper and resolves its clearly marked action or proposal boxes; no Lean code reading is required. Max first checks the independent Challenge/Solution pairs and their definitions, then the publication queue. Compare hypotheses and conclusions and follow the proposed readable proof account when routes differ. Use Alternative proofs only if the authors select one; All reference material exposes definitions, history and implementation links. Export review notes before changing devices. An update banner prevents signing off an outdated copy; notes remain exportable.",
- "provenance": "Updated 2026-10-01 against paper HEAD 385f968875c02dfc8357c36b1813c6fbc7434609 and signed formal source A3 `475881e326f456c497afdc8a8420e84c550a45ba`. AlgebraicAnalysis remains pinned at `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`; Global Stafford is pinned at `e676caed1253e5d09fc6699d5dc683febbabf7bb`. The update refreshes source links and correspondence; it does not claim human sign-off. Historical six-auditor reports concern the earlier paper source and are not a new independent review of every current proof passage. The Proposition B.2 finite-projection clause now maps to the exact quotient finiteness theorem and its tangential scalar-action bridge.",
+ "overview": "Max reviews the whole current paper\u2013Lean correspondence, including exact matches, definitions and printed proof steps. Begin with the Challenge/Solution statements and all definitions entering them. Different checked proofs are comparison aids; preserve valid paper arguments when checked variants or adapters can support them. Johanna reviews concrete wording and correction proposals. Historical notes and nonmathematical context remain outside the default queue.",
+ "how_to_use": "Max: check every current mathematical card, its hypotheses, conclusions, definitions and intermediate printed proof steps; exact matches also need review. Follow readable comparison links for Lean routes and definition links for assumptions. Record actual unmatched claims separately from implementation differences. Johanna: integrate agreed text proposals; no Lean code review is requested. Export notes before changing devices; outdated copies block sign-off but preserve notes.",
+ "provenance": "Current author-review paper and checked source pins are listed below. Whole mathematical correspondence is in the default queue. Historical audits retain their original scopes; no human acceptance is claimed. New adapters expose the paper generator and canonical initial-ideal equality. Printed tangent-lattice construction remains an explicit correspondence gap.",
  "challenge_definitions": [
   {
    "repo": "formal",

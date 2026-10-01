@@ -616,11 +616,11 @@ function card(it) {
     <div class="badges">${badge(REL, it.statement_relation, 'statement')} ${badge(ROUTE, it.route_relation, 'route')}
       ${(it.issues ?? []).length ? `<span class="badge b-${SEV[Object.keys(SEV).find((k) => SEV[k].rank === maxSev)]?.color ?? 'grey'}">${it.issues.length} issue${it.issues.length > 1 ? 's' : ''}</span>` : ''}</div>
   </header>
-  ${it.publication_proof ? `<div class="publication-target"><b>Proposed publication proof.</b> ${md(it.publication_proof)}<span class="muted">Review this route; retained alternatives are optional unless the authors select them.</span></div>` : ''}
+  ${it.publication_proof ? `<div class="publication-target"><b>Proof correspondence.</b> ${md(it.publication_proof)}<span class="muted">Compare the whole printed proof, including its intermediate claims. A different checked route is a comparison aid, not approval of the printed argument.</span></div>` : ''}
   <div class="cols">
     <div class="col paper">
       <div class="col-title">Paper <span class="muted">(${escapeHtml(paperFile)} @ ${map.sources.paper.commit.slice(0, 7)})</span></div>
-      <div class="tex">${it.tex_lines ? excerpt(it.publication_tex_lines ?? it.tex_lines) : '<p class="muted">No manuscript text (Lean-only step).</p>'}${it.publication_tex_lines ? `<details><summary>Retained printed alternative (not the selected publication route)</summary>${excerpt(it.tex_lines)}</details>` : ''}</div>
+      <div class="tex">${it.tex_lines ? excerpt(it.publication_tex_lines ?? it.tex_lines) : '<p class="muted">No manuscript text (Lean-only step).</p>'}${it.publication_tex_lines ? `<details><summary>Full printed proof — included in correspondence review</summary>${excerpt(it.tex_lines)}</details>` : ''}</div>
     </div>
     <div class="col formal">
       <div class="col-title">Lean <span class="muted">(repository and pinned revision on each declaration)</span></div>
@@ -750,7 +750,7 @@ const html = `<!doctype html>
 <body>
 <nav class="side">
   <div class="brand">Stafford 3.8<br><span>paper ↔ Lean audit</span></div>
-  <label for="review-scope">Review scope</label><select id="review-scope"><option value="publication">Publication claims (default)</option><option value="alternative">Optional proof variants</option><option value="all">All reference material</option></select>
+  <label for="review-scope">Review scope</label><select id="review-scope"><option value="publication">Whole paper correspondence (default)</option><option value="alternative">Optional proof variants</option><option value="all">All reference material</option></select>
   <input id="filter" type="search" placeholder="Filter cards…">
   <div class="filters">
     <label><input type="checkbox" id="only-issues"> with issues</label>
@@ -783,7 +783,7 @@ const html = `<!doctype html>
     <tr><th>Build</th><td>generated ${buildInfo.generated} by <code>tools/paper_lean_audit</code> (stafford38) · mapping checks: ${errors.length ? `<b class="err">${errors.length} errors</b>` : 'all passed'} · ${warnings.length} warnings</td></tr>
   </table>
 </header>
-<section id="overview"><p class="publication-target"><b>Max: review the proposed publication claims against the proved Lean statements.</b> Match quantifiers, hypotheses, sidedness and conclusions. For different routes, use the linked mathematical proof account. Optional variants and historical reference material are outside the default queue; a retained alternative enters it only if the authors select it. Human acceptance is still required.</p><div id="freshness" class="muted"></div><h2>Overview</h2>
+<section id="overview"><p class="publication-target"><b>Max: review the whole current paper–Lean correspondence.</b> Check every mathematical claim, its definitions, hypotheses, sidedness and proof steps, including exact matches. Keep valid paper arguments where checked variants or adapters can support them. Linked readable Lean proofs explain differences; they do not certify a different printed proof. Johanna reviews concrete text proposals. Human acceptance is still required.</p><div id="freshness" class="muted"></div><h2>Overview</h2>
   <div class="stats"><div>Statements: ${countBy('statement_relation', REL)}</div><div>Proof routes: ${countBy('route_relation', ROUTE)}</div><div>Issues: ${sevCount}</div><div>Recorded sign-offs (committed, current): ${items.filter((it) => (recorded[it.id] ?? []).some((r) => r.complete && r.hash === it._hash)).length} / ${items.length}</div></div>
   ${md(map.overview)}
   <h3>How to use this document</h3>${md(map.how_to_use)}

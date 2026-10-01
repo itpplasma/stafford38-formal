@@ -1,21 +1,21 @@
 {
-  "publicationQueue": 23,
-  "optionalAlternatives": 6,
+  "publicationQueue": 49,
+  "optionalAlternatives": 0,
   "allCards": 55,
   "challengeDefinitions": 31,
   "katexErrors": 0,
   "fieldLink": "opens exact field definition",
   "version": {
-    "version": "2026-10-01.9",
-    "paper": "f44adfc7d395a524e87483b016ad55bd0d78dea2",
-    "formal": "591d4e11e3971577be169e428ac73c44a4ac8a32",
+    "version": "2026-10-01.10",
+    "paper": "857bd374af271b88aec3ae81cfef30e4d158be8a",
+    "formal": "739162753aff996cc565659aefca23c6865d79b0",
     "checks": [
       "statement",
       "route",
       "issues",
       "publication"
     ],
-    "generator": "e8ebcd2a60a14e0c",
+    "generator": "6670b025ce6998a5",
     "live": "https://itpplasma.github.io/stafford38-formal/"
   }
 }
