@@ -1,9 +1,9 @@
 {
-  "paper_commit": "058e96079f532f7c5918af6ee5667b32f563517d",
+  "paper_commit": "093527797b85f4547e7a5be03556fa9725b6077c",
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
   "pdfs": {
-    "human_readable_main.pdf": "4d0c982d7dd18c9414b8d5327fd147b77bf5b0b7bbbecce9bcfe5a1dc7d92b4c",
-    "lean_proof_details.pdf": "226155d83d8ac05136c558be8ed0132373dd037eddba1f439bdf8301a9ab8383"
+    "human_readable_main.pdf": "6299c84959c8ea4a59688d18eb2a6fffa192d446d5c80f170b5c4a4bb544bbba",
+    "lean_proof_details.pdf": "ebaa365c139e283d7b5f909f113ec97f7c11479d4bfc64f6444ae003cc357658"
   },
   "source_files": [
     "human_readable_main.tex",
@@ -24,5 +24,5 @@
     "lean_proof_details_main.tex"
   ],
   "human_acceptance": "pending; red text remains proposed; action boxes remain unresolved",
-  "verification": "Selected proof scopes independently reviewed after exact repairs; original author prose preserved; both TeX targets compile without unresolved references; full Lean verifier and both Palomar Comparator/NanoDa checks pass. Human acceptance remains pending."
+  "verification": "Full Lean verifier, 104 exact paper declaration names and permitted axiom reports, both Palomar Comparator/NanoDa configurations, independent selected-proof correspondence reviews and original-author-prose preservation pass. The DOI-only refresh changes no proof steps. Human acceptance remains pending."
 }

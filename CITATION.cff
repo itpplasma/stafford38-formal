@@ -11,9 +11,12 @@ authors:
     orcid: "https://orcid.org/0000-0003-4773-416X"
     affiliation: "Graz University of Technology"
 version: v1.2.3
-doi: 10.5281/zenodo.22390721
+doi: 10.5281/zenodo.23080671
 date-released: "2026-10-01"
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23080671
+    description: Version DOI of release v1.2.3
   - type: doi
     value: 10.5281/zenodo.23079259
     description: Version DOI of release v1.2.2

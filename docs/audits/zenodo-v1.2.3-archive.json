@@ -1,0 +1,18 @@
+{
+  "doi": "10.5281/zenodo.23080671",
+  "version": "v1.2.3",
+  "release_commit": "ba18817c4cd4e5cfeab11da44ce76623f4c2b508",
+  "archive_file": "itpplasma/stafford38-formal-v1.2.3.zip",
+  "archive_md5": "06d8c28b0c44d9a8282811869fa1933d",
+  "checked_files": [
+    "Challenge.lean",
+    "FixedSourceChallenge.lean",
+    "Solution.lean",
+    "Stafford38/TorsionCyclicity.lean",
+    "PaperPairChallenge.lean",
+    "tests/PaperPairConsumer.lean",
+    "lakefile.toml",
+    "tools/paper_lean_audit/paper-lean-map.json"
+  ],
+  "result": "Archive bytes match the signed release, unchanged main Challenge/Solution, checked supplementary certificate, selected review map and correct release metadata."
+}

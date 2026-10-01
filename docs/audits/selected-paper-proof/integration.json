@@ -48,5 +48,8 @@
     "The main Palomar registry has not been updated; the author will do so.",
     "No human acceptance or journal submission is inferred.",
     "The general analytic pullback theorem is not formalized by this repository."
-  ]
+  ],
+  "archive_doi": "10.5281/zenodo.23080671",
+  "citation_refresh_paper_commit": "093527797b85f4547e7a5be03556fa9725b6077c",
+  "citation_refresh_manuscript_sha256": "7ada7cd6f84c0de849849b54dbb4e96a4e68eff5503ef9443b08267d019b3d45"
 }
