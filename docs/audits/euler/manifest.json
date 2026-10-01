@@ -1,0 +1,19 @@
+{
+  "review": "EulerProductIdentities.lean independent mathematical audit",
+  "repository": "/home/ert/proj/stafford38-formal",
+  "base_commit": "aaa4b5c5cc6e5ed4eb8b124c7c6fc8062590aa22",
+  "candidate_path": "Stafford38/Weyl/EulerProductIdentities.lean",
+  "candidate_sha256": "6948ed251237554bb255f07cd86086d9cc2c3af6462746d8918f59919b03cde2",
+  "candidate_status_at_freeze": "untracked",
+  "imported_source_path": "proofs/weyl_pure_power.lean",
+  "imported_source_blob_at_base": "b7c2d9b81c8d9adbe42e5c92b303be7ebca6bc32",
+  "verification": {
+    "command": "lake env lean Stafford38/Weyl/EulerProductIdentities.lean",
+    "exit_code": 0,
+    "axioms_per_public_theorem": ["propext", "Classical.choice", "Quot.sound"],
+    "source_has_sorry_admit_or_custom_axiom": false
+  },
+  "verdict": "PASS",
+  "first_bad_bridge": null,
+  "scope": "signs, recurrence, factor indexing, and evaluation for arbitrary Q-algebras"
+}

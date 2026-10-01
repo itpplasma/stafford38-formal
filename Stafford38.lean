@@ -1,3 +1,4 @@
+import Stafford38.Weyl.EulerProductIdentities
 import Stafford38.FoundationClosure
 import Stafford38.TorsionCyclicity
 import Stafford38.NoncharacteristicHyperplane
