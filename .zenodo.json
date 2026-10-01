@@ -67,5 +67,5 @@
     }
   ],
   "notes": "Kernel-checked Lean proof. Independent human expert review of the mathematics and the accompanying manuscript are separate; see docs/verification.md for the exact scope of the machine check.",
-  "version": "v1.2.2"
+  "version": "v1.2.3"
 }

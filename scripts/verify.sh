@@ -78,10 +78,20 @@ lake build "${retained_modules[@]}" \
   Stafford38.Geometry.GeneralAsymptoticConormal \
   Stafford38.Geometry.GeneralCoisotropicSets \
   Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter \
-  Solution FixedSourceSolution CorollaryChallenge \
+  Solution FixedSourceSolution CorollaryChallenge PaperPairChallenge \
   >"$log_dir/build.log" 2>&1
 
 lake env lean --trust=0 tests/PaperAdaptersConsumer.lean >"$log_dir/paper-adapters.log" 2>&1
+lake env lean --trust=0 tests/PaperPairConsumer.lean >"$log_dir/paper-pair.log" 2>&1
+python3 - <<'PYPAIR'
+import re
+from pathlib import Path
+text = Path('.lake/verification/paper-pair.log').read_text()
+m = re.search(r"'Stafford38PaperPairChallenge.pairGeneratorStatement_consumer' depends on axioms:\s*\[(.*?)\]", text, re.S)
+if not m or {x.strip() for x in m[1].split(',') if x.strip()} - {'propext', 'Quot.sound', 'Classical.choice'}:
+    raise SystemExit('Supplementary pair consumer has a missing or forbidden axiom report')
+print('Supplementary literal pair consumer: exact statement and permitted axioms passed')
+PYPAIR
 bash scripts/check-consumers.sh
 bash scripts/check-paper-declarations.sh
 
@@ -242,6 +252,7 @@ import Stafford38.Geometry.GeneralTangentLimitCriterionTest
 #print axioms Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical
 #print axioms Stafford38.Geometry.GeneralCoisotropicSets.smoothConormalClosure_minimalPrime_subset_of_isFibreConical
 #print axioms Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic
+#print axioms Stafford38.TorsionCyclicity.span_adjusted_pair_eq_span_pair
 #print axioms Stafford38.Geometry.GeneralTangentLimitCriterionTest.paper_shape_consumer
 #print axioms Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer
 #print axioms Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_isInvolutive
@@ -290,6 +301,7 @@ expected = {
     "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
     "Stafford38.Geometry.GeneralCoisotropicSets.smoothConormalClosure_minimalPrime_subset_of_isFibreConical",
     "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+    "Stafford38.TorsionCyclicity.span_adjusted_pair_eq_span_pair",
     "Stafford38.Geometry.GeneralTangentLimitCriterionTest.paper_shape_consumer",
     "Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer",
     "Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_isInvolutive",

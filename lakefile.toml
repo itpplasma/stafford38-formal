@@ -1,5 +1,5 @@
 name = "stafford38Formal"
-version = "1.2.0"
+version = "1.2.3"
 defaultTargets = ["Stafford38", "Solution", "FixedSourceSolution"]
 
 [[require]]
@@ -32,3 +32,6 @@ name = "FixedSourceSolution"
 
 [[lean_lib]]
 name = "CorollaryChallenge"
+
+[[lean_lib]]
+name = "PaperPairChallenge"

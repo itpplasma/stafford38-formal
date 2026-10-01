@@ -22,29 +22,17 @@ def IsRightTorsion {A : Type u} {M : Type v} [Ring A]
 variable {A : Type u} {M : Type v} [Ring A]
   [AddCommGroup M] [Module Aᵐᵒᵖ M]
 
-/-- Under the two-generator identity, any two elements of a torsion right
-module generate the same submodule as one element. -/
-theorem exists_span_adjusted_pair
-    (hmul : ∀ a b : A, a ≠ 0 → b ≠ 0 → a * b ≠ 0)
-    (hone : ∀ d : A, d ≠ 0 →
-      ∃ F R S : A, (1 : A) = d * R + F * d * S)
-    (htorsion : IsRightTorsion (A := A) (M := M)) (x y : M) :
-    ∃ F : A,
-      Submodule.span Aᵐᵒᵖ ({x - (MulOpposite.op F : Aᵐᵒᵖ) • y} : Set M) =
-        Submodule.span Aᵐᵒᵖ ({x, y} : Set M) := by
+/-- The paper's generator calculation for a specified common annihilator
+and a specified Stafford certificate. No Ore or finite-generation hypothesis
+is needed for this algebraic step. -/
+theorem span_adjusted_pair_eq_span_pair
+    (x y : M) (d F R S : A)
+    (hxann : (MulOpposite.op d : Aᵐᵒᵖ) • x = 0)
+    (hyann : (MulOpposite.op d : Aᵐᵒᵖ) • y = 0)
+    (hcert : (1 : A) = d * R + F * d * S) :
+    Submodule.span Aᵐᵒᵖ ({x - (MulOpposite.op F : Aᵐᵒᵖ) • y} : Set M) =
+      Submodule.span Aᵐᵒᵖ ({x, y} : Set M) := by
   classical
-  obtain ⟨d₂, hd₂, hdy⟩ := htorsion y
-  obtain ⟨e, he, hdx⟩ := htorsion ((MulOpposite.op d₂ : Aᵐᵒᵖ) • x)
-  let d : A := d₂ * e
-  have hd : d ≠ 0 := hmul d₂ e hd₂ he
-  have hxann : (MulOpposite.op d : Aᵐᵒᵖ) • x = 0 := by
-    change (MulOpposite.op e * MulOpposite.op d₂) • x = 0
-    rw [← smul_smul]
-    exact hdx
-  have hyann : (MulOpposite.op d : Aᵐᵒᵖ) • y = 0 := by
-    change (MulOpposite.op e * MulOpposite.op d₂) • y = 0
-    rw [← smul_smul, hdy, smul_zero]
-  obtain ⟨F, R, S, hcert⟩ := hone d hd
   let g : M := x - (MulOpposite.op F : Aᵐᵒᵖ) • y
   let P : Submodule Aᵐᵒᵖ M := Submodule.span Aᵐᵒᵖ ({x, y} : Set M)
   let G : Submodule Aᵐᵒᵖ M := Submodule.span Aᵐᵒᵖ ({g} : Set M)
@@ -119,7 +107,31 @@ theorem exists_span_adjusted_pair
     rcases hz with rfl | rfl
     · exact hxG
     · exact hyG
-  exact ⟨F, le_antisymm hGP hPG⟩
+  exact le_antisymm hGP hPG
+
+/-- Under the two-generator identity, the paper generator collapses every pair. -/
+theorem exists_span_adjusted_pair
+    (hmul : ∀ a b : A, a ≠ 0 → b ≠ 0 → a * b ≠ 0)
+    (hone : ∀ d : A, d ≠ 0 →
+      ∃ F R S : A, (1 : A) = d * R + F * d * S)
+    (htorsion : IsRightTorsion (A := A) (M := M)) (x y : M) :
+    ∃ F : A,
+      Submodule.span Aᵐᵒᵖ ({x - (MulOpposite.op F : Aᵐᵒᵖ) • y} : Set M) =
+        Submodule.span Aᵐᵒᵖ ({x, y} : Set M) := by
+  classical
+  obtain ⟨d₂, hd₂, hdy⟩ := htorsion y
+  obtain ⟨e, he, hdx⟩ := htorsion ((MulOpposite.op d₂ : Aᵐᵒᵖ) • x)
+  let d : A := d₂ * e
+  have hd : d ≠ 0 := hmul d₂ e hd₂ he
+  have hxann : (MulOpposite.op d : Aᵐᵒᵖ) • x = 0 := by
+    change (MulOpposite.op e * MulOpposite.op d₂) • x = 0
+    rw [← smul_smul]
+    exact hdx
+  have hyann : (MulOpposite.op d : Aᵐᵒᵖ) • y = 0 := by
+    change (MulOpposite.op e * MulOpposite.op d₂) • y = 0
+    rw [← smul_smul, hdy, smul_zero]
+  obtain ⟨F, R, S, hcert⟩ := hone d hd
+  exact ⟨F, span_adjusted_pair_eq_span_pair x y d F R S hxann hyann hcert⟩
 
 /-- The adjusted generator has the paper's explicit form `x - yF`.
 Forgetting its coefficient recovers the original cyclicity interface. -/
@@ -185,6 +197,7 @@ theorem weyl_isCyclic_of_isRightTorsion
     (Stafford38.universalStatement (k := k) n)
     hM
 
+#print axioms span_adjusted_pair_eq_span_pair
 #print axioms exists_span_adjusted_pair
 #print axioms exists_span_singleton_eq_span_pair
 #print axioms weyl_isCyclic_of_isRightTorsion

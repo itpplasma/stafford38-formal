@@ -17,6 +17,7 @@ for entry in provenance['files']:
     if actual != entry['sha256']:
         raise SystemExit('Manuscript snapshot hash mismatch: ' + entry['path'])
 paper = (snapshot / 'human_readable_main.tex').read_text()
+paper = re.sub(r'(?m)^\s*%.*$', '', paper)
 linked = {(('library' if macro == 'leanlib' else 'formal'), file, name)
           for macro, file, line, name in re.findall(
               r'\\(leandecl|leanlib)\{([^}]+)\}\{(\d+)\}\{([^}]+)\}', paper)}
