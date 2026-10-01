@@ -50,7 +50,7 @@ likewise remain proposals rather than accepted prose.
 ## Findings retained for review
 
 - Lemma 6.3 remains an open proof-text issue: the visible argument localizes
-  (Q) at the tangential ring and uses the challenged iterative exhaustion.
+  Q at the tangential ring and uses the challenged iterative exhaustion.
   The mapped Lean declaration does not by itself certify those printed steps.
 - The supplementary `proof_map.tex` has a misqualified declaration name and
   several route descriptions that do not match the pinned formal source; these
