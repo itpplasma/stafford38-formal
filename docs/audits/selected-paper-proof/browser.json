@@ -1,0 +1,21 @@
+{
+  "publicationQueue": 49,
+  "optionalAlternatives": 0,
+  "allCards": 55,
+  "challengeDefinitions": 32,
+  "katexErrors": 0,
+  "fieldLink": "opens exact field definition",
+  "version": {
+    "version": "2026-10-01.12",
+    "paper": "186f3c0c7beaeefc73e6d2ff8ffa2a5354128523",
+    "formal": "7baaeddc6f54b9760b0255f4f8115c37f6486a5d",
+    "checks": [
+      "statement",
+      "route",
+      "issues",
+      "publication"
+    ],
+    "generator": "2b5c436720745559",
+    "live": "https://itpplasma.github.io/stafford38-formal/"
+  }
+}

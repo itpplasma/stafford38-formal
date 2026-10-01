@@ -172,7 +172,7 @@ const leanMacroRefs = new Map();
   }
 }
 const lineOfLabel = {};
-texLines.forEach((line, i) => { for (const m of line.matchAll(/\\label\{([^}]*)\}/g)) lineOfLabel[m[1]] = i + 1; });
+texLines.forEach((line, i) => { for (const m of stripComments(line).matchAll(/\\label\{([^}]*)\}/g)) lineOfLabel[m[1]] = i + 1; });
 
 const items = map.items;
 const itemById = Object.fromEntries(items.map((it) => [it.id, it]));

@@ -394,3 +394,21 @@ test('a child excerpt of replacement text keeps proposal styling and original so
   assert.match(card,/<span class="ai-add">New covered theorem\./);
   assert.doesNotMatch(card,/Old covered theorem/);
 });
+
+// A historical duplicate must not redirect a current equation reference.
+test('commented historical labels do not shadow active equation targets', (t) => {
+  const f = fixture(t);
+  const source = f.currentPaperSource.replace('A covered theorem.', 'A covered theorem. \\label{eq:active}')
+    .replace('An unlabelled definition;', '% \\label{eq:active}\nAn unlabelled definition; see \\eqref{eq:active};');
+  fs.writeFileSync(path.join(f.paper.repo, 'human_readable_main.tex'), source);
+  git(f.paper.repo, 'add', 'human_readable_main.tex');
+  execFileSync('git', ['-C', f.paper.repo, '-c', 'user.name=Audit Test', '-c', 'user.email=audit@example.test', 'commit', '-qm', 'historical label']);
+  f.map.sources.paper.commit = git(f.paper.repo, 'rev-parse', 'HEAD');
+  f.map.extra_refs['eq:active'] = 'Active';
+  f.map.items[0].tex_lines = [6, 8];
+  f.map.items[1].tex_lines = [9, 22];
+  const result = f.run();
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  const html = fs.readFileSync(f.htmlPath, 'utf8');
+  assert.match(html, /href="#item-thm">\(Active\)<\/a>/);
+});
