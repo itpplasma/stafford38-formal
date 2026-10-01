@@ -1,0 +1,52 @@
+{
+  "paper_base": "7d10c6297f8367b3f0061d61bda5ae86f9945c2c",
+  "selected_paper_commit": "058e96079f532f7c5918af6ee5667b32f563517d",
+  "selected_manuscript_sha256": "29abc1620a92f981ed2c07760f0627b178ec692603a864e9ac038861847d68c1",
+  "paper_diff_from_base_sha256": "12182e311cecdf14e6c7006fb9a876cab8eac73de416d192f69c7804913b2f8d",
+  "formal_source_commit": "7baaeddc6f54b9760b0255f4f8115c37f6486a5d",
+  "main_challenge_unchanged": {
+    "Challenge.lean": "5a832e8a6f292e58a68dddd48e03541f5228c3f15cc9a1063e88c057439346f0",
+    "FixedSourceChallenge.lean": "ec58dce38defc280a1ab4716ec43c57cf9c983cc681e4a71efb673e39fe5fd8e",
+    "Solution.lean": "a9ba322514e5c63ae4ba961a04c1a6e3d25f607412c2fd18eff9de15fff0a75e"
+  },
+  "commands": {
+    "full-verifier": {
+      "exit": 0,
+      "log_sha256": "eb87f0fa25db9b4fd1d5a0b24c63e644d8cfe56724cc4fbb7bec16f4fc538fa0",
+      "summary": "Stafford38 verification passed"
+    },
+    "palomar": {
+      "exit": 0,
+      "log_sha256": "7810fd664da01e35062d91d1b3f21868727b337b7d439d484136b7e15dfc352e",
+      "summary": "Palomar Comparator, NanoDa, and Lean kernel verification passed"
+    },
+    "palomar-fixed-source": {
+      "exit": 0,
+      "log_sha256": "754cbbd0c1c00fa4d649ea3aa52f866d67fa2afce13fe36e94b4e48e073c8757",
+      "summary": "Palomar Comparator, NanoDa, and Lean kernel verification passed"
+    }
+  },
+  "proof_reviews": {
+    "geometry": "PASS on frozen route; label-only repair integrated",
+    "algebra-and-main": "PASS after exact coefficient-side and active page-definition repairs, independently rechecked",
+    "definitions-and-appendix": "PASS after malformed filtration/base-field repairs; minor notation unified; unformalized analytic aside removed"
+  },
+  "kernel_scope": {
+    "literal_consumers": 17,
+    "supplementary_pair_consumer": 1,
+    "axiom_reports": 37,
+    "linked_declarations": 104,
+    "allowed_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ]
+  },
+  "author_text": "15 original source-history blocks verified against the independent pre-edit baseline; normalized original author prose identical after selecting originals",
+  "human_sign_off": "pending; Max reviews whole selected correspondence, Johanna reviews marked mathematical prose",
+  "non_claims": [
+    "The main Palomar registry has not been updated; the author will do so.",
+    "No human acceptance or journal submission is inferred.",
+    "The general analytic pullback theorem is not formalized by this repository."
+  ]
+}

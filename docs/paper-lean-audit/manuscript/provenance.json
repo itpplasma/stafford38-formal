@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
-  "paper_base_commit": "7d10c6297f8367b3f0061d61bda5ae86f9945c2c",
+  "paper_base_commit": "058e96079f532f7c5918af6ee5667b32f563517d",
   "snapshot_scope": "Committed active manuscript sources plus explicitly retired fragments preserved for history. Overleaf remains editing authority.",
   "files": [
     {
       "path": "human_readable_main.tex",
-      "sha256": "6fcd4afc1008978154762755a0a142ad69a22e03ee3d57223df2618f4f0b3800",
+      "sha256": "29abc1620a92f981ed2c07760f0627b178ec692603a864e9ac038861847d68c1",
       "status": "active"
     },
     {
@@ -46,7 +46,7 @@
     },
     {
       "path": "proof_map.tex",
-      "sha256": "6bce233c2c1c92e793b5d856617de31ab36e776fda1ea389d01eb655e5dd7695",
+      "sha256": "36ac1e90b36cc8395ebc9cb36b3a1121a98b222709bcba547aed66a41d1387e8",
       "status": "active"
     },
     {
@@ -61,7 +61,7 @@
     },
     {
       "path": "lean_proof_details.tex",
-      "sha256": "a741417d615128cd75132c8162d36c71d1612012933f894c85dcc9813708d6bf",
+      "sha256": "c8074dfe26ce59c7510116caf51b673a8d13912d3a5df87aef727872190c9dc0",
       "status": "active"
     },
     {
@@ -71,7 +71,7 @@
     },
     {
       "path": "ai_review.tex",
-      "sha256": "5784b35426e0ed67a6c6450dad06a35127f3caa126a84cd03c9b476bc5956065",
+      "sha256": "4ff13e16eafad388257ead34a3e27014ce5b63f1455b07906a36c90213487644",
       "status": "active"
     }
   ]

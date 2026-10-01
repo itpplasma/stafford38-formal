@@ -1,9 +1,9 @@
 {
-  "paper_commit": "7d10c6297f8367b3f0061d61bda5ae86f9945c2c",
+  "paper_commit": "058e96079f532f7c5918af6ee5667b32f563517d",
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
   "pdfs": {
-    "human_readable_main.pdf": "5a2ab2ed26e017e7912cc7c54a14ec2102bc96f43ca642dbd29e18c2bffa78cb",
-    "lean_proof_details.pdf": "d4464e6c34f7fd0b9394cef70a5853b8e13a1b088ef46b1d7f6ac91406757db6"
+    "human_readable_main.pdf": "4d0c982d7dd18c9414b8d5327fd147b77bf5b0b7bbbecce9bcfe5a1dc7d92b4c",
+    "lean_proof_details.pdf": "226155d83d8ac05136c558be8ed0132373dd037eddba1f439bdf8301a9ab8383"
   },
   "source_files": [
     "human_readable_main.tex",
@@ -24,5 +24,5 @@
     "lean_proof_details_main.tex"
   ],
   "human_acceptance": "pending; red text remains proposed; action boxes remain unresolved",
-  "verification": "Both paper targets compile; human author-list edit preserved. Full verifier and independent paper-facing consumers pass. v1.2.2 archive bytes verified; tangent-lattice construction remains a correspondence gap."
+  "verification": "Selected proof scopes independently reviewed after exact repairs; original author prose preserved; both TeX targets compile without unresolved references; full Lean verifier and both Palomar Comparator/NanoDa checks pass. Human acceptance remains pending."
 }

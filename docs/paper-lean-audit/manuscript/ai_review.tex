@@ -27,21 +27,15 @@
       \normalfont\small\color{AIreview}\textbf{AI comment #1.} #2}}%
   \par\smallskip}
 \newcommand{\AIreviewlegend}{%
-  \AIcomment{Review guide}{\textbf{Suggested changes.} Red text is proposed
-  wording, not an accepted correction. Blue strike-through preserves the
-  original text. Accept or revise the proposal before removing its wrappers.
-  \textbf{Comments and action.} Every box states its status: \emph{Proposed
-  change} awaits author acceptance; \emph{Action required} needs a proof repair
-  or drafting decision; \emph{Information} requests no manuscript edit;
-  \emph{Optional refinement} may be omitted. A different verified proof does
-  not close a gap in the printed proof.
-  \textbf{Who reviews.} Johanna can edit wording and integrate agreed changes;
-  Max reviews the whole paper--Lean correspondence, including exact matches,
-  definitions and printed proof steps. He checks mathematical gaps before
-  asking Johanna for a text repair. Authors decide
-  the geometric proof route. Follow \emph{Mathematical proof} links for the
-  readable comparison; no Lean code is needed. Resolve a box only after its
-  stated task is done, by deleting its \texttt{\string\AIcomment} command.}}
+  \AIcomment{Review guide}{\textbf{Johanna:} review the red text and proposed
+  corrections as mathematics and prose; no Lean reading is required.
+  \textbf{Max:} review the whole selected paper proof against its checked Lean
+  route, including definitions and exact matches. The interface and paper use
+  the same frozen revisions. Readable correspondence notes are optional aids,
+  not another review assignment. Red text awaits author acceptance; blue strike-through
+  preserves small original passages. Replaced long proofs remain verbatim in
+  marked source-history comments and Git history. Historical alternatives are
+  outside the selected publication proof. Resolve a box after its task is done.}}
 
 % Lean cross-references (AI addition, 2026-09-30 paper--Lean audit).
 % Each formalized result is followed by \formalref{...}; every \leandecl or

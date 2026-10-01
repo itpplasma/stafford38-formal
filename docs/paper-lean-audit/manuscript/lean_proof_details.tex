@@ -172,11 +172,7 @@ $\tilde d=p^N+\sum_{j<N}c_jp^j$ with $c_j\in C$ and $\deg_Bc_j\le N-j$, with
 the coefficients on the \emph{left}. Lean records this as monicity of the
 outer Ore polynomial.
 
-The printed right form follows from $cp=pc-\partial_{x_1}c$ for $c\in C$,
-iterated as $cp^j=\sum_i(-1)^i\binom ji p^{j-i}\,\partial_{x_1}^ic$. It
-gives $a_j=\sum_{i\ge0}(-1)^i\binom{j+i}{i}\partial_{x_1}^ic_{j+i}$ with
-$\deg_Ba_j\le N-j$. Lean itself never uses this bound; it uses only
-$\tilde d\in B_N$.
+The selected paper uses this same left-coefficient convention.
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-04}{bookmark-COMP-04}\hypertarget{comparison-COMP-04}{\textbf{Comparison COMP-04}}\label{comparison-COMP-04}\par\smallskip
@@ -251,9 +247,15 @@ the isomorphism with the presented Weyl algebra.
 Lean never localizes $Q$; only the pages carry a $T$-module structure. Put
 $G^p:=F_{-p}Q$ for $p\le0$ and $G^p:=0$ for $p>0$. This is a decreasing,
 exhaustive filtration with $G^1=0$. The complex is the $k$-linear map
-$f=R_{x_1}\colon Q\to Q$, with $f(G^p)\subseteq G^p$. $A_r$, $B_r$ and
-$d_r\colon A_r^p\to B_r^{p+r}$ are defined by the printed formulas. The proof
-has four steps.
+$f=R_{x_1}\colon Q\to Q$, with $f(G^p)\subseteq G^p$. For $r\ge0$ define
+\[
+ A_r^p=\frac{G^p\cap f^{-1}(G^{p+r})}{G^{p+1}\cap f^{-1}(G^{p+r})},
+ \qquad B_r^p=\frac{G^p}{(G^p\cap f(G^{p-r+1}))+G^{p+1}},
+\]
+and $A_r=\bigoplus_{p\in\mathbb Z} A_r^p$, $B_r=\bigoplus_{p\in\mathbb Z} B_r^p$.
+Applying $f$ induces $d_r\colon A_r^p\to B_r^{p+r}$: changing a representative
+by the source denominator changes its image by the target denominator.
+Thus $A_0=B_0=M$ and $d_0$ is multiplication by $x_1$. The proof has four steps.
 
 \emph{Step 1: $T$ acts on the pages.} Let $a$ be a transverse generator
 $x_j$ or $\partial_j$ ($j\ge2$), of order $e_a\in\{0,1\}$. Then $R_a$ is
@@ -268,8 +270,14 @@ $R_{\partial_j}$ makes every $A_r$, $B_r$ a $T$-module and every $d_r$
 $T$-linear. For $r=0$ this is the $T$-structure of $M=\gr Q$, so
 $A_1\cong V$ and $B_1\cong U$ as $T$-modules. In addition,
 $A_{r+1}\cong\ker d_r$ and $B_{r+1}\cong\operatorname{coker}d_r$ as
-$T$-modules. For the first, a representative killed by $d_r$ is corrected by
-an element of $G^{p+1}$ into $G^p\cap f^{-1}G^{p+r+1}$.
+$T$-modules. Indeed, if $d_r([z])=0$, write $f(z)=f(w)+v$ with
+$w\in G^{p+1}$ and $v\in G^{p+r+1}$. Then $z-w$ represents the same source
+class and lies in $G^p\cap f^{-1}G^{p+r+1}$; its kernel of passage back
+is exactly the denominator of $A_{r+1}^p$. For the target, quotienting
+$B_r^{p+r}$ by $d_r(A_r^p)$ enlarges the boundary denominator from
+$G^{p+r}\cap f(G^{p+1})$ to $G^{p+r}\cap f(G^p)$, giving $B_{r+1}^{p+r}$.
+Consequently $0\to A_{r+1}\to A_r\xrightarrow{d_r}B_r\to B_{r+1}\to0$
+is exact.
 
 \emph{Step 2: exhaustion, before localization.} Let $y\in G^p$ represent a
 class of $B_1^p$. By Proposition~\ref{paper:prop:x-surjective}, $y=zx_1$ for
@@ -291,8 +299,12 @@ by $S^{-1}\beta_r$ for the $r$ belonging to $u$. The kernels therefore
 stabilize at all of $S^{-1}B_1$, and $S^{-1}B_R=0$ for some $R$.
 
 \emph{Step 4: telescoping.} Localizing the exact sequences
-$0\to A_{r+1}\to A_r\xrightarrow{d_r}B_r\to B_{r+1}\to0$ and telescoping, as
-printed, gives
+$0\to A_{r+1}\to A_r\xrightarrow{d_r}B_r\to B_{r+1}\to0$, all modules have
+finite length because $A_1\cong V$ and $B_1\cong U$ do, and subsequent pages
+are submodules and quotients. Additivity gives
+$\ell(S^{-1}B_r)+\ell(S^{-1}A_{r+1})=
+\ell(S^{-1}A_r)+\ell(S^{-1}B_{r+1})$.
+Summing for $r=1,\ldots,R-1$ cancels every intermediate term and gives
 $\ell(U_{\mathfrak q})+\ell(S^{-1}A_R)=\ell(V_{\mathfrak q})
 +\ell(S^{-1}B_R)=\ell(V_{\mathfrak q})$.
 \end{AIaddition}
@@ -437,8 +449,7 @@ $\sigma(q_1)=\sum_jt^{a+e-1}b_j\sigma(q_j)$ with $b_j\in V$. Dividing by
 $t^{a+1}u_0^2$ gives
 \[d\bar x_1=\textstyle\sum_{j=1}^n c_j\,d\bar x_j\ \text{ in }\Omega_{F/K},\qquad
  c_j=t^{a+e-1}b_j\in\mathfrak m_V .\]
-This relation replaces the tangent lattice and Grassmannian limit
-\eqref{paper:eq:q-orders}--\eqref{paper:eq:T1-vanish}.
+This is the differential relation used in the selected paper proof.
 \item\label{st:gen} (\emph{Generic conormal covector.}) Let $\xi^F=e_1-\sum_jc_je_j\in V^n$, so
 $\sum_i\xi^F_i\,d\bar x_i=0$. Localizing the conormal sequence of
 $K[x]\to R$ at $(0)$ gives the exact sequence
@@ -494,7 +505,7 @@ degree $d$ in $\xi$. For $(y,\xi)\in W$, the polynomial $a\mapsto\sum_da^dg_d(y,
 vanishes on the infinite set $K^\times$. So every $g_d\in J$, i.e.\ $J$ is $\xi$-homogeneous.
 \item\label{st:zero} (\emph{Zero section.}) Let $Y=V(B)$. For $y\in Y$ and $g\in J$,
 $g(y,0)=g_0(y)=0$ because $g_0\in J$ has $\xi$-degree $0$, i.e.\ $g_0\in B$. So
-$Y\times\{0\}\subset V(J)=W$. Hence $\pi(W)=Y$ is closed, which is \eqref{paper:eq:zero-section}, and
+$Y\times\{0\}\subset V(J)=W$. Hence $\pi(W)=Y$ is closed, and
 $Y\cap H=\varnothing$.
 \item\label{st:transl} (\emph{Vertical translation.}) Let $f\in B$. Then $f\circ\pi\in J$, so
 $H_fg:=\sum_i\partial_{x_i}f\,\partial_{\xi_i}g=\pm\{f,g\}$ lies in $J$ for every $g\in J$.
@@ -515,8 +526,7 @@ $G(x)=g(x,\nabla h(x))$ therefore vanishes on $Y_0\cap\{s\neq0\}$. Hence
 $sG\in\mathfrak q$, so $G\in\mathfrak q$, and $(y,\nabla h(y))\in W$ for \emph{every}
 $y\in Y_0$. Absorbing linear combinations into $h$ gives
 $\{y\}\times\operatorname{span}\{\nabla h(y):h\in\mathfrak q\}\subset W$ for all $y\in Y_0$. In particular
-$N^*_yY_0\subset W_y$ at every smooth point $y$ of $Y_0$, which proves
-\eqref{paper:eq:conormal-in-W}.
+$N^*_yY_0\subset W_y$ at every smooth point $y$ of $Y_0$, which proves conormal containment.
 \item\label{st:asym} (\emph{Conclusion in the affine cone.}) $Y_0$ is irreducible, nonempty and
 disjoint from $H$. By Step~\ref{st:comp} and $W\subset V(P)$, $P$ vanishes on
 $N(Y_0)=\bigcup_{y\in(Y_0)_{\sm}}N^*_yY_0\subset K^n$. By part (i) of
@@ -725,7 +735,7 @@ scalar extension \leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.
 \leandecl{Stafford38/Geometry/LaurentConormalDirection.lean}{68}{Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic};
 \leandecl{Stafford38/Geometry/GeneralTangentLimitCriterion.lean}{368}{Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction}}}
 
-\AIadd{\formalref[{over every algebraically closed field of characteristic zero; the formal proof follows a different route, written out after the printed proof}]{%
+\AIadd{\formalref[{over every algebraically closed field of characteristic zero; the selected paper proof follows the checked Laurent route}]{%
 \leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{63}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions},
 affine-cone form \leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{28}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure}}}
 
@@ -758,8 +768,8 @@ certificate \leandecl{Stafford38/Characteristic/CanonicalCertificate.lean}{30}{S
 \leandecl{Stafford38/Characteristic/EmptySupportVanishing.lean}{80}{Stafford38.CharacteristicEmptySupportVanishing.orderInitialIdeal_eq_top_iff_rightQuotient_subsingleton};
 \leandecl{Stafford38/Characteristic/GeometricSupportDescent.lean}{96}{Stafford38.Characteristic.GeometricSupportDescent.map_scalarPolynomialMap_eq_top_iff}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/TorsionCyclicity.lean}{161}{Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion},
-two generators \leandecl{Stafford38/TorsionCyclicity.lean}{27}{Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair},
+\AIadd{\formalref{\leandecl{Stafford38/TorsionCyclicity.lean}{186}{Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion},
+two generators \leandecl{Stafford38/TorsionCyclicity.lean}{138}{Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair},
 domain \leandecl{Stafford38/Weyl/Domain.lean}{22}{Stafford38.WeylDomain.mul_ne_zero};
 Mathlib-only statement \leandecl{CorollaryChallenge.lean}{37}{Stafford38CorollaryChallenge.torsionCyclicStatement}}}
 

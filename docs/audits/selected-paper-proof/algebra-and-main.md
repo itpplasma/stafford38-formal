@@ -1,0 +1,5 @@
+# Selected algebra and composition review
+
+Independent review of the frozen proof packet found two publication-proof omissions: the order-symbol paragraph used a stale right-coefficient convention after its statement switched to left coefficients, and the page proof referred to formulas present only in commented history. The controller integrated an explicit left-coefficient PBW argument and complete active page definitions, well-defined differentials, kernel/cokernel identifications and length telescope. Two reviewers independently rechecked these repairs against the formal constructors and successor lemmas.
+
+The reviewed Euler, surjectivity, finite tangential-module, page inequality, strict inequality, support avoidance, canonical initial-ideal descent, certificate transport and finite-generation cyclicity steps pass. The geometry is covered by its separate report. The pair certificate has an independent Mathlib-only statement and trust-zero consumer; it does not change the main Challenge. Exact frozen and integrated inputs and verifier results are recorded in integration.json. Human correspondence review remains pending.

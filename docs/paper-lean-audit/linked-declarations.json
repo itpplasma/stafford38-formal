@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "paper_commit": "7d10c6297f8367b3f0061d61bda5ae86f9945c2c",
-  "formal_source_commit": "739162753aff996cc565659aefca23c6865d79b0",
+  "paper_commit": "058e96079f532f7c5918af6ee5667b32f563517d",
+  "formal_source_commit": "7baaeddc6f54b9760b0255f4f8115c37f6486a5d",
   "library_commit": "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8",
   "declarations": [
     {
@@ -363,6 +363,11 @@
       "repo": "formal",
       "file": "Stafford38/TorsionCyclicity.lean",
       "name": "Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/TorsionCyclicity.lean",
+      "name": "Stafford38.TorsionCyclicity.span_adjusted_pair_eq_span_pair"
     },
     {
       "repo": "formal",
