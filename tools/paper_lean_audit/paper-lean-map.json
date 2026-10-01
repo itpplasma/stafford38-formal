@@ -1,21 +1,21 @@
 {
  "schema": 1,
- "version": "2026-10-01.12",
+ "version": "2026-10-01.13",
  "title": "Stafford 3.8: paper \u2194 Lean correspondence audit",
  "subtitle": "Current annotated manuscript mapped to the signed formal release and pinned dependencies.",
  "sources": {
   "paper": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "186f3c0c7beaeefc73e6d2ff8ffa2a5354128523",
+   "commit": "bce92ec2d8ac53993b3edc568561a814ce5db518",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
    "note": "Selected complete paper proof; marked mathematical proposals await author acceptance. Historical alternatives are outside the current review assignment.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "058e96079f532f7c5918af6ee5667b32f563517d"
+   "origin_commit": "093527797b85f4547e7a5be03556fa9725b6077c"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "7baaeddc6f54b9760b0255f4f8115c37f6486a5d",
-   "note": "Checked pair certificate and supplementary literal statement; main Challenge unchanged; selected paper follows existing checked routes."
+   "commit": "ba18817c4cd4e5cfeab11da44ce76623f4c2b508",
+   "note": "Signed v1.2.3 release, DOI 10.5281/zenodo.23080671; checked selected proof and supplementary pair certificate; main Challenge unchanged."
   },
   "library": {
    "repo": "itpplasma/algebraic-analysis",
