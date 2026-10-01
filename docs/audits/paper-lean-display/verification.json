@@ -1,0 +1,483 @@
+{
+  "review_base": "87bce83806c757ade36d455d785b506ebd03a1b2",
+  "reviewed_tool_patch_sha256": "3d8f5bef4e6d0680c7732368c170ef7da8a25431ac3bb99ac040f64da7f073f4",
+  "tool_files": {
+    "tools/paper_lean_audit/README.md": "caafe6093c28dbb71242461a204c8a435928fac36483ce348de67a73f09a9a7e",
+    "tools/paper_lean_audit/build.mjs": "cfaaf801c069359b876e1627ebc7fffabc103236cdf3cb6efd330635dce9481e",
+    "tools/paper_lean_audit/lean.mjs": "683e6fbb9da731917841c09bfc6a90498e17767694f07995931e20307d7d8c33",
+    "tools/paper_lean_audit/paper-lean-map.json": "8bed55d229a6d52fad05ce9ca657acb9f1d78fc25a31b17de1cd84087da3d398",
+    "tools/paper_lean_audit/test/build-validation.test.mjs": "b0d913c0fcdf129366a92230178104efe2e78f11b649e91833266aec5bbf800d",
+    "tools/paper_lean_audit/test/helpers.test.mjs": "03bf6aa59d78a559ece22940d043e33d32cfd68551ffd2d5f6d4d0a429607798"
+  },
+  "pins": {
+    "paper": {
+      "repo": "itpplasma/stafford38-formal",
+      "commit": "e2b0b9fbca4cab61a4a3462ef4289726592de5ca",
+      "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
+      "note": "Public manuscript snapshot matching stafford38-paper cb25e8efad82add86898f30fbcf17daf267c0101; citations and supporting sources included.",
+      "origin_repo": "itpplasma/stafford38-paper",
+      "origin_commit": "cb25e8efad82add86898f30fbcf17daf267c0101"
+    },
+    "formal": {
+      "repo": "itpplasma/stafford38-formal",
+      "commit": "591d4e11e3971577be169e428ac73c44a4ac8a32",
+      "note": "Signed v1.2.0 archive; checked auxiliary declarations and immutable release source. Human review remains open."
+    },
+    "library": {
+      "repo": "itpplasma/algebraic-analysis",
+      "commit": "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8",
+      "note": "(v0.3.0, the pinned lake dependency)"
+    },
+    "global": {
+      "repo": "itpplasma/global-stafford-formal",
+      "commit": "e676caed1253e5d09fc6699d5dc683febbabf7bb",
+      "note": "(archived v1.0.6 formal source; exact repository revision supplied by controller)",
+      "file": "GlobalStafford/Assembly/Closure.lean",
+      "name": "GlobalStafford.universalStatement",
+      "line": 221
+    },
+    "mathlib": {
+      "repo": "leanprover-community/mathlib4",
+      "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "note": "Exact Mathlib dependency pin; standard length definitions."
+    }
+  },
+  "tests": {
+    "research": {
+      "passed": 48,
+      "failed": 0,
+      "skipped": 0
+    },
+    "formal": {
+      "passed": 48,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "builds": {
+    "research": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "public_formal": {
+      "errors": 0,
+      "warnings": 0,
+      "pdf_pages": 258
+    }
+  },
+  "display_oracle": {
+    "formalReviewBase": "87bce83806c757ade36d455d785b506ebd03a1b2",
+    "cardsChecked": 55,
+    "sourceSnippetsChecked": 3248,
+    "pinnedFilesChecked": 142,
+    "result": "passed",
+    "oracle": "Every displayed Lean excerpt is a literal prefix of its independently read pinned Git source range; every card has coverage explanation, review hash and no missing declaration.",
+    "cards": [
+      {
+        "id": "item-abstract",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 36,
+        "errors": 0,
+        "reviewHash": "f1eab22edad3398a"
+      },
+      {
+        "id": "item-thm:main",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 64,
+        "errors": 0,
+        "reviewHash": "5c8209e7a8080de6"
+      },
+      {
+        "id": "item-global-stafford",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 12,
+        "errors": 0,
+        "reviewHash": "a81b86118cd05f2b"
+      },
+      {
+        "id": "item-intro-proof-sketch",
+        "coverage": "No Lean declaration is mapped to this passage; the paper text is not certified by this card.",
+        "leanBlocks": 0,
+        "errors": 0,
+        "reviewHash": "f8f90243871c5026"
+      },
+      {
+        "id": "item-context-prior-art",
+        "coverage": "No Lean declaration is mapped to this passage; the paper text is not certified by this card.",
+        "leanBlocks": 0,
+        "errors": 0,
+        "reviewHash": "e33c2360102dd6a4"
+      },
+      {
+        "id": "item-formal-verification",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 14,
+        "errors": 0,
+        "reviewHash": "a3823d672743c047"
+      },
+      {
+        "id": "item-conv:pair",
+        "coverage": "The main display gives statement definitions; the proved results are shown under supporting declarations or proof steps below.",
+        "leanBlocks": 53,
+        "errors": 0,
+        "reviewHash": "9c55ce1b712faaf6"
+      },
+      {
+        "id": "item-conv:H",
+        "coverage": "Notation convention, not a theorem. SymbolRing models the cotangent coordinate ring; fibreWeight gives the base/fibre grading. These definitions alone do not identify H, its conormal or the projection pi.",
+        "leanBlocks": 2,
+        "errors": 0,
+        "reviewHash": "2239b5910a607fa1"
+      },
+      {
+        "id": "item-cotangent",
+        "coverage": "Definitions and notation only: this card does not display a proved theorem for the passage.",
+        "leanBlocks": 1,
+        "errors": 0,
+        "reviewHash": "1beb896373b96fb5"
+      },
+      {
+        "id": "item-def:filtration",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 64,
+        "errors": 0,
+        "reviewHash": "3b5d17062c399146"
+      },
+      {
+        "id": "item-def:good-filtration",
+        "coverage": "Definitions and notation only: this card does not display a proved theorem for the passage.",
+        "leanBlocks": 23,
+        "errors": 0,
+        "reviewHash": "c123d57238ab41e7"
+      },
+      {
+        "id": "item-def:char-variety",
+        "coverage": "The main display gives statement definitions; the proved results are shown under supporting declarations or proof steps below.",
+        "leanBlocks": 35,
+        "errors": 0,
+        "reviewHash": "3ca6811b0f632ecf"
+      },
+      {
+        "id": "item-def:symplectic-poisson",
+        "coverage": "Definitions and notation only: this card does not display a proved theorem for the passage.",
+        "leanBlocks": 8,
+        "errors": 0,
+        "reviewHash": "ea5fc2a13e9ec213"
+      },
+      {
+        "id": "item-def:involutive",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 24,
+        "errors": 0,
+        "reviewHash": "22644de203702b8b"
+      },
+      {
+        "id": "item-ithm:gabber",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 308,
+        "errors": 0,
+        "reviewHash": "4a033b0625d465d1"
+      },
+      {
+        "id": "item-lem:componentwise-involutive",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 94,
+        "errors": 0,
+        "reviewHash": "84bf76223c8ab9fc"
+      },
+      {
+        "id": "item-monic-scalar",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 48,
+        "errors": 0,
+        "reviewHash": "7963ddbf24fda263"
+      },
+      {
+        "id": "item-phi-g",
+        "coverage": "The main display gives statement definitions; the proved results are shown under supporting declarations or proof steps below.",
+        "leanBlocks": 52,
+        "errors": 0,
+        "reviewHash": "acaf15f2a417ea61"
+      },
+      {
+        "id": "item-lem:sympcompl",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 18,
+        "errors": 0,
+        "reviewHash": "11e8a411cc12f4d2"
+      },
+      {
+        "id": "item-prop:monic",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 80,
+        "errors": 0,
+        "reviewHash": "51a0b2c6b90bd23a"
+      },
+      {
+        "id": "item-reduction-k0",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 113,
+        "errors": 0,
+        "reviewHash": "8affba9f86fe1e31"
+      },
+      {
+        "id": "item-rem:transport",
+        "coverage": "Transport prose, not a standalone theorem here. The displayed assembly results are downstream context; the inverse-generator lemma is a supporting identity.",
+        "leanBlocks": 40,
+        "errors": 0,
+        "reviewHash": "2ec13b1f45629dd3"
+      },
+      {
+        "id": "item-def:monic-xi1",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 18,
+        "errors": 0,
+        "reviewHash": "4236830fbcb71fcf"
+      },
+      {
+        "id": "item-lem:order-symbol",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 69,
+        "errors": 0,
+        "reviewHash": "4971a4c3f8f5b6ab"
+      },
+      {
+        "id": "item-eq:I-Q",
+        "coverage": "Definitions and notation only: this card does not display a proved theorem for the passage.",
+        "leanBlocks": 19,
+        "errors": 0,
+        "reviewHash": "34f46a37864bf75e"
+      },
+      {
+        "id": "item-euler-grading",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 18,
+        "errors": 0,
+        "reviewHash": "d9b970e96f583126"
+      },
+      {
+        "id": "item-lem:euler",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 6,
+        "errors": 0,
+        "reviewHash": "ff45806b8d4c2209"
+      },
+      {
+        "id": "item-lem:euler-residue",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 84,
+        "errors": 0,
+        "reviewHash": "f4077bca902e8810"
+      },
+      {
+        "id": "item-prop:x-surjective",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 55,
+        "errors": 0,
+        "reviewHash": "d8558628d72eb303"
+      },
+      {
+        "id": "item-vc-setup",
+        "coverage": "Definitions and notation only: this card does not display a proved theorem for the passage.",
+        "leanBlocks": 49,
+        "errors": 0,
+        "reviewHash": "4245ec7d96bf21e2"
+      },
+      {
+        "id": "item-def:length",
+        "coverage": "Definitions and notation only: this card does not display a proved theorem for the passage.",
+        "leanBlocks": 4,
+        "errors": 0,
+        "reviewHash": "ab598d2203792668"
+      },
+      {
+        "id": "item-lem:tangential-finiteness",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 54,
+        "errors": 0,
+        "reviewHash": "b141c8166d16569c"
+      },
+      {
+        "id": "item-lem:page-inequality",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 113,
+        "errors": 0,
+        "reviewHash": "e606ffd31a8b1b29"
+      },
+      {
+        "id": "item-lem:strict-support-inequality",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 107,
+        "errors": 0,
+        "reviewHash": "6563733701749361"
+      },
+      {
+        "id": "item-lem:Uzero",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 67,
+        "errors": 0,
+        "reviewHash": "ad90be2040000932"
+      },
+      {
+        "id": "item-cor:charP",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 36,
+        "errors": 0,
+        "reviewHash": "c27c858b27326313"
+      },
+      {
+        "id": "item-prop:char-avoids",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 120,
+        "errors": 0,
+        "reviewHash": "e249797aae3f500f"
+      },
+      {
+        "id": "item-dir-def",
+        "coverage": "Definitions and notation only: this card does not display a proved theorem for the passage.",
+        "leanBlocks": 43,
+        "errors": 0,
+        "reviewHash": "33613b030850ee06"
+      },
+      {
+        "id": "item-lem:tangent-limit",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 82,
+        "errors": 0,
+        "reviewHash": "8ca2237ee16950a5"
+      },
+      {
+        "id": "item-thm:asymptotic-conormal",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 39,
+        "errors": 0,
+        "reviewHash": "fabeb6105680bce5"
+      },
+      {
+        "id": "item-thm:asymptotic-conormal-proof",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 232,
+        "errors": 0,
+        "reviewHash": "1328f3cfe3bb77b8"
+      },
+      {
+        "id": "item-def:fibre-can",
+        "coverage": "The main display gives statement definitions; the proved results are shown under supporting declarations or proof steps below.",
+        "leanBlocks": 12,
+        "errors": 0,
+        "reviewHash": "eaa55af06838ba37"
+      },
+      {
+        "id": "item-thm:coisotropic-exclusion",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 163,
+        "errors": 0,
+        "reviewHash": "ad3be858fe18e1d0"
+      },
+      {
+        "id": "item-proof-main",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 390,
+        "errors": 0,
+        "reviewHash": "e12257e80feb2fdd"
+      },
+      {
+        "id": "item-lem:initial-base-change",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 74,
+        "errors": 0,
+        "reviewHash": "fbd2ca34c6abfe8c"
+      },
+      {
+        "id": "item-cyclicity",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 19,
+        "errors": 0,
+        "reviewHash": "0ac8a8165f10defb"
+      },
+      {
+        "id": "item-outlook",
+        "coverage": "No Lean declaration is mapped to this passage; the paper text is not certified by this card.",
+        "leanBlocks": 0,
+        "errors": 0,
+        "reviewHash": "85b43c0fac4c2528"
+      },
+      {
+        "id": "item-ai-workflow",
+        "coverage": "Source/documentation links only: no theorem signature is mapped to this passage.",
+        "leanBlocks": 0,
+        "errors": 0,
+        "reviewHash": "34e5b1a822f568bb"
+      },
+      {
+        "id": "item-further-work",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 69,
+        "errors": 0,
+        "reviewHash": "6b0892ad259ad7f7"
+      },
+      {
+        "id": "item-appendix-right-ore",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 4,
+        "errors": 0,
+        "reviewHash": "c6bfa1d48cea364d"
+      },
+      {
+        "id": "item-appendix-left-handed",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 10,
+        "errors": 0,
+        "reviewHash": "d9f57bd6ff3aebce"
+      },
+      {
+        "id": "item-appendix-localized-differential",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 14,
+        "errors": 0,
+        "reviewHash": "64f19db1a0768eab"
+      },
+      {
+        "id": "item-appendix-evolutionary",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 4,
+        "errors": 0,
+        "reviewHash": "8b1bc884f989b115"
+      },
+      {
+        "id": "item-def:noncar",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 24,
+        "errors": 0,
+        "reviewHash": "013a212bff101ab3"
+      },
+      {
+        "id": "item-prop:noncar",
+        "coverage": "The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.",
+        "leanBlocks": 161,
+        "errors": 0,
+        "reviewHash": "a797f18032083bf8"
+      }
+    ]
+  },
+  "kernel_checks": {
+    "trust": 0,
+    "main_public_declarations": 252,
+    "additional_quotient_filtration_declaration": 1,
+    "separate_challenge_proposition_definitions": 6,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "global_stafford": "Pinned-source comparison and prior archived verification; no successful fresh Global kernel replay in this display repair."
+  },
+  "artifacts": {
+    "stafford38-paper-lean-audit.pdf": "ba0a2c11beca1b329319001ee83a5edd4fe6c6374f02e2686d48ecfe906816c9",
+    "stafford38-paper-lean-audit.html": "6665bd9d47b6f50ac1aa27ae6d9d6438a760aa6ceb34bd6fc560eaa994c4badc"
+  },
+  "human_manuscript_sha256": "e64c5bc0af5876ad8c430f2e8b7bd1012474786d2ab90060501ff8d69911b065",
+  "human_manuscript_modified": false,
+  "lean_proof_sources_modified": false,
+  "human_acceptance": "pending; independent AI review and kernel checks do not certify every prose bridge"
+}

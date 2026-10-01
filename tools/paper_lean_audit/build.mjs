@@ -12,8 +12,8 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { TexRenderer, escapeHtml, stripComments } from './texhtml.mjs';
-import { findDeclaration, extractStatement, highlightLean, namedResultType, definitionNames } from './lean.mjs';
+import { TexRenderer, escapeHtml, stripComments, readGroup } from './texhtml.mjs';
+import { findDeclaration, extractStatement, highlightLean, namedResultType, definitionNames, declarationContext, bindingNames, declarationTrust } from './lean.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const argv = process.argv.slice(2);
@@ -26,6 +26,7 @@ const dirs = {
   library: path.resolve(opt('--library', path.join(home, 'algebraic-analysis'))),
   global: path.resolve(opt('--global', path.join(home, 'global-stafford-formal'))),
 };
+dirs.mathlib = path.resolve(opt('--mathlib', path.join(dirs.formal, '.lake/packages/mathlib')));
 const outDir = path.resolve(opt('--out', path.join(here, 'build')));
 const reviewsDir = path.resolve(opt('--reviews', path.join(here, '../../docs/paper-lean-audit/reviews')));
 const mapPath = path.resolve(opt('--map', path.join(here, 'paper-lean-map.json')));
@@ -51,7 +52,7 @@ function gitShow(repoKey, file) {
 const ghBlob = (repoKey, file, a, b) => `https://github.com/${map.sources[repoKey].repo}/blob/${map.sources[repoKey].commit}/${file}#L${a}${b && b !== a ? '-L' + b : ''}`;
 const slug = (s) => s.replace(/[^A-Za-z0-9_.:-]/g, '-');
 const leanIndexKey = (info) => info.repo + ':' + (info.module_only ? 'file:' + info.file
-  : info.exported === false ? 'private:' + info.file + ':' + info.name : 'decl:' + info.name);
+  : info.exported === false ? 'private:' + info.file + ':' + info.name : 'decl:' + info.file + ':' + info.name);
 const leanMacroKey = (command, file, line, name) => [command, file, line, name].join('\0');
 const escapedCommand = (source, index) => {
   let slashes = 0;
@@ -243,10 +244,41 @@ for (const m of bib.matchAll(/@\w+\{([^,]+),[\s\S]*?\n\}/g)) {
 }
 
 const tex = new TexRenderer({ macros, refs, cites, eqAuto, leanRefs: leanMacroRefs });
+const markupSpans = [];
+for (const match of cleanTexRaw.matchAll(/\\(AIadd|AIremove|AIreplace|AIcomment|formalref)\b/g)) {
+  if (escapedCommand(cleanTexRaw, match.index)) continue;
+  let end = match.index + match[0].length, complete = true;
+  const arguments_ = [];
+  const count = ['AIreplace', 'AIcomment'].includes(match[1]) ? 2 : 1;
+  for (let n = 0; n < count; n++) {
+    while (/\s/.test(cleanTexRaw[end] ?? '') && end < cleanTexRaw.length) end++;
+    if (cleanTexRaw[end] !== '{') { complete = false; break; }
+    const argumentStart = end + 1;
+    [, end] = readGroup(cleanTexRaw, end);
+    arguments_.push({ start: argumentStart, end: end - 1 });
+  }
+  if (complete) markupSpans.push({ start: match.index, end, command: match[1], arguments: arguments_ });
+}
 function excerpt(range) {
   const [a, b] = range;
+  const start = cleanLineOffsets[a - 1], end = cleanLineOffsets[b];
+  let prefix = '', suffix = '', contextNote = '';
+  for (const span of markupSpans) {
+    if ((span.start < start && start < span.end) || (span.start < end && end < span.end)) {
+      const replacement = span.command === 'AIreplace' ? span.arguments[1] : null;
+      if (replacement && replacement.start <= start && start < replacement.end && end > start && !prefix) {
+        // Consequence cards deliberately quote part of a proposed replacement.
+        // Inherit its addition style; keep the original on the parent card.
+        prefix = '\\AIadd{';
+        if (end <= replacement.end) suffix = '}';
+        contextNote = '<p class="muted">Excerpt from a proposed replacement; the parent passage retains the original text.</p>';
+        continue;
+      }
+      errors.push(`Excerpt ${a}-${b} cuts through \\${span.command}; include the complete markup command in tex_lines`);
+    }
+  }
   const src = cleanTexLines.slice(a - 1, b).join('\n');
-  return tex.block(src, cleanLineOffsets[a - 1]);
+  return contextNote + tex.block(prefix + src + suffix, cleanLineOffsets[a - 1] - prefix.length);
 }
 
 // ------------------------------------------------------------------ lean ----
@@ -277,11 +309,15 @@ function resolveLean(ref, userId) {
     }
     if (ref.line && ref.line !== found.line) warnings.push(`Lean: ${ref.name} is at line ${found.line}, map says ${ref.line}`);
     const st = extractStatement(found.lines, found.line, 160, ['def', 'abbrev', 'structure', 'class', 'inductive'].includes(found.keyword));
+    const context = declarationContext(found.lines, found.line).map((entry) => ({ ...entry, url: ghBlob(repoKey, ref.file, entry.startLine, entry.endLine) }));
     info = { ...info, ok: found.exact && (found.exported !== false || explicitlyInternal), exported: found.exported,
       private: found.exported === false,
       visibility: found.visibility, line: found.line, qualified: found.qualified, keyword: found.keyword,
       statement: st.text, truncated: st.truncated,
       resultType: ['theorem', 'lemma'].includes(found.keyword) ? namedResultType(found.lines, found.line) : null,
+      context,
+      bindings: [...new Set([...bindingNames(st.text), ...context.filter((entry) => /^\s*variable\b/.test(entry.text)).flatMap((entry) => bindingNames(entry.text))])],
+      trust: declarationTrust(found.lines, found.line, found.keyword),
       stLines: [st.startLine, st.endLine], url: ghBlob(repoKey, ref.file, st.startLine, st.endLine) };
   }
   info.sourceHash = crypto.createHash('sha256').update(text).digest('hex');
@@ -296,6 +332,7 @@ function resolveLean(ref, userId) {
 // short-name match: resolve through enclosing namespaces, or explicit expands.
 let definitionCatalog;
 function statementDefinitions(info, userId) {
+  if (info.resultType && info.bindings?.includes(info.resultType.split('.')[0])) return { definitions: [], unavailable: null };
   if (!definitionCatalog) {
     definitionCatalog = new Map();
     const indexedFiles = new Set();
@@ -307,17 +344,42 @@ function statementDefinitions(info, userId) {
       if (!fileCache.has(key)) fileCache.set(key, gitShow(repo, ref.file));
       const source = fileCache.get(key);
       if (source == null) continue;
-      for (const decl of definitionNames(source)) definitionCatalog.set(`${repo}:${decl.name}`, { ...decl, repo, file: ref.file });
+      for (const decl of definitionNames(source)) {
+        const name = `${repo}:${decl.name}`;
+        if (!definitionCatalog.has(name)) definitionCatalog.set(name, []);
+        definitionCatalog.get(name).push({ ...decl, repo, file: ref.file });
+      }
     }
   }
   const explicit = (info.expands ?? []).map((ref) => resolveLean({ ...ref, repo: ref.repo ?? info.repo }, userId));
   if (!info.resultType || explicit.length) return { definitions: explicit, unavailable: null };
   const ns = info.name.split('.').slice(0, -1);
+  const lookup = (name) => {
+    const candidates = definitionCatalog.get(`${info.repo}:${name}`) ?? [];
+    const local = candidates.filter((ref) => ref.file === info.file);
+    return local.length === 1 ? local[0] : candidates.length === 1 ? candidates[0] : null;
+  };
   for (let n = ns.length; n >= 0; n--) {
     const name = [...ns.slice(0, n), info.resultType].join('.');
-    const ref = definitionCatalog.get(`${info.repo}:${name}`);
+    const ref = lookup(name);
     if (ref) return { definitions: [resolveLean(ref, userId)], unavailable: null };
+    if (definitionCatalog.has(`${info.repo}:${name}`)) return { definitions: [], unavailable: info.resultType };
   }
+  const opened = new Map();
+  let ambiguousOpen = false;
+  for (const entry of info.context ?? []) {
+    const match = /^\s*open\s+([A-Za-z_][A-Za-z0-9_'.\s]*?)\s*$/.exec(entry.text);
+    if (!match || match[1].startsWith('scoped ') || /\b(?:hiding|renaming|in)\b/.test(match[1])) continue;
+    for (const name of match[1].trim().split(/\s+/)) {
+      for (let n = ns.length; n >= 0; n--) {
+        const qualified = [...ns.slice(0, n), name, info.resultType].join('.');
+        const ref = lookup(qualified);
+        if (ref) { opened.set(qualified, ref); break; }
+        if (definitionCatalog.has(`${info.repo}:${qualified}`)) { ambiguousOpen = true; break; }
+      }
+    }
+  }
+  if (!ambiguousOpen && opened.size === 1) return { definitions: [resolveLean([...opened.values()][0], userId)], unavailable: null };
   // Built-in logical/type constructors are already legible in the signature.
   return { definitions: [], unavailable: /^[A-Z]/.test(info.resultType) && !['True', 'False', 'Nonempty', 'Exists', 'And', 'Or', 'Iff', 'Eq'].includes(info.resultType) ? info.resultType : null };
 }
@@ -433,16 +495,18 @@ function md(s) {
 
 function leanBlock(info, role) {
   if (!info.url) return `<div class="lean missing">✗ ${escapeHtml(info.name ?? info.file)} — not resolved</div>`;
-  const repoTag = ({ library: 'AlgebraicAnalysis', global: 'GlobalStafford' })[info.repo] ?? 'stafford38-formal';
+  const repoTag = ({ library: 'AlgebraicAnalysis', global: 'GlobalStafford', mathlib: 'Mathlib' })[info.repo] ?? 'stafford38-formal';
   const anchor = `lean-${slug(leanIndexKey(info))}`;
   const head = info.module_only
     ? `<a class="lean-name" href="${info.url}">${escapeHtml(info.file)}</a> <span class="muted">(module)</span>`
     : `<a class="lean-name" href="${info.url}">${escapeHtml(info.name)}</a>`;
   return `<div class="lean">
     <div class="lean-head">${role ? `<span class="role">${escapeHtml(role)}</span>` : ''}${head}${info.private ? ' <span class="muted">(module-private; not an exported FQN)</span>' : ''}
-      <span class="muted"> · ${repoTag} · ${escapeHtml(info.file)}:${info.line ?? 1}</span>
+      <span class="muted"> · ${repoTag} @ ${escapeHtml(info.sourceCommit?.slice(0, 7) ?? '')} · ${escapeHtml(info.file)}:${info.line ?? 1}</span>
       <a class="xref" href="#${anchor}" title="All paper items using this declaration">⇄</a></div>
     ${info.statement ? `<pre class="lean-src">${highlightLean(info.statement)}</pre>` : ''}
+    ${info.trust === 'placeholder' ? '<p class="err">Unproved challenge/template: this declaration contains sorry/admit. Its signature specifies a target; it is not evidence of a proved theorem.</p>' : info.trust === 'axiom' ? '<p class="err">Axiom declaration: this is an assumption, not a proved theorem.</p>' : ''}
+    ${info.context?.length ? `<details class="lean-context"><summary>Ambient source declarations</summary><p class="muted">Available local context, not a list of extra hypotheses. Lean determines parameters from the signature, proof and include/omit directives. Imports and other instances are in the linked full module.</p>${info.context.map((entry) => `<a href="${entry.url}" class="muted">${escapeHtml(info.file)}:${entry.startLine}–${entry.endLine}</a><pre class="lean-src">${highlightLean(entry.text)}</pre>`).join('')}</details>` : ''}
     ${info.truncated ? '<p class="lean-note">Excerpt truncated; follow the pinned source link for the complete declaration.</p>' : ''}
     ${info.note ? `<div class="lean-note">${md(info.note)}</div>` : ''}
   </div>`;
@@ -461,6 +525,8 @@ function issueBlock(iss, ownerId) {
 
 const reviewChecks = map.review_checks;
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex').slice(0, 16);
+const generatorHash = sha(['build.mjs', 'lean.mjs', 'texhtml.mjs', 'review.js', 'style.css', 'package.json', 'package-lock.json']
+  .map((file) => fs.readFileSync(path.join(here, file), 'utf8')).join('\0'));
 
 // Committed review records (exported from the HTML, one file per reviewer and pass).
 const recorded = {}; // item id -> [{reviewer, date, hash, notes, complete, file}]
@@ -512,11 +578,13 @@ function card(it) {
     ? 'No Lean declaration is mapped to this passage; the paper text is not certified by this card.'
     : allLeanInfos.every(([info]) => info.module_only)
       ? 'Source/documentation links only: no theorem signature is mapped to this passage.'
+    : primary.some(([info]) => ['placeholder', 'axiom'].includes(info.trust)) && !primary.some(([info]) => ['theorem', 'lemma'].includes(info.keyword) && info.trust === 'source declaration')
+      ? 'Target specification or assumption only: the mapped declaration does not provide a proved theorem here.'
     : !theoremInfos.length
       ? 'Definitions and notation only: this card does not display a proved theorem for the passage.'
       : !primary.some(([info]) => ['theorem', 'lemma'].includes(info.keyword))
         ? 'The main display gives statement definitions; the proved results are shown under supporting declarations or proof steps below.'
-        : 'The theorem signatures below state the proved results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.');
+        : 'The theorem signatures below state the mapped results. Named statement definitions are displayed separately when available; proof bodies are linked in the pinned source.');
   const stepRows = (it.steps ?? []).map((st, k) => {
     const infos = stepInfos[k];
     return `<tr><td class="step-n">${k + 1}</td><td><b>${escapeHtml(st.title)}</b>${st.tex_lines ? ` <span class="muted">tex ${st.tex_lines[0]}–${st.tex_lines[1]}</span>` : ''}
@@ -542,7 +610,7 @@ function card(it) {
       <div class="tex">${it.tex_lines ? excerpt(it.tex_lines) : '<p class="muted">No manuscript text (Lean-only step).</p>'}</div>
     </div>
     <div class="col formal">
-      <div class="col-title">Lean <span class="muted">(stafford38-formal @ ${map.sources.formal.commit.slice(0, 7)})</span></div>
+      <div class="col-title">Lean <span class="muted">(repository and pinned revision on each declaration)</span></div>
       <p class="lean-coverage">${escapeHtml(coverage)}</p>
       ${leanInfos.length ? leanInfos.filter(([, role]) => role !== 'helper').map(([info, role]) => leanBlock(info, role)).join('') : `<p class="none">${stepInfos.flat().length ? 'See the Lean declarations for the proof steps below.' : 'No Lean counterpart is mapped.'}</p>`}
       ${leanInfos.some(([, role]) => role === 'helper') ? `<details class="helpers"><summary>Supporting declarations (full signatures)</summary>${leanInfos.filter(([, role]) => role === 'helper').map(([info, role]) => leanBlock(info, role)).join('')}</details>` : ''}
@@ -561,7 +629,7 @@ function card(it) {
   ${(() => {
     const paperText = it.tex_lines ? texLines.slice(it.tex_lines[0] - 1, it.tex_lines[1]).join('\n') : '';
     const reviewBasis = [Object.fromEntries(Object.entries(map.sources).map(([key, source]) => [key, source.commit])),
-      it, paperText, allLeanInfos.map(([info, role]) => ({ ...info, role })), expansions];
+      generatorHash, map.review_checks, map.vocab, it, paperText, allLeanInfos.map(([info, role]) => ({ ...info, role })), expansions];
     const h = sha(JSON.stringify(reviewBasis));
     it._hash = h;
     return recordedBlock(it.id, h) + reviewBlock(it, h);
@@ -692,6 +760,7 @@ const html = `<!doctype html>
     <tr><th>Lean</th><td><a href="https://github.com/${src.formal.repo}/tree/${src.formal.commit}">${escapeHtml(src.formal.repo)}</a> @ <code>${src.formal.commit.slice(0, 12)}</code> ${escapeHtml(src.formal.note ?? '')}</td></tr>
     <tr><th>Library</th><td><a href="https://github.com/${src.library.repo}/tree/${src.library.commit}">${escapeHtml(src.library.repo)}</a> @ <code>${src.library.commit.slice(0, 12)}</code> ${escapeHtml(src.library.note ?? '')}</td></tr>
     ${src.global ? `<tr><th>GlobalStafford</th><td><a href="https://github.com/${src.global.repo}/tree/${src.global.commit}">${escapeHtml(src.global.repo)}</a> @ <code>${src.global.commit.slice(0, 12)}</code> ${escapeHtml(src.global.note ?? '')}</td></tr>` : ''}
+    ${src.mathlib ? `<tr><th>Mathlib</th><td><a href="https://github.com/${src.mathlib.repo}/tree/${src.mathlib.commit}">${escapeHtml(src.mathlib.repo)}</a> @ <code>${src.mathlib.commit.slice(0, 12)}</code> ${escapeHtml(src.mathlib.note ?? '')}</td></tr>` : ''}
     <tr><th>Build</th><td>generated ${buildInfo.generated} by <code>tools/paper_lean_audit</code> (stafford38) · mapping checks: ${errors.length ? `<b class="err">${errors.length} errors</b>` : 'all passed'} · ${warnings.length} warnings</td></tr>
   </table>
 </header>

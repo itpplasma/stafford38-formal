@@ -50,7 +50,7 @@ export function namespaceAt(lines, index) {
     const line = codeLines[i];
     let m = /^\s*namespace\s+(\S+)/.exec(line);
     if (m) { stack.push(...m[1].split('.').map((part) => ({ part, kind: 'ns', group: m[1] }))); continue; }
-    m = /^\s*section(?:\s+(\S+))?\s*$/.exec(line);
+    m = /^\s*(?:noncomputable\s+)?section(?:\s+(\S+))?\s*$/.exec(line);
     if (m) { stack.push({ part: null, kind: 'sec', group: m[1] ?? '' }); continue; }
     m = /^\s*end(?:\s+(\S+))?\s*$/.exec(line);
     if (m) {
@@ -130,20 +130,30 @@ export function extractStatement(lines, declLine, maxLines = 45, withBody = fals
   let truncated = false;
   const state = { depth: 0 };
   let inBody = false;
+  const declarationIndent = /^\s*/.exec(lines[declLine - 1])[0].length;
   for (let i = declLine - 1; i < lines.length; i++) {
     const line = lines[i];
     const codeLine = codeLines[i];
     if (out.length >= maxLines) { truncated = true; break; }
     if (i > declLine - 1 && (DECL_RE.test(codeLine) || /^\s*(?:end|namespace|section|variable|open|#check|#print)\b/.test(codeLine))) break;
     if (inBody) {
-      // Definition bodies: stop at a blank line or at the first tactic proof.
-      if (/^\s*$/.test(line)) break;
+      // Blank lines inside a definition do not terminate it. Look past blank
+      // lines/comments for the next command, rather than dropping later fields.
+      if (/^\s*$/.test(codeLine)) {
+        let next = i + 1;
+        while (next < lines.length && /^\s*$/.test(codeLines[next])) next++;
+        if (next === lines.length || DECL_RE.test(codeLines[next]) ||
+            (/^\s*(?:end|namespace|section|variable|open|#\w+)\b/.test(codeLines[next])) ||
+            (/^\s*/.exec(codeLines[next])[0].length <= declarationIndent && !/^\s*\|/.test(codeLines[next]))) break;
+      }
       if (/:=\s*by\b/.test(codeLine)) { truncated = true; break; }
       out.push(line); end = i; continue;
     }
     const cut = topLevelAssign(codeLine, state);
     if (cut >= 0) {
-      if (withBody && !/:=\s*by\b/.test(codeLine.slice(cut))) { out.push(line); end = i; inBody = true; continue; }
+      const remainingBody = [codeLine.slice(cut + 2), ...codeLines.slice(i + 1)].join('\n');
+      if (withBody && !/^\s*by\b/.test(remainingBody)) { out.push(line); end = i; inBody = true; continue; }
+      if (withBody) truncated = true;
       out.push(line.slice(0, cut + 2)); end = i; break;
     }
     if (withBody && /^\s*\|/.test(codeLine)) {
@@ -159,6 +169,74 @@ export function extractStatement(lines, declLine, maxLines = 45, withBody = fals
   }
   const body = [...lines.slice(start, declLine - 1), ...out];
   return { text: body.join('\n').replace(/\s+$/, '') + (truncated ? '\n  …' : ''), startLine: start + 1, endLine: end + 1, truncated };
+}
+
+export function declarationContext(lines, declLine) {
+  const code = maskLeanCommentsAndStrings(lines.join('\n')).split('\n');
+  const scopes = [{ name: null, declarations: [] }];
+  for (let i = 0; i < declLine - 1; i++) {
+    const line = code[i];
+    let m = /^\s*(?:namespace\s+(\S+)|(?:noncomputable\s+)?section(?:\s+(\S+))?)\s*$/.exec(line);
+    if (m) { scopes.push({ name: m[1] ?? m[2] ?? '', declarations: [] }); continue; }
+    m = /^\s*end(?:\s+(\S+))?\s*$/.exec(line);
+    if (m && scopes.length > 1) {
+      let at = scopes.length - 1;
+      if (m[1]) {
+        while (at > 0 && scopes[at].name !== m[1]) at--;
+      }
+      if (at > 0) scopes.length = at;
+      continue;
+    }
+    if (/^\s*local\s+(?:noncomputable\s+)?instance\b/.test(line)) {
+      const signature = extractStatement(lines, i + 1, 160);
+      scopes.at(-1).declarations.push({ text: signature.text, startLine: signature.startLine, endLine: signature.endLine });
+      continue;
+    }
+    if (!/^\s*(?:variable|universe|include|omit|open|local\s+(?:notation|infix[lr]?|prefix|postfix))\b/.test(line)) continue;
+    if (/\bin\s*$/.test(line) && i + 1 !== declLine - 1) continue;
+    const start = i;
+    let depth = 0;
+    do {
+      for (const c of code[i]) {
+        if ('([{'.includes(c)) depth++;
+        else if (')]}'.includes(c)) depth--;
+      }
+      if (i + 1 >= declLine - 1 || (depth === 0 && !/^\s+[([{]/.test(code[i + 1]))) break;
+      i++;
+    } while (true);
+    scopes.at(-1).declarations.push({ text: lines.slice(start, i + 1).join('\n'), startLine: start + 1, endLine: i + 1 });
+  }
+  return scopes.flatMap((scope) => scope.declarations);
+}
+
+export function bindingNames(text) {
+  const code = maskLeanCommentsAndStrings(text);
+  const names = [];
+  let depth = 0, start = 0, bracket = '', hasColon = false;
+  const add = (s) => {
+    for (const name of s.trim().split(/\s+/)) if (/^[\p{L}_][\p{L}\p{N}_']*$/u.test(name)) names.push(name);
+  };
+  for (let i = 0; i < code.length; i++) {
+    const c = code[i];
+    if ('([{'.includes(c)) {
+      if (depth === 0) { start = i + 1; bracket = c; hasColon = false; }
+      depth++;
+    } else if (')]}'.includes(c)) {
+      if (--depth === 0 && !hasColon && bracket !== '[') add(code.slice(start, i));
+    } else if (c === ':' && code[i + 1] !== '=') {
+      if (depth === 0) break; // result type, not a binder
+      if (depth === 1 && !hasColon) { add(code.slice(start, i)); hasColon = true; }
+    }
+  }
+  return [...new Set(names)];
+}
+
+export function declarationTrust(lines, declLine, keyword) {
+  if (keyword === 'axiom') return 'axiom';
+  const code = maskLeanCommentsAndStrings(lines.join('\n')).split('\n');
+  let end = declLine;
+  while (end < code.length && !DECL_RE.test(code[end]) && !/^\s*(?:end|namespace|section|#\w+)\b/.test(code[end])) end++;
+  return /\b(?:sorry|admit)\b/.test(code.slice(declLine - 1, end).join('\n')) ? 'placeholder' : 'source declaration';
 }
 
 // A theorem whose result is a named predicate needs that predicate's source

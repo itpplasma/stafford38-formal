@@ -91,3 +91,17 @@ DUP-01 is now linked to its historical editorial issue. Missing named definition
 and truncated excerpts are visible. Both repository copies pass 37 tests with no
 skips; the interactive abstract and convention were also checked in Chromium.
 The immutable release verification receipt retains its original 34-test count.
+
+
+## Full display and correspondence review
+
+All 55 cards received an independent AI source review. The integrated tool now
+passes 48 tests in both copies; 3,248 rendered Lean excerpts match 142 pinned
+source files. Mapped public declarations and the additional quotient-filtration
+link pass `lean --trust=0` with only standard axioms. Local context, complete
+definition branches, imported propositions, ambiguous names, repository labels
+and stale review hashes are covered by behavioral checks. Remaining prose and
+proof discrepancies are explicitly marked; human acceptance is pending.
+See the formal repository's `docs/audits/paper-lean-display/` for frozen reports,
+inputs, integration disposition and verification evidence. The human manuscript
+and mathematical Lean source remain unchanged by this repair.

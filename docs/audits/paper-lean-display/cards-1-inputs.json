@@ -1,0 +1,1336 @@
+{
+ "formal_base": "87bce83806c757ade36d455d785b506ebd03a1b2",
+ "items": [
+  {
+   "id": "abstract",
+   "section": "1",
+   "kind": "Abstract",
+   "number": "",
+   "short": "Abstract",
+   "title": "Abstract",
+   "pdf_page": 1,
+   "tex_lines": [
+    54,
+    62
+   ],
+   "statement_relation": "exact",
+   "route_relation": "n/a",
+   "correspondence": "The two theorems prove the universal identity and the exact Bernstein-degree strengthening. The displayed proposition definitions spell out the fields, quantifiers and coefficients; the coordinate refinement is for positive Weyl rank.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "role": "statement",
+     "name": "Stafford38.universalStatement",
+     "line": 53,
+     "expands": [
+      {
+       "file": "Stafford38/Statement.lean",
+       "name": "Stafford38.UniversalStatement",
+       "line": 19
+      },
+      {
+       "file": "Stafford38/Statement.lean",
+       "name": "Stafford38.WeylAlg",
+       "line": 15
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "role": "statement",
+     "name": "Stafford38.universalFixedSourceStatement",
+     "line": 57,
+     "expands": [
+      {
+       "file": "Stafford38/FixedSourceStatement.lean",
+       "name": "Stafford38.FixedSource.UniversalFixedSourceStatement",
+       "line": 36
+      },
+      {
+       "file": "Stafford38/FixedSourceStatement.lean",
+       "name": "Stafford38.FixedSource.IsLinearWeylCoordinate",
+       "line": 23
+      },
+      {
+       "file": "Stafford38/FixedSourceStatement.lean",
+       "name": "Stafford38.FixedSource.bernsteinDegree",
+       "line": 18
+      }
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "severity": "editorial",
+     "summary": "n unrestricted in abstract; x^N refinement needs n>=1 and gives F=1 when N=0",
+     "fix": "Mention n>=1 for the coordinate refinement (existence holds for n>=0 as in Lean).",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S1-01",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ]
+  },
+  {
+   "id": "thm:main",
+   "section": "1",
+   "kind": "Theorem",
+   "number": "1.1",
+   "short": "Thm 1.1",
+   "title": "Stafford 3.8 with fixed source $F=\\ell^{\\deg_B d}$",
+   "pdf_page": 2,
+   "tex_lines": [
+    108,
+    126
+   ],
+   "label": "thm:main",
+   "statement_relation": "lean-stronger",
+   "route_relation": "same",
+   "correspondence": "lean-stronger (existence: n>=0 in Lean vs n>=1 in paper); exact for the 'Moreover' clause (Lean fixed-source statement is for rank n+1, exponent = actual Bernstein degree of d, ell = Phi^{-1}(x_1) for symplectic M with certified inverse)\n\nLean n=0: rankZero_certificate (UniversalAssembly.lean:38).",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Statement.lean",
+     "role": "statement",
+     "name": "Stafford38.UniversalStatement",
+     "line": 19
+    },
+    {
+     "file": "Challenge.lean",
+     "role": "statement",
+     "name": "Stafford38Challenge.UniversalStatement",
+     "line": 63
+    },
+    {
+     "file": "Stafford38/FixedSourceStatement.lean",
+     "role": "statement",
+     "name": "Stafford38.FixedSource.UniversalFixedSourceStatement",
+     "line": 36
+    },
+    {
+     "file": "Stafford38/FixedSourceStatement.lean",
+     "role": "definition",
+     "name": "Stafford38.FixedSource.IsLinearWeylCoordinate",
+     "line": 23
+    },
+    {
+     "file": "FixedSourceChallenge.lean",
+     "role": "statement",
+     "name": "Stafford38FixedSourceChallenge.UniversalFixedSourceStatement",
+     "line": 116
+    },
+    {
+     "file": "Stafford38/UniversalAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.UniversalAssembly.universalStatement_of_canonicalSupportVanishing",
+     "line": 66
+    },
+    {
+     "file": "Stafford38/FixedSourceAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing",
+     "line": 21
+    },
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "role": "main-proof",
+     "name": "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+     "line": 37
+    },
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "name": "Stafford38.universalStatement",
+     "line": 53,
+     "role": "proved statement"
+    },
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "name": "Stafford38.universalFixedSourceStatement",
+     "line": 57,
+     "role": "proved statement"
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Paper's scalar case (tex 353) takes F=0, contradicting F=ell^{deg_B d}=1",
+     "fix": "Take F=1 (=ell^0), R=d^{-1}, S=0, exactly as Lean FixedSourceAssembly.lean:28-54.",
+     "aicomment": "ALG-07",
+     "auditor": "A",
+     "id": "S1-02",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "editorial",
+     "summary": "'linear Weyl coordinate' is undefined",
+     "fix": "Define ell := Phi_g^{-1}(x_1) for an omega-preserving linear g (Lean IsLinearWeylCoordinate).",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S1-03",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "proof-main"
+   ],
+   "in_graph": true,
+   "graph_sub": "main theorem",
+   "graph_order": 5,
+   "auditors": [
+    "A"
+   ]
+  },
+  {
+   "id": "global-stafford",
+   "section": "1",
+   "kind": "Paragraph",
+   "number": "",
+   "short": "Global Stafford",
+   "title": "Palomar record and Global Stafford extension",
+   "pdf_page": 1,
+   "tex_lines": [
+    128,
+    135
+   ],
+   "statement_relation": "exact",
+   "route_relation": "n/a",
+   "correspondence": "The Global Stafford identity is proved in the separate pinned repository itpplasma/global-stafford-formal at v1.0.6. The paper correctly distinguishes existence of F from the fixed linear-coordinate refinement in Theorem 1.1.",
+   "route": null,
+   "lean": [
+    {
+     "repo": "global",
+     "file": "GlobalStafford/Assembly/Closure.lean",
+     "role": "statement",
+     "name": "GlobalStafford.universalStatement",
+     "line": 221,
+     "expands": [
+      {
+       "repo": "global",
+       "file": "GlobalStafford/Assembly/ChallengeTransport.lean",
+       "name": "GlobalStaffordChallenge.UniversalStatement",
+       "line": 66
+      }
+     ]
+    }
+   ],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "F"
+   ]
+  },
+  {
+   "id": "intro-proof-sketch",
+   "section": "1",
+   "kind": "Proof sketch",
+   "number": "\u00a71",
+   "short": "Proof sketch",
+   "title": "Proof sketch: quotient-vanishing architecture",
+   "pdf_page": 2,
+   "tex_lines": [
+    137,
+    151
+   ],
+   "statement_relation": "n/a",
+   "route_relation": "different",
+   "correspondence": "This is an outline, not a proof card. Lean follows the same quotient-vanishing architecture but uses a different asymptotic-conormal and algebraic-closure descent route.",
+   "route": null,
+   "lean": [],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "current-map"
+   ]
+  },
+  {
+   "id": "context-prior-art",
+   "section": "1",
+   "kind": "Context",
+   "number": "",
+   "short": "Prior work",
+   "title": "Citations for generator theory and algorithms",
+   "pdf_page": null,
+   "tex_lines": [
+    153,
+    172
+   ],
+   "statement_relation": "n/a",
+   "route_relation": "n/a",
+   "correspondence": "Literature context, not a claim that the cited work proves Conjecture 3.8. The exact source roles and bibliography are tracked separately; the present proof contribution is the quotient-vanishing argument.",
+   "route": null,
+   "lean": [],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "current-map"
+   ]
+  },
+  {
+   "id": "formal-verification",
+   "section": "2",
+   "kind": "Section",
+   "number": "2",
+   "short": "\u00a72 claim",
+   "title": "\u201cEvery statement of this paper is formalized\u201d",
+   "pdf_page": 3,
+   "tex_lines": [
+    174,
+    233
+   ],
+   "statement_relation": "partial",
+   "route_relation": "n/a",
+   "correspondence": "At the pinned formal source, Corollary 10.2 and the main noncharacteristic conclusion in Proposition B.2 have Lean counterparts. The broad claim that every numbered statement is formalized remains unsupported: independence of Char from good filtration, general-module Gabber statement, and the paper's symplectic-basis formulation still exceed the mapped Lean statements. See the item-level map for exact scope.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "role": "statement",
+     "name": "Stafford38.universalFixedSourceStatement",
+     "line": 57
+    },
+    {
+     "file": "Solution.lean",
+     "role": "statement",
+     "name": "Stafford38Challenge.universalStatement",
+     "line": 26
+    }
+   ],
+   "issues": [
+    {
+     "severity": "major",
+     "summary": "The all-numbered-statements claim remains too broad: independence of Char from good filtration, Gabber for general modules/good filtrations, and the symplectic-basis formulation of lem:sympcompl are not formalized as stated. Corollary 10.2 and the main noncharacteristic conclusion have counterparts at the pinned formal source.",
+     "fix": "Replace the blanket claim with an explicit list of statements formalized at the pinned source, along with the remaining scope differences listed in the item map.",
+     "aicomment": "WF-01",
+     "auditor": "A",
+     "id": "S2-01",
+     "status": "open at pinned source; cyclicity and noncharacteristic additions now resolved"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A",
+    "F"
+   ]
+  },
+  {
+   "id": "conv:pair",
+   "section": "3",
+   "kind": "Convention",
+   "number": "3.1",
+   "short": "Conv 3.1",
+   "title": "Distinguished Weyl pair and Ore presentation",
+   "pdf_page": 4,
+   "tex_lines": [
+    244,
+    254
+   ],
+   "label": "conv:pair",
+   "statement_relation": "equivalent",
+   "route_relation": "n/a",
+   "correspondence": "different-formulation (Lean normal form is coefficient-LEFT sum c_j p^j; paper coefficient-RIGHT sum p^j c_j; both unique, not termwise equal)\n\nAlgebraicAnalysis file path is in the dependency repo.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/OuterOreMonic.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylOuterOreMonic.presentedOuterPolynomial",
+     "line": 44
+    },
+    {
+     "file": "Stafford38/Ore/CoordinateStage.lean",
+     "role": "definition",
+     "name": "Stafford38.OreCoordinateStage.coordinateDerivation",
+     "line": 85
+    },
+    {
+     "file": "AlgebraicAnalysis/Ore/Associativity.lean",
+     "role": "definition",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.OreAssociativity.normalFormAddEquiv",
+     "line": 268
+    },
+    {
+     "file": "AlgebraicAnalysis/Ore/Associativity.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.OreAssociativity.normalForm_monomial",
+     "line": 287
+    },
+    {
+     "file": "Stafford38/Weyl/IteratedEquivalence.lean",
+     "role": "source citation",
+     "name": "Stafford38.WeylIteratedEquivalence.presentedIteratedEquiv",
+     "line": 637
+    }
+   ],
+   "issues": [
+    {
+     "severity": "editorial",
+     "summary": "C[p;\\partial_1] uses \\partial_1 both as variable and as derivation d/dx_1",
+     "fix": "Write C[p; d/dx_1].",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S3-01",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Uniqueness of right-coefficient normal form stated without justification",
+     "fix": "Cite, or derive from the left form via the anti-involution; note Lean uses left form.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S3-02",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ]
+  },
+  {
+   "id": "conv:H",
+   "section": "3",
+   "kind": "Convention",
+   "number": "3.2",
+   "short": "Conv 3.2",
+   "title": "Hyperplane H and cotangent bundle",
+   "pdf_page": 4,
+   "tex_lines": [
+    256,
+    268
+   ],
+   "statement_relation": "partial",
+   "route_relation": "n/a",
+   "correspondence": "The links cover the ambient cotangent ring and grading only. There is no single mapped Lean declaration for all the geometric notation in this convention.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/Polynomial.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.SymbolRing",
+     "line": 18
+    },
+    {
+     "file": "Stafford38/Characteristic/Polynomial.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.fibreWeight",
+     "line": 22
+    }
+   ],
+   "issues": [
+    {
+     "severity": "editorial",
+     "summary": "H, its conormal and pi defined twice",
+     "fix": "Delete Convention 3.2 or the duplicate paragraph.",
+     "aicomment": "DUP-01",
+     "auditor": "A",
+     "id": "S3-03",
+     "status": "historical finding; recheck against current excerpt",
+     "aicomment_verdict": "red correction present; human decision pending"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ],
+   "label": "conv:H",
+   "lean_explanation": "Notation convention, not a theorem. SymbolRing models the cotangent coordinate ring; fibreWeight gives the base/fibre grading. These definitions alone do not identify H, its conormal or the projection pi."
+  },
+  {
+   "id": "cotangent",
+   "section": "3",
+   "kind": "Subsection",
+   "number": "3.1",
+   "short": "Cotangent space",
+   "title": "Cotangent bundle, symbol ring, and symplectic form",
+   "pdf_page": 5,
+   "tex_lines": [
+    269,
+    295
+   ],
+   "statement_relation": "equivalent",
+   "route_relation": "n/a",
+   "correspondence": "Defines the cotangent/symbol setup and symplectic pairing used throughout the proof.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/Polynomial.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.SymbolRing",
+     "line": 18
+    }
+   ],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "current-map"
+   ],
+   "label": "sec:cotangent"
+  },
+  {
+   "id": "def:filtration",
+   "section": "3",
+   "kind": "Definition",
+   "number": "3.3",
+   "short": "Def 3.3",
+   "title": "Filtrations; Bernstein and order filtrations",
+   "pdf_page": 5,
+   "tex_lines": [
+    296,
+    320
+   ],
+   "statement_relation": "equivalent",
+   "route_relation": "n/a",
+   "correspondence": "different-formulation (equivalent): Lean Bernstein degree = least N with d in span of ordered PBW words of degree<=N = weighted total degree of PBW normal form",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/Filtration.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylFiltration.presentedWeightPiece",
+     "line": 109
+    },
+    {
+     "file": "Stafford38/Weyl/Filtration.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylFiltration.bernsteinPiece",
+     "line": 278
+    },
+    {
+     "file": "Stafford38/Weyl/Filtration.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylFiltration.orderPiece",
+     "line": 282
+    },
+    {
+     "file": "Stafford38/FixedSourceStatement.lean",
+     "role": "definition",
+     "name": "Stafford38.FixedSource.bernsteinDegree",
+     "line": 18
+    },
+    {
+     "file": "FixedSourceChallenge.lean",
+     "role": "definition",
+     "name": "Stafford38FixedSourceChallenge.bernsteinDegree",
+     "line": 87
+    },
+    {
+     "file": "Stafford38/FixedSourceChallengeTransport.lean",
+     "role": "helper",
+     "name": "Stafford38FixedSourceChallengeTransport.bernsteinDegree_eq",
+     "line": 230
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Bernstein filtration only described informally ('assigns degree 1'); F_\\bullet notation garbled and overloaded (generic filtration, order filtration, multiplier F)",
+     "fix": "Define B_j = span{x^a d^b : |a|+|b|<=j} (Lean choice); rename generic filtration.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S3-04",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ],
+   "label": "def:filtration"
+  },
+  {
+   "id": "def:good-filtration",
+   "section": "3",
+   "kind": "Definition",
+   "number": "3.4",
+   "short": "Def 3.4",
+   "title": "Good filtrations",
+   "pdf_page": 6,
+   "tex_lines": [
+    321,
+    330
+   ],
+   "statement_relation": "partial",
+   "route_relation": "n/a",
+   "correspondence": "partial (Lean only uses N-indexed quotient filtration of A/I)",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/InitialIdeal.lean",
+     "role": "definition",
+     "name": "Stafford38.CharacteristicInitialIdeal.orderInitialIdeal",
+     "line": 185
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Definition lacks M_i=0 for i<<0; then M_i=M for all i is 'good' with gr M=0, contradicting 'nonzero filtered module has nonempty char. support' used at tex 1140",
+     "fix": "Add M_i=0 for i<0 (or i<<0).",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S3-05",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "k_0 used before its definition in Section 4; example mixes M and Q",
+     "fix": "Use k here; define Q or rename.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S3-06",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ],
+   "label": "def:good-filtration"
+  },
+  {
+   "id": "def:char-variety",
+   "section": "3",
+   "kind": "Definition",
+   "number": "3.5",
+   "short": "Def 3.5",
+   "title": "Characteristic variety",
+   "pdf_page": 6,
+   "tex_lines": [
+    331,
+    351
+   ],
+   "statement_relation": "equivalent",
+   "route_relation": "n/a",
+   "correspondence": "different-formulation (Lean: Module.support in PrimeSpectrum of gr(A/I); paper: point set)",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/InitialIdeal.lean",
+     "role": "definition",
+     "name": "Stafford38.CharacteristicInitialIdeal.orderCharacteristicSupport",
+     "line": 193
+    },
+    {
+     "file": "Stafford38/Characteristic/InitialIdeal.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicInitialIdeal.orderCharacteristicSupport_eq_zeroLocus",
+     "line": 197
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalGabberInvolutivityInterface.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalGabberInvolutivityInterface.weylOrderInitialRadicalInvolutivity_iff_associatedGraded",
+     "line": 105
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "'set of points (x,xi)' over non-closed k_0 can be empty while Ann != (1)",
+     "fix": "Use Spec or \\bar k-points.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S3-07",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Independence of good filtration asserted without citation; not formalized",
+     "fix": "Cite Bjork/HTT or restrict to quotient filtration.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S3-08",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Typo k_{0[x,xi]}",
+     "fix": "k_0[x,xi].",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S3-09",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ],
+   "label": "def:char-variety"
+  },
+  {
+   "id": "def:symplectic-poisson",
+   "section": "3",
+   "kind": "Definition",
+   "number": "3.6",
+   "short": "Def 3.6",
+   "title": "Symplectic form and Poisson bracket",
+   "pdf_page": 6,
+   "tex_lines": [
+    352,
+    376
+   ],
+   "label": "def:symplectic-poisson",
+   "statement_relation": "equivalent",
+   "route_relation": "n/a",
+   "correspondence": "different-formulation: Lean form = Matrix.J = -(paper omega); Lean poissonBracket = -(paper bracket); same symplectic group, involutivity sign-invariant\n\nPaper pair (omega=sum dx^dxi, {f,g}=sum f_xi g_x - f_x g_xi) is internally consistent and gives sigma([d,x])={xi,x}=1.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Challenge.lean",
+     "role": "definition",
+     "name": "Stafford38Challenge.relation",
+     "line": 46
+    },
+    {
+     "file": "Stafford38/Characteristic/SymplecticCompletion.lean",
+     "role": "definition",
+     "name": "Stafford38.CharacteristicSymplecticCompletion.phasePairing",
+     "line": 25
+    },
+    {
+     "file": "Stafford38/Characteristic/Polynomial.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.poissonBracket",
+     "line": 27
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Paper states Weyl relations as [u,v]=omega(u,v) (tex 367-369) but [x_i,d_i]=-1=-omega(x_i,d_i)",
+     "fix": "Write [u,v]=-omega(u,v) or set omega(d_i,x_j)=delta (Lean: [z_i,z_j]=J_ij).",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S3-10",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "(C^n)^* should be (k^n)^*",
+     "fix": "Replace C by k.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S3-11",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ]
+  },
+  {
+   "id": "def:involutive",
+   "section": "3",
+   "kind": "Definition",
+   "number": "3.7",
+   "short": "Def 3.7",
+   "title": "Involutive subsets",
+   "pdf_page": 7,
+   "tex_lines": [
+    377,
+    394
+   ],
+   "statement_relation": "exact",
+   "route_relation": "n/a",
+   "correspondence": "exact (ideal form); Lean bracket = -paper bracket, invariant\n\nLean IsPoisson (Polynomial.lean:37) is the stronger Poisson-ideal notion, not used for Gabber.\n\nLean poissonBracket(f,g)=sum(df/dx dg/dxi - df/dxi dg/dx) = -{f,g}_paper; .inl = x, .inr = xi; Matrix.J gives [d,x]=1.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+     "line": 30
+    },
+    {
+     "file": "Stafford38/Characteristic/Polynomial.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.poissonBracket",
+     "line": 27
+    },
+    {
+     "file": "Stafford38/Characteristic/Polynomial.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.IsPoisson",
+     "line": 37
+    },
+    {
+     "file": "Stafford38/Characteristic/BaseRelativePoisson.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.BaseRelativePoisson.IsBaseRelativePoisson",
+     "line": 28
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralCoisotropicSetsTest.lean",
+     "role": "source citation",
+     "name": "Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson",
+     "line": 160
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Later applied to Char(M) as if an ideal",
+     "fix": "Use I=sqrt(Ann gr M).",
+     "aicomment": "ALG-01",
+     "auditor": "A",
+     "id": "S3-12",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "Set-level definition via I(W) only equals the ideal notion for sqrt(J) over an algebraically closed field; Sec. 3 works over k/k_0.",
+     "fix": "Define involutivity for ideals ({J,J} subset J) and use the set notion only over C or k-bar (I(V(J)) = sqrt J by Nullstellensatz).",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S3-13",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Lean IsPoisson ({J,R} subset J) is strictly stronger than involutive; not to be identified (negative control zeroSectionIdealOne_not_isPoisson).",
+     "fix": "None in paper; reviewer note.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S3-14",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A",
+    "D"
+   ],
+   "label": "def:involutive"
+  },
+  {
+   "id": "ithm:gabber",
+   "section": "3",
+   "kind": "Theorem",
+   "number": "3.8",
+   "short": "Thm 3.8 Gabber",
+   "title": "Gabber\u2019s involutivity theorem",
+   "pdf_page": 7,
+   "tex_lines": [
+    395,
+    422
+   ],
+   "label": "ithm:gabber",
+   "statement_relation": "exact",
+   "route_relation": "lean-only",
+   "correspondence": "Current red statement scopes the theorem to M=A_n(k)/I with the quotient order filtration and states involutivity of sqrt(Ann gr M). The pinned Lean source proves this algebraic form in full; the manuscript cites Gabber and Singh\u2013Kumar.",
+   "route": "n/a in paper (citation). Lean follows Gabber / Singh-Kumar Prop 3.2 eq (3.3): order-Rees ring mod T^2 (square-zero central c), commutator = c*z with pi(z) = -{.,.}; Ore-localize the opposite ring at a minimal prime P; truncate by the two-block ideal to an Artinian local special fibre; choose a coefficient field (formal smoothness, char 0) and an m-adically adapted basis; trace of the z-action is 0 but equals dim*scalar, so scalar = 0 and -{f,g} in P; then sqrt J = intersection of minimal primes.",
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/CanonicalGabberInvolutivityInterface.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.CanonicalGabberInvolutivityInterface.WeylAssociatedGradedRadicalInvolutivity",
+     "line": 81
+    },
+    {
+     "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Characteristic.GabberGlobalAssembly.weylAssociatedGradedRadicalInvolutivity",
+     "line": 221
+    },
+    {
+     "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Characteristic.GabberGlobalAssembly.associatedGraded_radical_isInvolutive",
+     "line": 209,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+       "line": 30
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive",
+     "line": 141,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+       "line": 30
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.GabberGlobalAssembly.localized_cofactor_mem",
+     "line": 77
+    },
+    {
+     "file": "Stafford38/Characteristic/BGab001CoefficientFieldTrace.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.BGab001CoefficientFieldTrace.artinian_local_cofactor_mem_maximalIdeal",
+     "line": 334
+    },
+    {
+     "file": "Stafford38/Characteristic/BGab001CoefficientFieldTrace.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.BGab001CoefficientFieldTrace.actual_commutator_cofactor_trace_eq_zero",
+     "line": 142
+    },
+    {
+     "file": "Stafford38/Characteristic/ArtinianTriangularTrace.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.ArtinianTriangularTrace.scalar_eq_zero_of_trace_identity",
+     "line": 97
+    },
+    {
+     "file": "Stafford38/Characteristic/ArtinianCoefficientField.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.ArtinianCoefficientField.exists_residue_section",
+     "line": 88
+    },
+    {
+     "file": "Stafford38/Characteristic/ArtinianAdaptedBasisExistence.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.ArtinianAdaptedBasisExistence.exists_maximalIdealFiltrationAdaptedBasis",
+     "line": 210
+    },
+    {
+     "file": "Stafford38/Characteristic/RightReesArtinianAdapter.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.RightReesArtinianAdapter.exists_concrete_localizedPreArtinianCore",
+     "line": 187
+    },
+    {
+     "file": "Stafford38/Characteristic/RightReesArtinianAdapter.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.RightReesArtinianAdapter.LocalizedPreArtinianCore",
+     "line": 96
+    },
+    {
+     "file": "Stafford38/Characteristic/OrderReesTwoJet.lean",
+     "role": "definition",
+     "name": "Stafford38.CharacteristicOrderReesTwoJet.OrderReesTwoJet",
+     "line": 227
+    },
+    {
+     "file": "Stafford38/Characteristic/ConcreteSquareZeroTraceData.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicConcreteSquareZeroTraceData.filteredQuotientTwoJetTraceData_bracket",
+     "line": 118
+    },
+    {
+     "file": "Stafford38/Characteristic/SquareZeroTraceData.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.SquareZeroTraceData.RightSquareZeroTraceData.exists_lifts_commutator_factor",
+     "line": 132
+    },
+    {
+     "file": "Stafford38/Characteristic/AssociatedGradedModule.lean",
+     "role": "definition",
+     "name": "Stafford38.CharacteristicAssociatedGradedModule.OrderAssociatedGradedModule",
+     "line": 50
+    },
+    {
+     "file": "Stafford38/Characteristic/AssociatedGradedModule.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicAssociatedGradedModule.annihilator_orderAssociatedGradedModule",
+     "line": 370
+    }
+   ],
+   "issues": [
+    {
+     "severity": "major",
+     "summary": "'Char(M) is an involutive ideal, {Char(M),Char(M)} subset Char(M)': Char(M)=V(J) is a set, bracket acts on functions.",
+     "fix": "Put J = Ann_{k[x,xi]} gr M; then {sqrt J, sqrt J} subset sqrt J (use commented lines 329-331 / proof_map.tex 1237-1241).",
+     "aicomment": "ALG-01",
+     "auditor": "D",
+     "id": "S3-15",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "Field notation: Sec. 2 defines Char over k_0[x,xi], theorem over k.",
+     "fix": "Unify notation.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S3-16",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Citations inconsistent (HTT \u00a72.4 vs HTT Thm 2.3.1 + App. D at tex 1133); Singh-Kumar key result not pinned.",
+     "fix": "Verify HTT numbering; cite Singh-Kumar 2014 Thm 5.1 / Prop 3.2 as the algebraic proof followed in Lean.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S3-17",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "No roadmap for the formal proof; Lean proves minimal-prime involutivity first and radical as corollary, directly for right modules.",
+     "fix": "Add a remark summarizing the Rees-mod-T^2 / Artinian trace route and its Lean location.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S3-18",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": true,
+   "graph_sub": "proved in Lean",
+   "graph_order": 1,
+   "auditors": [
+    "D"
+   ]
+  },
+  {
+   "id": "lem:componentwise-involutive",
+   "section": "3",
+   "kind": "Lemma",
+   "number": "3.9",
+   "short": "Lem 3.9",
+   "title": "Componentwise involutivity",
+   "pdf_page": 7,
+   "tex_lines": [
+    423,
+    480
+   ],
+   "label": "lem:componentwise-involutive",
+   "statement_relation": "lean-stronger",
+   "route_relation": "different",
+   "correspondence": "The red replacement states the ideal-theoretic conclusion for any ideal J with involutive radical. Lean proves that general form without localization; the printed argument localizes.",
+   "route": "different: Lean avoids localization (saturation s f in sqrt J with s notin P via a prime maximally disjoint from P^c*powers f, plus Leibniz identity u^2{f,g} = {uf,ug} - ug{f,u} - fu{u,g}). On the terminal path the consumer uses minimalPrime_isInvolutive directly.",
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/RadicalMinimalPrimeInvolutivity.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.RadicalMinimalPrimeInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive",
+     "line": 108
+    },
+    {
+     "file": "Stafford38/Characteristic/RadicalMinimalPrimeInvolutivity.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.RadicalMinimalPrimeInvolutivity.exists_notMem_mul_mem_radical",
+     "line": 53
+    },
+    {
+     "file": "Stafford38/Characteristic/RadicalMinimalPrimeInvolutivity.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.RadicalMinimalPrimeInvolutivity.sq_mul_poissonBracket_eq",
+     "line": 97
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalGabberInvolutivityInterface.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalGabberInvolutivityInterface.rightWeylMinimalPrimeInvolutivity_of_radical",
+     "line": 123
+    },
+    {
+     "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive",
+     "line": 141,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+       "line": 30
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/Characteristic/NoncharacteristicMinimalPrime.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.NoncharacteristicMinimalPrime.canonical_minimalPrime_mem_of_normalCoordinate_false",
+     "line": 107
+    }
+   ],
+   "issues": [
+    {
+     "severity": "major",
+     "summary": "I = Char(M) used as a radical ideal; should be I = sqrt(Ann gr M); 'minimal prime over Char(M)' ill-typed.",
+     "fix": "Replace by I = sqrt J; minimal primes of J and sqrt J coincide.",
+     "aicomment": "ALG-01",
+     "auditor": "D",
+     "id": "S3-19",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "Extension of the bracket to R_p and involutivity of I_p asserted without the biderivation formula.",
+     "fix": "Give {a/s,b/t} formula (every extra term has factor a or b in I), or use Lean's localization-free Leibniz argument.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S3-20",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Hypothesis 'f.g. module with good filtration' exceeds the cyclic scope of ithm:gabber as stated.",
+     "fix": "Restrict to M = A/I (only gr Q used) or state Gabber for f.g. modules with good filtrations.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S3-21",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "ithm:gabber"
+   ],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "D"
+   ]
+  },
+  {
+   "id": "monic-scalar",
+   "section": "4",
+   "kind": "Paragraph",
+   "number": "",
+   "short": "Scalar case",
+   "title": "Scalar case N = 0",
+   "pdf_page": 9,
+   "tex_lines": [
+    482,
+    487
+   ],
+   "statement_relation": "exact",
+   "route_relation": "same",
+   "correspondence": "exact (after ALG-07)",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/MonicNormalization.lean",
+     "role": "main-proof",
+     "name": "Stafford38.WeylMonicNormalization.scalar_or_normalized_symplectic_image",
+     "line": 173
+    },
+    {
+     "file": "Stafford38/Weyl/MonicNormalization.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylMonicNormalization.eq_algebraMap_of_mem_bernsteinPiece_zero",
+     "line": 83
+    },
+    {
+     "file": "Stafford38/FixedSourceAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing",
+     "line": 21
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "F=0 violates F=ell^0=1",
+     "fix": "F=1, R=d^{-1}, S=0.",
+     "aicomment": "ALG-07",
+     "auditor": "A",
+     "id": "S4-01",
+     "status": "red-proposal-present; acceptance/review pending"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ]
+  },
+  {
+   "id": "phi-g",
+   "section": "4",
+   "kind": "Construction",
+   "number": "",
+   "short": "\u03a6_g",
+   "title": "Symplectic automorphisms \u03a6_g and their symbols",
+   "pdf_page": 9,
+   "tex_lines": [
+    488,
+    529
+   ],
+   "statement_relation": "equivalent",
+   "route_relation": "similar",
+   "correspondence": "different: Lean Phi_M(z_i)=sum_j M_ij z_j with explicit inverse; symbol law s -> s o M on coefficient vectors",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/Symplectic.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylSymplectic.standardSymplecticAlgHom",
+     "line": 43
+    },
+    {
+     "file": "Stafford38/Weyl/Symplectic.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylSymplectic.standardSymplecticAlgHom_generator",
+     "line": 51
+    },
+    {
+     "file": "Stafford38/Weyl/Symplectic.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylSymplectic.standardSymplecticAlgEquivOfInverse",
+     "line": 88
+    },
+    {
+     "file": "Stafford38/Weyl/SymbolCompatibility.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylSymbolCompatibility.standardSymplecticAlgHom_preserves_bernsteinPiece",
+     "line": 208
+    },
+    {
+     "file": "Stafford38/Weyl/SymbolCompatibility.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylSymbolCompatibility.standardSymplecticAlgHom_principal_compatibility",
+     "line": 411
+    },
+    {
+     "file": "Stafford38/Characteristic/LinearAction.lean",
+     "role": "definition",
+     "name": "Stafford38.CharacteristicLinearAction.symbolLinearAlgHom",
+     "line": 27
+    },
+    {
+     "file": "Stafford38/Characteristic/HomogeneousChart.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicHomogeneousChart.eval_symbolLinearAlgHom",
+     "line": 32
+    }
+   ],
+   "issues": [
+    {
+     "severity": "major",
+     "summary": "Point/function convention clash: with Phi_g(u)=g(u) on generators (M=g^T) the symbol transforms as s o g^T, not s o g^{-1}; s o g^{-1} is only correct in the point convention (Phi_g(z)=z o g^{-1}, Lean M=g^{-1} as in the spec)",
+     "fix": "Adopt the point convention explicitly (g acts on T^*X, Phi_g(z_i)=z_i o g^{-1}), or keep generator convention and use s o g^T.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-02",
+     "controller_note": "Severity raised by the controller after checking the counterexample by hand.",
+     "status": "open pending review"
+    },
+    {
+     "severity": "minor",
+     "summary": "'extends uniquely' / automorphism asserted without universal property or inverse",
+     "fix": "Note Phi_{g^{-1}} is the inverse (Lean standardSymplecticAlgEquivOfInverse).",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-03",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ]
+  },
+  {
+   "id": "lem:sympcompl",
+   "section": "4",
+   "kind": "Lemma",
+   "number": "4.1",
+   "short": "Lem 4.1",
+   "title": "Symplectic completion",
+   "pdf_page": 10,
+   "tex_lines": [
+    530,
+    597
+   ],
+   "label": "lem:sympcompl",
+   "statement_relation": "partial",
+   "route_relation": "different",
+   "correspondence": "lean-weaker for first formulation (symplectic basis not formalized); exact for second (transitivity on nonzero vectors)",
+   "route": "different: Lean composes at most two symplectic transvections z -> z + a<z,u>u, using a bridge vector w when <e,v>=0; no induction/orthogonal complement",
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/SymplecticCompletion.lean",
+     "role": "statement",
+     "name": "Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_mulVec_eq",
+     "line": 232
+    },
+    {
+     "file": "Stafford38/Characteristic/SymplecticCompletion.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_column_eq",
+     "line": 247
+    },
+    {
+     "file": "Stafford38/Characteristic/SymplecticCompletion.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicSymplecticCompletion.symplecticTransvection_mem",
+     "line": 153
+    }
+   ],
+   "issues": [
+    {
+     "severity": "editorial",
+     "summary": "Induction phrasing ('trivial for n=1, where U=V') loose",
+     "fix": "Induct on dim V applied to (U^perp, omega|).",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-04",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": true,
+   "graph_sub": "symplectic completion",
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ]
+  }
+ ]
+}

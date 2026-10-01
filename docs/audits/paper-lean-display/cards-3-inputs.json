@@ -1,0 +1,1612 @@
+{
+ "formal_base": "87bce83806c757ade36d455d785b506ebd03a1b2",
+ "items": [
+  {
+   "id": "lem:tangent-limit",
+   "section": "8",
+   "kind": "Lemma",
+   "number": "8.1",
+   "short": "Lem 8.1",
+   "title": "Tangent-limit criterion",
+   "pdf_page": 25,
+   "tex_lines": [
+    1339,
+    1421
+   ],
+   "label": "lem:tangent-limit",
+   "statement_relation": "lean-stronger",
+   "route_relation": "similar",
+   "correspondence": "lean-stronger: any algebraically closed k (no char 0); arbitrary axis; generic fibre = cone over Zariski tangent space; the smoothness field is carried but not needed for the final conclusion; dimY is a free parameter\n\nThe Lean lemma shows smoothness of the generic point is unnecessary when 'tangent' means Zariski tangent.",
+   "route": "similar: left inverse of a split matrix presentation lifts the annihilator (retraction correction); dehomogenization gives an equation-conormal Laurent point; membership in Dir(Y) comes from scalar-extension vanishing + evaluation at t=0, not a valuative criterion. Auxiliary: NOT on the terminal route (docs/proof-graph.yaml:25-29)",
+   "lean": [
+    {
+     "file": "Stafford38/Geometry/GeneralTangentLimitCriterion.lean",
+     "role": "statement",
+     "name": "Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand",
+     "line": 497
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralTangentLimitCriterion.lean",
+     "role": "definition",
+     "name": "Stafford38.Geometry.GeneralTangentLimitCriterion.DirectSummandInput",
+     "line": 307
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralTangentLimitCriterion.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction",
+     "line": 368
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/SplitLatticePresentation.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.SplitLatticePresentation.exists_splitMatrixPresentation_of_isComplemented",
+     "line": 79
+    },
+    {
+     "file": "Stafford38/Geometry/ProjectiveConormalDehomogenization.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.ProjectiveConormalDehomogenization.phasePoint_mem_equationConormalLocus_of_projective_row",
+     "line": 113
+    },
+    {
+     "file": "Stafford38/Geometry/ConormalScalarExtensionVanishing.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing",
+     "line": 134
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralTangentLimitCriterionTest.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralTangentLimitCriterionTest.paper_shape_consumer",
+     "line": 22
+    },
+    {
+     "file": "Stafford38/Geometry/LaurentConormalDirection.lean",
+     "role": "source citation",
+     "name": "Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic",
+     "line": 68
+    }
+   ],
+   "issues": [
+    {
+     "severity": "major",
+     "summary": "Gap: a conormal direction at the C((t))-point gamma(eta) is asserted to lie in Dir(Y), which is defined from C-points only; no argument that the defining homogeneous equations of Dir(Y) vanish on field-extension-valued conormal points",
+     "fix": "Insert a Nullstellensatz/scalar-extension argument as in ConormalScalarExtensionVanishing.scalarExtension_vanishing (finite gradient substitution; radical membership), or invoke the conormal variety as a reduced scheme with dense C-points",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-02",
+     "status": "open pending review"
+    },
+    {
+     "severity": "minor",
+     "summary": "Valuative criterion of properness is not what is needed; the C[[t]]-point is explicit (ell_1(0)=1), and the special point is in Dir(Y) by closedness (P(ell(t))=0 in C[[t]] => P(ell(0))=0)",
+     "fix": "Replace the Hartshorne II.4.7 sentence by the one-line closedness/evaluation argument",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-03",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Dehomogenization step (projective annihilator => affine conormal covector) not computed; 'nonzero' asserted before being justified",
+     "fix": "Add: sum_{i>=0} ell_i v_i = 0 and sum ell_i dv_i = 0 imply sum_{i>=1} ell_i d(v_i/v_0) = 0 (v_0 != 0 at the generic point); nonzero because ell_1(0)=1",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-04",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "'L^perp reduces onto L_0^perp' needs L a direct summand over a local ring; the arc should be stated as C[[t]]-valued",
+     "fix": "One sentence each",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-05",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": true,
+   "graph_sub": "auxiliary in Lean",
+   "graph_order": 2,
+   "auditors": [
+    "E"
+   ]
+  },
+  {
+   "id": "thm:asymptotic-conormal",
+   "section": "8",
+   "kind": "Theorem",
+   "number": "8.2",
+   "short": "Thm 8.2",
+   "title": "Asymptotic conormal direction [dx\u2081] \u2208 Dir(Y)",
+   "pdf_page": 27,
+   "tex_lines": [
+    1422,
+    1428
+   ],
+   "label": "thm:asymptotic-conormal",
+   "statement_relation": "lean-stronger",
+   "route_relation": "different",
+   "correspondence": "lean-stronger: any algebraically closed char-0 field; prime ideal = irreducible Y; nonemptiness automatic; havoid = (Y cap H = empty) exactly\n\nDownstream uses the affine-cone form (line 28), not the projective form.",
+   "route": "different (see proof entry)",
+   "lean": [
+    {
+     "file": "Stafford38/Geometry/GeneralAsymptoticConormal.lean",
+     "role": "statement",
+     "name": "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions",
+     "line": 63
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralAsymptoticConormal.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+     "line": 28
+    },
+    {
+     "file": "Stafford38/Geometry/ProjectiveConormalDirections.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.ProjectiveConormalDirections.mk_mem_projectiveHomogeneousClosure_of_fibre_zeroLocus",
+     "line": 70
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralCoisotropicExclusion.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+     "line": 29
+    }
+   ],
+   "issues": [
+    {
+     "severity": "editorial",
+     "summary": "'If Y is nonempty' is redundant for an irreducible variety",
+     "fix": "Drop or keep as emphasis",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-06",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "lem:tangent-limit"
+   ],
+   "in_graph": true,
+   "graph_sub": "statement",
+   "graph_order": 2,
+   "auditors": [
+    "E"
+   ]
+  },
+  {
+   "id": "thm:asymptotic-conormal-proof",
+   "section": "8",
+   "kind": "Proof",
+   "number": "of 8.2",
+   "short": "Proof of 8.2",
+   "title": "Proof of Theorem 8.2",
+   "pdf_page": 24,
+   "tex_lines": [
+    1430,
+    1705
+   ],
+   "statement_relation": "n/a",
+   "route_relation": "different",
+   "correspondence": "Hidden Lean steps without paper counterpart: residue-field extension kappa(D) and scalar-extension vanishing; equation-conormal vs smooth-conormal closure (PerfectField generic smoothness); coefficient field + Cohen completion; Kaehler finiteness and residue-kernel description; valuation-ring chart selection replacing properness. The tilting step is unnecessary in Lean because smoothness of the generic point is never used.",
+   "route": "different: constant vs transcendental split; in the transcendental case a valuation ring with x_1 in m, a valuation-chosen chart, affine normalization of k[Z_a/Z_j, x_1] and Krull PIT give a divisorial DVR V; q_0 is a nonunit via the polynomial inverse; order gap; residue field algebraic over the coordinate residues plus char 0 gives Kaehler visibility; Nakayama gives dx_1 = sum c_j dx_j with c_j in m_V; completion to kappa(D)[[t]] gives a Laurent equation-conormal point with fibre residue e_1; scalar-extension vanishing and closure(all equation-conormal) = closure(smooth) conclude. No closed point p, tilted arc, minors, T-hat or tangent lattice; Lemma 8.1 is unused",
+   "lean": [
+    {
+     "file": "Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+     "line": 28
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralConstantCoordinateAxis.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralConstantCoordinateAxis.exists_constant_coordinate_equation_and_pure_axis",
+     "line": 14
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralConormalAxis.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+     "line": 35
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameExistence",
+     "line": 42,
+     "expands": [
+      {
+       "file": "Stafford38/Geometry/ExactVisibleDivisorFrameInterface.lean",
+       "name": "Stafford38.Geometry.ExactVisibleDivisorFrameInterface.HasNormalizedCompatibleVisibleFrame",
+       "line": 177
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/Geometry/DivisorialVisibleFrameStageAssembly.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.LaneC.divisorialVisibleFrameExistence",
+     "line": 40
+    },
+    {
+     "file": "Stafford38/Geometry/DivisorialVisibleFrameStage2.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.DivisorialVisibleFrameStage2.stage2_exists_chart_normalization",
+     "line": 133
+    },
+    {
+     "file": "Stafford38/Geometry/DivisorialVisibleFrameCore.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.LaneC.stage3_exists_height_one_prime_valuation",
+     "line": 268
+    },
+    {
+     "file": "Stafford38/Geometry/NormalizationHeightOne.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.NormalizationHeightOne.exists_height_one_minimal_prime",
+     "line": 89
+    },
+    {
+     "file": "Stafford38/Geometry/ComponentProjectiveOrder.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.ComponentProjectiveOrder.normalized_denominator_nonunit_of_polynomial_inverse",
+     "line": 112
+    },
+    {
+     "file": "Stafford38/Geometry/ProjectiveDivisorOrderGap.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.ProjectiveDivisorOrderGap.exists_uniformizer_strict_orderGap",
+     "line": 46
+    },
+    {
+     "file": "Stafford38/Geometry/KaehlerDVRVisibility.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.KaehlerDVRVisibility.kaehler_span_of_isAlgebraic_adjoin",
+     "line": 134
+    },
+    {
+     "file": "Stafford38/Geometry/KaehlerDVRVisibility.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.KaehlerDVRVisibility.exists_visibleDivisorFrame_of_kaehler_image",
+     "line": 299
+    },
+    {
+     "file": "Stafford38/Geometry/DivisorTangentLattice.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.DivisorTangentLattice.VisibleDivisorFrame.exists_maximalIdeal_coefficients",
+     "line": 326
+    },
+    {
+     "file": "Stafford38/Geometry/CanonicalVisibleDivisorFrameProduction.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame",
+     "line": 212
+    },
+    {
+     "file": "Stafford38/Geometry/CanonicalVisibleDivisorFrameProduction.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.component_kaehler_bridge",
+     "line": 197
+    },
+    {
+     "file": "Stafford38/Geometry/FiniteGradientResidueExtension.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.FiniteGradientResidueExtension.exists_groundConormalAxis_of_finiteGradientBoundaryCertificateOver",
+     "line": 65
+    },
+    {
+     "file": "Stafford38/Geometry/LaurentConormalResidueExtension.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.LaurentConormalResidueExtension.residue_mem_residueExtensionFibreClosure_of_laurent_generic",
+     "line": 128
+    },
+    {
+     "file": "Stafford38/Geometry/ConormalScalarExtensionVanishing.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing",
+     "line": 134
+    },
+    {
+     "file": "Stafford38/Geometry/SmoothConormalFibreVanishing.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.SmoothConormalFibreVanishing.fibreLift_mem_vanishingIdeal_equationConormal",
+     "line": 21
+    },
+    {
+     "file": "Stafford38/Geometry/SmoothAffineConormal.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.SmoothAffineConormal.equationConormalClosure_smoothAffine_eq",
+     "line": 40
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Generic smoothness must be stated for the finite dominant map D -> nu(D), with the point also chosen over the smooth locus of nu(D)",
+     "fix": "Adopt GEO-01 text",
+     "aicomment": "GEO-01",
+     "auditor": "E",
+     "id": "S8-07",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "Independence argument uses the minor rows before row j, but v(0) may be nonzero in rows i_k, so the order is logically wrong",
+     "fix": "Adopt GEO-02: row j first (kills the v(0) coefficient), then the minor rows, then T-hat(0) != 0",
+     "aicomment": "GEO-02",
+     "auditor": "E",
+     "id": "S8-08",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "'x_1 does not vanish on Y' must be 'x_1 is a unit on Y' (Nullstellensatz: x_1 g = 1 mod I(Y)) to conclude that the generic point of D is outside nu^{-1}(Y)",
+     "fix": "Add the Nullstellensatz sentence (Lean: exists_coordinate_inverse_of_avoidance + normalized_denominator_nonunit_of_polynomial_inverse)",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-09",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "D cap U = (s) needs justification (R1 for normal Y-tilde, uniformizer of the DVR O_{Y~,D}, shrink U)",
+     "fix": "One sentence",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-10",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Passing from formal coordinates (t,z) at the closed point p to a tangent basis at the C((t))-point gamma(eta) is unjustified (dz_alpha are formal differentials)",
+     "fix": "Cite Omega_{Y~,p} (x) O^ = completed differentials, free on dt, dz_alpha; pull back along gamma and tensor with C((t))",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-11",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "'f != 0 for t != 0' is imprecise; I must be I_Z O^ (nonzero because O_p -> O^ is injective)",
+     "fix": "Write gamma^* f = t^d f_d(1,c) + O(t^{d+1}) != 0 in C[[t]]",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-12",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "j not in {0,1} (needed for three distinct rows 0,1,j) follows from a,b>0 but is not said; the dim-0 case is a special case of the constant case; the sentence on finite fibres of nu|_D is idle",
+     "fix": "Add one clause; merge the cases; delete the sentence",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-13",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Stacks tag for constancy of global functions cited inconsistently (Tag 04L2 in text vs 04L0 in comment/proof_map)",
+     "fix": "Check and unify",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-14",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "major",
+     "summary": "Documentation: the paper proof of Thm 8.2 is not formalized (terminal Lean route is different; the tangent-limit lemma is auxiliary and cannot even accept the Lean arc, which lives over kappa(D)[[t]]). proof_map.tex:1050-1057 wrongly claims Lean constructs 'the Grassmannian limit' and uses Stacks 04L0/031T",
+     "fix": "Revise the 'Formal verification' paragraph and proof_map to describe the Laurent-axis/visible-frame/finite-gradient route; say that Lemma 8.1 is formalized but unused",
+     "aicomment": "WF-01",
+     "auditor": "E",
+     "id": "S8-15",
+     "status": "open at frozen source"
+    }
+   ],
+   "depends_on": [
+    "lem:tangent-limit"
+   ],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "E"
+   ]
+  },
+  {
+   "id": "def:fibre-can",
+   "section": "9",
+   "kind": "Definition",
+   "number": "9.1",
+   "short": "Def 9.1",
+   "title": "Fibre-conical sets",
+   "pdf_page": 33,
+   "tex_lines": [
+    1707,
+    1710
+   ],
+   "label": "def:fibre-can",
+   "statement_relation": "exact",
+   "route_relation": "n/a",
+   "correspondence": "Lean derives xi-homogeneity of I(W) from fibre-conicality (infinite field); the paper uses this implicitly.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Geometry/FibreConicalVanishingIdeal.lean",
+     "role": "definition",
+     "name": "Stafford38.Geometry.FibreConicalVanishingIdeal.IsFibreConical",
+     "line": 19
+    },
+    {
+     "file": "Stafford38/Geometry/FibreConicalVanishingIdeal.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.FibreConicalVanishingIdeal.vanishingIdeal_isHomogeneous_of_isFibreConical",
+     "line": 77
+    }
+   ],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "D"
+   ]
+  },
+  {
+   "id": "thm:coisotropic-exclusion",
+   "section": "9",
+   "kind": "Theorem",
+   "number": "9.2",
+   "short": "Thm 9.2",
+   "title": "Involutive exclusion",
+   "pdf_page": 33,
+   "tex_lines": [
+    1711,
+    1848
+   ],
+   "label": "thm:coisotropic-exclusion",
+   "statement_relation": "lean-stronger",
+   "route_relation": "similar",
+   "correspondence": "lean-stronger: any algebraically closed char-0 field (not only C); P need not be homogeneous; only base-relative bracket fragment used internally; hypothesis 'self-involutive vanishing ideal' = paper's 'involutive' (not IsPoisson); n>=1 explicit\n\nLean statement: {k} [Field k] [IsAlgClosed k] [CharZero k] {m} (hm : 0 < m) (W : Set (PhaseVar m -> k)) (hnonempty) (hclosed : exists L, W = zeroLocus k L) (hW : IsFibreConical W) (hpoisson : {I(W),I(W)} subset I(W)) (P : MvPolynomial (Fin m) k) (hP : fibreLift P in I(W)) (haxis : P(e_0) != 0) : exists q in W, q (.inl 0) = 0. Complex manuscript form exists only in the test file GeneralCoisotropicSetsTest.lean.",
+   "route": "similar: zero section via xi-homogeneity; vertical translation via Taylor expansion with hamiltonIter and a single combined equation instead of composing exp(tH_f) flows; components = minimal primes of the base contraction with an explicit separator; asymptotic step as polynomial vanishing on the affine cone of smooth conormal covectors (removes GEO-03)",
+   "lean": [
+    {
+     "file": "Stafford38/Geometry/GeneralCoisotropicSets.lean",
+     "role": "statement",
+     "name": "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+     "line": 108
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralCoisotropicExclusion.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+     "line": 29
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralCoisotropicSetsTest.lean",
+     "role": "statement",
+     "name": "Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer",
+     "line": 100
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralCoisotropicSets.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralCoisotropicSets.baseProjection_eq_zeroLocus_comap",
+     "line": 46
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralCoisotropicSets.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralCoisotropicSets.smoothConormalClosure_minimalPrime_subset_of_isFibreConical",
+     "line": 75
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralConormalContainment.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralConormalContainment.zeroSection_commonZero_of_isHomogeneous",
+     "line": 94
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralConormalContainment.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralConormalContainment.equationConormalLocus_subset_zeroLocus",
+     "line": 113
+    },
+    {
+     "file": "Stafford38/Geometry/CoisotropicTranslation.lean",
+     "role": "definition",
+     "name": "Stafford38.Geometry.CoisotropicTranslation.hamiltonIter",
+     "line": 215
+    },
+    {
+     "file": "Stafford38/Geometry/CoisotropicTranslation.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.CoisotropicTranslation.zeroSection_stable_under_differential_translation",
+     "line": 281
+    },
+    {
+     "file": "Stafford38/Characteristic/BaseRelativePoisson.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.BaseRelativePoisson.zeroSection_stable_under_differential_translation_of_isBaseRelativePoisson",
+     "line": 71
+    },
+    {
+     "file": "Stafford38/Geometry/PointwiseConormalContainment.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.PointwiseConormalContainment.differentialCombinationPoint_isCommonZero",
+     "line": 78
+    },
+    {
+     "file": "Stafford38/Geometry/AffineConormalSpan.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.AffineConormalSpan.affineConormal_coordinatePoint_isCommonZero",
+     "line": 135
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralComponentConormalContainment.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralComponentConormalContainment.equationConormalClosure_minimalPrime_subset_zeroLocus",
+     "line": 76
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralComponentConormalContainment.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralComponentConormalContainment.smoothConormalClosure_minimalPrime_subset_zeroLocus",
+     "line": 143
+    },
+    {
+     "file": "Stafford38/Geometry/AffineConormalClosure.lean",
+     "role": "definition",
+     "name": "Stafford38.Geometry.AffineConormalClosure.equationConormalClosure",
+     "line": 41
+    },
+    {
+     "file": "Stafford38/Geometry/ConormalPrincipalOpenDensity.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.ConormalPrincipalOpenDensity.equationConormalClosure_restricted_eq",
+     "line": 108
+    },
+    {
+     "file": "Stafford38/Geometry/SmoothAffineConormal.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.SmoothAffineConormal.equationConormalClosure_smoothAffine_eq",
+     "line": 40
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralAsymptoticConormal.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+     "line": 28
+    },
+    {
+     "file": "Stafford38/Geometry/ProjectiveConormalDirections.lean",
+     "role": "definition",
+     "name": "Stafford38.Geometry.ProjectiveConormalDirections.smoothConormalFibreProjection",
+     "line": 44
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "'reduced' vacuous for a point set; conclusion re-quantifies the fixed W.",
+     "fix": "Conclude: W = empty or W meets pi^{-1}(H).",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S9-01",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "(5.1) asserted without argument.",
+     "fix": "Closure of punctured fibre line contains (y,0), then close up over Y; or use xi-homogeneity of I(W) (Lean).",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S9-02",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "'H_f preserves W' compressed: need H_f(I(W)) subset I(W) => exp(tH_f)(I(W)) subset I(W) => translation maps W=V(I(W)) into W; composition of flows unnecessary.",
+     "fix": "Spell out; translate once along sum t_i f_i (d is linear), as in Lean.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S9-03",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Typo I(Y\\} (tex 1097); I(Y)_y = I(Y_0)_y does not by itself give equality of spans of differentials; Jacobian criterion unstated.",
+     "fix": "Use separator s (s(y) != 0, s*I(Y_0) subset I(Y)) and d(sh)_y = s(y)dh_y; cite Jacobian criterion.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S9-04",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Density of conormal bundle over dense open U in conormal bundle over smooth locus not justified.",
+     "fix": "Irreducible vector bundle over (Y_0)_sm; restriction to dense open is dense.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S9-05",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "'[dx_1] is a projectivized fibre direction of W' is false as stated; it is only in the closure Dir(Y_0).",
+     "fix": "Every smooth conormal direction lies in closed V_+(P), hence so does Dir(Y_0), hence P(1,0..0)=0.",
+     "aicomment": "GEO-03",
+     "auditor": "D",
+     "id": "S9-06",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Hypothesis can be weakened to the base-relative fragment {f o pi, I(W)} subset I(W); 'coisotropic' label vs 'involutive' text.",
+     "fix": "Optional remark.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S9-07",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "thm:asymptotic-conormal",
+    "def:fibre-can"
+   ],
+   "in_graph": true,
+   "graph_sub": "exclusion",
+   "graph_order": 2,
+   "auditors": [
+    "D"
+   ]
+  },
+  {
+   "id": "proof-main",
+   "section": "10",
+   "kind": "Proof",
+   "number": "\u00a710",
+   "short": "\u00a710 assembly",
+   "title": "Proof of Theorem 1.1: Gabber, exclusion, descent, transport",
+   "pdf_page": 36,
+   "tex_lines": [
+    1849,
+    1983
+   ],
+   "statement_relation": "lean-stronger",
+   "route_relation": "different",
+   "correspondence": "lean-stronger (Lean UniversalStatement covers n=0 too; fixed-source export matches the 'Moreover' clause exactly with F=ell^bernsteinDegree d)\n\npartial / different-formulation: Lean uses AlgebraicClosure k instead of C, reruns the whole argument over k-bar, and descends at the level of initial ideals (in(I_kbar) subset in(I) kbar, unit ideal reflects), not Q_C=0 => Q=0\n\nexact (final identity)\n\nHidden Lean steps without paper counterpart: flat base change of I\u2229F_L to the algebraic closure (FilteredScalarLifting), strictification of support avoidance to an order-zero coordinate predecessor of 1 (strictUnitCoordinatePreimage_of_transposedSupport_disjoint_axis), and the rank-zero case. FoundationClosure.inputs (PaperInputs.Inputs) is also proved but is NOT on the proof term of universalStatement.\n\nThe only xi -> -xi in Lean is in the noncharacteristic block (transposedSupport_disjoint_axis_iff). FoundationClosure.inputs (PaperInputs) route including CanonicalGabberInvolutivityInterface chain is off the universalStatement path.",
+   "route": "different: Lean never passes to C or to a f.g. subfield k0. It proves support vanishing over an arbitrary algebraically closed char-0 field (GeneralCoisotropicCanonicalAdapter), then descends the ORDER INITIAL IDEAL (not the module) from AlgebraicClosure k to k by flat filtered base change of I \u2229 F_L (FilteredScalarLifting), so empty support over k gives Q=0 over k directly (EmptySupportVanishing). Gabber is applied directly to the right quotient's radical annihilator (no (x,xi)->(x,-xi) flip); the sign flip appears only in the transposed-support noncharacteristic step. Chart transport back (Phi_g^{-1}, central c^{-1}) is the same.\n\nsame for Gabber+exclusion application (directly on the right quotient, no xi -> -xi); different for descent\n\ndifferent: Lean descends empty support via initial ideals over AlgebraicClosure k (FilteredInitialLifting), not module faithful flatness over C",
+   "lean": [
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "role": "statement",
+     "name": "Stafford38.universalStatement",
+     "line": 53
+    },
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "role": "statement",
+     "name": "Stafford38.universalFixedSourceStatement",
+     "line": 57
+    },
+    {
+     "file": "Stafford38/FoundationClosure.lean",
+     "role": "main-proof",
+     "name": "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+     "line": 37
+    },
+    {
+     "file": "Stafford38/UniversalAssembly.lean",
+     "role": "definition",
+     "name": "Stafford38.UniversalAssembly.CanonicalSupportVanishing",
+     "line": 31
+    },
+    {
+     "file": "Stafford38/UniversalAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.UniversalAssembly.universalStatement_of_canonicalSupportVanishing",
+     "line": 66
+    },
+    {
+     "file": "Stafford38/FixedSourceAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing",
+     "line": 21
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalCertificate.lean",
+     "role": "main-proof",
+     "name": "Stafford38.CharacteristicCanonicalCertificate.exists_fixedSource_certificate_of_orderCharacteristicSupport_eq_empty",
+     "line": 30
+    },
+    {
+     "file": "Stafford38/Characteristic/EmptySupportVanishing.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicEmptySupportVanishing.rightQuotient_subsingleton_of_orderCharacteristicSupport_eq_empty",
+     "line": 52
+    },
+    {
+     "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Weyl.FilteredScalarLifting.canonicalSupportDescent",
+     "line": 453
+    },
+    {
+     "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
+     "role": "helper",
+     "name": "Stafford38.Weyl.FilteredScalarLifting.filteredInitialLifting",
+     "line": 446,
+     "expands": [
+      {
+       "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+       "name": "Stafford38.Weyl.PresentedScalarExtension.FilteredInitialLifting",
+       "line": 559
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+     "role": "helper",
+     "name": "Stafford38.Weyl.PresentedScalarExtension.canonicalSupportDescent_of_filteredInitialLifting",
+     "line": 571
+    },
+    {
+     "file": "Stafford38/CanonicalSupportVanishingReduction.lean",
+     "role": "definition",
+     "name": "Stafford38.CanonicalSupportVanishingReduction.AlgebraicallyClosedCanonicalSupportVanishing",
+     "line": 114
+    },
+    {
+     "file": "Stafford38/CanonicalSupportVanishingReduction.lean",
+     "role": "definition",
+     "name": "Stafford38.CanonicalSupportVanishingReduction.CanonicalSupportDescent",
+     "line": 124
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+     "line": 107,
+     "expands": [
+      {
+       "file": "Stafford38/CanonicalSupportVanishingReduction.lean",
+       "name": "Stafford38.CanonicalSupportVanishingReduction.AlgebraicallyClosedCanonicalSupportVanishing",
+       "line": 114
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.GabberGlobalAssembly.associatedGraded_radical_isInvolutive",
+     "line": 209,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+       "line": 30
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/Geometry/GeneralCoisotropicSets.lean",
+     "role": "helper",
+     "name": "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+     "line": 108
+    },
+    {
+     "file": "Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean",
+     "role": "helper",
+     "name": "Stafford38.SpecializedNoncharacteristicEquality.strictUnitCoordinatePreimage_of_transposedSupport_disjoint_axis",
+     "line": 269,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/CanonicalUnitCoordinatePreimage.lean",
+       "name": "Stafford38.CanonicalUnitCoordinatePreimage.StrictUnitCoordinatePreimage",
+       "line": 49
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalKoszulContradiction.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance",
+     "line": 120
+    },
+    {
+     "file": "Stafford38/Weyl/MonicNormalization.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylMonicNormalization.scalar_or_normalized_symplectic_image",
+     "line": 173
+    },
+    {
+     "file": "Stafford38/Weyl/Symplectic.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylSymplectic.standardSymplecticAlgEquivOfInverse",
+     "line": 88
+    },
+    {
+     "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
+     "role": "helper",
+     "name": "Stafford38.Weyl.FilteredScalarLifting.target_orderInitialIdeal_le_map_source_orderInitialIdeal",
+     "line": 384
+    },
+    {
+     "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+     "role": "definition",
+     "name": "Stafford38.Weyl.PresentedScalarExtension.FilteredInitialLifting",
+     "line": 559
+    },
+    {
+     "file": "Stafford38/Characteristic/GeometricSupportDescent.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.GeometricSupportDescent.map_scalarPolynomialMap_eq_top_iff",
+     "line": 96
+    },
+    {
+     "file": "Stafford38/Characteristic/EmptySupportVanishing.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicEmptySupportVanishing.orderInitialIdeal_eq_top_iff_rightQuotient_subsingleton",
+     "line": 80
+    },
+    {
+     "file": "Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean",
+     "role": "helper",
+     "name": "Stafford38.SpecializedNoncharacteristicEquality.transposedSupport_disjoint_axis_iff",
+     "line": 154
+    }
+   ],
+   "issues": [
+    {
+     "severity": "major",
+     "summary": "W is defined over C but eq:char-contained and eq:char-avoids are proved for Char(Q) over k0; the identification Char(Q_C)=Char(Q)xC (gr commutes with base change) is never stated.",
+     "fix": "State that Sections 3-9 hold over any char-0 field and apply them to d in A_n(C): Q_C=A_n(C)/(dA_n(C)+x^N dA_n(C)) \u2245 Q\u2297_{k0}C by right exactness; or add gr(Q\u2297C)=(gr Q)\u2297C. Better: follow Lean and work over the algebraic closure of k (no C, no k0).",
+     "aicomment": "ALG-05",
+     "auditor": "F",
+     "id": "S10-01",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Notation drift x vs x_1 (proof writes x^N, Remark rem:transport writes x_1^N); 'defined in \\ref{rem:transport}' lacks 'Remark~'; 'Latly' typo.",
+     "fix": "Use x_1 throughout; write Remark~\\ref{rem:transport}.",
+     "aicomment": null,
+     "auditor": "F",
+     "id": "S10-02",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Sentence on 'right-to-left equivalence used above' refers to nothing in the text (only commented tex 869); Gabber is already stated for right ideals and Lean applies it directly to the right quotient.",
+     "fix": "Delete, or state once that right modules are left A^op = A modules via transpose and gr of transpose is xi -> -xi (which preserves all hypotheses).",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S10-03",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "major",
+     "summary": "Fibre-conicality of Char(Q) (hypothesis of thm:coisotropic-exclusion) is never established; text only says it is 'preserved'.",
+     "fix": "gr Q is xi-graded, so Ann gr Q and its radical are xi-homogeneous, so V is fibre-conical (proof_map.tex prop:gabbercheck; Lean adapter orderInitialIdeal_isHomogeneous).",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S10-04",
+     "status": "open pending review"
+    },
+    {
+     "severity": "minor",
+     "summary": "Involutivity of W = Char(Q_C)_red requires I(W) = sqrt(Ann gr Q_C) (Nullstellensatz), not stated.",
+     "fix": "Add one sentence.",
+     "aicomment": null,
+     "auditor": "D",
+     "id": "S10-05",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Eqs. (3.4)/(3.5) proved for Q over k_0 but applied to W in C^{2n}; transfer gr(Q_C)=gr(Q) (x) C, Ann commutes with flat base change, not argued.",
+     "fix": "Add the transfer (extends ALG-05), or run Secs. 2-5 over C directly as Lean does over k-bar.",
+     "aicomment": "ALG-05",
+     "auditor": "D",
+     "id": "S10-06",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "'A nonzero coherent filtered module has nonempty gr support' uncited; needs exhaustive filtration, F_{-1}=0 and Nullstellensatz; \\cite{somewhere} placeholders.",
+     "fix": "As in ALG-05.",
+     "aicomment": "ALG-05",
+     "auditor": "D",
+     "id": "S10-07",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "Descent via faithful flatness/Stacks 00HP is overkill and the tag should be checked; embedding k_0 -> C unjustified at tex 450.",
+     "fix": "dim_C(Q (x) C) = dim_{k_0} Q; k_0 f.g. over Q embeds in C.",
+     "aicomment": "ALG-05",
+     "auditor": "D",
+     "id": "S10-08",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "editorial",
+     "summary": "'inverse of Phi_g, defined in rem:transport' - Phi_g is defined in Section 4; x vs x_1",
+     "fix": "Fix reference and notation.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S10-09",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "prop:char-avoids",
+    "cor:charP",
+    "thm:coisotropic-exclusion",
+    "ithm:gabber",
+    "rem:transport"
+   ],
+   "in_graph": true,
+   "graph_sub": "assembly",
+   "graph_order": 0,
+   "auditors": [
+    "A",
+    "D",
+    "F"
+   ]
+  },
+  {
+   "id": "lem:initial-base-change",
+   "section": "10",
+   "kind": "Lemma",
+   "number": "10.1",
+   "short": "Lemma 10.1",
+   "title": "Base change of the order initial ideal",
+   "pdf_page": 38,
+   "tex_lines": [
+    1900,
+    1930
+   ],
+   "statement_relation": "partial",
+   "route_relation": "different",
+   "correspondence": "The manuscript states equality of initial ideals after scalar extension. At the frozen formal pin, `FilteredInitialLifting` gives the target-initial-ideal inclusion consumed by descent; the exact standalone equality is not exposed as the cited theorem. Treat as partial correspondence until the controller verifies the full derivation.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
+     "role": "input",
+     "name": "Stafford38.Weyl.FilteredScalarLifting.filteredInitialLifting",
+     "line": 446,
+     "expands": [
+      {
+       "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+       "name": "Stafford38.Weyl.PresentedScalarExtension.FilteredInitialLifting",
+       "line": 559
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
+     "role": "input",
+     "name": "Stafford38.Weyl.FilteredScalarLifting.target_orderInitialIdeal_le_map_source_orderInitialIdeal",
+     "line": 384
+    },
+    {
+     "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+     "role": "source citation",
+     "name": "Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_map_orderInitialIdeal_le",
+     "line": 388
+    }
+   ],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "current-map"
+   ],
+   "label": "lem:initial-base-change"
+  },
+  {
+   "id": "cyclicity",
+   "section": "10",
+   "kind": "Corollary",
+   "number": "10.2",
+   "short": "Cyclicity",
+   "title": "Finitely generated torsion modules are cyclic",
+   "pdf_page": 39,
+   "tex_lines": [
+    1985,
+    2034
+   ],
+   "statement_relation": "lean-stronger",
+   "route_relation": "similar",
+   "correspondence": "The paper states the result for positive n; the formal theorem also covers n=0. Both statements concern finitely generated right torsion modules over a characteristic-zero Weyl algebra. The Lean route proves a two-generator collapse from Stafford's identity and inducts on a finite generating set; it avoids the original proof's Stafford Theorem 3.7 and Ore common-multiple step. The red Lean-proof sketch describes this route. The exact statement has a Mathlib-only consumer at this pin; this records source correspondence, not human approval.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/TorsionCyclicity.lean",
+     "role": "definition",
+     "name": "Stafford38.TorsionCyclicity.IsRightTorsion",
+     "line": 18
+    },
+    {
+     "file": "Stafford38/TorsionCyclicity.lean",
+     "role": "helper",
+     "name": "Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair",
+     "line": 27
+    },
+    {
+     "file": "Stafford38/Weyl/Domain.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylDomain.mul_ne_zero",
+     "line": 22
+    },
+    {
+     "file": "Stafford38/TorsionCyclicity.lean",
+     "role": "statement",
+     "name": "Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion",
+     "line": 161
+    },
+    {
+     "file": "CorollaryChallenge.lean",
+     "role": "definition",
+     "name": "Stafford38CorollaryChallenge.IsRightTorsion",
+     "line": 31
+    },
+    {
+     "file": "CorollaryChallenge.lean",
+     "role": "statement",
+     "name": "Stafford38CorollaryChallenge.torsionCyclicStatement",
+     "line": 37
+    },
+    {
+     "file": "tests/TorsionCyclicityConsumer.lean",
+     "role": "consumer",
+     "name": "Stafford38CorollaryChallenge.torsionCyclicStatement_consumer",
+     "line": 10
+    }
+   ],
+   "issues": [
+    {
+     "severity": "major",
+     "summary": "At the earlier formal pin this corollary had no Lean counterpart; the pinned formal source contains the finite-generation theorem and literal statement consumer.",
+     "fix": "Retain the finite-generation hypothesis and cite the exact formal source pin.",
+     "aicomment": "WF-01",
+     "auditor": "F",
+     "id": "S10-10",
+     "status": "formal theorem mapped; independent proof-review status is separate"
+    },
+    {
+     "severity": "minor",
+     "summary": "'finitely generated' missing ('Let us denote a torsion module by T'; lead sentence 'the torsion right module').",
+     "fix": "State: every finitely generated torsion right A_n-module is cyclic, in a Corollary environment.",
+     "aicomment": "ALG-06",
+     "auditor": "F",
+     "id": "S10-11",
+     "status": "addressed in red Corollary 10.2; author acceptance pending"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Typo 'T \u2245 /A_n\u2295A_n)/M'; conclusion should say T is generated by the image of (1,-F).",
+     "fix": "T\u2245(A_n\u2295A_n)/M is generated by the class of (1,-F), i.e. by t_1 - t_2F.",
+     "aicomment": "ALG-06",
+     "auditor": "F",
+     "id": "S10-12",
+     "status": "corrected in red proof; author acceptance pending"
+    },
+    {
+     "severity": "editorial",
+     "summary": "No statement environment: a proof environment follows a running sentence.",
+     "fix": "Add \\begin{corollary}...\\end{corollary}.",
+     "aicomment": null,
+     "auditor": "F",
+     "id": "S10-13",
+     "status": "addressed by red corollary environment; author acceptance pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "Dependence on Stafford Thm 3.7 (2-generation) is unnecessary.",
+     "fix": "Induct on the number of generators: the submodule generated by t_1,t_2 is torsion, hence cyclic by the displayed argument; replace t_1,t_2 by its generator. This makes the corollary self-contained and easily formalizable.",
+     "aicomment": null,
+     "auditor": "F",
+     "id": "S10-14",
+     "status": "red Lean-proof sketch avoids Stafford Theorem 3.7; author acceptance pending"
+    }
+   ],
+   "depends_on": [
+    "thm:main"
+   ],
+   "in_graph": true,
+   "graph_sub": "not in Lean",
+   "graph_order": 0,
+   "auditors": [
+    "F"
+   ],
+   "label": "cor:cyclic"
+  },
+  {
+   "id": "outlook",
+   "section": "11",
+   "kind": "Section",
+   "number": "11",
+   "short": "Outlook",
+   "title": "Outlook",
+   "pdf_page": 40,
+   "tex_lines": [
+    2035,
+    2047
+   ],
+   "statement_relation": "none",
+   "route_relation": "n/a",
+   "correspondence": null,
+   "route": null,
+   "lean": [],
+   "issues": [
+    {
+     "severity": "editorial",
+     "summary": "Section consists of 'We have proved' plus an AI comment.",
+     "fix": "Complete or delete.",
+     "aicomment": "EDIT-01",
+     "auditor": "F",
+     "id": "S11-01",
+     "status": "open at frozen source"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "F"
+   ]
+  },
+  {
+   "id": "ai-workflow",
+   "section": "A",
+   "kind": "Appendix",
+   "number": "A",
+   "short": "AI workflow",
+   "title": "AI-assisted research, formalization and verification provenance",
+   "pdf_page": 43,
+   "tex_lines": [
+    2086,
+    2139
+   ],
+   "statement_relation": "n/a",
+   "route_relation": "n/a",
+   "correspondence": "Workflow and independent-check claims are provenance, not mathematical consequences. The formal verification record is available in the pinned formal repository; tool participation and chronology require the project\u2019s source ledgers.",
+   "route": null,
+   "lean": [
+    {
+     "repo": "formal",
+     "file": "docs/verification-results.json",
+     "role": "verification provenance",
+     "name": "",
+     "module_only": true,
+     "line": 1
+    }
+   ],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "current-map"
+   ],
+   "label": "app:ai-workflow"
+  },
+  {
+   "id": "further-work",
+   "section": "B",
+   "kind": "Appendix",
+   "number": "B",
+   "short": "App B",
+   "title": "Further work and corollaries",
+   "pdf_page": 44,
+   "tex_lines": [
+    2140,
+    2177
+   ],
+   "statement_relation": "none",
+   "route_relation": "n/a",
+   "correspondence": "The current appendix explicitly lists four consequences; each is mapped separately below. The general localization, left-handed, localized differential-operator, and evolutionary declarations exist at the frozen formal pin. This is not a claim that the prose is independently formalized.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/LocalizationCorollaries.lean",
+     "role": "statement",
+     "name": "Stafford38.LocalizationCorollaries.s38_rightOreLocalization",
+     "line": 28
+    },
+    {
+     "file": "Stafford38/LeftHandedCorollary.lean",
+     "role": "statement",
+     "name": "Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement",
+     "line": 20
+    },
+    {
+     "file": "Stafford38/LocalizedDifferentialCorollaries.lean",
+     "role": "statement",
+     "name": "Stafford38.LocalizedDifferentialCorollaries.s38_laurent_differential",
+     "line": 105
+    },
+    {
+     "file": "Stafford38/LocalizedDifferentialCorollaries.lean",
+     "role": "statement",
+     "name": "Stafford38.LocalizedDifferentialCorollaries.s38_partial_laurent_differential",
+     "line": 128
+    },
+    {
+     "file": "Stafford38/LocalizedDifferentialCorollaries.lean",
+     "role": "statement",
+     "name": "Stafford38.LocalizedDifferentialCorollaries.s38_fraction_ring_differential",
+     "line": 91
+    },
+    {
+     "file": "Stafford38/EvolutionaryCorollary.lean",
+     "role": "statement",
+     "name": "Stafford38.Evolution.evolutionaryCorollary",
+     "line": 33
+    },
+    {
+     "file": "Stafford38/EvolutionaryCorollary.lean",
+     "role": "statement",
+     "name": "Stafford38.Evolution.tensorEvolutionaryCorollary",
+     "line": 54
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "'differential rings with laurent series coefficients' is wrong: Lean has Laurent POLYNOMIAL coefficients (localization at prod x_i), not Laurent series.",
+     "fix": "Say 'Laurent-polynomial / principal-open / rational-function coefficients' or drop.",
+     "aicomment": "SCOPE-01",
+     "auditor": "F",
+     "id": "SB-01",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Informal drafting note ('AI also proved some related stuff ... I am leaving that out'); evolutionary corollary not mentioned.",
+     "fix": "Replace by a list of the Lean corollaries with exact hypotheses, or remove.",
+     "aicomment": "SCOPE-01",
+     "auditor": "F",
+     "id": "SB-02",
+     "status": "red-proposal-present; acceptance/review pending"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "F"
+   ]
+  },
+  {
+   "id": "appendix-right-ore",
+   "section": "B",
+   "kind": "Corollary",
+   "number": "",
+   "short": "Right Ore localization",
+   "title": "Identity in every right Ore localization",
+   "pdf_page": 44,
+   "tex_lines": [
+    2144,
+    2146
+   ],
+   "statement_relation": "exact",
+   "route_relation": "same",
+   "correspondence": "The paper cites the general right-Ore localization corollary directly.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/LocalizationCorollaries.lean",
+     "role": "statement",
+     "name": "Stafford38.LocalizationCorollaries.s38_rightOreLocalization",
+     "line": 28
+    }
+   ],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "current-map"
+   ]
+  },
+  {
+   "id": "appendix-left-handed",
+   "section": "B",
+   "kind": "Corollary",
+   "number": "",
+   "short": "Left-handed identity",
+   "title": "Left-handed identity via formal adjoint",
+   "pdf_page": 44,
+   "tex_lines": [
+    2147,
+    2148
+   ],
+   "statement_relation": "exact",
+   "route_relation": "same",
+   "correspondence": "The paper cites the formal-adjoint corollary directly.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/LeftHandedCorollary.lean",
+     "role": "statement",
+     "name": "Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement",
+     "line": 20
+    }
+   ],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "current-map"
+   ]
+  },
+  {
+   "id": "appendix-localized-differential",
+   "section": "B",
+   "kind": "Corollary",
+   "number": "",
+   "short": "Localized differential",
+   "title": "Differential operators over polynomial localizations",
+   "pdf_page": 44,
+   "tex_lines": [
+    2149,
+    2150
+   ],
+   "statement_relation": "exact",
+   "route_relation": "same",
+   "correspondence": "The paper cites the unconditional localization theorem; its specializations include principal opens, Laurent-polynomial coefficients, and the fraction field.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/LocalizedDifferentialCorollaries.lean",
+     "role": "statement",
+     "name": "Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential",
+     "line": 80
+    }
+   ],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "current-map"
+   ]
+  },
+  {
+   "id": "appendix-evolutionary",
+   "section": "B",
+   "kind": "Corollary",
+   "number": "",
+   "short": "Evolutionary",
+   "title": "Evolutionary version with coefficients commuting with a Weyl pair",
+   "pdf_page": 44,
+   "tex_lines": [
+    2151,
+    2152
+   ],
+   "statement_relation": "exact",
+   "route_relation": "same",
+   "correspondence": "The cited theorem supplies the stated evolutionary extension.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/EvolutionaryCorollary.lean",
+     "role": "statement",
+     "name": "Stafford38.Evolution.evolutionaryCorollary",
+     "line": 33
+    }
+   ],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "current-map"
+   ]
+  },
+  {
+   "id": "def:noncar",
+   "section": "B",
+   "kind": "Definition",
+   "number": "B.1",
+   "short": "Def B.1",
+   "title": "Noncharacteristic",
+   "pdf_page": 45,
+   "tex_lines": [
+    2178,
+    2188
+   ],
+   "label": "def:noncar",
+   "statement_relation": "none",
+   "route_relation": "n/a",
+   "correspondence": "Not formalized; not used by the main proof.",
+   "route": null,
+   "lean": [],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Definition is for coherent (left) D_X-modules; Q is a right module.",
+     "fix": "Apply to the transposed left module (V(P) invariant under xi->-xi since P homogeneous).",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "SB-03",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "C"
+   ]
+  },
+  {
+   "id": "prop:noncar",
+   "section": "B",
+   "kind": "Proposition",
+   "number": "B.2",
+   "short": "Prop B.2",
+   "title": "H = {x = 0} is noncharacteristic for Q",
+   "pdf_page": 45,
+   "tex_lines": [
+    2189,
+    2216
+   ],
+   "label": "prop:noncar",
+   "statement_relation": "exact",
+   "route_relation": "different",
+   "correspondence": "The pinned formal source defines noncharacteristic finiteness by the cokernel module and proves its equivalence to finiteness of the literal restricted coordinate ring R/(J+(x\u2080)). It proves that finiteness for the canonical annihilator and separately proves the zero-section support conclusion in prime-spectrum form. For the paper's intermediate finite-projection claim, `canonicalPrincipalHypersurfaceIdeal` is defined as the sum of the principal ideal generated by `presentedPrincipalComponent k orderWeight N d` (the canonical principal symbol P after the monic chart) and the ideal generated by Lean's normal coordinate `X (.inl 0)` (paper x\u2081). `canonical_principal_hypersurface_finite` states that the resulting full-symbol-ring quotient is finite as a module over `oldTangentialCoeffRing` T. The `normalMomentumPolynomialEquiv_tangentialMap` bridge identifies the induced T-action with the canonical tangential-coordinate inclusion. Thus the formal result covers the literal algebraic finite-map clause, though it does not state the paper's particular generating list 1, \u03be\u2081, \u2026, \u03be\u2081^{N\u22121}.",
+   "route": "similar (monic symbol in xi_1)",
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/CanonicalNormalSymbolFiniteness.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.CanonicalNormalSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_normalCoeffRing",
+     "line": 44
+    },
+    {
+     "file": "Stafford38/Characteristic/NormalSymbolPolynomial.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic",
+     "line": 92
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalNormalAxisSupport.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.CanonicalNormalAxisSupport.no_canonicalSupport_prime_on_punctured_normal_axis",
+     "line": 93
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/HyperplaneRestriction.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.HyperplaneRestriction.support_disjoint_zeroLocus_of_restriction_subsingleton",
+     "line": 106
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalTangentialSymbolFiniteness.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_tangential_coordinate",
+     "line": 113
+    },
+    {
+     "file": "Stafford38/NoncharacteristicHyperplane.lean",
+     "role": "definition",
+     "name": "Stafford38.NoncharacteristicHyperplane.IsNoncharacteristic",
+     "line": 70
+    },
+    {
+     "file": "Stafford38/NoncharacteristicHyperplane.lean",
+     "role": "helper",
+     "name": "Stafford38.NoncharacteristicHyperplane.isNoncharacteristic_iff_finite_restrictedCoordinateQuotient",
+     "line": 217
+    },
+    {
+     "file": "Stafford38/NoncharacteristicHyperplane.lean",
+     "role": "statement",
+     "name": "Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator",
+     "line": 232
+    },
+    {
+     "file": "Stafford38/NoncharacteristicHyperplane.lean",
+     "role": "statement",
+     "name": "Stafford38.NoncharacteristicHyperplane.canonical_finite_restrictedCoordinateQuotient",
+     "line": 307
+    },
+    {
+     "file": "Stafford38/NoncharacteristicHyperplane.lean",
+     "role": "statement",
+     "name": "Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection",
+     "line": 328
+    },
+    {
+     "file": "Stafford38/NoncharacteristicHypersurface.lean",
+     "role": "definition",
+     "name": "Stafford38.NoncharacteristicHypersurface.canonicalPrincipalHypersurfaceIdeal",
+     "line": 34
+    },
+    {
+     "file": "Stafford38/NoncharacteristicHypersurface.lean",
+     "role": "helper",
+     "name": "Stafford38.NoncharacteristicHypersurface.normalMomentumPolynomialEquiv_tangentialMap",
+     "line": 76
+    },
+    {
+     "file": "Stafford38/NoncharacteristicHypersurface.lean",
+     "role": "statement",
+     "name": "Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite",
+     "line": 129
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "proof_map.tex maps prop:noncar to AlgebraicAnalysis.Module.HyperplaneRestriction, which proves M/xM=0 <-> x surjective and support avoidance of V(x), not finiteness of the projection.",
+     "fix": "Remap to canonical_orderAssociatedGradedModule_finite_normalCoeffRing + finite_of_monic_annihilator.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "SB-04",
+     "status": "formal statement now mapped; proof_map.tex mapping still needs correction"
+    },
+    {
+     "severity": "minor",
+     "summary": "'Equivalently' (finiteness <-> conormal zero-section) requires conicity.",
+     "fix": "Note Char(Q), V(P) are conic.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "SB-05",
+     "status": "open: paper should state conicity in the equivalence"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Informal drafting prose, k vs k0, lem:order-symbol cited as Proposition.",
+     "fix": "Clean up.",
+     "aicomment": "SCOPE-01",
+     "auditor": "C",
+     "id": "SB-06",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Unbalanced '(after \\ref{cor:charP}'; 'Proposition~\\ref{lem:order-symbol}' refers to a Lemma; informal 'though I do not understand its value'.",
+     "fix": "Fix references and prose.",
+     "aicomment": "REF-01",
+     "auditor": "F",
+     "id": "SB-07",
+     "status": "red-proposal-present; acceptance/review pending"
+    }
+   ],
+   "depends_on": [
+    "cor:charP"
+   ],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "C",
+    "F"
+   ]
+  }
+ ]
+}

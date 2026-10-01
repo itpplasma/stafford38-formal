@@ -1,0 +1,1621 @@
+{
+ "formal_base": "87bce83806c757ade36d455d785b506ebd03a1b2",
+ "items": [
+  {
+   "id": "prop:monic",
+   "section": "4",
+   "kind": "Proposition",
+   "number": "4.2",
+   "short": "Prop 4.2",
+   "title": "Monic normal form in p",
+   "pdf_page": 11,
+   "tex_lines": [
+    601,
+    680
+   ],
+   "label": "prop:monic",
+   "statement_relation": "equivalent",
+   "route_relation": "similar",
+   "correspondence": "different-formulation (equivalent): Lean asserts c^{-1}Phi_M d in B_N with PBW coefficient of d_1^N equal to 1 (and coefficient-LEFT Ore polynomial Monic); bound deg_B a_j<=N-j not stated",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/MonicNormalization.lean",
+     "role": "statement",
+     "name": "Stafford38.WeylMonicNormalization.exists_normalized_symplectic_image",
+     "line": 150
+    },
+    {
+     "file": "Stafford38/Weyl/MonicNormalization.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylMonicNormalization.HasNormalizedSymplecticChart",
+     "line": 138
+    },
+    {
+     "file": "Stafford38/Weyl/PBWMonicBridge.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylPBWMonicBridge.IsPBWMonicAt",
+     "line": 88
+    },
+    {
+     "file": "Stafford38/Weyl/PBWMonicBridge.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylPBWMonicBridge.coeff_principal_pure_eq_normalForm",
+     "line": 79
+    },
+    {
+     "file": "Stafford38/Weyl/OuterOreMonic.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylOuterOreMonic.presentedOuterPolynomial_monic",
+     "line": 337
+    },
+    {
+     "file": "Stafford38/Characteristic/SymplecticCompletion.lean",
+     "role": "main-proof",
+     "name": "Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_chart_matrices",
+     "line": 282
+    },
+    {
+     "file": "Stafford38/Characteristic/HomogeneousChart.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicHomogeneousChart.pureCoefficient_symbolLinearAlgHom",
+     "line": 135
+    },
+    {
+     "file": "Stafford38/Characteristic/HomogeneousChart.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicHomogeneousChart.exists_eval_ne_zero_of_homogeneous",
+     "line": 24
+    }
+   ],
+   "issues": [
+    {
+     "severity": "major",
+     "summary": "Proof as written is wrong: choosing g(v)=e_p with Phi_g(u)=g(u) makes the p^N coefficient s(g^T e_p), not s(v). Counterexample n=1, d=x, v=(1,1), g=[[1,-1],[0,1]]: Phi_g(x)=x has p-coefficient 0. Lean chooses M with column t equal to v",
+     "fix": "Require g^T e_p=v (transpose of symplectic is symplectic), or switch consistently to the point convention.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-05",
+     "controller_note": "Severity raised by the controller after checking the counterexample by hand.",
+     "status": "open pending review"
+    },
+    {
+     "severity": "minor",
+     "summary": "v != 0 not noted before applying Lemma 4.1",
+     "fix": "s(0)=0 for N>=1, so v!=0.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-06",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "deg_B a_j<=N-j justified only by 'deg_B d~=N'; needs no-cancellation between different p-degrees and that p^N coefficient c_N is a scalar",
+     "fix": "sigma^B(p^j a_j)=xi_1^j sigma(a_j) with sigma(a_j) free of xi_1; or argue via PBW coefficients as Lean.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-07",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "lem:sympcompl"
+   ],
+   "in_graph": true,
+   "graph_sub": "monic chart",
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ]
+  },
+  {
+   "id": "reduction-k0",
+   "section": "4",
+   "kind": "Paragraph",
+   "number": "",
+   "short": "k\u2080 \u21aa \u2102",
+   "title": "Field handling: work over k, then over its algebraic closure",
+   "pdf_page": 9,
+   "tex_lines": [
+    681,
+    694
+   ],
+   "statement_relation": "n/a",
+   "route_relation": "different",
+   "correspondence": "The old finitely-generated-subfield reduction is struck out. The red replacement says the geometric sections work over an algebraically closed field K and the assembly takes K=overline{k}; it writes k\u2080:=k solely to preserve the subsequent formulas. The pinned formal proof descends order-initial ideals. The current proposed replacement makes the later k\u2080 and K notation consistent; author acceptance remains separate.",
+   "route": "different: Lean never reduces to a finitely generated field nor uses C; it base-changes the normalized monic d' to AlgebraicClosure k, proves support vanishing for every algebraically closed char-0 field, and descends the order initial ideal (in(I_Kbar) <= in(I).Kbar[x,xi], FilteredInitialLifting) back to k",
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Weyl.PresentedScalarExtension.canonicalSupportDescent_of_filteredInitialLifting",
+     "line": 571
+    },
+    {
+     "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+     "role": "definition",
+     "name": "Stafford38.Weyl.PresentedScalarExtension.FilteredInitialLifting",
+     "line": 559
+    },
+    {
+     "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Weyl.FilteredScalarLifting.filteredInitialLifting",
+     "line": 446,
+     "expands": [
+      {
+       "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+       "name": "Stafford38.Weyl.PresentedScalarExtension.FilteredInitialLifting",
+       "line": 559
+      }
+     ]
+    },
+    {
+     "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+     "role": "helper",
+     "name": "Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_isPBWMonicAt",
+     "line": 326
+    },
+    {
+     "file": "Stafford38/CanonicalSupportVanishingReduction.lean",
+     "role": "definition",
+     "name": "Stafford38.CanonicalSupportVanishingReduction.AlgebraicallyClosedCanonicalSupportVanishing",
+     "line": 114
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Existence of an embedding of a f.g. char-0 field into C is unstated/uncited",
+     "fix": "Cite (countable transcendence degree, C alg. closed of continuum tr.deg) or replace by base change to an algebraic closure as in Lean.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-08",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Monic normal form established over k; must note normal-form coefficients lie in k0",
+     "fix": "State d~ in A_n(k0) with the same normal form.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-09",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ]
+  },
+  {
+   "id": "rem:transport",
+   "section": "4",
+   "kind": "Remark",
+   "number": "4.3",
+   "short": "Rem 4.3",
+   "title": "Transport back along \u03a6_g",
+   "pdf_page": 12,
+   "tex_lines": [
+    695,
+    706
+   ],
+   "label": "rem:transport",
+   "statement_relation": "exact",
+   "route_relation": "same",
+   "correspondence": null,
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/FixedSourceAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing",
+     "line": 21
+    },
+    {
+     "file": "Stafford38/Weyl/Symplectic.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylSymplectic.standardSymplecticAlgEquivOfInverse_symm_generator",
+     "line": 116
+    },
+    {
+     "file": "Stafford38/UniversalAssembly.lean",
+     "role": "main-proof",
+     "name": "Stafford38.UniversalAssembly.universalStatement_of_canonicalSupportVanishing",
+     "line": 66
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Centrality of c^{-1} (needed to move it past F and d) not stated",
+     "fix": "Add 'since c^{-1} is central'.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-10",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Remark ends with a comma; display lacks 'where'",
+     "fix": "Punctuate.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-11",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "prop:monic"
+   ],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ]
+  },
+  {
+   "id": "def:monic-xi1",
+   "section": "4",
+   "kind": "Definition",
+   "number": "4.4",
+   "short": "Def 4.4",
+   "title": "Monic of degree N in \u03be\u2081",
+   "pdf_page": 13,
+   "tex_lines": [
+    713,
+    720
+   ],
+   "statement_relation": "exact",
+   "route_relation": "n/a",
+   "correspondence": "exact (Lean: Polynomial.Monic in X_{inr 0} over MvPolynomial in the other variables)",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/NormalSymbolPolynomial.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic",
+     "line": 92
+    },
+    {
+     "file": "Stafford38/Characteristic/NormalSymbolPolynomial.lean",
+     "role": "source citation",
+     "name": "Stafford38.Characteristic.NormalSymbolPolynomial.normalSymbolAlgEquiv",
+     "line": 24
+    }
+   ],
+   "issues": [],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ],
+   "label": "def:monic-xi1"
+  },
+  {
+   "id": "lem:order-symbol",
+   "section": "4",
+   "kind": "Lemma",
+   "number": "4.5",
+   "short": "Lem 4.5",
+   "title": "Order symbol P(\u03be), monic in \u03be\u2081",
+   "pdf_page": 13,
+   "tex_lines": [
+    721,
+    756
+   ],
+   "label": "lem:order-symbol",
+   "statement_relation": "exact",
+   "route_relation": "same",
+   "correspondence": "exact (hypothesis formulated as IsPBWMonicAt instead of a_j bounds)",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/InitialIdeal.lean",
+     "role": "statement",
+     "name": "Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_isFibreOnly",
+     "line": 313
+    },
+    {
+     "file": "Stafford38/Geometry/ConormalAxisContradiction.lean",
+     "role": "statement",
+     "name": "Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_isHomogeneous",
+     "line": 57
+    },
+    {
+     "file": "Stafford38/Characteristic/InitialIdeal.lean",
+     "role": "statement",
+     "name": "Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_pureMomentumCoefficient",
+     "line": 298
+    },
+    {
+     "file": "Stafford38/Geometry/ConormalAxisContradiction.lean",
+     "role": "statement",
+     "name": "Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_eval_pureMomentumAxis",
+     "line": 126
+    },
+    {
+     "file": "Stafford38/Characteristic/NormalSymbolPolynomial.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic",
+     "line": 92
+    }
+   ],
+   "issues": [
+    {
+     "severity": "editorial",
+     "summary": "Hard-coded tags (3.1),(3.2) in Section 4 (and (2.3) in Section 5) clash with numbering; 'set N=deg_B d~' redundant",
+     "fix": "Use automatic numbering; drop redundant clause.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-12",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Should note PBW reordering of p^j a_j only creates lower-order terms",
+     "fix": "Add one sentence.",
+     "aicomment": null,
+     "auditor": "A",
+     "id": "S4-13",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "prop:monic"
+   ],
+   "in_graph": true,
+   "graph_sub": "order symbol",
+   "graph_order": 0,
+   "auditors": [
+    "A"
+   ]
+  },
+  {
+   "id": "eq:I-Q",
+   "section": "5",
+   "kind": "Definition",
+   "number": "5.1",
+   "short": "I, Q",
+   "title": "Canonical right ideal and quotient",
+   "pdf_page": 14,
+   "tex_lines": [
+    759,
+    762
+   ],
+   "label": "eq:I-Q",
+   "statement_relation": "exact",
+   "route_relation": "n/a",
+   "correspondence": "Lean Euler element is theta x p = x*p, same as paper E = x_1 p; Weyl relation p*x = x*p+1 (pairMomentum_mul_coordinate, Stafford38/Ore/PairStage.lean:80).",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/EulerResidue.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylEulerResidue.canonicalRightIdeal",
+     "line": 22
+    },
+    {
+     "file": "Stafford38/Weyl/QuotientTransport.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylQuotientTransport.presentedCanonicalRightIdeal",
+     "line": 95
+    },
+    {
+     "file": "Stafford38/Quotient/EulerSurjectivity.lean",
+     "role": "definition",
+     "name": "Stafford38.EulerSurjectivity.rightMul",
+     "line": 26
+    },
+    {
+     "file": "proofs/weyl_pure_power.lean",
+     "role": "definition",
+     "name": "Stafford.eulerPolynomialEval",
+     "line": 314
+    }
+   ],
+   "issues": [
+    {
+     "severity": "editorial",
+     "summary": "'subsection' should be 'section'",
+     "fix": "reword",
+     "aicomment": null,
+     "auditor": "B",
+     "id": "S5-01",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "B"
+   ]
+  },
+  {
+   "id": "euler-grading",
+   "section": "5",
+   "kind": "Paragraph",
+   "number": "5.2",
+   "short": "Euler grading",
+   "title": "Euler grading and A_{\u22650}; relations (2.4)",
+   "pdf_page": 14,
+   "tex_lines": [
+    763,
+    784
+   ],
+   "label": "eq:nonnegative-pbw",
+   "statement_relation": "equivalent",
+   "route_relation": "different",
+   "correspondence": "Lean never defines the Euler grading; R is the subring generated by transverse algebra, x, x*p.\n\nLean proves only one-sided x R \u2286 R x, which is all that is used.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/EulerSubring.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylEulerSubring.eulerSubring",
+     "line": 22
+    },
+    {
+     "file": "Stafford38/Weyl/EulerSubring.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylEulerSubring.pairEulerSubring",
+     "line": 181
+    },
+    {
+     "file": "Stafford38/Weyl/EulerSubring.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylEulerSubring.pairOrderedMonomial_mem_eulerSubring",
+     "line": 200
+    },
+    {
+     "file": "Stafford38/Weyl/EulerSubring.lean",
+     "role": "main-proof",
+     "name": "Stafford38.WeylEulerSubring.coordinate_normal_eulerSubring",
+     "line": 68
+    },
+    {
+     "file": "Stafford38/Weyl/EulerSubring.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylEulerSubring.normalAcross",
+     "line": 27
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Generation of A_{>=0} by T, E, x_1 asserted without proof; needs lem:euler (forward reference) and the homogeneous decomposition of A_n.",
+     "fix": "Define A_{>=0} as the subring generated by T, x_1, E (as Lean does) or move lem:euler earlier and add: b x^{e+c}p^c = b x^e (x^c p^c) = b x^e f_c(E).",
+     "aicomment": null,
+     "auditor": "B",
+     "id": "S5-02",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Notation A_{\\geq0} vs A^{\\geq0} mixed",
+     "fix": "unify",
+     "aicomment": null,
+     "auditor": "B",
+     "id": "S5-03",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "All four relations (2.4) verified correct. Normality justified only by 'x_1 commutes with transverse algebra'; the essential input x_1E=(E-1)x_1 is not cited.",
+     "fix": "x_1 r = r' x_1 with r' obtained by substituting E-1 for E.",
+     "aicomment": null,
+     "auditor": "B",
+     "id": "S5-04",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "B"
+   ]
+  },
+  {
+   "id": "lem:euler",
+   "section": "5",
+   "kind": "Lemma",
+   "number": "5.1",
+   "short": "Lem 5.1",
+   "title": "Euler products",
+   "pdf_page": 14,
+   "tex_lines": [
+    785,
+    814
+   ],
+   "label": "lem:euler",
+   "statement_relation": "paper-wrong",
+   "route_relation": "same",
+   "correspondence": "The original products are false for the displayed Euler operator E=x\u2081p; the red replacements are the correct falling and rising products. Paper P2 cites the public evaluation identities in Stafford38/Weyl/EulerProductIdentities.lean, together with the existing power-multiplication helper. Both public identities are present at pinned formal source A3.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/EulerProductIdentities.lean",
+     "role": "statement",
+     "name": "Stafford38.Weyl.EulerProductIdentities.eval_fallingEulerProduct",
+     "line": 308
+    },
+    {
+     "file": "Stafford38/Weyl/EulerProductIdentities.lean",
+     "role": "statement",
+     "name": "Stafford38.Weyl.EulerProductIdentities.eval_risingEulerProduct",
+     "line": 317
+    },
+    {
+     "file": "proofs/weyl_pure_power.lean",
+     "role": "helper",
+     "name": "Stafford.exists_eulerPolynomial_x_pow_mul_d_pow",
+     "line": 331
+    }
+   ],
+   "issues": [
+    {
+     "severity": "critical",
+     "summary": "Both displayed formulas are wrong by a shift for E=x_1p: m=1 gives x_1p=E (paper: E-1) and px_1=E+1 (paper: E). Correct: x^m p^m=prod_{i=0}^{m-1}(E-i), p^m x^m=prod_{i=1}^m(E+i) (= Lean fallingPoly/risingPoly). Induction step silently uses x_1p=E-1. Formulas are proof_map's, valid for E=px. Downstream only disjointness of roots is used, so the section's conclusion survives.",
+     "fix": "Adopt ALG-02's formulas; end induction with prod_{i=1}^m(E-i)*E; second identity via p f(E)=f(E+1)p and px_1=E+1.",
+     "aicomment": "ALG-02 (agree)",
+     "auditor": "B",
+     "id": "S5-05",
+     "status": "open pending review"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": true,
+   "graph_sub": "Euler products",
+   "graph_order": 1,
+   "auditors": [
+    "B"
+   ]
+  },
+  {
+   "id": "lem:euler-residue",
+   "section": "5",
+   "kind": "Lemma",
+   "number": "5.2",
+   "short": "Lem 5.2",
+   "title": "Euler residue 1 + U x\u2081 \u2208 I",
+   "pdf_page": 15,
+   "tex_lines": [
+    815,
+    882
+   ],
+   "label": "lem:euler-residue",
+   "statement_relation": "exact",
+   "route_relation": "different",
+   "correspondence": "positiveEulerResidue_identity is a pure noncomm_ring identity with Bezout as hypothesis (does not construct Euler products). Lean proves w = U x by explicit per-monomial factorization of left-coefficient normal form c x^a p^j (j<N), both for sigma x^N and x^N sigma, then moves u(E),v(E) across x by normality; no grading/weight argument. proof_map provbox 'negative-weight divisibility (EulerSurjectivity.lean)' is inaccurate.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Weyl/EulerResidue.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylEulerResidue.positiveEulerResidue_identity",
+     "line": 37
+    },
+    {
+     "file": "Stafford38/Weyl/EulerResidue.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylEulerResidue.positiveEulerResidue_polynomial_mem",
+     "line": 80
+    },
+    {
+     "file": "proofs/weyl_pure_power.lean",
+     "role": "helper",
+     "name": "Stafford.euler_products_right_bezout_exists",
+     "line": 393
+    },
+    {
+     "file": "proofs/weyl_pure_power.lean",
+     "role": "helper",
+     "name": "Stafford.euler_products_polynomial_right_bezout_exists",
+     "line": 429
+    },
+    {
+     "file": "Stafford38/Weyl/EulerRemainder.lean",
+     "role": "definition",
+     "name": "Stafford38.WeylEulerRemainder.HasPositiveCoordinateFactor",
+     "line": 42
+    },
+    {
+     "file": "Stafford38/Weyl/EulerRemainder.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylEulerRemainder.pairOrderedMonomial_hasPositiveCoordinateFactor",
+     "line": 85
+    },
+    {
+     "file": "Stafford38/Weyl/EulerSubring.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylEulerSubring.pairOrderedMonomial_eq_eulerSubring_mul_coordinate",
+     "line": 234
+    },
+    {
+     "file": "Stafford38/Weyl/EulerRemainder.lean",
+     "role": "main-proof",
+     "name": "Stafford38.WeylEulerRemainder.positiveEulerResidue_eq_eulerSubring_mul_coordinate",
+     "line": 254
+    },
+    {
+     "file": "Stafford38/Weyl/EulerRemainder.lean",
+     "role": "statement",
+     "name": "Stafford38.WeylEulerRemainder.presentedPositiveEulerResidue",
+     "line": 402
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "R_+/R_- are said to come from lem:euler but contradict it as stated (they are the correct ALG-02 products).",
+     "fix": "Fix lem:euler per ALG-02.",
+     "aicomment": "ALG-02",
+     "auditor": "B",
+     "id": "S5-06",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "Stated root sets {0,...,1-N} and {1,...,N} are wrong for the displayed R_+, R_- (actual: {-1,...,-N} and {0,...,N-1}); still disjoint, conclusion unaffected.",
+     "fix": "Correct the sets.",
+     "aicomment": null,
+     "auditor": "B",
+     "id": "S5-07",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Ordering inconsistency: Sigma=sum p^j a_j but text treats terms 'a_j p^j', 'b x_1^r p^j'. Harmless since Euler degree is ordering-independent.",
+     "fix": "Write 'a term p^j b x_1^r of p^j a_j'.",
+     "aicomment": null,
+     "auditor": "B",
+     "id": "S5-08",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "'Positive Euler degree implies in A_{>=0} x_1' is unproved (needs A_{>=1} \u2286 A_{>=0}x_1 and homogeneous decomposition); proof_map's lem:weight was dropped.",
+     "fix": "Reinstate lem:weight in Euler-degree form: in basis b p^c x_1^a, degree a-c>=1 forces a>=1 and b p^c x_1^a = (b p^c x_1^{a-1}) x_1; or follow Lean's explicit monomial factorization.",
+     "aicomment": null,
+     "auditor": "B",
+     "id": "S5-09",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Leftover \\AIreplace{so and}{and}; A_{\\geq0}/A^{\\geq0}.",
+     "fix": "clean up",
+     "aicomment": null,
+     "auditor": "B",
+     "id": "S5-10",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "lem:euler",
+    "prop:monic"
+   ],
+   "in_graph": true,
+   "graph_sub": "Euler residue",
+   "graph_order": 0,
+   "auditors": [
+    "B"
+   ]
+  },
+  {
+   "id": "prop:x-surjective",
+   "section": "5",
+   "kind": "Proposition",
+   "number": "5.3",
+   "short": "Prop 5.3",
+   "title": "Right multiplication by x\u2081 on Q is surjective",
+   "pdf_page": 16,
+   "tex_lines": [
+    883,
+    929
+   ],
+   "label": "prop:x-surjective",
+   "statement_relation": "exact",
+   "route_relation": "similar",
+   "correspondence": "Argument checked correct. mp=m'E is right for E=x_1p (proof_map has E-1 for E=px). Lean hypothesis IsPBWMonicAt k (.inr 0) N d (Bernstein degree<=N, coeff of p^N =1) matches eq:monic-d; only p-monicity used. Works over any char-0 k.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Quotient/EulerSurjectivity.lean",
+     "role": "main-proof",
+     "name": "Stafford38.EulerSurjectivity.rightMul_surjective_of_euler_normal",
+     "line": 80
+    },
+    {
+     "file": "Stafford38/Quotient/EulerSurjectivity.lean",
+     "role": "helper",
+     "name": "Stafford38.EulerSurjectivity.preservers",
+     "line": 39
+    },
+    {
+     "file": "Stafford38/Weyl/EulerSubring.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylEulerSubring.closure_eulerSubring_union_momentum_eq_top",
+     "line": 99
+    },
+    {
+     "file": "Stafford38/Weyl/EulerRemainder.lean",
+     "role": "helper",
+     "name": "Stafford38.WeylEulerRemainder.closure_pairOldSubring_union_coordinate_momentum_eq_top",
+     "line": 307
+    },
+    {
+     "file": "Stafford38/Weyl/EulerRemainder.lean",
+     "role": "statement",
+     "name": "Stafford38.WeylEulerRemainder.presentedCanonicalQuotient_rightMul_coordinate_surjective",
+     "line": 421
+    },
+    {
+     "file": "Stafford38/Weyl/QuotientTransport.lean",
+     "role": "statement",
+     "name": "Stafford38.WeylQuotientTransport.presentedCanonicalRightQuotient_rightMul_coordinate_surjective",
+     "line": 236
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "'stable under C since elements of C have Euler degree 0' is false (x_1 has degree 1); correct reason C \u2286 A_{>=0}.",
+     "fix": "As ALG-03.",
+     "aicomment": "ALG-03 (agree)",
+     "auditor": "B",
+     "id": "S5-11",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Should say m' in qA_{>=0} by (2.6); notation A_{\\geq0}/A^{\\geq0}.",
+     "fix": "reword",
+     "aicomment": null,
+     "auditor": "B",
+     "id": "S5-12",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "lem:euler-residue"
+   ],
+   "in_graph": true,
+   "graph_sub": "Q = Q x\u2081",
+   "graph_order": 0,
+   "auditors": [
+    "B"
+   ]
+  },
+  {
+   "id": "vc-setup",
+   "section": "6",
+   "kind": "Setup",
+   "number": "",
+   "short": "Setup \u00a76",
+   "title": "M = gr Q, T, V, U",
+   "pdf_page": 17,
+   "tex_lines": [
+    931,
+    948
+   ],
+   "statement_relation": "exact",
+   "route_relation": "n/a",
+   "correspondence": "Lean indexes n+1 variables; paper n=1 <-> Lean n=0 (T k 0 = k). Lean field: any char-0 k with Algebra Q k.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/CanonicalGradedTangentialEquivalences.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.CanonicalGradedTangentialEquivalences.Graded",
+     "line": 29
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalGradedTangentialEquivalences.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.CanonicalGradedTangentialEquivalences.T",
+     "line": 30
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalOldTangentialFiniteness.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.CanonicalOldTangentialFiniteness.oldCoordinateMap",
+     "line": 36
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "C denotes both A_{n-1}(k)[x_1] (conv:pair) and the symbol ring T[x_1,xi_1].",
+     "fix": "Rename the commutative symbol ring (e.g. S=k0[x,xi]).",
+     "aicomment": "NOTATION-01",
+     "auditor": "C",
+     "id": "S6-01",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "editorial",
+     "summary": "R_{x_1} (right mult. on Q) used for multiplication by the symbol x_1 on M; x vs x_1 inconsistent later.",
+     "fix": "Write 'multiplication by the symbol x_1' and use x_1 throughout.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-02",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "C"
+   ]
+  },
+  {
+   "id": "def:length",
+   "section": "6",
+   "kind": "Definition",
+   "number": "6.1",
+   "short": "Def 6.1",
+   "title": "Length",
+   "pdf_page": 17,
+   "tex_lines": [
+    949,
+    956
+   ],
+   "statement_relation": "none",
+   "route_relation": "n/a",
+   "correspondence": "Mathlib Module.length / IsFiniteLength used in Lean.",
+   "route": null,
+   "lean": [],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Defines length for 'finite T-modules', but finitely generated T-modules need not have finite length; used over T_q.",
+     "fix": "Define length for modules of finite length over any ring R; cite Jordan-Hoelder.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-03",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "C"
+   ],
+   "label": "def:length"
+  },
+  {
+   "id": "lem:tangential-finiteness",
+   "section": "6",
+   "kind": "Lemma",
+   "number": "6.2",
+   "short": "Lem 6.2",
+   "title": "Tangential finiteness",
+   "pdf_page": 18,
+   "tex_lines": [
+    957,
+    992
+   ],
+   "label": "lem:tangential-finiteness",
+   "statement_relation": "exact",
+   "route_relation": "same",
+   "correspondence": "Lean proves support inclusion over C (Noetherian Hopfian) and descends to T by prime avoidance.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/CanonicalOldTangentialFiniteness.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.CanonicalOldTangentialFiniteness.canonical_finite_old_coordinate_kernel_cokernel",
+     "line": 70
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalTangentialSymbolFiniteness.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_tangential_coordinate",
+     "line": 113
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalNormalSymbolFiniteness.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalNormalSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_normalCoeffRing",
+     "line": 44
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/MonicAnnihilatorFinite.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.MonicAnnihilatorFinite.finite_of_monic_annihilator",
+     "line": 18
+    },
+    {
+     "file": "Stafford38/Characteristic/NormalSymbolPolynomial.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic",
+     "line": 92
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/EndomorphismKernelSupportOverBase.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.endomorphism_kernel_support_subset_cokernel_support_over_base",
+     "line": 14
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/MinimalSupportKernelCokernelLengths.lean",
+     "role": "statement",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.localized_kernel_and_cokernel_isFiniteLength",
+     "line": 45
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Forward reference to cor:charP (Section 7) for P in Ann M (not circular).",
+     "fix": "Move cor:charP before Section 6.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-04",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Needs that coefficients of P (as polynomial in xi_1) lie in T.",
+     "fix": "Cite lem:order-symbol: coefficients in k0[xi_2..xi_n] subset T.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-05",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Citation syntax \\cite{matsumura}[Theorem 2.4]; 'Vasconcelo's'; bib entries matsumura/nakayama contain stray '<div></div>'; leftover URL comment.",
+     "fix": "\\cite[Theorem~2.4]{matsumura}; fix bib entries.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-06",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Finite length of V_q when q not in Supp V not addressed (trivially V_q=0).",
+     "fix": "Add the case split as in Lean.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-07",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "cor:charP"
+   ],
+   "in_graph": true,
+   "graph_sub": "finiteness over T",
+   "graph_order": 1,
+   "auditors": [
+    "C"
+   ]
+  },
+  {
+   "id": "lem:page-inequality",
+   "section": "6",
+   "kind": "Lemma",
+   "number": "6.3",
+   "short": "Lem 6.3",
+   "title": "Filtered-page inequality \u2113(U_q) \u2264 \u2113(V_q)",
+   "pdf_page": 18,
+   "tex_lines": [
+    993,
+    1146
+   ],
+   "label": "lem:page-inequality",
+   "statement_relation": "exact",
+   "route_relation": "similar",
+   "correspondence": "Lean page definitions (AA FilteredTwoTermPages cycles/boundaries) are identical to paper's A_r, B_r. Euler surjectivity is used here, not in the strict inequality.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/CanonicalPageEulerInequality.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.CanonicalPageEulerInequality.canonicalPage_length_target_le_source",
+     "line": 22
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalFilteredTwoTerm.lean",
+     "role": "definition",
+     "name": "Stafford38.Characteristic.CanonicalFilteredTwoTerm.canonicalFilteredTwoTerm",
+     "line": 111
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalFilteredTwoTerm.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalFilteredTwoTerm.canonicalFilteredTwoTerm_f_surjective",
+     "line": 129
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalTangentialBoundaryMaps.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalTangentialTotalAction.tangentialBoundaryMap_eventually_zero",
+     "line": 52
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/FilteredTwoTermBoundaryExhaustion.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.FilteredTwoTermPages.FilteredTwoTerm.totalBoundaryMap_eventually_zero",
+     "line": 119
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/UniformBoundaryVanishing.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.exists_uniform_subsingleton_localized",
+     "line": 103
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/TwoTermPageLength.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.TwoTermPageLength.twoTermPage_length_target_le_source",
+     "line": 16
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalTangentialTotalAction.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalTangentialTotalAction.generator_commutator_lowers",
+     "line": 35
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalTangentialSuccessors.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalTangentialTotalAction.tangentialSourceSuccEquiv",
+     "line": 77
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalGradedTangentialEquivalences.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalGradedTangentialEquivalences.firstSourceGradedKernelEquiv",
+     "line": 155
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalGradedTangentialEquivalences.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.CanonicalGradedTangentialEquivalences.firstTargetGradedCokernelEquiv",
+     "line": 160
+    }
+   ],
+   "issues": [
+    {
+     "severity": "major",
+     "summary": "Proof localizes Q at T\\q, but T does not act on Q (tangential x_i, d_i do not commute); Q_q undefined; T-module structure on pages never defined, so A_1=V_q, B_1=U_q and T-linearity of d_r are unproved.",
+     "fix": "Define T-action on pages via right multiplication by transverse generators (commute with x_1; commutators lower filtration); localize only pages (Lean CanonicalTangentialTotalAction).",
+     "aicomment": "ALG-04",
+     "auditor": "C",
+     "id": "S6-08",
+     "status": "open at frozen source"
+    },
+    {
+     "severity": "major",
+     "summary": "Exhaustion argument ('iterated-preimage process ... only finitely many times') is unjustified and not the needed argument; also done after the illegitimate localization.",
+     "fix": "Before localizing: z in G^p, z = w x_1 (Prop 5.3), w in G^{p-r+1} by exhaustiveness, so z in G^p cap R_{x1}(G^{p-r+1}) and u -> 0 in B_r; max over homogeneous components; then u=m/s localizes (Lean pointwise_boundary_exhaustion, exists_uniform_subsingleton_localized).",
+     "aicomment": "ALG-04",
+     "auditor": "C",
+     "id": "S6-09",
+     "status": "open at frozen source"
+    },
+    {
+     "severity": "minor",
+     "summary": "'one checks directly' A_{r+1}=ker d_r, B_{r+1}=coker d_r is nontrivial (representative correction by G^{p+1}).",
+     "fix": "Give the argument or cite a spectral-sequence reference.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-10",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Corrected main.tex version still says 'The same holds after localization' for exhaustion.",
+     "fix": "Use the before/after-localization text above.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-11",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "prop:x-surjective",
+    "lem:tangential-finiteness"
+   ],
+   "in_graph": true,
+   "graph_sub": "\u2113(U) \u2264 \u2113(V)",
+   "graph_order": 0,
+   "auditors": [
+    "C"
+   ]
+  },
+  {
+   "id": "lem:strict-support-inequality",
+   "section": "6",
+   "kind": "Lemma",
+   "number": "6.4",
+   "short": "Lem 6.4",
+   "title": "Strict inequality \u2113(U_q) > \u2113(V_q)",
+   "pdf_page": 21,
+   "tex_lines": [
+    1147,
+    1247
+   ],
+   "label": "lem:strict-support-inequality",
+   "statement_relation": "exact",
+   "route_relation": "same",
+   "correspondence": "Lean's strict inequality uses Gabber + monic homogeneous symbol, NOT Euler surjectivity; docs/proof-guide.md l.67-71 misdescribes this and reverses the first inequality.",
+   "route": null,
+   "lean": [
+    {
+     "file": "AlgebraicAnalysis/Module/BaseLocalizedKoszulPositivity.lean",
+     "role": "statement",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.BaseLocalizedKoszulPositivity.localized_length_cokernel_gt_kernel",
+     "line": 22
+    },
+    {
+     "file": "Stafford38/Characteristic/NoncharacteristicMinimalPrime.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Characteristic.NoncharacteristicMinimalPrime.canonical_minimalPrime_mem_of_normalCoordinate_false",
+     "line": 107
+    },
+    {
+     "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
+     "role": "helper",
+     "name": "Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive",
+     "line": 141,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+       "line": 30
+      }
+     ]
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/LocalizedMinimalSupportAvoidance.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.LocalizedMinimalSupportAvoidance.localized_minimalPrime_avoids",
+     "line": 72
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/BaseLocalizationModuleComparison.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.BaseLocalizationModuleComparison.localizedModuleComparison",
+     "line": 67
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/PrincipalKoszulMinimalSupportPositivity.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.PrincipalKoszulMinimalSupportPositivity.length_cokernel_gt_kernel_of_minimal_support",
+     "line": 27
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/PrincipalKoszulSupportOverBase.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.PrincipalKoszulSupportOverBase.length_cokernel_gt_kernel_of_support_over_base",
+     "line": 28
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/StableTorsionResidualSupport.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.StableTorsionResidualSupport.residual_nontrivial_of_support",
+     "line": 26
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/PrincipalKoszulPositivity.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.PrincipalKoszulPositivity.length_cokernel_eq_kernel_add_regular_quotient",
+     "line": 107
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/PrincipalKoszulFiniteTorsion.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.PrincipalKoszulFiniteTorsion.length_cokernel_gt_kernel_of_stable_power_and_nonzero",
+     "line": 76
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Depends on lem:componentwise-involutive whose proof assumes Char(M) is a radical ideal; Lean proves involutivity of minimal primes directly.",
+     "fix": "Use sqrt(Ann gr M) per ALG-01, or state Gabber in minimal-prime form.",
+     "aicomment": "ALG-01",
+     "auditor": "C",
+     "id": "S6-12",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "With the paper's bracket convention {x_1,g} = -dg/dxi_1; N-th bracket is (-1)^N N!.",
+     "fix": "Say 'up to sign'.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-13",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Typo {x_1,{x,P}}; N! claim should cite lem:order-symbol (homogeneous, coefficient 1 of xi_1^N).",
+     "fix": "Correct typo; cite.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-14",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "editorial",
+     "summary": "Duplicated kernel-chain paragraph with undefined \\cots.",
+     "fix": "Delete the first version (l.761-771).",
+     "aicomment": "EDIT-02",
+     "auditor": "C",
+     "id": "S6-15",
+     "status": "red-proposal-present; acceptance/review pending"
+    },
+    {
+     "severity": "minor",
+     "summary": "Persistence of minimal-prime avoidance under localization asserted without argument (needs Ann commutes with localization for finite M).",
+     "fix": "One sentence; Lean annihilator_localizedModule / localized_minimalPrime_avoids.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-16",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "P in p uses cor:charP (forward reference).",
+     "fix": "Move cor:charP earlier.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-17",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "ithm:gabber",
+    "lem:componentwise-involutive",
+    "lem:tangential-finiteness",
+    "lem:order-symbol"
+   ],
+   "in_graph": true,
+   "graph_sub": "\u2113(U) > \u2113(V)",
+   "graph_order": 1,
+   "auditors": [
+    "C"
+   ]
+  },
+  {
+   "id": "lem:Uzero",
+   "section": "6",
+   "kind": "Lemma",
+   "number": "6.5",
+   "short": "Lem 6.5",
+   "title": "U = M / x\u2081M = 0",
+   "pdf_page": 23,
+   "tex_lines": [
+    1248,
+    1262
+   ],
+   "label": "lem:Uzero",
+   "statement_relation": "exact",
+   "route_relation": "same",
+   "correspondence": "Both inequalities localized at q.asIdeal.primeCompl in T k n = MvPolynomial (Fin n + Fin n) k, q minimal in Supp_T(U).",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/CanonicalKoszulContradiction.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.coordinate_cokernel_subsingleton",
+     "line": 83
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalKoszulContradiction.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.no_minimal_coordinate_cokernel_support",
+     "line": 47
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalKoszulContradiction.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.coordinate_quotSMulTop_subsingleton",
+     "line": 97
+    },
+    {
+     "file": "AlgebraicAnalysis/Module/MinimalSupportExistence.lean",
+     "role": "helper",
+     "repo": "library",
+     "name": "AlgebraicAnalysis.MinimalSupportExistence.exists_minimal_support_prime",
+     "line": 18
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Existence of a minimal support prime needs U finite over Noetherian T.",
+     "fix": "Cite lem:tangential-finiteness explicitly.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S6-18",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "lem:page-inequality",
+    "lem:strict-support-inequality"
+   ],
+   "in_graph": true,
+   "graph_sub": "U = 0",
+   "graph_order": 0,
+   "auditors": [
+    "C"
+   ]
+  },
+  {
+   "id": "cor:charP",
+   "section": "7",
+   "kind": "Corollary",
+   "number": "7.1",
+   "short": "Cor 7.1",
+   "title": "Char(Q) \u2286 V(P)",
+   "pdf_page": 23,
+   "tex_lines": [
+    1264,
+    1281
+   ],
+   "label": "cor:charP",
+   "statement_relation": "exact",
+   "route_relation": "similar",
+   "correspondence": "Lean: Ann gr Q = order initial ideal of I; symbol of d in it.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/InitialIdeal.lean",
+     "role": "statement",
+     "name": "Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_mem_initialIdeal",
+     "line": 277
+    },
+    {
+     "file": "Stafford38/Characteristic/AssociatedGradedModule.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicAssociatedGradedModule.annihilator_orderAssociatedGradedModule",
+     "line": 370
+    },
+    {
+     "file": "Stafford38/Characteristic/InitialIdeal.lean",
+     "role": "statement",
+     "name": "Stafford38.CharacteristicInitialIdeal.canonical_orderCharacteristicSupport_subset_principal_zeroLocus",
+     "line": 287
+    }
+   ],
+   "issues": [
+    {
+     "severity": "editorial",
+     "summary": "Ann_{k[x,xi]} should be k0[x,xi]; corollary placed after Section 6 which uses it.",
+     "fix": "Fix field; move before Section 6.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S7-01",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Uses that d~ has order exactly N with order symbol P.",
+     "fix": "Cite lem:order-symbol.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S7-02",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "lem:order-symbol"
+   ],
+   "in_graph": true,
+   "graph_sub": "Char \u2286 V(P)",
+   "graph_order": 0,
+   "auditors": [
+    "C"
+   ]
+  },
+  {
+   "id": "prop:char-avoids",
+   "section": "7",
+   "kind": "Proposition",
+   "number": "7.2",
+   "short": "Prop 7.2",
+   "title": "Char(Q) \u2229 \u03c0\u207b\u00b9(H) = \u2205",
+   "pdf_page": 24,
+   "tex_lines": [
+    1282,
+    1320
+   ],
+   "label": "prop:char-avoids",
+   "statement_relation": "equivalent",
+   "route_relation": "same",
+   "correspondence": "Lean: Disjoint(Supp of transposed gr Q, zeroLocus{x_1}) in Spec k[x,xi], any char-0 field (PaperInputs adds IsAlgClosed, unneeded). Transposition is an interface artifact, undone by transposedSupport_disjoint_axis_iff.",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Characteristic/CanonicalKoszulContradiction.lean",
+     "role": "statement",
+     "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance",
+     "line": 120
+    },
+    {
+     "file": "Stafford38/Characteristic/CanonicalSupportAvoidanceFromCokernel.lean",
+     "role": "main-proof",
+     "name": "Stafford38.Characteristic.CanonicalSupportAvoidanceFromCokernel.canonical_support_avoidance_of_coordinate_cokernel_subsingleton",
+     "line": 23
+    },
+    {
+     "file": "Stafford38/Characteristic/TransposedFilteredModuleSupport.lean",
+     "role": "definition",
+     "name": "Stafford38.CharacteristicTransposedFilteredModuleSupport.transposedOrderAssociatedGradedSupport",
+     "line": 291
+    },
+    {
+     "file": "Stafford38/Characteristic/TransposedFilteredModuleSupport.lean",
+     "role": "helper",
+     "name": "Stafford38.CharacteristicTransposedFilteredModuleSupport.transposedOrderAssociatedGradedSupport_eq_preimage",
+     "line": 299
+    },
+    {
+     "file": "Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean",
+     "role": "helper",
+     "name": "Stafford38.SpecializedNoncharacteristicEquality.transposedSupport_disjoint_axis_iff",
+     "line": 154
+    },
+    {
+     "file": "Stafford38/PaperInputs.lean",
+     "role": "definition",
+     "name": "Stafford38.PaperInputs.CanonicalNoncharacteristicSupportAvoidance",
+     "line": 41
+    },
+    {
+     "file": "Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean",
+     "role": "helper",
+     "name": "Stafford38.SpecializedNoncharacteristicEquality.strictUnitCoordinatePreimage_of_transposedSupport_disjoint_axis",
+     "line": 269,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/CanonicalUnitCoordinatePreimage.lean",
+       "name": "Stafford38.CanonicalUnitCoordinatePreimage.StrictUnitCoordinatePreimage",
+       "line": 49
+      }
+     ]
+    }
+   ],
+   "issues": [
+    {
+     "severity": "minor",
+     "summary": "Proof treats V(x_1) as k^{2n}-points although k was replaced by non-closed k0 and Char is defined in Spec; point form is weaker and does not base-change.",
+     "fix": "State as Ann(gr Q) + (x_1) = k0[x,xi] (empty in Spec), which base-changes to C.",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S7-03",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Lean states avoidance for the transposed (left) module support (xi -> -xi); paper's justification is commented out (l.868).",
+     "fix": "Restore one sentence: transposition maps Char by xi->-xi, fixing pi^{-1}(H).",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S7-04",
+     "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "Supp M = V(Ann M) and Supp(M/xM)=Supp M cap V(x) for finite M used without citation.",
+     "fix": "Cite (Nakayama).",
+     "aicomment": null,
+     "auditor": "C",
+     "id": "S7-05",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [
+    "lem:Uzero"
+   ],
+   "in_graph": true,
+   "graph_sub": "avoids \u03c0\u207b\u00b9(H)",
+   "graph_order": 0,
+   "auditors": [
+    "C"
+   ]
+  },
+  {
+   "id": "dir-def",
+   "section": "8",
+   "kind": "Definition",
+   "number": "",
+   "short": "Dir(Y)",
+   "title": "Projective conormal directions Dir(Y)",
+   "pdf_page": 24,
+   "tex_lines": [
+    1324,
+    1338
+   ],
+   "statement_relation": "equivalent",
+   "route_relation": "n/a",
+   "correspondence": "different-formulation(equivalent): Zariski closure given by homogeneous polynomials; prime ideal I corresponds to irreducible reduced Y; conormal space = annihilator of the Zariski tangent space of I (= the tangent space at smooth points); smoothness via Algebra.smoothLocus; any algebraically closed k instead of C\n\nSame set as the Lean definition. Downstream consumer uses the affine-cone variant (zero locus of vanishing ideal of smoothConormalFibreProjection).",
+   "route": null,
+   "lean": [
+    {
+     "file": "Stafford38/Geometry/ProjectiveConormalDirections.lean",
+     "role": "definition",
+     "name": "Stafford38.Geometry.ProjectiveConormalDirections.projectiveHomogeneousClosure",
+     "line": 29
+    },
+    {
+     "file": "Stafford38/Geometry/ProjectiveConormalDirections.lean",
+     "role": "definition",
+     "name": "Stafford38.Geometry.ProjectiveConormalDirections.smoothConormalDirectionSet",
+     "line": 37
+    },
+    {
+     "file": "Stafford38/Geometry/ProjectiveConormalDirections.lean",
+     "role": "definition",
+     "name": "Stafford38.Geometry.ProjectiveConormalDirections.projectivizedDirectionSet",
+     "line": 50
+    },
+    {
+     "file": "Stafford38/Geometry/SmoothAffineConormal.lean",
+     "role": "definition",
+     "name": "Stafford38.Geometry.SmoothAffineConormal.SmoothAffinePoint",
+     "line": 22
+    },
+    {
+     "file": "Stafford38/Geometry/AffineConormalSpan.lean",
+     "role": "definition",
+     "name": "Stafford38.Geometry.AffineConormalSpan.affineConormalSpace",
+     "line": 71
+    }
+   ],
+   "issues": [
+    {
+     "severity": "editorial",
+     "summary": "Full stop missing after {Z_0=0}; state that Y is reduced (V of a prime) and that (C^n)^* is identified with C^n via dx_i",
+     "fix": "Punctuation; add one clause",
+     "aicomment": null,
+     "auditor": "E",
+     "id": "S8-01",
+     "status": "historical finding; recheck against current excerpt"
+    }
+   ],
+   "depends_on": [],
+   "in_graph": false,
+   "graph_sub": null,
+   "graph_order": 0,
+   "auditors": [
+    "E"
+   ]
+  }
+ ]
+}

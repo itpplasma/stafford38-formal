@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": "2026-10-01.3",
+ "version": "2026-10-01.4",
  "title": "Stafford 3.8: paper \u2194 Lean correspondence audit",
  "subtitle": "Current annotated manuscript mapped to the signed formal release and pinned dependencies.",
  "sources": {
@@ -29,6 +29,11 @@
    "file": "GlobalStafford/Assembly/Closure.lean",
    "name": "GlobalStafford.universalStatement",
    "line": 221
+  },
+  "mathlib": {
+   "repo": "leanprover-community/mathlib4",
+   "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+   "note": "Exact Mathlib dependency pin; standard length definitions."
   }
  },
  "vocab": {
@@ -238,9 +243,9 @@
     54,
     62
    ],
-   "statement_relation": "exact",
+   "statement_relation": "partial",
    "route_relation": "n/a",
-   "correspondence": "The two theorems prove the universal identity and the exact Bernstein-degree strengthening. The displayed proposition definitions spell out the fields, quantifiers and coefficients; the coordinate refinement is for positive Weyl rank.",
+   "correspondence": "The two theorems prove the universal identity and the exact Bernstein-degree strengthening. The displayed proposition definitions spell out the fields, quantifiers and coefficients; the coordinate refinement is for positive Weyl rank. The prose abstract leaves this positive-rank condition unstated, so its full wording is not an exact match yet.",
    "route": null,
    "lean": [
     {
@@ -442,6 +447,20 @@
        "file": "GlobalStafford/Assembly/ChallengeTransport.lean",
        "name": "GlobalStaffordChallenge.UniversalStatement",
        "line": 66
+      },
+      {
+       "repo": "library",
+       "file": "AlgebraicAnalysis/RingTheory/TwoGeneratorIdentity.lean",
+       "name": "AlgebraicAnalysis.TwoGeneratorIdentity",
+       "line": 26,
+       "role": "definition"
+      },
+      {
+       "repo": "library",
+       "file": "AlgebraicAnalysis/DifferentialOperators/Basic.lean",
+       "name": "AlgebraicAnalysis.DifferentialOperators.algebra",
+       "line": 163,
+       "role": "definition"
       }
      ]
     }
@@ -521,7 +540,7 @@
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
-   "correspondence": "At the pinned formal source, Corollary 10.2 and the main noncharacteristic conclusion in Proposition B.2 have Lean counterparts. The broad claim that every numbered statement is formalized remains unsupported: independence of Char from good filtration, general-module Gabber statement, and the paper's symplectic-basis formulation still exceed the mapped Lean statements. See the item-level map for exact scope.",
+   "correspondence": "The headline theorem and registered comparator have proved endpoints; the main noncharacteristic and torsion-cyclicity conclusions are also formalized. The blanket claim about every numbered statement remains too broad: the symplectic-basis formulation of Lemma 4.1 is not encoded as such. The removed filtration-independence text and general-module Gabber scope are historical/out-of-scope generalizations, not current claims in the red replacement.",
    "route": null,
    "lean": [
     {
@@ -606,6 +625,13 @@
      "role": "source citation",
      "name": "Stafford38.WeylIteratedEquivalence.presentedIteratedEquiv",
      "line": 637
+    },
+    {
+     "repo": "library",
+     "file": "AlgebraicAnalysis/Ore/RightPBW.lean",
+     "name": "AlgebraicAnalysis.OreRightPBW.rightOrePBWBasis",
+     "line": 188,
+     "role": "definition"
     }
    ],
    "issues": [
@@ -700,9 +726,9 @@
     269,
     295
    ],
-   "statement_relation": "equivalent",
+   "statement_relation": "partial",
    "route_relation": "n/a",
-   "correspondence": "Defines the cotangent/symbol setup and symplectic pairing used throughout the proof.",
+   "correspondence": "SymbolRing formalizes the ambient cotangent coordinate ring. This card does not map the bundle projection, point/fibre identification or all the symplectic notation; those conventions are not certified by this definition alone.",
    "route": null,
    "lean": [
     {
@@ -774,6 +800,27 @@
      "role": "helper",
      "name": "Stafford38FixedSourceChallengeTransport.bernsteinDegree_eq",
      "line": 230
+    },
+    {
+     "repo": "formal",
+     "file": "Stafford38/Weyl/GradedAlgebra.lean",
+     "name": "Stafford38.WeylAssociatedGraded.presentedAssociatedGradedAlgEquiv",
+     "line": 81,
+     "role": "definition"
+    },
+    {
+     "repo": "formal",
+     "file": "Stafford38/Weyl/GradedAlgebra.lean",
+     "name": "Stafford38.WeylAssociatedGraded.presentedAssociatedGradedMk_mul_bernstein",
+     "line": 165,
+     "role": "statement"
+    },
+    {
+     "repo": "formal",
+     "file": "Stafford38/Weyl/GradedAlgebra.lean",
+     "name": "Stafford38.WeylAssociatedGraded.presentedAssociatedGradedMk_mul_order",
+     "line": 182,
+     "role": "statement"
     }
    ],
    "issues": [
@@ -810,7 +857,7 @@
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
-   "correspondence": "partial (Lean only uses N-indexed quotient filtration of A/I)",
+   "correspondence": "Partial: quotientOrderPiece defines the actual N-indexed differential-order filtration on A/I; a general good filtration on an arbitrary module is not modeled here.",
    "route": null,
    "lean": [
     {
@@ -818,6 +865,12 @@
      "role": "definition",
      "name": "Stafford38.CharacteristicInitialIdeal.orderInitialIdeal",
      "line": 185
+    },
+    {
+     "file": "Stafford38/Characteristic/FilteredQuotient.lean",
+     "role": "definition",
+     "name": "Stafford38.CharacteristicFilteredQuotient.quotientOrderPiece",
+     "line": 110
     }
    ],
    "issues": [
@@ -861,9 +914,9 @@
     331,
     351
    ],
-   "statement_relation": "equivalent",
+   "statement_relation": "partial",
    "route_relation": "n/a",
-   "correspondence": "different-formulation (Lean: Module.support in PrimeSpectrum of gr(A/I); paper: point set)",
+   "correspondence": "Lean defines characteristic support for the cyclic quotient with its quotient order filtration and identifies it with the initial-ideal zero locus. The general finitely generated module/good-filtration definition is not encoded here; the old filtration-independence claim is visibly removed.",
    "route": null,
    "lean": [
     {
@@ -1470,6 +1523,13 @@
      "role": "helper",
      "name": "Stafford38.CharacteristicHomogeneousChart.eval_symbolLinearAlgHom",
      "line": 32
+    },
+    {
+     "repo": "formal",
+     "file": "Stafford38/Characteristic/LinearAction.lean",
+     "name": "Stafford38.CharacteristicLinearAction.symbolLinearAlgEquivOfInverse",
+     "line": 65,
+     "role": "definition"
     }
    ],
    "issues": [
@@ -1760,8 +1820,8 @@
     706
    ],
    "label": "rem:transport",
-   "statement_relation": "exact",
-   "route_relation": "same",
+   "statement_relation": "n/a",
+   "route_relation": "n/a",
    "correspondence": null,
    "route": null,
    "lean": [
@@ -1812,7 +1872,8 @@
    "graph_order": 0,
    "auditors": [
     "A"
-   ]
+   ],
+   "lean_explanation": "Transport prose, not a standalone theorem here. The displayed assembly results are downstream context; the inverse-generator lemma is a supporting identity."
   },
   {
    "id": "def:monic-xi1",
@@ -1943,7 +2004,7 @@
    "pdf_page": 14,
    "tex_lines": [
     759,
-    762
+    763
    ],
    "label": "eq:I-Q",
    "statement_relation": "exact",
@@ -2004,7 +2065,7 @@
    "title": "Euler grading and A_{\u22650}; relations (2.4)",
    "pdf_page": 14,
    "tex_lines": [
-    763,
+    765,
     784
    ],
    "label": "eq:nonnegative-pbw",
@@ -2150,9 +2211,9 @@
     882
    ],
    "label": "lem:euler-residue",
-   "statement_relation": "exact",
+   "statement_relation": "equivalent",
    "route_relation": "different",
-   "correspondence": "positiveEulerResidue_identity is a pure noncomm_ring identity with Bezout as hypothesis (does not construct Euler products). Lean proves w = U x by explicit per-monomial factorization of left-coefficient normal form c x^a p^j (j<N), both for sigma x^N and x^N sigma, then moves u(E),v(E) across x by normality; no grading/weight argument. proof_map provbox 'negative-weight divisibility (EulerSurjectivity.lean)' is inaccurate.",
+   "correspondence": "positiveEulerResidue_identity is a pure noncomm_ring identity with Bezout as hypothesis (does not construct Euler products). Lean proves w = U x by explicit per-monomial factorization of left-coefficient normal form c x^a p^j (j<N), both for sigma x^N and x^N sigma, then moves u(E),v(E) across x by normality; no grading/weight argument. proof_map provbox 'negative-weight divisibility (EulerSurjectivity.lean)' is inaccurate.\n\nThe residue identity concludes in the iterated Ore PairStage representation, even in the declaration named presentedPositiveEulerResidue. It is consumed by the transported presented-quotient surjectivity result on the next card; it is not a literal identity in PresentedWeyl in this declaration.",
    "route": null,
    "lean": [
     {
@@ -2429,11 +2490,26 @@
     949,
     956
    ],
-   "statement_relation": "none",
+   "statement_relation": "equivalent",
    "route_relation": "n/a",
-   "correspondence": "Mathlib Module.length / IsFiniteLength used in Lean.",
+   "correspondence": "Mathlib Module.length is the extended natural-valued length of the submodule lattice; IsFiniteLength records a finite sequence of simple extensions. These are the standard notions used by the formal length inequalities, not missing project-local definitions.",
    "route": null,
-   "lean": [],
+   "lean": [
+    {
+     "repo": "mathlib",
+     "file": "Mathlib/RingTheory/Length.lean",
+     "name": "Module.length",
+     "line": 32,
+     "role": "definition"
+    },
+    {
+     "repo": "mathlib",
+     "file": "Mathlib/RingTheory/FiniteLength.lean",
+     "name": "IsFiniteLength",
+     "line": 30,
+     "role": "definition"
+    }
+   ],
    "issues": [
     {
      "severity": "minor",
@@ -2468,9 +2544,9 @@
    ],
    "label": "lem:tangential-finiteness",
    "statement_relation": "exact",
-   "route_relation": "same",
+   "route_relation": "similar",
    "correspondence": "Lean proves support inclusion over C (Noetherian Hopfian) and descends to T by prime avoidance.",
-   "route": null,
+   "route": "Lean proves the finiteness result through support inclusion and Noetherian Hopfian descent. The current paper proof is incomplete after its annihilator sentence; ALG-04 refers to a proposed correction which is not actually included in the snapshot. The theorem is proved in Lean, but this printed argument remains open for human repair.",
    "lean": [
     {
      "file": "Stafford38/Characteristic/CanonicalOldTangentialFiniteness.lean",
@@ -2717,7 +2793,7 @@
    ],
    "label": "lem:strict-support-inequality",
    "statement_relation": "exact",
-   "route_relation": "same",
+   "route_relation": "similar",
    "correspondence": "Lean's strict inequality uses Gabber + monic homogeneous symbol, NOT Euler surjectivity; docs/proof-guide.md l.67-71 misdescribes this and reverses the first inequality.",
    "route": null,
    "lean": [
@@ -3152,6 +3228,13 @@
      "role": "definition",
      "name": "Stafford38.Geometry.AffineConormalSpan.affineConormalSpace",
      "line": 71
+    },
+    {
+     "repo": "formal",
+     "file": "Stafford38/Geometry/ProjectiveConormalDirections.lean",
+     "name": "Stafford38.Geometry.ProjectiveConormalDirections.smoothConormalFibreProjection",
+     "line": 44,
+     "role": "definition"
     }
    ],
    "issues": [
@@ -3163,6 +3246,14 @@
      "auditor": "E",
      "id": "S8-01",
      "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "id": "DISPLAY-S7-GRAMMAR",
+     "severity": "editorial",
+     "summary": "The sentence about homogeneous coordinates is missing a verb in the current excerpt.",
+     "fix": "Use \"Choose homogeneous coordinates ... and embed\" when editing the manuscript.",
+     "status": "paper prose correction remains for human review",
+     "aicomment": null
     }
    ],
    "depends_on": [],
@@ -3188,7 +3279,7 @@
    "label": "lem:tangent-limit",
    "statement_relation": "lean-stronger",
    "route_relation": "similar",
-   "correspondence": "lean-stronger: any algebraically closed k (no char 0); arbitrary axis; generic fibre = cone over Zariski tangent space; the smoothness field is carried but not needed for the final conclusion; dimY is a free parameter\n\nThe Lean lemma shows smoothness of the generic point is unnecessary when 'tangent' means Zariski tangent.",
+   "correspondence": "The paper passage uses Zariski tangent spaces, while the exported formal wrapper still carries a generic_smooth field in DirectSummandInput. That assumption must not be described as absent from this wrapper; its redundancy under ambient assumptions is a separate argument.",
    "route": "similar: left inverse of a split matrix presentation lifts the annihilator (retraction correction); dehomogenization gives an equation-conormal Laurent point; membership in Dir(Y) comes from scalar-extension vanishing + evaluation at t=0, not a valuative criterion. Auxiliary: NOT on the terminal route (docs/proof-graph.yaml:25-29)",
    "lean": [
     {
@@ -3249,7 +3340,7 @@
      "aicomment": null,
      "auditor": "E",
      "id": "S8-02",
-     "status": "open pending review"
+     "status": "red correction/source passage present; human acceptance pending"
     },
     {
      "severity": "minor",
@@ -3852,7 +3943,7 @@
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "different",
-   "correspondence": "lean-stronger (Lean UniversalStatement covers n=0 too; fixed-source export matches the 'Moreover' clause exactly with F=ell^bernsteinDegree d)\n\npartial / different-formulation: Lean uses AlgebraicClosure k instead of C, reruns the whole argument over k-bar, and descends at the level of initial ideals (in(I_kbar) subset in(I) kbar, unit ideal reflects), not Q_C=0 => Q=0\n\nexact (final identity)\n\nHidden Lean steps without paper counterpart: flat base change of I\u2229F_L to the algebraic closure (FilteredScalarLifting), strictification of support avoidance to an order-zero coordinate predecessor of 1 (strictUnitCoordinatePreimage_of_transposedSupport_disjoint_axis), and the rank-zero case. FoundationClosure.inputs (PaperInputs.Inputs) is also proved but is NOT on the proof term of universalStatement.\n\nThe only xi -> -xi in Lean is in the noncharacteristic block (transposedSupport_disjoint_axis_iff). FoundationClosure.inputs (PaperInputs) route including CanonicalGabberInvolutivityInterface chain is off the universalStatement path.",
+   "correspondence": "lean-stronger (Lean UniversalStatement covers n=0 too; fixed-source export matches the 'Moreover' clause exactly with F=ell^bernsteinDegree d)\n\npartial / different-formulation: Lean uses AlgebraicClosure k instead of C, reruns the whole argument over k-bar, and descends at the level of initial ideals (in(I_kbar) subset in(I) kbar, unit ideal reflects), not Q_C=0 => Q=0\n\nexact (final identity)\n\nHidden Lean steps without paper counterpart: flat base change of I\u2229F_L to the algebraic closure (FilteredScalarLifting), strictification of support avoidance to an order-zero coordinate predecessor of 1 (strictUnitCoordinatePreimage_of_transposedSupport_disjoint_axis), and the rank-zero case. FoundationClosure.inputs (PaperInputs.Inputs) is also proved but is NOT on the proof term of universalStatement.\n\nThe only xi -> -xi in Lean is in the noncharacteristic block (transposedSupport_disjoint_axis_iff). FoundationClosure.inputs (PaperInputs) route including CanonicalGabberInvolutivityInterface chain is off the universalStatement path.\n\nThe displayed paper equality of initial/annihilator ideals after scalar extension is not the cited filteredInitialLifting theorem: that theorem supplies an inclusion. The exact equality remains the separately flagged informal claim on the initial-base-change card; the verified terminal proof uses the inclusion.",
    "route": "different: Lean never passes to C or to a f.g. subfield k0. It proves support vanishing over an arbitrary algebraically closed char-0 field (GeneralCoisotropicCanonicalAdapter), then descends the ORDER INITIAL IDEAL (not the module) from AlgebraicClosure k to k by flat filtered base change of I \u2229 F_L (FilteredScalarLifting), so empty support over k gives Q=0 over k directly (EmptySupportVanishing). Gabber is applied directly to the right quotient's radical annihilator (no (x,xi)->(x,-xi) flip); the sign flip appears only in the transposed-support noncharacteristic step. Chart transport back (Phi_g^{-1}, central c^{-1}) is the same.\n\nsame for Gabber+exclusion application (directly on the right quotient, no xi -> -xi); different for descent\n\ndifferent: Lean descends empty support via initial ideals over AlgebraicClosure k (FilteredInitialLifting), not module faithful flatness over C",
    "lean": [
     {
@@ -4069,7 +4160,7 @@
      "aicomment": null,
      "auditor": "D",
      "id": "S10-04",
-     "status": "open pending review"
+     "status": "red correction/source passage present; human acceptance pending"
     },
     {
      "severity": "minor",
@@ -4318,7 +4409,7 @@
    ],
    "statement_relation": "none",
    "route_relation": "n/a",
-   "correspondence": null,
+   "correspondence": "This is proposed discussion of future work, not a theorem to certify. The current snapshot contains the red outlook replacement; its suggested research directions remain prose.",
    "route": null,
    "lean": [],
    "issues": [
@@ -4329,7 +4420,7 @@
      "aicomment": "EDIT-01",
      "auditor": "F",
      "id": "S11-01",
-     "status": "open at frozen source"
+     "status": "red correction/source passage present; human acceptance pending"
     }
    ],
    "depends_on": [],
@@ -4364,6 +4455,13 @@
      "name": "",
      "module_only": true,
      "line": 1
+    },
+    {
+     "repo": "formal",
+     "file": "docs/paper-lean-audit/workflow-evidence/README.md",
+     "role": "historical provenance",
+     "module_only": true,
+     "note": "History/prompt reconstructions, source protocols and model inventory; provenance rather than mathematical premises."
     }
    ],
    "issues": [],
@@ -4473,10 +4571,10 @@
    "title": "Identity in every right Ore localization",
    "pdf_page": 44,
    "tex_lines": [
-    2144,
+    2145,
     2146
    ],
-   "statement_relation": "exact",
+   "statement_relation": "lean-stronger",
    "route_relation": "same",
    "correspondence": "The paper cites the general right-Ore localization corollary directly.",
    "route": null,
@@ -4542,9 +4640,9 @@
     2149,
     2150
    ],
-   "statement_relation": "exact",
+   "statement_relation": "lean-stronger",
    "route_relation": "same",
-   "correspondence": "The paper cites the unconditional localization theorem; its specializations include principal opens, Laurent-polynomial coefficients, and the fraction field.",
+   "correspondence": "The paper cites the unconditional localization theorem; its specializations include principal opens, Laurent-polynomial coefficients, and the fraction field.\n\nThe Lean theorem handles a submonoid localization of a polynomial algebra, with its localization algebra and scalar-tower instances. Principal opens, Laurent-polynomial coefficients and the fraction field are the stated special cases.",
    "route": null,
    "lean": [
     {
@@ -4577,7 +4675,7 @@
    ],
    "statement_relation": "exact",
    "route_relation": "same",
-   "correspondence": "The cited theorem supplies the stated evolutionary extension.",
+   "correspondence": "The cited theorem supplies the stated evolutionary extension.\n\nThe quantified input is a characteristic-zero field algebra with p*x=x*p+1, r>0, and a finite list of potential terms whose coefficients commute with x and p. For d=p^r-potentialSum it proves 1=dR+x^r*d*S; the coefficients need not commute with one another.",
    "route": null,
    "lean": [
     {
@@ -4609,11 +4707,26 @@
     2188
    ],
    "label": "def:noncar",
-   "statement_relation": "none",
+   "statement_relation": "partial",
    "route_relation": "n/a",
-   "correspondence": "Not formalized; not used by the main proof.",
+   "correspondence": "The general coherent D-module definition is not formalized. Lean defines the affine ideal/cokernel specialization and proves its equivalence to finiteness of R/(J+(x0)); the canonical annihilator is handled on the next card. Left/right-module transposition is not certified by this definition alone.",
    "route": null,
-   "lean": [],
+   "lean": [
+    {
+     "repo": "formal",
+     "file": "Stafford38/NoncharacteristicHyperplane.lean",
+     "name": "Stafford38.NoncharacteristicHyperplane.IsNoncharacteristic",
+     "line": 70,
+     "role": "definition"
+    },
+    {
+     "repo": "formal",
+     "file": "Stafford38/NoncharacteristicHyperplane.lean",
+     "name": "Stafford38.NoncharacteristicHyperplane.isNoncharacteristic_iff_finite_restrictedCoordinateQuotient",
+     "line": 217,
+     "role": "statement"
+    }
+   ],
    "issues": [
     {
      "severity": "minor",
@@ -4648,7 +4761,7 @@
    "label": "prop:noncar",
    "statement_relation": "exact",
    "route_relation": "different",
-   "correspondence": "The pinned formal source defines noncharacteristic finiteness by the cokernel module and proves its equivalence to finiteness of the literal restricted coordinate ring R/(J+(x\u2080)). It proves that finiteness for the canonical annihilator and separately proves the zero-section support conclusion in prime-spectrum form. For the paper's intermediate finite-projection claim, `canonicalPrincipalHypersurfaceIdeal` is defined as the sum of the principal ideal generated by `presentedPrincipalComponent k orderWeight N d` (the canonical principal symbol P after the monic chart) and the ideal generated by Lean's normal coordinate `X (.inl 0)` (paper x\u2081). `canonical_principal_hypersurface_finite` states that the resulting full-symbol-ring quotient is finite as a module over `oldTangentialCoeffRing` T. The `normalMomentumPolynomialEquiv_tangentialMap` bridge identifies the induced T-action with the canonical tangential-coordinate inclusion. Thus the formal result covers the literal algebraic finite-map clause, though it does not state the paper's particular generating list 1, \u03be\u2081, \u2026, \u03be\u2081^{N\u22121}.",
+   "correspondence": "The pinned formal source defines noncharacteristic finiteness by the cokernel module and proves its equivalence to finiteness of the literal restricted coordinate ring R/(J+(x\u2080)). It proves that finiteness for the canonical annihilator and separately proves the zero-section support conclusion in prime-spectrum form. For the paper's intermediate finite-projection claim, `canonicalPrincipalHypersurfaceIdeal` is defined as the sum of the principal ideal generated by `presentedPrincipalComponent k orderWeight N d` (the canonical principal symbol P after the monic chart) and the ideal generated by Lean's normal coordinate `X (.inl 0)` (paper x\u2081). `canonical_principal_hypersurface_finite` states that the resulting full-symbol-ring quotient is finite as a module over `oldTangentialCoeffRing` T. The `normalMomentumPolynomialEquiv_tangentialMap` bridge identifies the induced T-action with the canonical tangential-coordinate inclusion. Thus the formal result covers the literal algebraic finite-map clause, though it does not state the paper's particular generating list 1, \u03be\u2081, \u2026, \u03be\u2081^{N\u22121}.\n\nInput: d is PBW-monic at the normal momentum with order N. The principal-hypersurface result proves the literal quotient by the canonical principal component and x0 finite over the canonical tangential coefficient ring. The conormal-support conclusion is pointwise in prime spectrum with the stated tangential-momentum containment.",
    "route": "similar (monic symbol in xi_1)",
    "lean": [
     {
@@ -4739,7 +4852,7 @@
      "aicomment": null,
      "auditor": "C",
      "id": "SB-04",
-     "status": "formal statement now mapped; proof_map.tex mapping still needs correction"
+     "status": "resolved in current proof-map source; retained as historical finding"
     },
     {
      "severity": "minor",

@@ -61,3 +61,19 @@ Each card explains whether it displays a theorem, notation/definitions only,
 or no mapped declaration. Supporting and proof-step signatures can be opened
 without leaving the card. Historical issue status is retained; an AI comment
 addressing an issue is linked without treating it as human approval.
+
+
+## Full display review
+
+The panel includes scoped variables, local instance signatures, notation and
+plain open declarations with source links. Named-result expansion respects
+parameter shadowing and plain open scopes; ambiguous duplicate FQNs require
+an explicit file-pinned `expands` entry. Complex open/renaming syntax and
+imported instances remain in the linked full module rather than guessed.
+The review digest includes the generator, review rubric and relation vocabulary.
+Excerpt checks reject split markup; a child excerpt wholly in a replacement
+inherits its addition style and is explicitly marked as proposed.
+
+Standard Mathlib length definitions use `--mathlib DIR` (default: the formal
+repository lake package) and its exact pinned commit in the map. Repository
+and revision labels belong to each declaration, including external libraries.

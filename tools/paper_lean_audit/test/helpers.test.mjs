@@ -1,7 +1,7 @@
 // Behavioural tests for the source helpers with hand-written oracles.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { findDeclaration, extractStatement, namespaceAt, namedResultType, definitionNames } from '../lean.mjs';
+import { findDeclaration, extractStatement, namespaceAt, namedResultType, definitionNames, declarationContext, bindingNames, declarationTrust } from '../lean.mjs';
 import { TexRenderer, stripComments, readGroup } from '../texhtml.mjs';
 
 const lean = `namespace A.B
@@ -124,6 +124,41 @@ test('pattern-matching definitions retain all branches and stop at scope command
   const lines = ['def weight : Sum Nat Nat → Nat', '  | Sum.inl _ => 0', '  | Sum.inr _ => 1', 'end Example'];
   assert.equal(extractStatement(lines, 1, 45, true).text, lines.slice(0, 3).join('\n'));
   assert.equal(extractStatement(lines, 1, 2, true).truncated, true);
+});
+
+test('blank-separated branches and structure fields are not silently dropped', () => {
+  const branches = ['def weight : Sum Nat Nat → Nat', '  | Sum.inl _ => 0', '', '  | Sum.inr _ => 1', '', 'end Example'];
+  const branch = extractStatement(branches, 1, 45, true);
+  assert.equal(branch.text, branches.slice(0, 4).join('\n')); assert.equal(branch.truncated, false);
+  const fields = ['structure Pair where', '  first : Nat', '', '  second : Nat', '', 'def next : Nat := 0'];
+  assert.equal(extractStatement(fields, 1, 45, true).text, fields.slice(0, 4).join('\n'));
+  assert.equal(extractStatement(['def tactic : Nat := by', '  exact 0'], 1, 45, true).truncated, true);
+  const split = extractStatement(['def tactic : Nat :=', '  /- proof implementation -/', '  by', '    exact 42'], 1, 45, true);
+  assert.equal(split.truncated, true); assert.doesNotMatch(split.text, /exact 42|\bby\b/);
+});
+
+test('ambient declarations retain outer assumptions and drop closed scopes', () => {
+  const lines = ['universe u', 'namespace A', 'variable (k : Type u)', '  [Field k]', 'section Old', 'variable (unused : Nat)', 'end Old', 'noncomputable section', 'variable [CharZero k]', 'theorem target : True := by trivial', 'end', 'theorem after : True := by trivial', 'end A'];
+  assert.deepEqual(declarationContext(lines, 10).map(entry => entry.text), ['universe u', 'variable (k : Type u)\n  [Field k]', 'variable [CharZero k]']);
+  assert.deepEqual(declarationContext(lines, 12).map(entry => entry.text), ['universe u', 'variable (k : Type u)\n  [Field k]']);
+  assert.equal(findDeclaration(lines.join('\n'), 'A.after').exact, true);
+});
+
+test('source context includes local instances and opened notation namespaces', () => {
+  const lines = ['namespace A', 'variable (k : Type*) [Field k]', 'open PredicateLibrary', 'local notation "R" => k', 'local instance : Nonempty k := ⟨0⟩', 'theorem target : True := by trivial', 'end A'];
+  const context = declarationContext(lines, 6);
+  assert.ok(context.some(entry => entry.text === 'open PredicateLibrary'));
+  assert.ok(context.some(entry => entry.text === 'local notation "R" => k'));
+  assert.ok(context.some(entry => entry.text === 'local instance : Nonempty k :='));
+  assert.deepEqual(bindingNames('variable (P Q : Prop) [Field k]'), ['P', 'Q']);
+  assert.deepEqual(bindingNames('theorem target (P : Prop) (h : P) : P := h'), ['P', 'h']);
+});
+
+test('challenge placeholders and axioms are distinguished from proved declarations', () => {
+  const lines = ['theorem proved : True := by', '  trivial -- sorry in comment', '', 'theorem target : False := by', '  sorry', '', 'axiom assumed : False'];
+  assert.equal(declarationTrust(lines, 1, 'theorem'), 'source declaration');
+  assert.equal(declarationTrust(lines, 4, 'theorem'), 'placeholder');
+  assert.equal(declarationTrust(lines, 7, 'axiom'), 'axiom');
 });
 
 test('named result detection respects binders, universes and comments', () => {

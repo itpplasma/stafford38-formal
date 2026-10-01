@@ -136,8 +136,8 @@ test('check audits current manuscript links, statement coverage, pins, and secti
   assert.equal(result.status, 0, result.stdout + result.stderr);
   let html = fs.readFileSync(f.htmlPath, 'utf8');
   assert.match(html, /GlobalStafford/);
-  assert.match(html, /id="lean-formal:decl:Foo.valid"/);
-  assert.match(html, /id="lean-library:decl:Foo.valid"/);
+  assert.match(html, /id="lean-formal:decl:Foo.lean:Foo.valid"/);
+  assert.match(html, /id="lean-library:decl:Lib.lean:Foo.valid"/);
   assert.match(html, /1\.1/);
   assert.match(html, /1\.2/);
   assert.match(html, /2\.1/);
@@ -277,4 +277,120 @@ test('theorem cards show named propositions and full proof-step signatures', (t)
   assert.match(html, /Lean declarations for the proof steps/);
   assert.match(html, /theorem<\/span> helper : True :=/);
   assert.doesNotMatch(html, /intro n|exact ⟨n \+ 1/);
+});
+
+test('changing review criterion wording invalidates the prior card digest', (t) => {
+  const f = fixture(t);
+  let result = f.run();
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  const before = /data-item="thm" data-hash="([^"]+)"/.exec(fs.readFileSync(f.htmlPath, 'utf8'))[1];
+  f.map.review_checks[0].label = 'Check every displayed hypothesis and conclusion';
+  result = f.run();
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  const after = /data-item="thm" data-hash="([^"]+)"/.exec(fs.readFileSync(f.htmlPath, 'utf8'))[1];
+  assert.notEqual(before, after);
+});
+
+test('predicate expansion follows plain open scopes and respects variable shadowing', (t) => {
+  const f = fixture(t);
+  fs.writeFileSync(path.join(f.formal.repo, 'Predicates.lean'), [
+    'namespace PredicateLibrary', 'def Holds : Prop := True', 'end PredicateLibrary',
+    'namespace Foo', 'def P : Prop := True', 'open PredicateLibrary',
+    'theorem opened : Holds := True.intro', 'section Generic', 'variable (P : Prop)',
+    'theorem generic (h : P) : P := h', 'end Generic', 'end Foo',
+  ].join('\n'));
+  git(f.formal.repo, 'add', 'Predicates.lean');
+  execFileSync('git', ['-C', f.formal.repo, '-c', 'user.name=Audit Test', '-c', 'user.email=audit@example.test', 'commit', '-qm', 'scope fixture']);
+  f.map.sources.formal.commit = git(f.formal.repo, 'rev-parse', 'HEAD');
+  f.map.items[0].lean = [{ file: 'Predicates.lean', name: 'Foo.opened', line: 7, role: 'statement' }];
+  let result = f.run(); assert.equal(result.status, 0, result.stdout + result.stderr);
+  let html = fs.readFileSync(f.htmlPath, 'utf8');
+  assert.match(html, /PredicateLibrary\.Holds/);
+  assert.doesNotMatch(html, /Named result <code>Holds<\/code> is not expanded/);
+  f.map.items[0].lean = [{ file: 'Predicates.lean', name: 'Foo.generic', line: 10, role: 'statement' }];
+  result = f.run(); assert.equal(result.status, 0, result.stdout + result.stderr);
+  html = fs.readFileSync(f.htmlPath, 'utf8');
+  assert.match(html.replace(/<[^>]+>/g, ''), /variable \(P : Prop\)/);
+  assert.doesNotMatch(html, /class="statement-definitions"/);
+});
+
+test('changing relation vocabulary invalidates the prior card digest', (t) => {
+  const f = fixture(t);
+  let result = f.run(); assert.equal(result.status, 0, result.stdout + result.stderr);
+  const before = /data-item="thm" data-hash="([^"]+)"/.exec(fs.readFileSync(f.htmlPath, 'utf8'))[1];
+  f.map.vocab.statement_relation.exact.meaning = 'Identical assumptions and conclusion, including scope';
+  result = f.run(); assert.equal(result.status, 0, result.stdout + result.stderr);
+  const after = /data-item="thm" data-hash="([^"]+)"/.exec(fs.readFileSync(f.htmlPath, 'utf8'))[1];
+  assert.notEqual(before, after);
+});
+
+test('duplicate FQNs in separate modules cannot silently replace a predicate source', (t) => {
+  const f = fixture(t);
+  const files = {
+    'Alpha.lean': 'namespace Foo\ndef P : Prop := True\nend Foo\n',
+    'Beta.lean': 'def P : Prop := True\nnamespace Foo\ndef P : Prop := False\nend Foo\n',
+    'Target.lean': 'import Alpha\nnamespace Foo\ntheorem target : P := True.intro\nend Foo\n',
+  };
+  for (const [file, source] of Object.entries(files)) fs.writeFileSync(path.join(f.formal.repo, file), source);
+  git(f.formal.repo, 'add', 'Alpha.lean', 'Beta.lean', 'Target.lean');
+  execFileSync('git', ['-C', f.formal.repo, '-c', 'user.name=Audit Test', '-c', 'user.email=audit@example.test', 'commit', '-qm', 'independent module fixture']);
+  f.map.sources.formal.commit = git(f.formal.repo, 'rev-parse', 'HEAD');
+  f.map.items[0].lean = [{ file: 'Target.lean', name: 'Foo.target', line: 3, role: 'statement' }];
+  f.map.items[1].lean = [
+    { file: 'Alpha.lean', name: 'Foo.P', line: 2, role: 'definition' },
+    { file: 'Beta.lean', name: 'Foo.P', line: 3, role: 'definition' },
+  ];
+  let result = f.run(); assert.equal(result.status, 0, result.stdout + result.stderr);
+  let html = fs.readFileSync(f.htmlPath, 'utf8');
+  let card = html.split('id="item-thm"')[1].split('</section>')[0];
+  assert.match(card, /Named result <code>P<\/code> is not expanded/);
+  assert.doesNotMatch(card, /def<\/span> P : Prop := False/);
+  f.map.items[0].lean[0].expands = [{ file: 'Alpha.lean', name: 'Foo.P', line: 2 }];
+  result = f.run(); assert.equal(result.status, 0, result.stdout + result.stderr);
+  html = fs.readFileSync(f.htmlPath, 'utf8');
+  card = html.split('id="item-thm"')[1].split('</section>')[0];
+  assert.match(card, /Alpha\.lean#L2/); assert.doesNotMatch(card, /Named result <code>P<\/code> is not expanded/);
+});
+
+test('excerpt checks catch cut markup and preserve a proposed replacement excerpt', (t) => {
+  const f = fixture(t);
+  let source = f.currentPaperSource.replace('A covered theorem.', '\\AIadd{A covered theorem.\nMore annotated text.}');
+  fs.writeFileSync(path.join(f.paper.repo, 'human_readable_main.tex'), source);
+  git(f.paper.repo, 'add', 'human_readable_main.tex');
+  execFileSync('git', ['-C', f.paper.repo, '-c', 'user.name=Audit Test', '-c', 'user.email=audit@example.test', 'commit', '-qm', 'markup fixture']);
+  f.map.sources.paper.commit = git(f.paper.repo, 'rev-parse', 'HEAD');
+  f.map.items = [f.map.items[0], {...f.map.items[1], tex_lines:[10,22]}];
+  f.map.items[0].tex_lines=[6,7];
+  let result=f.run(); assert.equal(result.status,1);assert.match(result.stderr,/cuts through \\AIadd/);
+  f.map.items[0].tex_lines=[6,9];
+  result=f.run();assert.equal(result.status,0,result.stdout+result.stderr);
+});
+
+test('unproved goal templates are labeled rather than presented as proved results', (t) => {
+  const f=fixture(t);
+  fs.writeFileSync(path.join(f.formal.repo,'Goal.lean'),'namespace Foo\ntheorem goal : False := by\n  sorry\nend Foo\n');
+  git(f.formal.repo,'add','Goal.lean');
+  execFileSync('git',['-C',f.formal.repo,'-c','user.name=Audit Test','-c','user.email=audit@example.test','commit','-qm','target fixture']);
+  f.map.sources.formal.commit=git(f.formal.repo,'rev-parse','HEAD');
+  f.map.items[0].lean=[{file:'Goal.lean',name:'Foo.goal',line:2,role:'statement'}];
+  const result=f.run();assert.equal(result.status,0,result.stdout+result.stderr);
+  const html=fs.readFileSync(f.htmlPath,'utf8');
+  assert.match(html,/Unproved challenge\/template/);
+  assert.match(html,/Target specification or assumption only/);
+});
+
+test('a child excerpt of replacement text keeps proposal styling and original source offsets', (t) => {
+  const f=fixture(t);
+  const source=f.currentPaperSource.replace('A covered theorem.','\\AIreplace{Old covered theorem.}{\nNew covered theorem.\nMore proposed text.}');
+  fs.writeFileSync(path.join(f.paper.repo,'human_readable_main.tex'),source);
+  git(f.paper.repo,'add','human_readable_main.tex');
+  execFileSync('git',['-C',f.paper.repo,'-c','user.name=Audit Test','-c','user.email=audit@example.test','commit','-qm','replacement fixture']);
+  f.map.sources.paper.commit=git(f.paper.repo,'rev-parse','HEAD');
+  f.map.items[0].tex_lines=[6,10];f.map.items[1].tex_lines=[11,23];
+  f.map.items.push({...f.map.items[0],id:'child',label:undefined,tex_lines:[8,8]});
+  const result=f.run();assert.equal(result.status,0,result.stdout+result.stderr);
+  const html=fs.readFileSync(f.htmlPath,'utf8');const card=html.split('id="item-child"')[1].split('</section>')[0];
+  assert.match(card,/Excerpt from a proposed replacement/);
+  assert.match(card,/<span class="ai-add">New covered theorem\./);
+  assert.doesNotMatch(card,/Old covered theorem/);
 });
