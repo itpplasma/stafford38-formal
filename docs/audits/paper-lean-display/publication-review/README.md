@@ -10,7 +10,7 @@ The current paper supplies the finite-T bridge previously requested by ALG-04.
 Its later page action/localization concern remains separate. New checked Lean
 adapters expose the paper generator and canonical initial-ideal equality.
 The printed tangent-lattice construction still lacks the geometry-to-input
-adapter described in ../../../../audits/paper-geometry-route-review.md.
+adapter described in ../../paper-geometry-route-review.md.
 
 Browser evidence checks the full queue, printed tangent argument visibility,
 zero KaTeX errors, and definition navigation from UniversalStatement to Field.

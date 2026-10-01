@@ -1,5 +1,5 @@
 {
-  "paper_commit": "624bb81fd3f60cf52ac37a6f12f9eb5a3d0bfb20",
+  "paper_commit": "b2fb68cfb5f8b9f2dd8769d10af36e3ae508ab75",
   "statuses": {
     "AUDIT-01": "Information --- no edit requested.",
     "INTRO-01": "Proposed change --- author acceptance pending.",
@@ -18,7 +18,7 @@
     "ALG-03": "Proposed change --- author acceptance pending.",
     "COMP-05": "Information --- proof comparison; no edit requested.",
     "NOTATION-01": "Proposed change --- author acceptance pending.",
-    "ALG-04": "Action required --- unresolved proof or drafting issue.",
+    "ALG-04": "Max \u2014 finite-T request resolved; later-page correspondence check",
     "ALG-09": "Action required --- unresolved proof or drafting issue.",
     "COMP-06": "Action required --- unresolved proof or drafting issue.",
     "EDIT-02": "Proposed change --- author acceptance pending.",
@@ -26,7 +26,7 @@
     "COMP-08": "Information --- proof comparison; no edit requested.",
     "GEO-04": "Proposed change --- author acceptance pending.",
     "COMP-10": "Information --- proof comparison; no edit requested.",
-    "ROUTE-01": "Action required --- approve the publication proof.",
+    "ROUTE-01": "Max \u2014 whole printed geometric proof correspondence",
     "GEO-01": "Proposed change --- author acceptance pending.",
     "GEO-02": "Proposed change --- author acceptance pending.",
     "COMP-11": "Information --- proof comparison; no edit requested.",
@@ -42,11 +42,14 @@
     "SCOPE-01": "Proposed change --- author acceptance pending."
   },
   "open_action_ids": [
-    "ALG-04",
     "ALG-09",
     "COMP-06",
-    "ROUTE-01",
     "EDIT-01"
   ],
-  "note": "Statuses are author-review instructions, not automatic proof acceptance."
+  "note": "Statuses are author-review instructions, not automatic proof acceptance.",
+  "max_correspondence_checks": [
+    "ALL current mathematical claims, definitions and printed proofs",
+    "ALG-04 later-page scalar action",
+    "ROUTE-01 tangent-lattice geometric construction"
+  ]
 }
