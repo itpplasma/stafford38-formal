@@ -63,19 +63,12 @@ infinity.
 
 \maketitle
 \AIreviewlegend
-\AIcomment{AUDIT-01}{Paper--Lean correspondence audit (versioned manuscript snapshot,
-Lean \texttt{stafford38-formal} \texttt{591d4e1}). Every formalized result is
-now followed by a red line \textsf{Lean: \dots} whose names link to the
-declaration at that revision; the relation to the printed statement is given
-in parentheses when it is not exact. Where the formal proof differs from the
-printed one, a red block ``Proof as formalized in Lean'' follows the printed
-proof. Material without a Lean counterpart carries a box \textsf{LEAN-NF}.
-Cited literature theorems are checked for statement only. Hard-coded equation
-tags were replaced by automatic numbering (\texttt{\textbackslash numberwithin\{equation\}\{section\}}),
-so equation numbers differ from the previous PDF. The side-by-side review
-document is generated in \texttt{itpplasma/stafford38-formal},
-\texttt{tools/paper\_lean\_audit}; its report is
-\texttt{docs/paper-lean-audit/audit-report.md}.}
+\AIcomment{AUDIT-01}{Corrections, clarifications and mathematical differences
+from the formal proof remain marked as AI additions. Long formal proof
+comparisons and declaration links are collected in the separate Overleaf
+supplement \texttt{lean\_proof\_details\_main.tex}. The human-readable draft
+shows the mathematical qualifications beside the relevant passages; the
+side-by-side audit retains the full technical correspondence.}
 
 \section{Introduction}
 
@@ -175,41 +168,23 @@ are project arguments.}
 \AIreplace{Every statement of this paper, including
 Theorems~\ref{thm:asymptotic-conormal} and \ref{thm:coisotropic-exclusion}
 at the generality stated, is formalized and verified in Lean~4 against
-Mathlib, with no axiom beyond Lean's three standard ones.}{Every numbered
-statement of this paper is formalized and verified in Lean~4 against Mathlib,
-with no axiom beyond Lean's three standard ones: Theorem~\ref{thm:main} with
-its fixed source (and also for $n=0$), the cyclicity consequence
-(Corollary~\ref{cor:cyclic}), Proposition~\ref{prop:noncar}, and
-Theorems~\ref{thm:asymptotic-conormal} and~\ref{thm:coisotropic-exclusion}
-over every algebraically closed field of characteristic zero. Each formalized
-result is followed by a line \textsf{Lean:} linking its declarations. Cited
-literature theorems (Gabber, Vasconcelos, Nakayama, Stacks lemmas) are not
-reproved in this paper; the formalization proves every one of them that the
-argument uses, so the machine-checked theorem has no hypothesis beyond its
-statement. The formal proof follows this paper's architecture with three
-deliberate differences, each written out in a red block below: Gabber's
-theorem is proved in full; Theorem~\ref{thm:asymptotic-conormal} is proved by
-a valuation (Laurent-axis) argument; and instead of passing to a finitely
-generated subfield of $\mathbb C$ the formalization works over an algebraic
-closure of $k$ and descends initial ideals.}
+Mathlib, with no axiom beyond Lean's three standard ones.}{The main identity, its fixed-source strengthening and the documented
+cyclicity and noncharacteristic consequences are verified in Lean~4 against
+Mathlib using only the three standard axioms. The formal proof also supplies
+the characteristic-support and geometric results used by its own argument.
+Statement scope and proof routes must be compared separately: machine
+verification of a terminal theorem does not certify every intermediate
+step of the printed proof. The mathematical differences are noted below;
+full formal comparisons and declaration links are in the technical supplement.}
 \AIadd{The headline theorem is registered in Palomar~\cite{Stafford38Palomar2026};
 the current Lean sources and auxiliary results are archived~\cite{Stafford38Zenodo120}.}
 The accompanying proof-map supplement names the Lean declaration for each step.
-\AIcomment{WF-01}{\emph{Updated after the Lean audit of 2026-09-30.} The
-printed claim was false (cyclicity consequence, Appendix~B, the $k_0\subset\mathbb C$
-reduction and Gabber for arbitrary good filtrations had no Lean counterpart).
-The missing statements have since been formalized in \texttt{stafford38-formal}
-(\texttt{TorsionCyclicity}, \texttt{NoncharacteristicHyperplane}); the field
-reduction and the general Gabber statement were replaced in the text by the
-forms the formal proof uses. Delete this box once the red replacement is
-accepted. Original comment: Please check the claim ``Every statement'' against the
-proof map at the exact stated generality. The Palomar record certifies the
-registered theorem; auxiliary exposition and later additions need their own
-declaration mapping. The historical workflow is proposed below and in the
-AI appendix for Chris to polish. In particular, the formal terminal
-asymptotic-conormal theorem follows a Laurent-axis route; the proof graph
-marks the tangent-limit criterion as auxiliary. A formal proof of the
-terminal statement does not certify every step of this exposition.}
+\AIcomment{WF-01}{Please review each comparison at the stated generality.
+The Palomar record checks the registered main theorem; later results have
+separate archived sources. The formal geometric route uses Laurent series,
+while the printed tangent-limit argument is auxiliary. The short comparison
+notes identify these differences without claiming that every numbered
+statement or every proof passage has been verified verbatim.}
 \AIadd{The development uses Lean~4~\cite{Lean4}, Mathlib~\cite{Mathlib2020}
 and AlgebraicAnalysis v0.3.0~\cite{AlgebraicAnalysis030}; tooling, chronology
 and statement comparison are described in Appendix~\ref{app:ai-workflow}.}
@@ -442,41 +417,7 @@ Thus there is $t\notin\mathfrak p$ with $t\{f,g\}\in\mathfrak p$. Since $\mathfr
 \end{proof}
 \AIadd{\formalref[{any ideal with involutive radical; proof without localization}]{%
 \leandecl{Stafford38/Characteristic/RadicalMinimalPrimeInvolutivity.lean}{108}{Stafford38.Characteristic.RadicalMinimalPrimeInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive}}}
-\begin{AIaddition}{Proof as formalized in Lean}
-Lean proves the lemma in the corrected form of ALG-01. Let $J$ be any ideal
-of $R=k[x,\xi]$ with $\{\sqrt J,\sqrt J\}\subseteq\sqrt J$, and let
-$\mathfrak p$ be minimal over $J$. Then
-$\{\mathfrak p,\mathfrak p\}\subseteq\mathfrak p$. The proof avoids
-localization.
-
-\emph{Saturation.} For $f\in\mathfrak p$ there is $s\notin\mathfrak p$ with
-$sf\in\sqrt J$. Otherwise, let $S$ be the multiplicative set of all products
-$sf^m$ with $s\notin\mathfrak p$ and $m\ge0$. Then $S$ is disjoint from $J$.
-For $m=0$ this is because $J\subseteq\mathfrak p$. For $m\ge1$, if
-$sf^m\in J$ then $(sf)^m=s^{m-1}\cdot sf^m\in J$, so $sf\in\sqrt J$,
-contrary to the assumption. Hence some prime $\mathfrak Q\supseteq J$ is
-disjoint from $S$. It satisfies $\mathfrak Q\subseteq\mathfrak p$, so
-$\mathfrak Q=\mathfrak p$ by minimality. But $f\in\mathfrak p\cap S$, a
-contradiction.
-
-\emph{Leibniz step.} Let $f,g\in\mathfrak p$. Choose $s,t\notin\mathfrak p$
-with $sf,tg\in\sqrt J$, and put $u=st\notin\mathfrak p$. Then
-$uf,ug\in\sqrt J$. Since $\{\cdot,\cdot\}$ is a biderivation and
-$\{u,u\}=0$,
-\[
-u^2\{f,g\}=\{uf,ug\}-ug\{f,u\}-fu\{u,g\}.
-\]
-The first term lies in $\sqrt J\subseteq\mathfrak p$ by involutivity, and the
-other two lie in $\mathfrak p$ because $f,g\in\mathfrak p$. As
-$u^2\notin\mathfrak p$, we get $\{f,g\}\in\mathfrak p$.
-
-This lemma is not on the formal main path. There, Gabber's theorem is proved
-directly for the minimal primes of $\Ann\gr(A_n/I)$.
-The radical statement of Theorem~\ref{ithm:gabber} is then derived from it
-as $\sqrt J=\bigcap_{\mathfrak p\text{ minimal}}\mathfrak p$, and
-Lemma~\ref{lem:strict-support-inequality} uses the minimal-prime form
-directly.
-\end{AIaddition}
+\AIcomment{COMP-01}{The formal argument starts with an involutive radical and proves that each minimal prime is involutive directly, without localization. Thus the hypothesis is radical involutivity, not that the whole ideal is a Poisson ideal.}
 
 \section{Mapping to a monic normal form}\label{sec:monic}
 Given a fixed nonzero $d \in A_n(k)$ of Bernstein degree $N$, our first goal is to find a map to replace $d$ by a normal form $\tilde{d}$ that is monic in $p$, i.e. of the form $\tilde d=p^N+\sum_{j<N}p^ja_j$ with coefficients $a_j$ in $C$. \\
@@ -564,37 +505,7 @@ $\mathbb V$; and $g(v)=e$.
 \end{proof}
 \AIadd{\formalref[{second formulation only; the formal proof composes at most two symplectic transvections}]{%
 \leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{232}{Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_mulVec_eq}}}
-\begin{AIaddition}{Proof as formalized in Lean}
-Lean proves only the second formulation (transitivity of the symplectic
-group on nonzero vectors); the symplectic-basis formulation is not needed.
-It uses the pairing
-$\langle u,w\rangle=\sum_i(u_{\xi_i}w_{x_i}-u_{x_i}w_{\xi_i})$, which is
-$-\omega$ and has the same isometry group. For $a\in k$ and $u\in\mathbb V$
-put $\tau_{a,u}(z):=z+a\langle z,u\rangle u$. Expanding,
-$\langle\tau_{a,u}z,\tau_{a,u}w\rangle=\langle z,w\rangle
-+a\langle z,u\rangle\langle u,w\rangle+a\langle w,u\rangle\langle z,u\rangle
-=\langle z,w\rangle$, since $\langle u,u\rangle=0$ and
-$\langle u,w\rangle=-\langle w,u\rangle$; so every $\tau_{a,u}$ is
-symplectic. Let $e,v\neq0$.
-
-\emph{Case $\langle e,v\rangle\neq0$.} Put
-$\tau_{e\to v}:=\tau_{a,v-e}$ with $a=\langle e,v\rangle^{-1}$. Since
-$\langle e,v-e\rangle=\langle e,v\rangle$, we get
-$\tau_{e\to v}(e)=e+(v-e)=v$.
-
-\emph{Case $\langle e,v\rangle=0$.} Choose a bridge vector $w$ with
-$\langle e,w\rangle\neq0\neq\langle w,v\rangle$. Nondegeneracy (a suitable
-basis vector suffices) gives $r,s$ with $\langle e,r\rangle\neq0$ and
-$\langle s,v\rangle\neq0$. Take $w=r$ if $\langle r,v\rangle\neq0$, and
-$w=s$ if $\langle e,s\rangle\neq0$. Otherwise take $w=r+s$, for which
-$\langle e,r+s\rangle=\langle e,r\rangle$ and
-$\langle r+s,v\rangle=\langle s,v\rangle$. Then the product of the two
-transvections $\tau_{w\to v}\tau_{e\to w}$ sends $e$ to $v$.
-
-Applied to $e=e_t$, a standard basis vector, this gives a symplectic matrix
-$M$ whose $t$-th column is $v$. Its inverse is again symplectic, and $g=M^{-1}$
-gives the printed form $g(v)=e_t$.
-\end{AIaddition}
+\AIcomment{COMP-02}{The formal proof establishes transitivity on nonzero vectors by at most two symplectic transvections. It does not prove the separate symplectic-basis formulation. Reversing the sign of the alternating form leaves its isometry group unchanged.}
 
 
 
@@ -631,53 +542,7 @@ the normal form $\bigoplus_jp^jC$ is unique}.
 \leandecl{Stafford38/Weyl/MonicNormalization.lean}{173}{Stafford38.WeylMonicNormalization.scalar_or_normalized_symplectic_image},
 \leandecl{Stafford38/Weyl/PBWMonicBridge.lean}{88}{Stafford38.WeylPBWMonicBridge.IsPBWMonicAt},
 \leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{282}{Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_chart_matrices}}}
-\begin{AIaddition}{Proof as formalized in Lean}
-Lean writes the change of generators with a matrix $M=g^{\mathsf T}$:
-$\Phi_M(z_i)=\sum_jM_{ij}z_j$, where
-$z=(x_1,\ldots,x_n,\partial_1,\ldots,\partial_n)$. Put $J_{ij}:=[z_i,z_j]$. Then
-$[\Phi_Mz_i,\Phi_Mz_j]=(MJM^{\mathsf T})_{ij}$, so $\Phi_M$ is an algebra
-endomorphism whenever $MJM^{\mathsf T}=J$. If $M'$ also satisfies this and
-$MM'=M'M=1$, then $\Phi_{M'}$ is the inverse of $\Phi_M$. For
-$a\in B_N$ one has $\Phi_M(a)\in B_N$ and
-$\sigma^B_N(\Phi_Ma)(X)=\sigma^B_N(a)(MX)$, where
-$(MX)_i=\sum_jM_{ij}X_j$.
-
-Let $N$ be the Bernstein degree of $d$, i.e.\ the top total degree of its PBW
-normal form. Let $s=\sigma^B_N(d)\neq0$; it is homogeneous of degree $N$. If
-$N=0$, $d$ is a nonzero scalar. Let $N\ge1$ and let $t$ be the index of
-$\partial_1$. The argument has five steps.
-
-(i) Since $k$ is infinite, there is $v\in k^{2n}$ with $s(v)\neq0$. Here
-$v\neq0$, because $s(0)=0$ for $N\ge1$.
-
-(ii) Lemma~\ref{lem:sympcompl} with $e=e_t$ gives a symplectic $M$ whose
-$t$-th column is $v$, i.e.\ $Me_t=v$. Its inverse $M'$ is symplectic too.
-
-(iii) The symbol $s_M(X):=s(MX)$ of $\Phi_M(d)$ is homogeneous of degree
-$N$. On the $\xi_1$-axis it restricts to $c\,\xi_1^N$, where $c$ is its
-coefficient of $\xi_1^N$. Hence $c=s_M(e_t)=s(Me_t)=s(v)\neq0$.
-
-(iv) Consequently $\tilde d:=c^{-1}\Phi_M(d)$ lies in $B_N$, and the
-coefficient of $\xi_1^N$ in $\sigma^B_N(\tilde d)$ is $1$. Lean records this
-as \texttt{HasNormalizedSymplecticChart}.
-
-(v) $\sigma^B_N(\tilde d)$ is the weight-$N$ part of the PBW normal form, so
-this coefficient is the coefficient of the PBW word $\partial_1^N$ in
-$\tilde d$. The resulting normal form is \texttt{IsPBWMonicAt}: every PBW word
-$x'^{\alpha}\partial'^{\beta}x_1^{a}p^{b}$ of $\tilde d$ has
-$|\alpha|+|\beta|+a+b\le N$, and $p^N$ has coefficient $1$. The words are
-ordered transverse pairs first, then $x_1^ap^b$, with $p$ rightmost. Grouping
-by $b$ gives
-$\tilde d=p^N+\sum_{j<N}c_jp^j$ with $c_j\in C$ and $\deg_Bc_j\le N-j$, with
-the coefficients on the \emph{left}. Lean records this as monicity of the
-outer Ore polynomial.
-
-The printed right form follows from $cp=pc-\partial_{x_1}c$ for $c\in C$,
-iterated as $cp^j=\sum_i(-1)^i\binom ji p^{j-i}\,\partial_{x_1}^ic$. It
-gives $a_j=\sum_{i\ge0}(-1)^i\binom{j+i}{i}\partial_{x_1}^ic_{j+i}$ with
-$\deg_Ba_j\le N-j$. Lean itself never uses this bound; it uses only
-$\tilde d\in B_N$.
-\end{AIaddition}
+\AIcomment{COMP-03}{The formal normalization uses an explicit symplectic matrix and its inverse. Its symbol substitution is $s(MX)$; with the convention used here this is $s\circ g^{\mathsf T}$. Monicity means that the $p^N$ PBW coefficient is $1$ and the Bernstein degree is at most $N$, which gives the coefficient bounds above.}
 \AIremove{All coefficients involved belong to a finitely generated subfield $k_0\subset k$, namely the subfield
 generated by the finitely many coefficients of $d$ in the new generators. If we find $R, S, F \in A_n(k_0)$ sufficing Theorem \ref{thm:main}, the same choices extend to $k$ as well, so proving the identity over $k_0$ is sufficient. We therefore replace $k$ by $k_0$, write $A_n:=A_n(k_0)$, and fix an embedding
 $k_0\hookrightarrow\mathbb C$.}
@@ -838,47 +703,7 @@ We can write each $a_j$ in $\Sigma$ in powers of $x_1$, with coefficients in the
 \leandecl{Stafford38/Weyl/EulerResidue.lean}{37}{Stafford38.WeylEulerResidue.positiveEulerResidue_identity},
 \leandecl{Stafford38/Weyl/EulerRemainder.lean}{254}{Stafford38.WeylEulerRemainder.positiveEulerResidue_eq_eulerSubring_mul_coordinate},
 \leandecl{Stafford38/Weyl/EulerRemainder.lean}{402}{Stafford38.WeylEulerRemainder.presentedPositiveEulerResidue}}}
-\begin{AIaddition}{Proof as formalized in Lean}
-Lean defines no Euler grading. It writes $T'=A_{n-1}(k)$ for the transverse
-algebra and replaces $A_{\ge0}$ by the subring $R\subseteq A_n$ generated by
-$T'$, $x_1$ and $E=x_1p$. Lean's Ore normal form puts the coefficients on the
-left: every element is uniquely $\sum_jc_jp^j$ with $c_j\in C=T'[x_1]$, that
-is, a sum of words $b\,x_1^ap^j$ with $b\in T'$. The proof has five steps.
-
-(a) $R$ contains $\bbQ[E]$. It is \emph{one-sidedly normal}: for
-$r\in R$ there is $r'\in R$ with $x_1r=r'x_1$. The set of such $r$ is a
-subring, and it contains the generators, because $x_1b=bx_1$,
-$x_1x_1=x_1x_1$ and $x_1E=(E-1)x_1$.
-
-(b) The polynomials $\prod_{i=0}^{N-1}(X-i)$ and $\prod_{i=1}^{N}(X+i)$ have
-the disjoint root sets $\{0,\ldots,N-1\}$ and $\{-1,\ldots,-N\}$. They are
-therefore coprime in $\bbQ[X]$. With Lemma~\ref{lem:euler} (corrected
-form) this gives $u,v\in\bbQ[X]$ with
-$p^Nx_1^N\,u(E)+x_1^Np^N\,v(E)=1$.
-
-(c) The normal form of Proposition~\ref{prop:monic} gives
-$\tilde d=p^N+\sigma$, where $\sigma$ is a sum of words $b\,x_1^ap^j$ with
-$j<N$. Then
-\[
-\tilde d\,\bigl(x_1^Nu(E)\bigr)+\bigl(x_1^N\tilde d\bigr)v(E)
-=1+\sigma x_1^Nu(E)+x_1^N\sigma v(E),
-\]
-and the left side lies in $I$.
-
-(d) Each word $w=b\,x_1^ap^j$ with $j<N$ has a right factor $x_1$ on both
-sides, with cofactors in $R$. By Lemma~\ref{lem:euler} and (a),
-\begin{align*}
-w\,x_1^N&=b\,x_1^a(p^jx_1^j)\,x_1^{N-j}
-=\Bigl[b\,x_1^a\prod_{i=1}^{j}(E+i)\,x_1^{N-j-1}\Bigr]x_1,\\
-x_1^Nw&=b\,x_1^{N+a-j-1}\,x_1\,(x_1^jp^j)
-=\Bigl[b\,x_1^{N+a-j-1}\prod_{i=0}^{j-1}(E-1-i)\Bigr]x_1 .
-\end{align*}
-By additivity, $\sigma x_1^N=U'x_1$ and $x_1^N\sigma=V'x_1$ with
-$U',V'\in R$.
-
-(e) Since $x_1u(E)=u(E-1)x_1$, the residue equals $Ux_1$ with
-$U=U'u(E-1)+V'v(E-1)\in R$. Hence $1+Ux_1\in I$.
-\end{AIaddition}
+\AIcomment{COMP-04}{The formal argument replaces the Euler grading by the subring generated by the transverse algebra, $x_1$ and $E=x_1p$. It needs only one-sided normality $x_1r=r\prime x_1$ and left-coefficient normal forms. The corrected Euler product identities give a polynomial annihilator with nonzero constant term; no two-sided normality is asserted.}
 
 \begin{proposition}\label{prop:x-surjective}
 Right multiplication by $x_1$ on $Q$ is surjective.
@@ -904,28 +729,7 @@ so $C\subseteq A_{\geq0}$. Replace the degree-zero explanation above.}
 \AIadd{\formalref{\leandecl{Stafford38/Weyl/QuotientTransport.lean}{236}{Stafford38.WeylQuotientTransport.presentedCanonicalRightQuotient_rightMul_coordinate_surjective},
 \leandecl{Stafford38/Quotient/EulerSurjectivity.lean}{80}{Stafford38.EulerSurjectivity.rightMul_surjective_of_euler_normal};
 generation by $C$ and $p$: \leandecl{Stafford38/Weyl/EulerRemainder.lean}{307}{Stafford38.WeylEulerRemainder.closure_pairOldSubring_union_coordinate_momentum_eq_top}}}
-\begin{AIaddition}{Proof as formalized in Lean}
-Lean argues element by element instead of through the submodule
-$qA_{\ge0}$. Let $R$, $U$ be as in Lemma~\ref{lem:euler-residue} (Lean
-form), and write $a\equiv b$ for $a-b\in I$. Put
-\[
-\mathcal P:=\{a\in A_n:\ \text{for every }r\in R\text{ there is }r'\in R
-\text{ with } ra\equiv r'\}.
-\]
-$\mathcal P$ is a subring containing $R$. It is closed under products:
-if $ra\equiv s$ and $sb\equiv t$, then $rab\equiv sb\equiv t$, because $I$ is
-a right ideal. It also contains $p$. Indeed, for $r\in R$ pick $r'\in R$ with
-$x_1r=r'x_1$. From $(1+Ux_1)rp\in I$ we get $rp\equiv-Ux_1rp=-Ur'E\in R$.
-
-The Ore normal form shows that $T'$, $x_1$ and $p$ generate $A_n$, and
-$T',x_1\in R$. Hence $\mathcal P=A_n$. Given $a\in A_n$, take $r=1$: then
-$a\equiv r_a$ for some $r_a\in R$. Choosing $r'$ with $x_1r_a=r'x_1$ gives
-$a\equiv r_a\equiv-Ux_1r_a=(-Ur')x_1$. So the class of $a$ is the class of
-$-Ur'$ multiplied on the right by $x_1$.
-
-Lean proves this in the iterated Ore model of $A_n$ and transports it along
-the isomorphism with the presented Weyl algebra.
-\end{AIaddition}
+\AIcomment{COMP-05}{The formal proof works element by element with the transverse--Euler subring. The residue identity gives $1+Ux_1\in I$ for a suitable $U$ in that subring; one-sided normality and the monic relation then give surjectivity of right multiplication by $x_1$. This avoids treating a quotient by a vector subspace as an algebra quotient.}
 
 \section{Vanishing cokernel}\label{sec:cokernel}
 \AIadd{In this section and the next, $C$ denotes the commutative symbol ring
@@ -1089,58 +893,10 @@ As $\ell(A_R)\ge0$, we conclude
 process can be carried out only finitely many times'') is not a proof. One
 preimage suffices, taken \emph{before} localizing: if $z\in G^p$ and $z=wx_1$
 with $w\in G^{p-r+1}$ (possible for $r$ large, since the filtration is
-exhaustive), then the class of $z$ vanishes in $B_r$. See the red block.}
+exhaustive), then the class of $z$ vanishes in $B_r$. See comparison COMP-06.}
 \AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalPageEulerInequality.lean}{22}{Stafford38.Characteristic.CanonicalPageEulerInequality.canonicalPage_length_target_le_source};
 exhaustion \leanlib{AlgebraicAnalysis/Module/UniformBoundaryVanishing.lean}{103}{AlgebraicAnalysis.exists_uniform_subsingleton_localized}}}
-\begin{AIaddition}{Proof as formalized in Lean}
-Lean never localizes $Q$; only the pages carry a $T$-module structure. Put
-$G^p:=F_{-p}Q$ for $p\le0$ and $G^p:=0$ for $p>0$. This is a decreasing,
-exhaustive filtration with $G^1=0$. The complex is the $k$-linear map
-$f=R_{x_1}\colon Q\to Q$, with $f(G^p)\subseteq G^p$. $A_r$, $B_r$ and
-$d_r\colon A_r^p\to B_r^{p+r}$ are defined by the printed formulas. The proof
-has four steps.
-
-\emph{Step 1: $T$ acts on the pages.} Let $a$ be a transverse generator
-$x_j$ or $\partial_j$ ($j\ge2$), of order $e_a\in\{0,1\}$. Then $R_a$ is
-$k$-linear, $R_a(G^p)\subseteq G^{p-e_a}$, and $R_a$ commutes with $f$
-because $ax_1=x_1a$. It therefore induces maps $A_r^p\to A_r^{p-e_a}$ and
-$B_r^p\to B_r^{p-e_a}$ that commute with $d_r$. For two generators,
-$[R_a,R_b]=\pm R_{[a,b]}$ with $[a,b]\in F_{e_a+e_b-1}$, so it maps $G^p$ into
-$G^{p-e_a-e_b+1}$. An $f$-commuting operator with this extra drop induces
-$0$ on every page, because its image lies in the denominator. The induced
-operators therefore commute. Letting $x_j,\xi_j\in T$ act by $R_{x_j}$ and
-$R_{\partial_j}$ makes every $A_r$, $B_r$ a $T$-module and every $d_r$
-$T$-linear. For $r=0$ this is the $T$-structure of $M=\gr Q$, so
-$A_1\cong V$ and $B_1\cong U$ as $T$-modules. In addition,
-$A_{r+1}\cong\ker d_r$ and $B_{r+1}\cong\operatorname{coker}d_r$ as
-$T$-modules. For the first, a representative killed by $d_r$ is corrected by
-an element of $G^{p+1}$ into $G^p\cap f^{-1}G^{p+r+1}$.
-
-\emph{Step 2: exhaustion, before localization.} Let $y\in G^p$ represent a
-class of $B_1^p$. By Proposition~\ref{prop:x-surjective}, $y=zx_1$ for
-\emph{one} $z\in Q$, and by exhaustiveness $z\in G^s$ for some $s$. For
-$r\ge\max(1,p-s+1)$ we have $z\in G^{p-r+1}$. Hence
-$y\in G^p\cap f(G^{p-r+1})$, and the class of $y$ vanishes in $B_r^p$. In
-terms of order: if $y\in F_mQ$ and the chosen preimage lies in $F_{m'}Q$, the
-class dies on page $r=\max(1,m'-m+1)$. The maps $\beta_r\colon B_1\to B_r$,
-the identity on representatives, are surjective and $T$-linear, and their
-kernels increase with $r$. An element of $B_1$ has finitely many homogeneous
-components, so taking the largest $r$ shows that every $u\in B_1$ has some
-$r$ with $\beta_r(u)=0$.
-
-\emph{Step 3: localization.} Let $S=T\setminus\mathfrak q$. By
-Lemma~\ref{lem:tangential-finiteness}, $S^{-1}B_1\cong U_{\mathfrak q}$ has
-finite length, so it is Noetherian over $T_{\mathfrak q}$. The maps
-$S^{-1}\beta_r$ are surjective with increasing kernels. Each $u/s$ is killed
-by $S^{-1}\beta_r$ for the $r$ belonging to $u$. The kernels therefore
-stabilize at all of $S^{-1}B_1$, and $S^{-1}B_R=0$ for some $R$.
-
-\emph{Step 4: telescoping.} Localizing the exact sequences
-$0\to A_{r+1}\to A_r\xrightarrow{d_r}B_r\to B_{r+1}\to0$ and telescoping, as
-printed, gives
-$\ell(U_{\mathfrak q})+\ell(S^{-1}A_R)=\ell(V_{\mathfrak q})
-+\ell(S^{-1}B_R)=\ell(V_{\mathfrak q})$.
-\end{AIaddition}
+\AIcomment{COMP-06}{Localize only the $T$-modules on the pages, not $Q$. Before localization, choose one preimage $y=zx_1$ and use exhaustiveness to put $z$ in some filtration piece; then $y$ dies on a sufficiently late page. After localization the increasing kernels stabilize because $U_{\mathfrak q}$ has finite length. Telescoping the exact page sequences gives the stated inequality. This supplies the missing exhaustion argument identified in ALG-09.}
 
 On the other hand, we can also establish a different inequality.
 
@@ -1224,26 +980,7 @@ Therefore $\ell(U_{\mathfrak q})=\ell(V_{\mathfrak q})+\ell\bigl((M'/K)/{x_1}(M'
 \end{proof}
 \AIadd{\formalref{\leanlib{AlgebraicAnalysis/Module/BaseLocalizedKoszulPositivity.lean}{22}{AlgebraicAnalysis.BaseLocalizedKoszulPositivity.localized_length_cokernel_gt_kernel};
 $x_1$ in no minimal prime: \leandecl{Stafford38/Characteristic/NoncharacteristicMinimalPrime.lean}{107}{Stafford38.Characteristic.NoncharacteristicMinimalPrime.canonical_minimalPrime_mem_of_normalCoordinate_false}}}
-\begin{AIaddition}{Proof as formalized in Lean}
-The length computation (stable kernel $K=\ker x_1^m$, the split
-$\ell(U_{\mathfrak q})=\ell(V_{\mathfrak q})+\ell((M'/K)/x_1(M'/K))$, and
-Nakayama) is formalized as printed. Only the first step differs: Lean does
-not pass through Theorem~\ref{ithm:gabber} and
-Lemma~\ref{lem:componentwise-involutive}. Its formal Gabber theorem is stated
-directly for minimal primes: every minimal prime $\mathfrak p$ of
-$\Ann_{k[x,\xi]}\gr Q$ satisfies $\{\mathfrak p,\mathfrak p\}\subseteq\mathfrak p$.
-Suppose $x_1\in\mathfrak p$. Since $P\in\Ann\gr Q\subseteq\mathfrak p$
-(Corollary~\ref{cor:charP}), induction gives
-$\{x_1,\{x_1,\ldots,\{x_1,P\}\}\}\in\mathfrak p$ ($j$ brackets) for every $j$.
-With the paper's bracket, $\{x_1,g\}=-\partial g/\partial\xi_1$. By
-Lemma~\ref{lem:order-symbol}, $P$ is homogeneous of degree $N$ with
-coefficient $1$ at $\xi_1^N$. The $N$-fold bracket is therefore the constant
-$(-1)^N\partial^N_{\xi_1}P=(-1)^NN!$, which is a unit in characteristic zero,
-contradicting $\mathfrak p\neq(1)$. Lean's bracket is the negative of the
-paper's, so there the constant is $N!$. Lean then transfers this avoidance
-of $x_1$ to the minimal primes of the annihilator of $M'=M_{\mathfrak q}$,
-using $\Ann_{C'}M'=S^{-1}\Ann_CM$ for the finite module $M$.
-\end{AIaddition}
+\AIcomment{COMP-07}{The formal proof uses Gabber directly for minimal primes. If such a prime contained $x_1$, the $N$-fold bracket of the monic symbol $P$ with $x_1$ would put the unit $\pm N!$ in that prime. The subsequent stable-kernel length computation and Nakayama argument agree with the printed proof.}
 
 \begin{lemma}\label{lem:Uzero}
 The cokernel $U=M/x_1M$ of right multiplication by $x_1$ on
@@ -1299,24 +1036,7 @@ $\Supp_C(M/x_1M)=\Supp_C M\cap V(x_1)$ for the finite $C$-module $M$.}
 \AIadd{\formalref[{stated for the support transported along $\xi\mapsto-\xi$, which fixes $x_1$; transported back verbatim}]{%
 \leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{120}{Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance},
 \leandecl{Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean}{154}{Stafford38.SpecializedNoncharacteristicEquality.transposedSupport_disjoint_axis_iff}}}
-\begin{AIaddition}{Proof as formalized in Lean}
-Lean states the conclusion scheme-theoretically:
-$\Supp_{k[x,\xi]}(\gr Q)\cap V(x_1)=\varnothing$ in $\Spec k[x,\xi]$, for an
-arbitrary field $k$ of characteristic zero. For the finite module $M=\gr Q$
-this is equivalent to $\Ann(\gr Q)+(x_1)=(1)$. It is an identity of ideals, so
-it persists under every field extension, and it gives the point-set statement
-over any algebraically closed extension. The proof is the printed one:
-Lemma~\ref{lem:Uzero} gives $M/x_1M=0$, and
-$\Supp(M/x_1M)=\Supp M\cap V(x_1)$ for finite $M$.
-
-The formal statement is phrased for the transposed support, i.e.\ the support
-of $\gr$ of the left module obtained from $Q$ through the transposition
-$x_i\mapsto x_i$, $\partial_i\mapsto-\partial_i$. That support is the preimage
-of $\Supp\gr Q$ under $\xi\mapsto-\xi$. This involution fixes $x_1$ and hence
-$V(x_1)$, so the two disjointness statements are equivalent, and the formal
-consumer converts back at once to $\Ann(\gr Q)+(x_1)=(1)$. No left-module
-input is used anywhere.
-\end{AIaddition}
+\AIcomment{COMP-08}{The formal conclusion is scheme-theoretic: $\Supp(\gr Q)\cap V(x_1)=\varnothing$, equivalently $\Ann(\gr Q)+(x_1)=(1)$. It therefore persists under field extension. The formal statement uses the support transported by $\xi\mapsto-\xi$; this fixes $x_1$, so the avoidance statements are equivalent.}
 
 
 
@@ -1374,15 +1094,17 @@ Since $\ell(t)$ annihilates that fibre,
 $0=v_0\sum_{i\ge1}\ell_i\tau_i$. Hence $\ell'=(\ell_1,\dots,\ell_n)$ annihilates
 $T_yY$, and so $\ell'\in(T_yY)^\perp=\operatorname{span}\{\nabla f(y):f\in I(Y)\}$,
 i.e.\ $(y,\ell'(t))$ is a $\mathbb C((t))$-point of the equation-conormal locus
-$\mathcal C_{\mathbb C((t))}$ of Step~\ref{st:scal} in the proof of
-Theorem~\ref{thm:asymptotic-conormal}. Smoothness of $y$ is not used.
+$\mathcal C_{\mathbb C((t))}$ obtained by extending the equation-conormal locus of $Y$ to $\mathbb C((t))$. Smoothness of $y$ is not used.
 
 \emph{(2) Passage to $\mathbb C$-points.} $\Dir(Y)$ is defined through conormal
 vectors at $\mathbb C$-points, and $y$ is not one. Let $P$ be a homogeneous
 polynomial vanishing at every direction in $\Dir(Y)$. Then $\xi_1P$ vanishes on
-$N(Y)=\bigcup_{z\in Y_{\sm}}N^*_zY$. By Steps~\ref{st:closure}
-and~\ref{st:scal} (generic smoothness, then the Nullstellensatz in
-$\mathbb C[x,\lambda]$) it vanishes on $\mathcal C_{\mathbb C((t))}$, so
+$N(Y)=\bigcup_{z\in Y_{\sm}}N^*_zY$. By generic smoothness, this vanishing
+extends to the equation-conormal locus: a polynomial in gradient covectors
+vanishing on the dense smooth locus vanishes on all of $Y$. Parametrize
+covectors by finite linear combinations of gradients and apply the
+Nullstellensatz in $\mathbb C[x,\lambda]$; the vanishing then persists
+under extension to $\mathbb C((t))$. Thus
 $\ell_1(t)P(\ell'(t))=0$. Since $\ell_1(0)=1$, $\ell_1$ is a unit of
 $\mathbb C[[t]]$, hence $P(\ell'(t))=0$ in $\mathbb C[[t]]$.
 
@@ -1398,26 +1120,7 @@ $\ell'(0)=e_1$ is given explicitly.
 \leandecl{Stafford38/Geometry/SmoothConormalFibreVanishing.lean}{21}{Stafford38.Geometry.SmoothConormalFibreVanishing.fibreLift_mem_vanishingIdeal_equationConormal};
 \leandecl{Stafford38/Geometry/LaurentConormalDirection.lean}{68}{Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic};
 \leandecl{Stafford38/Geometry/GeneralTangentLimitCriterion.lean}{368}{Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction}}}
-\begin{AIaddition}{Formal status of Lemma~\ref{lem:tangent-limit}}
-Lean proves the following, over any algebraically closed field $K$ with no
-characteristic assumption. Let $\mathfrak p\subset K[x_1,\dots,x_n]$ be prime,
-$q\in K[[t]]^{n+1}$ with $q_0\neq0$, and fix an axis $1\le s\le n$. Assume:
-\begin{itemize}[leftmargin=*]
-\item some $q_i$ is a unit, and every homogenization $f^h$ with $f\in\mathfrak p$ satisfies $f^h(q)=0$ in $K((t))$;
-\item $y=(q_i/q_0)_{i\ge1}$ is a smooth point of $\mathfrak p\otimes K((t))$;
-\item $L\subset K[[t]]^{n+1}$ is a direct summand of rank $d+1$, with $d$ arbitrary;
-\item the $K((t))$-span of $L$ equals the preimage of the Zariski tangent space of $\mathfrak p\otimes K((t))$ at $y$ under the derivative of dehomogenization at $q$;
-\item every $w\in L$ has $w_s(0)=0$.
-\end{itemize}
-Then $[dx_s]$ lies in the Zariski closure of the smooth conormal directions of $V(\mathfrak p)$, that is, in $\Dir(V(\mathfrak p))$.
-The smoothness hypothesis is carried but not needed for the conclusion, and the
-rank $d$ plays no role. This lemma is \emph{not} on the terminal route: nothing on
-the path to the main theorem imports it (\texttt{docs/proof-graph.yaml}, entry
-\texttt{tangent\_limit}: ``auxiliary; not in terminal proof route''). The
-formal proof of Theorem~\ref{thm:asymptotic-conormal} does not go through
-Lemma~\ref{lem:tangent-limit}. It uses the valuation-theoretic argument given
-above after that theorem's proof.
-\end{AIaddition}
+\AIcomment{COMP-10}{The formal tangent-limit criterion is auxiliary. It assumes a generically smooth arc and a direct-summand lattice whose generic span is the lifted tangent space, with the specified axis component vanishing on its residue. Its proof does not use the smoothness hypothesis or the stated rank, but these remain assumptions of the formal statement. The formal proof of Theorem~\ref{thm:asymptotic-conormal} follows a separate Laurent-series route, so it does not certify every step of the printed tangent-limit argument.}
 
 \begin{theorem}\label{thm:asymptotic-conormal}
 If $Y$ is nonempty and $Y\cap H=\varnothing$, then
@@ -1576,127 +1279,7 @@ by a different argument (red block below): a divisorial valuation at infinity
 instead of normalization, tilted arc and tangent lattice. The printed proof is
 not machine-checked; either keep it with the corrections above as an
 alternative proof, or replace it by the red block.}
-\begin{AIaddition}{Proof of Theorem~\ref{thm:asymptotic-conormal} as formalized in Lean}
-Let $K$ be algebraically closed of characteristic zero, let
-$\mathfrak p\subset K[x_1,\dots,x_n]$ with $n\ge1$ be a prime ideal, and let
-$Y=V(\mathfrak p)\subset K^n$ satisfy $Y\cap\{x_1=0\}=\varnothing$. For a field
-$L\supseteq K$ and $y\in L^n$ write $\nabla f(y)=(\partial_1f(y),\dots,\partial_nf(y))$,
-and let
-\[\mathcal C_L=\{(y,\xi)\in L^n\times L^n:\ f(y)=0\ \forall f\in\mathfrak p,\
- \xi\in\operatorname{span}_L\{\nabla f(y):f\in\mathfrak p\}\}\]
-be the \emph{equation-conormal locus} over $L$ (singular $y$ allowed).
-Since $\mathfrak p=I(Y)$, the fibre of $\mathcal C_K$ over $y\in Y_{\sm}$ is
-$N^*_yY$, with covectors written in the basis $dx_i$. Put
-$N(Y)=\bigcup_{y\in Y_{\sm}}N^*_yY\subset K^n$. Lean proves:
-(i) every $P\in K[\xi_1,\dots,\xi_n]$ vanishing on $N(Y)$ satisfies
-$P(e_1)=0$; (ii) $[dx_1]\in\Dir(Y)$. For $K=\mathbb C$ and $Y$ irreducible,
-$\mathfrak p=I(Y)$ is prime and (ii) is Theorem~\ref{thm:asymptotic-conormal}.
-The hypothesis ``$Y$ nonempty'' is automatic, since $\mathfrak p\neq(1)$.
-Let $R=K[x]/\mathfrak p$, $F=\operatorname{Frac}R$, and let $\bar x_i\in R$ be the
-coordinate functions.
-\begin{enumerate}[label=\textbf{Step \arabic*.},ref=\arabic*,leftmargin=*,widest=13]
-\item\label{st:inv} (\emph{Polynomial inverse.}) $V(\mathfrak p+(x_1))=\varnothing$, so by the
-Nullstellensatz there is $g\in K[x]$ with $x_1g-1\in\mathfrak p$.
-\item\label{st:const} (\emph{Constant case.}) If $\bar x_1$ is algebraic over $K$, then
-$\bar x_1=c\in K$ because $K$ is algebraically closed and $R$ is a domain; so
-$x_1-c\in\mathfrak p$. For any $y\in Y$ (nonempty by the Nullstellensatz),
-$(y,e_1)=(y,\nabla(x_1-c)(y))\in\mathcal C_K$. Take $\kappa=K$, constant series
-$y(t)=y$, $\xi(t)=e_1$, and go to Step~\ref{st:eval}. This includes $\dim Y=0$.
-\item\label{st:val} (\emph{Valuation ring and chart.}) Now let $\bar x_1$ be transcendental. The ideal
-$\bar x_1K[\bar x_1]$ is proper, so Chevalley's extension theorem gives a
-valuation ring $W\subset F$ with $K[\bar x_1]\subset W$ and $\bar x_1\in\mathfrak m_W$.
-Let $Y_\bullet=(1,\bar x_1,\dots,\bar x_n)$. Pick $j$ with $Y_a/Y_j\in W$ for all
-$a$ and put $c_a=Y_a/Y_j$. Let $A$ be the integral closure in $F$ of
-$C_0=K[c_0,\dots,c_n,\bar x_1]$, whose fraction field is $F$ since $\bar x_a=c_a/c_0$.
-Then $A$ is a finitely generated normal $K$-domain, finite over $C_0$. It lies
-in $W$ because $W$ is integrally closed, so $\bar x_1\in A$ and
-$\bar x_1^{-1}\notin A$. No projective closure, properness or global
-normalization is used.
-\item\label{st:dvr} (\emph{Divisorial DVR.}) Since $\bar x_1$ is a nonzero nonunit of $A$, Krull's
-principal ideal theorem gives a height-one prime $\mathfrak q\ni\bar x_1$. As
-$A$ is Noetherian and normal, $V:=A_{\mathfrak q}$ is a DVR with
-$\bar x_1\in\mathfrak m_V$. Its residue field $\kappa=\operatorname{Frac}(A/\mathfrak q)$
-is the function field of the prime divisor $D=V(\mathfrak q)$. Moreover
-$\Omega_{V/K}$ is a finite $V$-module. Fix a uniformizer $t$.
-\item\label{st:inf} (\emph{$D$ lies at infinity.}) Divide $Y_\bullet$ by an entry of minimal
-valuation. This gives $q=(q_0,\dots,q_n)\in V^{n+1}$ with $q_{j_0}=1$,
-$\bar x_a=q_a/q_0$ and $q_1=q_0\bar x_1$. If $q_0$ were a unit, all
-$\bar x_a$ would lie in $V$. Then $\bar x_1^{-1}=g(\bar x)\in V$ by
-Step~\ref{st:inv}, contradicting $\bar x_1\in\mathfrak m_V$. Hence
-$q_0\in\mathfrak m_V$ ($Z_0$ vanishes on $D$) and $j_0\neq0$.
-\item\label{st:gap} (\emph{Order gap.}) Write $q_0=t^au_0$ and $\bar x_1=t^eu$ with
-$u_0,u\in V^\times$ and $a,e\ge1$. Then $q_1=t^{a+e}u_1$ with $u_1=u_0u$, which
-is \eqref{eq:ab} with $b=a+e>a>0$.
-\item\label{st:vis} (\emph{Kähler visibility.}) $A/\mathfrak q$ is integral over the image of
-$K[c,\bar x_1]$, and the residue of $\bar x_1$ is $0$. So $\kappa$ is algebraic over
-$K(\bar c_0,\dots,\bar c_n)$. The columns $q$ and $c$ are proportional and both
-have an entry $1$, so $q=\mu c$ with $\mu\in V^\times$. Using $\bar q_0=0$, this
-gives $K(\bar c_0,\dots,\bar c_n)=K(\bar q_1,\dots,\bar q_n)$. The extension is
-separable because $\operatorname{char}K=0$, so the $d\bar q_j$ span
-$\Omega_{\kappa/K}$. The exact sequence
-$\mathfrak m_V/\mathfrak m_V^2\to\kappa\otimes_V\Omega_{V/K}\to\Omega_{\kappa/K}\to0$ with
-$\mathfrak m_V=tV$ then shows that the finite $V$-module $M:=\operatorname{im}(\Omega_{V/K}\to\Omega_{F/K})$ satisfies
-\[M=V\,dt+\textstyle\sum_{j=1}^nV\,dq_j+tM .\]
-\item\label{st:nak} (\emph{Nakayama.}) For $P\in V$ put
-$\sigma(P)=t^{a+1}u_0^2\,d(P/q_0)=u_0t\,dP-au_0P\,dt-tP\,du_0$, and let
-$S=\sum_{j=1}^nV\sigma(q_j)$. Since $q_{j_0}=1$,
-$\sigma(q_{j_0})=-au_0\,dt-t\,du_0$. Hence
-$t\,dq_j=u_0^{-1}(\sigma(q_j)-q_j\sigma(q_{j_0}))\in S$ and
-$au_0\,t\,dt=-t\sigma(q_{j_0})-t^2du_0\in S+t^2M$, where $au_0\in V^\times$
-because $\operatorname{char}K=0$. By Step~\ref{st:vis}, $tM\subset S+t(tM)$,
-and Nakayama gives $tM\subset S$. From $q_1=t^{a+e}u_1$ we get
-$\sigma(q_1)=t^{a+e-1}\cdot t\omega_0$ with
-$\omega_0=u_0t\,du_1+eu_0u_1\,dt-tu_1\,du_0\in M$. Thus
-$\sigma(q_1)=\sum_jt^{a+e-1}b_j\sigma(q_j)$ with $b_j\in V$. Dividing by
-$t^{a+1}u_0^2$ gives
-\[d\bar x_1=\textstyle\sum_{j=1}^n c_j\,d\bar x_j\ \text{ in }\Omega_{F/K},\qquad
- c_j=t^{a+e-1}b_j\in\mathfrak m_V .\]
-This relation replaces the tangent lattice and Grassmannian limit
-\eqref{eq:q-orders}--\eqref{eq:T1-vanish}.
-\item\label{st:gen} (\emph{Generic conormal covector.}) Let $\xi^F=e_1-\sum_jc_je_j\in V^n$, so
-$\sum_i\xi^F_i\,d\bar x_i=0$. Localizing the conormal sequence of
-$K[x]\to R$ at $(0)$ gives the exact sequence
-$\mathfrak p\otimes F\to F^n\to\Omega_{F/K}\to0$, where $f\mapsto\nabla f(\bar x)$.
-Hence $(\bar x,\xi^F)\in\mathcal C_F$.
-\item\label{st:compl} (\emph{Completion and Laurent point.}) Lift a Noether normalization of
-$A/\mathfrak q$ to $a_1,\dots,a_s\in A$. Every nonzero polynomial in the $a_i$
-has nonzero residue, so $E=K(a_1,\dots,a_s)\subset V$, and $\kappa/E$ is finite and
-separable. By Hensel's lemma and Cohen's theorem, $\widehat V\cong\kappa[[t]]$ as
-$E$-algebras. This yields an injective $\varphi:V\to\kappa[[t]]$ over $K$ with
-$\varphi(v)(0)=\bar v$. It extends to a field embedding
-$\ell:F\to\kappa((t))$ over $K$. Such embeddings preserve $\mathcal C$, because
-$\mathfrak p\subset K[x]$. So $y(t):=\ell(\bar x)=(\varphi(q_a)/\varphi(q_0))_a$ and
-$\xi(t):=\varphi(\xi^F)\in\kappa[[t]]^n$ satisfy
-$(y(t),\xi(t))\in\mathcal C_{\kappa((t))}$ and $\xi(0)=e_1$, since
-$c_j\in\mathfrak m_V$. The base point has a pole, because $\operatorname{ord}\varphi(q_0)=a>0$.
-The field $\kappa=\kappa(D)$ has transcendence degree $\dim Y-1$ over $K$. No
-closed point of $D$ is chosen, and the arc's generic point need not be smooth.
-\item\label{st:closure} (\emph{Equation- versus smooth-conormal closure.}) Let $P\in K[\xi]$ vanish
-on $N(Y)$. Since $K$ is perfect, generic smoothness gives $f\notin\mathfrak p$
-with $Y\cap\{f\ne0\}\subset Y_{\sm}$. Take $(y,\xi)\in\mathcal C_K$ and write
-$\xi=\sum\lambda_a\nabla h_a(y)=\nabla h(y)$ with $h=\sum\lambda_ah_a\in\mathfrak p$.
-The polynomial $G(x)=P(\nabla h(x))$ vanishes on $Y\cap\{f\neq0\}$. So
-$fG\in I(Y)=\mathfrak p$, hence $G\in\mathfrak p$ and $P(\xi)=G(y)=0$.
-\item\label{st:scal} (\emph{Scalar extension.}) Let $L\supseteq K$ and $(y,\xi)\in\mathcal C_L$.
-Since $d(gh)(y)=g(y)\nabla h(y)$ for $h\in\mathfrak p$, we can write
-$\xi=\sum_{a=1}^r\lambda_a\nabla h_a(y)$ with $h_a\in\mathfrak p$ and $\lambda\in L^r$. Put
-$G(x,\lambda)=P(\sum_a\lambda_a\nabla h_a(x))\in K[x,\lambda]$. By
-Step~\ref{st:closure}, $G$ vanishes at every $K$-point of $Y\times K^r$. The
-Nullstellensatz gives $G^N\in\mathfrak p\,K[x,\lambda]$, and evaluating at
-$(y,\lambda)$ gives $P(\xi)=0$.
-\item\label{st:eval} (\emph{Evaluation at $t=0$.}) Apply Step~\ref{st:scal} with $L=\kappa((t))$ to
-the point of Step~\ref{st:const} or Step~\ref{st:compl}. Then
-$P(\xi(t))=0$. Its constant term is $P(\xi(0))=P(e_1)$, so $P(e_1)=0$, which is (i).
-For (ii), let $P$ be homogeneous and vanish at $\xi$ for every direction $[\xi]$ with
-$\xi\in N(Y)\setminus0$. Then $\xi_1P$ vanishes on $N(Y)$, and (i) gives
-$P(e_1)=0$. Therefore $[dx_1]\in\Dir(Y)$.
-\end{enumerate}
-Characteristic zero is used in Steps~\ref{st:vis}, \ref{st:nak},
-\ref{st:compl} and~\ref{st:closure}. Algebraic closedness is used in Steps~\ref{st:inv},
-\ref{st:const}, \ref{st:closure} and~\ref{st:scal}. The proof does not use
-Lemma~\ref{lem:tangent-limit}, the normalization of $\overline Y$, the closed point $p$,
-the tilted arc or the minor selection.
-\end{AIaddition}
+\AIcomment{COMP-11}{The formal proof works over every algebraically closed field of characteristic zero. It replaces the tangent-limit route by a Laurent-series argument. The constant-coordinate case is treated separately; otherwise a divisorial valuation gives $dx_1=\sum_j c_j\,dx_j$ with each $c_j$ of positive valuation. The conormal covector $e_1-\sum_jc_je_j$ therefore tends to $e_1$, and the equation-conormal closure and scalar-extension arguments give the required direction. The detailed valuation and residue argument is in the technical supplement; it does not justify a gap in a different printed proof.}
 \AIadd{\formalref[{any algebraically closed field of characteristic $0$; (i) is the affine-cone form used in Section~\ref{sec:involutive-review}}]{%
 \leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{63}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions};
 \leandecl{Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean}{42}{Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameExistence};
@@ -1786,49 +1369,7 @@ fibre of $W$ at a finite base point. Every conormal direction lies in
 $V_+(P)$; that set is closed, so the limiting direction does too.
 This yields the same contradiction $P(1,0,\ldots,0)=0$.}
 \end{proof}
-\begin{AIaddition}{Proof of Theorem~\ref{thm:coisotropic-exclusion} as formalized in Lean}
-Work in the setting of the formal statement and suppose
-$W\cap\pi^{-1}(H)=\varnothing$. Put $J=I(W)$, which is radical, and $B=J\cap K[x]$.
-\begin{enumerate}[label=\textbf{Step \arabic*.},ref=\arabic*,leftmargin=*,widest=5]
-\item\label{st:hom} (\emph{$\xi$-homogeneity.}) Write $g\in J$ as $g=\sum_dg_d$ with $g_d$ homogeneous of
-degree $d$ in $\xi$. For $(y,\xi)\in W$, the polynomial $a\mapsto\sum_da^dg_d(y,\xi)$
-vanishes on the infinite set $K^\times$. So every $g_d\in J$, i.e.\ $J$ is $\xi$-homogeneous.
-\item\label{st:zero} (\emph{Zero section.}) Let $Y=V(B)$. For $y\in Y$ and $g\in J$,
-$g(y,0)=g_0(y)=0$ because $g_0\in J$ has $\xi$-degree $0$, i.e.\ $g_0\in B$. So
-$Y\times\{0\}\subset V(J)=W$. Hence $\pi(W)=Y$ is closed, which is \eqref{eq:zero-section}, and
-$Y\cap H=\varnothing$.
-\item\label{st:transl} (\emph{Vertical translation.}) Let $f\in B$. Then $f\circ\pi\in J$, so
-$H_fg:=\sum_i\partial_{x_i}f\,\partial_{\xi_i}g=\pm\{f,g\}$ lies in $J$ for every $g\in J$.
-This is the only use of involutivity. Fix $y\in Y$ and $g\in J$ and let
-$\varphi(t)=g(y,t\,df_y)\in K[t]$. The chain rule gives
-$\varphi^{(m)}(t)=(H_f^mg)(y,t\,df_y)$, and $H_f^mg\in J$, so
-$\varphi^{(m)}(0)=0$ by Step~\ref{st:zero}. As $m!\neq0$ in $K$, we get $\varphi=0$,
-so $(y,t\,df_y)\in W$ for all $t$. Since
-$\sum_ac_a\,d(f_a)_y=d(\sum_ac_af_a)_y$ and $\sum_ac_af_a\in B$, it follows that
-$\{y\}\times\operatorname{span}\{df_y:f\in B\}\subset W$. No exponential
-series or composition of flows is needed.
-\item\label{st:comp} (\emph{Component containment.}) Let $\mathfrak q$ be a minimal prime of $B$ and
-$Y_0=V(\mathfrak q)$. Taking a product of elements of the other minimal primes
-that lie outside $\mathfrak q$ gives $s\notin\mathfrak q$ with $s\mathfrak q\subset B$.
-For $y\in Y_0$ with $s(y)\neq0$ and $h\in\mathfrak q$, we have $d(sh)_y=s(y)\,dh_y$, so
-$(y,dh_y)\in W$ by Step~\ref{st:transl}. For $g\in J$, the polynomial
-$G(x)=g(x,\nabla h(x))$ therefore vanishes on $Y_0\cap\{s\neq0\}$. Hence
-$sG\in\mathfrak q$, so $G\in\mathfrak q$, and $(y,\nabla h(y))\in W$ for \emph{every}
-$y\in Y_0$. Absorbing linear combinations into $h$ gives
-$\{y\}\times\operatorname{span}\{\nabla h(y):h\in\mathfrak q\}\subset W$ for all $y\in Y_0$. In particular
-$N^*_yY_0\subset W_y$ at every smooth point $y$ of $Y_0$, which proves
-\eqref{eq:conormal-in-W}.
-\item\label{st:asym} (\emph{Conclusion in the affine cone.}) $Y_0$ is irreducible, nonempty and
-disjoint from $H$. By Step~\ref{st:comp} and $W\subset V(P)$, $P$ vanishes on
-$N(Y_0)=\bigcup_{y\in(Y_0)_{\sm}}N^*_yY_0\subset K^n$. By part (i) of
-Theorem~\ref{thm:asymptotic-conormal} in its formal version, $P(1,0,\dots,0)=0$,
-a contradiction.
-\end{enumerate}
-Part (i) is a statement about the vanishing ideal of the cone
-$N(Y_0)\subset K^n$. So $[dx_1]$ never has to be a fibre direction of $W$ over a
-finite base point, which removes the closure issue of GEO-03. Homogeneity of $P$ is
-not used, and one component $Y_0$ suffices.
-\end{AIaddition}
+\AIcomment{COMP-13}{The formal proof first excludes $x_1$ from every minimal base prime by iterated Poisson brackets with $P$. Assuming avoidance of $H$, it then forces those primes to be homogeneous in the transverse base coordinates and uses an asymptotic conormal direction to contradict $P(1,0,\ldots,0)\ne0$. This is an alternative route, not a verification of each intermediate step above.}
 \AIadd{\formalref{%
 \leandecl{Stafford38/Geometry/GeneralCoisotropicExclusion.lean}{29}{Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate};
 \leandecl{Stafford38/Characteristic/BaseRelativePoisson.lean}{71}{Stafford38.Characteristic.BaseRelativePoisson.zeroSection_stable_under_differential_translation_of_isBaseRelativePoisson};
@@ -1928,58 +1469,7 @@ stays proper in $\Kbar[x,\xi]$.
 \leandecl{Stafford38/Weyl/PresentedScalarExtension.lean}{388}{Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_map_orderInitialIdeal_le};
 \leandecl{Stafford38/Characteristic/EmptySupportVanishing.lean}{80}{Stafford38.CharacteristicEmptySupportVanishing.orderInitialIdeal_eq_top_iff_rightQuotient_subsingleton};
 \leandecl{Stafford38/Characteristic/GeometricSupportDescent.lean}{96}{Stafford38.Characteristic.GeometricSupportDescent.map_scalarPolynomialMap_eq_top_iff}}}
-\begin{AIaddition}{Proof as formalized in Lean}
-Lean never uses $k_0$, $\mathbb C$ or faithful flatness of modules. It works
-over $k$, runs the geometry over $\Kbar$, and descends the order initial
-ideal. The proof has six steps.
-
-\emph{Step 1: degenerate cases.} For $n=0$, $A_0(k)=k$ and $d\neq0$ is a unit,
-so $R=d^{-1}$ and $F=S=0$ work. Let $n\ge1$ and $N=\deg_Bd$. If $N=0$, then
-$d=c\in k^\times$, and $\ell=x_1$, $F=\ell^0=1$, $R=c^{-1}$, $S=0$ work.
-
-\emph{Step 2: normal form.} For $N\ge1$, Proposition~\ref{prop:monic} (Lean
-form) gives symplectic $M,M'$ with $MM'=M'M=1$ and $c\in k^\times$ such that
-$\tilde d=c^{-1}\Phi_M(d)\in A_n(k)$ satisfies \texttt{IsPBWMonicAt}. Let
-$I=\tilde dA_n+x_1^N\tilde dA_n$ and $Q=A_n/I$. It suffices to show
-$\operatorname{in}(I)=(1)$ (Lemma~\ref{lem:initial-base-change}).
-
-\emph{Step 3: vanishing over $\Kbar$.} The image of $\tilde d$ in
-$A_n(\Kbar)$ is again PBW-monic, so Sections 5--7 apply to
-$Q_{\Kbar}=A_n(\Kbar)/I_{\Kbar}$. Suppose
-$J:=\sqrt{\operatorname{in}(I_{\Kbar})}\neq(1)$, and let
-$W=V(J)\subseteq\Kbar^{2n}$. Then:
-\begin{itemize}[nosep,leftmargin=1.4em]
-\item $W\neq\varnothing$ by the Nullstellensatz, and $I(W)=J$.
-\item $W$ is closed and fibre-conical. The generators $\sigma_L(z)$ of
-$\operatorname{in}(I_{\Kbar})$ are homogeneous of degree $L$ in $\xi$, so
-$\operatorname{in}(I_{\Kbar})$ and $J$ are $\xi$-homogeneous. For $f\in J$
-each $\xi$-homogeneous component $f_j$ lies in $J$, and
-$f(y,t\xi)=\sum_jt^jf_j(y,\xi)$.
-\item $W$ is involutive: $J=\sqrt{\Ann\gr Q_{\Kbar}}$ is involutive by
-Theorem~\ref{ithm:gabber} (radical form, a corollary of the minimal-prime
-form).
-\item $P=\sigma(\tilde d)\in\operatorname{in}(I_{\Kbar})\subseteq J$, so
-$W\subseteq V(P)$, and $P(1,0,\ldots,0)=1$ by Lemma~\ref{lem:order-symbol}.
-\item $W\cap\pi^{-1}(H)=\varnothing$ by Proposition~\ref{prop:char-avoids}
-over $\Kbar$, i.e.\ $\operatorname{in}(I_{\Kbar})+(x_1)=(1)$.
-\end{itemize}
-The formal Theorem~\ref{thm:coisotropic-exclusion} gives a point of $W$ with
-$x_1=0$, a contradiction. Hence $\operatorname{in}(I_{\Kbar})=(1)$.
-
-\emph{Step 4: descent.} By Lemma~\ref{lem:initial-base-change},
-$\operatorname{in}(I)\Kbar[x,\xi]=(1)$, hence $\operatorname{in}(I)=(1)$.
-
-\emph{Step 5: the certificate over $k$.} By
-Lemma~\ref{lem:initial-base-change}, $\operatorname{in}(I)=(1)$ gives
-$Q=0$, i.e.\ $1\in I$. So $1=\tilde dR+x_1^N\tilde dS$ with $R,S\in A_n(k)$.
-
-\emph{Step 6: transport back.} Since $c^{-1}$ is central, we get
-\[1=\Phi_M(d)(c^{-1}R)+x_1^N\Phi_M(d)(c^{-1}S).\] Applying
-$\Phi_M^{-1}=\Phi_{M'}$ gives $1=dR'+\ell^NdS'$ with
-$R'=\Phi_{M'}(c^{-1}R)$, $S'=\Phi_{M'}(c^{-1}S)$ and
-$\ell=\Phi_{M'}(x_1)=\sum_jM'_{1j}z_j$, where row $1$ is the row of $x_1$
-and $N=\deg_Bd$.
-\end{AIaddition}
+\AIcomment{COMP-15}{The formal main proof runs the geometry over $\Kbar$ and descends the order initial ideal using Lemma~\ref{lem:initial-base-change}; it does not use the embedding into $\mathbb C$. The rank-zero and scalar cases are handled separately. For the remaining cases, emptiness of characteristic support gives $1\in I$, and the inverse symplectic change returns the fixed-source identity over $k$.}
 
 \AIreplace{Latly}{Lastly}, as Stafford already showed, from $1 = dR+FdS$ follows cyclicity of the torsion right module:
 \AIadd{\begin{corollary}\label{cor:cyclic}
@@ -2010,23 +1500,7 @@ generator calculation itself is valid.}
     Suitable choices are $u = y+Fx$ and $v = x-a(y+Fx)$.\\
     Lastly, since  $A_n\oplus A_n$ can be generated by $(a, 1-Fa)$ and $(1, -F)$ and $(a, 1-Fa)$ is an element of $M$, it follows that $T \cong \AIreplace{/A_n\oplus A_n)/M}{(A_n\oplus A_n)/M}$ can be generated by \AIadd{the image of} $(1, -F)$, i.e. $T$ is cyclic. 
 \end{proof}
-\begin{AIaddition}{Proof as formalized in Lean}
-No two-generator theorem and no Ore condition are needed. Let $T$ be a finitely
-generated torsion right module over a ring $A$ without zero divisors in which
-every $d\ne0$ admits $1=dR+FdS$; $A=A_n(k)$ qualifies by Theorem~\ref{thm:main}
-and because $A_n(k)$ is a domain (the Bernstein symbol of a product is the
-product of the symbols, in the polynomial ring $k[x,\xi]$).
-
-\emph{Two generators.} Let $t_1,t_2\in T$. Choose $d_2\ne0$ with $t_2d_2=0$ and
-$e\ne0$ with $(t_1d_2)e=0$; then $d:=d_2e\ne0$ annihilates $t_1$ and $t_2$. Write
-$1=dR+FdS$ and put $g:=t_1-t_2F$. Then $t_2=t_2(dR+FdS)=t_2FdS$ and
-$g\,dS=t_1dS-t_2FdS=-t_2$, so $t_2\in gA$ and $t_1=g+t_2F\in gA$; conversely
-$g\in t_1A+t_2A$. Hence $t_1A+t_2A=gA$.
-
-\emph{Induction.} If $t_1,\dots,t_m$ generate $T$, replace $t_{m-1},t_m$ by a
-single generator of $t_{m-1}A+t_mA$ and repeat; after $m-1$ steps one generator
-remains.
-\end{AIaddition}
+\AIcomment{COMP-16}{The formal cyclicity proof uses the identity for each nonzero annihilator and induction on a finite generating set. It does not assume an Ore condition or invoke a separate two-generator theorem. The right-sided placement of the cofactors is essential.}
 \AIadd{\formalref{\leandecl{Stafford38/TorsionCyclicity.lean}{161}{Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion},
 two generators \leandecl{Stafford38/TorsionCyclicity.lean}{27}{Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair},
 domain \leandecl{Stafford38/Weyl/Domain.lean}{22}{Stafford38.WeylDomain.mul_ne_zero};
@@ -2143,13 +1617,13 @@ Palomar~\cite{Stafford38Palomar2026,GlobalStaffordPalomar2026}; their Lean devel
 with the existing order-symbol and characteristic-containment labels.}
 \AIreplace{AI also proved some related stuff regarding Right Ore localizations, the corresponding left-hand identity, and apparently the corresponding identity over other rings such as differential rings with laurent series coefficients; I am leaving that out for now.}{The formalization also proves the following consequences, which are not otherwise used here:
 the identity in every right Ore localization of $A_n(k)$
-(\leandecl{Stafford38/LocalizationCorollaries.lean}{28}{Stafford38.LocalizationCorollaries.s38_rightOreLocalization});
+\formalref{\leandecl{Stafford38/LocalizationCorollaries.lean}{28}{Stafford38.LocalizationCorollaries.s38_rightOreLocalization}};
 the left-handed identity $1=Rd+SdF$ via the formal adjoint
-(\leandecl{Stafford38/LeftHandedCorollary.lean}{20}{Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement});
+\formalref{\leandecl{Stafford38/LeftHandedCorollary.lean}{20}{Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement}};
 the identity for finite-order differential operators on localizations of $k[x_1,\dots,x_n]$, including principal opens, Laurent-polynomial coefficients and the fraction field
-(\leandecl{Stafford38/LocalizedDifferentialCorollaries.lean}{80}{Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential});
+\formalref{\leandecl{Stafford38/LocalizedDifferentialCorollaries.lean}{80}{Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential}};
 and, independently of the geometric argument, an evolutionary version with arbitrary coefficients commuting with one Weyl pair
-(\leandecl{Stafford38/EvolutionaryCorollary.lean}{33}{Stafford38.Evolution.evolutionaryCorollary}).} 
+\formalref{\leandecl{Stafford38/EvolutionaryCorollary.lean}{33}{Stafford38.Evolution.evolutionaryCorollary}}.}
 \AIcomment{SCOPE-01}{\emph{Updated 2026-09-30:} the red replacement lists the formalized consequences with their exact scope (Laurent \emph{polynomial}, not Laurent series, coefficients). Original: This is an internal drafting note. The Global Stafford
 extension is now stated and cited in the introduction. Retain further claims
 only with their exact hypotheses and proof references; otherwise remove this

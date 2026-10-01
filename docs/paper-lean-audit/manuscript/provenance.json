@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
-  "paper_base_commit": "cb25e8efad82add86898f30fbcf17daf267c0101",
+  "paper_base_commit": "6f98f5d07d71f9e169cb2e65b0eca0258b7df0e5",
   "snapshot_scope": "Exact committed manuscript TeX, bibliography and visible annotations. Overleaf remains the editing authority.",
   "files": [
     {
       "path": "human_readable_main.tex",
-      "sha256": "e64c5bc0af5876ad8c430f2e8b7bd1012474786d2ab90060501ff8d69911b065"
+      "sha256": "16ad2e01168f5ed2203deff9f5b7d2fee17280563f84f2ccd783466c4aca2fe0"
     },
     {
       "path": "main.tex",
@@ -14,7 +14,7 @@
     },
     {
       "path": "lean_refs.tex",
-      "sha256": "adaf507d8acd6ea78e02d659d5e0ebff0f30c9cd2d4cd39a7d8bab57d77650c3"
+      "sha256": "2831d8279f7aab7fe3aa51fe2a8021bf2b2140c55623f3e364e219d8dec13d74"
     },
     {
       "path": "ai_annotations.tex",
@@ -47,6 +47,14 @@
     {
       "path": "LICENSE.txt",
       "sha256": "98b6fde2693d4044dce4a071640e90bd8d250dd789d9033dbd5b77c79f389de4"
+    },
+    {
+      "path": "lean_proof_details.tex",
+      "sha256": "4f8e742556fa5187507dbbabd69fb304ff85b9b152589eed5120be79243310e8"
+    },
+    {
+      "path": "lean_proof_details_main.tex",
+      "sha256": "78ec53cfcf143cc2726bace4c78e0eb1c166622e169cc91fbf687b7b138b7185"
     }
   ]
 }

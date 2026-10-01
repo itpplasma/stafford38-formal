@@ -11,8 +11,19 @@
 \newcommand{\leandecl}[3]{\href{\leanrepo/#1\#L#2}{\nolinkurl{#3}}}
 % \leanlib{file}{line}{Fully.Qualified.Name}: declaration in AlgebraicAnalysis.
 \newcommand{\leanlib}[3]{\href{\leanlibrepo/#1\#L#2}{\nolinkurl{#3}}}
+% The human-readable paper displays only substantive mathematical qualifications.
+% Full file paths and declaration names remain in source and in the supplement.
+\newif\ifshowleandetails
+\showleandetailsfalse
 % \formalref[relation to the printed statement]{declarations}
 \newcommand{\formalref}[2][]{%
-  \par\smallskip\noindent
-  {\small\textsf{Lean}\if\relax\detokenize{#1}\relax\else\ (#1)\fi: #2}%
-  \par\smallskip}
+  \ifshowleandetails
+    \par\smallskip\noindent
+    {\small\textsf{Lean}\if\relax\detokenize{#1}\relax\else\ (#1)\fi: #2}%
+    \par\smallskip
+  \else
+    \if\relax\detokenize{#1}\relax\else
+      \par\smallskip\noindent{\small\textsf{Formal comparison:} #1}%
+      \par\smallskip
+    \fi
+  \fi}
