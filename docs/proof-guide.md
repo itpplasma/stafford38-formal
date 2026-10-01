@@ -65,10 +65,13 @@ right multiplication by `x` on `Q` is surjective.
 ## Filtered noncharacteristic argument
 
 The order filtration on `Q` produces a two-term filtered complex for right
-multiplication by `x`. At a minimal prime of the relevant support, one
-calculation bounds the localized kernel length by the cokernel length. A
-second calculation, using the surjectivity above and the monic symbol, gives
-the strict inequality in the opposite direction.
+multiplication by `x`. At a minimal prime of the relevant support, the pages
+of this complex, which carry the tangential symbol action (the quotient `Q`
+itself does not), and the surjectivity above bound the localized cokernel
+length by the kernel length (`canonicalPage_length_target_le_source`). Gabber
+involutivity of the minimal primes and the monic symbol show that `x` lies in
+no minimal prime, which gives the strict inequality in the opposite direction
+(`localized_length_cokernel_gt_kernel`).
 
 The contradiction is assembled in
 [`Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance`](../Stafford38/Characteristic/CanonicalKoszulContradiction.lean).
@@ -163,6 +166,22 @@ canonical support-vanishing input and exports both final theorems:
   exact Bernstein-degree exponent in the positive-rank branch.
 
 ## Corollaries
+
+[`Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion`](../Stafford38/TorsionCyclicity.lean)
+proves that every finitely generated torsion right module over `Aₙ(k)` is
+cyclic. The Weyl algebra has no zero divisors
+([`Stafford38.WeylDomain`](../Stafford38/Weyl/Domain.lean), from multiplicativity
+of Bernstein principal symbols), so two torsion elements have a common nonzero
+annihilator `d`; with `1 = d R + F d S`, the element `t₁ - t₂ F` generates both.
+Induction on the number of generators finishes; Stafford's two-generator
+theorem is not used. The Mathlib-only statement is in
+[`CorollaryChallenge.lean`](../CorollaryChallenge.lean).
+
+[`Stafford38.NoncharacteristicHyperplane`](../Stafford38/NoncharacteristicHyperplane.lean)
+formalizes the manuscript's Appendix B: the order symbol is monic in `ξ₁` and
+lies in the characteristic ideal, so the projection from the characteristic
+support over `{x₁ = 0}` to `T*H` is finite on coordinate rings, and the
+conormal intersection lies in the zero section.
 
 [`Stafford38.LocalizationCorollaries.s38_rightOreLocalization`](../Stafford38/LocalizationCorollaries.lean)
 clears a right Ore denominator without changing cofactor order.

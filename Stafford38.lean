@@ -3,6 +3,8 @@ import Stafford38.LocalizedDifferentialCorollaries
 import Stafford38.LocalizationCorollaries
 import Stafford38.LeftHandedCorollary
 import Stafford38.EvolutionaryCorollary
+import Stafford38.TorsionCyclicity
+import Stafford38.NoncharacteristicHyperplane
 import Stafford38.Geometry.GeneralAsymptoticConormal
 import Stafford38.Geometry.GeneralCoisotropicSets
 import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter

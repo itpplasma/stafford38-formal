@@ -106,6 +106,16 @@ Formal adjoint gives the [left-handed identity](Stafford38/LeftHandedCorollary.l
 on polynomial coefficient localizations, including principal opens, partial
 Laurent rings, and fraction rings.
 
+Every finitely generated torsion right module over `Aₙ(k)` is
+[cyclic](Stafford38/TorsionCyclicity.lean), since the Weyl algebra
+[has no zero divisors](Stafford38/Weyl/Domain.lean); the Mathlib-only statement
+is [`CorollaryChallenge.lean`](CorollaryChallenge.lean), solved by
+[`CorollarySolution.lean`](CorollarySolution.lean) and compared through
+[`comparator-corollary.json`](comparator-corollary.json). The coordinate
+hyperplane is [noncharacteristic](Stafford38/NoncharacteristicHyperplane.lean)
+for the canonical quotient. These additions postdate `v1.1.1` and are not yet
+in a tagged release.
+
 The [evolutionary and tensor results](Stafford38/EvolutionaryCorollary.lean)
 have an independent algebraic proof. Each potential coefficient must commute
 with the chosen Weyl pair; coefficients need not commute with one another.

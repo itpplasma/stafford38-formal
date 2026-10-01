@@ -1,6 +1,6 @@
 name = "stafford38Formal"
 version = "1.1.1"
-defaultTargets = ["Stafford38", "Solution", "FixedSourceSolution"]
+defaultTargets = ["Stafford38", "Solution", "FixedSourceSolution", "CorollarySolution"]
 
 [[require]]
 name = "mathlib"
@@ -29,3 +29,9 @@ name = "FixedSourceChallenge"
 
 [[lean_lib]]
 name = "FixedSourceSolution"
+
+[[lean_lib]]
+name = "CorollaryChallenge"
+
+[[lean_lib]]
+name = "CorollarySolution"

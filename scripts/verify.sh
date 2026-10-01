@@ -78,7 +78,9 @@ lake build "${retained_modules[@]}" \
   Stafford38.Geometry.GeneralAsymptoticConormal \
   Stafford38.Geometry.GeneralCoisotropicSets \
   Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter \
-  Solution FixedSourceSolution \
+  Stafford38.TorsionCyclicity \
+  Stafford38.NoncharacteristicHyperplane \
+  Solution FixedSourceSolution CorollarySolution \
   >"$log_dir/build.log" 2>&1
 
 bash scripts/check-consumers.sh
@@ -170,20 +172,36 @@ expected_strong_imports = [
 if strong_imports != expected_strong_imports:
     raise SystemExit(f"unexpected FixedSourceChallenge imports: {strong_imports!r}")
 
-# Neither Solution may import either Challenge, at source level; the loaded
+corollary_challenge = Path("CorollaryChallenge.lean")
+if not corollary_challenge.is_file():
+    raise SystemExit("CorollaryChallenge.lean is missing")
+corollary_code = code_without_comments_or_strings(corollary_challenge.read_text(encoding="utf-8"))
+if re.findall(r"\b(?:sorry|admit)\b", corollary_code) != ["sorry"]:
+    raise SystemExit("CorollaryChallenge.lean must contain exactly one deliberate sorry and no admit")
+corollary_imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", corollary_code)
+expected_corollary_imports = [
+    "Mathlib.Algebra.RingQuot",
+    "Mathlib.Algebra.FreeAlgebra",
+    "Mathlib.LinearAlgebra.SymplecticGroup",
+    "Mathlib.RingTheory.Finiteness.Defs",
+]
+if corollary_imports != expected_corollary_imports:
+    raise SystemExit(f"unexpected CorollaryChallenge imports: {corollary_imports!r}")
+
+# No Solution may import any Challenge, at source level; the loaded
 # environment audit below repeats this for the transitive closure.
-challenge_roots = {"Challenge", "FixedSourceChallenge"}
-for solution_name in ("Solution.lean", "FixedSourceSolution.lean"):
+challenge_roots = {"Challenge", "FixedSourceChallenge", "CorollaryChallenge"}
+for solution_name in ("Solution.lean", "FixedSourceSolution.lean", "CorollarySolution.lean"):
     solution = Path(solution_name)
     if not solution.is_file():
         raise SystemExit(f"{solution_name} is missing")
     solution_code = code_without_comments_or_strings(solution.read_text(encoding="utf-8"))
     solution_imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", solution_code)
     if any(name.split(".")[0] in challenge_roots for name in solution_imports):
-        raise SystemExit(f"{solution_name} must not import Challenge, FixedSourceChallenge, or a submodule")
+        raise SystemExit(f"{solution_name} must not import a Challenge module or a submodule")
 
 for path in Path(".").rglob("*.lean"):
-    if path in {challenge, Path('FixedSourceChallenge.lean')} or any(part in excluded_parts for part in path.parts):
+    if path in {challenge, Path('FixedSourceChallenge.lean'), Path('CorollaryChallenge.lean')} or any(part in excluded_parts for part in path.parts):
         continue
     code = code_without_comments_or_strings(path.read_text(encoding="utf-8"))
     hole = re.search(r"\b(?:sorry|admit)\b", code)
@@ -195,12 +213,13 @@ for path in Path(".").rglob("*.lean"):
         line = code.count("\n", 0, axiom.start()) + 1
         raise SystemExit(f"project axiom declaration in {path}:{line}")
 
-print("source audit: one deliberate placeholder in each Challenge; neither Solution imports either Challenge; no other sorry, admit, or axiom declaration")
+print("source audit: one deliberate placeholder in each Challenge; no Solution imports a Challenge; no other sorry, admit, or axiom declaration")
 PY
 
 cat >"$log_dir/AxiomAudit.lean" <<'LEAN'
 import Stafford38
 import FixedSourceSolution
+import CorollarySolution
 import Stafford38.Geometry.GeneralTangentLimitCriterion
 import Stafford38.Geometry.GeneralAsymptoticConormal
 import Stafford38.Geometry.GeneralCoisotropicSets
@@ -219,6 +238,11 @@ import Stafford38.Geometry.GeneralTangentLimitCriterionTest
 #print axioms Stafford38.LocalizedDifferentialCorollaries.s38_fraction_ring_differential
 #print axioms Stafford38.Evolution.evolutionaryCorollary
 #print axioms Stafford38.Evolution.tensorEvolutionaryCorollary
+#print axioms Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion
+#print axioms Stafford38CorollaryChallenge.torsionCyclicStatement
+#print axioms Stafford38.WeylDomain.mul_ne_zero
+#print axioms Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator
+#print axioms Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection
 #print axioms Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand
 #print axioms Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions
 #print axioms Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical
@@ -251,6 +275,11 @@ expected = {
     "Stafford38.LocalizedDifferentialCorollaries.s38_fraction_ring_differential",
     "Stafford38.Evolution.evolutionaryCorollary",
     "Stafford38.Evolution.tensorEvolutionaryCorollary",
+    "Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion",
+    "Stafford38CorollaryChallenge.torsionCyclicStatement",
+    "Stafford38.WeylDomain.mul_ne_zero",
+    "Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator",
+    "Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection",
     "Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand",
     "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions",
     "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
@@ -280,14 +309,17 @@ if re.search(r"sorryAx|admitAx|Lean\.ofReduceBool", text):
 print(f"axiom audit: {len(expected)} declarations use only {sorted(allowed)}")
 PY
 
-lake build Challenge FixedSourceChallenge >"$log_dir/challenge-build.log" 2>&1
+lake build Challenge FixedSourceChallenge CorollaryChallenge >"$log_dir/challenge-build.log" 2>&1
 bash scripts/check-import-closure.sh Challenge
 bash scripts/check-import-closure.sh Solution
 bash scripts/check-import-closure.sh FixedSourceChallenge
 bash scripts/check-import-closure.sh FixedSourceSolution
+bash scripts/check-import-closure.sh CorollaryChallenge
+bash scripts/check-import-closure.sh CorollarySolution
 
 lake env lean --trust=0 Solution.lean >"$log_dir/solution.log" 2>&1
 lake env lean --trust=0 FixedSourceSolution.lean >>"$log_dir/solution.log" 2>&1
+lake env lean --trust=0 CorollarySolution.lean >>"$log_dir/solution.log" 2>&1
 
 if grep -Eq "sorryAx|admitAx|Lean\.ofReduceBool|declaration uses 'sorry'|(^|:) error:" \
     "$log_dir/build.log" "$log_dir/axioms.log" "$log_dir/solution.log"; then

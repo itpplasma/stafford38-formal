@@ -115,6 +115,15 @@ status:
         - "Classical.choice"
       comparator_config: "comparator-fixed-source.json"
       literature_dependencies: []
+    - declaration: "Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion"
+      file: "Stafford38/TorsionCyclicity.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator-corollary.json"
+      literature_dependencies: []
 
 automation:
   methods:
@@ -204,6 +213,24 @@ alignment:
         Stafford38FixedSourceChallenge.universalFixedSourceStatement, proved
         in FixedSourceSolution.lean, defines the degree intrinsically as the
         least span level of ordered PBW words containing the element.
+    - source: "Original proof: finitely generated torsion right Weyl modules are cyclic"
+      lean: "Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion"
+      module: "Stafford38.TorsionCyclicity"
+      status: "proved"
+      note: >-
+        Stafford's observation (1978, pp. 437-438) that Conjecture 3.8 implies
+        cyclicity, proved from the universal statement and the fact that the
+        Weyl algebra has no zero divisors, by induction on generators; no
+        two-generator theorem or Ore condition is used. The Mathlib-only
+        compared form is Stafford38CorollaryChallenge.torsionCyclicStatement.
+    - source: "Original proof: the coordinate hyperplane is noncharacteristic (manuscript Appendix B)"
+      lean: "Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator"
+      module: "Stafford38.NoncharacteristicHyperplane"
+      status: "proved"
+      note: >-
+        The projection from Char Q restricted over {x_1 = 0} to T*H is finite,
+        stated on coordinate rings; the conormal intersection lies in the zero
+        section (canonicalSupport_conormal_subset_zeroSection).
 
 acknowledgements: >-
   The formalization builds on Lean, Mathlib, and the AlgebraicAnalysis library.

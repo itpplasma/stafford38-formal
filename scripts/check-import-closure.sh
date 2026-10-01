@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-case "${1:-}" in Challenge|Solution|FixedSourceChallenge|FixedSourceSolution) module=$1 ;; *) exit 2 ;; esac
+case "${1:-}" in Challenge|Solution|FixedSourceChallenge|FixedSourceSolution|CorollaryChallenge|CorollarySolution) module=$1 ;; *) exit 2 ;; esac
 mkdir -p .lake/verification
 audit=".lake/verification/${module}Imports.lean"
 log=".lake/verification/${module}-imports.log"
@@ -24,8 +24,8 @@ target, log = sys.argv[1:]
 names = re.findall(r'^IMPORT (\S+)$', Path(log).read_text(), re.M)
 if target not in names:
     raise SystemExit('loaded-environment audit did not report its target')
-if target in {'Solution', 'FixedSourceSolution'}:
-    forbidden = [n for n in names if n.split('.')[0] in {'Challenge', 'FixedSourceChallenge'}]
+if target in {'Solution', 'FixedSourceSolution', 'CorollarySolution'}:
+    forbidden = [n for n in names if n.split('.')[0] in {'Challenge', 'FixedSourceChallenge', 'CorollaryChallenge'}]
 else:
     # Mathlib is Palomar's allowlisted root. Its committed dependency manifest
     # determines the allowed package closure; AlgebraicAnalysis is excluded.

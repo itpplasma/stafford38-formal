@@ -92,6 +92,21 @@ nodes:
     source_role: project construction
     references: []
     depends_on: [certificate]
+  - id: weyl_domain
+    module: Stafford38.Weyl.Domain
+    source_role: project construction
+    references: []
+    depends_on: [monicization]
+  - id: torsion_cyclicity
+    module: Stafford38.TorsionCyclicity
+    source_role: project construction
+    references: [Sta78]
+    depends_on: [certificate, weyl_domain]
+  - id: noncharacteristic_hyperplane
+    module: Stafford38.NoncharacteristicHyperplane
+    source_role: project construction
+    references: []
+    depends_on: [characteristic_avoidance]
   - id: evolutionary_and_tensor
     module: Stafford38.EvolutionaryCorollary
     source_role: project construction

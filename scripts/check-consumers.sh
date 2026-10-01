@@ -23,6 +23,7 @@ expected = {
     'evolutionConsumer', 'Stafford38.Evolution.tensorEvolutionaryCorollary',
     'actualLocalizedOperatorConsumer', 'actualPrincipalOpenConsumer',
     'actualPartialLaurentConsumer', 'actualRationalOperatorConsumer',
+    'torsionCyclicPaperConsumer', 'weylDomainConsumer',
 }
 reports = dict(re.findall(r"'([^']+)' depends on axioms:\s*\[(.*?)\]", text, re.S))
 for name in re.findall(r"'([^']+)' does not depend on any axioms", text):

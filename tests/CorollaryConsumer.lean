@@ -2,6 +2,8 @@ import Stafford38.FoundationClosure
 import Stafford38.LeftHandedCorollary
 import Stafford38.EvolutionaryCorollary
 import Stafford38.LocalizationCorollaries
+import Stafford38.TorsionCyclicity
+import Stafford38.NoncharacteristicHyperplane
 
 open Stafford38 Stafford38.FixedSource
 open Stafford38.WeylIteratedEquivalence
@@ -51,3 +53,18 @@ set_option pp.fullNames true in
 #print axioms orePaperConsumer
 set_option pp.fullNames true in
 #print axioms Stafford38.Evolution.tensorEvolutionaryCorollary
+
+-- The manuscript's cyclicity consequence, for right modules over `Aₙ(k)ᵐᵒᵖ`.
+theorem torsionCyclicPaperConsumer (k : Type u) [Field k] [CharZero k] (n : ℕ)
+    (M : Type u) [AddCommGroup M] [Module (WeylAlg k n)ᵐᵒᵖ M]
+    [Module.Finite (WeylAlg k n)ᵐᵒᵖ M]
+    (hM : ∀ m : M, ∃ a : WeylAlg k n, a ≠ 0 ∧ MulOpposite.op a • m = 0) :
+    ∃ g : M, Submodule.span (WeylAlg k n)ᵐᵒᵖ {g} = ⊤ :=
+  TorsionCyclicity.weyl_isCyclic_of_isRightTorsion k n M hM
+
+theorem weylDomainConsumer (k : Type u) [Field k] (n : ℕ)
+    (x y : WeylAlg k n) (hx : x ≠ 0) (hy : y ≠ 0) : x * y ≠ 0 :=
+  WeylDomain.mul_ne_zero k hx hy
+
+#print axioms torsionCyclicPaperConsumer
+#print axioms weylDomainConsumer

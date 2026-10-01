@@ -1,0 +1,7 @@
+{
+  "challenge_module": "CorollaryChallenge",
+  "solution_module": "CorollarySolution",
+  "theorem_names": ["Stafford38CorollaryChallenge.torsionCyclicStatement"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}

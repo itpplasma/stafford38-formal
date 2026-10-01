@@ -37,6 +37,12 @@ scripts/verify-palomar.sh
 scripts/verify-palomar.sh comparator-fixed-source.json
 ```
 
+The corollary pair `CorollaryChallenge.lean`/`CorollarySolution.lean` is in the
+same format and is covered by `scripts/verify.sh` (source, import-closure and
+axiom audits). It is not submitted to Palomar; `comparator-corollary.json`
+allows the same Comparator check locally with
+`scripts/verify-palomar.sh comparator-corollary.json`.
+
 | Component | Pin |
 | --- | --- |
 | Project Lean | `leanprover/lean4:v4.33.0` |
