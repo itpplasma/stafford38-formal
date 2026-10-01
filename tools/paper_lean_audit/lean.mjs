@@ -174,7 +174,7 @@ export function namedResultType(lines, declLine) {
       const result = signature.slice(i + 1).replace(/:=\s*$/, '').trim();
       // An explicit equality/implication already states its conclusion; its
       // first term is not an opaque proposition alias.
-      if (/[=↔→∧∨∀∃≤≥≠∈∉⊆⊂]/.test(result)) return null;
+      if (/[=<>↔→∧∨∀∃≤≥≠∈∉⊆⊂]/.test(result)) return null;
       return /^([A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*)/.exec(result)?.[1] ?? null;
     }
   }

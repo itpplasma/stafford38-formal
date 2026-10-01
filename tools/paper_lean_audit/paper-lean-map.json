@@ -1109,13 +1109,27 @@
      "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
      "role": "main-proof",
      "name": "Stafford38.Characteristic.GabberGlobalAssembly.associatedGraded_radical_isInvolutive",
-     "line": 209
+     "line": 209,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+       "line": 30
+      }
+     ]
     },
     {
      "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
      "role": "main-proof",
      "name": "Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive",
-     "line": 141
+     "line": 141,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+       "line": 30
+      }
+     ]
     },
     {
      "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
@@ -1288,7 +1302,14 @@
      "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
      "role": "main-proof",
      "name": "Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive",
-     "line": 141
+     "line": 141,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+       "line": 30
+      }
+     ]
     },
     {
      "file": "Stafford38/Characteristic/NoncharacteristicMinimalPrime.lean",
@@ -1676,7 +1697,14 @@
      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
      "role": "main-proof",
      "name": "Stafford38.Weyl.FilteredScalarLifting.filteredInitialLifting",
-     "line": 446
+     "line": 446,
+     "expands": [
+      {
+       "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+       "name": "Stafford38.Weyl.PresentedScalarExtension.FilteredInitialLifting",
+       "line": 559
+      }
+     ]
     },
     {
      "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
@@ -2710,7 +2738,14 @@
      "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
      "role": "helper",
      "name": "Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive",
-     "line": 141
+     "line": 141,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+       "line": 30
+      }
+     ]
     },
     {
      "file": "AlgebraicAnalysis/Module/LocalizedMinimalSupportAvoidance.lean",
@@ -3022,7 +3057,14 @@
      "file": "Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean",
      "role": "helper",
      "name": "Stafford38.SpecializedNoncharacteristicEquality.strictUnitCoordinatePreimage_of_transposedSupport_disjoint_axis",
-     "line": 269
+     "line": 269,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/CanonicalUnitCoordinatePreimage.lean",
+       "name": "Stafford38.CanonicalUnitCoordinatePreimage.StrictUnitCoordinatePreimage",
+       "line": 49
+      }
+     ]
     }
    ],
    "issues": [
@@ -3348,7 +3390,14 @@
      "file": "Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean",
      "role": "main-proof",
      "name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameExistence",
-     "line": 42
+     "line": 42,
+     "expands": [
+      {
+       "file": "Stafford38/Geometry/ExactVisibleDivisorFrameInterface.lean",
+       "name": "Stafford38.Geometry.ExactVisibleDivisorFrameInterface.HasNormalizedCompatibleVisibleFrame",
+       "line": 177
+      }
+     ]
     },
     {
      "file": "Stafford38/Geometry/DivisorialVisibleFrameStageAssembly.lean",
@@ -3864,7 +3913,14 @@
      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
      "role": "helper",
      "name": "Stafford38.Weyl.FilteredScalarLifting.filteredInitialLifting",
-     "line": 446
+     "line": 446,
+     "expands": [
+      {
+       "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+       "name": "Stafford38.Weyl.PresentedScalarExtension.FilteredInitialLifting",
+       "line": 559
+      }
+     ]
     },
     {
      "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
@@ -3888,13 +3944,27 @@
      "file": "Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean",
      "role": "main-proof",
      "name": "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
-     "line": 107
+     "line": 107,
+     "expands": [
+      {
+       "file": "Stafford38/CanonicalSupportVanishingReduction.lean",
+       "name": "Stafford38.CanonicalSupportVanishingReduction.AlgebraicallyClosedCanonicalSupportVanishing",
+       "line": 114
+      }
+     ]
     },
     {
      "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
      "role": "helper",
      "name": "Stafford38.Characteristic.GabberGlobalAssembly.associatedGraded_radical_isInvolutive",
-     "line": 209
+     "line": 209,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+       "line": 30
+      }
+     ]
     },
     {
      "file": "Stafford38/Geometry/GeneralCoisotropicSets.lean",
@@ -3906,7 +3976,14 @@
      "file": "Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean",
      "role": "helper",
      "name": "Stafford38.SpecializedNoncharacteristicEquality.strictUnitCoordinatePreimage_of_transposedSupport_disjoint_axis",
-     "line": 269
+     "line": 269,
+     "expands": [
+      {
+       "file": "Stafford38/Characteristic/CanonicalUnitCoordinatePreimage.lean",
+       "name": "Stafford38.CanonicalUnitCoordinatePreimage.StrictUnitCoordinatePreimage",
+       "line": 49
+      }
+     ]
     },
     {
      "file": "Stafford38/Characteristic/CanonicalKoszulContradiction.lean",
@@ -4077,7 +4154,14 @@
      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
      "role": "input",
      "name": "Stafford38.Weyl.FilteredScalarLifting.filteredInitialLifting",
-     "line": 446
+     "line": 446,
+     "expands": [
+      {
+       "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+       "name": "Stafford38.Weyl.PresentedScalarExtension.FilteredInitialLifting",
+       "line": 559
+      }
+     ]
     },
     {
      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",

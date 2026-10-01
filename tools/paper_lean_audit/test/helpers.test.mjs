@@ -131,5 +131,6 @@ test('named result detection respects binders, universes and comments', () => {
   assert.equal(namedResultType(lines, 1), 'Fixed.Statement');
   assert.equal(namedResultType(['theorem explicit : ∀ n : Nat, n = n := by'], 1), null);
   assert.equal(namedResultType(['theorem equality : Ring.value = 0 := by'], 1), null);
+  assert.equal(namedResultType(['theorem inequality : Module.length R M < Module.length R N := by'], 1), null);
   assert.deepEqual(definitionNames('namespace A\nprivate def hidden : Prop := True\ndef Statement : Prop := True\nend A'), [{ name: 'A.Statement', line: 3 }]);
 });
