@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
-  "paper_base_commit": "deb1a792db619eb0494a2a9c3445efe2ba0ab2cc",
+  "paper_base_commit": "b2fb68cfb5f8b9f2dd8769d10af36e3ae508ab75",
   "snapshot_scope": "Committed active manuscript sources plus explicitly retired fragments preserved for history. Overleaf remains editing authority.",
   "files": [
     {
       "path": "human_readable_main.tex",
-      "sha256": "42ce29c3ed9cae9c2f54599074b12539ac6898365339e190de27b8763bcb32f5",
+      "sha256": "b441ba7990182a14d0e29eb9164fc769689d3d3abee7ec98d35bd8f6d30a5ad4",
       "status": "active"
     },
     {

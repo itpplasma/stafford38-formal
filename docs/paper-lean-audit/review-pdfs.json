@@ -1,9 +1,9 @@
 {
-  "paper_commit": "deb1a792db619eb0494a2a9c3445efe2ba0ab2cc",
+  "paper_commit": "b2fb68cfb5f8b9f2dd8769d10af36e3ae508ab75",
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
   "pdfs": {
-    "human_readable_main.pdf": "ddea3c66a4f0f7577f6a092509611e3222696becb0ad13eed3bae3d4718293fc",
-    "lean_proof_details.pdf": "3591f3c8b4b1c4abe1f086f7c0e529173c2971f8b64680f70e657191d81118d0"
+    "human_readable_main.pdf": "dc86c1dee22305c4cc0c99f619ee98b2ce358dc0ef98dfbb4f80c4a8bd3bd1b0",
+    "lean_proof_details.pdf": "c1d0e97311a2eedafbff6a6aa79352bcfb38b0dda9ea3ae933487ff8404d4155"
   },
   "source_files": [
     "human_readable_main.tex",
@@ -24,5 +24,5 @@
     "lean_proof_details_main.tex"
   ],
   "human_acceptance": "pending; red text remains proposed; action boxes remain unresolved",
-  "verification": "Author prose preserved; concurrent Overleaf author-list edit merged; both TeX targets compile. Two new Lean paper-facing adapters pass full verifier and independent consumers."
+  "verification": "Both paper targets compile; concurrent human author-list edit preserved. Two paper-facing adapters pass full verifier and independent consumers. Human review of printed geometric construction remains open."
 }
