@@ -110,3 +110,8 @@ table.reg td p { margin: 0 0 3px; }
 .helpers a { font-family: "JetBrains Mono", Menlo, monospace; }
 .recorded { font: 12.5px system-ui, sans-serif; margin-top: 8px; } .ok-tag { color: var(--green); font-weight: 700; } .stale-tag { color: var(--orange); font-weight: 700; }
 table.reg.fixed { table-layout: fixed; } table.reg td { overflow-wrap: anywhere; }
+
+.publication-target { padding: 8px 12px; border-left: 3px solid var(--accent); background: var(--paper); margin: 8px 0; }
+.publication-focus [data-reference-material]:not([data-on-demand]) { display: none; }
+#review-scope { width: 100%; margin: 4px 0 10px; }
+@media print { .publication-focus [data-reference-material] { display: block; } section.card.hidden { display: block !important; } }

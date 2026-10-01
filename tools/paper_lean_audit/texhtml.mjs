@@ -300,6 +300,16 @@ export class TexRenderer {
           case 'textbf': { const a = readArg(); out += `<b>${this.text(a.content, a.base)}</b>`; i = j; continue; }
           case 'texttt': { const a = readArg(); out += `<code>${this.text(a.content, a.base)}</code>`; i = j; continue; }
           case 'textsc': case 'textrm': case 'textsf': case 'mbox': case 'text': { const a = readArg(); out += this.text(a.content, a.base); i = j; continue; }
+          case 'href': {
+            const url = arg().trim().replace(/\\([#%_&])/g, '$1');
+            const display = readArg();
+            const label = this.text(display.content, display.base);
+            if (!/^https?:\/\/[^\s"<>]+$/.test(url)) {
+              this.warnings.push('unsafe external href omitted');
+              out += label;
+            } else out += `<a href="${escapeHtml(url)}">${label}</a>`;
+            i = j; continue;
+          }
           case 'nolinkurl': { const a = readArg(); out += `<code>${escapeHtml(a.content)}</code>`; i = j; continue; }
           case 'texorpdfstring': { const a = readArg(); readArg(); out += this.text(a.content, a.base); i = j; continue; }
           case 'string': {

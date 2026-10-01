@@ -330,17 +330,58 @@
   const filter = document.getElementById('filter');
   const onlyIssues = document.getElementById('only-issues');
   const onlyOpen = document.getElementById('only-open');
+  const reviewScope = document.getElementById('review-scope');
   function applyFilters() {
     const q = filter.value.trim().toLowerCase();
+    const scope = reviewScope?.value ?? 'all';
+    document.body.classList.toggle('publication-focus', scope !== 'all');
+    let visible = 0, approved = 0;
     document.querySelectorAll('section.card').forEach((card) => {
       const text = card.textContent.toLowerCase();
       const hasIssue = +card.dataset.sev > 0;
       const complete = card.querySelector('.review').classList.contains('complete');
-      const show = (!q || text.includes(q)) && (!onlyIssues.checked || hasIssue) && (!onlyOpen.checked || !complete);
+      const scopeMatches = scope === 'all' || (card.dataset.reviewScope ?? 'publication') === scope;
+      const show = scopeMatches && (!q || text.includes(q)) && (!onlyIssues.checked || hasIssue) && (!onlyOpen.checked || !complete);
       card.classList.toggle('hidden', !show);
+      if (show) { visible++; if (complete) approved++; }
+      const toc = document.querySelector('[data-toc="' + CSS.escape(card.querySelector('.review').dataset.item) + '"]');
+      if (toc) toc.parentElement.hidden = !show;
     });
+    if (reviewScope) document.getElementById('progress').textContent = 'Visible claims signed off: ' + approved + ' / ' + visible;
   }
-  [filter, onlyIssues, onlyOpen].forEach((el) => el.addEventListener('input', applyFilters));
+  [filter, onlyIssues, onlyOpen, reviewScope].filter(Boolean).forEach((el) => el.addEventListener('input', applyFilters));
   document.getElementById('clean-text').addEventListener('change', (event) => document.body.classList.toggle('clean', event.target.checked));
   paint();
+  const freshness = document.getElementById('freshness');
+  if (freshness && meta.live) {
+    const link = document.createElement('a'); link.href = meta.live; link.textContent = 'Open the latest published review';
+    freshness.appendChild(link);
+    async function checkLatest() {
+      if (location.protocol === 'file:') return;
+      try {
+        const response = await fetch(meta.live + 'version.json', { cache: 'no-store' });
+        if (!response.ok) return;
+        const latest = await response.json();
+        const changed = ['version', 'paper', 'formal', 'generator'].some(k => latest[k] !== meta[k]);
+        freshness.classList.toggle('err', changed);
+        link.textContent = changed ? 'Newer review available — open it before signing off' : 'Current published review';
+        document.querySelectorAll('[data-check]').forEach(el => { el.disabled = changed; });
+      } catch (_) { link.textContent = 'Latest version could not be checked — open the published review'; }
+    }
+    checkLatest(); setInterval(checkLatest, 120000);
+  }
 })();
+
+// Open the definition and its collapsed ancestors before following an in-page link.
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const target = document.getElementById(link.hash.slice(1));
+  if (!target) return;
+  const card = target.closest('section.card');
+  if (card) card.classList.remove('hidden');
+  for (let element = target; element; element = element.parentElement) {
+    if (element.tagName === 'DETAILS') element.open = true;
+    if (element.hasAttribute('data-reference-material')) element.setAttribute('data-on-demand', '');
+  }
+});

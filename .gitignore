@@ -21,3 +21,5 @@ docs/paper-lean-audit/manuscript/*.fls
 docs/paper-lean-audit/manuscript/*.fdb_latexmk
 docs/paper-lean-audit/manuscript/*.bbl
 docs/paper-lean-audit/manuscript/*.blg
+
+/public-review/

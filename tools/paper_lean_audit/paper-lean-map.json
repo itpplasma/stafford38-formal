@@ -1,16 +1,16 @@
 {
  "schema": 1,
- "version": "2026-10-01.6",
+ "version": "2026-10-01.8",
  "title": "Stafford 3.8: paper \u2194 Lean correspondence audit",
  "subtitle": "Current annotated manuscript mapped to the signed formal release and pinned dependencies.",
  "sources": {
   "paper": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "50c526b51205c285409bf0c65e63461d4824f3b6",
+   "commit": "f44adfc7d395a524e87483b016ad55bd0d78dea2",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-   "note": "Compact Overleaf review with mathematical AI annotations retained; long technical comparisons preserved in the separate supplement.",
+   "note": "Consolidated author-review draft; proposals and unresolved actions explicitly marked. Supplement preserves readable formal-proof accounts.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "6f98f5d07d71f9e169cb2e65b0eca0258b7df0e5"
+   "origin_commit": "624bb81fd3f60cf52ac37a6f12f9eb5a3d0bfb20"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
@@ -156,6 +156,10 @@
   {
    "id": "issues",
    "label": "Issues triaged"
+  },
+  {
+   "id": "publication",
+   "label": "Proposed publication statement matches a proved endpoint with the same hypotheses and conclusion"
   }
  ],
  "sections": [
@@ -240,12 +244,12 @@
    "title": "Abstract",
    "pdf_page": 1,
    "tex_lines": [
-    54,
-    62
+    53,
+    61
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
-   "correspondence": "The two theorems prove the universal identity and the exact Bernstein-degree strengthening. The displayed proposition definitions spell out the fields, quantifiers and coefficients; the coordinate refinement is for positive Weyl rank. The prose abstract leaves this positive-rank condition unstated, so its full wording is not an exact match yet.",
+   "correspondence": "The red proposal now states n>=1 for the fixed-source coordinate strengthening. The universal identity also holds at rank zero. Compare both proved endpoints and their fully expanded challenge definitions; author acceptance remains pending.",
    "route": null,
    "lean": [
     {
@@ -298,7 +302,7 @@
      "aicomment": null,
      "auditor": "A",
      "id": "S1-01",
-     "status": "historical finding; recheck against current excerpt"
+     "status": "red rank qualification proposed; author acceptance pending"
     }
    ],
    "depends_on": [],
@@ -307,7 +311,8 @@
    "graph_order": 0,
    "auditors": [
     "A"
-   ]
+   ],
+   "review_scope": "publication"
   },
   {
    "id": "thm:main",
@@ -318,8 +323,8 @@
    "title": "Stafford 3.8 with fixed source $F=\\ell^{\\deg_B d}$",
    "pdf_page": 2,
    "tex_lines": [
-    101,
-    119
+    100,
+    118
    ],
    "label": "thm:main",
    "statement_relation": "lean-stronger",
@@ -416,7 +421,8 @@
    "graph_order": 5,
    "auditors": [
     "A"
-   ]
+   ],
+   "review_scope": "publication"
   },
   {
    "id": "global-stafford",
@@ -427,8 +433,8 @@
    "title": "Palomar record and Global Stafford extension",
    "pdf_page": 2,
    "tex_lines": [
-    121,
-    128
+    120,
+    127
    ],
    "statement_relation": "exact",
    "route_relation": "n/a",
@@ -472,7 +478,8 @@
    "graph_order": 0,
    "auditors": [
     "F"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "intro-proof-sketch",
@@ -483,8 +490,8 @@
    "title": "Proof sketch: quotient-vanishing architecture",
    "pdf_page": 2,
    "tex_lines": [
-    130,
-    144
+    129,
+    143
    ],
    "statement_relation": "n/a",
    "route_relation": "different",
@@ -498,7 +505,8 @@
    "graph_order": 0,
    "auditors": [
     "current-map"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "context-prior-art",
@@ -509,8 +517,8 @@
    "title": "Citations for generator theory and algorithms",
    "pdf_page": 2,
    "tex_lines": [
-    146,
-    165
+    145,
+    164
    ],
    "statement_relation": "n/a",
    "route_relation": "n/a",
@@ -524,7 +532,8 @@
    "graph_order": 0,
    "auditors": [
     "current-map"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "formal-verification",
@@ -533,10 +542,10 @@
    "number": "2",
    "short": "\u00a72 claim",
    "title": "\u201cEvery statement of this paper is formalized\u201d",
-   "pdf_page": 2,
+   "pdf_page": 3,
    "tex_lines": [
-    167,
-    208
+    166,
+    207
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
@@ -574,7 +583,8 @@
    "auditors": [
     "A",
     "F"
-   ]
+   ],
+   "review_scope": "publication"
   },
   {
    "id": "conv:pair",
@@ -583,10 +593,10 @@
    "number": "3.1",
    "short": "Conv 3.1",
    "title": "Distinguished Weyl pair and Ore presentation",
-   "pdf_page": 3,
+   "pdf_page": 4,
    "tex_lines": [
-    219,
-    229
+    220,
+    230
    ],
    "label": "conv:pair",
    "statement_relation": "equivalent",
@@ -660,7 +670,8 @@
    "graph_order": 0,
    "auditors": [
     "A"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "conv:H",
@@ -671,8 +682,8 @@
    "title": "Hyperplane H and cotangent bundle",
    "pdf_page": 4,
    "tex_lines": [
-    231,
-    243
+    232,
+    244
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
@@ -712,7 +723,8 @@
     "A"
    ],
    "label": "conv:H",
-   "lean_explanation": "Notation convention, not a theorem. SymbolRing models the cotangent coordinate ring; fibreWeight gives the base/fibre grading. These definitions alone do not identify H, its conormal or the projection pi."
+   "lean_explanation": "Notation convention, not a theorem. SymbolRing models the cotangent coordinate ring; fibreWeight gives the base/fibre grading. These definitions alone do not identify H, its conormal or the projection pi.",
+   "review_scope": "reference"
   },
   {
    "id": "cotangent",
@@ -723,8 +735,8 @@
    "title": "Cotangent bundle, symbol ring, and symplectic form",
    "pdf_page": 4,
    "tex_lines": [
-    244,
-    270
+    245,
+    271
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
@@ -746,7 +758,8 @@
    "auditors": [
     "current-map"
    ],
-   "label": "sec:cotangent"
+   "label": "sec:cotangent",
+   "review_scope": "reference"
   },
   {
    "id": "def:filtration",
@@ -757,8 +770,8 @@
    "title": "Filtrations; Bernstein and order filtrations",
    "pdf_page": 4,
    "tex_lines": [
-    271,
-    295
+    272,
+    296
    ],
    "statement_relation": "equivalent",
    "route_relation": "n/a",
@@ -841,7 +854,8 @@
    "auditors": [
     "A"
    ],
-   "label": "def:filtration"
+   "label": "def:filtration",
+   "review_scope": "reference"
   },
   {
    "id": "def:good-filtration",
@@ -852,8 +866,8 @@
    "title": "Good filtrations",
    "pdf_page": 5,
    "tex_lines": [
-    296,
-    305
+    297,
+    306
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
@@ -900,7 +914,8 @@
    "auditors": [
     "A"
    ],
-   "label": "def:good-filtration"
+   "label": "def:good-filtration",
+   "review_scope": "reference"
   },
   {
    "id": "def:char-variety",
@@ -911,8 +926,8 @@
    "title": "Characteristic variety",
    "pdf_page": 5,
    "tex_lines": [
-    306,
-    326
+    307,
+    327
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
@@ -974,7 +989,8 @@
    "auditors": [
     "A"
    ],
-   "label": "def:char-variety"
+   "label": "def:char-variety",
+   "review_scope": "reference"
   },
   {
    "id": "def:symplectic-poisson",
@@ -983,10 +999,10 @@
    "number": "3.6",
    "short": "Def 3.6",
    "title": "Symplectic form and Poisson bracket",
-   "pdf_page": 5,
+   "pdf_page": 6,
    "tex_lines": [
-    327,
-    351
+    328,
+    352
    ],
    "label": "def:symplectic-poisson",
    "statement_relation": "equivalent",
@@ -1039,7 +1055,8 @@
    "graph_order": 0,
    "auditors": [
     "A"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "def:involutive",
@@ -1050,8 +1067,8 @@
    "title": "Involutive subsets",
    "pdf_page": 6,
    "tex_lines": [
-    352,
-    369
+    353,
+    370
    ],
    "statement_relation": "exact",
    "route_relation": "n/a",
@@ -1126,7 +1143,8 @@
     "A",
     "D"
    ],
-   "label": "def:involutive"
+   "label": "def:involutive",
+   "review_scope": "reference"
   },
   {
    "id": "ithm:gabber",
@@ -1137,8 +1155,8 @@
    "title": "Gabber\u2019s involutivity theorem",
    "pdf_page": 6,
    "tex_lines": [
-    370,
-    397
+    371,
+    398
    ],
    "label": "ithm:gabber",
    "statement_relation": "exact",
@@ -1307,7 +1325,8 @@
    "graph_order": 1,
    "auditors": [
     "D"
-   ]
+   ],
+   "review_scope": "publication"
   },
   {
    "id": "lem:componentwise-involutive",
@@ -1316,10 +1335,10 @@
    "number": "3.9",
    "short": "Lem 3.9",
    "title": "Componentwise involutivity",
-   "pdf_page": 6,
+   "pdf_page": 7,
    "tex_lines": [
-    398,
-    421
+    399,
+    422
    ],
    "label": "lem:componentwise-involutive",
    "statement_relation": "lean-stronger",
@@ -1408,7 +1427,9 @@
    "graph_order": 0,
    "auditors": [
     "D"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-01)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-01) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "monic-scalar",
@@ -1419,8 +1440,8 @@
    "title": "Scalar case N = 0",
    "pdf_page": 7,
    "tex_lines": [
-    423,
-    428
+    424,
+    429
    ],
    "statement_relation": "exact",
    "route_relation": "same",
@@ -1463,7 +1484,8 @@
    "graph_order": 0,
    "auditors": [
     "A"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "phi-g",
@@ -1472,10 +1494,10 @@
    "number": "",
    "short": "\u03a6_g",
    "title": "Symplectic automorphisms \u03a6_g and their symbols",
-   "pdf_page": 7,
+   "pdf_page": 8,
    "tex_lines": [
-    429,
-    470
+    430,
+    471
    ],
    "statement_relation": "equivalent",
    "route_relation": "similar",
@@ -1559,7 +1581,8 @@
    "graph_order": 0,
    "auditors": [
     "A"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "lem:sympcompl",
@@ -1570,13 +1593,13 @@
    "title": "Symplectic completion",
    "pdf_page": 8,
    "tex_lines": [
-    471,
-    508
+    472,
+    509
    ],
    "label": "lem:sympcompl",
    "statement_relation": "partial",
    "route_relation": "different",
-   "correspondence": "lean-weaker for first formulation (symplectic basis not formalized); exact for second (transitivity on nonzero vectors)",
+   "correspondence": "The red proposed statement uses the standard symplectic space and transitivity on nonzero vectors, matching the formal endpoint up to the sign of the form. The blue arbitrary-space and basis-completion statements are unselected alternatives and need their own checked bridge if restored.",
    "route": "different: Lean composes at most two symplectic transvections z -> z + a<z,u>u, using a bridge vector w when <e,v>=0; no induction/orthogonal complement",
    "lean": [
     {
@@ -1615,7 +1638,9 @@
    "graph_order": 0,
    "auditors": [
     "A"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-02)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-02) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "prop:monic",
@@ -1626,8 +1651,8 @@
    "title": "Monic normal form in p",
    "pdf_page": 9,
    "tex_lines": [
-    512,
-    545
+    513,
+    546
    ],
    "label": "prop:monic",
    "statement_relation": "equivalent",
@@ -1722,7 +1747,9 @@
    "graph_order": 0,
    "auditors": [
     "A"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-03)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-03) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "reduction-k0",
@@ -1731,10 +1758,10 @@
    "number": "",
    "short": "k\u2080 \u21aa \u2102",
    "title": "Field handling: work over k, then over its algebraic closure",
-   "pdf_page": 9,
+   "pdf_page": 10,
    "tex_lines": [
-    546,
-    559
+    547,
+    560
    ],
    "statement_relation": "n/a",
    "route_relation": "different",
@@ -1805,7 +1832,8 @@
    "graph_order": 0,
    "auditors": [
     "A"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "rem:transport",
@@ -1816,8 +1844,8 @@
    "title": "Transport back along \u03a6_g",
    "pdf_page": 10,
    "tex_lines": [
-    560,
-    571
+    561,
+    572
    ],
    "label": "rem:transport",
    "statement_relation": "n/a",
@@ -1873,7 +1901,8 @@
    "auditors": [
     "A"
    ],
-   "lean_explanation": "Transport prose, not a standalone theorem here. The displayed assembly results are downstream context; the inverse-generator lemma is a supporting identity."
+   "lean_explanation": "Transport prose, not a standalone theorem here. The displayed assembly results are downstream context; the inverse-generator lemma is a supporting identity.",
+   "review_scope": "reference"
   },
   {
    "id": "def:monic-xi1",
@@ -1882,10 +1911,10 @@
    "number": "4.4",
    "short": "Def 4.4",
    "title": "Monic of degree N in \u03be\u2081",
-   "pdf_page": 10,
+   "pdf_page": 11,
    "tex_lines": [
-    578,
-    585
+    579,
+    586
    ],
    "statement_relation": "exact",
    "route_relation": "n/a",
@@ -1913,7 +1942,8 @@
    "auditors": [
     "A"
    ],
-   "label": "def:monic-xi1"
+   "label": "def:monic-xi1",
+   "review_scope": "reference"
   },
   {
    "id": "lem:order-symbol",
@@ -1922,10 +1952,10 @@
    "number": "4.5",
    "short": "Lem 4.5",
    "title": "Order symbol P(\u03be), monic in \u03be\u2081",
-   "pdf_page": 10,
+   "pdf_page": 11,
    "tex_lines": [
-    586,
-    621
+    587,
+    622
    ],
    "label": "lem:order-symbol",
    "statement_relation": "exact",
@@ -1992,7 +2022,8 @@
    "graph_order": 0,
    "auditors": [
     "A"
-   ]
+   ],
+   "review_scope": "publication"
   },
   {
    "id": "eq:I-Q",
@@ -2001,10 +2032,10 @@
    "number": "5.1",
    "short": "I, Q",
    "title": "Canonical right ideal and quotient",
-   "pdf_page": 10,
+   "pdf_page": 11,
    "tex_lines": [
-    624,
-    628
+    625,
+    629
    ],
    "label": "eq:I-Q",
    "statement_relation": "exact",
@@ -2054,7 +2085,8 @@
    "graph_order": 0,
    "auditors": [
     "B"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "euler-grading",
@@ -2063,10 +2095,10 @@
    "number": "5.2",
    "short": "Euler grading",
    "title": "Euler grading and A_{\u22650}; relations (2.4)",
-   "pdf_page": 11,
+   "pdf_page": 12,
    "tex_lines": [
-    630,
-    649
+    631,
+    650
    ],
    "label": "eq:nonnegative-pbw",
    "statement_relation": "equivalent",
@@ -2140,7 +2172,8 @@
    "graph_order": 0,
    "auditors": [
     "B"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "lem:euler",
@@ -2149,10 +2182,10 @@
    "number": "5.1",
    "short": "Lem 5.1",
    "title": "Euler products",
-   "pdf_page": 11,
+   "pdf_page": 12,
    "tex_lines": [
-    650,
-    679
+    651,
+    680
    ],
    "label": "lem:euler",
    "statement_relation": "paper-wrong",
@@ -2196,7 +2229,8 @@
    "graph_order": 1,
    "auditors": [
     "B"
-   ]
+   ],
+   "review_scope": "publication"
   },
   {
    "id": "lem:euler-residue",
@@ -2207,8 +2241,8 @@
    "title": "Euler residue 1 + U x\u2081 \u2208 I",
    "pdf_page": 12,
    "tex_lines": [
-    680,
-    707
+    681,
+    708
    ],
    "label": "lem:euler-residue",
    "statement_relation": "equivalent",
@@ -2327,7 +2361,9 @@
    "graph_order": 0,
    "auditors": [
     "B"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-04)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-04) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "prop:x-surjective",
@@ -2336,10 +2372,10 @@
    "number": "5.3",
    "short": "Prop 5.3",
    "title": "Right multiplication by x\u2081 on Q is surjective",
-   "pdf_page": 12,
+   "pdf_page": 13,
    "tex_lines": [
-    708,
-    733
+    709,
+    734
    ],
    "label": "prop:x-surjective",
    "statement_relation": "exact",
@@ -2412,7 +2448,9 @@
    "graph_order": 0,
    "auditors": [
     "B"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-05)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-05) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "vc-setup",
@@ -2421,10 +2459,10 @@
    "number": "",
    "short": "Setup \u00a76",
    "title": "M = gr Q, T, V, U",
-   "pdf_page": 13,
+   "pdf_page": 14,
    "tex_lines": [
-    735,
-    752
+    736,
+    753
    ],
    "statement_relation": "exact",
    "route_relation": "n/a",
@@ -2476,7 +2514,8 @@
    "graph_order": 0,
    "auditors": [
     "C"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "def:length",
@@ -2485,10 +2524,10 @@
    "number": "6.1",
    "short": "Def 6.1",
    "title": "Length",
-   "pdf_page": 13,
+   "pdf_page": 14,
    "tex_lines": [
-    753,
-    760
+    754,
+    761
    ],
    "statement_relation": "equivalent",
    "route_relation": "n/a",
@@ -2528,7 +2567,8 @@
    "auditors": [
     "C"
    ],
-   "label": "def:length"
+   "label": "def:length",
+   "review_scope": "reference"
   },
   {
    "id": "lem:tangential-finiteness",
@@ -2537,10 +2577,10 @@
    "number": "6.2",
    "short": "Lem 6.2",
    "title": "Tangential finiteness",
-   "pdf_page": 13,
+   "pdf_page": 14,
    "tex_lines": [
-    761,
-    796
+    762,
+    788
    ],
    "label": "lem:tangential-finiteness",
    "statement_relation": "exact",
@@ -2640,7 +2680,8 @@
    "graph_order": 1,
    "auditors": [
     "C"
-   ]
+   ],
+   "review_scope": "publication"
   },
   {
    "id": "lem:page-inequality",
@@ -2649,10 +2690,10 @@
    "number": "6.3",
    "short": "Lem 6.3",
    "title": "Filtered-page inequality \u2113(U_q) \u2264 \u2113(V_q)",
-   "pdf_page": 14,
+   "pdf_page": 15,
    "tex_lines": [
-    797,
-    902
+    789,
+    894
    ],
    "label": "lem:page-inequality",
    "statement_relation": "exact",
@@ -2777,7 +2818,9 @@
    "graph_order": 0,
    "auditors": [
     "C"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-06)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-06) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "lem:strict-support-inequality",
@@ -2786,10 +2829,10 @@
    "number": "6.4",
    "short": "Lem 6.4",
    "title": "Strict inequality \u2113(U_q) > \u2113(V_q)",
-   "pdf_page": 16,
+   "pdf_page": 17,
    "tex_lines": [
-    903,
-    984
+    895,
+    976
    ],
    "label": "lem:strict-support-inequality",
    "statement_relation": "exact",
@@ -2940,7 +2983,9 @@
    "graph_order": 1,
    "auditors": [
     "C"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-07)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-07) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "lem:Uzero",
@@ -2949,10 +2994,10 @@
    "number": "6.5",
    "short": "Lem 6.5",
    "title": "U = M / x\u2081M = 0",
-   "pdf_page": 18,
+   "pdf_page": 19,
    "tex_lines": [
-    985,
-    999
+    977,
+    991
    ],
    "label": "lem:Uzero",
    "statement_relation": "exact",
@@ -3006,7 +3051,8 @@
    "graph_order": 0,
    "auditors": [
     "C"
-   ]
+   ],
+   "review_scope": "publication"
   },
   {
    "id": "cor:charP",
@@ -3015,10 +3061,10 @@
    "number": "7.1",
    "short": "Cor 7.1",
    "title": "Char(Q) \u2286 V(P)",
-   "pdf_page": 18,
+   "pdf_page": 19,
    "tex_lines": [
-    1001,
-    1018
+    993,
+    1010
    ],
    "label": "cor:charP",
    "statement_relation": "exact",
@@ -3073,7 +3119,8 @@
    "graph_order": 0,
    "auditors": [
     "C"
-   ]
+   ],
+   "review_scope": "publication"
   },
   {
    "id": "prop:char-avoids",
@@ -3082,10 +3129,10 @@
    "number": "7.2",
    "short": "Prop 7.2",
    "title": "Char(Q) \u2229 \u03c0\u207b\u00b9(H) = \u2205",
-   "pdf_page": 18,
+   "pdf_page": 19,
    "tex_lines": [
-    1019,
-    1040
+    1011,
+    1032
    ],
    "label": "prop:char-avoids",
    "statement_relation": "equivalent",
@@ -3180,7 +3227,9 @@
    "graph_order": 0,
    "auditors": [
     "C"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-08)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-08) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "dir-def",
@@ -3189,10 +3238,10 @@
    "number": "",
    "short": "Dir(Y)",
    "title": "Projective conormal directions Dir(Y)",
-   "pdf_page": 19,
+   "pdf_page": 20,
    "tex_lines": [
-    1044,
-    1058
+    1036,
+    1050
    ],
    "statement_relation": "equivalent",
    "route_relation": "n/a",
@@ -3262,7 +3311,8 @@
    "graph_order": 0,
    "auditors": [
     "E"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "lem:tangent-limit",
@@ -3271,10 +3321,10 @@
    "number": "8.1",
    "short": "Lem 8.1",
    "title": "Tangent-limit criterion",
-   "pdf_page": 19,
+   "pdf_page": 20,
    "tex_lines": [
-    1059,
-    1124
+    1051,
+    1116
    ],
    "label": "lem:tangent-limit",
    "statement_relation": "lean-stronger",
@@ -3376,7 +3426,8 @@
    "graph_order": 2,
    "auditors": [
     "E"
-   ]
+   ],
+   "review_scope": "alternative"
   },
   {
    "id": "thm:asymptotic-conormal",
@@ -3387,8 +3438,8 @@
    "title": "Asymptotic conormal direction [dx\u2081] \u2208 Dir(Y)",
    "pdf_page": 21,
    "tex_lines": [
-    1125,
-    1131
+    1117,
+    1123
    ],
    "label": "thm:asymptotic-conormal",
    "statement_relation": "lean-stronger",
@@ -3440,7 +3491,9 @@
    "graph_order": 2,
    "auditors": [
     "E"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-11)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-11) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "thm:asymptotic-conormal-proof",
@@ -3449,10 +3502,10 @@
    "number": "of 8.2",
    "short": "Proof of 8.2",
    "title": "Proof of Theorem 8.2",
-   "pdf_page": 21,
+   "pdf_page": 22,
    "tex_lines": [
-    1133,
-    1288
+    1126,
+    1277
    ],
    "statement_relation": "n/a",
    "route_relation": "different",
@@ -3678,7 +3731,8 @@
    "graph_order": 0,
    "auditors": [
     "E"
-   ]
+   ],
+   "review_scope": "alternative"
   },
   {
    "id": "def:fibre-can",
@@ -3687,10 +3741,10 @@
    "number": "9.1",
    "short": "Def 9.1",
    "title": "Fibre-conical sets",
-   "pdf_page": 25,
+   "pdf_page": 26,
    "tex_lines": [
-    1290,
-    1293
+    1279,
+    1282
    ],
    "label": "def:fibre-can",
    "statement_relation": "exact",
@@ -3718,7 +3772,8 @@
    "graph_order": 0,
    "auditors": [
     "D"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "thm:coisotropic-exclusion",
@@ -3727,10 +3782,10 @@
    "number": "9.2",
    "short": "Thm 9.2",
    "title": "Involutive exclusion",
-   "pdf_page": 25,
+   "pdf_page": 26,
    "tex_lines": [
-    1294,
-    1389
+    1283,
+    1378
    ],
    "label": "thm:coisotropic-exclusion",
    "statement_relation": "lean-stronger",
@@ -3927,7 +3982,9 @@
    "graph_order": 2,
    "auditors": [
     "D"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-13)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-13) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "proof-main",
@@ -3936,10 +3993,10 @@
    "number": "\u00a710",
    "short": "\u00a710 assembly",
    "title": "Proof of Theorem 1.1: Gabber, exclusion, descent, transport",
-   "pdf_page": 27,
+   "pdf_page": 28,
    "tex_lines": [
-    1390,
-    1473
+    1379,
+    1462
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "different",
@@ -4222,7 +4279,9 @@
     "A",
     "D",
     "F"
-   ]
+   ],
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-15)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-15) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "lem:initial-base-change",
@@ -4231,10 +4290,10 @@
    "number": "10.1",
    "short": "Lemma 10.1",
    "title": "Base change of the order initial ideal",
-   "pdf_page": 28,
+   "pdf_page": 29,
    "tex_lines": [
-    1441,
-    1471
+    1430,
+    1460
    ],
    "statement_relation": "partial",
    "route_relation": "different",
@@ -4275,7 +4334,8 @@
    "auditors": [
     "current-map"
    ],
-   "label": "lem:initial-base-change"
+   "label": "lem:initial-base-change",
+   "review_scope": "publication"
   },
   {
    "id": "cyclicity",
@@ -4284,10 +4344,10 @@
    "number": "10.2",
    "short": "Cyclicity",
    "title": "Finitely generated torsion modules are cyclic",
-   "pdf_page": 29,
+   "pdf_page": 30,
    "tex_lines": [
-    1475,
-    1508
+    1464,
+    1497
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "similar",
@@ -4393,7 +4453,9 @@
    "auditors": [
     "F"
    ],
-   "label": "cor:cyclic"
+   "label": "cor:cyclic",
+   "review_scope": "publication",
+   "publication_proof": "Read the [mathematical account (COMP-16)](https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf#nameddest=comparison-COMP-16) and compare its hypotheses and conclusion with the red proposed statement. Author acceptance is pending; the machine proof does not certify the retained printed alternative's intermediate steps."
   },
   {
    "id": "outlook",
@@ -4402,10 +4464,10 @@
    "number": "11",
    "short": "Outlook",
    "title": "Outlook",
-   "pdf_page": 30,
+   "pdf_page": 31,
    "tex_lines": [
-    1509,
-    1521
+    1498,
+    1510
    ],
    "statement_relation": "none",
    "route_relation": "n/a",
@@ -4429,7 +4491,8 @@
    "graph_order": 0,
    "auditors": [
     "F"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "ai-workflow",
@@ -4438,10 +4501,10 @@
    "number": "A",
    "short": "AI workflow",
    "title": "AI-assisted research, formalization and verification provenance",
-   "pdf_page": 32,
+   "pdf_page": 33,
    "tex_lines": [
-    1560,
-    1613
+    1549,
+    1602
    ],
    "statement_relation": "n/a",
    "route_relation": "n/a",
@@ -4472,7 +4535,8 @@
    "auditors": [
     "current-map"
    ],
-   "label": "app:ai-workflow"
+   "label": "app:ai-workflow",
+   "review_scope": "reference"
   },
   {
    "id": "further-work",
@@ -4481,10 +4545,10 @@
    "number": "B",
    "short": "App B",
    "title": "Further work and corollaries",
-   "pdf_page": 33,
+   "pdf_page": 34,
    "tex_lines": [
-    1614,
-    1651
+    1603,
+    1637
    ],
    "statement_relation": "none",
    "route_relation": "n/a",
@@ -4560,7 +4624,8 @@
    "graph_order": 0,
    "auditors": [
     "F"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "appendix-right-ore",
@@ -4569,10 +4634,10 @@
    "number": "",
    "short": "Right Ore localization",
    "title": "Identity in every right Ore localization",
-   "pdf_page": 33,
+   "pdf_page": 34,
    "tex_lines": [
-    1619,
-    1620
+    1608,
+    1609
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "same",
@@ -4593,7 +4658,8 @@
    "graph_order": 0,
    "auditors": [
     "current-map"
-   ]
+   ],
+   "review_scope": "alternative"
   },
   {
    "id": "appendix-left-handed",
@@ -4602,10 +4668,10 @@
    "number": "",
    "short": "Left-handed identity",
    "title": "Left-handed identity via formal adjoint",
-   "pdf_page": 33,
+   "pdf_page": 34,
    "tex_lines": [
-    1621,
-    1622
+    1610,
+    1611
    ],
    "statement_relation": "exact",
    "route_relation": "same",
@@ -4626,7 +4692,8 @@
    "graph_order": 0,
    "auditors": [
     "current-map"
-   ]
+   ],
+   "review_scope": "alternative"
   },
   {
    "id": "appendix-localized-differential",
@@ -4635,10 +4702,10 @@
    "number": "",
    "short": "Localized differential",
    "title": "Differential operators over polynomial localizations",
-   "pdf_page": 33,
+   "pdf_page": 34,
    "tex_lines": [
-    1623,
-    1624
+    1612,
+    1613
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "same",
@@ -4659,7 +4726,8 @@
    "graph_order": 0,
    "auditors": [
     "current-map"
-   ]
+   ],
+   "review_scope": "alternative"
   },
   {
    "id": "appendix-evolutionary",
@@ -4668,10 +4736,10 @@
    "number": "",
    "short": "Evolutionary",
    "title": "Evolutionary version with coefficients commuting with a Weyl pair",
-   "pdf_page": 33,
+   "pdf_page": 34,
    "tex_lines": [
-    1625,
-    1626
+    1614,
+    1615
    ],
    "statement_relation": "exact",
    "route_relation": "same",
@@ -4692,7 +4760,8 @@
    "graph_order": 0,
    "auditors": [
     "current-map"
-   ]
+   ],
+   "review_scope": "alternative"
   },
   {
    "id": "def:noncar",
@@ -4701,10 +4770,10 @@
    "number": "B.1",
    "short": "Def B.1",
    "title": "Noncharacteristic",
-   "pdf_page": 34,
+   "pdf_page": 35,
    "tex_lines": [
-    1652,
-    1662
+    1638,
+    1648
    ],
    "label": "def:noncar",
    "statement_relation": "partial",
@@ -4744,7 +4813,8 @@
    "graph_order": 0,
    "auditors": [
     "C"
-   ]
+   ],
+   "review_scope": "reference"
   },
   {
    "id": "prop:noncar",
@@ -4753,10 +4823,10 @@
    "number": "B.2",
    "short": "Prop B.2",
    "title": "H = {x = 0} is noncharacteristic for Q",
-   "pdf_page": 34,
+   "pdf_page": 35,
    "tex_lines": [
-    1663,
-    1690
+    1649,
+    1676
    ],
    "label": "prop:noncar",
    "statement_relation": "exact",
@@ -4891,7 +4961,8 @@
    "auditors": [
     "C",
     "F"
-   ]
+   ],
+   "review_scope": "publication"
   }
  ],
  "extra_refs": {
@@ -5096,237 +5167,237 @@
  "aicomments": [
   {
    "id": "AUDIT-01",
-   "line": 66,
-   "verdict": "compact review guide",
-   "note": "The human-readable paper shows mathematical qualifications; declaration names and long proof comparisons are retained in source and in the technical supplement."
+   "line": 65,
+   "verdict": "Information --- no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "INTRO-01",
-   "line": 95,
-   "verdict": "red correction present",
-   "note": "Distinguishes Stafford stable cyclicity from Bellamy ordinary cyclicity; both are for finitely generated torsion modules."
+   "line": 94,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "WF-01",
-   "line": 182,
-   "verdict": "scoped red replacement; human review pending",
-   "note": "No blanket claim about every numbered statement; compares the formal terminal route separately from the printed proof."
+   "line": 181,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "DUP-01",
-   "line": 241,
-   "verdict": "red correction present",
-   "note": "Duplicate definitions of H, pi and the cotangent bundle are marked for removal."
+   "line": 242,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "ALG-01",
-   "line": 363,
-   "verdict": "red correction present",
-   "note": "Gabber is stated for the radical characteristic ideal; formal scope is cyclic quotient with quotient order filtration."
+   "line": 364,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "LIT-01",
-   "line": 389,
-   "verdict": "source-scope note",
-   "note": "Identifies Gabber general theorem and the narrower Singh\u2013Kumar-derived statement used here."
+   "line": 390,
+   "verdict": "Information --- no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "ALG-07",
-   "line": 426,
-   "verdict": "red correction present",
-   "note": "Scalar case chooses F=1 and R=d^{-1}, S=0."
+   "line": 427,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "ALG-08",
-   "line": 460,
-   "verdict": "red correction present",
-   "note": "Corrects the symbol action convention and records the counterexample to the old proof."
+   "line": 461,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "FIELD-01",
-   "line": 555,
-   "verdict": "red correction present",
-   "note": "Removes finitely generated subfield reduction; original proof still contains k0/C residue and needs reconciliation."
+   "line": 556,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "ALG-02",
-   "line": 643,
-   "verdict": "red correction present",
-   "note": "Corrected Euler-product shifts are in the replacement; acceptance remains pending."
+   "line": 644,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "ALG-03",
-   "line": 724,
-   "verdict": "red correction present",
-   "note": "Clarifies the positive Euler-degree factorization used for the residue argument."
+   "line": 725,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "NOTATION-01",
-   "line": 739,
-   "verdict": "red correction present",
-   "note": "Explains the overloaded symbol C and T in the vanishing-cokernel section."
+   "line": 740,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "ALG-04",
-   "line": 787,
-   "verdict": "open; proof review required",
-   "note": "Comment says the T-action/pages and one-preimage exhaustion are in red, but the visible proof still localizes Q and iterates preimages after localization."
+   "line": 788,
+   "verdict": "Action required --- unresolved proof or drafting issue.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "ALG-09",
-   "line": 892,
-   "verdict": "open; proof review required",
-   "note": "The red block must actually replace the post-localization iterative exhaustion with the one-preimage argument."
+   "line": 884,
+   "verdict": "Action required --- unresolved proof or drafting issue.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "EDIT-02",
-   "line": 920,
-   "verdict": "red correction present",
-   "note": "Duplicate kernel-chain text is struck out; corrected surrounding proof still needs review."
+   "line": 912,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "GEO-04",
-   "line": 1077,
-   "verdict": "red correction present",
-   "note": "Adds the scalar-extension argument from a Laurent point to Dir(Y); mathematical review remains open."
+   "line": 1069,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "GEO-01",
-   "line": 1163,
-   "verdict": "red correction present",
-   "note": "Generic-smoothness step is revised in the proof; proof validation remains separate."
+   "line": 1156,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "GEO-02",
-   "line": 1266,
-   "verdict": "red correction present",
-   "note": "The independence argument is revised to use row j first."
+   "line": 1259,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "ROUTE-01",
-   "line": 1277,
-   "verdict": "route note",
-   "note": "Records that the formal terminal conormal proof uses a different route."
+   "line": 1125,
+   "verdict": "Action required --- approve the publication proof.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "GEO-03",
-   "line": 1366,
-   "verdict": "red correction present",
-   "note": "Adds the fibre-conical/involutive obstruction bridge; acceptance and proof review remain pending."
+   "line": 1355,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "GEO-05",
-   "line": 1378,
-   "verdict": "optional refinements",
-   "note": "Lists scope refinements suggested by formal statements; authors\u2019 choice."
+   "line": 1367,
+   "verdict": "Optional refinement --- not required.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "ALG-05",
-   "line": 1391,
-   "verdict": "red correction present; source pin incomplete",
-   "note": "Adds base change and fibre-conicality. The preserved legacy k\u2080/C formulas are visibly marked for replacement; the proposed replacement uses K=overline{k} and descends the order initial ideal."
+   "line": 1380,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "ALG-06",
-   "line": 1478,
-   "verdict": "finite-generation correction present; pinned formal source contains theorem",
-   "note": "The red statement and induction proof specify finite generation; the pinned formal source contains the theorem, but no human acceptance is recorded."
+   "line": 1467,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "EDIT-01",
-   "line": 1517,
-   "verdict": "open",
-   "note": "Outlook still explicitly marked unfinished."
+   "line": 1506,
+   "verdict": "Action required --- unresolved proof or drafting issue.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "REF-01",
-   "line": 1615,
-   "verdict": "red correction present",
-   "note": "Replaces undefined labels with current equation/lemma labels."
+   "line": 1604,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "SCOPE-01",
-   "line": 1627,
-   "verdict": "red correction present",
-   "note": "Narrows Appendix B to Laurent-polynomial coefficients and lists the current formalized consequences."
+   "line": 1616,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-01",
-   "line": 420,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 421,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-02",
-   "line": 508,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 509,
+   "verdict": "Proposed change --- author acceptance pending.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-03",
-   "line": 545,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 546,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-04",
-   "line": 706,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 707,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-05",
-   "line": 732,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 733,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-06",
-   "line": 899,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 891,
+   "verdict": "Action required --- unresolved proof or drafting issue.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-07",
-   "line": 983,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 975,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-08",
-   "line": 1039,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 1031,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-10",
-   "line": 1123,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 1115,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-11",
-   "line": 1282,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 1271,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-13",
-   "line": 1372,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 1361,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-15",
-   "line": 1472,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 1461,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   },
   {
    "id": "COMP-16",
-   "line": 1503,
-   "verdict": "mathematical comparison retained; human review pending",
-   "note": "Short comparison beside the paper proof. Full previous AI comparison is retained in lean_proof_details.tex."
+   "line": 1492,
+   "verdict": "Information --- proof comparison; no edit requested.",
+   "note": "Current status printed in the manuscript. Proposed changes require author acceptance; information boxes request no edit."
   }
  ],
  "global_issues": [
@@ -5391,7 +5462,185 @@
    "status": "resolved at pinned paper/formal commits"
   }
  ],
- "overview": "**Pinned result.** At formal source `475881e326f456c497afdc8a8420e84c550a45ba`, Stafford's Theorem 1.1 and the fixed source refinement remain formalized. The source also contains the finite-generation torsion-cyclicity theorem, the canonical noncharacteristic result, the public Euler-product identity module, and the finite principal-hypersurface quotient theorem. The cyclicity statement is proved for n\u22650, while the paper states n\u22651. Proposition B.2 is mapped both to the literal restricted-coordinate-ring and support statements and to the finite quotient by the canonical principal symbol and normal coordinate over the tangential ring. The red proof sketches are visible proposals, not accepted prose.\n\n**Remaining scope.** The claim that every numbered statement is formalized remains too broad: filtration-independence assertions, the general-module Gabber statement, and the symplectic-basis formulation are not covered exactly. Lemma 6.3 remains an open proof-text concern. A source correspondence and a successful build do not constitute human proof approval.",
- "how_to_use": "- Each **card** is one manuscript item: left the pinned LaTeX (rendered, AI review markup visible), right the Lean declarations with their statement extracted from the pinned source. Names link to the exact lines on GitHub; \u21c4 jumps to the reverse index (Lean \u2192 paper).\n- **Badges** give the statement relation and proof-route relation; the legend below defines them. **Issues** list the audit findings with severity, whether an existing AI comment covers them, and a suggested fix.\n- In the HTML version tick the three **review boxes** per card; state is kept in your browser and exported with \u201cExport review JSON\u201d (commit it under `docs/paper-lean-audit/reviews/`). A sign-off turns stale automatically when the paper excerpt or a Lean statement changes.\n- The **PDF** has the same content with sign-off lines; all Lean names and tex ranges are live links.\n- Suggested order for a referee: Dependency map \u2192 Thm 1.1 \u2192 \u00a710 assembly \u2192 the red/orange cards \u2192 Lean-only register.",
- "provenance": "Updated 2026-10-01 against paper HEAD 385f968875c02dfc8357c36b1813c6fbc7434609 and signed formal source A3 `475881e326f456c497afdc8a8420e84c550a45ba`. AlgebraicAnalysis remains pinned at `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`; Global Stafford is pinned at `e676caed1253e5d09fc6699d5dc683febbabf7bb`. The update refreshes source links and correspondence; it does not claim human sign-off. Historical six-auditor reports concern the earlier paper source and are not a new independent review of every current proof passage. The Proposition B.2 finite-projection clause now maps to the exact quotient finiteness theorem and its tangential scalar-action bridge."
+ "overview": "This is the current publication review. The default queue contains proposed publication claims and their proved endpoints. Begin with **Challenge: meaning and soundness**: inspect the exact definitions, field and characteristic assumptions, Weyl relations, and factor order. The goal is that every published claim matches a machine-proved statement. Retained proof alternatives and historical implementation material are available on demand; they are not a second review assignment. The reusable generator is [Paper\u2013Lean Audit](https://github.com/itpplasma/paper-lean-audit); the frozen reviewer bundle is [Stafford38 supplementary material](https://github.com/itpplasma/stafford38-supplementary).",
+ "how_to_use": "Johanna edits the human-readable paper and resolves its clearly marked action or proposal boxes; no Lean code reading is required. Max first checks the independent Challenge/Solution pairs and their definitions, then the publication queue. Compare hypotheses and conclusions and follow the proposed readable proof account when routes differ. Use Alternative proofs only if the authors select one; All reference material exposes definitions, history and implementation links. Export review notes before changing devices. An update banner prevents signing off an outdated copy; notes remain exportable.",
+ "provenance": "Updated 2026-10-01 against paper HEAD 385f968875c02dfc8357c36b1813c6fbc7434609 and signed formal source A3 `475881e326f456c497afdc8a8420e84c550a45ba`. AlgebraicAnalysis remains pinned at `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`; Global Stafford is pinned at `e676caed1253e5d09fc6699d5dc683febbabf7bb`. The update refreshes source links and correspondence; it does not claim human sign-off. Historical six-auditor reports concern the earlier paper source and are not a new independent review of every current proof passage. The Proposition B.2 finite-projection clause now maps to the exact quotient finiteness theorem and its tangential scalar-action bridge.",
+ "challenge_definitions": [
+  {
+   "repo": "formal",
+   "file": "Challenge.lean",
+   "name": "Stafford38Challenge.PhaseVar"
+  },
+  {
+   "repo": "formal",
+   "file": "Challenge.lean",
+   "name": "Stafford38Challenge.relation"
+  },
+  {
+   "repo": "formal",
+   "file": "Challenge.lean",
+   "name": "Stafford38Challenge.WeylAlg"
+  },
+  {
+   "repo": "formal",
+   "file": "Challenge.lean",
+   "name": "Stafford38Challenge.UniversalStatement"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.PhaseVar"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.relation"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.WeylAlg"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.generator"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.oldIndex"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.freeOldMap"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.freeOrderedMonomial"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.orderedMonomial"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.phaseDegree"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.bernsteinPiece"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.bernsteinDegree"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.linearCombination"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.standardForm"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.IsLinearWeylCoordinate"
+  },
+  {
+   "repo": "formal",
+   "file": "FixedSourceChallenge.lean",
+   "name": "Stafford38FixedSourceChallenge.UniversalFixedSourceStatement"
+  },
+  {
+   "repo": "formal",
+   "file": "CorollaryChallenge.lean",
+   "name": "Stafford38CorollaryChallenge.PhaseVar"
+  },
+  {
+   "repo": "formal",
+   "file": "CorollaryChallenge.lean",
+   "name": "Stafford38CorollaryChallenge.relation"
+  },
+  {
+   "repo": "formal",
+   "file": "CorollaryChallenge.lean",
+   "name": "Stafford38CorollaryChallenge.WeylAlg"
+  },
+  {
+   "repo": "formal",
+   "file": "CorollaryChallenge.lean",
+   "name": "Stafford38CorollaryChallenge.IsRightTorsion"
+  },
+  {
+   "repo": "formal",
+   "file": "CorollaryChallenge.lean",
+   "name": "Stafford38CorollaryChallenge.torsionCyclicStatement"
+  },
+  {
+   "repo": "mathlib",
+   "file": "Mathlib/Algebra/Field/Defs.lean",
+   "name": "Field",
+   "note": "Commutative field axioms, including nontriviality via its parents"
+  },
+  {
+   "repo": "mathlib",
+   "file": "Mathlib/Algebra/Field/Defs.lean",
+   "name": "DivisionRing",
+   "note": "Division, inverse and nontrivial ring axioms"
+  },
+  {
+   "repo": "mathlib",
+   "file": "Mathlib/Algebra/Ring/Defs.lean",
+   "name": "CommRing",
+   "note": "Commutative unital ring axioms"
+  },
+  {
+   "repo": "mathlib",
+   "file": "Mathlib/Algebra/CharZero/Defs.lean",
+   "name": "CharZero",
+   "note": "Injectivity of the natural-number cast"
+  },
+  {
+   "repo": "mathlib",
+   "file": "Mathlib/Algebra/RingQuot.lean",
+   "name": "RingQuot",
+   "note": "Universal ring quotient by a generating relation"
+  },
+  {
+   "repo": "mathlib",
+   "file": "Mathlib/Algebra/FreeAlgebra.lean",
+   "name": "FreeAlgebra",
+   "note": "Free associative algebra"
+  },
+  {
+   "repo": "mathlib",
+   "file": "Mathlib/LinearAlgebra/SymplecticGroup.lean",
+   "name": "Matrix.J",
+   "note": "Standard symplectic matrix; fixes commutator signs"
+  }
+ ],
+ "challenge_endpoints": [
+  {
+   "file": "Solution.lean",
+   "name": "Stafford38Challenge.universalStatement",
+   "note": "Proved solution, not the sorry in Challenge.lean."
+  },
+  {
+   "file": "FixedSourceSolution.lean",
+   "name": "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
+   "note": "Proved fixed-source solution with intrinsic Bernstein degree."
+  }
+ ],
+ "live_url": "https://itpplasma.github.io/stafford38-formal/",
+ "output_stem": "stafford38-paper-lean-audit"
 }

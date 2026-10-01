@@ -493,6 +493,18 @@ function md(s) {
   }).join('');
 }
 
+// Explicitly curated symbol links: no short-name guessing across namespaces.
+const definitionRefs = map.challenge_definitions ?? [];
+const definitionAnchor = (ref) => `definition-${slug((ref.repo ?? 'formal') + ':' + ref.name)}`;
+function symbolLink(info, token) {
+  const candidates = definitionRefs.filter((ref) => {
+    if (ref.name === token) return true;
+    if (!ref.name.endsWith('.' + token)) return false;
+    return (ref.repo ?? 'formal') === info.repo && (ref.file === info.file ||
+      info.name.startsWith(ref.name.slice(0, ref.name.lastIndexOf('.')) + '.'));
+  });
+  return candidates.length === 1 ? '#' + definitionAnchor(candidates[0]) : null;
+}
 function leanBlock(info, role) {
   if (!info.url) return `<div class="lean missing">✗ ${escapeHtml(info.name ?? info.file)} — not resolved</div>`;
   const repoTag = ({ library: 'AlgebraicAnalysis', global: 'GlobalStafford', mathlib: 'Mathlib' })[info.repo] ?? 'stafford38-formal';
@@ -504,7 +516,7 @@ function leanBlock(info, role) {
     <div class="lean-head">${role ? `<span class="role">${escapeHtml(role)}</span>` : ''}${head}${info.private ? ' <span class="muted">(module-private; not an exported FQN)</span>' : ''}
       <span class="muted"> · ${repoTag} @ ${escapeHtml(info.sourceCommit?.slice(0, 7) ?? '')} · ${escapeHtml(info.file)}:${info.line ?? 1}</span>
       <a class="xref" href="#${anchor}" title="All paper items using this declaration">⇄</a></div>
-    ${info.statement ? `<pre class="lean-src">${highlightLean(info.statement)}</pre>` : ''}
+    ${info.statement ? `<pre class="lean-src">${highlightLean(info.statement, (token) => symbolLink(info, token))}</pre>` : ''}
     ${info.trust === 'placeholder' ? '<p class="err">Unproved challenge/template: this declaration contains sorry/admit. Its signature specifies a target; it is not evidence of a proved theorem.</p>' : info.trust === 'axiom' ? '<p class="err">Axiom declaration: this is an assumption, not a proved theorem.</p>' : ''}
     ${info.context?.length ? `<details class="lean-context"><summary>Ambient source declarations</summary><p class="muted">Available local context, not a list of extra hypotheses. Lean determines parameters from the signature, proof and include/omit directives. Imports and other instances are in the linked full module.</p>${info.context.map((entry) => `<a href="${entry.url}" class="muted">${escapeHtml(info.file)}:${entry.startLine}–${entry.endLine}</a><pre class="lean-src">${highlightLean(entry.text)}</pre>`).join('')}</details>` : ''}
     ${info.truncated ? '<p class="lean-note">Excerpt truncated; follow the pinned source link for the complete declaration.</p>' : ''}
@@ -595,7 +607,7 @@ function card(it) {
   const usedBy = items.filter((o) => (o.depends_on ?? []).includes(it.id)).map((o) => `<a href="#item-${slug(o.id)}">${escapeHtml(o.short ?? o.id)}</a>`).join(', ');
   const texLink = it.tex_lines ? `https://github.com/${map.sources.paper.repo}/blob/${map.sources.paper.commit}/${paperFile}#L${it.tex_lines[0]}-L${it.tex_lines[1]}` : null;
   const maxSev = (it.issues ?? []).reduce((acc, iss) => Math.max(acc, SEV[iss.severity]?.rank ?? 0), 0);
-  return `<section class="card" id="item-${slug(it.id)}" data-rel="${escapeHtml(it.statement_relation)}" data-route="${escapeHtml(it.route_relation)}" data-sev="${maxSev}">
+  return `<section class="card" id="item-${slug(it.id)}" data-rel="${escapeHtml(it.statement_relation)}" data-route="${escapeHtml(it.route_relation)}" data-sev="${maxSev}" data-review-scope="${escapeHtml(it.review_scope ?? 'publication')}">
   <header class="card-head">
     <h3>${escapeHtml(it.kind ?? '')} ${escapeHtml(it.number ?? '')}${it.title ? ' — ' + mdInline(it.title) : ''}</h3>
     <div class="meta">
@@ -604,10 +616,11 @@ function card(it) {
     <div class="badges">${badge(REL, it.statement_relation, 'statement')} ${badge(ROUTE, it.route_relation, 'route')}
       ${(it.issues ?? []).length ? `<span class="badge b-${SEV[Object.keys(SEV).find((k) => SEV[k].rank === maxSev)]?.color ?? 'grey'}">${it.issues.length} issue${it.issues.length > 1 ? 's' : ''}</span>` : ''}</div>
   </header>
+  ${it.publication_proof ? `<div class="publication-target"><b>Proposed publication proof.</b> ${md(it.publication_proof)}<span class="muted">Review this route; retained alternatives are optional unless the authors select them.</span></div>` : ''}
   <div class="cols">
     <div class="col paper">
       <div class="col-title">Paper <span class="muted">(${escapeHtml(paperFile)} @ ${map.sources.paper.commit.slice(0, 7)})</span></div>
-      <div class="tex">${it.tex_lines ? excerpt(it.tex_lines) : '<p class="muted">No manuscript text (Lean-only step).</p>'}</div>
+      <div class="tex">${it.tex_lines ? excerpt(it.publication_tex_lines ?? it.tex_lines) : '<p class="muted">No manuscript text (Lean-only step).</p>'}${it.publication_tex_lines ? `<details><summary>Retained printed alternative (not the selected publication route)</summary>${excerpt(it.tex_lines)}</details>` : ''}</div>
     </div>
     <div class="col formal">
       <div class="col-title">Lean <span class="muted">(repository and pinned revision on each declaration)</span></div>
@@ -629,7 +642,7 @@ function card(it) {
   ${(() => {
     const paperText = it.tex_lines ? texLines.slice(it.tex_lines[0] - 1, it.tex_lines[1]).join('\n') : '';
     const reviewBasis = [Object.fromEntries(Object.entries(map.sources).map(([key, source]) => [key, source.commit])),
-      generatorHash, map.review_checks, map.vocab, it, paperText, allLeanInfos.map(([info, role]) => ({ ...info, role })), expansions];
+      generatorHash, map.review_checks, map.vocab, definitionRefs, map.challenge_endpoints, it, paperText, allLeanInfos.map(([info, role]) => ({ ...info, role })), expansions];
     const h = sha(JSON.stringify(reviewBasis));
     it._hash = h;
     return recordedBlock(it.id, h) + reviewBlock(it, h);
@@ -677,6 +690,11 @@ function depGraph() {
   return svg + '</svg>';
 }
 
+const challengeDefinitions = definitionRefs.map((ref) => {
+  const info = resolveLean(ref, 'challenge-definitions');
+  return `<details id="${definitionAnchor(ref)}" class="challenge-definition"><summary>${escapeHtml(ref.name)}${ref.note ? ' — ' + escapeHtml(ref.note) : ''}</summary>${leanBlock(info, 'definition')}</details>`;
+}).join('');
+const challengeEndpoints = (map.challenge_endpoints ?? []).map((ref) => leanBlock(resolveLean(ref, 'challenge-definitions'), 'proved challenge endpoint')).join('');
 // Render cards first so the Lean index is populated.
 const sectionHtml = map.sections.map((sec) => {
   const secItems = items.filter((it) => it.section === sec.number);
@@ -702,7 +720,7 @@ const issueTable = allIssues.map((iss) => `<tr class="sev-${escapeHtml(iss.sever
 
 const leanIndexRows = [...leanIndex.entries()].sort((a, b) => (a[1].info.file + a[0]).localeCompare(b[1].info.file + b[0])).map(([key, { info, users }]) => {
   const anchor = `lean-${slug(key)}`;
-  const u = [...users.entries()].map(([id, role]) => id === 'lean-only' ? '<a href="#lean-only">Lean-only register</a>' : `<a href="#item-${slug(id)}">${escapeHtml(itemById[id]?.short ?? id)}</a>${role ? ` <span class="muted">(${escapeHtml(role)})</span>` : ''}`).join(', ');
+  const u = [...users.entries()].map(([id, role]) => id === 'challenge-definitions' ? '<a href="#challenge-definitions">Challenge definitions</a>' : id === 'lean-only' ? '<a href="#lean-only">Lean-only register</a>' : `<a href="#item-${slug(id)}">${escapeHtml(itemById[id]?.short ?? id)}</a>${role ? ` <span class="muted">(${escapeHtml(role)})</span>` : ''}`).join(', ');
   return `<tr id="${anchor}"><td>${info.url ? `<a href="${info.url}">${escapeHtml(info.module_only ? info.file : info.name)}</a>${info.private ? ' <span class="muted">(module-private; not an exported FQN)</span>' : ''}` : escapeHtml(info.name ?? info.file)}</td><td class="muted">${escapeHtml(({ library: 'AA', global: 'GlobalStafford' })[info.repo] ?? 'S38')} ${escapeHtml(info.file)}:${info.line ?? ''}</td><td>${u}</td></tr>`;
 }).join('');
 
@@ -732,6 +750,7 @@ const html = `<!doctype html>
 <body>
 <nav class="side">
   <div class="brand">Stafford 3.8<br><span>paper ↔ Lean audit</span></div>
+  <label for="review-scope">Review scope</label><select id="review-scope"><option value="publication">Publication claims (default)</option><option value="alternative">Optional proof variants</option><option value="all">All reference material</option></select>
   <input id="filter" type="search" placeholder="Filter cards…">
   <div class="filters">
     <label><input type="checkbox" id="only-issues"> with issues</label>
@@ -764,7 +783,7 @@ const html = `<!doctype html>
     <tr><th>Build</th><td>generated ${buildInfo.generated} by <code>tools/paper_lean_audit</code> (stafford38) · mapping checks: ${errors.length ? `<b class="err">${errors.length} errors</b>` : 'all passed'} · ${warnings.length} warnings</td></tr>
   </table>
 </header>
-<section id="overview"><h2>Overview</h2>
+<section id="overview"><p class="publication-target"><b>Max: review the proposed publication claims against the proved Lean statements.</b> Match quantifiers, hypotheses, sidedness and conclusions. For different routes, use the linked mathematical proof account. Optional variants and historical reference material are outside the default queue; a retained alternative enters it only if the authors select it. Human acceptance is still required.</p><div id="freshness" class="muted"></div><h2>Overview</h2>
   <div class="stats"><div>Statements: ${countBy('statement_relation', REL)}</div><div>Proof routes: ${countBy('route_relation', ROUTE)}</div><div>Issues: ${sevCount}</div><div>Recorded sign-offs (committed, current): ${items.filter((it) => (recorded[it.id] ?? []).some((r) => r.complete && r.hash === it._hash)).length} / ${items.length}</div></div>
   ${md(map.overview)}
   <h3>How to use this document</h3>${md(map.how_to_use)}
@@ -773,24 +792,26 @@ const html = `<!doctype html>
   <tr><th colspan="2">Proof-route relation</th></tr>${Object.values(ROUTE).map((v) => `<tr><td><span class="badge b-${v.color}">${escapeHtml(v.label)}</span></td><td>${escapeHtml(v.meaning)}</td></tr>`).join('')}
   <tr><th colspan="2">Issue severity</th></tr>${Object.values(SEV).map((v) => `<tr><td><span class="badge b-${v.color}">${escapeHtml(v.label)}</span></td><td>${escapeHtml(v.meaning)}</td></tr>`).join('')}</table>
 </section>
-<section id="graph"><h2>Dependency map</h2><p class="muted">Arrows point from an input to the item that uses it. Colour = statement relation. Click a node.</p>${depGraph()}</section>
+<section id="graph" data-reference-material><h2>Dependency map</h2><p class="muted">Arrows point from an input to the item that uses it. Colour = statement relation. Click a node.</p>${depGraph()}</section>
+${challengeDefinitions ? `<section id="challenge-definitions"><h2>Challenge: meaning and soundness</h2><p>Start here: check the quantified fields, characteristic, rank, nonzero input, Weyl relations and factor order against the paper. <code>Field</code> is a typeclass of commutative fields; <code>CharZero</code> requires injective natural-number casts. Definitions specify the proposition; only the proved solution endpoints supply evidence. The deliberate <code>sorry</code> in each challenge template is not a proof. Click linked identifiers in signatures to open their exact pinned definitions. Library parents and imports remain accessible in the pinned source.</p>${challengeEndpoints}<details><summary>Definitions entering the challenge and fixed-source strengthening</summary>${challengeDefinitions}</details></section>` : ''}
 ${sectionHtml}
-<section id="lean-only"><h2>Lean-only steps</h2>${md(map.lean_only_intro)}<table class="reg fixed"><colgroup><col style="width:34%"><col style="width:48%"><col style="width:18%"></colgroup><thead><tr><th>Lean</th><th>What it does and why a reviewer should know</th><th>Nearest paper item</th></tr></thead><tbody>${leanOnly}</tbody></table></section>
-<section id="issues"><h2>Issue register</h2><table class="reg fixed"><colgroup><col style="width:9%"><col style="width:7%"><col style="width:11%"><col style="width:61%"><col style="width:12%"></colgroup><thead><tr><th>Severity</th><th>ID</th><th>Item</th><th>Summary</th><th>AIcomment</th></tr></thead><tbody>${issueTable}</tbody></table></section>
-<section id="aicomments"><h2>AI comments in the manuscript</h2><table class="reg"><thead><tr><th>ID</th><th>tex line</th><th>Audit verdict</th><th>Note</th></tr></thead><tbody>${aicRows}</tbody></table></section>
-<section id="lean-index"><h2>Lean → paper index</h2><p class="muted">Every declaration or module cited in this document, with the paper items that use it. The ⇄ link on each Lean block lands here.</p><table class="reg fixed"><colgroup><col style="width:45%"><col style="width:25%"><col style="width:30%"></colgroup><thead><tr><th>Declaration</th><th>Location</th><th>Paper items</th></tr></thead><tbody>${leanIndexRows}</tbody></table></section>
+<section id="lean-only" data-reference-material><h2>Lean-only steps</h2>${md(map.lean_only_intro)}<table class="reg fixed"><colgroup><col style="width:34%"><col style="width:48%"><col style="width:18%"></colgroup><thead><tr><th>Lean</th><th>What it does and why a reviewer should know</th><th>Nearest paper item</th></tr></thead><tbody>${leanOnly}</tbody></table></section>
+<section id="issues" data-reference-material><h2>Issue register</h2><table class="reg fixed"><colgroup><col style="width:9%"><col style="width:7%"><col style="width:11%"><col style="width:61%"><col style="width:12%"></colgroup><thead><tr><th>Severity</th><th>ID</th><th>Item</th><th>Summary</th><th>AIcomment</th></tr></thead><tbody>${issueTable}</tbody></table></section>
+<section id="aicomments" data-reference-material><h2>AI comments in the manuscript</h2><table class="reg"><thead><tr><th>ID</th><th>tex line</th><th>Audit verdict</th><th>Note</th></tr></thead><tbody>${aicRows}</tbody></table></section>
+<section id="lean-index" data-reference-material><h2>Lean → paper index</h2><p class="muted">Every declaration or module cited in this document, with the paper items that use it. The ⇄ link on each Lean block lands here.</p><table class="reg fixed"><colgroup><col style="width:45%"><col style="width:25%"><col style="width:30%"></colgroup><thead><tr><th>Declaration</th><th>Location</th><th>Paper items</th></tr></thead><tbody>${leanIndexRows}</tbody></table></section>
 <section id="provenance"><h2>Provenance and mapping checks</h2>${md(map.provenance)}
   <h3>Automatic checks</h3>${errors.length ? `<ul class="err">${errors.map((e) => `<li>${escapeHtml(e)}</li>`).join('')}</ul>` : '<p>All mapping checks passed: every cited declaration was found under its fully qualified name at the pinned commit, every label lies in its excerpt, and every reference resolved.</p>'}
   ${warnings.length ? `<details><summary>${warnings.length} warnings</summary><ul>${warnings.map((w) => `<li>${escapeHtml(w)}</li>`).join('')}</ul></details>` : ''}
 </section>
 </main>
-<script>window.AUDIT_META = ${JSON.stringify({ version: map.version, paper: src.paper.commit, formal: src.formal.commit, checks: reviewChecks.map((c) => c.id) })};</script>
+<script>window.AUDIT_META = ${JSON.stringify({ version: map.version, paper: src.paper.commit, formal: src.formal.commit, checks: reviewChecks.map((c) => c.id), generator: generatorHash, live: "https://itpplasma.github.io/stafford38-formal/" })};</script>
 <script>${js}</script>
 </body></html>`;
 
 fs.mkdirSync(outDir, { recursive: true });
 const htmlPath = path.join(outDir, 'stafford38-paper-lean-audit.html');
 fs.writeFileSync(htmlPath, html);
+fs.writeFileSync(path.join(outDir, 'version.json'), JSON.stringify({ version: map.version, paper: src.paper.commit, formal: src.formal.commit, generator: generatorHash }) + '\n');
 console.log(`wrote ${htmlPath}`);
 if (warnings.length) console.log(`${warnings.length} warnings:\n  ` + warnings.join('\n  '));
 if (errors.length) console.error(`${errors.length} ERRORS:\n  ` + errors.join('\n  '));

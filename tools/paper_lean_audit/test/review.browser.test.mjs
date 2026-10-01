@@ -233,3 +233,66 @@ test('browser review state is revision-safe, attributable, and importable withou
     await new Promise((resolve) => server.close(resolve));
   }
 });
+
+
+test('publication queue separates optional variants and blocks stale-version sign-offs', async () => {
+  let site;
+  let latest = { ...meta, generator: 'd'.repeat(64) };
+  const server = createServer((request, response) => {
+    if (request.url === '/version.json') {
+      response.writeHead(200, { 'content-type': 'application/json' });
+      response.end(JSON.stringify(latest)); return;
+    }
+    const scope = '<select id="review-scope"><option value="publication">Publication</option><option value="alternative">Alternatives</option><option value="all">All</option></select><div id="freshness"></div>';
+    let html = fixture().replace('<div id="progress">', scope + '<div id="progress">');
+    let count = 0;
+    html = html.replace(/class="card"/g, () => 'class="card" data-review-scope="' + (++count === 1 ? 'publication' : 'alternative') + '"');
+    html = html.replace(JSON.stringify(meta), JSON.stringify({ ...meta, generator: 'd'.repeat(64), live: site + '/' }));
+    response.writeHead(200, { 'content-type': 'text/html' }); response.end(html);
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  site = 'http://127.0.0.1:' + server.address().port;
+  const browser = await chromium.launch({ executablePath, headless: true, args: ['--no-sandbox'] });
+  try {
+    const page = await browser.newPage(); await page.goto(site);
+    await page.evaluate(() => { window.setInterval = callback => { window.__checkLatest = callback; return 0; }; });
+    await page.addScriptTag({ path: reviewScript });
+    await page.addStyleTag({ path: path.resolve(here, '../style.css') });
+    const first = page.locator('[data-item="item-one"]').locator('..');
+    const second = page.locator('[data-item="item-two"]').locator('..');
+    assert.equal(await first.isVisible(), true); assert.equal(await second.isVisible(), false);
+    await page.locator('#review-scope').selectOption('alternative');
+    assert.equal(await first.isVisible(), false); assert.equal(await second.isVisible(), true);
+    await page.locator('#review-scope').selectOption('all');
+    assert.equal(await first.isVisible(), true); assert.equal(await second.isVisible(), true);
+    await page.waitForFunction(() => document.querySelector('#freshness').textContent === 'Current published review');
+    await page.locator('[data-item="item-one"] [data-notes]').fill('Keep this review note');
+    latest = { ...latest, version: 'v3' };
+    await page.evaluate(() => window.__checkLatest());
+    await page.waitForFunction(() => document.querySelector('#freshness').classList.contains('err'));
+    assert.equal(await page.locator('[data-check]').first().isDisabled(), true);
+    assert.equal(await page.locator('[data-item="item-one"] [data-notes]').inputValue(), 'Keep this review note');
+    await page.close();
+  } finally { await browser.close(); await new Promise(resolve => server.close(resolve)); }
+});
+
+
+test('definition jumps open the exact target and collapsed parents without signing off', async () => {
+  const server=createServer((_request,response)=>{
+    response.writeHead(200,{'content-type':'text/html'});
+    response.end(fixture().replace('<script>window.AUDIT_META', '<a class="definition-link" href="#definition-mathlib:Field">Field</a><details><summary>Definitions</summary><details id="definition-mathlib:Field"><summary>Field</summary><pre>class Field extends CommRing, DivisionRing</pre></details></details><script>window.AUDIT_META'));
+  });
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  const browser=await chromium.launch({executablePath,headless:true,args:['--no-sandbox']});
+  try {
+    const page=await openReview(browser,'http://127.0.0.1:'+server.address().port);
+    await page.locator('[data-item="item-one"] [data-notes]').fill('Check factor order');
+    await page.locator('a.definition-link').click();
+    const target=page.locator('[id="definition-mathlib:Field"]');
+    assert.equal(await target.evaluate(el=>el.open && el.parentElement.open),true);
+    assert.equal(await target.locator('pre').isVisible(),true);
+    assert.equal(await page.locator('[data-item="item-one"] [data-notes]').inputValue(),'Check factor order');
+    assert.equal(await page.locator('[data-check]').first().isChecked(),false);
+    await page.close();
+  } finally {await browser.close();await new Promise(resolve=>server.close(resolve));}
+});

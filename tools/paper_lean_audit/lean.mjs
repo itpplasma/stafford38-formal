@@ -273,14 +273,18 @@ const KEYWORDS = new Set(['theorem', 'lemma', 'def', 'abbrev', 'structure', 'cla
   'fun', 'by', 'let', 'have', 'show', 'from', 'if', 'then', 'else', 'match', 'with', 'noncomputable', 'private',
   'protected', 'variable', 'namespace', 'section', 'end', 'open', 'Type', 'Prop', 'Sort', 'extends', 'in', 'at']);
 
-export function highlightLean(src) {
+export function highlightLean(src, identifierLink = () => null) {
   let out = '';
   const re = /(\/--[\s\S]*?-\/|\/-[\s\S]*?-\/|--[^\n]*)|("(?:[^"\\]|\\.)*")|([A-Za-z_][A-Za-z0-9_'.!?]*)|([∀∃λ→↔∧∨¬≤≥≠∈∉⊆⊂∩∪×•∘⁻¹ᵐᵒᵖ]+)|([\s\S])/g;
   let m;
   while ((m = re.exec(src))) {
     if (m[1]) out += `<span class="lc">${escapeHtml(m[1])}</span>`;
     else if (m[2]) out += `<span class="ls">${escapeHtml(m[2])}</span>`;
-    else if (m[3]) out += KEYWORDS.has(m[3]) ? `<span class="lk">${m[3]}</span>` : escapeHtml(m[3]);
+    else if (m[3]) {
+      const href = identifierLink(m[3]);
+      const token = KEYWORDS.has(m[3]) ? `<span class="lk">${m[3]}</span>` : escapeHtml(m[3]);
+      out += href && /^#[A-Za-z0-9_.:-]+$/.test(href) ? `<a class="definition-link" href="${href}">${token}</a>` : token;
+    }
     else if (m[4]) out += `<span class="lo">${escapeHtml(m[4])}</span>`;
     else out += escapeHtml(m[5]);
   }

@@ -77,3 +77,9 @@ inherits its addition style and is explicitly marked as proposed.
 Standard Mathlib length definitions use `--mathlib DIR` (default: the formal
 repository lake package) and its exact pinned commit in the map. Repository
 and revision labels belong to each declaration, including external libraries.
+
+## Current publication review
+
+Use https://itpplasma.github.io/stafford38-formal/ for the current paper and source pins. The default queue has 23 publication claims; six optional routes are separate. Start with the proved Challenge/Solution endpoints and the 31 curated definitions (including Field, CharZero, the quotient relations and intrinsic Bernstein degree). Click linked identifiers to open definitions and source parents. Direct dependency links reveal only the requested reference; they do not require reviewing every reference card.
+
+The reusable Apache-2.0 generator now lives at https://github.com/itpplasma/paper-lean-audit . This embedded copy keeps existing paper builds reproducible. The frozen companion at https://github.com/itpplasma/stafford38-supplementary keeps manuscript content separate from software. Both new Zenodo integrations must be enabled before publishing their prepared releases; no DOI is claimed until archival succeeds.

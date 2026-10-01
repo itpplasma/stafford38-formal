@@ -1,7 +1,7 @@
 // Behavioural tests for the source helpers with hand-written oracles.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { findDeclaration, extractStatement, namespaceAt, namedResultType, definitionNames, declarationContext, bindingNames, declarationTrust } from '../lean.mjs';
+import { findDeclaration, extractStatement, namespaceAt, namedResultType, definitionNames, declarationContext, bindingNames, declarationTrust, highlightLean } from '../lean.mjs';
 import { TexRenderer, stripComments, readGroup } from '../texhtml.mjs';
 
 const lean = `namespace A.B
@@ -168,4 +168,23 @@ test('named result detection respects binders, universes and comments', () => {
   assert.equal(namedResultType(['theorem equality : Ring.value = 0 := by'], 1), null);
   assert.equal(namedResultType(['theorem inequality : Module.length R M < Module.length R N := by'], 1), null);
   assert.deepEqual(definitionNames('namespace A\nprivate def hidden : Prop := True\ndef Statement : Prop := True\nend A'), [{ name: 'A.Statement', line: 3 }]);
+});
+
+
+test('external mathematical proof links render labels and reject active URL schemes', () => {
+  const r = new TexRenderer({ macros: {}, refs: {}, cites: {}, eqAuto: new Map() });
+  const html = r.text('\\href{https://example.org/proofs.pdf\\#nameddest=COMP-11}{Proof of $P=0$}');
+  assert.match(html, /<a href="https:\/\/example\.org\/proofs\.pdf#nameddest=COMP-11">Proof of /);
+  assert.match(html, /class="katex"/);
+  assert.equal(r.warnings.length, 0);
+  const rejected = r.text('\\href{javascript:alert(1)}{Read the proof}');
+  assert.equal(rejected, 'Read the proof');
+  assert.equal(r.warnings.length, 1);
+});
+
+test('Lean identifiers jump to curated definitions without linking comments or strings', () => {
+  const output = highlightLean('theorem t [Field k] : True := by\n  -- Field\n  exact "Field"', token => token === 'Field' ? '#definition-field' : null);
+  assert.equal((output.match(/href="#definition-field"/g) ?? []).length, 1);
+  assert.match(output, /<a class="definition-link" href="#definition-field">Field<\/a>/);
+  assert.doesNotMatch(highlightLean('Field', () => 'javascript:alert(1)'), /<a/);
 });

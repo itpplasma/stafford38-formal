@@ -1,0 +1,40 @@
+name: Publish current paper review
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/paper_lean_audit/**'
+      - 'docs/paper-lean-audit/**'
+      - 'scripts/build-review-site.py'
+      - '.github/workflows/review-site.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: paper-review-pages
+  cancel-in-progress: true
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: tools/paper_lean_audit/package-lock.json
+      - uses: actions/configure-pages@v5
+      - run: npm ci --prefix tools/paper_lean_audit
+      - run: python3 scripts/build-review-site.py
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public-review
+      - id: deploy
+        uses: actions/deploy-pages@v4
