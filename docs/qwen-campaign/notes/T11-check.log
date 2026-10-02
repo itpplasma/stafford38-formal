@@ -1,0 +1,67 @@
+# T11 port AwayFactorToAtPrime (attempt 1)
+plan: PLAN.md section 7 / T11; worktree /Users/ert/proj/stafford38-qwen @ qwen/paper-route
+WT base 2a9c264 -> commit 134f04b; toolchain leanprover/lean4:v4.35.0-rc3
+owned: Stafford38/Geometry/SameWitness/AwayFactorToAtPrime.lean,
+       tests/SameWitness/AwayFactorToAtPrimeConsumer.lean
+
+## preflight
+free_mem_gb=114 disk_free_gb=553 swap_used_gb=0 pressure_level=1 lean_threads=8
+running_lake_or_lean_pids=none  -> GUARD OK
+
+## search before writing (rule 2.5)
+Mathlib .../Localization/Away/Basic.lean: lift (147), lift_eq (155), lift_comp (159);
+no unit-power factorization transport away -> at a prime, no AtPrime counterpart.
+repo: grep "factorization_to_atPrime\|pair_factorizations" Stafford38 tests docs -> no hits
+decision: port both theorems; reuse Mathlib for the lift hom and its
+algebraMap identification (see renames.md).
+
+## guarded builds (three attempts, one process at a time)
+attempt 1: lake build Stafford38.Geometry.SameWitness.AwayFactorToAtPrime
+  GUARD exit=1 reason=finished wall_s=10 peak_rss_gb=0
+  error: AwayFactorToAtPrime.lean:32:10: typeclass instance problem is stuck
+    IsLocalization.Away ?m.121 ?m.116
+  cause: `exact IsLocalization.Away.lift_comp _` leaves S and x metavariables.
+attempt 2: same command, log .lake/qwen/logs/T11-2.log
+  GUARD exit=1 wall_s=10; error: AwayFactorToAtPrime.lean:34:4: No goals to be solved
+  cause: `refine lift_comp (R := B) (S := Localization.Away f) (P := ...) (x := f) ?_`
+  closes the goal by unification, so the following `exact` has no goal.
+attempt 3 (final): same command, log .lake/qwen/logs/T11-3.log
+  GUARD exit=0 reason=finished wall_s=10 peak_rss_gb=0 free_mem_gb=114
+    disk_free_gb=553 swap_used_gb=0
+  Built Stafford38.Geometry.SameWitness.AwayFactorToAtPrime (867ms)
+  Build completed successfully (1579 jobs). 0 warnings.
+  fix: hψ is `IsLocalization.Away.lift_comp (R := B) (S := Localization.Away f)
+  (P := Localization.AtPrime M) (x := f) _`. No letI/haveI anywhere; all rings
+  are variables over Type u, so rule 6.2 is not engaged.
+
+## statement freeze (rule 6.4)
+diff <(awk '/^theorem /{p=1} p{print} /:= by/{if(p){p=0;print "---"}}' ARCHIVED)
+      <(awk '...' NEW)  -> exit 0
+both `theorem` signature blocks are byte-identical to the archived source;
+2 docstrings preserved. Declaration names unchanged, only the namespace moved
+(Stafford38.Geometry.AwayFactorToAtPrime -> Stafford38.Geometry.SameWitness):
+no rule-2.6 forbidden token in either name, so no rename; see renames.md.
+The archived trailing `#print axioms` lines live in the consumer instead.
+
+## guarded consumer check
+cmd: lake env lean --trust=0 -M 32000 tests/SameWitness/AwayFactorToAtPrimeConsumer.lean
+log: .lake/qwen/logs/T11-consumer.log
+GUARD exit=0 reason=finished wall_s=11 peak_rss_gb=0
+factorization_to_atPrime_consumer        depends on axioms: [propext, Classical.choice, Quot.sound]
+pair_factorizations_to_atPrime_consumer  depends on axioms: [propext, Classical.choice, Quot.sound]
+each consumer restates the theorem literally and proves it by `exact <theorem> ...`.
+
+## git (WT only, explicit paths)
+git add Stafford38/Geometry/SameWitness/AwayFactorToAtPrime.lean
+        tests/SameWitness/AwayFactorToAtPrimeConsumer.lean
+git commit -> 134f04b (2 files, 119 insertions); nothing else staged, no push.
+Stafford38.lean untouched (not owned by T11).
+
+## notes for the controller
+1. `IsLocalization.Away.lift_comp` elaborates only with explicit R/S/P/x; use
+   this pattern for the transport lemmas in T12/T13/T34 instead of the
+   archived `ext b; simp [psi]`.
+2. Nothing imports Stafford38.Geometry.SameWitness.AwayFactorToAtPrime yet and
+   Stafford38.lean is an explicit 17-entry root list, so a plain `lake build`
+   may not elaborate the new module. T43/T50 should add it to a root list or
+   check it by name (as this task did).
