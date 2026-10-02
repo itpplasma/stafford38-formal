@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.ConcreteLocalizedTwoBlockSpecialFibre
-import Stafford38.Characteristic.ArtinianAdaptedBasisExistence
-import Stafford38.Characteristic.ArtinianEquation33TraceProducer
+module
+public import Stafford38.Characteristic.ConcreteLocalizedTwoBlockSpecialFibre
+public import Stafford38.Characteristic.ArtinianAdaptedBasisExistence
+public import Stafford38.Characteristic.ArtinianEquation33TraceProducer
+
+@[expose] public section
 
 /-!
 # Source matrices for the concrete equation-(3.3) bridge
@@ -519,7 +522,7 @@ variable [OreLocalization.OreSet
   (OppositeDenominators (filteredQuotientTwoJetTraceData k I) S)]
 variable [IsLocalRing (Localization S)]
 
-private abbrev concreteData := filteredQuotientTwoJetTraceData k I
+abbrev concreteData := filteredQuotientTwoJetTraceData k I
 
 local notation "D" => concreteData k I
 

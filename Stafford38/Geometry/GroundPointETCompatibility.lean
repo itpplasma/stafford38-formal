@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
-import Stafford38.Geometry.ActualOptionGroundPointCompletion
-import Mathlib.Algebra.Algebra.Tower
+module
+public import Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
+public import Stafford38.Geometry.ActualOptionGroundPointCompletion
+public import Mathlib.Algebra.Algebra.Tower
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

@@ -1,6 +1,9 @@
-import Mathlib.RingTheory.Smooth.Field
-import Mathlib.RingTheory.Smooth.Locus
-import Mathlib.RingTheory.FinitePresentation
+module
+public import Mathlib.RingTheory.Smooth.Field
+public import Mathlib.RingTheory.Smooth.Locus
+public import Mathlib.RingTheory.FinitePresentation
+
+@[expose] public section
 
 /-!
 # A generic smooth principal open

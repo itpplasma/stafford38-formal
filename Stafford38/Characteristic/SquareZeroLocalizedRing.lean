@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.SquareZeroLocalizedExactness
-import Mathlib.RingTheory.Localization.Basic
+module
+public import Stafford38.Characteristic.SquareZeroLocalizedExactness
+public import Mathlib.RingTheory.Localization.Basic
+
+@[expose] public section
 
 /-!
 # The localized deformation-ring specialization

@@ -1,10 +1,13 @@
-import Stafford38.Geometry.ActualPointAxisLift
-import Stafford38.Geometry.ActualOptionCommonOpenColumns
-import Stafford38.Geometry.DirectSummandInputOfActualChart
-import Stafford38.Geometry.A0ChartFormalEtale
-import Stafford38.Geometry.A0NormalizedProjectiveCoordinates
-import Stafford38.Geometry.SmoothAffinePointScalarExtension
-import Stafford38.Geometry.ActualCommonOpenCompletionDerivation
+module
+public import Stafford38.Geometry.ActualPointAxisLift
+public import Stafford38.Geometry.ActualOptionCommonOpenColumns
+public import Stafford38.Geometry.DirectSummandInputOfActualChart
+public import Stafford38.Geometry.A0ChartFormalEtale
+public import Stafford38.Geometry.A0NormalizedProjectiveCoordinates
+public import Stafford38.Geometry.SmoothAffinePointScalarExtension
+public import Stafford38.Geometry.ActualCommonOpenCompletionDerivation
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000
@@ -107,7 +110,7 @@ theorem exists_directSummandInput_of_selected_axis_lift
           algebraMap (PowerSeries k) (LaurentSeries k)
             (tiltedTransverseDerivativeMatrix (k := k) alpha qPre i j))
       (hraw : ∀ i, algebraMap (PowerSeries k) (LaurentSeries k)
-        (PowerSeries.derivative k (tiltedArc (k := k) alpha (qPre i))) =
+        (PowerSeries.derivative (R := k) (tiltedArc (k := k) alpha (qPre i))) =
           coordinateDerivation (k := k) (σ := Option (Fin d)) (B := E)
             (L := LaurentSeries k) none (qC i) +
           ∑ j : Fin d,
@@ -191,7 +194,7 @@ theorem exists_directSummandInput_of_selected_axis_lift
         simpa [qArc] using hposition 0
       _ ≠ 0 := hq0map
   have hcorrection : ∀ i,
-      PowerSeries.derivative k (qArc i) - Z.mulVec
+      PowerSeries.derivative (R := k) (qArc i) - Z.mulVec
         (fun j => PowerSeries.C (alpha j)) i =
           (PowerSeries.X : PowerSeries k) ^ c * tau i := by
     simpa [qArc, Z] using hfactor

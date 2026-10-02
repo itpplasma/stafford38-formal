@@ -1,0 +1,11 @@
+module
+public import Lean
+
+@[expose] public section
+
+namespace GuardFixtureMissing
+
+axiom unavailableProducer : Nat
+theorem terminal : unavailableProducer = unavailableProducer := rfl
+
+end GuardFixtureMissing

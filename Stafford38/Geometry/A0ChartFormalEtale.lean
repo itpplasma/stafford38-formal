@@ -1,8 +1,11 @@
-import Stafford38.Geometry.ProjectiveChartSameFieldOverlap
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
-import Mathlib.RingTheory.Etale.Basic
-import Mathlib.RingTheory.Localization.Away.Basic
+module
+public import Stafford38.Geometry.ProjectiveChartSameFieldOverlap
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
+public import Mathlib.RingTheory.Etale.Basic
+public import Mathlib.RingTheory.Localization.Away.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2400000

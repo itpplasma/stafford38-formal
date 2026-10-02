@@ -1,5 +1,8 @@
-import Stafford38.ChallengeDefinitions
-import Stafford38.FoundationClosure
+module
+public import Stafford38.ChallengeDefinitions
+public import Stafford38.FoundationClosure
+
+@[expose] public section
 
 namespace Stafford38Challenge
 

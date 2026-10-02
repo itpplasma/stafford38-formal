@@ -1,7 +1,11 @@
-import Stafford38.Characteristic.AssociatedGradedFinite
-import Stafford38.Characteristic.ConcreteSquareZeroTraceData
-import Stafford38.Characteristic.SquareZeroHighPowerReduction
-import Stafford38.Characteristic.SquareZeroLocalizedRing
+module
+public import Mathlib.Algebra.CharP.Algebra
+public import Stafford38.Characteristic.AssociatedGradedFinite
+public import Stafford38.Characteristic.ConcreteSquareZeroTraceData
+public import Stafford38.Characteristic.SquareZeroHighPowerReduction
+public import Stafford38.Characteristic.SquareZeroLocalizedRing
+
+@[expose] public section
 
 /-!
 # Right-Rees Artinian-local adapter

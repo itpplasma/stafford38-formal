@@ -1,8 +1,11 @@
-import Stafford38.Characteristic.CanonicalTangentialSuccessors
-import Stafford38.Characteristic.CanonicalTangentialBoundaryMaps
-import Stafford38.Characteristic.LocalizedKernelCokernelEquivalences
-import Stafford38.Characteristic.UniformBoundaryVanishing
-import Stafford38.Characteristic.TwoTermPageLength
+module
+public import Stafford38.Characteristic.CanonicalTangentialSuccessors
+public import Stafford38.Characteristic.CanonicalTangentialBoundaryMaps
+public import Stafford38.Characteristic.LocalizedKernelCokernelEquivalences
+public import Stafford38.Characteristic.UniformBoundaryVanishing
+public import Stafford38.Characteristic.TwoTermPageLength
+
+@[expose] public section
 set_option maxHeartbeats 800000
 
 namespace Stafford38.Characteristic.CanonicalPageEulerInequality

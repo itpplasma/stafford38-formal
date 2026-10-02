@@ -1,0 +1,57 @@
+{
+  "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "modern_green_input_sha256": "e7a467c3622d3782ead45b91a89fc3bfc573f9c7d6de28a49662c420f16be361",
+  "repair3_patch_sha256": "5af0a7fcd2f8bb27880e90cf058b0efc4830791e1ba668329bdf0cff15fe067f",
+  "assembly_patch_sha256": "6b0540ea4f6b0421ffa151f1eba904b173408e26d0ee8941554e38e7109f53d6",
+  "files": {
+    "Stafford38/Geometry/A0ChartFormalEtale.lean": {
+      "packet": "repair3",
+      "raw_sha256": "88217fd2b159588d68118cf8c571a5fd5793df8ce838365aec267f07b5abdfea",
+      "formatted_sha256": "0873391e193a6eb441ee68732bf5edc3a145ff74c035232b1f54e8db008673a0",
+      "format_only": true
+    },
+    "Stafford38/Geometry/ActualSameWitnessAffineFibreClosure.lean": {
+      "packet": "repair3",
+      "raw_sha256": "14b4a39ab418ee41e7a142b82835b5c131804a28161c91bd40d399945206a30d",
+      "formatted_sha256": "2bdfe91bba0dacadddfdab0c4cf9fef0d9f6a5285373d2791753e2a096e2ce4e",
+      "format_only": true
+    },
+    "Stafford38/Geometry/AwayFactorToAtPrime.lean": {
+      "packet": "repair3",
+      "raw_sha256": "b974d07cc0fe4e820c5de841b53536bc2809c971dd5065323d20fd7c7c65299b",
+      "formatted_sha256": "a00ce4e78b6120bd0105ece5e9d184ae2279b306859954f1c4a42680baac9651",
+      "format_only": true
+    },
+    "Stafford38/Geometry/GroundPointAxisLiftFromOutput.lean": {
+      "packet": "repair3",
+      "raw_sha256": "c8fdb87fe7dc0c31750ce795c63e5ce1057396e98cf5f7b7ae1a2405bdadfe3b",
+      "formatted_sha256": "42d41b025d219ebd6ccac5c6889bdb36baa0caade47f2b37999369ace3822a61",
+      "format_only": true
+    },
+    "tests/ActualSameWitnessAffineFibreClosureConsumer.lean": {
+      "packet": "repair3",
+      "raw_sha256": "eaa1123eef65edf7bb7bf93cfaf3988b029e90df84c1ed50534f551a3fcbce1d",
+      "formatted_sha256": "05fcab6651bcf83125d16de85f9cf5ea70eee9a700f8f7c8947f713604de8630",
+      "format_only": true
+    },
+    "Stafford38/Geometry/ActualSameWitnessAsymptoticConormal.lean": {
+      "packet": "assembly",
+      "raw_sha256": "16a2dabeb88b7947bcfd3698cf33b087534dd955a0c08c3f71e41abe3d277069",
+      "formatted_sha256": "8a4eaa92c76e66c7783ec9a8c6e64c1b222980615f2a560b93e7ebac1a1bcfcb",
+      "format_only": true
+    },
+    "Stafford38/Geometry/GeneralAsymptoticConormal.lean": {
+      "packet": "assembly",
+      "raw_sha256": "1c443bab293e6215cb511177e332d9c08001d839c13d3612192c9261bb97210a",
+      "formatted_sha256": "2bc15296f9b167acac9caccedfbf6f15391e1edd77c45cac0ce4e7dfaa54fe15",
+      "format_only": true
+    },
+    "tests/ActualSameWitnessOriginalPrimeConsumer.lean": {
+      "packet": "assembly",
+      "raw_sha256": "09014b34592d3f2a88368cc7f544b9011fb47cf0e97d7531c956f12b85bc7337",
+      "formatted_sha256": "bcd78c93d6b26d32cceefe6b1dab92397839f50b74afa4509f25ab2532190f7b",
+      "format_only": true
+    }
+  },
+  "status": "source only; actual rc3 build pending"
+}

@@ -1,7 +1,10 @@
-import Stafford38.Geometry.AffinePointCompletion
-import Stafford38.Geometry.AdicCompletionRingEquiv
-import Mathlib.RingTheory.AdicCompletion.Algebra
-import Mathlib.RingTheory.MvPowerSeries.Equiv
+module
+public import Stafford38.Geometry.AffinePointCompletion
+public import Stafford38.Geometry.AdicCompletionRingEquiv
+public import Mathlib.RingTheory.AdicCompletion.Algebra
+public import Mathlib.RingTheory.MvPowerSeries.Equiv
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

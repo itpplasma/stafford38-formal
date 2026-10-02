@@ -1,0 +1,10 @@
+module
+public import Stafford38.FoundationClosure
+
+@[expose] public section
+
+namespace Stafford38FixedSourceChallenge
+
+theorem universalFixedSourceStatement : True := Stafford38.universalFixedSourceStatement
+
+end Stafford38FixedSourceChallenge

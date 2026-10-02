@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
+module
+public import Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
+
+@[expose] public section
 
 #check Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale.formallyEtale_at_selected_actual_normalization_center_core
 #print axioms Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale.formallyEtale_at_selected_actual_normalization_center_core

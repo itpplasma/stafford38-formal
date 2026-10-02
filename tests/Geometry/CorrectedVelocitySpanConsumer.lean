@@ -1,18 +1,21 @@
-import Mathlib
-import Stafford38.Geometry.CorrectedVelocitySpan
+module
+public import Mathlib
+public import Stafford38.Geometry.CorrectedVelocitySpan
+
+@[expose] public section
 
 open Stafford38.Geometry.CorrectedVelocitySpan
 
-private def zColumn (_ : Fin 1) : Fin 2 → ℚ :=
+def zColumn (_ : Fin 1) : Fin 2 → ℚ :=
   fun i => if i = 0 then 0 else 1
 
-private def correctedVelocity : Fin 2 → ℚ :=
+def correctedVelocity : Fin 2 → ℚ :=
   fun i => if i = 0 then 1 else 0
 
-private def rawVelocity : Fin 2 → ℚ :=
+def rawVelocity : Fin 2 → ℚ :=
   fun i => if i = 0 then 3 else 2
 
-private def firstCoordinate : (Fin 2 → ℚ) →ₗ[ℚ] ℚ where
+def firstCoordinate : (Fin 2 → ℚ) →ₗ[ℚ] ℚ where
   toFun := fun v => v 0
   map_add' := by intro x y; rfl
   map_smul' := by intro a x; rfl

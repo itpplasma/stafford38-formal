@@ -1,4 +1,7 @@
-import Stafford38.Geometry.AffineConormalSpan
+module
+public import Stafford38.Geometry.AffineConormalSpan
+
+@[expose] public section
 
 /-!
 # A finite family determines the tangent space at full rank

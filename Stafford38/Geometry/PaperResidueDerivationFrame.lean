@@ -1,10 +1,13 @@
-import Stafford38.Geometry.KaehlerSpanSeparableAdjoin
-import Stafford38.Geometry.KaehlerVisibleDerivationFrame
-import Stafford38.Geometry.ResidueMinorSelection
-import Stafford38.Geometry.RetainedProjectiveCompletion
-import Stafford38.Geometry.RelativeRetainedBoundaryPlace
-import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
-import Stafford38.Geometry.CompletedDVRCoefficientSection
+module
+public import Stafford38.Geometry.KaehlerSpanSeparableAdjoin
+public import Stafford38.Geometry.KaehlerVisibleDerivationFrame
+public import Stafford38.Geometry.ResidueMinorSelection
+public import Stafford38.Geometry.RetainedProjectiveCompletion
+public import Stafford38.Geometry.RelativeRetainedBoundaryPlace
+public import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
+public import Stafford38.Geometry.CompletedDVRCoefficientSection
+
+@[expose] public section
 
 /-!
 # Derivations visible in the retained residue coordinates

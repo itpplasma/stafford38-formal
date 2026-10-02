@@ -1,0 +1,9 @@
+{
+  "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "status": "current intended consumer frozen; not yet compiled; final closure producer still compiling",
+  "path": "tests/ActualSameWitnessAffineFibreClosureConsumer.lean",
+  "source_sha256": "eaa1123eef65edf7bb7bf93cfaf3988b029e90df84c1ed50534f551a3fcbce1d",
+  "patch_sha256": "cc9e1b34d41c0568e604731e683c169eef0d5fb72b69870c1d7bd7d4bd5524f5",
+  "archive_sha256": "8f34764b3c573ac4ead1b4b0dcf1311e7e783b495df8d190e099be4ad627f804",
+  "scope": "Derives ground-point output from retained visible-frame witness and smooth-open existence from GenericSmoothOpen; assumes neither independently."
+}

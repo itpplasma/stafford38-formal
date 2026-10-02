@@ -1,5 +1,9 @@
-import Stafford38.Characteristic.HomogeneousChart
-import Stafford38.Geometry.AffineConormalClosure
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Characteristic.HomogeneousChart
+public import Stafford38.Geometry.AffineConormalClosure
+
+@[expose] public section
 
 /-!
 # The pure-momentum axis obstruction
@@ -75,7 +79,8 @@ theorem eval_axis_eq_one_of_pureCoefficient_one
   classical
   rw [MvPolynomial.eval_eq]
   rw [Finset.sum_eq_single (Finsupp.single t N)]
-  · rw [hpure, one_mul]
+  · change AddMonoidAlgebra.coeff P (Finsupp.single t N) = 1 at hpure
+    rw [hpure, one_mul]
     by_cases hN : N = 0
     · subst N
       simp

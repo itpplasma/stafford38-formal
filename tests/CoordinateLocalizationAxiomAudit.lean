@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ProjectiveCoefficientLocalization
-import Mathlib.Algebra.MvPolynomial.Basic
+module
+public import Stafford38.Geometry.ProjectiveCoefficientLocalization
+public import Mathlib.Algebra.MvPolynomial.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -39,7 +39,7 @@ Use the source revision and toolchain named in the verification receipt. From th
     scripts/verify-palomar.sh
     scripts/verify-palomar.sh comparator-fixed-source.json
 
-The recorded toolchain is Lean `leanprover/lean4:v4.33.0`, Mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`, and AlgebraicAnalysis `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`. A different source revision requires its own verification receipt.
+Historical terminal receipts used Lean `leanprover/lean4:v4.33.0`, Mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`, and AlgebraicAnalysis `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`. The current paused checkpoint pins Lean 4.35.0-rc3, Mathlib `c55e6e786f49471c72fbddbec5415808896aec1e`, and AlgebraicAnalysis `bbbbf3fc358ca8100b158cec4cf47f336ab70163`. Its retained baseline and consumer receipts are described in [STATUS.md](STATUS.md); full combined verification and current Palomar qualification remain pending. Each receipt applies only to its recorded source.
 
 ## Ownership and licenses
 

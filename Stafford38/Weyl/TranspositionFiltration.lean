@@ -1,6 +1,10 @@
-import Stafford38.Weyl.Transposition
-import Stafford38.Weyl.GradedAlgebra
-import Stafford38.Weyl.SymbolCompatibility
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Weyl.Transposition
+public import Stafford38.Weyl.GradedAlgebra
+public import Stafford38.Weyl.SymbolCompatibility
+
+@[expose] public section
 
 /-!
 # Filtration and symbol transport under Weyl transposition

@@ -1,6 +1,9 @@
-import Mathlib.RingTheory.Etale.Kaehler
-import Mathlib.RingTheory.TensorProduct.Free
-import Mathlib.LinearAlgebra.Basis.Basic
+module
+public import Mathlib.RingTheory.Etale.Kaehler
+public import Mathlib.RingTheory.TensorProduct.Free
+public import Mathlib.LinearAlgebra.Basis.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

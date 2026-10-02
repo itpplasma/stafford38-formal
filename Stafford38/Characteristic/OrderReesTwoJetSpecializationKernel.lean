@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.OrderReesTwoJet
-import Mathlib.Algebra.Polynomial.Inductions
+module
+public import Stafford38.Characteristic.OrderReesTwoJet
+public import Mathlib.Algebra.Polynomial.Inductions
+
+@[expose] public section
 
 /-!
 # The specialization kernel of the order-Rees two-jet

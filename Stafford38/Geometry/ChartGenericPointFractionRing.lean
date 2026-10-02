@@ -1,9 +1,13 @@
-import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
-import Stafford38.Geometry.RelativeDivisorialTower
-import Stafford38.Geometry.RetainedChartQuotientEmbedding
-import Stafford38.Geometry.ComponentProjectiveChartKernel
-import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
-import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
+module
+public import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
+public import Stafford38.Geometry.RelativeDivisorialTower
+public import Stafford38.Geometry.RetainedChartQuotientEmbedding
+public import Stafford38.Geometry.ComponentProjectiveChartKernel
+public import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
+public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
+
+
+@[expose] public section
 
 noncomputable section
 set_option autoImplicit false

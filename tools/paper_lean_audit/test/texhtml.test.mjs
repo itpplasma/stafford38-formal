@@ -30,6 +30,15 @@ test('comments honor TeX backslash parity', () => {
   assert.equal(stripComments(String.raw`linebreak \\% comment`), String.raw`linebreak \\`);
 });
 
+test('run-in paragraph headings preserve the heading and following prose', () => {
+  const r = renderer();
+  const html = r.text(String.raw`\paragraph{Online \& resources.} Read both files. \paragraph*{Notes.} Keep annotations.`);
+  assert.equal(r.warnings.length, 0);
+  assert.match(html, /<strong class="tex-paragraph">Online &amp; resources\.<\/strong>\s+Read both files\./);
+  assert.match(html, /<strong class="tex-paragraph">Notes\.<\/strong>\s+Keep annotations\./);
+  assert.doesNotMatch(html, /<code>\\paragraph/);
+});
+
 test('inline and display math use matching, escaped delimiters', () => {
   const r = renderer();
   const html = r.text(String.raw`inline $x + \$y$; display $$z^2$$; \(u\) and \[v\].`);

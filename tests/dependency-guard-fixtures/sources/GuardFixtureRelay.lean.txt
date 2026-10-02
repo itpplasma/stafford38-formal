@@ -1,0 +1,14 @@
+module
+public import Lean
+public import GuardFixtureBannedOwner
+
+@[expose] public section
+
+namespace GuardFixture
+
+private theorem transitivePrivateRelay : True := by
+  let _hidden : Nat := transitiveForbiddenProducer
+  exact True.intro
+opaque transitiveHiddenProof : True := transitivePrivateRelay
+
+end GuardFixture

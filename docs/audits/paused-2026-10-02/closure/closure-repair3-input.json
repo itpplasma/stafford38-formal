@@ -1,0 +1,13 @@
+{
+  "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "patch_sha256": "5af0a7fcd2f8bb27880e90cf058b0efc4830791e1ba668329bdf0cff15fe067f",
+  "supersedes_failed_candidate": ".lake/closure-input.json",
+  "status": "helper extracted after exact deterministic timeout; build session69183 pending; consumer not compiled",
+  "files": {
+    "Stafford38/Geometry/A0ChartFormalEtale.lean": "88217fd2b159588d68118cf8c571a5fd5793df8ce838365aec267f07b5abdfea",
+    "Stafford38/Geometry/ActualSameWitnessAffineFibreClosure.lean": "14b4a39ab418ee41e7a142b82835b5c131804a28161c91bd40d399945206a30d",
+    "Stafford38/Geometry/AwayFactorToAtPrime.lean": "b974d07cc0fe4e820c5de841b53536bc2809c971dd5065323d20fd7c7c65299b",
+    "Stafford38/Geometry/GroundPointAxisLiftFromOutput.lean": "c8fdb87fe7dc0c31750ce795c63e5ce1057396e98cf5f7b7ae1a2405bdadfe3b",
+    "tests/ActualSameWitnessAffineFibreClosureConsumer.lean": "eaa1123eef65edf7bb7bf93cfaf3988b029e90df84c1ed50534f551a3fcbce1d"
+  }
+}

@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.CommutingPolynomialAction
+module
+public import AlgebraicAnalysis.Module.CommutingPolynomialAction
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness
+module
+public import Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalTangentialRingEquivalence
 
@@ -24,13 +27,13 @@ def oldTangentialVar (n : ℕ) (i : Fin n ⊕ Fin n) : TangentialVar n :=
       | inl i => simp [oldIndex]
       | inr i => simp [oldIndex]⟩
 
-private theorem oldTangentialVar_injective (n : ℕ) :
+theorem oldTangentialVar_injective (n : ℕ) :
     Function.Injective (oldTangentialVar n) := by
   intro i j h
   apply Stafford38.WeylPBW.oldIndex_injective
   exact congrArg (fun v : TangentialVar n => v.1.1) h
 
-private theorem oldTangentialVar_surjective (n : ℕ) :
+theorem oldTangentialVar_surjective (n : ℕ) :
     Function.Surjective (oldTangentialVar n) := by
   intro v
   rcases v with ⟨⟨w, hnormal⟩, hcoordinate⟩

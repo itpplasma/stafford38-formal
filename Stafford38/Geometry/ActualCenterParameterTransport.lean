@@ -1,7 +1,10 @@
-import Mathlib.RingTheory.Localization.AtPrime.Basic
-import Mathlib.RingTheory.LocalRing.RingHom.Basic
-import Mathlib.RingTheory.LocalRing.Basic
-import Mathlib.RingTheory.RegularLocalRing.Defs
+module
+public import Mathlib.RingTheory.Localization.AtPrime.Basic
+public import Mathlib.RingTheory.LocalRing.RingHom.Basic
+public import Mathlib.RingTheory.LocalRing.Basic
+public import Mathlib.RingTheory.RegularLocalRing.Defs
+
+@[expose] public section
 
 set_option autoImplicit false
 

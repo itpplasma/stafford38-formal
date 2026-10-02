@@ -1,0 +1,625 @@
+{
+  "status": "paused_at_user_request",
+  "date": "2026-10-02",
+  "controller_base": "4abc57d8cf9ce2af611252f9e0ab2e86068580e0",
+  "worker_base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "paper_cleanup_commit": "ce09ead2553154c3521e0515c5e3db7a505832e0",
+  "owned_agents": "all completed or interrupted; no running descendants",
+  "owned_processes": "none; final session27906 exited143 after exact PIDs46827/45711/45699 terminated",
+  "completed": [
+    "425 retained rc3 targets / 4455 Lake jobs",
+    "116 independent consumers / 312 axiom reports",
+    "3 retained proof wrappers trust0",
+    "bounded generator and packaging fixtures",
+    "preserved-author-proof paper cleanup synchronized to GitHub and Overleaf"
+  ],
+  "unfinished": [
+    "same-witness closure and original-prime wrapper",
+    "terminal rewiring and fresh strict dependency guard",
+    "full combined rc3/Linux verifier and actual Comparator reports",
+    "official current Palomar qualification",
+    "final review anchors, matching PDFs and complete correspondence bundle",
+    "new signed formal/supplementary releases and verified Zenodo archive"
+  ],
+  "artifacts": [
+    {
+      "path": "migration/consumer-compat-supplement-input.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/rc3-migration/consumer-compat-supplement-input.json",
+      "source_sha256": "c1ce1ab9fb89e4046b376bbb050df119a3e6ba30e904137f3790abf7264f2db7",
+      "saved_sha256": "c1ce1ab9fb89e4046b376bbb050df119a3e6ba30e904137f3790abf7264f2db7",
+      "bytes": 3280,
+      "status": "completed baseline; receipts retain exact individual source scope"
+    },
+    {
+      "path": "migration/consumer-compat-supplement.patch.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/rc3-migration/consumer-compat-supplement.patch",
+      "source_sha256": "9470f9346674a053efd02f9e4e7861168803b7fb1fd4eaa37e096a90022370da",
+      "saved_sha256": "747f053d4627cb8789e6405a8394b9843bffdba5eb51056d129a291981535836",
+      "bytes": 5243,
+      "status": "completed baseline; receipts retain exact individual source scope"
+    },
+    {
+      "path": "migration/migration-input.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/rc3-migration/migration-input.json",
+      "source_sha256": "0211c6fd0081b018bbdd22e4f072c9303f38f398dc4b1f6e12c2937cb7082068",
+      "saved_sha256": "0211c6fd0081b018bbdd22e4f072c9303f38f398dc4b1f6e12c2937cb7082068",
+      "bytes": 101763,
+      "status": "completed baseline; receipts retain exact individual source scope"
+    },
+    {
+      "path": "migration/migration.patch.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/rc3-migration/migration.patch",
+      "source_sha256": "1bdc3c3b674bc96198439cc5407ac9b4f6ae34f4d483f2345d0b6709a84e8ae0",
+      "saved_sha256": "b1767c5fb5c7812daca17e6ad52018982f399bcec22d5accc20172644b5e8686",
+      "bytes": 88249,
+      "status": "completed baseline; receipts retain exact individual source scope"
+    },
+    {
+      "path": "migration/proofs-supplement-input.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/rc3-migration/proofs-supplement-input.json",
+      "source_sha256": "4b173bb7a99e49f3df12a3830e2b00f6a00dac12be8f48aa6df430da7a01a3ad",
+      "saved_sha256": "4b173bb7a99e49f3df12a3830e2b00f6a00dac12be8f48aa6df430da7a01a3ad",
+      "bytes": 697,
+      "status": "completed baseline; receipts retain exact individual source scope"
+    },
+    {
+      "path": "migration/proofs-supplement.patch.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/rc3-migration/proofs-supplement.patch",
+      "source_sha256": "cd17248efe0e1b73f5646b56bf7808014cd69508ff1f3ad95dc6fa46197e459a",
+      "saved_sha256": "30d7b3d04b49a2bd48c98aa4657530be6a927a0c1a3cd56e63eda63d0d495b36",
+      "bytes": 773,
+      "status": "completed baseline; receipts retain exact individual source scope"
+    },
+    {
+      "path": "migration/stop-inventory.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/rc3-migration/stop-inventory.json",
+      "source_sha256": "d5059be970872c64d6a3e8d3dd627646897916ddd03903fdd1962a476911f402",
+      "saved_sha256": "d5059be970872c64d6a3e8d3dd627646897916ddd03903fdd1962a476911f402",
+      "bytes": 3677,
+      "status": "completed baseline; receipts retain exact individual source scope"
+    },
+    {
+      "path": "migration/stop-receipts.tar.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/rc3-migration/stop-receipts.tar.gz",
+      "source_sha256": "e5828486b0be2219cf6debd2e4e9857493d77bf5042ef9bab926a6e7715ea71e",
+      "saved_sha256": "e5828486b0be2219cf6debd2e4e9857493d77bf5042ef9bab926a6e7715ea71e",
+      "bytes": 566056,
+      "status": "completed baseline; receipts retain exact individual source scope"
+    },
+    {
+      "path": "migration/all-module-result-v7.json",
+      "source_path": "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/all-module-result-v7.json",
+      "source_sha256": "f501bbf0958826250b3dd8ff6447c2afb9d9f8f7ee3d32f30a5cbb1956ce91fd",
+      "saved_sha256": "f501bbf0958826250b3dd8ff6447c2afb9d9f8f7ee3d32f30a5cbb1956ce91fd",
+      "bytes": 151,
+      "status": "completed exact frozen worker input"
+    },
+    {
+      "path": "migration/consumer-receipt-v8.json",
+      "source_path": "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/consumer-receipt-v8.json",
+      "source_sha256": "bde3ee8271894314a2706ce82b2bdda84da7479ee5e1a483e30569e85082e0bc",
+      "saved_sha256": "bde3ee8271894314a2706ce82b2bdda84da7479ee5e1a483e30569e85082e0bc",
+      "bytes": 601,
+      "status": "completed exact frozen worker input"
+    },
+    {
+      "path": "migration/proofs-independent-v7.json",
+      "source_path": "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/proofs-independent-v7.json",
+      "source_sha256": "1cdb9f47b9cfdbfb25a2e50dbf440e9e580a6181ebed7db4b46d6b3abd06b378",
+      "saved_sha256": "1cdb9f47b9cfdbfb25a2e50dbf440e9e580a6181ebed7db4b46d6b3abd06b378",
+      "bytes": 412,
+      "status": "completed exact frozen worker input"
+    },
+    {
+      "path": "migration/final-overlay-input.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/rc3-final/final-overlay-input.json",
+      "source_sha256": "fac0e1918c58c584ddcebb91f7689296053365abbab2e0664815266d4cef1c41",
+      "saved_sha256": "fac0e1918c58c584ddcebb91f7689296053365abbab2e0664815266d4cef1c41",
+      "bytes": 2848,
+      "status": "same-witness final candidate interrupted; no green receipt"
+    },
+    {
+      "path": "closure/closure-current-consumer.json",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-current-consumer.json",
+      "source_sha256": "22f27a48fbf0c3b81273c02176be2891768e249f7e79e2ccc2d70fb8d964d285",
+      "saved_sha256": "22f27a48fbf0c3b81273c02176be2891768e249f7e79e2ccc2d70fb8d964d285",
+      "bytes": 651,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-current-consumer.patch.gz",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-current-consumer.patch",
+      "source_sha256": "cc9e1b34d41c0568e604731e683c169eef0d5fb72b69870c1d7bd7d4bd5524f5",
+      "saved_sha256": "637ec4c237bb12bb8e0884a1d9d223ca324c3e0e9868f65aa97377dfb2444bb5",
+      "bytes": 824,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-current-consumer.tar.gz",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-current-consumer.tar.gz",
+      "source_sha256": "8f34764b3c573ac4ead1b4b0dcf1311e7e783b495df8d190e099be4ad627f804",
+      "saved_sha256": "8f34764b3c573ac4ead1b4b0dcf1311e7e783b495df8d190e099be4ad627f804",
+      "bytes": 927,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-frontier.txt",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-frontier.txt",
+      "source_sha256": "8bbf6775aa2c29430849888995875ac03ef862a3696303c2851e234e2bbbf758",
+      "saved_sha256": "8bbf6775aa2c29430849888995875ac03ef862a3696303c2851e234e2bbbf758",
+      "bytes": 2735,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-input.json",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-input.json",
+      "source_sha256": "69150d96cca8bd8ac740bd30f6e3499b019856a5c3b3f2fbf612378a908e8a68",
+      "saved_sha256": "69150d96cca8bd8ac740bd30f6e3499b019856a5c3b3f2fbf612378a908e8a68",
+      "bytes": 676,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-repair.patch.gz",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-repair.patch",
+      "source_sha256": "9e87506f26050d5c6384d9a392eadc8479fd84bc111a710714e239eb6928c94a",
+      "saved_sha256": "1776f06378e71c40c2efde25e1cfc8de182655881ea414a84792658debf86564",
+      "bytes": 7867,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-repair3-input.json",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-repair3-input.json",
+      "source_sha256": "4702f27e3e4b95c4ed0202e9e989c6e23a2551eff95c649897d5188cb3009065",
+      "saved_sha256": "4702f27e3e4b95c4ed0202e9e989c6e23a2551eff95c649897d5188cb3009065",
+      "bytes": 973,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-repair3.patch.gz",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-repair3.patch",
+      "source_sha256": "5af0a7fcd2f8bb27880e90cf058b0efc4830791e1ba668329bdf0cff15fe067f",
+      "saved_sha256": "839791213d2b7a3d5f90427fc1364f9481dc19924f852deaf9ad3b43639e37bf",
+      "bytes": 8234,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-repair4-input.json",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-repair4-input.json",
+      "source_sha256": "8b800f76cbf558c58724ad002985e51ddddb9561a0a1dc103207c0c45c1fff38",
+      "saved_sha256": "8b800f76cbf558c58724ad002985e51ddddb9561a0a1dc103207c0c45c1fff38",
+      "bytes": 994,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-repair4-interruption.json",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-repair4-interruption.json",
+      "source_sha256": "9ae60fc8e040ac3a874c0fe8f97d941488694e3443b87e73ba2f25feb36fdc21",
+      "saved_sha256": "9ae60fc8e040ac3a874c0fe8f97d941488694e3443b87e73ba2f25feb36fdc21",
+      "bytes": 466,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-repair4-small.diff.gz",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-repair4-small.diff",
+      "source_sha256": "88c06998c1984e9b2f7569abd7e38beef610081049ab513e43474ce5de0a3131",
+      "saved_sha256": "eb80dc7ee497a9bea00827e83fb3f893341d2d1de807e8867aedda762cddadd4",
+      "bytes": 411,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-repair4-sources.tar.gz",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-repair4-sources.tar.gz",
+      "source_sha256": "87cda039dab40856dc1f842259f17135f38b161aae3f174383d366b34154d2ba",
+      "saved_sha256": "87cda039dab40856dc1f842259f17135f38b161aae3f174383d366b34154d2ba",
+      "bytes": 10289,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/closure-repair4.patch.gz",
+      "source_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-repair4.patch",
+      "source_sha256": "365001a7c8ef183b64e582ca256dd39fff9b0de3b3e122e678ae01ae1e3bf1d9",
+      "saved_sha256": "30593d70ab6c1a271264e94f40690cdd9bfb16600c509c507d2cc4e58a76c716",
+      "bytes": 8277,
+      "status": "candidate only; repair3 failed; repair4 and consumer unverified"
+    },
+    {
+      "path": "closure/stafford38-closure-repair2.log.gz",
+      "source_path": "/tmp/stafford38-closure-repair2.log",
+      "source_sha256": "38edd9a921d10e6607cce96706196a6d457e3f0678acc1c4e02c3f40bf9a85e9",
+      "saved_sha256": "e835a7daa933d6aa2ffb113f41d8a0eb9f891f1f58b7268aceac34141657f985",
+      "bytes": 35379,
+      "status": "failed or interrupted diagnostics; sorryAx output is not proof evidence"
+    },
+    {
+      "path": "closure/stafford38-closure-repair3.log.gz",
+      "source_path": "/tmp/stafford38-closure-repair3.log",
+      "source_sha256": "58d66876f906ab62c5996f3073f2951373a4deaaa5d917688620b34e68c9f0ef",
+      "saved_sha256": "f155900d4eaed4cf62ffee5a6529058d4f67638a6483305bcd6f77bfd3a328e9",
+      "bytes": 35707,
+      "status": "failed or interrupted diagnostics; sorryAx output is not proof evidence"
+    },
+    {
+      "path": "closure/stafford38-closure-repair4.log.gz",
+      "source_path": "/tmp/stafford38-closure-repair4.log",
+      "source_sha256": "55adc733a5f6c3bafe28a95a6897ef65ac7ede2602c3bd83f098f04c2b406f58",
+      "saved_sha256": "0d3c894f5890f4631320db5da93cb87c72882635de1d1149ad65cdaea3538c70",
+      "bytes": 34973,
+      "status": "failed or interrupted diagnostics; sorryAx output is not proof evidence"
+    },
+    {
+      "path": "closure/stafford38-derived-poly-tower.log.gz",
+      "source_path": "/tmp/stafford38-derived-poly-tower.log",
+      "source_sha256": "e4421a87d21255124de5905d3428d98e7ad8f5620c001cc4f3657b40f87b998b",
+      "saved_sha256": "af3c2425fcf8585510a6c7e32a646fd8b20b61d12841caa9f01160895164bc0f",
+      "bytes": 530,
+      "status": "failed or interrupted diagnostics; sorryAx output is not proof evidence"
+    },
+    {
+      "path": "assembly/assembly-wrapper-input.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/assembly-wrapper/assembly-wrapper-input.json",
+      "source_sha256": "5b44beb2367418f039b7e5cf4907e7e58aa9e81780b2dec03bf6a10250c2d429",
+      "saved_sha256": "5b44beb2367418f039b7e5cf4907e7e58aa9e81780b2dec03bf6a10250c2d429",
+      "bytes": 1061,
+      "status": "helper audit passed; original-prime wrapper and consumers uncompiled"
+    },
+    {
+      "path": "assembly/assembly-wrapper.patch.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/assembly-wrapper/assembly-wrapper.patch",
+      "source_sha256": "6b0540ea4f6b0421ffa151f1eba904b173408e26d0ee8941554e38e7109f53d6",
+      "saved_sha256": "11830abfd4cbae420f3d114fa569f4fa5268cbb80821c77d3132f3cab8d3993f",
+      "bytes": 2499,
+      "status": "helper audit passed; original-prime wrapper and consumers uncompiled"
+    },
+    {
+      "path": "assembly/repair3-groundmap-audit.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/assembly-wrapper/repair3-groundmap-audit.json",
+      "source_sha256": "95ebbc19a7ad538b7029822f328a262fa9057bc2f266f2d53298408038cd3b4e",
+      "saved_sha256": "95ebbc19a7ad538b7029822f328a262fa9057bc2f266f2d53298408038cd3b4e",
+      "bytes": 3607,
+      "status": "helper audit passed; original-prime wrapper and consumers uncompiled"
+    },
+    {
+      "path": "assembly/repair3-groundmap-helper.log.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/assembly-wrapper/repair3-groundmap-helper.log",
+      "source_sha256": "3af805b2b26afd7653773dcd4af99ea88f16664dfd7d071d29fb7e6b15ade6a5",
+      "saved_sha256": "a2b6880fcc78eab74641d3712a294b696877d84a3bba1e54bde06902c1a6f566",
+      "bytes": 547,
+      "status": "helper audit passed; original-prime wrapper and consumers uncompiled"
+    },
+    {
+      "path": "palomar/stafford38-palomar-gates-20261002.patch.gz",
+      "source_path": "/tmp/stafford38-palomar-gates-20261002.patch",
+      "source_sha256": "e4f5de968628a6d56d62188da7a81457c20a1d7dfdcab17cd97a1ec3dde9b726",
+      "saved_sha256": "b57475d8793d1c3ba7d6ca64e83f15669b7cd3d54d881f51a4cd1ab3016f6f36",
+      "bytes": 21088,
+      "status": "fixture/preparation evidence only; actual Stafford Linux replay and official workflow not run"
+    },
+    {
+      "path": "palomar/stafford38-palomar-gates-20261002-receipt.json",
+      "source_path": "/tmp/stafford38-palomar-gates-20261002-receipt.json",
+      "source_sha256": "c8999f2bf044c7355c79fe4dd6a699ef645b47c9df382915d7482fd9567253a8",
+      "saved_sha256": "c8999f2bf044c7355c79fe4dd6a699ef645b47c9df382915d7482fd9567253a8",
+      "bytes": 4014,
+      "status": "fixture/preparation evidence only; actual Stafford Linux replay and official workflow not run"
+    },
+    {
+      "path": "palomar/stafford38-palomar-gates-20261002-fixture-evidence.tar.gz",
+      "source_path": "/tmp/stafford38-palomar-gates-20261002-fixture-evidence.tar.gz",
+      "source_sha256": "31eb59a3a60ed7f1871a1336cc2ca93a98b42a8b809c20505f4bf70ecd2703e8",
+      "saved_sha256": "31eb59a3a60ed7f1871a1336cc2ca93a98b42a8b809c20505f4bf70ecd2703e8",
+      "bytes": 1794,
+      "status": "fixture/preparation evidence only; actual Stafford Linux replay and official workflow not run"
+    },
+    {
+      "path": "palomar/stafford38-palomar-gates-20261002-source.tar.gz",
+      "source_path": "/tmp/stafford38-palomar-gates-20261002-source.tar.gz",
+      "source_sha256": "21942c126de8b30efa668495d3fcb2153f9fb6158db9fd1700181b10f94bb441",
+      "saved_sha256": "21942c126de8b30efa668495d3fcb2153f9fb6158db9fd1700181b10f94bb441",
+      "bytes": 26317,
+      "status": "fixture/preparation evidence only; actual Stafford Linux replay and official workflow not run"
+    },
+    {
+      "path": "palomar/stafford38-palomar-gates-fixtures-20261002.tar.gz",
+      "source_path": "/tmp/stafford38-palomar-gates-fixtures-20261002.tar.gz",
+      "source_sha256": "2e4dc25be31348b99dc14c823bb29c71a8ff2b7af5366dfbf32b5767cac46bc4",
+      "saved_sha256": "2e4dc25be31348b99dc14c823bb29c71a8ff2b7af5366dfbf32b5767cac46bc4",
+      "bytes": 11925,
+      "status": "fixture/preparation evidence only; actual Stafford Linux replay and official workflow not run"
+    },
+    {
+      "path": "palomar/stafford38-linux-execution-contract-20261002.json",
+      "source_path": "/tmp/stafford38-linux-execution-contract-20261002.json",
+      "source_sha256": "3347c3fa51e3819330a4fcc33b9b4d46f906a11de0799eb389b044125fbeffe8",
+      "saved_sha256": "3347c3fa51e3819330a4fcc33b9b4d46f906a11de0799eb389b044125fbeffe8",
+      "bytes": 12531,
+      "status": "fixture/preparation evidence only; actual Stafford Linux replay and official workflow not run"
+    },
+    {
+      "path": "palomar/stafford38-linux-snapshot-20261002.sh",
+      "source_path": "/tmp/stafford38-linux-snapshot-20261002.sh",
+      "source_sha256": "bd663ef6d786766409f2a6e05e13c32141f0b6c9af5f6a7bbadd2b05177c407b",
+      "saved_sha256": "bd663ef6d786766409f2a6e05e13c32141f0b6c9af5f6a7bbadd2b05177c407b",
+      "bytes": 3237,
+      "status": "fixture/preparation evidence only; actual Stafford Linux replay and official workflow not run"
+    },
+    {
+      "path": "palomar/stafford38-linux-driver-20261002.sh",
+      "source_path": "/tmp/stafford38-linux-driver-20261002.sh",
+      "source_sha256": "3a5d3f2fa6cf291aefb69e7516b8e3aaeb626ce8d0f02bd294a45ade3babb51e",
+      "saved_sha256": "3a5d3f2fa6cf291aefb69e7516b8e3aaeb626ce8d0f02bd294a45ade3babb51e",
+      "bytes": 3722,
+      "status": "fixture/preparation evidence only; actual Stafford Linux replay and official workflow not run"
+    },
+    {
+      "path": "dependency-guard/dependency-guard-integration.patch.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/dependency-guard-integration.patch",
+      "source_sha256": "5e6f4a9de617957469571540dbc64d882dda8f70ea65f4a3a7908cae1fa62d1e",
+      "saved_sha256": "a1bd0d2e9cc620699dbd182c1ceb31329415af987985f686779523a8584779af",
+      "bytes": 7656,
+      "status": "prepared strict guard; closure consumer and postbuild wiring archived pending fresh proof"
+    },
+    {
+      "path": "dependency-guard/palomar-verifier-guard-wiring.patch.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/palomar-verifier-guard-wiring.patch",
+      "source_sha256": "b15c8d237a981144f4d4a09408d2c53b0cbbd264e8f0563414ccf243f380e4f7",
+      "saved_sha256": "8500704bb78ffa042347ce7fd1f84f929c02ff4dabb7cb9323759bcf7c87f055",
+      "bytes": 442,
+      "status": "prepared strict guard; closure consumer and postbuild wiring archived pending fresh proof"
+    },
+    {
+      "path": "dependency-guard/literal-route-consumers.patch.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/literal-route-consumers.patch",
+      "source_sha256": "c8370efa0cd6c906939c53945e69b9279a355ea000a7446b395daa896d2d374c",
+      "saved_sha256": "7d237b2b0b8b7c6273272cecc0f29863b71ac515f2d98c6d5aef913bfb60a7fa",
+      "bytes": 1559,
+      "status": "prepared strict guard; closure consumer and postbuild wiring archived pending fresh proof"
+    },
+    {
+      "path": "dependency-guard/stafford38-declaration-dependencies-baseline-summary.json",
+      "source_path": "/tmp/stafford38-declaration-dependencies-baseline-summary.json",
+      "source_sha256": "5ad7e387ee4849cfbe29787782297206b7a1b33cfdf5aa28a2edc59fdffdd4c7",
+      "saved_sha256": "5ad7e387ee4849cfbe29787782297206b7a1b33cfdf5aa28a2edc59fdffdd4c7",
+      "bytes": 26311,
+      "status": "historical cached 4.33 baseline, not fresh rc3 proof evidence"
+    },
+    {
+      "path": "dependency-guard/stafford38-declaration-dependencies-baseline.log.gz",
+      "source_path": "/tmp/stafford38-declaration-dependencies-baseline.log",
+      "source_sha256": "aeb6582333157e817355913a7da0ec0b2ceae6aa0f8738ff79fd0b47707eb46a",
+      "saved_sha256": "aed4d6315861e7dfa7cf6a422a590605a90b5f13a680a3d2535cd3ae0d23b0e9",
+      "bytes": 3702,
+      "status": "historical cached 4.33 baseline, not fresh rc3 proof evidence"
+    },
+    {
+      "path": "dependency-guard/stafford38-declaration-dependencies.lean.txt",
+      "source_path": "/tmp/stafford38-declaration-dependencies.lean",
+      "source_sha256": "f3f4922ddd5aa5a5d1d644849401ea7653de8b08e477b9fac0f517856f1c1a12",
+      "saved_sha256": "f3f4922ddd5aa5a5d1d644849401ea7653de8b08e477b9fac0f517856f1c1a12",
+      "bytes": 2998,
+      "status": "prepared audit script; historical cached baseline only"
+    },
+    {
+      "path": "review/stafford38-review-bundle-candidate.patch.gz",
+      "source_path": "/tmp/stafford38-review-bundle-candidate.patch",
+      "source_sha256": "c64290fed3988fd2dc55dba4d3e6eacc03cd68dcac94ba552c425f5fb463e0b9",
+      "saved_sha256": "0a6207487f046b53cae9ae3ac6ef62e5b52d701271fb6f215e4177aa69568003",
+      "bytes": 17618,
+      "status": "tool fixtures and public paper cleanup scoped by receipts; no final correspondence bundle"
+    },
+    {
+      "path": "review/stafford38-review-bundle-candidate-receipt.json",
+      "source_path": "/tmp/stafford38-review-bundle-candidate-receipt.json",
+      "source_sha256": "775892beb8157e15acfae3ae7b2b7d5a6ee6f69e77119bf04d2d300c46540e18",
+      "saved_sha256": "775892beb8157e15acfae3ae7b2b7d5a6ee6f69e77119bf04d2d300c46540e18",
+      "bytes": 1031,
+      "status": "tool fixtures and public paper cleanup scoped by receipts; no final correspondence bundle"
+    },
+    {
+      "path": "review/stafford38-annotation-cleanup.patch.gz",
+      "source_path": "/tmp/stafford38-annotation-cleanup.patch",
+      "source_sha256": "e3603c8ce4627b75c802e3ed7fe38909e590b749211c1f516cad0092810ead56",
+      "saved_sha256": "1e0f2cbe30d6bdd4aa5f846e118a7629d62b7d2ca7be4a4401e34693190b1c86",
+      "bytes": 6161,
+      "status": "tool fixtures and public paper cleanup scoped by receipts; no final correspondence bundle"
+    },
+    {
+      "path": "review/stafford38-annotation-cleanup-baseline.json",
+      "source_path": "/tmp/stafford38-annotation-cleanup-baseline.json",
+      "source_sha256": "2560739f683b50e5cbcb6c1c2c8f4ff95156ef98c36ecb0736b99d1f7f75cd85",
+      "saved_sha256": "2560739f683b50e5cbcb6c1c2c8f4ff95156ef98c36ecb0736b99d1f7f75cd85",
+      "bytes": 11622,
+      "status": "tool fixtures and public paper cleanup scoped by receipts; no final correspondence bundle"
+    },
+    {
+      "path": "review/stafford38-annotation-cleanup-receipt.json",
+      "source_path": "/tmp/stafford38-annotation-cleanup-receipt.json",
+      "source_sha256": "e6112e889fb8221d19c67cfbdcba9e096c710df5cd23cae5e4cac3d4e9ad1ba1",
+      "saved_sha256": "e6112e889fb8221d19c67cfbdcba9e096c710df5cd23cae5e4cac3d4e9ad1ba1",
+      "bytes": 2399,
+      "status": "tool fixtures and public paper cleanup scoped by receipts; no final correspondence bundle"
+    },
+    {
+      "path": "review/anchor-inventory",
+      "source_path": "/var/tmp/stafford38-resume-20261002/anchor-inventory",
+      "source_sha256": "ba297f0d7e63c2f775c7feec7b1384cae4df6e32b6291ae8100c0fa403220062",
+      "saved_sha256": "ba297f0d7e63c2f775c7feec7b1384cae4df6e32b6291ae8100c0fa403220062",
+      "bytes": 91542,
+      "status": "anchor inventory is preparation only"
+    },
+    {
+      "path": "review/anchor-tools/README.md",
+      "source_path": "/var/tmp/stafford38-resume-20261002/anchor-inventory-tools/README.md",
+      "source_sha256": "77420752449c1f5f500af4ade9f4282230a1219396e40031d4696ccec84906da",
+      "saved_sha256": "77420752449c1f5f500af4ade9f4282230a1219396e40031d4696ccec84906da",
+      "bytes": 1437,
+      "status": "preparation-only dry run against recorded earlier formal commit; not applied"
+    },
+    {
+      "path": "review/anchor-tools/anchor-refresh.patch.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/anchor-inventory-tools/anchor-refresh.patch",
+      "source_sha256": "96d19e92c853eb2c31f34ead4d836d9d96f6cc9b4d39ea85c7b4761cdc4fce0b",
+      "saved_sha256": "bbbaba4631e70c55a0e48836f846ae8eba3fea4475f6d67e317b9fbd24f9e25c",
+      "bytes": 2990,
+      "status": "preparation-only dry run against recorded earlier formal commit; not applied"
+    },
+    {
+      "path": "review/anchor-tools/candidate-dry-run.err",
+      "source_path": "/var/tmp/stafford38-resume-20261002/anchor-inventory-tools/candidate-dry-run.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "saved_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "status": "preparation-only dry run against recorded earlier formal commit; not applied"
+    },
+    {
+      "path": "review/anchor-tools/candidate-dry-run.manifest",
+      "source_path": "/var/tmp/stafford38-resume-20261002/anchor-inventory-tools/candidate-dry-run.manifest",
+      "source_sha256": "095b6876b752b8e39f3bca5e60afdc03b8a23e5532c7eee63e9b633e4ba0a44c",
+      "saved_sha256": "095b6876b752b8e39f3bca5e60afdc03b8a23e5532c7eee63e9b633e4ba0a44c",
+      "bytes": 7775,
+      "status": "preparation-only dry run against recorded earlier formal commit; not applied"
+    },
+    {
+      "path": "review/anchor-tools/candidate-dry-run.out.gz",
+      "source_path": "/var/tmp/stafford38-resume-20261002/anchor-inventory-tools/candidate-dry-run.out",
+      "source_sha256": "47d3dc1fa93bf747870de915265ae2108eecfcaf6ca68c790208559342f650be",
+      "saved_sha256": "8bff488bbfd12ae6c7c48c67d2ce4d0e557ffa4f180041401adf950a0ba0343a",
+      "bytes": 12271,
+      "status": "preparation-only dry run against recorded earlier formal commit; not applied"
+    },
+    {
+      "path": "review/anchor-tools/refresh-anchors.mjs",
+      "source_path": "/var/tmp/stafford38-resume-20261002/anchor-inventory-tools/refresh-anchors.mjs",
+      "source_sha256": "1a22ed6c2f1cfa1d4b7b6019af3d231d54b2183a2f4c70a7f1b97ee9baf8e61d",
+      "saved_sha256": "1a22ed6c2f1cfa1d4b7b6019af3d231d54b2183a2f4c70a7f1b97ee9baf8e61d",
+      "bytes": 10166,
+      "status": "preparation-only dry run against recorded earlier formal commit; not applied"
+    },
+    {
+      "path": "release-preparation/.zenodo.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/.zenodo.json",
+      "source_sha256": "745845767d893bd125e4fa7bdaa7478c67452dfbe77067a3ef62bec0f760703a",
+      "saved_sha256": "745845767d893bd125e4fa7bdaa7478c67452dfbe77067a3ef62bec0f760703a",
+      "bytes": 3117,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/CITATION.current.cff",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/CITATION.current.cff",
+      "source_sha256": "637a10178ed61e2b4a7303c84e989a932a3d1ab37dd9d62d5a1178087e9835a9",
+      "saved_sha256": "637a10178ed61e2b4a7303c84e989a932a3d1ab37dd9d62d5a1178087e9835a9",
+      "bytes": 2657,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/CITATION.prearchive.cff",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/CITATION.prearchive.cff",
+      "source_sha256": "af98f03b50c391f037902fb28cec8aa0b1d2cba8ebdcdc7168869d8e0c3175d5",
+      "saved_sha256": "af98f03b50c391f037902fb28cec8aa0b1d2cba8ebdcdc7168869d8e0c3175d5",
+      "bytes": 2504,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/PROPOSAL.md",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/PROPOSAL.md",
+      "source_sha256": "2b547a0fef670aea8b03e5a4ad6c471308325bdfcfae1920c412e02e056bacde",
+      "saved_sha256": "2b547a0fef670aea8b03e5a4ad6c471308325bdfcfae1920c412e02e056bacde",
+      "bytes": 1703,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/RELEASE-NOTES-PENDING.md",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/RELEASE-NOTES-PENDING.md",
+      "source_sha256": "e5be3d1f527b8aabf1544a0000334c93f92d1f7edba5e0a389b33683cd0eef65",
+      "saved_sha256": "e5be3d1f527b8aabf1544a0000334c93f92d1f7edba5e0a389b33683cd0eef65",
+      "bytes": 1023,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/future-commands.sh.txt",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/future-commands.sh.txt",
+      "source_sha256": "f6cd1cbaf99dde975e137c4ab928e254055cbc192527c835f7d71f0b26572f0b",
+      "saved_sha256": "f6cd1cbaf99dde975e137c4ab928e254055cbc192527c835f7d71f0b26572f0b",
+      "bytes": 1902,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/lakefile.current.toml",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/lakefile.current.toml",
+      "source_sha256": "e970b27e914ac5e93eed4d4debc49dba066c8075585a35d35856ed4680c098fe",
+      "saved_sha256": "e970b27e914ac5e93eed4d4debc49dba066c8075585a35d35856ed4680c098fe",
+      "bytes": 696,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/lakefile.toml",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/lakefile.toml",
+      "source_sha256": "f748cf9212ec473c6b79513c70e12f496ef8d900ee72b93e6dce7eb73edb2785",
+      "saved_sha256": "f748cf9212ec473c6b79513c70e12f496ef8d900ee72b93e6dce7eb73edb2785",
+      "bytes": 696,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/lean-toolchain",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/lean-toolchain",
+      "source_sha256": "bc84812c94489d1e3e191baa1dc10d5eb684382d7fe9d2a5ab085e72c1c67e47",
+      "saved_sha256": "bc84812c94489d1e3e191baa1dc10d5eb684382d7fe9d2a5ab085e72c1c67e47",
+      "bytes": 29,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/lean-toolchain.current",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/lean-toolchain.current",
+      "source_sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "saved_sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "bytes": 25,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/release-body.template.md",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/release-body.template.md",
+      "source_sha256": "aa9c00fbb358acb7e44dcbf054f39c0006caa0942e6c04ac618b24002cf9a956",
+      "saved_sha256": "aa9c00fbb358acb7e44dcbf054f39c0006caa0942e6c04ac618b24002cf9a956",
+      "bytes": 910,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "release-preparation/zenodo.current.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/release-metadata/zenodo.current.json",
+      "source_sha256": "3c68e81dc4b94776f08c4afc950a5d44ad32fb4a19e83d701c792b8f69c07ec8",
+      "saved_sha256": "3c68e81dc4b94776f08c4afc950a5d44ad32fb4a19e83d701c792b8f69c07ec8",
+      "bytes": 3120,
+      "status": "proposal only; no new version/tag/release/DOI"
+    },
+    {
+      "path": "controller/controller-integration.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/controller-integration.json",
+      "source_sha256": "3d7860d282d497e856327a118a06d2128719377c85420c9dc2addb140c08c7aa",
+      "saved_sha256": "3d7860d282d497e856327a118a06d2128719377c85420c9dc2addb140c08c7aa",
+      "bytes": 3222,
+      "status": "historical integration journal before requested stop"
+    },
+    {
+      "path": "controller/checkpoint-integrity.json",
+      "source_path": "/var/tmp/stafford38-resume-20261002/checkpoint-integrity.json",
+      "source_sha256": "9418be4a42f9ef5a14dba97b60f56e66a3df649916740dccb2e38e760967f488",
+      "saved_sha256": "9418be4a42f9ef5a14dba97b60f56e66a3df649916740dccb2e38e760967f488",
+      "bytes": 1033,
+      "status": "controller integrity and static checks only"
+    }
+  ],
+  "incoming_authorized_cleanup": {
+    "commits": [
+      "2e27340",
+      "4abc57d"
+    ],
+    "paths": [
+      "Stafford38/Weyl/EulerProductIdentities.lean",
+      "docs/definition-owners.md",
+      "docs/audits/stopped-2026-10-02/README.md",
+      "docs/audits/stopped-2026-10-02/manifest.json"
+    ],
+    "preserved": true,
+    "verification_scope": "focused historical Lean4.33 trust0; combined rc3 replay pending",
+    "baseline_manifest_exception": "Stafford38/Weyl/EulerProductIdentities.lean"
+  }
+}

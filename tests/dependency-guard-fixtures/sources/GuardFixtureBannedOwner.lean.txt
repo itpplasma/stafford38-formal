@@ -1,0 +1,10 @@
+module
+public import Lean
+
+@[expose] public section
+
+namespace GuardFixture
+
+def transitiveForbiddenProducer : Nat := 9
+
+end GuardFixture

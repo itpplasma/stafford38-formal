@@ -1,0 +1,11 @@
+module
+public import Lean
+
+@[expose] public section
+
+namespace Stafford38FixedSourceChallenge
+
+theorem universalFixedSourceStatement : True := by
+  sorry
+
+end Stafford38FixedSourceChallenge

@@ -1,7 +1,10 @@
-import Stafford38.Characteristic.FilteredQuotientReesAction
-import Stafford38.Characteristic.FilteredQuotientReesExact
-import Stafford38.Characteristic.FilteredQuotientSpecialFibre
-import Stafford38.Characteristic.OrderReesTwoJet
+module
+public import Stafford38.Characteristic.FilteredQuotientReesAction
+public import Stafford38.Characteristic.FilteredQuotientReesExact
+public import Stafford38.Characteristic.FilteredQuotientSpecialFibre
+public import Stafford38.Characteristic.OrderReesTwoJet
+
+@[expose] public section
 
 /-!
 # The filtered quotient two-jet module
@@ -223,7 +226,7 @@ def quotientOrderReesSourceAction
     FilteredQuotientTwoJet k I →ₗ[k] FilteredQuotientTwoJet k I :=
   (quotientOrderReesTwoJetSubmodule k I).mapQ
     (quotientOrderReesTwoJetSubmodule k I)
-    (DistribMulAction.toLinearMap k (QuotientOrderReesModule k I) r)
+    (DistribSMul.toLinearMap k (QuotientOrderReesModule k I) r)
     (by
       intro x hx
       exact op_smul_mem_quotientOrderReesTwoJetSubmodule k I r hx)

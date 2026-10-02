@@ -1,6 +1,10 @@
-import Stafford38.DifferentialOperators
-import Stafford38.Weyl.Universal
-import Stafford38.Weyl.IteratedEquivalence
+module
+public import Mathlib.Algebra.MvPolynomial.PDeriv
+public import Stafford38.DifferentialOperators
+public import Stafford38.Weyl.Universal
+public import Stafford38.Weyl.IteratedEquivalence
+
+@[expose] public section
 
 /-!
 # The polynomial representation of the Weyl algebra

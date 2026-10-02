@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ProjectiveChartNormalizationBridge
+module
+public import Stafford38.Geometry.ProjectiveChartNormalizationBridge
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2400000

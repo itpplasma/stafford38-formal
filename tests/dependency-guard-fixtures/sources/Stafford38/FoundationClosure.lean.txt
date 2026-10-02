@@ -1,0 +1,16 @@
+module
+public import Stafford38.Geometry.GeneralConormalAxis
+public import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof
+public import Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction
+
+@[expose] public section
+
+namespace Stafford38
+
+opaque universalStatement : True :=
+  Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental
+
+opaque universalFixedSourceStatement : True :=
+  Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame
+
+end Stafford38

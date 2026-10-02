@@ -1,4 +1,7 @@
-import Stafford38.Geometry.KaehlerTranscendenceBasis
+module
+public import Stafford38.Geometry.KaehlerTranscendenceBasis
+
+@[expose] public section
 
 #check Stafford38.Geometry.kaehlerDifferentialBasisOfTranscendenceBasis
 #check Stafford38.Geometry.kaehlerFinrankOfTranscendenceBasis

@@ -1,5 +1,8 @@
-import Stafford38.Geometry.PaperUnitPowerFactorization
-import Mathlib.RingTheory.Ideal.NatInt
+module
+public import Stafford38.Geometry.PaperUnitPowerFactorization
+public import Mathlib.RingTheory.Ideal.NatInt
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -7,9 +10,9 @@ open Stafford38.Geometry.PaperUnitPowerFactorization
 
 namespace Stafford38.Geometry.UnitPowerNonzeroPrimeOracle
 
-private abbrev P : Ideal ℤ := Ideal.span ({(2 : ℤ)} : Set ℤ)
+abbrev P : Ideal ℤ := Ideal.span ({(2 : ℤ)} : Set ℤ)
 
-private theorem primeP : P.IsPrime := by
+theorem primeP : P.IsPrime := by
   dsimp [P]
   exact Ideal.isPrime_span_singleton_of_prime
     (Nat.prime_iff_prime_int.1 Nat.prime_two)

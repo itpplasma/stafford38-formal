@@ -1,5 +1,8 @@
-import Stafford38.Geometry.SmoothAffinePointScalarExtension
-import Mathlib.RingTheory.Smooth.Basic
+module
+public import Stafford38.Geometry.SmoothAffinePointScalarExtension
+public import Mathlib.RingTheory.Smooth.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -8,14 +11,14 @@ open Stafford38.Geometry.SmoothAffinePointScalarExtension
 
 namespace Stafford38.Geometry.SmoothAffinePointScalarExtensionConsumer
 
-private abbrev P := MvPolynomial (Fin 1) ℚ
-private noncomputable def I : Ideal P := ⊥
-private abbrev A := P ⧸ I
+abbrev P := MvPolynomial (Fin 1) ℚ
+noncomputable def I : Ideal P := ⊥
+abbrev A := P ⧸ I
 
-private noncomputable def quotientEquiv : A ≃ₐ[ℚ] P :=
+noncomputable def quotientEquiv : A ≃ₐ[ℚ] P :=
   AlgEquiv.quotientBot ℚ P
 
-private noncomputable def point : A →ₐ[ℚ] ℚ :=
+noncomputable def point : A →ₐ[ℚ] ℚ :=
   (MvPolynomial.aeval (fun _ : Fin 1 => (4 : ℚ))).comp quotientEquiv.toAlgHom
 
 private theorem smoothAwayOne : Algebra.Smooth ℚ

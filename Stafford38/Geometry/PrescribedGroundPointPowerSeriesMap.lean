@@ -1,9 +1,12 @@
-import Stafford38.Geometry.PrescribedCompletionNonzero
-import Stafford38.Geometry.PrescribedAffineResidueCompletionConsumer
-import Stafford38.Geometry.SmoothLocalTiltedArcAxisLift
-import Mathlib.RingTheory.MvPowerSeries.Substitution
-import Mathlib.RingTheory.MvPowerSeries.Rename
-import Mathlib.RingTheory.PowerSeries.Basic
+module
+public import Stafford38.Geometry.PrescribedCompletionNonzero
+public import Stafford38.Geometry.PrescribedAffineResidueCompletionConsumer
+public import Stafford38.Geometry.SmoothLocalTiltedArcAxisLift
+public import Mathlib.RingTheory.MvPowerSeries.Substitution
+public import Mathlib.RingTheory.MvPowerSeries.Rename
+public import Mathlib.RingTheory.PowerSeries.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

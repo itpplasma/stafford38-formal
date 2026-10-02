@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.UniformBoundaryVanishing
+module
+public import AlgebraicAnalysis.Module.UniformBoundaryVanishing
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ActualChartCenterHeight
-import Stafford38.Geometry.ActualChartCenterContraction
-import Stafford38.Geometry.ResidueBasisLocalization
+module
+public import Stafford38.Geometry.ActualChartCenterHeight
+public import Stafford38.Geometry.ActualChartCenterContraction
+public import Stafford38.Geometry.ResidueBasisLocalization
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,9 @@
-import Stafford38.Geometry.FiniteTypeCurveNormalization
-import Stafford38.Geometry.IntegralPolynomialExtensionDimension
-import Mathlib.RingTheory.Ideal.Height
+module
+public import Stafford38.Geometry.FiniteTypeCurveNormalization
+public import Stafford38.Geometry.IntegralPolynomialExtensionDimension
+public import Mathlib.RingTheory.Ideal.Height
+
+@[expose] public section
 
 set_option autoImplicit false
 

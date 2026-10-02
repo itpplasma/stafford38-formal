@@ -1,13 +1,17 @@
-import Stafford38.Characteristic.CanonicalGabberInvolutivityInterface
-import Stafford38.Characteristic.CanonicalLaurentSymbolControl
-import Stafford38.Characteristic.CanonicalUnitCoordinatePreimage
-import Stafford38.Characteristic.GabberGlobalAssembly
-import Stafford38.Characteristic.InitialIdealHomogeneous
-import Stafford38.Characteristic.ReducedSupportIdeal
-import Stafford38.Characteristic.ZeroSectionContainment
-import Stafford38.CanonicalSupportVanishingReduction
-import Stafford38.Geometry.FibreConicalVanishingIdeal
-import Stafford38.Geometry.GeneralCoisotropicSets
+module
+public import Stafford38.Characteristic.CanonicalGabberInvolutivityInterface
+public import Stafford38.Characteristic.CanonicalLaurentSymbolControl
+public import Stafford38.Characteristic.CanonicalUnitCoordinatePreimage
+public import Stafford38.Characteristic.GabberGlobalAssembly
+public import Stafford38.Characteristic.InitialIdealHomogeneous
+public import Stafford38.Characteristic.ReducedSupportIdeal
+public import Stafford38.Characteristic.ZeroSectionContainment
+public import Stafford38.CanonicalSupportVanishingReduction
+public import Stafford38.Geometry.FibreConicalVanishingIdeal
+public import Stafford38.Geometry.GeneralCoisotropicSets
+public import Mathlib.RingTheory.GradedAlgebra.Radical
+
+@[expose] public section
 
 /-!
 # Adapter from canonical order support to the arbitrary coisotropic theorem

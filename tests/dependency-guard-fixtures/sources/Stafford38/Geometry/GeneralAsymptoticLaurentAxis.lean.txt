@@ -1,0 +1,10 @@
+module
+public import Lean
+
+@[expose] public section
+
+namespace Stafford38.Geometry.GeneralAsymptoticLaurentAxis
+
+def oldRouteNode : Nat := 1
+
+end Stafford38.Geometry.GeneralAsymptoticLaurentAxis

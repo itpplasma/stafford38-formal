@@ -1,0 +1,15 @@
+module
+public import Lean
+
+@[expose] public section
+
+namespace GuardFixture
+
+def safeProducer : Nat := 3
+private theorem privateProof : True := by
+  let _hidden : Nat := safeProducer
+  exact True.intro
+opaque safeOpaqueProof : True := privateProof
+theorem safeTerminal : True := safeOpaqueProof
+
+end GuardFixture

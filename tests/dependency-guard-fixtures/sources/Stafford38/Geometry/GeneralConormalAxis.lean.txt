@@ -1,0 +1,13 @@
+module
+public import Lean
+public import Stafford38.Geometry.GeneralAsymptoticLaurentAxis
+
+@[expose] public section
+
+namespace Stafford38.Geometry.GeneralConormalAxis
+
+opaque exists_groundConormalAxis_of_minimalPrime_unit_transcendental : True := by
+  let _oldRoute : Nat := Stafford38.Geometry.GeneralAsymptoticLaurentAxis.oldRouteNode
+  exact True.intro
+
+end Stafford38.Geometry.GeneralConormalAxis

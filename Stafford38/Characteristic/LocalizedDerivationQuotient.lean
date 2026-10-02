@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.DifferentialOperators.LocalizedPolynomialDerivations
+module
+public import AlgebraicAnalysis.DifferentialOperators.LocalizedPolynomialDerivations
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.LocalizedDerivationQuotient
 

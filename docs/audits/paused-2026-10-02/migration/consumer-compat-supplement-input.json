@@ -1,0 +1,41 @@
+{
+  "base_commit": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "apply_after_migration_patch_sha256": "1bdc3c3b674bc96198439cc5407ac9b4f6ae34f4d483f2345d0b6709a84e8ae0",
+  "v7_staged_tree": "4a7dca3be164a339ff359d09bb7418850a27d70e",
+  "patch_sha256": "9470f9346674a053efd02f9e4e7861168803b7fb1fd4eaa37e096a90022370da",
+  "paths": [
+    "tests/Geometry/ActualOptionCoordinateEtaleConsumer.lean",
+    "tests/Geometry/CorrectedNormalizedTangentLatticeConcreteOracle.lean",
+    "tests/Geometry/CorrectedVelocitySpanConsumer.lean",
+    "tests/Geometry/ExtraAwayBNoRtoQOracle.lean",
+    "tests/Geometry/GenericFibreMatrixColumnsConsumer.lean",
+    "tests/Geometry/NonAlgebraicallyClosedSmoothConsumer.lean",
+    "tests/Geometry/OptionNormalizedLatticeProjectiveConeConsumer.lean",
+    "tests/Geometry/SelectedCorrectionConsumer.lean",
+    "tests/Geometry/SmoothLocalTiltedArcAxisConsumer.lean",
+    "tests/Geometry/UnitPowerNonzeroPrimeOracle.lean",
+    "tests/OptionCoordinateEtaleCompositionConsumer.lean",
+    "tests/PaperBasisRightMonicConsumer.lean",
+    "tests/PowerSeriesFirstCoefficientConsumer.lean",
+    "tests/PrescribedCompletionDerivationCommutationConsumer.lean",
+    "tests/ProjectiveTangentOwnerConsumer.lean"
+  ],
+  "files": {
+    "tests/Geometry/ActualOptionCoordinateEtaleConsumer.lean": "f4f805340c44d7a7c4c85712168d5f1ef5b86534229ee7a7b75af98bfe6bef67",
+    "tests/Geometry/CorrectedNormalizedTangentLatticeConcreteOracle.lean": "fbea9afec452b9b68b9face0825fcb49565659cdca4619d28dc126ac2311b2bd",
+    "tests/Geometry/CorrectedVelocitySpanConsumer.lean": "3cd28edb996923832a7647d84d2954e9b3ea77dc9489ded8f36e5a34cf7f0c48",
+    "tests/Geometry/ExtraAwayBNoRtoQOracle.lean": "86f7fb0072ee67b776d057afc9104f83ac21c119389b4f5e2fba48f7281fc324",
+    "tests/Geometry/GenericFibreMatrixColumnsConsumer.lean": "1a65137a2867c747e13661cb9c5ad02f92c14a82ed491a678e2e522c1f077b18",
+    "tests/Geometry/NonAlgebraicallyClosedSmoothConsumer.lean": "2502da3d9aba3abbaf27e60288e31f8ebb5114c8f554bd18c083dcab0da77f3d",
+    "tests/Geometry/OptionNormalizedLatticeProjectiveConeConsumer.lean": "172ae7ac689b71daf6109772469c4b8f5fa3c21b6dfcf540a2db9a7b3b7d6bf3",
+    "tests/Geometry/SelectedCorrectionConsumer.lean": "a69f19461ba3edc2e0c3524aac0b3a69d1787e9d88e5de8ca77548b88e3fc97b",
+    "tests/Geometry/SmoothLocalTiltedArcAxisConsumer.lean": "7e58a8c1e984bc581babb9fa7871ce11870fefb815382fa11a9963076687b39c",
+    "tests/Geometry/UnitPowerNonzeroPrimeOracle.lean": "a3e190a829350c6c065c0fc6ed00b4a1d17c85b369be890c989fe767412d96b6",
+    "tests/OptionCoordinateEtaleCompositionConsumer.lean": "fb0202c3d127d88f84b29dc145ddbf20481b6a64c89745bf18e22b20a8d3d491",
+    "tests/PaperBasisRightMonicConsumer.lean": "9942438b314315782f8b56bd13bda22e680d40c87ef724bb12aed1b94c70cde0",
+    "tests/PowerSeriesFirstCoefficientConsumer.lean": "5875162566590504d6502f4d3854370bf60427c32d96467b20ab1d7d7b7d312a",
+    "tests/PrescribedCompletionDerivationCommutationConsumer.lean": "0cc56209f3248f36a32adb6210ada6cc17ed721d7905da5453acda998543d7fe",
+    "tests/ProjectiveTangentOwnerConsumer.lean": "108478a765c1a1cd9a4a2829c52a6df54bb34b18c86adb35f6a7da84003b206c"
+  },
+  "scope": "15 existing literal consumer API/visibility repairs; each focused trust0 green; exact116consumer replay pending"
+}

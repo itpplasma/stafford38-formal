@@ -1,6 +1,9 @@
-import Stafford38.Geometry.FormalDivisorLaurentConormal
-import Stafford38.Geometry.ProjectiveChartCoordinates
-import Mathlib.RingTheory.MvPolynomial.Homogeneous
+module
+public import Stafford38.Geometry.FormalDivisorLaurentConormal
+public import Stafford38.Geometry.ProjectiveChartCoordinates
+public import Mathlib.RingTheory.MvPolynomial.Homogeneous
+
+@[expose] public section
 
 /-!
 # Projective equations on a formal affine chart

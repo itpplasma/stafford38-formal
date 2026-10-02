@@ -1,0 +1,30 @@
+# Templates only. Run only after final clean-checkout proof/kernel checks,
+# official Palomar checks, manuscript correspondence review, and controller freeze.
+# Replace placeholders from the frozen release receipt; do not execute now.
+
+# Stage explicit finalized metadata paths, review staged content, then commit.
+git add CITATION.cff .zenodo.json lakefile.toml lake-manifest.json lean-toolchain docs/releases/v1.3.0.md
+# Exclude any path above that was not actually changed; do not stage historical receipts.
+git diff --cached --check
+git diff --cached
+
+git tag -s v1.3.0 -m "Stafford38 v1.3.0"
+git tag -v v1.3.0
+# After controller release commit is frozen and signature verified:
+git push origin v1.3.0
+
+# Publish the GitHub release (this event is expected to trigger the connected
+# Zenodo integration). Use the completed release-body file, with no placeholders.
+gh release create v1.3.0 --repo itpplasma/stafford38-formal --title "Stafford38 v1.3.0" --verify-tag --notes-file /path/to/final-release-body.md
+
+# Read public record metadata, then fetch the exact archive file URL from the
+# record response (record id and filename must come from Zenodo, not guessed).
+curl -fsSL "https://zenodo.org/api/records/${ZENODO_RECORD_ID}" -o /tmp/stafford38-v1.3.0-record.json
+jq -r '.files[] | [.key, .links.self, .checksum, .size] | @tsv' /tmp/stafford38-v1.3.0-record.json
+curl -fL "https://zenodo.org/api/records/${ZENODO_RECORD_ID}/files/${ZENODO_ARCHIVE_KEY}/content" -o /tmp/stafford38-v1.3.0-zenodo.zip
+sha256sum /tmp/stafford38-v1.3.0-zenodo.zip
+md5sum /tmp/stafford38-v1.3.0-zenodo.zip
+# Unpack safely into a fresh temporary directory; compare every archived file
+# byte-for-byte with the exact v1.3.0 tag, and record checksums, count, extras,
+# and mismatches in a new receipt. Only after success, update CITATION.cff and
+# release history with the minted version DOI/date in a follow-up commit.

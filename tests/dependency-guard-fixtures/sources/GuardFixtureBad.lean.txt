@@ -1,0 +1,15 @@
+module
+public import Lean
+
+@[expose] public section
+
+namespace GuardFixture
+
+def forbiddenProducer : Nat := 5
+private theorem privateRelay : True := by
+  let _hidden : Nat := forbiddenProducer
+  exact True.intro
+opaque hiddenProof : True := privateRelay
+theorem badTerminal : True := hiddenProof
+
+end GuardFixture

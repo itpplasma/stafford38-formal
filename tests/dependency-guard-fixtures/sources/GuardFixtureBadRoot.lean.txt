@@ -1,0 +1,11 @@
+module
+public import Lean
+public import GuardFixtureRelay
+
+@[expose] public section
+
+namespace GuardFixture
+
+theorem transitiveBadTerminal : True := transitiveHiddenProof
+
+end GuardFixture

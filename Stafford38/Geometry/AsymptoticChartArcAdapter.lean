@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ProjectiveBoundaryFrameRank
-import Stafford38.Geometry.ArcFrameConormal
-import Stafford38.Geometry.JacobianConormalComparison
+module
+public import Stafford38.Geometry.ProjectiveBoundaryFrameRank
+public import Stafford38.Geometry.ArcFrameConormal
+public import Stafford38.Geometry.JacobianConormalComparison
+
+@[expose] public section
 
 /-!
 # The exact completed-chart to arc-frame adapter boundary

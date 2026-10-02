@@ -1,0 +1,13 @@
+module
+public import Lean
+public import Stafford38.Geometry.GeneralAsymptoticLaurentAxis
+
+@[expose] public section
+
+namespace Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof
+
+opaque exists_groundConormalAxis_of_regularizedOneRowConormalData : True := by
+  let _oldRoute : Nat := Stafford38.Geometry.GeneralAsymptoticLaurentAxis.oldRouteNode
+  exact True.intro
+
+end Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof

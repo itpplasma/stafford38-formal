@@ -1,5 +1,9 @@
-import Stafford38.Characteristic.FilteredQuotientSupport
-import Mathlib.RingTheory.Ideal.Colon
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Characteristic.FilteredQuotientSupport
+public import Mathlib.RingTheory.Ideal.Colon
+
+@[expose] public section
 
 /-!
 # The symbol-ring module on the actual associated graded quotient
@@ -37,11 +41,10 @@ universe u
 variable (k : Type u) [Field k]
 variable {n : ℕ}
 
-private abbrev orderDecomposition :=
-  MvPolynomial.weightedHomogeneousSubmodule k (@orderWeight n)
-
 local instance orderGradedAlgebraInstance :
-    GradedAlgebra (orderDecomposition (n := n) k) :=
+    GradedAlgebra
+      (Stafford38.CharacteristicInitialIdealHomogeneous.orderDecomposition
+        (n := n) k) :=
   MvPolynomial.weightedGradedAlgebra k (@orderWeight n)
 
 /-- A dedicated type for the actual external direct sum of the order-filtered

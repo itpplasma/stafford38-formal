@@ -1,5 +1,9 @@
-import Stafford38.Geometry.PowerSeriesArcTangency
-import Stafford38.Geometry.ScalarExtensionPoints
+module
+public import Stafford38.Geometry.PowerSeriesArcTangency
+public import Mathlib.RingTheory.LaurentSeries
+public import Stafford38.Geometry.ScalarExtensionPoints
+
+@[expose] public section
 
 /-!
 # Generic Laurent tangency from retained power-series equations

@@ -1,4 +1,7 @@
-import proofs.weyl_symplectic
+module
+public import proofs.weyl_symplectic
+
+@[expose] public section
 
 /-!
 # Generic square-zero trace data

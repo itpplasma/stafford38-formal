@@ -1,5 +1,8 @@
-import Stafford38.Weyl.GradedAlgebra
-import Stafford38.Characteristic.Polynomial
+module
+public import Stafford38.Weyl.GradedAlgebra
+public import Stafford38.Characteristic.Polynomial
+
+@[expose] public section
 
 /-!
 # Coordinate commutators and order symbols

@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ActualChartValuationImage
-import Stafford38.Geometry.RetainedGroundMapIdentification
+module
+public import Stafford38.Geometry.ActualChartValuationImage
+public import Stafford38.Geometry.RetainedGroundMapIdentification
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

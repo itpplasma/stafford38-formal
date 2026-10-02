@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.InitialIdealHomogeneous
+module
+public import Stafford38.Characteristic.InitialIdealHomogeneous
+
+@[expose] public section
 
 /-!
 # Global support of the filtered right-ideal quotient

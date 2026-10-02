@@ -1,8 +1,11 @@
-import Stafford38.EvolutionaryCertificate
-import Mathlib.Algebra.Polynomial.RingDivision
-import Mathlib.RingTheory.Coprime.Lemmas
-import Mathlib.RingTheory.Nilpotent.Defs
-import Mathlib.Algebra.Ring.GeomSum
+module
+public import Stafford38.EvolutionaryCertificate
+public import Mathlib.Algebra.Polynomial.RingDivision
+public import Mathlib.RingTheory.Coprime.Lemmas
+public import Mathlib.RingTheory.Nilpotent.Defs
+public import Mathlib.Algebra.Ring.GeomSum
+
+@[expose] public section
 
 /-!
 # Pure-power Weyl certificates
@@ -22,17 +25,17 @@ noncomputable section
 
 variable {A : Type*} [Ring A] [Algebra ℚ A]
 
-private abbrev theta (x d : A) : A := Stafford38.Evolution.euler x d
+abbrev theta (x d : A) : A := Stafford38.Evolution.euler x d
 
-private abbrev falling (x d : A) : ℕ → A :=
+abbrev falling (x d : A) : ℕ → A :=
   Stafford38.Evolution.falling (theta x d)
 
-private abbrev rising (x d : A) : ℕ → A :=
+abbrev rising (x d : A) : ℕ → A :=
   Stafford38.Evolution.rising (theta x d)
 
-private abbrev fallingPoly : ℕ → Polynomial ℚ := Stafford38.Evolution.fallingPoly ℚ
+abbrev fallingPoly : ℕ → Polynomial ℚ := Stafford38.Evolution.fallingPoly ℚ
 
-private abbrev risingPoly : ℕ → Polynomial ℚ := Stafford38.Evolution.risingPoly ℚ
+abbrev risingPoly : ℕ → Polynomial ℚ := Stafford38.Evolution.risingPoly ℚ
 
 private lemma fallingPoly_eq_prod (n : ℕ) :
     fallingPoly n = ∏ i ∈ Finset.range n,

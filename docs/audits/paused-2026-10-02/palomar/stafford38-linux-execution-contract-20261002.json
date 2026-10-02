@@ -1,0 +1,92 @@
+{
+  "state": "prepared only; no actual Stafford replay launched",
+  "controller_start_gate": "integrated immutable source supplied by controller; complete module-system port and source policy must pass before heavy replay",
+  "host": "mailuefterl",
+  "fresh_directory_template": "/mnt/storage/stafford38-final-replay-20261002.XXXXXX",
+  "protected_hosts": "never use faepop* or faepcr*",
+  "pins": {
+    "lean_toolchain": "leanprover/lean4:v4.35.0-rc3",
+    "lean_commit": "470d5ce1400764999581fd26d5d72b00d990b0f4",
+    "mathlib": "c55e6e786f49471c72fbddbec5415808896aec1e",
+    "algebraicAnalysis": "bbbbf3fc358ca8100b158cec4cf47f336ab70163",
+    "PalomarSubmission": "65f0154ed776cd26c224254aa57b379137f28b0d",
+    "PalomarPolicy": "96b034cc31a72a63d4f4041911dce337a85c9a04",
+    "official_profile_sha256": "94fcd7906a1b6c076c0036d742e1c5add8625e49bb474818ec8924576dbf0caa",
+    "bwrap_source_tag": "v0.12.0"
+  },
+  "source_freeze": {
+    "committed": "Export exact selected full commit with git archive --mtime=1970-01-01T00:00:00Z --format=tar; never archive the live directory.",
+    "uncommitted": "Use full exact base commit plus SHA256-frozen binary patch including new paths. Apply patch --cached in a disposable bare clone with a task-specific GIT_INDEX_FILE; write-tree creates the immutable archive tree without modifying authoritative worktree/index.",
+    "tree_manifest": "git ls-tree -rz --full-tree TREE; record mode,blob ID,path and contentSHA256. Current tracked source has no .gitattributes, symlinks or submodules; require exported archive to match every Git blob to catch export-ignore/export-subst or omission.",
+    "transfer": "Hash source.tar and source manifest locally; scp only these frozen artifacts to a fresh directory; check sha256sum remotely before extracting into source/. Keep receipt/control files outside source/.",
+    "post_run": "Recompare every frozen tracked source hash and Git executable mode after lake update and after all runs. Changes to lake-manifest.json or any proof/config/script invalidate this source replay. Generated .lake content is excluded from source identity.",
+    "exact_export_script": "/tmp/stafford38-linux-snapshot-20261002.sh",
+    "exact_export_command": "bash /tmp/stafford38-linux-snapshot-20261002.sh /Users/ert/proj/stafford38-formal FULL_COMMIT [FULL_INTEGRATED_PATCH EXPECTED_PATCH_SHA256]",
+    "exact_transfer_commands": "STAFFORD_REMOTE_STAGE=$(ssh -o BatchMode=yes mailuefterl 'mktemp -d /mnt/storage/stafford38-final-replay-20261002.XXXXXX')\nscp -o BatchMode=yes \"$STAFFORD_SNAPSHOT/source.tar\" \"$STAFFORD_SNAPSHOT/source-manifest.json\" \"mailuefterl:$STAFFORD_REMOTE_STAGE/\"\nssh -o BatchMode=yes mailuefterl bash -s -- \"$STAFFORD_REMOTE_STAGE\" \"$STAFFORD_SOURCE_TAR_SHA256\" <<'REMOTE'\nset -euo pipefail\ncd \"$1\"\nprintf '%s  source.tar\\n' \"$2\" | sha256sum -c -\nmkdir source receipts\ntar --extract --file source.tar --directory source --no-same-owner\nREMOTE",
+    "transfer_input_validation": "STAFFORD_SNAPSHOT is the exporter-returned directory; remote stage must match /mnt/storage/stafford38-final-replay-20261002.[A-Za-z0-9]{6}; source tar SHA must be64 lowercase hexadecimal characters before use in SSH arguments."
+  },
+  "execution_environment": {
+    "PATH": "/home/ert/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin:/home/ert/.elan/bin:$PATH",
+    "ELAN_TOOLCHAIN": "leanprover/lean4:v4.35.0-rc3",
+    "GIT_CONFIG_GLOBAL": "/dev/null",
+    "python": "Linux /usr/bin/python3 =3.14.7; tomllib available",
+    "cache": "No known Linux rc3 Stafford/Mathlib cache. Canonical .lake is rc33 and must not be copied; Mac compiled cache must not be copied. Fresh lake update materializes exact committed manifest; verify lock bytes and all package HEADs. lake exe cache get fetches matching canonical Mathlib cache on Linux; record cache reuse, source pins and cache evidence.",
+    "resources": "mailuefterl32 cores,94GiB total RAM; /mnt/storage810GiB free at inventory. Recheck before launch. Official profile separately requires GitHub ubuntu24.04 x86_64, >=14GiB RAM, >=20GiB free, total19800second budget.",
+    "prepared_driver": "/tmp/stafford38-linux-driver-20261002.sh",
+    "exact_driver_command": "bash /tmp/stafford38-linux-driver-20261002.sh REMOTE_STAGE/source REMOTE_STAGE/receipts [FROZEN_CONTROLLER_ADDITIONAL_GATES]"
+  },
+  "ordered_commands": [
+    "python3 scripts/check-palomar-policy.py",
+    "bash scripts/bootstrap-palomar-tools.sh",
+    "lake update",
+    "RECHECK frozen lake-manifest bytes and exact resolved package HEADs/toolchains; abort on mismatch",
+    "lake exe cache get",
+    "bash scripts/verify.sh",
+    "bash scripts/verify-palomar.sh comparator.json",
+    "bash scripts/verify-palomar.sh comparator-fixed-source.json",
+    "RUN controller-selected actual dependency-closure/paper-route gates from final integrated PLAN/verifier; fixture evidence cannot replace terminal traversal",
+    "RECHECK frozen source manifest; hash all logs, tools receipt and exit records"
+  ],
+  "scope": {
+    "current_baseline": "550 tracked Lean files:419 Stafford38 modules,7 root modules,3 proofs modules,116 tests,5 historical docs display probes. Counts must be recomputed from the final frozen tree.",
+    "module_build": "verify.sh enumerates every Stafford38/*.lean module and explicitly builds aggregate/solutions/challenges/corollary/PaperPair modules. All3 current proofs modules are imported by retained Stafford38 modules; any new unreferenced proofs module must be explicitly added to build scope.",
+    "consumers": "Current verify.sh plus check-consumers.sh explicitly covers all116 tracked tests. Recompute coverage on final tree; newly retained consumers must enter actual verifier and axiom-report contract before passing.",
+    "generated_checks": "Fresh .lake/verification/* checkers are runtime artifacts and outside submitted source-header scan. Tracked scripts/dependency-guard/**/*.lean and fixture .lean sources remain submitted source and must have module headers.",
+    "paper": "check-paper-declarations.sh verifies exact snapshot hashes, linked declaration manifest, name resolution and standard-axiom reports; whole proof-route correspondence also needs the separate actual dependency audit.",
+    "module_header_status_update": "rc3_migration reports modern candidate source-policy-v3 passed546 files with0 issues; receipt .lake/migration/source-policy-v3.json. Must repeat on final frozen source, including integrated dependency guard sources and fixtures."
+  },
+  "process_tracking": {
+    "launch": "Use one fresh stage and detached setsid/nohup driver only after controller start. Record pid,process-group,/proc/PID/stat start ticks, exact command line,source tree/patch hashes and log path. Driver trap writes atomic terminal exit record.",
+    "timeouts": "GNU timeout --kill-after=60s 19800s per local heavy command; retain stage exit code. Exit124 proves local capacity exhaustion, not a proof failure. Official workflow has350minute job/19800second total budget.",
+    "poll": "Every30-60seconds check same recorded live PID plus start ticks and command line; inspect bounded log tail and terminal exit record. Observation/SSH timeout is not terminal. Never restart solely because observation expired; missing process without exit record requires logs and termination evidence.",
+    "success": "Every required stage exit0, no missing axiom/import/dependency reports, actual kernel acceptance markers present, source fingerprint unchanged; then retain receipt and compressed logs.",
+    "exact_launch": "scp -o BatchMode=yes /tmp/stafford38-linux-driver-20261002.sh \"mailuefterl:$STAFFORD_REMOTE_STAGE/driver.sh\"\nssh -o BatchMode=yes mailuefterl bash -s -- \"$STAFFORD_REMOTE_STAGE\" <<'REMOTE'\nset -euo pipefail\ncd \"$1\"\nnohup setsid bash driver.sh \"$1/source\" \"$1/receipts\" >\"$1/receipts/driver.log\" 2>&1 </dev/null &\npid=$!\nprintf '%s\\n' \"$pid\" >receipts/driver.pid\npython3 - \"$pid\" \"$1/receipts/process-handle.json\" <<'PYHANDLE'\nimport json,sys\nfrom pathlib import Path\npid=int(sys.argv[1]); proc=Path('/proc')/str(pid)\nstat=proc.joinpath('stat').read_text().rpartition(') ')[2].split()\nrecord={'pid':pid,'process_group':int(stat[2]),'start_ticks':int(stat[19]),'command_line':proc.joinpath('cmdline').read_bytes().replace(b'\\0',b' ').decode()}\nPath(sys.argv[2]).write_text(json.dumps(record,indent=2)+'\\n')\nprint(json.dumps(record))\nPYHANDLE\nREMOTE",
+    "launch_validation": "The remote stage must be validated as generated /mnt/storage/stafford38-final-replay-20261002.<6alnum> before SSH. If driver exits before /proc capture, inspect atomic terminal.json instead; do not restart."
+  },
+  "official_dispatch": {
+    "when": "Only after controller commits/pushes exact source and local gates pass. Confirm source commit/tree and workflow file uses/pipeline_commit pins before dispatch; no registry submission is performed.",
+    "command": "gh api --method POST repos/itpplasma/stafford38-formal/actions/workflows/palomar-preflight.yml/dispatches -H X-GitHub-Api-Version:2026-03-10 --input dispatch.json >dispatch-receipt.json",
+    "dispatch_json": "{\"ref\":\"main\",\"inputs\":{\"commit\":\"FULL_PUBLIC_SOURCE_SHA\",\"authorization_relationship\":\"I am a responsible author or maintainer\"}}",
+    "run_handle": "Current GitHub API returns workflow_run_id/run_url/html_url. Persist that exact ID; poll gh run view ID --repo itpplasma/stafford38-formal --json status,conclusion,headSha,url. Confirm dispatch workflow headSha matches selected ref freeze.",
+    "download": "gh run download ID --repo itpplasma/stafford38-formal --name mechanical-report-staffordmain --name mechanical-report-staffordfix1 --dir official-reports",
+    "required_reports": "Both artifacts must exist before90day expiry. Require schema2,status pass,stage complete,phase verification, source.repository/commit exact, requested config path correct, distinct valid submission IDs, workflow_url exact run, rc3 toolchain/Lean commit, profile digest, empty errors/untrusted Challenge sources, expected compared declaration, three permitted axioms, both independent kernels, matching protected-config digest and all source-file hashes.",
+    "tool_checks": "Require tool_digests for lake,lean,leanexport,leanchecker,nanoda_bin,con-ron,bwrap; bundled Linux binaries should match exact rc3 release digests. bwrap build digest can differ across hosts; record it and require official v0.12.0 source tag.",
+    "pipeline_pin": "Report does not independently expose pipeline_commit. Retain exact submitted workflow SHA/contents, dispatch receipt and job checkout logs proving PalomarSubmission65f0154; do not infer tooling revision from a moving branch or workflow title."
+  },
+  "official_only_gates_missing_from_local_verifier": [
+    "public full commit authentication, Git submodule rejection and Git LFS filter rejection",
+    "500MiB total submitted source cap; exact single regular Lakefile <=1MiB; root licence detection matching formalization metadata; exact metadata/provenance/ORCID validation",
+    "all repository Lean headers including nested/docs files; UTF8,symlink/file,line rules (vendored local source policy covers these when run on frozen source)",
+    "selected Challenge <=1000lines and100KiB; authenticated core/Mathlib/TauCeti/CSLib source closure and committed transitive dependency graph; no local helper exception",
+    "canonical Mathlib revision authenticity/master ancestry and exact toolchain equality; dependency manifests/path containment validation",
+    "reject committed .a,.bc,.dll,.dylib,.ilean,.ir,.o,.obj,.olean,.so,.trace plus .olean.private/.olean.server outside fresh .lake; purge every submitted .lake tree",
+    "canonical Challenge recompilation/source-byte binding, protected module alias and export provenance under trusted dependency outputs",
+    "outer bubblewrap write/read denial controls and confined candidate build/export; protected tool snapshot and fresh independent judge controls",
+    "production profile resource checks plus authoritative bounded mechanical report and diagnostic ownership; successful local process exit is narrower evidence",
+    "editorial proof-account/formal-statement alignment and registry registration remain separate from mechanical preflight"
+  ],
+  "artifacts": {
+    "snapshot_script_sha256": "bd663ef6d786766409f2a6e05e13c32141f0b6c9af5f6a7bbadd2b05177c407b",
+    "driver_script_sha256": "3a5d3f2fa6cf291aefb69e7516b8e3aaeb626ce8d0f02bd294a45ade3babb51e"
+  }
+}

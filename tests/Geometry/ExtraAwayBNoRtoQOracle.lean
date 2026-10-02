@@ -1,5 +1,8 @@
-import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
-import Mathlib.Data.Nat.Prime.Int
+module
+public import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
+public import Mathlib.Data.Nat.Prime.Int
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -10,7 +13,7 @@ abbrev Q := ℤ
 abbrev B := Localization.Away (2 : ℤ)
 abbrev R := B
 
-private noncomputable def e : Localization.Away (2 : ℤ) ≃ₐ[ℤ]
+noncomputable def e : Localization.Away (2 : ℤ) ≃ₐ[ℤ]
     Localization.Away (algebraMap ℤ B (2 : ℤ)) := by
   let hunit : IsUnit (algebraMap ℤ B (2 : ℤ)) :=
     IsLocalization.Away.algebraMap_isUnit (2 : ℤ)
@@ -34,10 +37,10 @@ theorem no_algebra : ¬ Nonempty (Algebra B ℤ) := by
   letI : Algebra B ℤ := A
   exact no_ring_hom ⟨algebraMap B ℤ⟩
 
-private abbrev M : Ideal B := ⊥
-private instance : IsDomain B :=
+abbrev M : Ideal B := ⊥
+instance : IsDomain B :=
   IsLocalization.Away.isDomain B (by norm_num : (2 : ℤ) ≠ 0)
-private instance : M.IsPrime := Ideal.isPrime_bot
+instance : M.IsPrime := Ideal.isPrime_bot
 
 theorem actual_B_only_instance :
     Algebra.FormallyEtale B

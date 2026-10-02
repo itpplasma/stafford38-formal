@@ -1,0 +1,11 @@
+{
+  "input_patch_sha256": "315f910ee3acedc91f2d95b76813e3b67a4d59cebfb489a2abeed73532a754ae",
+  "sources": 116,
+  "lean_exit_codes": "all zero",
+  "axiom_postcheck_exit_code": 0,
+  "axiom_postcheck_output": "Literal consumers and import/axiom audits: 312 reports passed",
+  "postcheck_sha256": "337c1874610169e5577cceac7bcc6e02596f27305a71e90d0bc3a72f279d881e",
+  "repository_script_sha256": "c0a1b3a86e806e8bb2ecb01f469c47bb0ccce08f2e7c91812b0fc0e1496ddb12",
+  "combined_log": ".lake/migration/independent-consumers-v8.log",
+  "source_results": ".lake/migration/consumers-baseline-v8/results.json"
+}

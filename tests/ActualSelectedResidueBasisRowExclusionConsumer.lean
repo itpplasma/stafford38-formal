@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ActualSelectedResidueBasisRowExclusion
+module
+public import Stafford38.Geometry.ActualSelectedResidueBasisRowExclusion
+
+@[expose] public section
 
 #print axioms Stafford38.Geometry.ActualSelectedResidueBasisRowExclusion.transcendenceBasis_value_ne_zero
 #print axioms Stafford38.Geometry.ActualSelectedResidueBasisRowExclusion.selected_basis_rows_avoid_zero_one_chart

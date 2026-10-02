@@ -369,6 +369,8 @@ export class TexRenderer {
           case 'label': arg(); i = j; continue;
           case 'section': case 'section*': case 'subsection': case 'subsection*':
             { const a = readArg(); out += `<h5 class="tex-sec">${this.text(a.content, a.base)}</h5>`; i = j; continue; }
+          case 'paragraph': case 'paragraph*':
+            { const a = readArg(); out += `<strong class="tex-paragraph">${this.text(a.content, a.base)}</strong> `; i = j; continue; }
           case 'item': out += '<br>• '; i = j; continue;
           case 'newline': out += '<br>'; i = j; continue;
           case 'S': out += '§'; i = j; continue;

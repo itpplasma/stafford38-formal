@@ -1,4 +1,7 @@
-import Stafford38.Geometry.FormalDivisorLaurentConormal
+module
+public import Stafford38.Geometry.FormalDivisorLaurentConormal
+
+@[expose] public section
 
 /-!
 # Projective tangent inclusion is enough for affine conormality

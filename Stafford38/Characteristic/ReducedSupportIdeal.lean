@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.BaseRelativePoisson
-import Stafford38.Characteristic.InitialIdeal
+module
+public import Stafford38.Characteristic.BaseRelativePoisson
+public import Stafford38.Characteristic.InitialIdeal
+
+@[expose] public section
 
 /-!
 # The reduced order-characteristic ideal

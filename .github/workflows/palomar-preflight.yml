@@ -1,0 +1,44 @@
+name: Palomar mechanical preflight
+run-name: Palomar preflight for ${{ inputs.commit }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: Full immutable source commit to verify with both configurations
+        required: true
+        type: string
+      authorization_relationship:
+        description: The dispatching person's relationship to the formalization
+        required: true
+        type: choice
+        default: I am a responsible author or maintainer
+        options:
+          - I am a responsible author or maintainer
+          - I have approval from a responsible author or maintainer
+
+permissions:
+  contents: read
+
+# This calls Palomar's complete pinned mechanical workflow. Its reports are
+# advisory preflight evidence; it does not submit or register a Palomar entry.
+# The called workflow retains mechanical-report.json artifacts for 90 days.
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - config: comparator.json
+            request_id: staffordmain
+          - config: comparator-fixed-source.json
+            request_id: staffordfix1
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@65f0154ed776cd26c224254aa57b379137f28b0d
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ inputs.commit }}
+      pipeline_commit: 65f0154ed776cd26c224254aa57b379137f28b0d
+      request_id: ${{ matrix.request_id }}
+      mode: full
+      options: >-
+        {"comparator_config_path":"${{ matrix.config }}","authorization_relationship":"${{ inputs.authorization_relationship }}"}

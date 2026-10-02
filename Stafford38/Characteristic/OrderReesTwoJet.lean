@@ -1,7 +1,10 @@
-import Stafford38.Weyl.OrderRees
-import Mathlib.Algebra.RingQuot
-import Mathlib.RingTheory.TwoSidedIdeal.Kernel
-import Mathlib.RingTheory.TwoSidedIdeal.Operations
+module
+public import Stafford38.Weyl.OrderRees
+public import Mathlib.Algebra.RingQuot
+public import Mathlib.RingTheory.TwoSidedIdeal.Kernel
+public import Mathlib.RingTheory.TwoSidedIdeal.Operations
+
+@[expose] public section
 
 /-!
 # The order-Rees two-jet ring

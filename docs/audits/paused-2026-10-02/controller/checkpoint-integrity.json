@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-02",
+  "kind": "controller integrity and static checks; not a new mathematical verification",
+  "source_policy": {
+    "command": "/opt/homebrew/bin/python3 scripts/check-palomar-policy.py",
+    "exit_code": 0,
+    "lean_files": 547,
+    "configs": [
+      "comparator.json",
+      "comparator-fixed-source.json"
+    ],
+    "qualification": "local pinned source policy only; no official service-runner receipt"
+  },
+  "integrated_worker_manifest_paths": 547,
+  "baseline_hashes_matching": 546,
+  "preserved_incoming_cleanup_exception": {
+    "path": "Stafford38/Weyl/EulerProductIdentities.lean",
+    "incoming_commit": "2e27340",
+    "combined_rc3_replay": "pending"
+  },
+  "heading_checker": "PASS",
+  "diff_check": "PASS in all five changed repositories",
+  "shell_syntax": "PASS; no proof jobs launched",
+  "paper_main_sha256": "fd707283bda604800400fd86cb31f9e3ab083f29a3fb8e556c230ccd83aaaa3b",
+  "paper_source_changes_in_checkpoint": false,
+  "owned_worker_processes": "none",
+  "release_action": "none"
+}

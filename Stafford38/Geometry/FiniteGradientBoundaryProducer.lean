@@ -1,5 +1,8 @@
-import Stafford38.Geometry.CanonicalAsymptoticLaurentProducer
-import Stafford38.Geometry.FiniteGradientBoundaryCertificateOver
+module
+public import Stafford38.Geometry.CanonicalAsymptoticLaurentProducer
+public import Stafford38.Geometry.FiniteGradientBoundaryCertificateOver
+
+@[expose] public section
 
 /-!
 # A finite-gradient boundary producer

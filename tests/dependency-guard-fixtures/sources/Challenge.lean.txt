@@ -1,0 +1,11 @@
+module
+public import Lean
+
+@[expose] public section
+
+namespace Stafford38Challenge
+
+theorem universalStatement : True := by
+  sorry
+
+end Stafford38Challenge

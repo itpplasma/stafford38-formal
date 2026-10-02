@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.CanonicalMonicSaturation
+module
+public import Stafford38.Characteristic.CanonicalMonicSaturation
+
+@[expose] public section
 
 /-!
 # A unit-only strict coordinate criterion for canonical axis avoidance
@@ -40,7 +43,7 @@ universe u
 
 variable (k : Type u) [Field k] [Algebra ℚ k]
 
-private abbrev CanonicalIdeal (n N : ℕ)
+abbrev CanonicalIdeal (n N : ℕ)
     (d : PresentedWeyl k (n + 1)) :=
   canonicalRightIdeal (presentedCoordinate k n) d N
 

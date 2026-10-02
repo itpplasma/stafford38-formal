@@ -1,0 +1,24 @@
+{
+  "source_worktree": "/Users/ert/proj/stafford38-assembly-audit",
+  "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "patch_path": "/var/tmp/stafford38-resume-20261002/assembly-wrapper/assembly-wrapper.patch",
+  "patch_sha256": "6b0540ea4f6b0421ffa151f1eba904b173408e26d0ee8941554e38e7109f53d6",
+  "sources": [
+    {
+      "path": "Stafford38/Geometry/ActualSameWitnessAsymptoticConormal.lean",
+      "sha256": "16a2dabeb88b7947bcfd3698cf33b087534dd955a0c08c3f71e41abe3d277069",
+      "lines": 60
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralAsymptoticConormal.lean",
+      "sha256": "1c443bab293e6215cb511177e332d9c08001d839c13d3612192c9261bb97210a",
+      "lines": 47
+    },
+    {
+      "path": "tests/ActualSameWitnessOriginalPrimeConsumer.lean",
+      "sha256": "09014b34592d3f2a88368cc7f544b9011fb47cf0e97d7531c956f12b85bc7337",
+      "lines": 52
+    }
+  ],
+  "scope": "Unpromoted original-prime assembly plus independent literal consumer; closure dependency still compiling on its separate frozen4.33 handle; no green receipt claimed."
+}

@@ -1,7 +1,10 @@
-import Stafford38.Weyl.AssociatedGraded
-import Mathlib.Algebra.DirectSum.Decomposition
-import Mathlib.Algebra.Ring.TransferInstance
-import Mathlib.Algebra.Algebra.TransferInstance
+module
+public import Stafford38.Weyl.AssociatedGraded
+public import Mathlib.Algebra.DirectSum.Decomposition
+public import Mathlib.Algebra.Ring.TransferInstance
+public import Mathlib.Algebra.Algebra.TransferInstance
+
+@[expose] public section
 
 /-!
 # The associated graded algebra of the presented Weyl algebra

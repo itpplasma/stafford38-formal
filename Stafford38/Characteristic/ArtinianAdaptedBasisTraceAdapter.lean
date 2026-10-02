@@ -1,9 +1,12 @@
-import Stafford38.Characteristic.ArtinianTriangularTrace
-import Stafford38.Characteristic.ArtinianCoefficientField
-import Stafford38.Characteristic.SquareZeroLinearTrace
-import Mathlib.LinearAlgebra.Basis.Basic
-import Mathlib.RingTheory.Artinian.Module
-import Mathlib.RingTheory.LocalRing.Module
+module
+public import Stafford38.Characteristic.ArtinianTriangularTrace
+public import Stafford38.Characteristic.ArtinianCoefficientField
+public import Stafford38.Characteristic.SquareZeroLinearTrace
+public import Mathlib.LinearAlgebra.Basis.Basic
+public import Mathlib.RingTheory.Artinian.Module
+public import Mathlib.RingTheory.LocalRing.Module
+
+@[expose] public section
 
 /-!
 # Adapted bases and square-zero quotient descent

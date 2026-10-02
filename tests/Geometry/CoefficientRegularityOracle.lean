@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ProjectiveCoefficientLocalization
-import Mathlib.Data.ZMod.Basic
+module
+public import Stafford38.Geometry.ProjectiveCoefficientLocalization
+public import Mathlib.Data.ZMod.Basic
+
+@[expose] public section
 
 open Stafford38.Geometry.ProjectiveCoefficientLocalization
 

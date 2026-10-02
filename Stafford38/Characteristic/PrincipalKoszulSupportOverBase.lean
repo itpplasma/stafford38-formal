@@ -1,6 +1,9 @@
-import AlgebraicAnalysis.Module.PrincipalKoszulSupportOverBase
-import Stafford38.Characteristic.StableTorsionResidualSupport
-import Stafford38.Characteristic.PrincipalKoszulFiniteTorsion
+module
+public import AlgebraicAnalysis.Module.PrincipalKoszulSupportOverBase
+public import Stafford38.Characteristic.StableTorsionResidualSupport
+public import Stafford38.Characteristic.PrincipalKoszulFiniteTorsion
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

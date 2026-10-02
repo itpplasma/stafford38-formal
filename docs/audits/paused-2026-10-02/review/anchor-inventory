@@ -1,0 +1,2911 @@
+{
+  "preparation_only": true,
+  "candidate_unverified": true,
+  "method": "For each literal TeX macro, match candidate source declaration by fully qualified namespace name and record its declaration line; absent files/names remain explicit. Candidate lines are navigation leads pending final frozen commits and verified source pins.",
+  "created_utc": "2026-10-02T18:03:34.758881+00:00",
+  "paper_commit": "f55e98bfbd1f043a3857c66d5b3c8c3536de2d62",
+  "candidate_formal_commit": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "candidate_library_commit": "bbbbf3fc358ca8100b158cec4cf47f336ab70163",
+  "pinned_formal_commit": "591d4e11e3971577be169e428ac73c44a4ac8a32",
+  "pinned_library_commit": "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8",
+  "counts": {
+    "line_changed": 110,
+    "line_matches": 1
+  },
+  "anchors": [
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/FoundationClosure.lean",
+      "line": 54,
+      "name": "Stafford38.universalStatement",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 105
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 600
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 57,
+      "candidate_name": "Stafford38.universalStatement",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 57,
+          "name": "Stafford38.universalStatement"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Statement.lean",
+      "line": 20,
+      "name": "Stafford38.UniversalStatement",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 106
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 601
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 23,
+      "candidate_name": "Stafford38.UniversalStatement",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 23,
+          "name": "Stafford38.UniversalStatement"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/FoundationClosure.lean",
+      "line": 58,
+      "name": "Stafford38.universalFixedSourceStatement",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 107
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 602
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 61,
+      "candidate_name": "Stafford38.universalFixedSourceStatement",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 61,
+          "name": "Stafford38.universalFixedSourceStatement"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/FixedSourceStatement.lean",
+      "line": 31,
+      "name": "Stafford38.FixedSource.UniversalFixedSourceStatement",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 108
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 603
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 35,
+      "candidate_name": "Stafford38.FixedSource.UniversalFixedSourceStatement",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 35,
+          "name": "Stafford38.FixedSource.UniversalFixedSourceStatement"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/FixedSourceStatement.lean",
+      "line": 24,
+      "name": "Stafford38.FixedSource.IsLinearWeylCoordinate",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 109
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 604
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 28,
+      "candidate_name": "Stafford38.FixedSource.IsLinearWeylCoordinate",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 28,
+          "name": "Stafford38.FixedSource.IsLinearWeylCoordinate"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/FixedSourceStatement.lean",
+      "line": 19,
+      "name": "Stafford38.FixedSource.bernsteinDegree",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 110
+        },
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 289
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 605
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 620
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 23,
+      "candidate_name": "Stafford38.FixedSource.bernsteinDegree",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 23,
+          "name": "Stafford38.FixedSource.bernsteinDegree"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/ChallengeDefinitions.lean",
+      "line": 75,
+      "name": "Stafford38Challenge.UniversalStatement",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 112
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 607
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 78,
+      "candidate_name": "Stafford38Challenge.UniversalStatement",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 78,
+          "name": "Stafford38Challenge.UniversalStatement"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/ChallengeDefinitions.lean",
+      "line": 190,
+      "name": "Stafford38FixedSourceChallenge.UniversalFixedSourceStatement",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 113
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 608
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 193,
+      "candidate_name": "Stafford38FixedSourceChallenge.UniversalFixedSourceStatement",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 193,
+          "name": "Stafford38FixedSourceChallenge.UniversalFixedSourceStatement"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/IteratedEquivalence.lean",
+      "line": 636,
+      "name": "Stafford38.WeylIteratedEquivalence.presentedIteratedEquiv",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 225
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 611
+        }
+      ],
+      "status": "line_matches",
+      "candidate_line": 636,
+      "candidate_name": "Stafford38.WeylIteratedEquivalence.presentedIteratedEquiv",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 636,
+          "name": "Stafford38.WeylIteratedEquivalence.presentedIteratedEquiv"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/OuterOreMonic.lean",
+      "line": 44,
+      "name": "Stafford38.WeylOuterOreMonic.presentedOuterPolynomial",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 226
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 612
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 47,
+      "candidate_name": "Stafford38.WeylOuterOreMonic.presentedOuterPolynomial",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 47,
+          "name": "Stafford38.WeylOuterOreMonic.presentedOuterPolynomial"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/Polynomial.lean",
+      "line": 19,
+      "name": "Stafford38.Characteristic.SymbolRing",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 257
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 614
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 22,
+      "candidate_name": "Stafford38.Characteristic.SymbolRing",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 22,
+          "name": "Stafford38.Characteristic.SymbolRing"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/Filtration.lean",
+      "line": 280,
+      "name": "Stafford38.WeylFiltration.bernsteinPiece",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 287
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 618
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 284,
+      "candidate_name": "Stafford38.WeylFiltration.bernsteinPiece",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 284,
+          "name": "Stafford38.WeylFiltration.bernsteinPiece"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/Filtration.lean",
+      "line": 284,
+      "name": "Stafford38.WeylFiltration.orderPiece",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 288
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 619
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 288,
+      "candidate_name": "Stafford38.WeylFiltration.orderPiece",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 288,
+          "name": "Stafford38.WeylFiltration.orderPiece"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/InitialIdeal.lean",
+      "line": 185,
+      "name": "Stafford38.CharacteristicInitialIdeal.orderInitialIdeal",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 319
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 623
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 189,
+      "candidate_name": "Stafford38.CharacteristicInitialIdeal.orderInitialIdeal",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 189,
+          "name": "Stafford38.CharacteristicInitialIdeal.orderInitialIdeal"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/InitialIdeal.lean",
+      "line": 193,
+      "name": "Stafford38.CharacteristicInitialIdeal.orderCharacteristicSupport",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 320
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 624
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 197,
+      "candidate_name": "Stafford38.CharacteristicInitialIdeal.orderCharacteristicSupport",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 197,
+          "name": "Stafford38.CharacteristicInitialIdeal.orderCharacteristicSupport"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/AssociatedGradedModule.lean",
+      "line": 370,
+      "name": "Stafford38.CharacteristicAssociatedGradedModule.annihilator_orderAssociatedGradedModule",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 321
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 625
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 373,
+      "candidate_name": "Stafford38.CharacteristicAssociatedGradedModule.annihilator_orderAssociatedGradedModule",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 373,
+          "name": "Stafford38.CharacteristicAssociatedGradedModule.annihilator_orderAssociatedGradedModule"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/Polynomial.lean",
+      "line": 28,
+      "name": "Stafford38.Characteristic.poissonBracket",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 345
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 628
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 31,
+      "candidate_name": "Stafford38.Characteristic.poissonBracket",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 31,
+          "name": "Stafford38.Characteristic.poissonBracket"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/SymplecticCompletion.lean",
+      "line": 26,
+      "name": "Stafford38.CharacteristicSymplecticCompletion.phasePairing",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 346
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 629
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 31,
+      "candidate_name": "Stafford38.CharacteristicSymplecticCompletion.phasePairing",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 31,
+          "name": "Stafford38.CharacteristicSymplecticCompletion.phasePairing"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+      "line": 30,
+      "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 355
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 631
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 33,
+      "candidate_name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 33,
+          "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralCoisotropicSetsTest.lean",
+      "line": 160,
+      "name": "Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 356
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 632
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 163,
+      "candidate_name": "Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 163,
+          "name": "Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
+      "line": 221,
+      "name": "Stafford38.Characteristic.GabberGlobalAssembly.weylAssociatedGradedRadicalInvolutivity",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 382
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 635
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 224,
+      "candidate_name": "Stafford38.Characteristic.GabberGlobalAssembly.weylAssociatedGradedRadicalInvolutivity",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 224,
+          "name": "Stafford38.Characteristic.GabberGlobalAssembly.weylAssociatedGradedRadicalInvolutivity"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/CanonicalGabberInvolutivityInterface.lean",
+      "line": 83,
+      "name": "Stafford38.Characteristic.CanonicalGabberInvolutivityInterface.WeylAssociatedGradedRadicalInvolutivity",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 383
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 636
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 86,
+      "candidate_name": "Stafford38.Characteristic.CanonicalGabberInvolutivityInterface.WeylAssociatedGradedRadicalInvolutivity",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 86,
+          "name": "Stafford38.Characteristic.CanonicalGabberInvolutivityInterface.WeylAssociatedGradedRadicalInvolutivity"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
+      "line": 141,
+      "name": "Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 384
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 637
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 144,
+      "candidate_name": "Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 144,
+          "name": "Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/PaperLocalizedInvolutivity.lean",
+      "line": 184,
+      "name": "Stafford38.Characteristic.PaperLocalizedInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive_viaLocalization",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 415
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 640
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 187,
+      "candidate_name": "Stafford38.Characteristic.PaperLocalizedInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive_viaLocalization",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 187,
+          "name": "Stafford38.Characteristic.PaperLocalizedInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive_viaLocalization"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/Symplectic.lean",
+      "line": 43,
+      "name": "Stafford38.WeylSymplectic.standardSymplecticAlgHom",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 463
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 642
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 46,
+      "candidate_name": "Stafford38.WeylSymplectic.standardSymplecticAlgHom",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 46,
+          "name": "Stafford38.WeylSymplectic.standardSymplecticAlgHom"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/Symplectic.lean",
+      "line": 88,
+      "name": "Stafford38.WeylSymplectic.standardSymplecticAlgEquivOfInverse",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 464
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 643
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 91,
+      "candidate_name": "Stafford38.WeylSymplectic.standardSymplecticAlgEquivOfInverse",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 91,
+          "name": "Stafford38.WeylSymplectic.standardSymplecticAlgEquivOfInverse"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/SymbolCompatibility.lean",
+      "line": 411,
+      "name": "Stafford38.WeylSymbolCompatibility.standardSymplecticAlgHom_principal_compatibility",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 465
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 644
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 416,
+      "candidate_name": "Stafford38.WeylSymbolCompatibility.standardSymplecticAlgHom_principal_compatibility",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 416,
+          "name": "Stafford38.WeylSymbolCompatibility.standardSymplecticAlgHom_principal_compatibility"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/PaperSymplecticBasis.lean",
+      "line": 131,
+      "name": "Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 503
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 134,
+      "candidate_name": "Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 134,
+          "name": "Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/PaperSymplecticBasis.lean",
+      "line": 280,
+      "name": "Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis_with_pair",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 504
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 283,
+      "candidate_name": "Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis_with_pair",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 283,
+          "name": "Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis_with_pair"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/SymplecticCompletion.lean",
+      "line": 233,
+      "name": "Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_mulVec_eq",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 505
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 647
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 238,
+      "candidate_name": "Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_mulVec_eq",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 238,
+          "name": "Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_mulVec_eq"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/MonicNormalization.lean",
+      "line": 150,
+      "name": "Stafford38.WeylMonicNormalization.exists_normalized_symplectic_image",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 539
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 650
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 158,
+      "candidate_name": "Stafford38.WeylMonicNormalization.exists_normalized_symplectic_image",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 158,
+          "name": "Stafford38.WeylMonicNormalization.exists_normalized_symplectic_image"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/MonicNormalization.lean",
+      "line": 173,
+      "name": "Stafford38.WeylMonicNormalization.scalar_or_normalized_symplectic_image",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 540
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 651
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 181,
+      "candidate_name": "Stafford38.WeylMonicNormalization.scalar_or_normalized_symplectic_image",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 181,
+          "name": "Stafford38.WeylMonicNormalization.scalar_or_normalized_symplectic_image"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/PBWMonicBridge.lean",
+      "line": 86,
+      "name": "Stafford38.WeylPBWMonicBridge.IsPBWMonicAt",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 541
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 652
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 98,
+      "candidate_name": "Stafford38.WeylPBWMonicBridge.IsPBWMonicAt",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 98,
+          "name": "Stafford38.WeylPBWMonicBridge.IsPBWMonicAt"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/PaperRightMonic.lean",
+      "line": 652,
+      "name": "Stafford38.WeylPaperRightMonic.presentedOuter_right_monic_decomposition",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 542
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 669,
+      "candidate_name": "Stafford38.WeylPaperRightMonic.presentedOuter_right_monic_decomposition",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 669,
+          "name": "Stafford38.WeylPaperRightMonic.presentedOuter_right_monic_decomposition"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/SymplecticCompletion.lean",
+      "line": 341,
+      "name": "Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_chart_matrices",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 543
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 653
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 346,
+      "candidate_name": "Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_chart_matrices",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 346,
+          "name": "Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_chart_matrices"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/UniversalAssembly.lean",
+      "line": 66,
+      "name": "Stafford38.UniversalAssembly.universalStatement_of_canonicalSupportVanishing",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 568
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 655
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 69,
+      "candidate_name": "Stafford38.UniversalAssembly.universalStatement_of_canonicalSupportVanishing",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 69,
+          "name": "Stafford38.UniversalAssembly.universalStatement_of_canonicalSupportVanishing"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/FixedSourceAssembly.lean",
+      "line": 21,
+      "name": "Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 569
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 656
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 24,
+      "candidate_name": "Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 24,
+          "name": "Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/NormalSymbolPolynomial.lean",
+      "line": 24,
+      "name": "Stafford38.Characteristic.NormalSymbolPolynomial.normalSymbolAlgEquiv",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 583
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 658
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 28,
+      "candidate_name": "Stafford38.Characteristic.NormalSymbolPolynomial.normalSymbolAlgEquiv",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 28,
+          "name": "Stafford38.Characteristic.NormalSymbolPolynomial.normalSymbolAlgEquiv"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/InitialIdeal.lean",
+      "line": 313,
+      "name": "Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_isFibreOnly",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 615
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 660
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 320,
+      "candidate_name": "Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_isFibreOnly",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 320,
+          "name": "Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_isFibreOnly"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/ConormalAxisContradiction.lean",
+      "line": 57,
+      "name": "Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_isHomogeneous",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 616
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 661
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 61,
+      "candidate_name": "Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_isHomogeneous",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 61,
+          "name": "Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_isHomogeneous"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/NormalSymbolPolynomial.lean",
+      "line": 92,
+      "name": "Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 617
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 662
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 104,
+      "candidate_name": "Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 104,
+          "name": "Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/ConormalAxisContradiction.lean",
+      "line": 126,
+      "name": "Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_eval_pureMomentumAxis",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 618
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 663
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 131,
+      "candidate_name": "Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_eval_pureMomentumAxis",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 131,
+          "name": "Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_eval_pureMomentumAxis"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/EulerResidue.lean",
+      "line": 23,
+      "name": "Stafford38.WeylEulerResidue.canonicalRightIdeal",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 626
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 665
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 26,
+      "candidate_name": "Stafford38.WeylEulerResidue.canonicalRightIdeal",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 26,
+          "name": "Stafford38.WeylEulerResidue.canonicalRightIdeal"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/EulerSubring.lean",
+      "line": 22,
+      "name": "Stafford38.WeylEulerSubring.eulerSubring",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 640
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 669
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 25,
+      "candidate_name": "Stafford38.WeylEulerSubring.eulerSubring",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 25,
+          "name": "Stafford38.WeylEulerSubring.eulerSubring"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/EulerSubring.lean",
+      "line": 68,
+      "name": "Stafford38.WeylEulerSubring.coordinate_normal_eulerSubring",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 641
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 670
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 71,
+      "candidate_name": "Stafford38.WeylEulerSubring.coordinate_normal_eulerSubring",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 71,
+          "name": "Stafford38.WeylEulerSubring.coordinate_normal_eulerSubring"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/EulerProductIdentities.lean",
+      "line": 83,
+      "name": "Stafford38.Weyl.EulerProductIdentities.eval_fallingEulerProduct",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 679
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 672
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 86,
+      "candidate_name": "Stafford38.Weyl.EulerProductIdentities.eval_fallingEulerProduct",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 86,
+          "name": "Stafford38.Weyl.EulerProductIdentities.eval_fallingEulerProduct"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/EulerProductIdentities.lean",
+      "line": 92,
+      "name": "Stafford38.Weyl.EulerProductIdentities.eval_risingEulerProduct",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 680
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 673
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 95,
+      "candidate_name": "Stafford38.Weyl.EulerProductIdentities.eval_risingEulerProduct",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 95,
+          "name": "Stafford38.Weyl.EulerProductIdentities.eval_risingEulerProduct"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "proofs/weyl_pure_power.lean",
+      "line": 142,
+      "name": "Stafford.exists_eulerPolynomial_x_pow_mul_d_pow",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 681
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 674
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 148,
+      "candidate_name": "Stafford.exists_eulerPolynomial_x_pow_mul_d_pow",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 148,
+          "name": "Stafford.exists_eulerPolynomial_x_pow_mul_d_pow"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/EulerResidue.lean",
+      "line": 38,
+      "name": "Stafford38.WeylEulerResidue.positiveEulerResidue_identity",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 706
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 677
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 41,
+      "candidate_name": "Stafford38.WeylEulerResidue.positiveEulerResidue_identity",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 41,
+          "name": "Stafford38.WeylEulerResidue.positiveEulerResidue_identity"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/EulerRemainder.lean",
+      "line": 254,
+      "name": "Stafford38.WeylEulerRemainder.positiveEulerResidue_eq_eulerSubring_mul_coordinate",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 707
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 678
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 257,
+      "candidate_name": "Stafford38.WeylEulerRemainder.positiveEulerResidue_eq_eulerSubring_mul_coordinate",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 257,
+          "name": "Stafford38.WeylEulerRemainder.positiveEulerResidue_eq_eulerSubring_mul_coordinate"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/EulerRemainder.lean",
+      "line": 402,
+      "name": "Stafford38.WeylEulerRemainder.presentedPositiveEulerResidue",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 708
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 679
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 405,
+      "candidate_name": "Stafford38.WeylEulerRemainder.presentedPositiveEulerResidue",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 405,
+          "name": "Stafford38.WeylEulerRemainder.presentedPositiveEulerResidue"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/QuotientTransport.lean",
+      "line": 237,
+      "name": "Stafford38.WeylQuotientTransport.presentedCanonicalRightQuotient_rightMul_coordinate_surjective",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 732
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 681
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 240,
+      "candidate_name": "Stafford38.WeylQuotientTransport.presentedCanonicalRightQuotient_rightMul_coordinate_surjective",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 240,
+          "name": "Stafford38.WeylQuotientTransport.presentedCanonicalRightQuotient_rightMul_coordinate_surjective"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Quotient/EulerSurjectivity.lean",
+      "line": 80,
+      "name": "Stafford38.EulerSurjectivity.rightMul_surjective_of_euler_normal",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 733
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 682
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 86,
+      "candidate_name": "Stafford38.EulerSurjectivity.rightMul_surjective_of_euler_normal",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 86,
+          "name": "Stafford38.EulerSurjectivity.rightMul_surjective_of_euler_normal"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/EulerRemainder.lean",
+      "line": 307,
+      "name": "Stafford38.WeylEulerRemainder.closure_pairOldSubring_union_coordinate_momentum_eq_top",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 734
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 683
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 310,
+      "candidate_name": "Stafford38.WeylEulerRemainder.closure_pairOldSubring_union_coordinate_momentum_eq_top",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 310,
+          "name": "Stafford38.WeylEulerRemainder.closure_pairOldSubring_union_coordinate_momentum_eq_top"
+        }
+      ]
+    },
+    {
+      "macro": "leanlib",
+      "file": "AlgebraicAnalysis/Module/MinimalSupportKernelCokernelLengths.lean",
+      "line": 45,
+      "name": "AlgebraicAnalysis.localized_kernel_and_cokernel_isFiniteLength",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 762
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 686
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 48,
+      "candidate_name": "AlgebraicAnalysis.localized_kernel_and_cokernel_isFiniteLength",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 48,
+          "name": "AlgebraicAnalysis.localized_kernel_and_cokernel_isFiniteLength"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/CanonicalOldTangentialFiniteness.lean",
+      "line": 70,
+      "name": "Stafford38.Characteristic.CanonicalOldTangentialFiniteness.canonical_finite_old_coordinate_kernel_cokernel",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 787
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 688
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 73,
+      "candidate_name": "Stafford38.Characteristic.CanonicalOldTangentialFiniteness.canonical_finite_old_coordinate_kernel_cokernel",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 73,
+          "name": "Stafford38.Characteristic.CanonicalOldTangentialFiniteness.canonical_finite_old_coordinate_kernel_cokernel"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/CanonicalTangentialSymbolFiniteness.lean",
+      "line": 113,
+      "name": "Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_tangential_coordinate",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 788
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 689
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 116,
+      "candidate_name": "Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_tangential_coordinate",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 116,
+          "name": "Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_tangential_coordinate"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/CanonicalPageEulerInequality.lean",
+      "line": 22,
+      "name": "Stafford38.Characteristic.CanonicalPageEulerInequality.canonicalPage_length_target_le_source",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 903
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 691
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 25,
+      "candidate_name": "Stafford38.Characteristic.CanonicalPageEulerInequality.canonicalPage_length_target_le_source",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 25,
+          "name": "Stafford38.Characteristic.CanonicalPageEulerInequality.canonicalPage_length_target_le_source"
+        }
+      ]
+    },
+    {
+      "macro": "leanlib",
+      "file": "AlgebraicAnalysis/Module/UniformBoundaryVanishing.lean",
+      "line": 103,
+      "name": "AlgebraicAnalysis.exists_uniform_subsingleton_localized",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 904
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 692
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 106,
+      "candidate_name": "AlgebraicAnalysis.exists_uniform_subsingleton_localized",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 106,
+          "name": "AlgebraicAnalysis.exists_uniform_subsingleton_localized"
+        }
+      ]
+    },
+    {
+      "macro": "leanlib",
+      "file": "AlgebraicAnalysis/Module/BaseLocalizedKoszulPositivity.lean",
+      "line": 22,
+      "name": "AlgebraicAnalysis.BaseLocalizedKoszulPositivity.localized_length_cokernel_gt_kernel",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 990
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 694
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 25,
+      "candidate_name": "AlgebraicAnalysis.BaseLocalizedKoszulPositivity.localized_length_cokernel_gt_kernel",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 25,
+          "name": "AlgebraicAnalysis.BaseLocalizedKoszulPositivity.localized_length_cokernel_gt_kernel"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/NoncharacteristicMinimalPrime.lean",
+      "line": 107,
+      "name": "Stafford38.Characteristic.NoncharacteristicMinimalPrime.canonical_minimalPrime_mem_of_normalCoordinate_false",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 991
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 695
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 111,
+      "candidate_name": "Stafford38.Characteristic.NoncharacteristicMinimalPrime.canonical_minimalPrime_mem_of_normalCoordinate_false",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 111,
+          "name": "Stafford38.Characteristic.NoncharacteristicMinimalPrime.canonical_minimalPrime_mem_of_normalCoordinate_false"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/CanonicalKoszulContradiction.lean",
+      "line": 83,
+      "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.coordinate_cokernel_subsingleton",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1005
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 697
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 86,
+      "candidate_name": "Stafford38.Characteristic.CanonicalKoszulContradiction.coordinate_cokernel_subsingleton",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 86,
+          "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.coordinate_cokernel_subsingleton"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/CanonicalKoszulContradiction.lean",
+      "line": 47,
+      "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.no_minimal_coordinate_cokernel_support",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1006
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 698
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 50,
+      "candidate_name": "Stafford38.Characteristic.CanonicalKoszulContradiction.no_minimal_coordinate_cokernel_support",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 50,
+          "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.no_minimal_coordinate_cokernel_support"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/InitialIdeal.lean",
+      "line": 277,
+      "name": "Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_mem_initialIdeal",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1026
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 700
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 281,
+      "candidate_name": "Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_mem_initialIdeal",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 281,
+          "name": "Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_mem_initialIdeal"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/InitialIdeal.lean",
+      "line": 287,
+      "name": "Stafford38.CharacteristicInitialIdeal.canonical_orderCharacteristicSupport_subset_principal_zeroLocus",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1027
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 701
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 291,
+      "candidate_name": "Stafford38.CharacteristicInitialIdeal.canonical_orderCharacteristicSupport_subset_principal_zeroLocus",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 291,
+          "name": "Stafford38.CharacteristicInitialIdeal.canonical_orderCharacteristicSupport_subset_principal_zeroLocus"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/CanonicalKoszulContradiction.lean",
+      "line": 120,
+      "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1046
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 704
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 123,
+      "candidate_name": "Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 123,
+          "name": "Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean",
+      "line": 148,
+      "name": "Stafford38.SpecializedNoncharacteristicEquality.transposedSupport_disjoint_axis_iff",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1047
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 705
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 151,
+      "candidate_name": "Stafford38.SpecializedNoncharacteristicEquality.transposedSupport_disjoint_axis_iff",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 151,
+          "name": "Stafford38.SpecializedNoncharacteristicEquality.transposedSupport_disjoint_axis_iff"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/ProjectiveConormalDirections.lean",
+      "line": 37,
+      "name": "Stafford38.Geometry.ProjectiveConormalDirections.smoothConormalDirectionSet",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1064
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 708
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 40,
+      "candidate_name": "Stafford38.Geometry.ProjectiveConormalDirections.smoothConormalDirectionSet",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 40,
+          "name": "Stafford38.Geometry.ProjectiveConormalDirections.smoothConormalDirectionSet"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/ProjectiveConormalDirections.lean",
+      "line": 29,
+      "name": "Stafford38.Geometry.ProjectiveConormalDirections.projectiveHomogeneousClosure",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1065
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 709
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 32,
+      "candidate_name": "Stafford38.Geometry.ProjectiveConormalDirections.projectiveHomogeneousClosure",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 32,
+          "name": "Stafford38.Geometry.ProjectiveConormalDirections.projectiveHomogeneousClosure"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralTangentLimitCriterion.lean",
+      "line": 497,
+      "name": "Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1091
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 712
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 629,
+      "candidate_name": "Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 629,
+          "name": "Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/ConormalScalarExtensionVanishing.lean",
+      "line": 134,
+      "name": "Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1092
+        },
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1127
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 713
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 716
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 729
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 137,
+      "candidate_name": "Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 137,
+          "name": "Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/SmoothConormalFibreVanishing.lean",
+      "line": 21,
+      "name": "Stafford38.Geometry.SmoothConormalFibreVanishing.fibreLift_mem_vanishingIdeal_equationConormal",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1128
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 717
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 24,
+      "candidate_name": "Stafford38.Geometry.SmoothConormalFibreVanishing.fibreLift_mem_vanishingIdeal_equationConormal",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 24,
+          "name": "Stafford38.Geometry.SmoothConormalFibreVanishing.fibreLift_mem_vanishingIdeal_equationConormal"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/LaurentConormalDirection.lean",
+      "line": 68,
+      "name": "Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1129
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 718
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 71,
+      "candidate_name": "Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 71,
+          "name": "Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralTangentLimitCriterion.lean",
+      "line": 368,
+      "name": "Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1130
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 719
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 501,
+      "candidate_name": "Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 501,
+          "name": "Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralAsymptoticConormal.lean",
+      "line": 63,
+      "name": "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1138
+        },
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1308
+        },
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1315
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 722
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 726
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 66,
+      "candidate_name": "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 66,
+          "name": "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralAsymptoticConormal.lean",
+      "line": 28,
+      "name": "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1139
+        },
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1314
+        },
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1407
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 723
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 741
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 31,
+      "candidate_name": "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 31,
+          "name": "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean",
+      "line": 52,
+      "name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameWithResidueAlgebraicity",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1309
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 55,
+      "candidate_name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameWithResidueAlgebraicity",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 55,
+          "name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameWithResidueAlgebraicity"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/PaperSameWitnessTangentDimension.lean",
+      "line": 67,
+      "name": "Stafford38.Geometry.PaperSameWitnessTangentDimension.tangent_finrank_le_residue_add_one_of_witness",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1310
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 70,
+      "candidate_name": "Stafford38.Geometry.PaperSameWitnessTangentDimension.tangent_finrank_le_residue_add_one_of_witness",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 70,
+          "name": "Stafford38.Geometry.PaperSameWitnessTangentDimension.tangent_finrank_le_residue_add_one_of_witness"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/PaperActualWitnessConormalData.lean",
+      "line": 56,
+      "name": "Stafford38.Geometry.PaperActualWitnessConormalData.exists_regularizedOneRowConormalData_of_actual_witness",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1311
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 59,
+      "candidate_name": "Stafford38.Geometry.PaperActualWitnessConormalData.exists_regularizedOneRowConormalData_of_actual_witness",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 59,
+          "name": "Stafford38.Geometry.PaperActualWitnessConormalData.exists_regularizedOneRowConormalData_of_actual_witness"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralConormalAxis.lean",
+      "line": 50,
+      "name": "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1312
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 53,
+      "candidate_name": "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 53,
+          "name": "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean",
+      "line": 28,
+      "name": "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1313
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 31,
+      "candidate_name": "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 31,
+          "name": "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralCoisotropicSets.lean",
+      "line": 108,
+      "name": "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1345
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 732
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 111,
+      "candidate_name": "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 111,
+          "name": "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralCoisotropicExclusion.lean",
+      "line": 29,
+      "name": "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1346
+        },
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1404
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 733
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 738
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 32,
+      "candidate_name": "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 32,
+          "name": "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/BaseRelativePoisson.lean",
+      "line": 26,
+      "name": "Stafford38.Characteristic.BaseRelativePoisson.IsBaseRelativePoisson",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1347
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 734
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 29,
+      "candidate_name": "Stafford38.Characteristic.BaseRelativePoisson.IsBaseRelativePoisson",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 29,
+          "name": "Stafford38.Characteristic.BaseRelativePoisson.IsBaseRelativePoisson"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralCoisotropicSetsTest.lean",
+      "line": 100,
+      "name": "Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1348
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 735
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 103,
+      "candidate_name": "Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 103,
+          "name": "Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/BaseRelativePoisson.lean",
+      "line": 69,
+      "name": "Stafford38.Characteristic.BaseRelativePoisson.zeroSection_stable_under_differential_translation_of_isBaseRelativePoisson",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1405
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 739
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 72,
+      "candidate_name": "Stafford38.Characteristic.BaseRelativePoisson.zeroSection_stable_under_differential_translation_of_isBaseRelativePoisson",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 72,
+          "name": "Stafford38.Characteristic.BaseRelativePoisson.zeroSection_stable_under_differential_translation_of_isBaseRelativePoisson"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralComponentConormalContainment.lean",
+      "line": 68,
+      "name": "Stafford38.Geometry.GeneralComponentConormalContainment.equationConormalClosure_minimalPrime_subset_zeroLocus",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1406
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 740
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 72,
+      "candidate_name": "Stafford38.Geometry.GeneralComponentConormalContainment.equationConormalClosure_minimalPrime_subset_zeroLocus",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 72,
+          "name": "Stafford38.Geometry.GeneralComponentConormalContainment.equationConormalClosure_minimalPrime_subset_zeroLocus"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/FoundationClosure.lean",
+      "line": 38,
+      "name": "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1466
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 743
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 41,
+      "candidate_name": "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 41,
+          "name": "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean",
+      "line": 107,
+      "name": "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1467
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 744
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 110,
+      "candidate_name": "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 110,
+          "name": "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
+      "line": 469,
+      "name": "Stafford38.Weyl.FilteredScalarLifting.canonicalSupportDescent",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1468
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 745
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 472,
+      "candidate_name": "Stafford38.Weyl.FilteredScalarLifting.canonicalSupportDescent",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 472,
+          "name": "Stafford38.Weyl.FilteredScalarLifting.canonicalSupportDescent"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/CanonicalCertificate.lean",
+      "line": 30,
+      "name": "Stafford38.CharacteristicCanonicalCertificate.exists_fixedSource_certificate_of_orderCharacteristicSupport_eq_empty",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1469
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 746
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 33,
+      "candidate_name": "Stafford38.CharacteristicCanonicalCertificate.exists_fixedSource_certificate_of_orderCharacteristicSupport_eq_empty",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 33,
+          "name": "Stafford38.CharacteristicCanonicalCertificate.exists_fixedSource_certificate_of_orderCharacteristicSupport_eq_empty"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
+      "line": 446,
+      "name": "Stafford38.Weyl.FilteredScalarLifting.presentedWeylScalarExtension_map_orderInitialIdeal_eq",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1497
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 449,
+      "candidate_name": "Stafford38.Weyl.FilteredScalarLifting.presentedWeylScalarExtension_map_orderInitialIdeal_eq",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 449,
+          "name": "Stafford38.Weyl.FilteredScalarLifting.presentedWeylScalarExtension_map_orderInitialIdeal_eq"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
+      "line": 384,
+      "name": "Stafford38.Weyl.FilteredScalarLifting.target_orderInitialIdeal_le_map_source_orderInitialIdeal",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1498
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 749
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 387,
+      "candidate_name": "Stafford38.Weyl.FilteredScalarLifting.target_orderInitialIdeal_le_map_source_orderInitialIdeal",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 387,
+          "name": "Stafford38.Weyl.FilteredScalarLifting.target_orderInitialIdeal_le_map_source_orderInitialIdeal"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
+      "line": 388,
+      "name": "Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_map_orderInitialIdeal_le",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1499
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 750
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 390,
+      "candidate_name": "Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_map_orderInitialIdeal_le",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 390,
+          "name": "Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_map_orderInitialIdeal_le"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/EmptySupportVanishing.lean",
+      "line": 80,
+      "name": "Stafford38.CharacteristicEmptySupportVanishing.orderInitialIdeal_eq_top_iff_rightQuotient_subsingleton",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1500
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 751
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 83,
+      "candidate_name": "Stafford38.CharacteristicEmptySupportVanishing.orderInitialIdeal_eq_top_iff_rightQuotient_subsingleton",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 83,
+          "name": "Stafford38.CharacteristicEmptySupportVanishing.orderInitialIdeal_eq_top_iff_rightQuotient_subsingleton"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Characteristic/GeometricSupportDescent.lean",
+      "line": 96,
+      "name": "Stafford38.Characteristic.GeometricSupportDescent.map_scalarPolynomialMap_eq_top_iff",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1501
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 752
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 101,
+      "candidate_name": "Stafford38.Characteristic.GeometricSupportDescent.map_scalarPolynomialMap_eq_top_iff",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 101,
+          "name": "Stafford38.Characteristic.GeometricSupportDescent.map_scalarPolynomialMap_eq_top_iff"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/TorsionCyclicity.lean",
+      "line": 63,
+      "name": "Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1535
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 754
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 66,
+      "candidate_name": "Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 66,
+          "name": "Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/TorsionCyclicity.lean",
+      "line": 36,
+      "name": "Stafford38.TorsionCyclicity.exists_span_adjusted_pair",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1536
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 39,
+      "candidate_name": "Stafford38.TorsionCyclicity.exists_span_adjusted_pair",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 39,
+          "name": "Stafford38.TorsionCyclicity.exists_span_adjusted_pair"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/TorsionCyclicity.lean",
+      "line": 49,
+      "name": "Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1537
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 755
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 52,
+      "candidate_name": "Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 52,
+          "name": "Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Weyl/Domain.lean",
+      "line": 22,
+      "name": "Stafford38.WeylDomain.mul_ne_zero",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1538
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 756
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 25,
+      "candidate_name": "Stafford38.WeylDomain.mul_ne_zero",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 25,
+          "name": "Stafford38.WeylDomain.mul_ne_zero"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "CorollaryChallenge.lean",
+      "line": 31,
+      "name": "Stafford38CorollaryChallenge.torsionCyclicStatement",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1539
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 757
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 34,
+      "candidate_name": "Stafford38CorollaryChallenge.torsionCyclicStatement",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 34,
+          "name": "Stafford38CorollaryChallenge.torsionCyclicStatement"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/LocalizationCorollaries.lean",
+      "line": 28,
+      "name": "Stafford38.LocalizationCorollaries.s38_rightOreLocalization",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1649
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 768
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 31,
+      "candidate_name": "Stafford38.LocalizationCorollaries.s38_rightOreLocalization",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 31,
+          "name": "Stafford38.LocalizationCorollaries.s38_rightOreLocalization"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/LeftHandedCorollary.lean",
+      "line": 20,
+      "name": "Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1651
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 769
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 23,
+      "candidate_name": "Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 23,
+          "name": "Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/LocalizedDifferentialCorollaries.lean",
+      "line": 80,
+      "name": "Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1653
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 770
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 83,
+      "candidate_name": "Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 83,
+          "name": "Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/EvolutionaryCorollary.lean",
+      "line": 33,
+      "name": "Stafford38.Evolution.evolutionaryCorollary",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1655
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 771
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 36,
+      "candidate_name": "Stafford38.Evolution.evolutionaryCorollary",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 36,
+          "name": "Stafford38.Evolution.evolutionaryCorollary"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/NoncharacteristicHyperplane.lean",
+      "line": 70,
+      "name": "Stafford38.NoncharacteristicHyperplane.IsNoncharacteristic",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1687
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 760
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 73,
+      "candidate_name": "Stafford38.NoncharacteristicHyperplane.IsNoncharacteristic",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 73,
+          "name": "Stafford38.NoncharacteristicHyperplane.IsNoncharacteristic"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/NoncharacteristicHypersurface.lean",
+      "line": 129,
+      "name": "Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1711
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 763
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 132,
+      "candidate_name": "Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 132,
+          "name": "Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/NoncharacteristicHyperplane.lean",
+      "line": 232,
+      "name": "Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1711
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 763
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 235,
+      "candidate_name": "Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 235,
+          "name": "Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/NoncharacteristicHyperplane.lean",
+      "line": 328,
+      "name": "Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection",
+      "occurrences": [
+        {
+          "paper_file": "human_readable_main.tex",
+          "paper_line": 1712
+        },
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 764
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 331,
+      "candidate_name": "Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 331,
+          "name": "Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean",
+      "line": 336,
+      "name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameExistence",
+      "occurrences": [
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 727
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 339,
+      "candidate_name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameExistence",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 339,
+          "name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameExistence"
+        }
+      ]
+    },
+    {
+      "macro": "leandecl",
+      "file": "Stafford38/Geometry/DivisorTangentLattice.lean",
+      "line": 317,
+      "name": "Stafford38.Geometry.DivisorTangentLattice.VisibleDivisorFrame.exists_maximalIdeal_coefficients",
+      "occurrences": [
+        {
+          "paper_file": "lean_proof_details.tex",
+          "paper_line": 728
+        }
+      ],
+      "status": "line_changed",
+      "candidate_line": 335,
+      "candidate_name": "Stafford38.Geometry.DivisorTangentLattice.VisibleDivisorFrame.exists_maximalIdeal_coefficients",
+      "exact_qualified_name": true,
+      "candidates": [
+        {
+          "line": 335,
+          "name": "Stafford38.Geometry.DivisorTangentLattice.VisibleDivisorFrame.exists_maximalIdeal_coefficients"
+        }
+      ]
+    }
+  ],
+  "candidate_library_checkout": "/Users/ert/proj/stafford38-rc3-worker/.lake/packages/algebraicAnalysis",
+  "candidate_library_version": "AlgebraicAnalysis v0.3.3 (published rc3 source)",
+  "candidate_mathlib_commit": "c55e6e786f49471c72fbddbec5415808896aec1e",
+  "library_comparison_note": "Library anchors re-resolved against the specified v0.3.3 source at the pinned rc3 worker package checkout; adjacent clone excluded."
+}

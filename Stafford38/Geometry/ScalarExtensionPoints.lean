@@ -1,5 +1,8 @@
-import Mathlib.RingTheory.Nullstellensatz
-import Stafford38.Geometry.AffineConormalClosure
+module
+public import Mathlib.RingTheory.Nullstellensatz
+public import Stafford38.Geometry.AffineConormalClosure
+
+@[expose] public section
 
 /-!
 # Scalar extension and geometric points
@@ -289,11 +292,8 @@ theorem scalarPolynomialMap_fibreZeroSpecialization
   ext i
   rcases i with i | i <;> simp
 
-private abbrev orderDecompositionExtension :=
-  MvPolynomial.weightedHomogeneousSubmodule k (@orderWeight n)
-
 local instance orderGradedAlgebraExtensionInstance :
-    GradedAlgebra (orderDecompositionExtension (k := k) (n := n)) :=
+    GradedAlgebra (orderDecomposition (k := k) (n := n)) :=
   MvPolynomial.weightedGradedAlgebra k (@orderWeight n)
 
 /-- A geometric zero of the actual contracted reduced support lifts to the
@@ -312,11 +312,11 @@ theorem zeroSection_mem_of_mem_geometricReducedOrderBaseZeroSet
   let f := fibreZeroSpecialization k (P ^ m)
   have hcomponent :
       (DirectSum.decompose
-          (orderDecompositionExtension (k := k) (n := n)) (P ^ m) 0 :
+          (orderDecomposition (k := k) (n := n)) (P ^ m) 0 :
         SymbolRing k n) ∈ orderInitialIdeal k W :=
     coe_mem_orderInitialIdeal_of_mem_orderSymbolRelation k W 0
       (DirectSum.decompose
-        (orderDecompositionExtension (k := k) (n := n)) (P ^ m) 0)
+        (orderDecomposition (k := k) (n := n)) (P ^ m) 0)
       (decompose_mem_orderSymbolRelation_of_mem_orderInitialIdeal
         k W (P ^ m) hm 0)
   have hbaseLift : baseLift f ∈ reducedOrderSupportIdeal k W := by

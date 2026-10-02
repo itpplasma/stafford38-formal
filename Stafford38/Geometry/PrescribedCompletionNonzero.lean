@@ -1,6 +1,9 @@
-import Stafford38.Geometry.PrescribedAffineResidueCompletion
-import Mathlib.RingTheory.AdicCompletion.Noetherian
-import Mathlib.RingTheory.Localization.Submodule
+module
+public import Stafford38.Geometry.PrescribedAffineResidueCompletion
+public import Mathlib.RingTheory.AdicCompletion.Noetherian
+public import Mathlib.RingTheory.Localization.Submodule
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

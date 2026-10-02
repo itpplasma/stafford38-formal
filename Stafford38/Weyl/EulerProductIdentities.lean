@@ -1,5 +1,8 @@
-import proofs.weyl_pure_power
-import Stafford38.EvolutionaryCertificate
+module
+public import proofs.weyl_pure_power
+public import Stafford38.EvolutionaryCertificate
+
+@[expose] public section
 
 /-! Public Euler-product identities for the Weyl pair calculation.
 

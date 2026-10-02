@@ -1,7 +1,10 @@
-import Mathlib.Algebra.RingQuot
-import Mathlib.Algebra.FreeAlgebra
-import Mathlib.LinearAlgebra.SymplecticGroup
-import Mathlib.Order.Lattice.Nat
+module
+public import Mathlib.Algebra.RingQuot
+public import Mathlib.Algebra.FreeAlgebra
+public import Mathlib.LinearAlgebra.SymplecticGroup
+public import Mathlib.Order.Lattice.Nat
+
+@[expose] public section
 
 /-!
 # Shared Mathlib-only Stafford challenge definitions

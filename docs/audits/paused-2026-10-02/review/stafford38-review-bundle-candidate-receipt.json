@@ -1,0 +1,20 @@
+{
+  "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "worktree": "/Users/ert/proj/stafford38-review-bundle-candidate",
+  "patch": "/tmp/stafford38-review-bundle-candidate.patch",
+  "patch_sha256": "c64290fed3988fd2dc55dba4d3e6eacc03cd68dcac94ba552c425f5fb463e0b9",
+  "manuscript_commit": "9baed6d8a1d53e92cccd705d0ea583b2d6a8c735",
+  "manuscript_sha256": "c0910a5bdc168b8d3a0a5d862334443de8cfb1e2c1b7cb0a0397d3594bf609fb",
+  "map_cards": 55,
+  "labelled_cards": 37,
+  "label_range_misses": [],
+  "visible_ai_comments": 39,
+  "comment_range_misses": [],
+  "bounds_errors": [],
+  "test_logs_sha256": {
+    "/tmp/stafford38-review-bundle-python-tests.log": "68d747fe0285a3561925fe33cfeb861498e045161dbb50cc034fce6a8d54b571",
+    "/tmp/stafford38-review-bundle-build-tests.log": "cc2bba803d53f944e441c6ec5e8eb5bcb5e204d8dd86312664919eeeaff53be5",
+    "/tmp/stafford38-current-candidate-render-test.log": "4a95dd0c1aef8a1a32b095dbeeb2d0decb79f2fa398c43c8ae153a580a2051e7"
+  },
+  "publication_status": "pending-final-source-pins"
+}

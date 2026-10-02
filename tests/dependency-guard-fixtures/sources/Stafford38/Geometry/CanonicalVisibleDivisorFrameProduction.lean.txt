@@ -1,0 +1,12 @@
+module
+public import Lean
+public import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof
+
+@[expose] public section
+
+namespace Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction
+
+opaque exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame : True := by
+  exact Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.exists_groundConormalAxis_of_regularizedOneRowConormalData
+
+end Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction

@@ -1,0 +1,45 @@
+{
+  "status": "stopped_at_user_request",
+  "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "modern_worktree": "/Users/ert/proj/stafford38-rc3-worker",
+  "final_interrupted_worktree": "/Users/ert/proj/stafford38-rc3-final-worker",
+  "stopped_session": 27906,
+  "stopped_pids": [
+    46827,
+    45711,
+    45699
+  ],
+  "terminal_exit": 143,
+  "completed": [
+    "425 retained module targets under exact rc3 pins, exit0",
+    "116 independent Lean consumers, all exit0",
+    "312 repository axiom/error reports PASS",
+    "3 retained proofs wrappers, each trust0 exit0",
+    "earlier exact1792 page oracle and252PBW oracle PASS"
+  ],
+  "pending": [
+    "429-target same-witness candidate interrupted; no closure/terminal proof receipt",
+    "repair4 source packet365001a7 uncompiled; diagnostic scratchfailed, not evidence",
+    "controller full Linux verifier/Comparators/release"
+  ],
+  "artifact_sha256": {
+    "/var/tmp/stafford38-resume-20261002/rc3-migration/migration.patch": "1bdc3c3b674bc96198439cc5407ac9b4f6ae34f4d483f2345d0b6709a84e8ae0",
+    "/var/tmp/stafford38-resume-20261002/rc3-migration/migration-input.json": "0211c6fd0081b018bbdd22e4f072c9303f38f398dc4b1f6e12c2937cb7082068",
+    "/var/tmp/stafford38-resume-20261002/rc3-migration/proofs-supplement.patch": "cd17248efe0e1b73f5646b56bf7808014cd69508ff1f3ad95dc6fa46197e459a",
+    "/var/tmp/stafford38-resume-20261002/rc3-migration/proofs-supplement-input.json": "4b173bb7a99e49f3df12a3830e2b00f6a00dac12be8f48aa6df430da7a01a3ad",
+    "/var/tmp/stafford38-resume-20261002/rc3-migration/consumer-compat-supplement.patch": "9470f9346674a053efd02f9e4e7861168803b7fb1fd4eaa37e096a90022370da",
+    "/var/tmp/stafford38-resume-20261002/rc3-migration/consumer-compat-supplement-input.json": "c1ce1ab9fb89e4046b376bbb050df119a3e6ba30e904137f3790abf7264f2db7",
+    "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/rc3-candidate-v7.patch": "e7a467c3622d3782ead45b91a89fc3bfc573f9c7d6de28a49662c420f16be361",
+    "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/inputs-v7.json": "9e4a01650410c86f731528ee43d23d6e437493a997a4464945cae0f470fed364",
+    "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/all-module-result-v7.json": "f501bbf0958826250b3dd8ff6447c2afb9d9f8f7ee3d32f30a5cbb1956ce91fd",
+    "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/rc3-candidate-v8.patch": "315f910ee3acedc91f2d95b76813e3b67a4d59cebfb489a2abeed73532a754ae",
+    "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/inputs-v8.json": "8c859edeb5143e108aa6407fd99ed27a41f086287275940e1b246cbceadcc9ad",
+    "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/consumer-receipt-v8.json": "bde3ee8271894314a2706ce82b2bdda84da7479ee5e1a483e30569e85082e0bc",
+    "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/consumers-baseline-v8/results.json": "33a97e48bd2c33613b6566d8017290782bb891e8b054a2fa5532cec5a7e52062",
+    "/Users/ert/proj/stafford38-rc3-worker/.lake/migration/proofs-independent-v7.json": "1cdb9f47b9cfdbfb25a2e50dbf440e9e580a6181ebed7db4b46d6b3abd06b378",
+    "/Users/ert/proj/stafford38-rc3-final-worker/.lake/migration/rc3-candidate-final-v1.patch": "dc9d6856270a5ae8600f334a777f2312b717327ab3db35837e5b79f1458fc9f6",
+    "/Users/ert/proj/stafford38-rc3-final-worker/.lake/migration/inputs-final-v1.json": "7564af06b7569cfbeb9b0a2434b1ac35a7e9f0852b4ab6b93e3e61848730c945",
+    "/Users/ert/proj/stafford38-rc3-final-worker/.lake/migration/interrupted-final-v1.json": "77598034c971faf7e05bba6c4a39bc9ca8240819f1ce40d9380be83206b86fa3",
+    "/var/tmp/stafford38-resume-20261002/rc3-final/final-overlay-input.json": "fac0e1918c58c584ddcebb91f7689296053365abbab2e0664815266d4cef1c41"
+  }
+}

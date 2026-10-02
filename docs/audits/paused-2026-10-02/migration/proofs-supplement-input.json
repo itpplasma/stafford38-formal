@@ -1,0 +1,15 @@
+{
+  "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "patch_sha256": "cd17248efe0e1b73f5646b56bf7808014cd69508ff1f3ad95dc6fa46197e459a",
+  "paths": [
+    "proofs/stafford38_reduction.lean",
+    "proofs/weyl_pure_power.lean",
+    "proofs/weyl_symplectic.lean"
+  ],
+  "files": {
+    "proofs/stafford38_reduction.lean": "043757aa6d0dcfd85e7480fc8cab4ea5b273073930837c33b328b3a2639cda0c",
+    "proofs/weyl_pure_power.lean": "4ed07480f088db677582bddfb3737712ca3c1f10195d2c18b49c4e5e46be2106",
+    "proofs/weyl_symplectic.lean": "8e099cfe8e007361aa32a4c29bd945a09001a370e7a5e8acc90bee9552424d76"
+  },
+  "scope": "Required module/public format for retained proofs wrappers; trust0 checks pending"
+}

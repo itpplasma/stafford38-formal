@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.SquareZeroArtinianTruncation
-import Mathlib.RingTheory.FiniteLength
-import Mathlib.RingTheory.LocalRing.Module
+module
+public import Stafford38.Characteristic.SquareZeroArtinianTruncation
+public import Mathlib.RingTheory.FiniteLength
+public import Mathlib.RingTheory.LocalRing.Module
+
+@[expose] public section
 
 /-!
 # High-power reduction for a square-zero deformation

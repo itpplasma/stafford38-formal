@@ -1,0 +1,10 @@
+module
+public import Stafford38.FoundationClosure
+
+@[expose] public section
+
+namespace Stafford38Challenge
+
+theorem universalStatement : True := Stafford38.universalStatement
+
+end Stafford38Challenge

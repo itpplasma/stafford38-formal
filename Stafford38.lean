@@ -1,19 +1,22 @@
-import Stafford38.Weyl.EulerProductIdentities
-import Stafford38.FoundationClosure
-import Stafford38.TorsionCyclicity
-import Stafford38.NoncharacteristicHyperplane
-import Stafford38.NoncharacteristicHypersurface
-import Stafford38.LocalizedDifferentialCorollaries
-import Stafford38.LocalizationCorollaries
-import Stafford38.LeftHandedCorollary
-import Stafford38.EvolutionaryCorollary
-import Stafford38.Geometry.GeneralAsymptoticConormal
-import Stafford38.Geometry.GeneralCoisotropicSets
-import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
-import Stafford38.Geometry.GeneralComponentConormalContainment
-import Stafford38.Geometry.GeneralTangentLimitCriterion
-import Stafford38.Geometry.GeneralTangentLatticePresentation
-import Stafford38.Geometry.GeneralCoisotropicSetsTest
-import Stafford38.Geometry.GeneralTangentLimitCriterionTest
+module
+public import Stafford38.Weyl.EulerProductIdentities
+public import Stafford38.FoundationClosure
+public import Stafford38.TorsionCyclicity
+public import Stafford38.NoncharacteristicHyperplane
+public import Stafford38.NoncharacteristicHypersurface
+public import Stafford38.LocalizedDifferentialCorollaries
+public import Stafford38.LocalizationCorollaries
+public import Stafford38.LeftHandedCorollary
+public import Stafford38.EvolutionaryCorollary
+public import Stafford38.Geometry.GeneralAsymptoticConormal
+public import Stafford38.Geometry.GeneralCoisotropicSets
+public import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
+public import Stafford38.Geometry.GeneralComponentConormalContainment
+public import Stafford38.Geometry.GeneralTangentLimitCriterion
+public import Stafford38.Geometry.GeneralTangentLatticePresentation
+public import Stafford38.Geometry.GeneralCoisotropicSetsTest
+public import Stafford38.Geometry.GeneralTangentLimitCriterionTest
+
+@[expose] public section
 
 /-! Stafford theorem, advertised corollaries, and independent geometry consumers. -/

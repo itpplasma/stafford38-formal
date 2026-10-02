@@ -1,7 +1,10 @@
-import Mathlib.RingTheory.FiniteStability
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.Localization.LocalizationLocalization
-import Stafford38.Geometry.ResidueBasisLocalization
+module
+public import Mathlib.RingTheory.FiniteStability
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.Localization.LocalizationLocalization
+public import Stafford38.Geometry.ResidueBasisLocalization
+
+@[expose] public section
 
 set_option autoImplicit false
 

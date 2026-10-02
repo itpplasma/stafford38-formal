@@ -1,5 +1,8 @@
-import Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff
-import Stafford38.Characteristic.ArtinianEquation33TraceProducer
+module
+public import Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff
+public import Stafford38.Characteristic.ArtinianEquation33TraceProducer
+
+@[expose] public section
 
 /-!
 # The Artinian triangular trace calculation

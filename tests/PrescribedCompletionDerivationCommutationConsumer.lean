@@ -1,5 +1,8 @@
-import Stafford38.Geometry.PrescribedCompletionDerivationCommutation
-import Stafford38.Geometry.EtaleCotangentBasis
+module
+public import Stafford38.Geometry.PrescribedCompletionDerivationCommutation
+public import Stafford38.Geometry.EtaleCotangentBasis
+
+@[expose] public section
 
 open Stafford38.Geometry.PrescribedGroundPointPowerSeriesMap
 open Stafford38.Geometry.EtaleLocalChartFinitePartialDerivation
@@ -20,7 +23,7 @@ theorem actual_prescribed_completion_commutes_with_every_parameter_derivation
     (M : Ideal A) [M.IsMaximal] (eM : (A ⧸ M) ≃ₐ[k] k)
     [Algebra.FormallyEtale R (Localization.AtPrime M)]
     (i : Fin (d + 1)) (b : Localization.AtPrime M) :
-    MvPowerSeries.pderiv k i
+    MvPowerSeries.pderiv i
         (localToPowerSeries (σ := Fin (d + 1)) M eM b) =
       localToPowerSeries (σ := Fin (d + 1)) M eM
         (parameterDerivation (k := k) (d := d)
@@ -36,7 +39,7 @@ theorem actual_option_completion_commutes_with_reindexed_derivation
     [Algebra.FormallyEtale (MvPolynomial (Option (Fin d)) k)
       (Localization.AtPrime M)]
     (i : Fin (d + 1)) (b : Localization.AtPrime M) :
-    MvPowerSeries.pderiv k i
+    MvPowerSeries.pderiv i
         (Stafford38.Geometry.PrescribedGroundPointUnitPowerChart.localToFinSuccPowerSeries
           (k := k) (B := Aₒ) (d := d) M eM b) =
       Stafford38.Geometry.PrescribedGroundPointUnitPowerChart.localToFinSuccPowerSeries
@@ -67,7 +70,7 @@ theorem actual_option_nonlinear_rational_completion_derivative_oracle
       Stafford38.Geometry.EtaleCotangentBasis.coordinateDerivation
         (k := k) (σ := Option (Fin d)) (B := T) (L := T)
         ((_root_.finSuccEquiv d) i)
-    MvPowerSeries.pderiv k i
+    MvPowerSeries.pderiv i
         (Stafford38.Geometry.PrescribedGroundPointUnitPowerChart.localToFinSuccPowerSeries
           (k := k) (B := Aₒ) (d := d) M eM (N * r)) =
       Stafford38.Geometry.PrescribedGroundPointUnitPowerChart.localToFinSuccPowerSeries
@@ -95,7 +98,7 @@ theorem actual_tilted_arc_derivative_is_full_parameter_direction
     (M : Ideal A) [M.IsMaximal] (eM : (A ⧸ M) ≃ₐ[k] k)
     [Algebra.FormallyEtale R (Localization.AtPrime M)]
     (α : Fin d → k) (b : Localization.AtPrime M) :
-    PowerSeries.derivative k
+    PowerSeries.derivative
         (localToPowerSeriesArc (M := M) (B := A) α eM b) =
       localToPowerSeriesArc (M := M) (B := A) α eM
           (parameterDerivation (k := k) (d := d)
@@ -111,7 +114,7 @@ theorem actual_tilted_arc_derivative_lands_in_canonical_laurent_field
     [Algebra.FormallyEtale R (Localization.AtPrime M)]
     (α : Fin d → k) (b : Localization.AtPrime M) :
     algebraMap (PowerSeries k) (LaurentSeries k)
-        (PowerSeries.derivative k (localToPowerSeriesArc (M := M) (B := A) α eM b)) =
+        (PowerSeries.derivative (localToPowerSeriesArc (M := M) (B := A) α eM b)) =
       algebraMap (PowerSeries k) (LaurentSeries k)
           (localToPowerSeriesArc (M := M) (B := A) α eM
             (parameterDerivation (k := k) (d := d)
@@ -135,7 +138,7 @@ theorem actual_nonlinear_rational_element_derivative_oracle
     (u : (Localization.AtPrime M)ˣ) :
     let N : Localization.AtPrime M := p ^ 2 + q
     let r : Localization.AtPrime M := (↑(u⁻¹) : Localization.AtPrime M)
-    PowerSeries.derivative k
+    PowerSeries.derivative
         (localToPowerSeriesArc (M := M) (B := A) α eM (N * r)) =
       localToPowerSeriesArc (M := M) (B := A) α eM
           (N * parameterDerivation (k := k) (d := d)
@@ -171,7 +174,7 @@ theorem actual_nonlinear_rational_element_derivative_oracle
     simpa [smul_eq_mul] using
       (parameterDerivation (k := k) (d := d)
         (B := Localization.AtPrime M) j.succ).leibniz N r
-  change PowerSeries.derivative k
+  change PowerSeries.derivative
       (localToPowerSeriesArc (M := M) (B := A) α eM (N * r)) = _ at h
   rw [hzero] at h
   simp_rw [hsucc] at h

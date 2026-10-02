@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.TransposedFilteredModuleSupport
-import Stafford38.Characteristic.AssociatedGradedFinite
-import Stafford38.PaperInputs
+module
+public import Stafford38.Characteristic.TransposedFilteredModuleSupport
+public import Stafford38.Characteristic.AssociatedGradedFinite
+public import Stafford38.PaperInputs
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalSupportAvoidanceFromCokernel
 

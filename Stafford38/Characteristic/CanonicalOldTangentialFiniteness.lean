@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.CanonicalTangentialRingEquivalence
+module
+public import Stafford38.Characteristic.CanonicalTangentialRingEquivalence
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalOldTangentialFiniteness
 

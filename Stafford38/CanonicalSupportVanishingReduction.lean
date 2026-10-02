@@ -1,7 +1,10 @@
-import Stafford38.UniversalAssembly
-import Stafford38.Characteristic.CanonicalUnitCoordinatePreimage
-import Stafford38.Geometry.ConormalAxisContradiction
-import Stafford38.Geometry.LaurentConormalDirection
+module
+public import Stafford38.UniversalAssembly
+public import Stafford38.Characteristic.CanonicalUnitCoordinatePreimage
+public import Stafford38.Geometry.ConormalAxisContradiction
+public import Stafford38.Geometry.LaurentConormalDirection
+
+@[expose] public section
 
 /-!
 # Conditional Laurent-direction skeleton for canonical support vanishing

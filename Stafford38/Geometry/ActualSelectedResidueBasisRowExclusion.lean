@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ActualSelectedResidueBasis
-import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
+module
+public import Stafford38.Geometry.ActualSelectedResidueBasis
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

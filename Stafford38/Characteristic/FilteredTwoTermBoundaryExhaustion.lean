@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Module.FilteredTwoTermBoundaryExhaustion
-import Stafford38.Characteristic.FilteredTwoTermTotalPages
+module
+public import AlgebraicAnalysis.Module.FilteredTwoTermBoundaryExhaustion
+public import Stafford38.Characteristic.FilteredTwoTermTotalPages
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

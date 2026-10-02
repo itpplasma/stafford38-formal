@@ -1,10 +1,13 @@
-import Stafford38.Geometry.ResidueBasisLocalization
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Stafford38.Geometry.ResidueLiftIndependence
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
-import Mathlib.RingTheory.Localization.Basic
-import Mathlib.RingTheory.Valuation.ValuationSubring
+module
+public import Stafford38.Geometry.ResidueBasisLocalization
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Stafford38.Geometry.ResidueLiftIndependence
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
+public import Mathlib.RingTheory.Localization.Basic
+public import Mathlib.RingTheory.Valuation.ValuationSubring
+
+@[expose] public section
 
 noncomputable section
 set_option autoImplicit false

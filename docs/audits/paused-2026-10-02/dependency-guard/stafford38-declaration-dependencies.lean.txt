@@ -1,0 +1,67 @@
+import Lean
+import Lean.Util.FoldConsts
+import Solution
+import FixedSourceSolution
+open Lean Elab Command
+set_option maxHeartbeats 0
+set_option maxRecDepth 20000
+
+/-- Print project declaration dependencies from elaborated types and values.
+Mathlib and AlgebraicAnalysis cannot reference Stafford38 declarations, so
+pruning at their names preserves every Stafford38 dependency route. -/
+def auditProjectDependencies (root : Name) : CommandElabM Unit := do
+  let env ← getEnv
+  unless env.contains root do throwError m!"missing audit root {root}"
+  let mut pending : Array Name := #[root]
+  let mut seen : Std.HashSet Name := (∅ : Std.HashSet Name).insert root
+  let mut parents : Std.HashMap Name Name := {}
+  let mut i := 0
+  while i < pending.size do
+    let current := pending[i]!
+    i := i + 1
+    if let some c := env.find? current then
+      for n in c.getUsedConstantsAsSet.toList do
+        if n.toString.startsWith "Stafford38" && !seen.contains n then
+          seen := seen.insert n
+          parents := parents.insert n current
+          pending := pending.push n
+  logInfo m!"ROOT {root}; Stafford38 declarations reached: {pending.size}"
+  let prefixes := [
+    "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.",
+    "Stafford38.Geometry.GeneralConormalAxis.",
+    "Stafford38.Geometry.PaperActualWitnessConormalData.",
+    "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.",
+    "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction.",
+    "Stafford38.Geometry.CanonicalAsymptoticLaurentProducer.",
+    "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.",
+    "Stafford38.Geometry.FiniteGradientBoundaryProducer.",
+    "Stafford38.Geometry.FiniteGradientResidueExtension."]
+  for namespacePrefix in prefixes do
+    let hits := pending.filter (fun n => n.toString.startsWith namespacePrefix)
+    logInfo m!"NAMESPACE {namespacePrefix}: {hits.size} reached"
+    for n in hits do
+      let kind := match env.find? n with
+        | some (.thmInfo _) => "theorem"
+        | some (.defnInfo _) => "definition"
+        | some (.opaqueInfo _) => "opaque"
+        | some (.axiomInfo _) => "axiom"
+        | some (.inductInfo _) => "inductive"
+        | some (.ctorInfo _) => "constructor"
+        | some (.recInfo _) => "recursor"
+        | some (.quotInfo _) => "quotient"
+        | none => "unknown"
+      let mut route : List Name := [n]
+      let mut tail := n
+      while tail != root do
+        match parents[tail]? with
+        | some p => tail := p; route := p :: route
+        | none => break
+      logInfo m!"{kind}: {String.intercalate " → " (route.map Name.toString)}"
+
+elab "auditStaffordDependencies" : command => do
+  auditProjectDependencies `Stafford38.universalStatement
+  auditProjectDependencies `Stafford38.universalFixedSourceStatement
+  auditProjectDependencies `Stafford38Challenge.universalStatement
+  auditProjectDependencies `Stafford38FixedSourceChallenge.universalFixedSourceStatement
+
+auditStaffordDependencies

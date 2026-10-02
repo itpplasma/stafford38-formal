@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.DifferentialOperators.CoordinateGeneration
+module
+public import AlgebraicAnalysis.DifferentialOperators.CoordinateGeneration
+
+@[expose] public section
 
 /-! Compatibility exports for the reusable coordinate-generation argument. -/
 namespace Stafford38.CoordinateDifferentialGeneration

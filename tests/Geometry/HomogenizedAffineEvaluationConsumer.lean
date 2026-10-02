@@ -1,5 +1,8 @@
-import Stafford38.Geometry.HomogenizedAffineEvaluation
-import Mathlib.Tactic.NormNum
+module
+public import Stafford38.Geometry.HomogenizedAffineEvaluation
+public import Mathlib.Tactic.NormNum
+
+@[expose] public section
 
 open Stafford38.Geometry.HomogenizedAffineEvaluation
 open Stafford38.Geometry.LocalizedProjectiveChartTransition

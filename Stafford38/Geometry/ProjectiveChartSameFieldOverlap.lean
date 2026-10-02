@@ -1,9 +1,12 @@
-import Stafford38.Geometry.AsymptoticChartArcAdapter
-import Stafford38.Geometry.ComponentProjectiveChartKernel
-import Stafford38.Geometry.ComponentProjectiveClosure
-import Stafford38.Geometry.ComponentFunctionFieldBoundary
-import Stafford38.Geometry.AffineComponentCoordinateSplit
-import Stafford38.Geometry.ComponentProjectiveChartFactorization
+module
+public import Stafford38.Geometry.AsymptoticChartArcAdapter
+public import Stafford38.Geometry.ComponentProjectiveChartKernel
+public import Stafford38.Geometry.ComponentProjectiveClosure
+public import Stafford38.Geometry.ComponentFunctionFieldBoundary
+public import Stafford38.Geometry.AffineComponentCoordinateSplit
+public import Stafford38.Geometry.ComponentProjectiveChartFactorization
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2400000
@@ -47,11 +50,11 @@ abbrev SelectedAffineChartIdeal (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j 
 abbrev SelectedAffineChartQuotient (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m) :=
   MvPolynomial (Fin m) k ⧸ SelectedAffineChartIdeal (k := k) P j
 
-private def selectedPoint
+def selectedPoint
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m) : Fin m → ComponentFractionField P :=
   chartGenericPoint P (Fin.succ j) (SelectedAffineCoordinateEquiv j)
 
-private theorem selectedChart_nonzero
+theorem selectedChart_nonzero
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m)
     (hxj : componentCoordinate P j ≠ 0) :
     componentProjectivePoint P (Fin.succ j) ≠ 0 := by
@@ -92,7 +95,7 @@ private theorem selectedPoint_original_coordinate
   rw [hidx]
   simp [componentProjectivePoint]
 
-private abbrev selectedQuotientToField
+abbrev selectedQuotientToField
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m)
     (hxj : componentCoordinate P j ≠ 0) :
     SelectedAffineChartQuotient (k := k) P j →ₐ[k] ComponentFractionField P :=
@@ -146,7 +149,7 @@ private theorem away_lift_injective
     subst y
     rfl
 
-private theorem selectedIdeal_isPrime
+theorem selectedIdeal_isPrime
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m)
     (hxj : componentCoordinate P j ≠ 0) :
     (SelectedAffineChartIdeal (k := k) P j).IsPrime := by
@@ -212,7 +215,7 @@ def selectedAffineChartToFunctionField
       rw [selectedDenominator_map P j hxj]
       exact inv_ne_zero hxj))
 
-private theorem originalLocalizationToField_injective
+theorem originalLocalizationToField_injective
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m)
     (hxj : componentCoordinate P j ≠ 0) :
     Function.Injective (originalAffineChartToFunctionField P j hxj) := by
@@ -230,7 +233,7 @@ private theorem originalLocalizationToField_injective
     _ hg (isUnit_iff_ne_zero.mpr (by
       simpa [originalDenominator_map] using hxj))
 
-private theorem selectedLocalizationToField_injective
+theorem selectedLocalizationToField_injective
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m)
     (hxj : componentCoordinate P j ≠ 0) :
     Function.Injective (selectedAffineChartToFunctionField P j hxj) := by
@@ -296,7 +299,7 @@ private theorem selectedVariable_map
   rw [MvPolynomial.eval₂_X]
   rw [selectedPoint_original_coordinate P j i hij]
 
-private def forwardPolynomialMap
+def forwardPolynomialMap
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m) :
     MvPolynomial (Fin m) k →ₐ[k] SelectedAffineChartLocalization (k := k) P j :=
   MvPolynomial.aeval (fun i =>
@@ -307,7 +310,7 @@ private def forwardPolynomialMap
         (SelectedAffineChartLocalization (k := k) P j) (selectedAffineChartVariableClass P j i hij) *
         IsLocalization.Away.invSelf (selectedAffineChartDenominator P j))
 
-private def backwardPolynomialMap
+def backwardPolynomialMap
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m) :
     MvPolynomial (Fin m) k →ₐ[k] OriginalAffineChartLocalization (k := k) P j :=
   MvPolynomial.aeval (fun a =>
@@ -454,7 +457,7 @@ private theorem backwardPolynomialMap_X_toField
       simpa [selectedPoint, chartGenericPoint, componentProjectivePoint,
         hidx, hij, div_eq_mul_inv] using hback
 
-private theorem forwardPolynomialMap_toField
+theorem forwardPolynomialMap_toField
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m)
     (hxj : componentCoordinate P j ≠ 0) :
     (selectedAffineChartToFunctionField P j hxj).comp
@@ -478,7 +481,7 @@ private theorem forwardPolynomialMap_toField
   · intro i
     exact forwardPolynomialMap_X_toField P j i hxj
 
-private theorem backwardPolynomialMap_toField
+theorem backwardPolynomialMap_toField
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m)
     (hxj : componentCoordinate P j ≠ 0) :
     (originalAffineChartToFunctionField P j hxj).comp
@@ -512,7 +515,7 @@ private theorem backwardPolynomialMap_toField
   · intro a
     simpa [MvPolynomial.eval₂_X] using backwardPolynomialMap_X_toField P j a hxj
 
-private def forwardQuotientMap
+def forwardQuotientMap
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m)
     (hxj : componentCoordinate P j ≠ 0) :
     OriginalAffineChartQuotient (k := k) P →ₐ[k] SelectedAffineChartLocalization (k := k) P j := by
@@ -527,7 +530,7 @@ private def forwardQuotientMap
       _ = 0 := componentAffineGenericPointMap_eq_zero_of_mem P ha
   exact selectedLocalizationToField_injective P j hxj (by simpa using heval)
 
-private def backwardQuotientMap
+def backwardQuotientMap
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m)
     (hxj : componentCoordinate P j ≠ 0) :
     SelectedAffineChartQuotient (k := k) P j →ₐ[k] OriginalAffineChartLocalization (k := k) P j := by

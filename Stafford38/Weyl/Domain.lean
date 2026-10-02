@@ -1,5 +1,8 @@
-import Stafford38.Statement
-import Stafford38.Weyl.MonicNormalization
+module
+public import Stafford38.Statement
+public import Stafford38.Weyl.MonicNormalization
+
+@[expose] public section
 
 /-!
 # The presented Weyl algebra is a domain

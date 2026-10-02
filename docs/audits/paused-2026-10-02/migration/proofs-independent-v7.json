@@ -1,0 +1,17 @@
+[
+  {
+    "source": "proofs/stafford38_reduction.lean",
+    "exit_code": 0,
+    "log": ".lake/migration/proofs-stafford38_reduction-v7.log"
+  },
+  {
+    "source": "proofs/weyl_pure_power.lean",
+    "exit_code": 0,
+    "log": ".lake/migration/proofs-weyl_pure_power-v7.log"
+  },
+  {
+    "source": "proofs/weyl_symplectic.lean",
+    "exit_code": 0,
+    "log": ".lake/migration/proofs-weyl_symplectic-v7.log"
+  }
+]

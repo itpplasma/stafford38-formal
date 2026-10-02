@@ -1,0 +1,361 @@
+{
+  "evidenceScope": "Cached Lean4.33 baseline objects from canonical tree; source base eed5291 differs from some cached geometry objects, so this is not a current-source build receipt.",
+  "provedImports": [
+    "Solution",
+    "FixedSourceSolution"
+  ],
+  "dependencyArtifactFallback": "/Users/ert/proj/global-stafford-formal/.lake/packages/algebraicAnalysis/.lake/build/lib/lean",
+  "dependencyCommit": "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8",
+  "roots": [
+    {
+      "root": "Stafford38.universalStatement",
+      "projectDeclarationsReached": 2255,
+      "namespaces": {
+        "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.": 1,
+        "Stafford38.Geometry.GeneralConormalAxis.": 1,
+        "Stafford38.Geometry.PaperActualWitnessConormalData.": 0,
+        "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.": 9,
+        "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction.": 0,
+        "Stafford38.Geometry.CanonicalAsymptoticLaurentProducer.": 0,
+        "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.": 24,
+        "Stafford38.Geometry.FiniteGradientBoundaryProducer.": 1,
+        "Stafford38.Geometry.FiniteGradientResidueExtension.": 11
+      },
+      "producerTheorems": [
+        {
+          "name": "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+          "route": [
+            "Stafford38.universalStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+          "route": [
+            "Stafford38.universalStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.finiteGradientBoundaryCertificateOver_of_regularizedOneRowConormalData",
+          "route": [
+            "Stafford38.universalStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame",
+            "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.finiteGradientBoundaryCertificateOver_of_regularizedOneRowConormalData"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame",
+          "route": [
+            "Stafford38.universalStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.FiniteGradientResidueExtension.exists_groundConormalAxis_of_finiteGradientBoundaryCertificateOver",
+          "route": [
+            "Stafford38.universalStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.FiniteGradientResidueExtension.exists_groundConormalAxis_of_finiteGradientBoundaryCertificateOver"
+          ]
+        }
+      ]
+    },
+    {
+      "root": "Stafford38.universalFixedSourceStatement",
+      "projectDeclarationsReached": 2258,
+      "namespaces": {
+        "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.": 1,
+        "Stafford38.Geometry.GeneralConormalAxis.": 1,
+        "Stafford38.Geometry.PaperActualWitnessConormalData.": 0,
+        "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.": 9,
+        "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction.": 0,
+        "Stafford38.Geometry.CanonicalAsymptoticLaurentProducer.": 0,
+        "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.": 24,
+        "Stafford38.Geometry.FiniteGradientBoundaryProducer.": 1,
+        "Stafford38.Geometry.FiniteGradientResidueExtension.": 11
+      },
+      "producerTheorems": [
+        {
+          "name": "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+          "route": [
+            "Stafford38.universalFixedSourceStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+          "route": [
+            "Stafford38.universalFixedSourceStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.finiteGradientBoundaryCertificateOver_of_regularizedOneRowConormalData",
+          "route": [
+            "Stafford38.universalFixedSourceStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame",
+            "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.finiteGradientBoundaryCertificateOver_of_regularizedOneRowConormalData"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame",
+          "route": [
+            "Stafford38.universalFixedSourceStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.FiniteGradientResidueExtension.exists_groundConormalAxis_of_finiteGradientBoundaryCertificateOver",
+          "route": [
+            "Stafford38.universalFixedSourceStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.FiniteGradientResidueExtension.exists_groundConormalAxis_of_finiteGradientBoundaryCertificateOver"
+          ]
+        }
+      ]
+    },
+    {
+      "root": "Stafford38Challenge.universalStatement",
+      "projectDeclarationsReached": 2260,
+      "namespaces": {
+        "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.": 1,
+        "Stafford38.Geometry.GeneralConormalAxis.": 1,
+        "Stafford38.Geometry.PaperActualWitnessConormalData.": 0,
+        "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.": 9,
+        "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction.": 0,
+        "Stafford38.Geometry.CanonicalAsymptoticLaurentProducer.": 0,
+        "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.": 24,
+        "Stafford38.Geometry.FiniteGradientBoundaryProducer.": 1,
+        "Stafford38.Geometry.FiniteGradientResidueExtension.": 11
+      },
+      "producerTheorems": [
+        {
+          "name": "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+          "route": [
+            "Stafford38Challenge.universalStatement",
+            "Stafford38.universalStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+          "route": [
+            "Stafford38Challenge.universalStatement",
+            "Stafford38.universalStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.finiteGradientBoundaryCertificateOver_of_regularizedOneRowConormalData",
+          "route": [
+            "Stafford38Challenge.universalStatement",
+            "Stafford38.universalStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame",
+            "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.finiteGradientBoundaryCertificateOver_of_regularizedOneRowConormalData"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame",
+          "route": [
+            "Stafford38Challenge.universalStatement",
+            "Stafford38.universalStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.FiniteGradientResidueExtension.exists_groundConormalAxis_of_finiteGradientBoundaryCertificateOver",
+          "route": [
+            "Stafford38Challenge.universalStatement",
+            "Stafford38.universalStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.FiniteGradientResidueExtension.exists_groundConormalAxis_of_finiteGradientBoundaryCertificateOver"
+          ]
+        }
+      ]
+    },
+    {
+      "root": "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
+      "projectDeclarationsReached": 2287,
+      "namespaces": {
+        "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.": 1,
+        "Stafford38.Geometry.GeneralConormalAxis.": 1,
+        "Stafford38.Geometry.PaperActualWitnessConormalData.": 0,
+        "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.": 9,
+        "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction.": 0,
+        "Stafford38.Geometry.CanonicalAsymptoticLaurentProducer.": 0,
+        "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.": 24,
+        "Stafford38.Geometry.FiniteGradientBoundaryProducer.": 1,
+        "Stafford38.Geometry.FiniteGradientResidueExtension.": 11
+      },
+      "producerTheorems": [
+        {
+          "name": "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+          "route": [
+            "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
+            "Stafford38.universalFixedSourceStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+          "route": [
+            "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
+            "Stafford38.universalFixedSourceStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.finiteGradientBoundaryCertificateOver_of_regularizedOneRowConormalData",
+          "route": [
+            "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
+            "Stafford38.universalFixedSourceStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame",
+            "Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof.finiteGradientBoundaryCertificateOver_of_regularizedOneRowConormalData"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame",
+          "route": [
+            "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
+            "Stafford38.universalFixedSourceStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction.exists_finiteGradientBoundaryCertificateOver_of_hasVisibleDivisorFrame"
+          ]
+        },
+        {
+          "name": "Stafford38.Geometry.FiniteGradientResidueExtension.exists_groundConormalAxis_of_finiteGradientBoundaryCertificateOver",
+          "route": [
+            "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
+            "Stafford38.universalFixedSourceStatement",
+            "Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic",
+            "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical",
+            "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+            "Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+            "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance",
+            "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental",
+            "Stafford38.Geometry.FiniteGradientResidueExtension.exists_groundConormalAxis_of_finiteGradientBoundaryCertificateOver"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "recorded_at_utc": "2026-10-02T18:16:59.585941+00:00",
+  "controller_formal_base": "c59fbab41be133aba5abb9dd2982c1a565b479d7",
+  "controller_paper_base": "f55e98bfbd1f043a3857c66d5b3c8c3536de2d62",
+  "applied_uncommitted_packets": [
+    {
+      "path": "/tmp/stafford38-palomar-gates-20261002.patch",
+      "sha256": "e4f5de968628a6d56d62188da7a81457c20a1d7dfdcab17cd97a1ec3dde9b726",
+      "scope": "all20 prepared verification paths; actual qualification pending"
+    },
+    {
+      "path": "/var/tmp/stafford38-resume-20261002/dependency-guard-integration.patch",
+      "sha256": "5e6f4a9de617957469571540dbc64d882dda8f70ea65f4a3a7908cae1fa62d1e",
+      "scope": "guard core/runner and negative fixtures stored as .lean.txt; actual terminal pending"
+    },
+    {
+      "path": "/tmp/stafford38-review-bundle-candidate.patch",
+      "sha256": "c64290fed3988fd2dc55dba4d3e6eacc03cd68dcac94ba552c425f5fb463e0b9",
+      "scope": "7 tool paths only; paper-lean-map.json excluded until final inputs"
+    },
+    {
+      "path": "/var/tmp/stafford38-resume-20261002/palomar-verifier-guard-wiring.patch",
+      "sha256": "b15c8d237a981144f4d4a09408d2c53b0cbbd264e8f0563414ccf243f380e4f7",
+      "scope": "strict verifier wiring only"
+    },
+    {
+      "path": "/var/tmp/stafford38-resume-20261002/literal-route-consumers.patch",
+      "sha256": "c8370efa0cd6c906939c53945e69b9279a355ea000a7446b395daa896d2d374c",
+      "scope": "only scripts/check-consumers.sh; modern compiled consumer files pending worker packet"
+    },
+    {
+      "path": "/tmp/stafford38-annotation-cleanup.patch",
+      "sha256": "e3603c8ce4627b75c802e3ed7fe38909e590b749211c1f516cad0092810ead56",
+      "scope": "paper3 paths; exact author-proof/math-annotation preservation; route/pins pending"
+    },
+    {
+      "path": "/var/tmp/stafford38-resume-20261002/rc3-migration/migration.patch",
+      "sha256": "1bdc3c3b674bc96198439cc5407ac9b4f6ae34f4d483f2345d0b6709a84e8ae0",
+      "scope": "migration544-path subset; modern425-target baseline green"
+    },
+    {
+      "path": "/var/tmp/stafford38-resume-20261002/rc3-migration/proofs-supplement.patch",
+      "sha256": "cd17248efe0e1b73f5646b56bf7808014cd69508ff1f3ad95dc6fa46197e459a",
+      "scope": "3 retained wrappers; independent trust0 checks green"
+    }
+  ],
+  "public_signed_routine_changes": {
+    "research": "bbf8201f",
+    "generic_generator": "f0ce035"
+  },
+  "proof_state": "new closure helper packet5af0a7fc and final modern rc3 source are unpromoted candidates; no full gate or release pass claimed",
+  "source_preservation_audit": {
+    "paper_main_sha256": "fd707283bda604800400fd86cb31f9e3ab083f29a3fb8e556c230ccd83aaaa3b"
+  },
+  "release_state": "v1.3.0 metadata proposal prepared; no new formal tag, release or DOI published",
+  "paper_current_commit": "ce09ead2553154c3521e0515c5e3db7a505832e0",
+  "paper_cleanup_promotion": "User confirmed another authorized agent promoted exact approved patch; root remains controller",
+  "controller_source_preflight": {
+    "status": "passed",
+    "lean_files": 547,
+    "scope": "local official pinned source policy and exact pins/configs; no actual kernel qualification"
+  },
+  "updated_at_utc": "2026-10-02T18:37:11.581262+00:00"
+}

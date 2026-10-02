@@ -1,0 +1,9 @@
+{
+  "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "patch_sha256": "365001a7c8ef183b64e582ca256dd39fff9b0de3b3e122e678ae01ae1e3bf1d9",
+  "build_session": 7172,
+  "build_exit_code": 143,
+  "status": "controller requested rc3 final validation; already-started 4.33 retry intentionally terminated before result; consumer uncompiled",
+  "proof_hypothesis_change": false,
+  "small_diff_sha256": "88c06998c1984e9b2f7569abd7e38beef610081049ab513e43474ce5de0a3131"
+}

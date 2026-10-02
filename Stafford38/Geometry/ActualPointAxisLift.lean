@@ -1,5 +1,8 @@
-import Stafford38.Geometry.PrescribedGroundPointUnitPowerChart
-import Stafford38.Geometry.SmoothLocalTiltedArcAxisLift
+module
+public import Stafford38.Geometry.PrescribedGroundPointUnitPowerChart
+public import Stafford38.Geometry.SmoothLocalTiltedArcAxisLift
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.Polynomial
+module
+public import Stafford38.Characteristic.Polynomial
+
+@[expose] public section
 
 /-!
 # Poisson closure and vertical translation

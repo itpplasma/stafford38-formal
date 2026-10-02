@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.CanonicalAxisMonicInitialTop
-import Stafford38.Characteristic.CanonicalUnitPreimageFromInitialTop
-import Stafford38.Characteristic.TransposedFilteredModuleSupport
+module
+public import Stafford38.Characteristic.CanonicalAxisMonicInitialTop
+public import Stafford38.Characteristic.CanonicalUnitPreimageFromInitialTop
+public import Stafford38.Characteristic.TransposedFilteredModuleSupport
+
+@[expose] public section
 
 /-!
 # Transposed noncharacteristic interfaces for the canonical quotient
@@ -33,14 +36,14 @@ universe u
 
 variable (k : Type u) [Field k]
 
-private abbrev CanonicalIdeal (n N : ℕ)
+abbrev CanonicalIdeal (n N : ℕ)
     (d : PresentedWeyl k (n + 1)) :=
   presentedCanonicalRightIdeal (k := k) n N d
 
-private abbrev AxisCoordinate (n : ℕ) : SymbolRing k (n + 1) :=
+abbrev AxisCoordinate (n : ℕ) : SymbolRing k (n + 1) :=
   MvPolynomial.X (.inl (0 : Fin (n + 1)))
 
-private abbrev AxisZeroLocus (n : ℕ) :
+abbrev AxisZeroLocus (n : ℕ) :
     Set (PrimeSpectrum (SymbolRing k (n + 1))) :=
   PrimeSpectrum.zeroLocus ({AxisCoordinate k n} :
     Set (SymbolRing k (n + 1)))

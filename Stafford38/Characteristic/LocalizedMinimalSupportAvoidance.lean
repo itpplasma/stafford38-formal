@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.LocalizedMinimalSupportAvoidance
+module
+public import AlgebraicAnalysis.Module.LocalizedMinimalSupportAvoidance
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

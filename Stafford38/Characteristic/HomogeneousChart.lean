@@ -1,7 +1,11 @@
-import Stafford38.Characteristic.LinearAction
-import Mathlib.RingTheory.MvPolynomial.Homogeneous
-import Mathlib.Algebra.MvPolynomial.Monad
-import Mathlib.Algebra.CharZero.Infinite
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Characteristic.LinearAction
+public import Mathlib.RingTheory.MvPolynomial.Homogeneous
+public import Mathlib.Algebra.MvPolynomial.Monad
+public import Mathlib.Algebra.CharZero.Infinite
+
+@[expose] public section
 
 /-!
 # Homogeneous symbols and nonzero chart columns

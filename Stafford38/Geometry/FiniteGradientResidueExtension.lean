@@ -1,6 +1,9 @@
-import Stafford38.Geometry.FiniteGradientBoundaryProducer
-import Stafford38.Geometry.FiniteGradientBoundaryCertificateOver
-import Stafford38.Geometry.LaurentConormalResidueExtension
+module
+public import Stafford38.Geometry.FiniteGradientBoundaryProducer
+public import Stafford38.Geometry.FiniteGradientBoundaryCertificateOver
+public import Stafford38.Geometry.LaurentConormalResidueExtension
+
+@[expose] public section
 
 /-!
 # Finite-gradient certificates over a boundary residue field

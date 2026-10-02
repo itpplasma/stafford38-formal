@@ -1,4 +1,7 @@
-import Stafford38.Geometry.SameWitnessTranscendenceDegreeBound
+module
+public import Stafford38.Geometry.SameWitnessTranscendenceDegreeBound
+
+@[expose] public section
 
 set_option autoImplicit false
 

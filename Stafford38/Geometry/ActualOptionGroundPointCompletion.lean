@@ -1,6 +1,9 @@
-import Stafford38.Geometry.PrescribedGroundPointUnitPowerChart
-import Mathlib.RingTheory.Etale.Basic
-import Mathlib.Algebra.MvPolynomial.Rename
+module
+public import Stafford38.Geometry.PrescribedGroundPointUnitPowerChart
+public import Mathlib.RingTheory.Etale.Basic
+public import Mathlib.Algebra.MvPolynomial.Rename
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2000000

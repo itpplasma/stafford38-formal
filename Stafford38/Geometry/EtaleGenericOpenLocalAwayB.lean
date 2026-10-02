@@ -1,7 +1,10 @@
-import Stafford38.Geometry.EtaleGenericOpenTransport
-import Mathlib.RingTheory.Localization.LocalizationLocalization
-import Mathlib.RingTheory.Localization.AtPrime.Basic
-import Mathlib.RingTheory.Localization.Away.Basic
+module
+public import Stafford38.Geometry.EtaleGenericOpenTransport
+public import Mathlib.RingTheory.Localization.LocalizationLocalization
+public import Mathlib.RingTheory.Localization.AtPrime.Basic
+public import Mathlib.RingTheory.Localization.Away.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

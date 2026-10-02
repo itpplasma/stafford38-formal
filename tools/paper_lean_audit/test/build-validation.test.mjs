@@ -121,9 +121,9 @@ function fixture(t) {
   fs.mkdirSync(reviews);
   let mathlibDir = null;
   const writeMap = () => fs.writeFileSync(mapPath, JSON.stringify(map, null, 2));
-  const run = () => {
+  const run = (script = buildScript) => {
     writeMap();
-    const args = [buildScript, '--paper', paper.repo, '--formal', formal.repo,
+    const args = [script, '--paper', paper.repo, '--formal', formal.repo,
       '--library', library.repo, '--global', global.repo, '--map', mapPath, '--out', out,
       '--reviews', reviews, '--check'];
     if (mathlibDir) args.push('--mathlib', mathlibDir);
@@ -335,6 +335,40 @@ test('review hashes cover card metadata and proof bodies referenced only from a 
   assert.equal(result.status, 0, result.stdout + result.stderr);
   html = fs.readFileSync(f.htmlPath, 'utf8');
   assert.match(html, /<span class="muted">partial<\/span>/);
+});
+
+test('a changed review-scope module makes earlier human approval stale', (t) => {
+  const f = fixture(t);
+  const generator = path.join(f.root, 'generator');
+  fs.mkdirSync(generator);
+  for (const file of ['build.mjs', 'lean.mjs', 'texhtml.mjs', 'review.js', 'review-scope.mjs',
+    'style.css', 'package.json', 'package-lock.json']) {
+    fs.copyFileSync(path.join(auditDir, file), path.join(generator, file));
+  }
+  fs.symlinkSync(path.join(auditDir, 'node_modules'), path.join(generator, 'node_modules'), 'dir');
+  const script = path.join(generator, 'build.mjs');
+  let result = f.run(script);
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  let html = fs.readFileSync(f.htmlPath, 'utf8');
+  const approvedHash = /data-item="thm" data-hash="([a-f0-9]{16})"/.exec(html)?.[1];
+  assert.ok(approvedHash, 'the rendered theorem has a review digest');
+  fs.writeFileSync(path.join(f.reviews, 'approved.json'), JSON.stringify({
+    format: 'stafford38-paper-lean-review/1', reviewer: 'Reviewer', exported: '2026-10-02',
+    items: { thm: { hash: approvedHash, checks: { statement: true, route: true, issues: true } } },
+  }));
+  result = f.run(script);
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  assert.match(fs.readFileSync(f.htmlPath, 'utf8'), /<span class="ok-tag">signed off<\/span>/);
+
+  // Only the imported scope selector changes; the map and proof sources stay fixed.
+  fs.writeFileSync(path.join(generator, 'review-scope.mjs'),
+    'export function reviewScopeOptions() { return \'<option value="all">Changed review assignment</option>\'; }\n');
+  result = f.run(script);
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  html = fs.readFileSync(f.htmlPath, 'utf8');
+  assert.match(html, /Changed review assignment/);
+  assert.match(html, /<span class="stale-tag">stale<\/span>/);
+  assert.doesNotMatch(html, /<span class="ok-tag">signed off<\/span>/);
 });
 
 test('theorem cards show named propositions and full proof-step signatures', (t) => {

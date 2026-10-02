@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "verdict": "PASS",
+  "scope": "Only the new generic coefficient-map helper and its changed hphiGround application; no closure, original-prime wrapper, terminal, RC3, or release pass is claimed.",
+  "audited_utc": "2026-10-02T18:19:56.642822+00:00",
+  "source_worktree": "/Users/ert/proj/stafford38-closure-repair",
+  "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "patch_sha256": "5af0a7fcd2f8bb27880e90cf058b0efc4830791e1ba668329bdf0cff15fe067f",
+  "freeze_path": "/Users/ert/proj/stafford38-closure-repair/.lake/closure-repair3-input.json",
+  "freeze_sha256": "4702f27e3e4b95c4ed0202e9e989c6e23a2551eff95c649897d5188cb3009065",
+  "source_hashes": {
+    "Stafford38/Geometry/A0ChartFormalEtale.lean": "88217fd2b159588d68118cf8c571a5fd5793df8ce838365aec267f07b5abdfea",
+    "Stafford38/Geometry/ActualSameWitnessAffineFibreClosure.lean": "14b4a39ab418ee41e7a142b82835b5c131804a28161c91bd40d399945206a30d",
+    "Stafford38/Geometry/AwayFactorToAtPrime.lean": "b974d07cc0fe4e820c5de841b53536bc2809c971dd5065323d20fd7c7c65299b",
+    "Stafford38/Geometry/GroundPointAxisLiftFromOutput.lean": "c8fdb87fe7dc0c31750ce795c63e5ce1057396e98cf5f7b7ae1a2405bdadfe3b",
+    "tests/ActualSameWitnessAffineFibreClosureConsumer.lean": "eaa1123eef65edf7bb7bf93cfaf3988b029e90df84c1ed50534f551a3fcbce1d"
+  },
+  "helper": "Stafford38.Geometry.A0ChartFormalEtale.originalAffineChartToCommonOpen_groundMap",
+  "helper_source": "Stafford38/Geometry/A0ChartFormalEtale.lean",
+  "application_source": "Stafford38/Geometry/ActualSameWitnessAffineFibreClosure.lean",
+  "independent_helper_check": {
+    "command": "lake env lean /tmp/stafford38-repair3-groundmap-audit.lean",
+    "cwd": "/Users/ert/proj/stafford38-closure-repair",
+    "terminal_status": "completed",
+    "exit_code": 0,
+    "toolchain": "leanprover/lean4:v4.33.0",
+    "scope": "Import, declared type, and complete axiom dependency audit of the compiled canonical helper.",
+    "consumer_sha256": "e2fc2eaec6eb4c8bf6d51dadeaed13891ce23f1b03ad2dd0d9cfe21ca6895fd6",
+    "log_path": "/var/tmp/stafford38-resume-20261002/assembly-wrapper/repair3-groundmap-helper.log",
+    "log_sha256": "3af805b2b26afd7653773dcd4af99ea88f16664dfd7d071d29fb7e6b15ade6a5",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "mathematical_findings": {
+    "no_added_premise": "The helper uses exactly the existing field/chart data, the k-algebra equivalence hsel, prime M, and Q-algebra away equivalence e. It assumes no target k-algebra, target k/A0/U tower, or desired coefficient-map identity.",
+    "replacement_argument": "The original-affine overlap is a k-algebra equivalence; the further localization map preserves Q. Their composite therefore maps k through Q into the canonical common open.",
+    "no_tower_circularity": "hphiGround combines this independent canonical Q coefficient identity with genericOpenExtraAway_base_map_agrees, the definitional Q-to-B coefficient map, and earlier Option-chart hbaseMap. The original-quotient k/A0/U tower is installed only after this identity is proved.",
+    "one_point_one_tilt": "The local 47-line replacement changes only hphiGround. It leaves the chosen M, residue equivalence eM, completion map Phi, parameter s, selected rows, retained orders, and single alpha untouched."
+  },
+  "pending_gates": [
+    "Fresh closure compilation and literal closure consumer",
+    "Unconditional original-prime wrapper and literal prime consumers",
+    "Fresh substantive and solution terminal roots",
+    "Final RC3 strict dependency guard and repository verifier"
+  ]
+}

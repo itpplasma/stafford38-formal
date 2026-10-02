@@ -1,9 +1,12 @@
-import Stafford38.Geometry.ActualWitnessConormalAssembly
-import Stafford38.Geometry.PaperSameWitnessTangentDimension
-import Stafford38.Geometry.PaperRetainedChartAssembly
-import Stafford38.Geometry.PaperRetainedChartWitnessColumns
-import Stafford38.Geometry.PaperActualDivisorTangent
-import Stafford38.Geometry.RetainedPlaceConormalTransport
+module
+public import Stafford38.Geometry.ActualWitnessConormalAssembly
+public import Stafford38.Geometry.PaperSameWitnessTangentDimension
+public import Stafford38.Geometry.PaperRetainedChartAssembly
+public import Stafford38.Geometry.PaperRetainedChartWitnessColumns
+public import Stafford38.Geometry.PaperActualDivisorTangent
+public import Stafford38.Geometry.RetainedPlaceConormalTransport
+
+@[expose] public section
 
 /-!
 # Actual-witness regularized conormal data

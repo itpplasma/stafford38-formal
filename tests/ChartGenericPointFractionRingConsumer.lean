@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ChartGenericPointFractionRing
+module
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+
+@[expose] public section
 
 noncomputable section
 set_option autoImplicit false

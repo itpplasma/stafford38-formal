@@ -1,8 +1,11 @@
-import Stafford38.FoundationClosure
-import Stafford38.Weyl.Domain
-import Stafford38.TorsionModule
-import Stafford38.PaperCyclicity
-import Mathlib.LinearAlgebra.Span.Defs
+module
+public import Stafford38.FoundationClosure
+public import Stafford38.Weyl.Domain
+public import Stafford38.TorsionModule
+public import Stafford38.PaperCyclicity
+public import Mathlib.LinearAlgebra.Span.Defs
+
+@[expose] public section
 
 /-!
 # Cyclicity of finitely generated torsion right Weyl modules

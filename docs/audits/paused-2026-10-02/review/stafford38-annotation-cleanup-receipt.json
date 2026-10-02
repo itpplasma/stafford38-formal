@@ -1,0 +1,59 @@
+{
+  "base": "f55e98bfbd1f043a3857c66d5b3c8c3536de2d62",
+  "worktree": "/Users/ert/proj/stafford38-paper-annotation-cleanup",
+  "patch": "/tmp/stafford38-annotation-cleanup.patch",
+  "patch_sha256": "e3603c8ce4627b75c802e3ed7fe38909e590b749211c1f516cad0092810ead56",
+  "staged_paths": [
+    "ai_review.tex",
+    "human_readable_main.tex",
+    "lean_proof_details.tex"
+  ],
+  "moved_ids": [
+    "COMP-01",
+    "COMP-02",
+    "COMP-03",
+    "COMP-04",
+    "COMP-05",
+    "COMP-07",
+    "COMP-08",
+    "COMP-10",
+    "COMP-11",
+    "COMP-13",
+    "COMP-15"
+  ],
+  "preservation": {
+    "main": "Exact baseline bytes after deleting only the11complete technical comment spans; all28retained boxes identical.",
+    "main_sha256": "fd707283bda604800400fd86cb31f9e3ab083f29a3fb8e556c230ccd83aaaa3b",
+    "companion": "Original mathematical proof accounts byte-identical; inserted boxes match baseline except COMP10 local theorem reference gains paper: prefix.",
+    "route_status": "ROUTE01 remains pending, unchanged; source pins unchanged."
+  },
+  "compilation": {
+    "human_readable_main": {
+      "exit": 0,
+      "output": "Output written on human_readable_main.pdf (34 pages, 830239 bytes).",
+      "final_log_sha256": "26f1c8597e9eaeae5342a88507710f05bcddba3755f4885610f4e6c90287dcea",
+      "command_log": "/tmp/stafford38-annotation-cleanup-human.log",
+      "pdf_text_sha256": "a821038baeae65097b8a832f149c44e236630b29bccb19abc6a61c116745a78a",
+      "undefined_references": 0,
+      "overfull_boxes": 1
+    },
+    "main": {
+      "exit": 0,
+      "output": "Output written on main.pdf (34 pages, 830239 bytes).",
+      "final_log_sha256": "bb4202985aec563859b60285641d1939f0ae4213248f31c882f4bdce0673c64f",
+      "command_log": "/tmp/stafford38-annotation-cleanup-main.log",
+      "pdf_text_sha256": "a821038baeae65097b8a832f149c44e236630b29bccb19abc6a61c116745a78a",
+      "undefined_references": 0,
+      "overfull_boxes": 1
+    },
+    "lean_proof_details": {
+      "exit": 0,
+      "output": "Output written on lean_proof_details.pdf (11 pages, 405905 bytes).",
+      "final_log_sha256": "d759f86da8cc7df722d260543e1f747ec8f16ce3b5792354bf7555b9034527ec",
+      "command_log": "/tmp/stafford38-annotation-cleanup-companion.log",
+      "pdf_text_sha256": "75935b4ee359084c8c7da3dc218bf5c1cf8ff3d1030c65c54c4d80b9f4b8efbe",
+      "undefined_references": 0,
+      "overfull_boxes": 0
+    }
+  }
+}

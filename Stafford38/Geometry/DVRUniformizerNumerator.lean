@@ -1,4 +1,7 @@
-import Mathlib.RingTheory.DedekindDomain.Dvr
+module
+public import Mathlib.RingTheory.DedekindDomain.Dvr
+
+@[expose] public section
 
 set_option autoImplicit false
 

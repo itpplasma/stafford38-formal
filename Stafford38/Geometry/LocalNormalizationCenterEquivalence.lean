@@ -1,5 +1,8 @@
-import Stafford38.Geometry.IntegralClosureCenterDVR
-import Mathlib.RingTheory.LocalRing.LocalSubring
+module
+public import Stafford38.Geometry.IntegralClosureCenterDVR
+public import Mathlib.RingTheory.LocalRing.LocalSubring
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

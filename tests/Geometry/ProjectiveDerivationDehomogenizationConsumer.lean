@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ProjectiveConormalDehomogenization
-import Mathlib.Algebra.MvPolynomial.Derivation
-import Mathlib.Tactic.NormNum
+module
+public import Stafford38.Geometry.ProjectiveConormalDehomogenization
+public import Mathlib.Algebra.MvPolynomial.Derivation
+public import Mathlib.Tactic.NormNum
+
+@[expose] public section
 
 open Stafford38.Geometry.ProjectiveConormalDehomogenization
 

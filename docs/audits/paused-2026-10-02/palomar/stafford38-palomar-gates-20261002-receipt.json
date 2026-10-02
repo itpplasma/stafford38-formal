@@ -1,0 +1,98 @@
+{
+  "recorded_at_utc": "2026-10-02T17:35:31.367403+00:00",
+  "base_commit": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+  "patch_path": "/tmp/stafford38-palomar-gates-20261002.patch",
+  "patch_sha256": "e4f5de968628a6d56d62188da7a81457c20a1d7dfdcab17cd97a1ec3dde9b726",
+  "official_sources": {
+    "PalomarSubmission": "65f0154ed776cd26c224254aa57b379137f28b0d",
+    "PalomarPolicy": "96b034cc31a72a63d4f4041911dce337a85c9a04"
+  },
+  "checks": {
+    "Linux_real_comparator_fixture": {
+      "status": "passed",
+      "oracles": [
+        "both matching statements accepted by Lean/NanoDa/con-ron",
+        "both mismatched theorem types rejected",
+        "unpermitted rogue proof axiom rejected"
+      ],
+      "host": "mailuefterl",
+      "isolated_path": "/var/tmp/stafford38-palomar-gates-20261002.OGMD8x"
+    },
+    "source_policy_fixture": {
+      "status": "passed",
+      "oracles": [
+        "module parsing",
+        "UTF-8 rejection",
+        "10,000-line boundary",
+        "symlink rejection and traversal",
+        "physical LF/CRLF line counts"
+      ]
+    },
+    "release_pin_fixture": {
+      "status": "passed",
+      "oracles": [
+        "exact pins accepted",
+        "changed AA manifest lock rejected",
+        "changed vendored source/license rejected"
+      ]
+    },
+    "actual_Challenge_source_compile": {
+      "status": "passed",
+      "command": "ELAN_TOOLCHAIN=leanprover/lean4:v4.35.0-rc3 lake env lean --trust=0 --root=/Users/ert/proj/stafford38-formal-palomar-gates <absolute Challenge source>",
+      "dependency_environment": "/Users/ert/proj/stafford38-rc3-worker",
+      "expected_warnings": "one deliberate sorry warning per Challenge"
+    },
+    "official_metadata_and_dispatch_contract": {
+      "status": "passed",
+      "validator_sha256": "724f82211ef702e2d1b4e5012183e532bd8f8ba03ba676022e4722a420c5be75",
+      "oracles": [
+        "qualified formalization.yaml accepted",
+        "both valid12-character IDs/configs/relationship choices accepted",
+        "invalid11/13-character and uppercase IDs rejected"
+      ]
+    },
+    "source_integrity_and_shell_checks": {
+      "status": "passed",
+      "checks": [
+        "git diff --check",
+        "git apply --check against canonical base",
+        "bash -n",
+        "standalone verifier source audit",
+        "writing checker",
+        "workflow YAML parse"
+      ]
+    }
+  },
+  "actual_stafford_qualification": "pending after complete rc3 source integration; no fixture result qualifies Stafford proofs",
+  "remaining": [
+    "green complete rc3 build",
+    "all consumers/axiom/import audits",
+    "both actual Stafford Comparator checks",
+    "both pinned official mechanical-report artifacts at same frozen public commit",
+    "proof-route dependency and human-review evidence"
+  ],
+  "source_files": {
+    "Challenge.lean": "da107b2555a4923ec5e013c710ed3dcdee74b9d2bd33a6fc25b39e0fa8b50605",
+    "FixedSourceChallenge.lean": "403dc92296114ad6e52dcec1d627ad65bfd04f76058f260f12845c7f73a69f5c",
+    "formalization.yaml": "c56fdbab123a86b4e60c5417be769f92f5e31a8cfc73e312e392058ee998c1d4",
+    ".github/workflows/palomar-preflight.yml": "b857e244a8879ce411ac96dcc42f254c2a1e99c5b88c8bc657e75d67328d0eab"
+  },
+  "artifacts": {
+    "fixture_evidence_archive": {
+      "path": "/tmp/stafford38-palomar-gates-20261002-fixture-evidence.tar.gz",
+      "sha256": "31eb59a3a60ed7f1871a1336cc2ca93a98b42a8b809c20505f4bf70ecd2703e8"
+    },
+    "source_archive": {
+      "path": "/tmp/stafford38-palomar-gates-20261002-source.tar.gz",
+      "sha256": "21942c126de8b30efa668495d3fcb2153f9fb6158db9fd1700181b10f94bb441"
+    },
+    "main_challenge_compile_log": {
+      "path": "/tmp/stafford38-palomar-challenge-rc3-20261002.log",
+      "sha256": "fa0fe864c853ae99dec0a083ca95422ef513f3e62566c11873b095bf1a77ad16"
+    },
+    "fixed_challenge_compile_log": {
+      "path": "/tmp/stafford38-palomar-fixed-challenge-rc3-20261002.log",
+      "sha256": "c9b3b6c30b60ee1b4d99d287f3488fbb87a6a50ef0d27ff57ba5e286c58004d7"
+    }
+  }
+}

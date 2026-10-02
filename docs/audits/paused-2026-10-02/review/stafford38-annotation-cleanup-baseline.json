@@ -1,0 +1,198 @@
+{
+  "base": "f55e98bfbd1f043a3857c66d5b3c8c3536de2d62",
+  "source_sha256": "c0910a5bdc168b8d3a0a5d862334443de8cfb1e2c1b7cb0a0397d3594bf609fb",
+  "move_comments": [
+    {
+      "id": "COMP-01",
+      "start": 25267,
+      "end": 25715,
+      "text": "\\AIcomment{COMP-01}{\\textbf{Information --- no paper edit requested.} Lean follows the printed localization proof: extend the bracket by the quotient rule, use minimality to identify the localized radical with the maximal ideal, and contract. Its bracket has the opposite sign; involutivity is unchanged. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-01}{Mathematical proof (COMP-01, p.~1).}}",
+      "sha256": "b750ade9b00dd591927d5f427d5a5ba895638a75d26144907dc9201fe733826b"
+    },
+    {
+      "id": "COMP-02",
+      "start": 31807,
+      "end": 32224,
+      "text": "\\AIcomment{COMP-02}{\\textbf{Information --- no paper edit requested.} Lean checks the printed induction in an arbitrary symplectic space, including completion with the prescribed first vector. The official normalization uses the resulting basis-to-basis map and its matrix. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-02}{Mathematical proof (COMP-02, p.~1).}}",
+      "sha256": "7f93e6fc6f0241441ab749ef1106983c6bb043fee39862619ea94c9ef6985a0c"
+    },
+    {
+      "id": "COMP-03",
+      "start": 35003,
+      "end": 35539,
+      "text": "\\AIcomment{COMP-03}{\\textbf{Information --- proof comparison; no edit requested.} The formal normalization uses an explicit symplectic matrix and its inverse. Its symbol substitution is $s(MX)$; with the convention used here this is $s\\circ g^{\\mathsf T}$. Monicity means that the $p^N$ PBW coefficient is $1$ and the Bernstein degree is at most $N$, which gives the coefficient bounds above. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-03}{Mathematical proof (COMP-03, p.~2).}}",
+      "sha256": "0b75a61f10571cd1c31d8eeeb2e605631085920d07493eeea92809231f344c21"
+    },
+    {
+      "id": "COMP-04",
+      "start": 46455,
+      "end": 46918,
+      "text": "\\AIcomment{COMP-04}{\\textbf{Information --- no paper edit requested.} Lean checks the Euler weights of PBW monomials and identifies the nonnegative Euler part with the transverse--Euler subring used in the residue argument. The corrected product identities and one-sided normality give the same surjectivity conclusion. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-04}{Mathematical proof (COMP-04, p.~2).}}",
+      "sha256": "bd7ee7e341ec4868dd5cca2a7a421e494d9540fcb2a385036f8b949be0ef79b7"
+    },
+    {
+      "id": "COMP-05",
+      "start": 48722,
+      "end": 49279,
+      "text": "\\AIcomment{COMP-05}{\\textbf{Information --- proof comparison; no edit requested.} The formal proof works element by element with the transverse--Euler subring. The residue identity gives $1+Ux_1\\in I$ for a suitable $U$ in that subring; one-sided normality and the monic relation then give surjectivity of right multiplication by $x_1$. This avoids treating a quotient by a vector subspace as an algebra quotient. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-05}{Mathematical proof (COMP-05, p.~3).}}",
+      "sha256": "a3fb755e73433f0e2d3bb624a6572f8fd398c6c40a3c95a4b7ff42c9cab32438"
+    },
+    {
+      "id": "COMP-07",
+      "start": 67399,
+      "end": 67914,
+      "text": "\\AIcomment{COMP-07}{\\textbf{Information --- proof comparison; no edit requested.} The formal proof uses Gabber directly for minimal primes. If such a prime contained $x_1$, the $N$-fold bracket of the monic symbol $P$ with $x_1$ would put the unit $\\pm N!$ in that prime. The subsequent stable-kernel length computation and Nakayama argument agree with the printed proof. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-07}{Mathematical proof (COMP-07, p.~5).}}",
+      "sha256": "0a2144f7e56924d0554bf432d2e89e9026c579993f19a26c56d59a2eed9ee51b"
+    },
+    {
+      "id": "COMP-08",
+      "start": 71529,
+      "end": 72052,
+      "text": "\\AIcomment{COMP-08}{\\textbf{Information --- proof comparison; no edit requested.} The formal conclusion is scheme-theoretic: $\\Supp(\\gr Q)\\cap V(x_1)=\\varnothing$, equivalently $\\Ann(\\gr Q)+(x_1)=(1)$. It therefore persists under field extension. The formal statement uses the support transported by $\\xi\\mapsto-\\xi$; this fixes $x_1$, so the avoidance statements are equivalent. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-08}{Mathematical proof (COMP-08, p.~5).}}",
+      "sha256": "71faa49c084332f01276464c43838b4ba405895c880af42cdd94694a873c19d2"
+    },
+    {
+      "id": "COMP-10",
+      "start": 80019,
+      "end": 80804,
+      "text": "\\AIcomment{COMP-10}{\\textbf{Information --- proof comparison; no edit requested.} The formal tangent-limit criterion is auxiliary. It assumes a generically smooth arc and a direct-summand lattice whose generic span is the lifted tangent space, with the specified axis component vanishing on its residue. Its proof does not use the smoothness hypothesis or the stated rank, but these remain assumptions of the formal statement. The formal proof of Theorem~\\ref{thm:asymptotic-conormal} follows a separate Laurent-series route, so it does not certify every step of the printed tangent-limit argument. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-10}{Mathematical proof (COMP-10, p.~5).} ROUTE-01 states the correspondence status.}",
+      "sha256": "14b082b501e405937c3526ae199b04e69138df3ff2f37c70e91ea8287cc4cc5d"
+    },
+    {
+      "id": "COMP-11",
+      "start": 95358,
+      "end": 96046,
+      "text": "\\AIcomment{COMP-11}{\\textbf{Checked endpoint.} Over an algebraically closed field of characteristic zero, the theorem proves $[dx_1]\\in\\operatorname{Dir}(Y)$. The constant-coordinate case is immediate. Otherwise one retained divisor valuation and its normalized projective column yield the residue-field tangent bound and the derivative columns used to construct a conormal covector with residue $e_1$. The equation-conormal closure gives the projective direction. The technical supplement gives the argument and states which steps of the printed proof remain unverified. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-11}{COMP-11}.}",
+      "sha256": "d13e863d9931be5342faeaf7fce773f9442f4892fffd9cebd7ae593f37ca25ac"
+    },
+    {
+      "id": "COMP-13",
+      "start": 104337,
+      "end": 104892,
+      "text": "\\AIcomment{COMP-13}{\\textbf{Information --- no further paper edit requested.} The formal proof uses the same finite Hamiltonian translations and component conormal containment. The equality of component ideals on a dense open set is checked through a separator and the product rule, then extended by closure. The limiting direction is used in the closure of fibre directions, as in the marked GEO-03 correction. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-13}{Mathematical proof (COMP-13, p.~8).}}",
+      "sha256": "cb199b0c8d2bc879f5fb2e9781a173b3430e0a9fade53d8305c586ad8f672bd3"
+    },
+    {
+      "id": "COMP-15",
+      "start": 113714,
+      "end": 114188,
+      "text": "\\AIcomment{COMP-15}{\\textbf{Information --- no further paper edit requested.} Lean constructs the quotient scalar-extension isomorphism, checks the associated-graded annihilator comparison, and descends quotient vanishing by faithful scalar extension. Geometry runs over $\\Kbar$; rank-zero and scalar cases are handled separately. \\href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\\#nameddest=comparison-COMP-15}{Mathematical proof (COMP-15, p.~9).}}",
+      "sha256": "1f7953fc753b11fb736132a5d7797c3d742475776153ab52df0e92ea152f9bd0"
+    }
+  ],
+  "remaining_comments": [
+    {
+      "id": "INTRO-01",
+      "sha256": "d8d995d70b33f7dedfba803e67d01f676182602bb9bc25aa9d5e3fff6ddd57af"
+    },
+    {
+      "id": "WF-01",
+      "sha256": "935ab51b519a4be0e6001c326d5ba093163db9e867f47423aa4eec64983b1090"
+    },
+    {
+      "id": "DUP-01",
+      "sha256": "7752461e65556d24d47b6f6c623b8da54833258021c519b165021664100173fc"
+    },
+    {
+      "id": "ALG-01",
+      "sha256": "ecb747b840ef64540f7ae810ba5acad3c04cdb4ed9b5ba5314ffeff03a4e1a13"
+    },
+    {
+      "id": "LIT-01",
+      "sha256": "f4825c8bd65faced4f30743876c29953662ccc84909185b96bc2d70becfe4678"
+    },
+    {
+      "id": "ALG-07",
+      "sha256": "b46bd45c3b4926f43cb0a4c0eb3f62f5e3b07399e7d8824283dee25645274ce0"
+    },
+    {
+      "id": "ALG-08",
+      "sha256": "f35c650c80f1da841bf0e36c70486143b77ab0633f86426e4e5cedb1d91aed37"
+    },
+    {
+      "id": "FIELD-01",
+      "sha256": "3ce0a04dbb878278a28c724f22dd7c4adc0282c50624af5f7a681b8d8492468a"
+    },
+    {
+      "id": "ALG-02",
+      "sha256": "914d76bdeb1893122ad3c655c0abb181ae21c13d2e5a355e1d5963239ff1e477"
+    },
+    {
+      "id": "ALG-03",
+      "sha256": "e8f24833fabe90bd959dd89275c6d36fa63a0b21842dc545d70e9b2e5678d7d7"
+    },
+    {
+      "id": "NOTATION-01",
+      "sha256": "b40d527037a2c2b02127ce1636ee60a8f7647d22246716842db7f23826dce0e1"
+    },
+    {
+      "id": "ALG-04",
+      "sha256": "01adf10e4fabf82e52061c7c1a0bd200b74a68564a19814462222d0af03bd643"
+    },
+    {
+      "id": "ALG-09",
+      "sha256": "51a178a66a735abbe8fbba54a3696e960720de538d80b4b0ba459554ad37a53d"
+    },
+    {
+      "id": "COMP-06",
+      "sha256": "6bf9c000b6d1bdd4c7ef27a5e60d81873e70db7d8b14b96ee4796a587cebf952"
+    },
+    {
+      "id": "EDIT-02",
+      "sha256": "c3279318c73b9484f5951055fb44a68ae606938ce7c6cacefad7e8b0904b7a9b"
+    },
+    {
+      "id": "GEO-04",
+      "sha256": "d1f77e0bdcab2b5aa2335e00a07473edd13b8221e83edf0b6df21b6e83d00b13"
+    },
+    {
+      "id": "ROUTE-01",
+      "sha256": "d4de86b8c8b055fa188e5540ce8108ac4b54c6c335d32c376ab1d90a550304e9"
+    },
+    {
+      "id": "GEO-01",
+      "sha256": "4a3f0b53f38440b5ef59e2b8c85b2f1ee31f50cdd593466351476a026ceccba7"
+    },
+    {
+      "id": "GEO-06",
+      "sha256": "ca778c45a7be8f07510c9ab3980a812b57572fa1e5cc289abc4f7a5e0277825e"
+    },
+    {
+      "id": "GEO-02",
+      "sha256": "412e8aecc8ffd162e885dff87b4711e0436e1455c8ed2a8f609b3b432e846808"
+    },
+    {
+      "id": "GEO-03",
+      "sha256": "6cd68b1040795ca5f8e5c1ec077d6103b08340d5eb368d7d74074747351115ed"
+    },
+    {
+      "id": "GEO-05",
+      "sha256": "0cab37484abd7cf4c866fe5ee85f677dae258611b40574121aa3baf5e42070e1"
+    },
+    {
+      "id": "ALG-05",
+      "sha256": "0a4b69f2dc834a3e8a71be54d1f542f63131e3801dbc5c98a61642ec5cc84291"
+    },
+    {
+      "id": "ALG-06",
+      "sha256": "582f0a0669f5f3594158ea73f8e371f5cbefe0cc4f9e8bfb1fb8cf59f769a168"
+    },
+    {
+      "id": "COMP-16",
+      "sha256": "e8b42e4ac1de0c06db070d290f38af9481e0805d0e75423f2b3e99e24b58b38d"
+    },
+    {
+      "id": "EDIT-01",
+      "sha256": "bb443b83901e4ddb2050122734539d7ede9cdc22f18887ee84f851e20df80d5b"
+    },
+    {
+      "id": "REF-01",
+      "sha256": "d929828d84433818f48f6e445b5d90d8505481a08d732e3f882dc41d45a921c8"
+    },
+    {
+      "id": "SCOPE-01",
+      "sha256": "63d4392535bffcf1096bb2ec8ae5afe6db838ea4a2815b0a7af1eaa8af786a0c"
+    }
+  ],
+  "main_without_moved_comments_sha256": "fd707283bda604800400fd86cb31f9e3ab083f29a3fb8e556c230ccd83aaaa3b"
+}
