@@ -83,6 +83,13 @@ commit" and owner-gate rows.
   `blocked`: that means the cache does not match. Compiling `Stafford38.*`
   modules is expected.
 
+- T35: `SameWitness/ChartGroundMap.lean` (T13) contains the archived lemma with a local
+  `Algebra Q U := Algebra.compHom …` inside its own proof. That is the only place it may live.
+  Do not use that lemma's instance in later files: use only its *conclusion*, the equation
+  `φ.comp (algebraMap k A₀) = algebraMap k U`, and build `φk : A₀ →ₐ[k] U` from it.
+- T22/T36: if Lean rejects a `FormallyEtale` or tower statement for `U`, do not install instances
+  on `U`; adapt over an abstract ring (PLAN 6.2 rule 4).
+
 ## Blocked
 
 (Pi: one line per blocked task with the path of its `notes/<id>-blocked.md`)
