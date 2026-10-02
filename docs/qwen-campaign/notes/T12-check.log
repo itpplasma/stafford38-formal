@@ -1,0 +1,83 @@
+# T12 port GroundPointAxisLiftFromOutput (attempt 1)
+plan: PLAN.md section 7 / T12; worktree /Users/ert/proj/stafford38-qwen @ qwen/paper-route
+WT base 134f04b (T11) -> commit 8ef595c; toolchain leanprover/lean4:v4.35.0-rc3
+owned: Stafford38/Geometry/SameWitness/AxisLiftFromGroundPoint.lean,
+       tests/SameWitness/AxisLiftFromGroundPointConsumer.lean
+
+## preflight
+free_mem_gb=115 disk_free_gb=553 swap_used_gb=0 pressure_level=1 lean_threads=8
+running_lake_or_lean_pids=none  -> GUARD OK
+One lake/lean process at a time, no background jobs.
+
+## search before writing (rule 2.5)
+Mathlib: grep "tiltedArc|axis_lift|AxisLift" .lake/packages/mathlib/Mathlib -> 0 hits
+AlgebraicAnalysis: grep "axisLift|tiltedArc" -> 0 hits
+repo: no declaration named exists_axis_lift_of_groundPointChartOutput and no
+module composing GroundPointChartOutput with an axis lift; the only users of
+GroundPointChartOutput are ActualOptionGroundPointCompletion (owner of the
+abbrev) and ActualSameWitnessGroundPointCompletion (T11-style consumer of it).
+decision: port, reusing existing owners rather than re-proving anything:
+  - Stafford38.Geometry.ActualOptionGroundPointCompletion.GroundPointChartOutput
+    (input, unfolded only at hOutput)
+  - Stafford38.Geometry.ActualPointAxisLift.exists_actual_point_axis_lift
+    (the tilted-axis construction, applied, not re-proved)
+  - Stafford38.Geometry.SameWitness.pair_factorizations_to_atPrime (T11 port)
+  - Stafford38.Geometry.PrescribedGroundPointUnitPowerChart.localToFinSuccPowerSeries
+  - Stafford38.Geometry.PrescribedAffineResidueCompletion.residueCoordinates
+  - Mathlib MvPolynomial.renameEquiv / rename_X, RingHom.algebraMap_toAlgebra
+
+## guarded build
+cmd: lake build Stafford38.Geometry.SameWitness.AxisLiftFromGroundPoint
+log: .lake/qwen/logs/T12-1.log
+GUARD exit=0 reason=finished wall_s=10 peak_rss_gb=0 free_mem_gb=115
+  disk_free_gb=553 swap_used_gb=0
+Built Stafford38.Geometry.SameWitness.AxisLiftFromGroundPoint (4.9s)
+Build completed successfully (3079 jobs). 0 errors.
+5 linter.unusedVariables warnings in this file, all on binders of the frozen
+statement (hfUnitM, hu0, hu1, hq0, hq1); rule 6.4 forbids renaming them, and
+the archived source has the same warnings. 785 pre-existing warnings in the
+other recompiled modules (CompletedDVRPowerSeriesEquiv 42, Weyl/PBW 29, ...).
+maxHeartbeats lowered 4000000 -> 1600000 per rule 2.1; not needed at all
+(4.9 s), so no split was required.
+
+## statement freeze (rule 6.4)
+sed -n '21,79p' ARCHIVE/GroundPointAxisLiftFromOutput.lean > SCR/T12-statement.lean
+sed -n '23,81p' NEW > SCR/T12-statement-new.lean
+diff -> exit 0 (docstring + full theorem statement byte-identical, 59 lines).
+SCR/T12-consumer-statement.lean vs SCR/T12-mod-statement.lean -> exit 0, so
+the consumer restates the module statement literally.
+Only the namespace moved: Stafford38.Geometry.GroundPointAxisLiftFromOutput ->
+Stafford38.Geometry.SameWitness; no rule-2.6 forbidden token in the declaration
+name, so no rename (see renames.md). No new def/structure/abbrev, so no
+new-definitions.md entry.
+
+## guarded consumer check
+attempt 1: lake env lean --trust=0 -M 32000 tests/SameWitness/AxisLiftFromGroundPointConsumer.lean
+  GUARD exit=1 wall_s=10; error(lean.unknownIdentifier) at line 83
+  cause: the copied statement keeps the declaration name
+  exists_axis_lift_of_groundPointChartOutput, so `#print axioms ..._consumer`
+  named a constant that does not exist. The body `exact <theorem> ...` elaborated.
+attempt 2 (final): consumer declaration renamed to
+  exists_axis_lift_of_groundPointChartOutput_consumer (same pattern as T11)
+  log .lake/qwen/logs/T12-consumer.log (both runs appended; no error after the
+  first run's line 61)
+  GUARD exit=0 reason=finished wall_s=10 peak_rss_gb=0
+  exists_axis_lift_of_groundPointChartOutput_consumer depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+## git (WT only, explicit paths)
+git add Stafford38/Geometry/SameWitness/AxisLiftFromGroundPoint.lean
+        tests/SameWitness/AxisLiftFromGroundPointConsumer.lean
+git commit -> 8ef595c (2 files, 210 insertions); nothing else staged, no push.
+Stafford38.lean untouched (not owned by T12).
+
+## notes for the controller
+1. The port compiles verbatim: the archived proof needed no repair, so the
+   instance diamond of repair3/repair4 (section 6.1) is not engaged here - the
+   only letIs mirror the ones already frozen inside the statement's let-block
+   and the instance arguments of exists_actual_point_axis_lift, on rings that
+   come in as variables.
+2. Carried over from T11: nothing imports
+   Stafford38.Geometry.SameWitness.AxisLiftFromGroundPoint yet (it is reached
+   only by name and by tests/SameWitness/AxisLiftFromGroundPointConsumer.lean),
+   so T42/T43/T50 must wire it into a root list or keep checking it by name.

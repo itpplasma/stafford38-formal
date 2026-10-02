@@ -30,3 +30,36 @@ Reused from Mathlib (no port needed for these):
 - `IsLocalization.map_units`, `IsUnit.map`, `map_mul`, `map_pow`.
 
 No new `def`/`structure`/`abbrev`, so no `new-definitions.md` entry.
+
+## T12 — AxisLiftFromGroundPoint
+
+Archived `Stafford38/Geometry/GroundPointAxisLiftFromOutput.lean` →
+`Stafford38/Geometry/SameWitness/AxisLiftFromGroundPoint.lean`.
+
+| Archived | New |
+| --- | --- |
+| `Stafford38.Geometry.GroundPointAxisLiftFromOutput.exists_axis_lift_of_groundPointChartOutput` | `Stafford38.Geometry.SameWitness.exists_axis_lift_of_groundPointChartOutput` |
+| `...Consumer.<same name>` (in `tests/SameWitness/AxisLiftFromGroundPointConsumer.lean`) | `Stafford38.Geometry.SameWitness.AxisLiftFromGroundPointConsumer.exists_axis_lift_of_groundPointChartOutput_consumer` |
+
+Declaration name of the ported theorem unchanged (rule 2.6 clean); only the
+namespace follows the new path. Docstring and full theorem signature are
+byte-identical to the archived text (`diff` of the docstring+statement blocks,
+exit 0; see `notes/T12-check.log`). Import of the T11 module becomes
+`Stafford38.Geometry.SameWitness.AwayFactorToAtPrime`.
+
+Reused from the repository (nothing re-proved):
+
+- `Stafford38.Geometry.ActualPointAxisLift.exists_actual_point_axis_lift` —
+  the tilted-axis certificate, applied with the transported data.
+- `Stafford38.Geometry.SameWitness.pair_factorizations_to_atPrime` (T11) —
+  moves both divisor-order factorizations from the away open to `AtPrime M`.
+- `Stafford38.Geometry.ActualOptionGroundPointCompletion.GroundPointChartOutput`
+  — input abbrev, unfolded only at the hypothesis `hOutput`.
+- `Stafford38.Geometry.PrescribedGroundPointUnitPowerChart.localToFinSuccPowerSeries`,
+  `Stafford38.Geometry.PrescribedAffineResidueCompletion.residueCoordinates`.
+- Mathlib `MvPolynomial.renameEquiv`, `MvPolynomial.rename_X`,
+  `RingHom.algebraMap_toAlgebra`.
+
+No Mathlib or AlgebraicAnalysis counterpart exists (grep for `tiltedArc`,
+`axis_lift`, `AxisLift`: 0 hits in both package trees).
+No new `def`/`structure`/`abbrev`, so no `new-definitions.md` entry.
