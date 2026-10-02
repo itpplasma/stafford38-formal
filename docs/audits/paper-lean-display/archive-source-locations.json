@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "original_source_commit": "983e0d7646a9e4d86e562ee89577c9bffa7bcff2",
+  "scope": "Historical display-audit source bytes preserved as text; excluded from current submitted Lean source. Historical receipts retain their original paths and scope.",
+  "files": [
+    {
+      "original_path": "docs/audits/paper-lean-display/stafford-audit-display-probe-Challenge.lean.lean",
+      "preserved_path": "docs/audits/paper-lean-display/stafford-audit-display-probe-Challenge.lean.lean.txt",
+      "sha256": "1e67a99cbaacb1124173f098aaa2943c66f30d4dc9009c47c14faedcb1f692cd"
+    },
+    {
+      "original_path": "docs/audits/paper-lean-display/stafford-audit-display-probe-CorollaryChallenge.lean.lean",
+      "preserved_path": "docs/audits/paper-lean-display/stafford-audit-display-probe-CorollaryChallenge.lean.lean.txt",
+      "sha256": "33b4244cf64840bf2321d4c422c560a8884d3aa64a2ee83e6e5b95ceb7929100"
+    },
+    {
+      "original_path": "docs/audits/paper-lean-display/stafford-audit-display-probe-FixedSourceChallenge.lean.lean",
+      "preserved_path": "docs/audits/paper-lean-display/stafford-audit-display-probe-FixedSourceChallenge.lean.lean.txt",
+      "sha256": "64366eb0bd7eba5822ea099effee106ef79b464bd3de56032760b69b2970b4b0"
+    },
+    {
+      "original_path": "docs/audits/paper-lean-display/stafford-audit-display-probe-final.lean",
+      "preserved_path": "docs/audits/paper-lean-display/stafford-audit-display-probe-final.lean.txt",
+      "sha256": "23396cf1ffe44cb35867637781ac9990b1abee0887d835f06b9bfe38219f0508"
+    },
+    {
+      "original_path": "docs/audits/paper-lean-display/stafford-audit-filtration-check.lean",
+      "preserved_path": "docs/audits/paper-lean-display/stafford-audit-filtration-check.lean.txt",
+      "sha256": "56c8170bc82ea5ccdc9799dcceebebed6690b12e20c45ffe0cd65580d08a5339"
+    }
+  ]
+}
