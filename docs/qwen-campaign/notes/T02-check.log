@@ -1,0 +1,42 @@
+# T02 baseline build of prerequisites (attempt 2, retry)
+plan: PLAN.md section 5 / T02; worktree /Users/ert/proj/stafford38-qwen on qwen/paper-route
+MAIN/WT commit: 2a9c264c5ad881fec8f70b9ad0d53861b72279b0
+toolchain: leanprover/lean4:v4.35.0-rc3
+
+## preflight
+free_mem_gb=114 disk_free_gb=553 swap_used_gb=0 pressure_level=1 lean_threads=8
+running_lake_or_lean_pids=none
+GUARD OK
+
+## guarded baseline build (11 prerequisite modules)
+cmd: lake build Stafford38.Geometry.{ActualSameWitnessAffineFibreEndpoint,ActualSameWitnessGroundPointCompletion,ActualPointAxisLift,ActualOptionColumnBinding,ActualWitnessCommonOpenColumnGlue,A0ChartFormalEtale,A0NormalizedProjectiveCoordinates,OriginalPrimeCoordinateAvoidanceWitness,GenericSmoothOpen,GeneralAsymptoticConormal,GeneralCoisotropicExclusion}
+full log: .lake/qwen/logs/T02.log (   10917 lines)
+Build completed successfully (3148 jobs).
+GUARD exit=0 reason=finished wall_s=10 peak_rss_gb=0 free_mem_gb=115 disk_free_gb=553 swap_used_gb=0
+errors: 0; 'fetching revision': 0; 'Building Mathlib': 0
+attempt 1 (first compile pass in WT, .lake/qwen/logs/T02-attempt1.log): Build completed successfully (3148 jobs). GUARD exit=0 reason=finished wall_s=91 peak_rss_gb=2 free_mem_gb=114 disk_free_gb=553 swap_used_gb=0 
+attempt 1 recompiled non-cache-consistent modules: Built Stafford38.Geometry.A0ChartFormalEtale (16s);Built Stafford38.Geometry.A0NormalizedProjectiveCoordinates (12s);Built Stafford38.Geometry.ActualWitnessSelectedChartBinding (11s);Built Stafford38.Geometry.ActualWitnessCommonOpenColumnGlue (33s);
+
+## olean presence for the 11 targets (.lake/build/lib/lean)
+OK ActualSameWitnessAffineFibreEndpoint
+OK ActualSameWitnessGroundPointCompletion
+OK ActualPointAxisLift
+OK ActualOptionColumnBinding
+OK ActualWitnessCommonOpenColumnGlue
+OK A0ChartFormalEtale
+OK A0NormalizedProjectiveCoordinates
+OK OriginalPrimeCoordinateAvoidanceWitness
+OK GenericSmoothOpen
+OK GeneralAsymptoticConormal
+OK GeneralCoisotropicExclusion
+
+## independent oracle: WT source of the two files that differ from the cache donor elaborates clean
+donor tree: /Users/ert/proj/stafford38-rc3-final-worker (HEAD eed5291, dirty); WT sources are MAIN HEAD 2a9c264
+A0ChartFormalEtale: donor source differs -> lake recompiled it from the WT source in attempt 1 (Built ... 16s, olean 22:36)
+GeneralAsymptoticConormal: donor working-copy differs, lake accepted the cloned olean by content trace -> verified independently by single-file elaboration of the WT source:
+lake env lean -M 32000 Stafford38/Geometry/GeneralAsymptoticConormal.lean -> GUARD exit=0 reason=finished wall_s=10 peak_rss_gb=0 free_mem_gb=115 disk_free_gb=553 swap_used_gb=0 ; errors=0
+
+## single-file consumer check (turnaround measurement)
+cmd: lake env lean -M 32000 tests/ActualSameWitnessGroundPointCompletionConsumer.lean
+'Stafford38.Geometry.ActualSameWitnessGroundPointCompletion.exists_actual_same_witness_groundpoint_chart' depends on axioms: [propext, 'Stafford38.Geometry.EtaleCotangentBasis.coordinateDerivation_algebraMap' depends on axioms: [propext, GUARD exit=0 reason=finished wall_s=10 peak_rss_gb=0 free_mem_gb=115 disk_free_gb=553 swap_used_gb=0 
+axioms outside propext/Classical.choice/Quot.sound: 0

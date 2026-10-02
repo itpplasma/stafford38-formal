@@ -10,7 +10,7 @@ commit" and owner-gate rows.
 | --- | --- | --- | --- | --- | --- |
 | T00 | Resource and state check | done | 1 | docs/qwen-campaign/notes/T00-check.log | GUARD OK; 116 GiB free RAM, 553 GiB free disk, no foreign lake/lean; MAIN clean outside docs/qwen-campaign |
 | T01 | Create campaign worktree | done | 1 | docs/qwen-campaign/notes/T01-worktree.log | WT at /Users/ert/proj/stafford38-qwen on qwen/paper-route @2a9c264; .lake APFS clone (cp -cR, 22 s, df delta 0 GiB); manifest identical, toolchain leanprover/lean4:v4.35.0-rc3 |
-| T02 | Baseline build of prerequisites | doing | 1 | docs/qwen-campaign/notes/T02-check.log | running guarded baseline build of 11 prerequisite modules |
+| T02 | Baseline build of prerequisites | done | 2 | docs/qwen-campaign/notes/T02-check.log | baseline OK: lake build of the 11 prerequisite modules exit=0, 3148 jobs, 0 errors, no Mathlib compile/fetch; consumer check exit=0 (axioms propext/choice/Quot.sound only) |
 | T10 | Extract archived candidates | todo | 0 | | |
 | T11 | Port AwayFactorToAtPrime | todo | 0 | | |
 | T12 | Port axis lift from ground point | todo | 0 | | |
@@ -56,8 +56,9 @@ commit" and owner-gate rows.
 
 - Free memory / disk at T00: 116 GiB truly free (guard), swap used 0 GiB, pressure normal; disk 553 GiB free of 1.8 Ti on /System/Volumes/Data
 - MAIN commit at T00: 2a9c264c5ad881fec8f70b9ad0d53861b72279b0 (branch main; untracked only docs/qwen-campaign/run-pi.sh, docs/qwen-campaign/runs/, docs/qwen-campaign/notes/)
-- T02 prerequisite build (wall time, peak RSS, jobs):
-- Single-file check turnaround:
+- T02 prerequisite build (wall time, peak RSS, jobs): attempt 1 first compile pass in WT 91 s wall, peak_rss 2 GiB, 3148 jobs, exit 0 (.lake/qwen/logs/T02-attempt1.log); attempt 2 re-check all up-to-date 10 s wall, peak_rss <1 GiB, 3148 jobs, exit 0 (.lake/qwen/logs/T02.log); guard never refused, no `fetching revision`, no `Building Mathlib`
+- Single-file check turnaround: 10 s wall, peak_rss <1 GiB (`lake env lean -M 32000 tests/ActualSameWitnessGroundPointCompletionConsumer.lean`, exit 0)
+- T02 provenance note for the controller: two WT sources differ from the cache donor `stafford38-rc3-final-worker`. Lake recompiled `A0ChartFormalEtale`, `A0NormalizedProjectiveCoordinates`, `ActualWitnessSelectedChartBinding`, `ActualWitnessCommonOpenColumnGlue` from the WT sources; it accepted the cloned olean for `GeneralAsymptoticConormal` by content trace, and that file was elaborated separately from the WT source (exit 0, log `.lake/qwen/logs/T02-oracle-gace.log`). See notes/T02-check.log.
 - T50 full build (wall time, peak RSS):
 - T51 verifier (wall time):
 
