@@ -1,6 +1,6 @@
 # Current status
 
-Updated 2 October 2026. This is a development checkpoint, not the final paper-aligned release or a handover for human review.
+Updated 2 October 2026. **Stopped at the owner's request; no background proof, migration or verification jobs are running.** This is a development checkpoint, not the final paper-aligned release or a handover for human review.
 
 ## Proof and correspondence
 
@@ -12,9 +12,9 @@ The remaining mathematical task is to assemble these components for one actual g
 
 ## Toolchain and checks
 
-The checked-in toolchain remains Lean 4.33.0, with the pinned Mathlib and AlgebraicAnalysis revisions recorded in the repository configuration. Migration of the complete formal repository to Lean 4.35.0-rc3 is being checked in an isolated worktree. It is not yet promoted and must pass the full build, independent consumers, axiom audits and current Palomar source checks before release.
+The checked-in toolchain remains Lean 4.33.0, with the pinned Mathlib and AlgebraicAnalysis revisions recorded in the repository configuration. The incomplete Lean 4.35.0-rc3 migration is saved as a separate, unpromoted candidate. It is not yet promoted and must pass the full build, independent consumers, axiom audits and current Palomar source checks before release.
 
-Recent integrated geometry components have passed targeted builds and independent `--trust=0` consumer/axiom checks using only the standard axioms. An earlier full checkpoint passed 9,168 build jobs and 301 consumer/axiom reports; that receipt applies to its recorded source, not automatically to subsequent additions. The current full module build passed 9,181 jobs. Its remaining verifier checks are in progress; no completed full-verifier receipt for this checkpoint is claimed here.
+Recent integrated geometry components have passed targeted builds and independent `--trust=0` consumer/axiom checks using only the standard axioms. An earlier full checkpoint passed 9,168 build jobs and 301 consumer/axiom reports; that receipt applies to its recorded source, not automatically to subsequent additions. The current full module build passed 9,181 jobs. The full verifier stopped at its 900-second limit during the serial consumer checks, without a reported build error. Its remaining stages have not passed as a whole; no completed full-verifier receipt for this checkpoint is claimed here.
 
 AlgebraicAnalysis v0.3.3 is separately released on Lean 4.35.0-rc3. Its archived mathematical source is `bbbbf3fc358ca8100b158cec4cf47f336ab70163`, DOI [10.5281/zenodo.23104842](https://doi.org/10.5281/zenodo.23104842). The final formal migration will pin that source.
 
@@ -22,6 +22,10 @@ AlgebraicAnalysis v0.3.3 is separately released on Lean 4.35.0-rc3. Its archived
 
 Before the next formal release: finish the unconditional paper route and terminal wiring; remove redundant definitions and proof scaffolding without losing evidence; replay all checks on rc3; qualify the actual package with the current local Palomar scripts; regenerate the complete paper/Lean review bundle from exact committed inputs; update the archived version citations; and publish the release that triggers Zenodo.
 
-Max will review the whole final paper/Lean correspondence, including challenge definitions and assumptions. Johanna will review the preserved paper and its marked local proposals, with mathematical explanations in prose. The final review handover and completion email are pending.
+Max will review the whole final paper/Lean correspondence, including challenge definitions and assumptions. Johanna will review the preserved paper and its marked local proposals, with mathematical explanations in prose. The final review handover and completion email are pending. No new formal or supplementary release has been published.
 
 See [the route map](docs/paper-route-alignment.json), [definition owners](docs/definition-owners.md) and [proof-source provenance](docs/proof-source-provenance.md). Historical receipts and release records retain their original scope.
+
+## Saved candidate state
+
+[The stopped-state archive](docs/audits/stopped-2026-10-02/README.md) records the exact bases, hashes and limitations of the unintegrated rc3 migration, affine-fibre closure candidate, dependency guard, verifier preparation and definition cleanup. Those archives preserve work for resumption; they are not part of the checked proof import graph.

@@ -1,0 +1,227 @@
+{
+  "status": "Stopped at owner request; no background jobs; no new release",
+  "canonical_base_before_stop_archive": "3f5270cc93f359daa13552477a05d5f9d20044fa",
+  "rc3_candidate_base": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
+  "rc3_candidate_tree": "3b844a0ea9dc5a0ecea65d33da70f3d41ca05f26",
+  "rc3_patch_sha256": "fc5e0aec27eccf9506c130fe742c0b61f7325c14d87a4830cb5e6d8411d557b7",
+  "full_verifier_exit": 124,
+  "artifacts": [
+    {
+      "file": "rc3-candidate.patch.gz",
+      "sha256": "e962ba630aee67e62b436a2a0076e10754f0cdf851998710cafda8921da1665f",
+      "uncompressed_sha256": "fc5e0aec27eccf9506c130fe742c0b61f7325c14d87a4830cb5e6d8411d557b7",
+      "scope": "Unpromoted candidate on base b62f8cc0663a57d2baa51e333504a57da8fb5612; full build and verifier not replayed after latest merges."
+    },
+    {
+      "file": "geometry-candidate.tar.gz",
+      "sha256": "b6508ef9f2c175251dfed330875dddc0404e33f7d3c4a17b1221ca37e58f7997",
+      "scope": "Unintegrated source candidates. ActualSameWitnessAffineFibreClosure fails at line208; later errors remain. Not part of the proved terminal route.",
+      "contents": [
+        {
+          "path": "Stafford38/Geometry/ActualChartNormalizationTypeAlignment.lean",
+          "sha256": "c3925cc5df0b84a80bce7da2d8d7a1c52e2ff2468ad88091888b54052ea1b62f"
+        },
+        {
+          "path": "Stafford38/Geometry/ActualCommonOpenArcCompatibility.lean",
+          "sha256": "6f8d5bc797a447bb4c3d63dad92543e7ad23fdf165125ac8ce946adc7e9da191"
+        },
+        {
+          "path": "Stafford38/Geometry/ActualOptionCommonOpenColumns.lean",
+          "sha256": "7ab310bbf2a7975da7f452d5b1c471bbb75e52da36864bffa1c0cfa74dd3fb8e"
+        },
+        {
+          "path": "Stafford38/Geometry/ActualSameWitnessAffineFibreClosure.lean",
+          "sha256": "0617303d5d369b9d0013ac76f064548a8a1ef25018ea9c995c8b334abc4050bf"
+        },
+        {
+          "path": "Stafford38/Geometry/ActualSameWitnessGroundPointCompletion.lean",
+          "sha256": "b75ebbb05e3e0140a98d37fd0e0d1c417b33875ab0941533abcf7b976bce5693"
+        },
+        {
+          "path": "Stafford38/Geometry/ActualSelectedChartCommonOpenColumn.lean",
+          "sha256": "179955db73f1f444e946acf92a8c29eda36be24cf9d4d441d3fc9294165ae5a3"
+        },
+        {
+          "path": "Stafford38/Geometry/ActualSelectedNormalizationAway.lean",
+          "sha256": "7e54c8abe99d443a8f15b96f632317f4def0335b0622f5a53cbe7c8760922f84"
+        },
+        {
+          "path": "Stafford38/Geometry/ActualSelectedNormalizationChartTransport.lean",
+          "sha256": "8159e3471e5275378946f18efef7c5ac202769b0c81c70d3b2ca15effb38881a"
+        },
+        {
+          "path": "Stafford38/Geometry/AwayFactorToAtPrime.lean",
+          "sha256": "b974d07cc0fe4e820c5de841b53536bc2809c971dd5065323d20fd7c7c65299b"
+        },
+        {
+          "path": "Stafford38/Geometry/GroundPointAxisLiftFromOutput.lean",
+          "sha256": "c8fdb87fe7dc0c31750ce795c63e5ce1057396e98cf5f7b7ae1a2405bdadfe3b"
+        },
+        {
+          "path": "Stafford38/Geometry/GroundPointAxisLiftFromOutputConsumer.lean",
+          "sha256": "4c0f70c0113b0504dca37d4064b9d9f5804492c8421003d2c991250022c624da"
+        }
+      ]
+    },
+    {
+      "file": "dependency-guard.tar.gz",
+      "sha256": "55634dd73c05fde85a36c72c78ac35059a417afc243837b2c064e97a52128ed8",
+      "scope": "Behavioral fixtures pass; actual current rc3 terminal traversal not verified.",
+      "contents": [
+        {
+          "path": "DependencyClosure.lean",
+          "sha256": "110704fb2fd3e9f774360aab66f8bcab723fedfeece2a6db4ed63dda466d07ba"
+        },
+        {
+          "path": "DependencyClosureCore.lean",
+          "sha256": "a4abaa852633e05b71de5fd046ca1a4090c33690b914114d72157a0d5843b848"
+        },
+        {
+          "path": "dependency_guard_behavior.py",
+          "sha256": "2eb2d90f367d07c5679307a0800acb1f720ab7ef705b646cf1b164e36c957ad5"
+        },
+        {
+          "path": "fixture-src/Challenge.lean",
+          "sha256": "ff5c89c148267940e36f9f1ec959e660dbe7ec542b8093de51e87cbdbf9070f2"
+        },
+        {
+          "path": "fixture-src/FixedSourceChallenge.lean",
+          "sha256": "eac349a10b745429f32d7d7e55551c8d28a9f4af02a3ff8d50dacc9b9ceb4652"
+        },
+        {
+          "path": "fixture-src/FixedSourceSolution.lean",
+          "sha256": "35b7ec459fbbedfbc3dce5eddead80de90a4dd18758ab140da3a3d8f732e181a"
+        },
+        {
+          "path": "fixture-src/GuardFixtureBad.lean",
+          "sha256": "3e15d341e83c0d3af85bfaafd7285413b7a8e9b431a945dd14e8979e4dd3fa74"
+        },
+        {
+          "path": "fixture-src/GuardFixtureBadRoot.lean",
+          "sha256": "f83992e2792bdb5a736a0ed93df6eaec2ad4baba72302e09a9da08e0a2dac1b5"
+        },
+        {
+          "path": "fixture-src/GuardFixtureBannedOwner.lean",
+          "sha256": "5600f9f3d387b02c779f9a83ef75b39c7e968fb0696b4c33b57bd453b6fdc0a5"
+        },
+        {
+          "path": "fixture-src/GuardFixtureMissingBody.lean",
+          "sha256": "5ec2e0fbbd9bc2918af12fc45e7ceb5a240b49496ccb86d64e6e00092f86c740"
+        },
+        {
+          "path": "fixture-src/GuardFixtureRelay.lean",
+          "sha256": "7ef7a90742b48f1c05ae921f6adef6108ccb5f690949b0150f755fe532858fc3"
+        },
+        {
+          "path": "fixture-src/GuardFixtureSafe.lean",
+          "sha256": "9b48193c8e88604062d9ee2e69f4bafc4db4ede77dcf621fca2631dea587c990"
+        },
+        {
+          "path": "fixture-src/Solution.lean",
+          "sha256": "dc68e447d07b76660041b1eebe7788d93005a5874f1cf13e6b3bb6a86b83b944"
+        },
+        {
+          "path": "fixture-src/Stafford38/Geometry/CanonicalNonconstantFiniteGradientProductionProof.lean",
+          "sha256": "e1fe9667d7328b239d2c2302119ad5ae88cf00c98b190019bd0d0c0a1f019e24"
+        },
+        {
+          "path": "fixture-src/Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean",
+          "sha256": "32cdf3e9487ec0642f445ecc14a6a5764647116b62df4f3db101013737f780c6"
+        },
+        {
+          "path": "fixture-src/Stafford38/Geometry/GeneralConormalAxis.lean",
+          "sha256": "b78181a91be4fdb18afe5da88300047e6e2338d0dfa2713c425640d901ae3ccf"
+        },
+        {
+          "path": "manifest.json",
+          "sha256": "4ae6d2b7e99b259dcf3f696708827761f9ec0558e4a0e6f5918c61edf7ef0b8f"
+        },
+        {
+          "path": "run_guard.py",
+          "sha256": "b1415ba6df070f5317f09e5522cf31882ecd12c86760c5201e1c49a0c1805315"
+        }
+      ]
+    },
+    {
+      "file": "palomar-verifier-candidate.tar.gz",
+      "sha256": "e67b58e5b84856f0fa523a131b3a4730e07f5413640e1a71fbaed29f753b2caa",
+      "scope": "Unintegrated verifier preparation and local fixtures. No actual final Stafford Palomar qualification claimed.",
+      "contents": [
+        {
+          "path": "comparator-fixed-source.json",
+          "sha256": "0808a8f471f1941402e9e8a07afa1e81affad0b4962d0702f0ba498d95ae0bce"
+        },
+        {
+          "path": "comparator.json",
+          "sha256": "0ad546c50756e315500f85346baaa6bf85fb0138394b6d31ef6bb47dcd549a76"
+        },
+        {
+          "path": "scripts/bootstrap-palomar-tools.sh",
+          "sha256": "0d6d9175c0b7f9d9bace899e5a794642b4ce5a186f9a6de48ea85ed29eade9d6"
+        },
+        {
+          "path": "scripts/check-palomar-policy.py",
+          "sha256": "07fb3e425f26da2b9c01015b8985c56e9101010850ecc5af53712d41aa74b836"
+        },
+        {
+          "path": "scripts/palomar-policy-LICENSE",
+          "sha256": "10321b0cca2b8025d4b5065dd20e22c1f74da2e872c12363e3601974e093bc21"
+        },
+        {
+          "path": "scripts/palomar-source-policy-provenance.json",
+          "sha256": "2cc9eedd00c67a51e3fb5d7f01d2089cef0d0ca4a65100ae213b8ff0f47cf3e3"
+        },
+        {
+          "path": "scripts/run-palomar-comparator.sh",
+          "sha256": "dbfb57592b40da0591d8784fbb4d5367f697e4359f8658a649473018e728b2c0"
+        },
+        {
+          "path": "scripts/source_requirements.py",
+          "sha256": "971950a45500ad8ba8c9061eb51716bc1c38f411ff877c447b6de527b23d2c6d"
+        },
+        {
+          "path": "scripts/verification_errors.py",
+          "sha256": "ce58c4adc2f896a8ce69961d1f49ada7f571d86f9638a196f34197e3293cc776"
+        },
+        {
+          "path": "scripts/verify-palomar.sh",
+          "sha256": "a9a540c88cbd6614cb4e60ac7ebac54634a869f0244c0bdaa031dcfdbdc4a578"
+        },
+        {
+          "path": "scripts/verify.sh",
+          "sha256": "beed5d74aa6b8e948a5cf04f5ca2edd98689c64894f7e3cff977dda01328f334"
+        },
+        {
+          "path": "tests/palomar-comparator-behavior.sh",
+          "sha256": "9f3304521821f20c22462bf8b66cbfad9b2dab7f96d1cd505f5be07b9d4cfea5"
+        },
+        {
+          "path": "tests/palomar-policy-pin-behavior.py",
+          "sha256": "2d27ff255aa3929bde8679cbcf23bcbf05327a6e6693db2d87cf7ff372483c50"
+        },
+        {
+          "path": "tests/palomar-source-requirements-behavior.py",
+          "sha256": "5b220de674d5c0107612352129e464028dddde79f294385b4df00bb935dd172b"
+        }
+      ]
+    },
+    {
+      "file": "euler-owner.patch.gz",
+      "sha256": "01eda505e4c71e2e7968b47a341b62e01c683d355f43ce132ad63aaad6c79eb7",
+      "uncompressed_sha256": "6cf699a0cca3c789bb8d32c3a62f79e760dc60fe39241f6e7424b46872e98768",
+      "scope": "Unintegrated checked-source simplification deriving rational Euler products from Evolution owners."
+    },
+    {
+      "file": "module-build.log.gz",
+      "sha256": "f07258cc0e3d2e57adc1dcb5d49f2ae0913f7fdb9fcdd8759b9e8ff3e71521d1",
+      "uncompressed_sha256": "58ab694eca15413944bf914eed2504886eac1f20eff4f9c28a2e63ea4ed4daa9",
+      "scope": "Successful 9181-job module build at the recorded 51f8f8 source checkpoint; not a full-verifier success."
+    },
+    {
+      "file": "partial-consumer-checks.log.gz",
+      "sha256": "9b87f535807f020a8c51cc6b80cfcb9655767707a262a21100025bacd9cea5f0",
+      "uncompressed_sha256": "8436b5c2024d16e81c56fd945397b549054440f27d3199be37c26c46cd6bcf76",
+      "scope": "Partial serial consumer log; enclosing verifier expired after900seconds."
+    }
+  ]
+}

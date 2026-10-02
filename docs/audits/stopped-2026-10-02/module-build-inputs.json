@@ -1,0 +1,4568 @@
+{
+  "scope": "Exact Git tree of tracked and untracked nonignored worktree inputs; canonical index unchanged.",
+  "base_commit": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
+  "tree": "51f8f81084a7912e1105996d430cd7c08027e5b7",
+  "patch_sha256": "c39b2d90184c7f84eee0e24f08962b76ff94541e80cbe98fcd2f5f95b049a047",
+  "files": [
+    {
+      "path": ".github/workflows/review-site.yml",
+      "mode": "100644",
+      "git_blob": "8506624d9fb5f3fee6c9e237acab0de30ccede2f",
+      "sha256": "e7699f428c0c0bda0706febb5e73dc619be47db539fd73f435b7efc1cbccd70c"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "git_blob": "90475fc88b35e33424577259be8cfc61b86f5a80",
+      "sha256": "ad3a8ec56b5cad10ab7599d20060e95aa37f4c1b8833281e4c7bc4ae18f4d26a"
+    },
+    {
+      "path": ".zenodo.json",
+      "mode": "100644",
+      "git_blob": "ff751620d345405dbadb957b78b61dee855b0bd9",
+      "sha256": "3c68e81dc4b94776f08c4afc950a5d44ad32fb4a19e83d701c792b8f69c07ec8"
+    },
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "git_blob": "2aae93a3a82dae66c93ac63152d0dd6093347f84",
+      "sha256": "af4c1d755bd3bede01c59a0338bec66b3aa89a44fd89c17e29f70aec900e413a"
+    },
+    {
+      "path": "CITATION.cff",
+      "mode": "100644",
+      "git_blob": "d15841107b4410086b08db652abdb3aae00b49f7",
+      "sha256": "637a10178ed61e2b4a7303c84e989a932a3d1ab37dd9d62d5a1178087e9835a9"
+    },
+    {
+      "path": "Challenge.lean",
+      "mode": "100644",
+      "git_blob": "cf70ed2315add59bcd9daf1823a6b53d55e00afb",
+      "sha256": "380e1bfd3dc6aa1669dae0c6e7c0f306dfe541a108d1b6f56d2d429ef441f828"
+    },
+    {
+      "path": "CorollaryChallenge.lean",
+      "mode": "100644",
+      "git_blob": "d754e1977b0306b54d75e0906164611d5ebe39cf",
+      "sha256": "25bacfdb5d2530b9a4c6cab1887bfef016ce7a0e00697d06fc4c0c0b83084f2c"
+    },
+    {
+      "path": "FixedSourceChallenge.lean",
+      "mode": "100644",
+      "git_blob": "d2df9a25462b8825eecf98a2915bc9c725a899c1",
+      "sha256": "2e8f00f25b96b293dc8cedc668fdeccdf6833329a32e4484a6577862c306c0bd"
+    },
+    {
+      "path": "FixedSourceSolution.lean",
+      "mode": "100644",
+      "git_blob": "eca79ccba1a8569c2fdae96d251dc0ea8657cacb",
+      "sha256": "6adbe275a9764e0441146ad66115004973031ba00fd77accc688b343cef02315"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "NOTICE",
+      "mode": "100644",
+      "git_blob": "2a94e6a91d194b0f48a09b05ec7c437a420752bb",
+      "sha256": "59751443fd70d50054c25b7673fa274f67e5026775f30d5f09c59f71442514ed"
+    },
+    {
+      "path": "PLAN.md",
+      "mode": "100644",
+      "git_blob": "078f9932be27a61e9ec19afc9e2a99bf73c12bbc",
+      "sha256": "cb477fccaca0c26e508ae2b3219a2e27478a915af6bf8a0fc96c444d731bc631"
+    },
+    {
+      "path": "PaperPairChallenge.lean",
+      "mode": "100644",
+      "git_blob": "f60df97e4a6272b88dc624ed484afce6b74980de",
+      "sha256": "950b29b21d02bcc7707b8f8d3c529c8bde16aa2d427c7e7dd62223b64bd02143"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "git_blob": "ff3b0bc2f2a758dc6f9e01b245e05dbc6d09bbfe",
+      "sha256": "7508672846af3f296c0eeb261ec9751763f43615c881ae69a8f01527a8087c8c"
+    },
+    {
+      "path": "Solution.lean",
+      "mode": "100644",
+      "git_blob": "6a0f5b25b37fbb2d3cc9f13c2a23c4173ff0fe56",
+      "sha256": "0ad2a6e9eee5b7c82c62a92f3d2f4345ec5120ebc2b27c1d6b4058299b579c93"
+    },
+    {
+      "path": "Stafford38.lean",
+      "mode": "100644",
+      "git_blob": "fd5f2f4c2276b7525b5fc1c2d23a021bd0cea8f7",
+      "sha256": "8ee26a2eb792eadddde8f34de7a4cb10de64ac8a3286cf6b1a86ec85c83a39c2"
+    },
+    {
+      "path": "Stafford38/CanonicalSupportVanishingReduction.lean",
+      "mode": "100644",
+      "git_blob": "f8b12ec9325407caf17fa3792735128a1a654983",
+      "sha256": "51d1e5a8356a7cca4c10dfea52a31682d1d6293b6a7228a3dd5bb53620c2d7de"
+    },
+    {
+      "path": "Stafford38/ChallengeDefinitions.lean",
+      "mode": "100644",
+      "git_blob": "750fdd4e59fa5bbd0f5759e9d550ebcdfab09f64",
+      "sha256": "6dc925556d5c03895e47880956fd81ff08a649252039fec4f17d438fd9f30b38"
+    },
+    {
+      "path": "Stafford38/Characteristic/ArtinianAdaptedBasisExistence.lean",
+      "mode": "100644",
+      "git_blob": "ebd4a924a74f0d915934b09296cd2783b702872d",
+      "sha256": "197f1951b819e4d233715a9606cc746c8d8e35a184759adc7010845581b617fa"
+    },
+    {
+      "path": "Stafford38/Characteristic/ArtinianAdaptedBasisTraceAdapter.lean",
+      "mode": "100644",
+      "git_blob": "d59b5e2c6bbf9c9ec2683c949ce587cf5849940e",
+      "sha256": "4e66aaf47be8adf04a63858f2c3c573f4b92e30757d62bff7ae25139e5d74ef9"
+    },
+    {
+      "path": "Stafford38/Characteristic/ArtinianCoefficientField.lean",
+      "mode": "100644",
+      "git_blob": "659854ce98b3bb8dfcdf7b71d01348f24dc1cef9",
+      "sha256": "7a62522ca5d85f694b198ee7a806e08504fd8b6cbd1ef544f21f36b93171c9a7"
+    },
+    {
+      "path": "Stafford38/Characteristic/ArtinianEquation33TraceProducer.lean",
+      "mode": "100644",
+      "git_blob": "ef1abbb0e0b06fc6aafaf1a59541cb0e8f02036e",
+      "sha256": "a8c02c47b71ed1bcaba4692df2bcb1455abf192e2a24ec03df3c99c8a7a6a7a2"
+    },
+    {
+      "path": "Stafford38/Characteristic/ArtinianTriangularTrace.lean",
+      "mode": "100644",
+      "git_blob": "d69f46c5998522648eb499e1cd6c21d61e524b2c",
+      "sha256": "54ca8f7b689cee5811706ec969362d598f0746a90f7378ead472f1cd86ce1bb7"
+    },
+    {
+      "path": "Stafford38/Characteristic/AssociatedGradedFinite.lean",
+      "mode": "100644",
+      "git_blob": "bfa8458a8e5c220cbb7d62735831f8b5d0bb7bac",
+      "sha256": "aff8c91873088539f08643607f37b334e6ed08ed471b9316aad89c476ab95ed8"
+    },
+    {
+      "path": "Stafford38/Characteristic/AssociatedGradedModule.lean",
+      "mode": "100644",
+      "git_blob": "429243615ea457e78ac1f1ecab21bb02de5a143d",
+      "sha256": "e60789f9020d0f61510647cfc74321aa0f9bf5f7c0d13c9277e7d5e5467a861d"
+    },
+    {
+      "path": "Stafford38/Characteristic/BGab001CoefficientFieldTrace.lean",
+      "mode": "100644",
+      "git_blob": "f6d5708cd8154700e55ceffb9b3848cb0a3a39cf",
+      "sha256": "1b94783bb3972844e690316613720e8f2587469e3aa8cd8c0767628840a36255"
+    },
+    {
+      "path": "Stafford38/Characteristic/BaseLocalizationModuleComparison.lean",
+      "mode": "100644",
+      "git_blob": "f49566d76a06a68f309424d2629dc7fd3ea4866f",
+      "sha256": "a709c4394ed4a105ec0363acd48ef130a64c83ce1b4a87ddd7e83092d93a657d"
+    },
+    {
+      "path": "Stafford38/Characteristic/BaseLocalizedKoszulPositivity.lean",
+      "mode": "100644",
+      "git_blob": "4d56cc0deec95476a4b4f8075b58f6818d9a2b60",
+      "sha256": "430f1971ac467a937756c31e04e96fc80f530dcfab7fd593213bc2dfdd580fb5"
+    },
+    {
+      "path": "Stafford38/Characteristic/BaseRelativePoisson.lean",
+      "mode": "100644",
+      "git_blob": "c51e4f69e06b20f08f09601e1a3627e1acda323e",
+      "sha256": "03bd2fa6f04b2e5533519f7a195c21dcd8333b848a369556a9bc7d88a8123ea2"
+    },
+    {
+      "path": "Stafford38/Characteristic/BaseZeroSection.lean",
+      "mode": "100644",
+      "git_blob": "1c9ac4f75ba2ca2184f3344753487e578cfe67a4",
+      "sha256": "39708ba181f71a040a52e499f664874ac5aaf8a752fa48957229e0fd534e28f6"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalAxisAvoidanceConsumer.lean",
+      "mode": "100644",
+      "git_blob": "2d4600db0c740953214c8409fb9ecb169897a6ac",
+      "sha256": "f61de47fb78d19854c0cde03d66c4a0bd1d1dce0d49e9cf2b3285dc0bdd8a3ad"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalAxisMonicInitialTop.lean",
+      "mode": "100644",
+      "git_blob": "c40952f8370a377b8653db3997bf7e09a19b7365",
+      "sha256": "7dde36e9ef85ecd8065912eafb46db329a84c6cf8c345b9f1730f1352e6c9314"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalBaseVariety.lean",
+      "mode": "100644",
+      "git_blob": "f8e236e54d1041a23794ff2dcafd7bc5509a7972",
+      "sha256": "441723d66521898a8d8de61f5f3dd321761d52d246c1557afb3d2f2c0d652a6f"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalCertificate.lean",
+      "mode": "100644",
+      "git_blob": "0cf4b6db2f6723b513f626157d164968c06a3de8",
+      "sha256": "973d90cf819519a2a3fc7640cd63ae50a7bae3a25f898f9c469970a48b777b6d"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalFilteredGradedBridge.lean",
+      "mode": "100644",
+      "git_blob": "d39bf3cf8eb3659983e3a782187658c5dbbf6095",
+      "sha256": "06db3a1eed63926588394df24dcc54d817b1fa13819a62c33a42cb850fba727c"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalFilteredTwoTerm.lean",
+      "mode": "100644",
+      "git_blob": "7112e4d78d377b535b2f939925ad3f67c66e9065",
+      "sha256": "ec83783982997fe0b71339c8d98d7f79d744e4a465ad4a432993b32fd8cc2ecb"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalGabberInvolutivityInterface.lean",
+      "mode": "100644",
+      "git_blob": "a4f358f8f51371f8aa79e7a4dbc5c7c31dec646a",
+      "sha256": "26ab62cefe04b0ddc691a8e25fd6cd156f0f0fff2c42f422563abe49baf79583"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalGradedTangentialEquivalences.lean",
+      "mode": "100644",
+      "git_blob": "db1652ede86210145ebe4b19d0ff670a728f7f8a",
+      "sha256": "9c096a3921c3015467686e067f0fab158db743c01422d8e2f8e55403a4f6ca2c"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalKoszulContradiction.lean",
+      "mode": "100644",
+      "git_blob": "1e361034c0eeb410012dd4ffb970f2ea2c18e8a9",
+      "sha256": "a4a54bf1e8ffcd2ce4fde47d585c5e9c0bd86b480f48c04ad6be869a0d3d56e3"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalLaurentSymbolControl.lean",
+      "mode": "100644",
+      "git_blob": "8647f18f9eb3a37d6abd7794476e0823514990eb",
+      "sha256": "e9b406720ade154eefccbe305d0e673f5b444e84702b3513c473da563c5f0154"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalMonicSaturation.lean",
+      "mode": "100644",
+      "git_blob": "f4f4da6bf2992b1949f916e533a3111907e7bd28",
+      "sha256": "15295dea3775c8f6e7aeb4fbc3c0a798ca79187c90f5e6bc546eb8a335aa5883"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalNoncharacteristicCancellation.lean",
+      "mode": "100644",
+      "git_blob": "f6c255e78086da60bcef95569ae555481f99efed",
+      "sha256": "94f60887b235326023b3f4096e29d0deabc732888efba4a1e190026e5e4d6d54"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalNormalAxisSupport.lean",
+      "mode": "100644",
+      "git_blob": "e30e30a124459276c969ca5e8f0cf09edbb608f6",
+      "sha256": "ce02c85a0b0e8384eac0c62c188398d8dce7c46e01543c8b77a8078df95ba662"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalNormalSymbolFiniteness.lean",
+      "mode": "100644",
+      "git_blob": "e1d6567e9ec8a5f1ad3fbbdfc2c817c397e179a2",
+      "sha256": "7931f394036b1568c0706be93c37d8e275b7e1c1dc5d05ab3adc686a953b4d8b"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalOldTangentialFiniteness.lean",
+      "mode": "100644",
+      "git_blob": "7c80b33f53eebb15e99f93d68d5318c064d064ae",
+      "sha256": "ae54ca52ea9eeea5a16cfc5e043a8982d237f2bcfc8d109a77b6e6deeb1575a5"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalPageEulerInequality.lean",
+      "mode": "100644",
+      "git_blob": "50d8014e974b599f95403b26cabbc59f2b1d90a8",
+      "sha256": "d033e4223bc41684c1a693512f56ee40f2572bdc801c37a3b0159d57e4779773"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalResidueExtensionSymbolControlAdapter.lean",
+      "mode": "100644",
+      "git_blob": "7b65a5af6eaa20b7d797a7aa9c0b195b7b5a4e38",
+      "sha256": "a00aa9af3ed97aa9c9cfcca5edd51a419f015a1f1510105ff8a2276aff68b97d"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalSupportAvoidanceFromCokernel.lean",
+      "mode": "100644",
+      "git_blob": "92e191b306ddeab946f3552278195aa3536dce08",
+      "sha256": "d3440665371593e03c66bb4c4ecd8cb5afdc29de1546effa7dfdd13b0dbe671e"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalTangentialBoundaryMaps.lean",
+      "mode": "100644",
+      "git_blob": "99b41fb349af47c28d1503fd204e789ee312eb2b",
+      "sha256": "dfdbeb49b3fb297d35ef260fd1148a5999e7ffb27b71d0f208b8dcc02b3dc08a"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalTangentialPageOperators.lean",
+      "mode": "100644",
+      "git_blob": "3ed6a3aa6d02d7aadb5250d4bc7fa99c6baa218b",
+      "sha256": "899b81c9a7dc4c6952727fcec17141b1c2f38d7a033db93c92880a358cf50427"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalTangentialRingEquivalence.lean",
+      "mode": "100644",
+      "git_blob": "c14cadb7de970e6eb807fd410f7a998ffc4606d5",
+      "sha256": "ad4cd0156338609f22ad74014a664cce12937847710d7d9409515f5ab4a1bf89"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalTangentialSuccessors.lean",
+      "mode": "100644",
+      "git_blob": "430c605f9df0a64262243be01f0c8a0b96601d5c",
+      "sha256": "9460d4d0083116ca5b48e4e770ce98546be3bf42deb9f7e62cbd56e567a15478"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalTangentialSymbolFiniteness.lean",
+      "mode": "100644",
+      "git_blob": "683409f0919ce50b7a6c74ad4bc37beefd972a9d",
+      "sha256": "7f4c952bd7d19410b46ea1dda8b3bdfc04a778c8c992a7bf4d90514d6bc95adc"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalTangentialTotalAction.lean",
+      "mode": "100644",
+      "git_blob": "00d1e838a0f4291f9c913b4c6af9673b90a1c3ea",
+      "sha256": "46446f0fb3a2f9a4e56193df8685ed300bef35041fcc145b3175bb6d214798ca"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalTotalGradedActionCompatibility.lean",
+      "mode": "100644",
+      "git_blob": "ccf302ca0e1fcc7e2909fd3802659e26600a8e99",
+      "sha256": "a390de190ae7cb2b3db5e1c8e3181ba878aa2097320ad376a5acc4972bb206f7"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalTotalGradedBridge.lean",
+      "mode": "100644",
+      "git_blob": "537611d9e59696a6431a4d43ecdaf93822ff3497",
+      "sha256": "b526c8d0337caefe16728b8497cf8f9579b8cf17b202fa028b1d995280621550"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalUnitCoordinatePreimage.lean",
+      "mode": "100644",
+      "git_blob": "90e6223eb0804b8251099acb7321d686b24ef41c",
+      "sha256": "3373e738d169fbf9384362cd5d0bc75327b999a5aa55b973960af88a890fe58e"
+    },
+    {
+      "path": "Stafford38/Characteristic/CanonicalUnitPreimageFromInitialTop.lean",
+      "mode": "100644",
+      "git_blob": "17048cb6429677ff8811ce5ab4129b653e4be5e5",
+      "sha256": "b78bc6ae2002651318839cfa6f5401855394758f4c0aa1146bf132f9977f6c4a"
+    },
+    {
+      "path": "Stafford38/Characteristic/CommutingPolynomialAction.lean",
+      "mode": "100644",
+      "git_blob": "09c4b84e2c1c1d8bafefe207e3734b6afd341f85",
+      "sha256": "bd322aa15ce8311443242c67c62e54b54f5c4b3cf49a24128e038039f4d1abed"
+    },
+    {
+      "path": "Stafford38/Characteristic/ConcreteEquation33SourceMatrices.lean",
+      "mode": "100644",
+      "git_blob": "1e7dee9e4040ab0b6de6895c0b87e618e38bbf06",
+      "sha256": "4a5e9e1c3f4ef29282d6af433a1897e156acb1acb388b53ca7032e10735ee394"
+    },
+    {
+      "path": "Stafford38/Characteristic/ConcreteInducedZAction.lean",
+      "mode": "100644",
+      "git_blob": "38b225d3e93ff3a32cbf426638d53842672f186f",
+      "sha256": "1de3da39f0330dc8ad8976556c3fc8b6c5ad0b230b6b9663d14e9f553b83eb34"
+    },
+    {
+      "path": "Stafford38/Characteristic/ConcreteLocalizedTwoBlockSpecialFibre.lean",
+      "mode": "100644",
+      "git_blob": "9dce1853374d12c48793193b51dc1f5f6e63a056",
+      "sha256": "ae9ba24e77a2a1cd4fac60011a0b3f70c154ee6f66a37101317fb97300b66e25"
+    },
+    {
+      "path": "Stafford38/Characteristic/ConcreteSquareZeroTraceData.lean",
+      "mode": "100644",
+      "git_blob": "a08f6b1d0a5ea45a300c1d8fb9e9034ef15c73e3",
+      "sha256": "368241a0aef2a006a509ad7f98c10f9a6a461b98217892cf20e972624c39cdab"
+    },
+    {
+      "path": "Stafford38/Characteristic/EmptySupportVanishing.lean",
+      "mode": "100644",
+      "git_blob": "451cf81dc1b39d8f6a1c5b797bc3ad6d1a822aee",
+      "sha256": "b7ec72525d8153811445e406cd792b4d9ae4e1b7645820e38c2646363d1f6b0a"
+    },
+    {
+      "path": "Stafford38/Characteristic/EndomorphismKernelSupport.lean",
+      "mode": "100644",
+      "git_blob": "dd0a2b78953324472b4167f9f25ecf710a2f8ae9",
+      "sha256": "c70733059859e2a8cf951ed03448bd8c325284e8f7f6ba65305a242a48500bde"
+    },
+    {
+      "path": "Stafford38/Characteristic/EndomorphismKernelSupportOverBase.lean",
+      "mode": "100644",
+      "git_blob": "b6d3e07a7744b3c26e8aa2b749d838ec3a2c4a90",
+      "sha256": "be3765896a5f8c91e08e300251a1f3c0b2ffc0d88a6440f771609eab7f937b4b"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredQuotient.lean",
+      "mode": "100644",
+      "git_blob": "98221e8a77909977365d8932554c5cc400fc00d0",
+      "sha256": "f978af36c40719a496b6a1981e18f1dccc25ab8d37bcce89482cfce3f1daedd2"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredQuotientGraded.lean",
+      "mode": "100644",
+      "git_blob": "1a42b00ce0f02f91b813df610b0a1f01ef99e1fc",
+      "sha256": "bf197fd23de9fda4e2520ef0733c61bfcea748b9c543b963d387594ef97a5896"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredQuotientRees.lean",
+      "mode": "100644",
+      "git_blob": "b2e63d9f40f6c344b0f6f67bbc63cad028d2d8b6",
+      "sha256": "88b65004996a072acc32a0d687b7e3ec83654fb6e78b5757604835d9bc591ce1"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredQuotientReesAction.lean",
+      "mode": "100644",
+      "git_blob": "f466ef0e75075a49a608227d23453922dd2b131c",
+      "sha256": "46add20ced453d8510772abbc1b6b1fab7c64575500814a2156f866849b1126b"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredQuotientReesExact.lean",
+      "mode": "100644",
+      "git_blob": "ef8aa434b825fd7164ea1392151fa3782b54239f",
+      "sha256": "99bd47dc839444ee1d978e259ec6154615bb613376fee3dd133329df51b030b7"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredQuotientSpecialFibre.lean",
+      "mode": "100644",
+      "git_blob": "66910d4c326ef24cb4b17599284325e55b3e9876",
+      "sha256": "5574b74fb6fd34ef7785d28b4d0bd381683c2b2a0ed6fd1e46be4dc4dec01a52"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredQuotientSupport.lean",
+      "mode": "100644",
+      "git_blob": "a4cf0400d6ab4a2b8dcdd0b561ef554db9499584",
+      "sha256": "d2d0e7ab90072b30f26f3df172f1f49a8905f3bca8c9af29bd865dbb8a23bed3"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredQuotientTwoJet.lean",
+      "mode": "100644",
+      "git_blob": "2d45b5f14d10ef8d876ea281e7f6899d81ff1b95",
+      "sha256": "091df9f02a08d1cef36d1b3a5d3aad0edd5e51c0a3db18636d829e4a99c4af63"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredTwoTermBoundaryExhaustion.lean",
+      "mode": "100644",
+      "git_blob": "12cdc0d42e3705375c5870d90443c9c586d7a195",
+      "sha256": "2951c050f435e991ecb6371e4b7c0a05ed9d8ad67e068e72c507c78f917db294"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredTwoTermBoundaryNaturality.lean",
+      "mode": "100644",
+      "git_blob": "d3cbefd98f11f289e6c148841228f14982cc9f89",
+      "sha256": "6bdd1452f4251feaeb92f452ed1ffcbcd65886f999dc815f36be6b30124f98de"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredTwoTermPageActions.lean",
+      "mode": "100644",
+      "git_blob": "68fb3251236cd2a6da9100ec15a46914cc19ca5c",
+      "sha256": "5ac2e7eec6dbce09a1dec3a98e10d32e842e0bfed32ab5f5edc23adc8399782a"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredTwoTermPageEquivalences.lean",
+      "mode": "100644",
+      "git_blob": "05644d80fbb18ceef8af23c5c7c7267f08627cf3",
+      "sha256": "01bcda4ffba81819dc8db296bf189fb4e66125a1fc0ea53ee7162b4aaf028f9e"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredTwoTermPages.lean",
+      "mode": "100644",
+      "git_blob": "a739d3afdaf6f76d1441b628cbfb3384c9cc91d0",
+      "sha256": "78d0aba0b1e85485dc1392c26ad4ee60cdd1a3ec76bd87a96ce5e83821a3963c"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredTwoTermSuccessorNaturality.lean",
+      "mode": "100644",
+      "git_blob": "ca69c169ef958826dd2d26c50563c3536d59b764",
+      "sha256": "74189ef9cd4a86e255ad437e439acd90736d3564150105825e112ccb5e38ffd5"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredTwoTermTotalActions.lean",
+      "mode": "100644",
+      "git_blob": "4049606160600267ed995e3c9567f9147e5a8221",
+      "sha256": "9f89eeb884d295bb6806a61d31b9a127bc95e5c3513a3547d593175f1adf8613"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredTwoTermTotalPages.lean",
+      "mode": "100644",
+      "git_blob": "ce4a87f0660b4aa5c3e922ae29e4d31df6eaf29e",
+      "sha256": "9cd349651135167a26bf3acad09ec0a2dffcd3d84f25c62c311c5266ec83cae5"
+    },
+    {
+      "path": "Stafford38/Characteristic/FilteredVanishing.lean",
+      "mode": "100644",
+      "git_blob": "801c22275a55d1a1d62f3011a2b85eb487e2ebe2",
+      "sha256": "5d6836bd66f7eb1a82e1dc62f7c67589314085a95bbb0b931b85d905d034d63b"
+    },
+    {
+      "path": "Stafford38/Characteristic/GabberGlobalAssembly.lean",
+      "mode": "100644",
+      "git_blob": "8159f1a51ac773423857db5b047afce143c0feb9",
+      "sha256": "ff6555b53cf3bbafb8bbf0f5e3e9319492e7b3a16e8cdc0e9173c06811cfeeab"
+    },
+    {
+      "path": "Stafford38/Characteristic/GeometricSupportDescent.lean",
+      "mode": "100644",
+      "git_blob": "bd195888fba5f7b0fca46f59c87862a334c64fde",
+      "sha256": "ccd741b52960c6ce429a61bfd3e22747a8c3f3a03e840f1ff81f2b887c5345ee"
+    },
+    {
+      "path": "Stafford38/Characteristic/GeometricSupportScalarExtension.lean",
+      "mode": "100644",
+      "git_blob": "207d2b84deb4a8b1b2808a37d528d5fb3e822cc2",
+      "sha256": "3c3a2bae5ad8ab5610c682101c32b22c26faf9e68bf5f530b39ed422039ec4e9"
+    },
+    {
+      "path": "Stafford38/Characteristic/HomogeneousChart.lean",
+      "mode": "100644",
+      "git_blob": "58a83de1a7d7c70f0631a3c1773a0b37b4975394",
+      "sha256": "6a750598ea4fed7f67f86a3c7cea01e14236f1ea23efe9f3ca4675bf09716165"
+    },
+    {
+      "path": "Stafford38/Characteristic/HyperplaneRestriction.lean",
+      "mode": "100644",
+      "git_blob": "438e04aaec810793ec453fa2117350b86ce78e1c",
+      "sha256": "6e87cd479ab02337a457b805c40f065b62ec040593291cf1d7c91782f1fac9a4"
+    },
+    {
+      "path": "Stafford38/Characteristic/InitialIdeal.lean",
+      "mode": "100644",
+      "git_blob": "1077e9beb0bdd24100e83c003038ed084123d962",
+      "sha256": "14c72cae396f9da7bdfa5ed3f82010fb8c7ee3a4e6b0a5119d6f20cb4a5d5656"
+    },
+    {
+      "path": "Stafford38/Characteristic/InitialIdealHomogeneous.lean",
+      "mode": "100644",
+      "git_blob": "63db2a9b2aebf47dba06b44a0753a50bea02c66f",
+      "sha256": "e28220f5bc8143976a81343cef9fc649db9ead30e1b0115876ed5ccd8d19f6bb"
+    },
+    {
+      "path": "Stafford38/Characteristic/LinearAction.lean",
+      "mode": "100644",
+      "git_blob": "c03e1503237886ad7a64fabb55acd313bd163169",
+      "sha256": "d15b3fe54cff69f0b8002fef59df1b23e78e50cab07d0e96b6846df571d3fed5"
+    },
+    {
+      "path": "Stafford38/Characteristic/LocalizedDerivationQuotient.lean",
+      "mode": "100644",
+      "git_blob": "7135b93042a2b326e42c23a66d0eccd19371efda",
+      "sha256": "0992c763260d53aabc99a33f5ab0bbb4957696ad5f803f6153f31160080b7c8a"
+    },
+    {
+      "path": "Stafford38/Characteristic/LocalizedHighPowerTwoBlockVanishing.lean",
+      "mode": "100644",
+      "git_blob": "0266354bf4672650ebc6b732a6503d8d35392315",
+      "sha256": "bc9ecd9a53a7661332fdcc634867e52e7788753e37dc2e3764676ac47415b8fb"
+    },
+    {
+      "path": "Stafford38/Characteristic/LocalizedKernelCokernelEquivalences.lean",
+      "mode": "100644",
+      "git_blob": "dd1ed925724baf51553bed75d88c4aa90d065130",
+      "sha256": "d7e68ee8d3885a1fd9d2f31d8336c047a021f8bc7b87eb25e19a8f11eb6a2c38"
+    },
+    {
+      "path": "Stafford38/Characteristic/LocalizedMinimalSupportAvoidance.lean",
+      "mode": "100644",
+      "git_blob": "cccaa94c920d8c34e16c0949c76066d9bf16ffd1",
+      "sha256": "5c6ad66af17acf350fdf44d17121d8857942f22dc76cd339de10d17eb900a04f"
+    },
+    {
+      "path": "Stafford38/Characteristic/LocalizedOrderReesTwoJetSpecializationKernel.lean",
+      "mode": "100644",
+      "git_blob": "50ae3d1c7d3aa9f1c043eea913f1eb71a654cc37",
+      "sha256": "77565191dfa2be8e644ca743356e68abeb19d6bb3f9fa8becc9fd9ca01cb3a73"
+    },
+    {
+      "path": "Stafford38/Characteristic/LocalizedPartialDerivation.lean",
+      "mode": "100644",
+      "git_blob": "e7bf1189c1fad12deb524f391bb4898637f133ae",
+      "sha256": "7feec51319a8aac3e9512bdeae2031a6bc471f2e7d9ed6a1fe6a1328328738bd"
+    },
+    {
+      "path": "Stafford38/Characteristic/LocalizedSpecializationActionCompatibility.lean",
+      "mode": "100644",
+      "git_blob": "a7123c920ec6ae595fe569bd8cbc48ed29f482ab",
+      "sha256": "b2b836af2ae8c987edd761b7e0354f0f61b7e93dbd9e6069a6cec0b6c24c683d"
+    },
+    {
+      "path": "Stafford38/Characteristic/LocalizedTwoBlockModuleExactness.lean",
+      "mode": "100644",
+      "git_blob": "67149a076c6df920740761ba3be4d8835ad9ebbd",
+      "sha256": "94c73154ee4bb1d17893de895b58c26a59575f0325e19cd973102d1c9cb2a13d"
+    },
+    {
+      "path": "Stafford38/Characteristic/LocalizedTwoBlockPrincipalKernelDescent.lean",
+      "mode": "100644",
+      "git_blob": "1ea3de5a09a7f5b194651c0693001c8119761768",
+      "sha256": "431e9bc1c3588adc5f1778cd4e2caaa03b72e1df80b68aa1e0168f0e12bea079"
+    },
+    {
+      "path": "Stafford38/Characteristic/LocalizedTwoBlockQuotient.lean",
+      "mode": "100644",
+      "git_blob": "c554b81ddef7f6cb07e066a4e342166ff1764d16",
+      "sha256": "aa9157d2fe6f764a63e8cf45a93e3a751835f129484fbfb0496a1989dc5c8108"
+    },
+    {
+      "path": "Stafford38/Characteristic/MinimalPrimeFiniteLengthLocalization.lean",
+      "mode": "100644",
+      "git_blob": "6a15197230afb290e996b2199133ebe13be7f96e",
+      "sha256": "9b6b54a54d3d15423afbbc56750df7e84373c028a8457a53e2b44b6ee876a76a"
+    },
+    {
+      "path": "Stafford38/Characteristic/MinimalPrimePoisson.lean",
+      "mode": "100644",
+      "git_blob": "cb2b3438900450b89719dc07ce4986090c81800d",
+      "sha256": "a1fd92694bd0186ec0007be3626c3bb509a7a00a73b88e7259e285e80e97dd65"
+    },
+    {
+      "path": "Stafford38/Characteristic/MinimalSupportExistence.lean",
+      "mode": "100644",
+      "git_blob": "d410874f869841da11e18935ebde16ca774c577e",
+      "sha256": "f2786cf3f6b18c7d60a51b9cf281e8ec1c695b9317f6d7f27d7672af59b2d02c"
+    },
+    {
+      "path": "Stafford38/Characteristic/MinimalSupportKernelCokernelLengths.lean",
+      "mode": "100644",
+      "git_blob": "612f88d95f871652d7f782fac72dd5898bff9da4",
+      "sha256": "63a0c3d5b1179179358d0f7ac8b60952c12c77fe94a211f3e18ed87297b2aa2b"
+    },
+    {
+      "path": "Stafford38/Characteristic/MonicAnnihilatorFinite.lean",
+      "mode": "100644",
+      "git_blob": "69a7de43d9d35811a0d859ec508a2e911ce4d848",
+      "sha256": "0038732438a520c570928376c712cc85f949d02314cf0c6aeaead29d90c17c02"
+    },
+    {
+      "path": "Stafford38/Characteristic/NoncharacteristicMinimalPrime.lean",
+      "mode": "100644",
+      "git_blob": "befc3b4694241c7a37f61c662aec1cc0c7fd7c66",
+      "sha256": "ef4d5a468cc67a179b58afaec2ec826985fe6fa1183ce0182d364249f2827d9a"
+    },
+    {
+      "path": "Stafford38/Characteristic/NormalSymbolPolynomial.lean",
+      "mode": "100644",
+      "git_blob": "7014eeda4f79c3284ced49ca8eb85521f0d361d1",
+      "sha256": "9c21892bb9a4cd06323cf5676f12dfcc03668b96319fd3a5dbbb9faa7eb62fc1"
+    },
+    {
+      "path": "Stafford38/Characteristic/OrderReesTwoJet.lean",
+      "mode": "100644",
+      "git_blob": "5482b40e85866d5983cde64594d4bf45327dff41",
+      "sha256": "a6ac8c19f05d7953eda79311e3515870408c8d5a39841513fd904674daffc040"
+    },
+    {
+      "path": "Stafford38/Characteristic/OrderReesTwoJetBracket.lean",
+      "mode": "100644",
+      "git_blob": "e6abf615f496b301cec4d91bb5cd9e0b6b0067b9",
+      "sha256": "94018d91a15e65be7aeaec088524d52039917ff83ecdd5a64f628efadf53bfe5"
+    },
+    {
+      "path": "Stafford38/Characteristic/OrderReesTwoJetSpecializationKernel.lean",
+      "mode": "100644",
+      "git_blob": "2a6d704271633d76bb737cd7f8e35980cca3cebe",
+      "sha256": "735a7459bdd37f02a77606a55e6163a8ea3e6225afe62398341f8fd7f03457d1"
+    },
+    {
+      "path": "Stafford38/Characteristic/PaperLocalizedInvolutivity.lean",
+      "mode": "100644",
+      "git_blob": "e9618f5f9359e4ab2015f9fcb02291b5dad8d210",
+      "sha256": "7632d1548cc450d3ba148f9ef8af6b282559d4e4e86be8e044a36eaec2b90851"
+    },
+    {
+      "path": "Stafford38/Characteristic/PaperSymplecticBasis.lean",
+      "mode": "100644",
+      "git_blob": "33c5879260fb99b91afb10ae6c4b96aeb9a46c0a",
+      "sha256": "c46db3e154d1baf28ea840ea13445159c46ec703c7fc8f0ad095fe3c300c9f08"
+    },
+    {
+      "path": "Stafford38/Characteristic/Polynomial.lean",
+      "mode": "100644",
+      "git_blob": "754b9cdeb7810e4d29479aa9376edbf1a0f3e145",
+      "sha256": "9df219c815acdb2f46ba0aaa1bf9990c986ee06361bea96bac9acc42aa3e86ea"
+    },
+    {
+      "path": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
+      "mode": "100644",
+      "git_blob": "35c79582e9e47ae0f3a14e9c614119d3c6f53913",
+      "sha256": "4b6cd33f88c2d786b9f980875c02daaf366fb7710dea4f397da8986f330d82cc"
+    },
+    {
+      "path": "Stafford38/Characteristic/PrincipalKoszulFiniteTorsion.lean",
+      "mode": "100644",
+      "git_blob": "dcdd603ed5189249e9001ee9fbfe5c819f4ddc12",
+      "sha256": "77cbdbd47822c66890de44e15940c92a3c60be2b59694d94f2d67e7d5df1c893"
+    },
+    {
+      "path": "Stafford38/Characteristic/PrincipalKoszulMinimalSupportPositivity.lean",
+      "mode": "100644",
+      "git_blob": "21ebed371b8d26d1d0138bfc1fbc0d167ac874aa",
+      "sha256": "314aeef3e10d7447a8bb5e7ee68da086960871f7268ae53f8ce847ab027a80c9"
+    },
+    {
+      "path": "Stafford38/Characteristic/PrincipalKoszulPositivity.lean",
+      "mode": "100644",
+      "git_blob": "234a4a5df745a9358bd46a06deba7fae29bedde4",
+      "sha256": "802aa3b3fc4c5d20d110f111825b03de72a6badf4cad44d616bee560562823d2"
+    },
+    {
+      "path": "Stafford38/Characteristic/PrincipalKoszulSupportOverBase.lean",
+      "mode": "100644",
+      "git_blob": "dc9c1710decafe1bf678b558c0ac7c193f32367e",
+      "sha256": "19c7e88e328b2f247ef02da9fe536e2780354ba4b11f0761d4172b4334de2bc4"
+    },
+    {
+      "path": "Stafford38/Characteristic/RadicalMinimalPrimeInvolutivity.lean",
+      "mode": "100644",
+      "git_blob": "26b5bbdb3f75f9b591faa78f48f790d4c04a1525",
+      "sha256": "1da37f47207afaf251260762d32223f7839b659f59d7626fd35f1e97d3559c38"
+    },
+    {
+      "path": "Stafford38/Characteristic/ReducedSupportIdeal.lean",
+      "mode": "100644",
+      "git_blob": "e8b6e650966cd816025d38e9c3e52802bc45b24d",
+      "sha256": "3b40ff545e75beaf54f7d987403e0c59ae8c9d93d2ad6950227944e8b16a68f1"
+    },
+    {
+      "path": "Stafford38/Characteristic/RightReesArtinianAdapter.lean",
+      "mode": "100644",
+      "git_blob": "489a5a668b81ada01b75e7059b424c8eab71945f",
+      "sha256": "db394537d697b05af0b484139a06653e3070a03be2e360c0cf8ae0cbad89a40a"
+    },
+    {
+      "path": "Stafford38/Characteristic/SourceActionCommutatorExpansion.lean",
+      "mode": "100644",
+      "git_blob": "b23d54daca3ae3a56890c410ad9e9f0384e5d538",
+      "sha256": "11c21c97206085277763241d0ba5fcd22ba9cbc0532ec8286f0c7cf7fd13f4ef"
+    },
+    {
+      "path": "Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean",
+      "mode": "100644",
+      "git_blob": "19c9a64f80eed3a9320f4c1be4afa941f2000558",
+      "sha256": "3e4a8cb193bc74101d5f2afbfe227f1e4e112c54822f3ccf1eaea36cb20f3c8c"
+    },
+    {
+      "path": "Stafford38/Characteristic/SquareZeroAnnihilatorBracket.lean",
+      "mode": "100644",
+      "git_blob": "7a2fc1eafa572e57e960b4454449d55dc24f3dac",
+      "sha256": "6e45ce58428c485d76d7caf4fba216124982ffebfaa4d20aa8a0ff69ec3de617"
+    },
+    {
+      "path": "Stafford38/Characteristic/SquareZeroArtinianTruncation.lean",
+      "mode": "100644",
+      "git_blob": "a847b38bffbfa0fda5ee7bab9e9cb390ee232752",
+      "sha256": "b02b1d37755e0a62e642ce1b75ab4aad4a5c5035aaf358c2ac27a8b5e2ad9bf0"
+    },
+    {
+      "path": "Stafford38/Characteristic/SquareZeroHighPowerReduction.lean",
+      "mode": "100644",
+      "git_blob": "70c332c01d05969b2dea16796c33f2ce7eaba218",
+      "sha256": "13393a3112ad1bdcef4243fe2ddf1de9ac77f83524f82d8a3cf65d448cb5889c"
+    },
+    {
+      "path": "Stafford38/Characteristic/SquareZeroLinearTrace.lean",
+      "mode": "100644",
+      "git_blob": "293b6fb743b5682819c3a417674027f65cc1bcce",
+      "sha256": "f09a6e6d80b578014b95e45cf44f7c574f889f196bd08dcdf5af8bca1af142f7"
+    },
+    {
+      "path": "Stafford38/Characteristic/SquareZeroLocalizedExactness.lean",
+      "mode": "100644",
+      "git_blob": "ddcdfa38ee282e6e7729cecbdca0b6948002d7fe",
+      "sha256": "c604331194986761bd62c27a8fda9e1a7e4000310edb51544423df45f3890e35"
+    },
+    {
+      "path": "Stafford38/Characteristic/SquareZeroLocalizedRing.lean",
+      "mode": "100644",
+      "git_blob": "3525f0535d3df336ecc75e1ed570f2f2b1e20e7a",
+      "sha256": "7918974add3619d40baa9285dfb703a4cacc0c1a10ba050cfe9256b98b1f31bd"
+    },
+    {
+      "path": "Stafford38/Characteristic/SquareZeroOreLocalization.lean",
+      "mode": "100644",
+      "git_blob": "92c0c477a4bff22c451dc03c2b433aba0304aabb",
+      "sha256": "d90ca2ec45ebe58cc21a73e5a7ec39385a87b713b28efa37cd4289a50202c716"
+    },
+    {
+      "path": "Stafford38/Characteristic/SquareZeroTraceData.lean",
+      "mode": "100644",
+      "git_blob": "77a345ecd26a06ce97aaa5424f3c866fbea1c412",
+      "sha256": "357d073c7faa85a0c06bdde1fdbc53f8c904d19a54707278a033ba52e4ce3861"
+    },
+    {
+      "path": "Stafford38/Characteristic/StableTorsionResidualSupport.lean",
+      "mode": "100644",
+      "git_blob": "b075065590dd84957b83cf7e13f2836044af7e2e",
+      "sha256": "fd9af05eb435015a2d4ada382bf90903699ad05cc527cad02475cc6431b3cf64"
+    },
+    {
+      "path": "Stafford38/Characteristic/SymplecticCompletion.lean",
+      "mode": "100644",
+      "git_blob": "781a1be586d1c8454f5662b046d3cd9192dcc488",
+      "sha256": "c00448ebe3ee81c361ef533d4ea673135ae0f57d5a1144e1b3eb64a10490bb08"
+    },
+    {
+      "path": "Stafford38/Characteristic/TransposedFilteredModuleSupport.lean",
+      "mode": "100644",
+      "git_blob": "ad807395ded16da7c97a3338463e0cb672ec45aa",
+      "sha256": "b9d29160fe76bf8974e8fe28cb2104d17a3e74713f10a9ee4ab0509413966201"
+    },
+    {
+      "path": "Stafford38/Characteristic/TwoTermPageLength.lean",
+      "mode": "100644",
+      "git_blob": "849bad8a0709ba2f1d574445b30c16ce07608a26",
+      "sha256": "7c429d6119e99727def7d3f74b17bcec4d2c0e87a206fe190aced52c520736a0"
+    },
+    {
+      "path": "Stafford38/Characteristic/UniformBoundaryVanishing.lean",
+      "mode": "100644",
+      "git_blob": "dc6d5f1ec674cfc4a74e51b4db36342d671de9dc",
+      "sha256": "90ad024208951caf76043caa89dbf45d66b8d3e827917a82262ccd1ccd269d6d"
+    },
+    {
+      "path": "Stafford38/Characteristic/ZeroSectionContainment.lean",
+      "mode": "100644",
+      "git_blob": "24d3b45416c383c969d2a656bd771de9d36afd5c",
+      "sha256": "c992cd10860e8d5f44aafa62c589941b4f3cf58a6269c272bdce8b960109dcd4"
+    },
+    {
+      "path": "Stafford38/CoordinateDifferentialGeneration.lean",
+      "mode": "100644",
+      "git_blob": "ffe9d1f8d153a51ac2f1f0d6ac2c8708ab2dc0cb",
+      "sha256": "d9fb9123de47c7b4bcc6361d2f0695f7f1088815900b6cbe5ad2f0d69093a1cf"
+    },
+    {
+      "path": "Stafford38/DifferentialOperators.lean",
+      "mode": "100644",
+      "git_blob": "c13fc4390fb0b691858b21e9a802b15e44c3e0d6",
+      "sha256": "9e38f34c10052a8a590626a416f6604f6848be2a62f97fff601761fa8986722d"
+    },
+    {
+      "path": "Stafford38/EulerRootSeparation.lean",
+      "mode": "100644",
+      "git_blob": "4eaa4d81e962bb8288db201f88de3c601f2f8d5f",
+      "sha256": "89c0c8116c201563dbdc68dc6f7ed666d4ca0d589f0d8695139103b6a4cb6d3c"
+    },
+    {
+      "path": "Stafford38/EvolutionaryCertificate.lean",
+      "mode": "100644",
+      "git_blob": "cc9ebaa6e410c94a0efc6f467cef2dd0a51b06ac",
+      "sha256": "55aa488a92be733fde996291ac7a602acbaebe94de8e3e8d1c370a6b9ad046e7"
+    },
+    {
+      "path": "Stafford38/EvolutionaryCorollary.lean",
+      "mode": "100644",
+      "git_blob": "e7821633a56c057f77f4339a82a65ad13e616f66",
+      "sha256": "7a335243325669b8c93e584ca07f3ae069e640df37cefa06d8d91ea4d6cd9bfd"
+    },
+    {
+      "path": "Stafford38/FixedSourceAssembly.lean",
+      "mode": "100644",
+      "git_blob": "799ccf182a8c92986ebd1c394653408174d46624",
+      "sha256": "8284fd911af4a2422e96216d9a94bef1e45c2f570790515f9e28510233700a20"
+    },
+    {
+      "path": "Stafford38/FixedSourceChallengeTransport.lean",
+      "mode": "100644",
+      "git_blob": "da3d4d24b849c6c17adf5b37fc0528fb8c6273a5",
+      "sha256": "299a296b56c28c0bd4087f41a02065337a5a6b2c8d43465152293e843afb8904"
+    },
+    {
+      "path": "Stafford38/FixedSourceStatement.lean",
+      "mode": "100644",
+      "git_blob": "b5baf52b7a9e7eab4eac413a220239ee09898c09",
+      "sha256": "6d05809314e99b35b646bd179c0881ce0e7fb224b72c37dc7830f50d2f8b30d1"
+    },
+    {
+      "path": "Stafford38/FoundationClosure.lean",
+      "mode": "100644",
+      "git_blob": "985a39cc96f05941d2e255f5a854caada2e6522d",
+      "sha256": "e69e316533cf821d6f4743f220a9122d3d5a5e46a21c7ddf82b28ac62e6bf8dd"
+    },
+    {
+      "path": "Stafford38/Geometry/A0ChartFormalEtale.lean",
+      "mode": "100644",
+      "git_blob": "68c90ac7257c0f1801016cc6caca35d86fb74994",
+      "sha256": "a50283bbd4db65aa2bb92036bcf745a93fd20cefe81007fc75b19d2133551046"
+    },
+    {
+      "path": "Stafford38/Geometry/A0ChartGeneratorCoordinates.lean",
+      "mode": "100644",
+      "git_blob": "1879cd17fa15a298e8df8837e3370aa7d0f5545c",
+      "sha256": "88431aae4eb06a35f6c64eab4989f196d596c647c25d0fa569b87e4fe3da8077"
+    },
+    {
+      "path": "Stafford38/Geometry/A0NormalizedProjectiveCoordinates.lean",
+      "mode": "100644",
+      "git_blob": "608970c91d3ddbcd601da1929ee5640542e305cb",
+      "sha256": "67b121ccb1c10cfc06a803b1c511578cac97c4c25c38c47526b5949934ae5824"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualAffineSmoothPointFromNumeratorCore.lean",
+      "mode": "100644",
+      "git_blob": "2f731ef0420306511c2122e3ec09d29637fbaaf8",
+      "sha256": "5608672f483ad8f13165e8d2647a1191c1c4b05fa8f5e56041cdeb586d2581e6"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualCenterParameterTransport.lean",
+      "mode": "100644",
+      "git_blob": "582786d667f81f9c91a25775f0d45cdccfcc4931",
+      "sha256": "e8b002b43fa2df8af8f71e7d74b99c44fe54e5c409350cfc9de5acb895e9f276"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualChartCenterContraction.lean",
+      "mode": "100644",
+      "git_blob": "8a97eb130410a6f90e36a8bba0012d1867865f45",
+      "sha256": "adf312f13e05333d647b0f00a36711b96aa1df2787a7b87edfb9693b7fea331b"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualChartCenterHeight.lean",
+      "mode": "100644",
+      "git_blob": "6f6ecba1df9eb61719f3991c73dbe29a65713bb9",
+      "sha256": "8495983426c6be23063be6edd4d55a293917d356f88668c02afc53a2ce2d99c5"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualChartCenterNonzero.lean",
+      "mode": "100644",
+      "git_blob": "aa1048d0cffec6c1f1ea66ec89f10a7773b60fbd",
+      "sha256": "d1d510d6eb024bd12c3006e006a94df19cd4abfff974585cadd5f5c9e71a8d58"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualChartNormalizationCenter.lean",
+      "mode": "100644",
+      "git_blob": "fcc18bc88e056ca6654e8892d99ff1914a9919a2",
+      "sha256": "b55673e4e60597b74d6629dd49e9cd9ba2537a828e324bb1c6555cf2a24cf1b8"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualChartRelativeDegree.lean",
+      "mode": "100644",
+      "git_blob": "c43aa1cccc4f097af222f110cdaddecfc1698f4f",
+      "sha256": "b9dfec55a630acd3e2d4f5d837f22dfeb17b3928d9bfab91c49ec4bb6936f696"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualChartResidueMapCoherence.lean",
+      "mode": "100644",
+      "git_blob": "eb43a0d1933b20540d32b65dc188e5bcf4dac0e6",
+      "sha256": "b1977036c68d02c12a2015fdbaa4ef76c6e81d318f3eaad219580401be183301"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualChartValuationImage.lean",
+      "mode": "100644",
+      "git_blob": "a537b4e3ec768eba8160d5f72247d63a24da3009",
+      "sha256": "23ba7034940f3d5d380bd4251ee5f379995ea1372cf30d4be03980187e0fb431"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualCommonOpenArcCompatibility.lean",
+      "mode": "100644",
+      "git_blob": "d0b3392c979f0845cd8284a9266ec5b5ce1e2c6e",
+      "sha256": "6f8d5bc797a447bb4c3d63dad92543e7ad23fdf165125ac8ce946adc7e9da191"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualCommonOpenColumnGlue.lean",
+      "mode": "100644",
+      "git_blob": "68b5feb62b38a0b62f84b3acd973828581d418e1",
+      "sha256": "0adcd26a1025d1992c482e1e6f08f095c0264e758fe2f4e40a379aac6cdd23a9"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualCommonOpenCompletionDerivation.lean",
+      "mode": "100644",
+      "git_blob": "1758871508684433628bbf59fd2e89b49d7f4946",
+      "sha256": "e8b879307bea82c56173b2c41426db31514963d6544e1ba861d4829051c29280"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualDivisorUniformizerNumerator.lean",
+      "mode": "100644",
+      "git_blob": "659420e036df52b9c30aa98f90a3962e829b70dc",
+      "sha256": "a290889170ea2a3cfbbe0eb4d9cd3134c2d51deba7efda35c0094b1241cd4070"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualNormalizationCenterResidueKernel.lean",
+      "mode": "100644",
+      "git_blob": "69a60494dfc6e90d98288572f6371bd9b7397b01",
+      "sha256": "58e597880185e12edd5d644d73e25c839290b74d12fbb4dd44c3df2a86220181"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualNormalizationDivisorEtale.lean",
+      "mode": "100644",
+      "git_blob": "73f4b99b04c2253695fd92d7faca44160c55afef",
+      "sha256": "ada5b9e8784e6b0d93afb5adf16b7290d753775ca8f54e89aec6fb7220605af6"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualOptionArcDerivative.lean",
+      "mode": "100644",
+      "git_blob": "17240e1db2f3ab52917f5a4486148aab3c36e990",
+      "sha256": "985c9e5f6785063b0632dae2f832349f518de9857725efe1ec534c376d942ecd"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualOptionColumnBinding.lean",
+      "mode": "100644",
+      "git_blob": "c0a7f1ae054d9e6aabd1e9b494dd7ab64bc367b5",
+      "sha256": "e3492d778d0213ea185e74b7dab5f45c7bf57d57b7765cb3d547945703021364"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualOptionCommonOpenColumns.lean",
+      "mode": "100644",
+      "git_blob": "8797217d44d39f9844348fea4c4d5ddd9b3e8936",
+      "sha256": "7ab310bbf2a7975da7f452d5b1c471bbb75e52da36864bffa1c0cfa74dd3fb8e"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualOptionCoordinateEtale.lean",
+      "mode": "100644",
+      "git_blob": "c20b1026e01b62f589d828dcfe316a4e8bd2ac0b",
+      "sha256": "47821816c0cbb3ff293ae5d9f85f7faf002acdbb35c4b32c356b47701039c0e5"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualOptionGroundPointCompletion.lean",
+      "mode": "100644",
+      "git_blob": "115d6bcd7fa814456fe8eebb0001d34d34ae8f65",
+      "sha256": "fdadf9f6a48922fc4c7f4cb035cf389a0ca0e3a17c82333dc69959d441551a94"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualPointAxisLift.lean",
+      "mode": "100644",
+      "git_blob": "5fba273ed24172393843feb678cbd0e96ac37d36",
+      "sha256": "566b59b566c50e59e1f101300ee02b2a833a30dd991053919aa7433d1d2b4332"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualPointCommonOpenAssembly.lean",
+      "mode": "100644",
+      "git_blob": "22ec69f8089ad755f8131bb4610110c2f0ad4b7b",
+      "sha256": "0ef14466b6c9036ae99e0cc7e80424e8de14d09a5a5c8f2852c0a13fb1ce0605"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualResidueCenterHeight.lean",
+      "mode": "100644",
+      "git_blob": "75cf75c9aeb50d0b291677ea4e6b58bb81230513",
+      "sha256": "e9b309132d437aa0d874a744781f566687c2edc297b35cccd02ee3fb3aa37bb9"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualSameWitnessAffineFibreEndpoint.lean",
+      "mode": "100644",
+      "git_blob": "e13a3065d925adc6f39d55552f214c4395f8b322",
+      "sha256": "511b10e4b78a80d288cec0c4e6ced552a5c44f610e316d8d13996d3a77084cde"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualSameWitnessDivisorNumerator.lean",
+      "mode": "100644",
+      "git_blob": "821f5d23c40c172f3b47f9ff99d04ac597e3ef66",
+      "sha256": "b797b85a876f71ded3bf556252e68c6fb3d7c9a568dc4a896d28ef6d15b8153b"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualSameWitnessGroundPointCompletion.lean",
+      "mode": "100644",
+      "git_blob": "d0113ff88c527841c9f88e5225ffbf48a5c45b9c",
+      "sha256": "ffafb779aef503eca3517b0bf2b04fdde74274f83e32114cc4f7807e89f9fefb"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualSelectedNormalizationAway.lean",
+      "mode": "100644",
+      "git_blob": "9ef96e8a8b6f63975f8f0b6aad63dc0c2181cdd3",
+      "sha256": "d049dbfed6c3c0f2c79ef35acc5fd5a87cd3708c5c75186a4849efe08f46a4d9"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualSelectedNormalizationChartTransport.lean",
+      "mode": "100644",
+      "git_blob": "dc178287a9a3e14990683ff63232a35ff047d0e2",
+      "sha256": "8159e3471e5275378946f18efef7c5ac202769b0c81c70d3b2ca15effb38881a"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualSelectedNormalizationDivisorEtale.lean",
+      "mode": "100644",
+      "git_blob": "71c6a310c305d412a2503bfac4232ac95320a543",
+      "sha256": "bdf2074af2bf55a404f34b3c179f84e0a7e4603c4e24a135acbb4e6d6f41f789"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualSelectedResidueBasis.lean",
+      "mode": "100644",
+      "git_blob": "e3cd12bf2f6c92ac6029d14c56783782440a959f",
+      "sha256": "51afedf6790f254416f251bed3fe6f97f5de15f05b5b905e65a31d72c855d8b3"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualSelectedResidueBasisRowExclusion.lean",
+      "mode": "100644",
+      "git_blob": "f71bd981aac7ecff0e3caffe647581580bd8ade3",
+      "sha256": "fb6187162c73129149182b1bce7c32d09b64110546b0210474f07c379a2f9767"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualSmoothOpenChartNumerator.lean",
+      "mode": "100644",
+      "git_blob": "6988c8f02e1afe21e03e26850dc6dd2418137346",
+      "sha256": "7c4e8923a1f82ca3a2f6ab602732a78f8da6c3461736cb5d30a9f90c1dc2fb26"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualWitnessCommonOpenColumnGlue.lean",
+      "mode": "100644",
+      "git_blob": "ec33ca1483f629f9e2b6b3aa3db30b5f8dc8cd72",
+      "sha256": "60b14081213822b4d12bfb1b8c7ad0e331abc4a7571d273c481f94477997617c"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualWitnessConormalAssembly.lean",
+      "mode": "100644",
+      "git_blob": "f8e92ad0c3cee98ced72835fa22a15e47b367c4f",
+      "sha256": "34cbeccff71fad1d6f887b9541fe13f23f5baf10dd48675fe7a364c316ad0db2"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualWitnessSelectedChartBinding.lean",
+      "mode": "100644",
+      "git_blob": "19a7fc3f866e1065c2484b77abe05f366a565e7d",
+      "sha256": "533459dcc881c3fe6dde19a30032c1c42593fc10ac659117173f8b1716aae9b9"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualWitnessSelectedChartIndex.lean",
+      "mode": "100644",
+      "git_blob": "83720447f81110c9af93eead7d4b3e36a7b145e7",
+      "sha256": "98f7ca743cbbcbefd5288d50bab3388bb371b2e88322061b74b654fa05710183"
+    },
+    {
+      "path": "Stafford38/Geometry/ActualWitnessStrictOrderGap.lean",
+      "mode": "100644",
+      "git_blob": "8cd3416f13c24a1d5a0520600187f26e0fdb967f",
+      "sha256": "6a1b37ba60c11f79f9b61e8083e2338a4c15ed64156bf767b42eb5fb5e6bd74c"
+    },
+    {
+      "path": "Stafford38/Geometry/AdicCompletionMap.lean",
+      "mode": "100644",
+      "git_blob": "19e427c4e6f26ccc5e7b8d0b9db38e9bf9c61268",
+      "sha256": "4937011910407a3561731597f58a33c07944c71c3654590d95b66ba1acc99e56"
+    },
+    {
+      "path": "Stafford38/Geometry/AdicCompletionRingEquiv.lean",
+      "mode": "100644",
+      "git_blob": "36b84af50ae1f70e8ce04b17febc61bf6e79eccc",
+      "sha256": "74362f7f57734e3ed0fb877fcb5a268e5cd7fff4529e1124d4701bedcb7e89f6"
+    },
+    {
+      "path": "Stafford38/Geometry/AffineComponentCoordinateSplit.lean",
+      "mode": "100644",
+      "git_blob": "9c1fffc656f37d0c346fc67831bef515bbd699fd",
+      "sha256": "82444d5dc83777655eac769e469a1b48b4cc8007dd179b02fbd99f80f5d3d1b0"
+    },
+    {
+      "path": "Stafford38/Geometry/AffineConormalClosure.lean",
+      "mode": "100644",
+      "git_blob": "1c23bda0aea33d6b123c30bb8da9c3d25c9efdeb",
+      "sha256": "d922e95c9acd5c8fa85ff9a7bdf03d079e0b14b4b21a0517f8be86c69d463c29"
+    },
+    {
+      "path": "Stafford38/Geometry/AffineConormalSpan.lean",
+      "mode": "100644",
+      "git_blob": "3e970f559cde97dd22244974795e4bba59b12f72",
+      "sha256": "5997727763ea4317e356f318620f357c589951a81aed9cca2f3d82b17fa4d0f1"
+    },
+    {
+      "path": "Stafford38/Geometry/AffinePointCompletion.lean",
+      "mode": "100644",
+      "git_blob": "d66f2157bce0ab061e500bd92b762f98cb612824",
+      "sha256": "f52d9a11fc39337b3625f49e33ea59e4b8b54aa1abf9da86f4ca3ab158536367"
+    },
+    {
+      "path": "Stafford38/Geometry/ArcFrameConormal.lean",
+      "mode": "100644",
+      "git_blob": "c450214d1098205e4f142ce09819f1707b926936",
+      "sha256": "721c94d7f921d243d12bd3323e0d02167880cda4beefecf5ebb50c4fe01672e1"
+    },
+    {
+      "path": "Stafford38/Geometry/AsymptoticChartArcAdapter.lean",
+      "mode": "100644",
+      "git_blob": "d0441a804ed41c1056a0b4a09318a5bb0bf6bbaa",
+      "sha256": "77e38e64261ce112303fc48bb380673304325d0c23a67834617e16426bae07b6"
+    },
+    {
+      "path": "Stafford38/Geometry/AsymptoticDivisorExistence.lean",
+      "mode": "100644",
+      "git_blob": "4903051220ac6d368346c0254270787d26253f26",
+      "sha256": "439c2f0f73f11079d42070be210243804e98dc0340f7ff60769119ddddff1b02"
+    },
+    {
+      "path": "Stafford38/Geometry/CanonicalAsymptoticLaurentProducer.lean",
+      "mode": "100644",
+      "git_blob": "d00fc037c6c5e90e19911c9c72ec443080f75719",
+      "sha256": "d9654426bd98a974904a507aad67feb89bac3777e89e11722493b0f20bfea414"
+    },
+    {
+      "path": "Stafford38/Geometry/CanonicalConstantCoordinateBranch.lean",
+      "mode": "100644",
+      "git_blob": "3f21ea638067d4f7befd5dd7ec2e2260b078f483",
+      "sha256": "149edfec257df84a224486b6823f2021f2297f8757f7d35b4c3f508f70826671"
+    },
+    {
+      "path": "Stafford38/Geometry/CanonicalFiniteGradientProjectiveCoordinates.lean",
+      "mode": "100644",
+      "git_blob": "e3efca150b4e3fb2e3da4378169a23f1f44f77ad",
+      "sha256": "bbfcaecc710079cc4828e590b62b528cd7f9c84664d68a6a28127aa8630c3fcb"
+    },
+    {
+      "path": "Stafford38/Geometry/CanonicalNonconstantFiniteGradientProduction.lean",
+      "mode": "100644",
+      "git_blob": "a2ead4812e87918f9ad762e717e0f4d17c14b73e",
+      "sha256": "5b8d73d32d20f42341329f293606711b778cb1e525f20c7f759b142884d38133"
+    },
+    {
+      "path": "Stafford38/Geometry/CanonicalNonconstantFiniteGradientProductionProof.lean",
+      "mode": "100644",
+      "git_blob": "932ca11d38d3fbf68c44dedc2d4e14b12e4f1e96",
+      "sha256": "6a835f03a5d09387013fb064c79c66532ea742ffbcd5296583435924aeec8d0d"
+    },
+    {
+      "path": "Stafford38/Geometry/CanonicalResidueExtensionAssembly.lean",
+      "mode": "100644",
+      "git_blob": "97f71c42dc1af37968750b8349a821495c95fb85",
+      "sha256": "7a4dcf3f55e62e8e461f2e761a6f6225b01ec867d0a46ebf79bd785b2488947c"
+    },
+    {
+      "path": "Stafford38/Geometry/CanonicalVisibleDivisorFrameProduction.lean",
+      "mode": "100644",
+      "git_blob": "0c54c30347b64c85ad2fd9210375b63506a246be",
+      "sha256": "d421adad6be8a57d4864ee33cd15cb3eca20494b10e5e894d5a9fc4eeda7e527"
+    },
+    {
+      "path": "Stafford38/Geometry/CenterNumeratorFromHeight.lean",
+      "mode": "100644",
+      "git_blob": "da7f2d7979dcccad61d60d3b3e47c1e4cf23dfe4",
+      "sha256": "34f5ceece5c8d02652e95abf86efe071c0f2148bbfce885b4ed33d70d10d2698"
+    },
+    {
+      "path": "Stafford38/Geometry/ChartArcAnnihilation.lean",
+      "mode": "100644",
+      "git_blob": "c4b1ca177b6dcd0c0f7afe1facba453eea4de262",
+      "sha256": "2afff6c7aad510ded165b44197a8e48b53d5fc2df5804a25ec734293ea010fee"
+    },
+    {
+      "path": "Stafford38/Geometry/ChartGenericPointFractionRing.lean",
+      "mode": "100644",
+      "git_blob": "d5f32c1425c706da74036d81b0f2d53fca04b1a5",
+      "sha256": "f3c5b7f4a78d4a870bb59f6bd0e365e7294eb1ebe004fb4cd421079f779cbf0a"
+    },
+    {
+      "path": "Stafford38/Geometry/ClosedPointOnDivisor.lean",
+      "mode": "100644",
+      "git_blob": "41d1d907d8b8c5ee3e91c4ef17fc89d4942d350f",
+      "sha256": "3f4beab74a3f2ac11a978d89549fdf55a19817bf49115374608ffb6ecbd38769"
+    },
+    {
+      "path": "Stafford38/Geometry/CoisotropicTranslation.lean",
+      "mode": "100644",
+      "git_blob": "520a588aac5f22f35fc859be177e2f8f142002ac",
+      "sha256": "0c7b32aa4594d28285fea904f58467baacacb40b3edf662b854538e7da14ca30"
+    },
+    {
+      "path": "Stafford38/Geometry/CommonOpenEvaluation.lean",
+      "mode": "100644",
+      "git_blob": "d76ab5f7350b8102092d08b3a4058438494d4b07",
+      "sha256": "2e8f9298ad2bef1811530070558e7e91f35e6508d151d81af85bf0610d723361"
+    },
+    {
+      "path": "Stafford38/Geometry/CompletedDVRCoefficientSection.lean",
+      "mode": "100644",
+      "git_blob": "e281a1939ea9de491247cc80850cc23c2264b627",
+      "sha256": "b57b4e8bbbc1ff0da31fda81c11f0bc6b9151adc1b2986ab3c9e731a63637bf6"
+    },
+    {
+      "path": "Stafford38/Geometry/CompletedDVRPowerSeriesEquiv.lean",
+      "mode": "100644",
+      "git_blob": "987d959da530686028c51bab8f47775dac902f35",
+      "sha256": "43d55b40300eae93f7a1a3034c50f7e08ab8f4387f308a6fdac00d030f9148aa"
+    },
+    {
+      "path": "Stafford38/Geometry/ComponentFunctionFieldBoundary.lean",
+      "mode": "100644",
+      "git_blob": "2e47e74c5caf40d73bfd6a51a59c1e844ab06edb",
+      "sha256": "dff6ee0abe1d9a1d139eaf4614734d4cab397f10694ecca3f15b9b82bac47a63"
+    },
+    {
+      "path": "Stafford38/Geometry/ComponentProjectiveChartFactorization.lean",
+      "mode": "100644",
+      "git_blob": "ee90d1f4737cb2ba0c2169666e0b94f2d8da5e54",
+      "sha256": "c24c59b5f7af1edc52fabfcce98fb70715929f0b38c87e5a90faac8a439a8c3c"
+    },
+    {
+      "path": "Stafford38/Geometry/ComponentProjectiveChartKernel.lean",
+      "mode": "100644",
+      "git_blob": "4ba6f5b0884b707800eef85848c3e5c98c90e1bb",
+      "sha256": "ef523c6bcaef00e29014e805ad3716dc9101ba580154c34d658470b87b36760b"
+    },
+    {
+      "path": "Stafford38/Geometry/ComponentProjectiveClosure.lean",
+      "mode": "100644",
+      "git_blob": "ee036cf41fec757184654abf8fd92125e4975775",
+      "sha256": "48f1a45caffd76b198db383f056c8f1d2bacc6c626d1ad6a4ae51b0250ffa88e"
+    },
+    {
+      "path": "Stafford38/Geometry/ComponentProjectiveClosureNormalization.lean",
+      "mode": "100644",
+      "git_blob": "db747761e038bb41b441d8c9206cb18bc911c6d8",
+      "sha256": "27100443171118e440d01bee0f06437157d40bd9f241d6da6ccde17079d397ed"
+    },
+    {
+      "path": "Stafford38/Geometry/ComponentProjectiveOrder.lean",
+      "mode": "100644",
+      "git_blob": "80957462204f856dd18b0e03c46bbbcee98fab70",
+      "sha256": "8bc77e2e40240c75ad03dd357b369c6441583a17d27f9ed609e5e830249a3153"
+    },
+    {
+      "path": "Stafford38/Geometry/ConormalAxisContradiction.lean",
+      "mode": "100644",
+      "git_blob": "af91124944c8a812640344b67ef0a1ad1cdce0a0",
+      "sha256": "de7eeba908237827105724cb1e2a462208f5339398b0aad89b0a1189433544b3"
+    },
+    {
+      "path": "Stafford38/Geometry/ConormalPrincipalOpenDensity.lean",
+      "mode": "100644",
+      "git_blob": "6810564d6fb55d951e530d34bc340791b8dbeecf",
+      "sha256": "b3697d866757bfffaf5f0af2d6f44fc850191215be2dcba6b449dad043b6ddd1"
+    },
+    {
+      "path": "Stafford38/Geometry/ConormalScalarExtensionVanishing.lean",
+      "mode": "100644",
+      "git_blob": "96423e7abe16736797ae1bf97479fdb0fd3cfcc6",
+      "sha256": "d5894ea69efd2b4caf2a56dee8df60aa2624a854041c74994c54760dc272b15e"
+    },
+    {
+      "path": "Stafford38/Geometry/ConstantCoordinateConormal.lean",
+      "mode": "100644",
+      "git_blob": "f1e95c39876564e68d10ada9105f33c6b025d68f",
+      "sha256": "5eedb6aa72ed353e5166943a62b745790c9196f97f713d3af1359430ed1253a8"
+    },
+    {
+      "path": "Stafford38/Geometry/ContinuousPowerSeriesTangentFrame.lean",
+      "mode": "100644",
+      "git_blob": "11310f782e3c8a062dd1e7a8a2c6dd76f366c05b",
+      "sha256": "723f3c1f57fdc55c01482d0e35ceaacb93025c8e2b008bd68ba8faf73edf8926"
+    },
+    {
+      "path": "Stafford38/Geometry/CorrectedNormalizedTangentLattice.lean",
+      "mode": "100644",
+      "git_blob": "aea8fc7e4a997f23a7ad77aa0e83a5789661b9dd",
+      "sha256": "fe2cc79c7d2fc84b6d32cd51a29604a507fb5f5d3ebec9048e869acb5fda51b8"
+    },
+    {
+      "path": "Stafford38/Geometry/CorrectedVelocitySpan.lean",
+      "mode": "100644",
+      "git_blob": "ffd8cb3f02a7f4d1018ffdb9eb090ac3f517e295",
+      "sha256": "5756492682f6e5d470b388b1b87e9b39e2b037dfc6b5fa605794a851ca11f29c"
+    },
+    {
+      "path": "Stafford38/Geometry/DVRParameterSmoothness.lean",
+      "mode": "100644",
+      "git_blob": "d227afdca1faf0ee761927bd7e8180f20c444780",
+      "sha256": "8e08cd8f4ac1c6216626e90a62dca0c91ee77e0b141564ad280380c18da53061"
+    },
+    {
+      "path": "Stafford38/Geometry/DVRUniformizerNumerator.lean",
+      "mode": "100644",
+      "git_blob": "1f38524381763e44192d3d006faf1bf77beff8ce",
+      "sha256": "2f2251f2c3a95bb0561159090642dbee4d809cf7188d55b44ae8612f8d576c58"
+    },
+    {
+      "path": "Stafford38/Geometry/DirectSummandInputOfActualChart.lean",
+      "mode": "100644",
+      "git_blob": "551b6dfceda0b7be03cc2eed2c496ab109029457",
+      "sha256": "87354a3420b5c6252805990bee56725b8ec0bd79c2a1f6d3b683c26331b4b261"
+    },
+    {
+      "path": "Stafford38/Geometry/DivisorTangentLattice.lean",
+      "mode": "100644",
+      "git_blob": "4ad8ff86956fc4f55cc11d96c51b403d7b559b75",
+      "sha256": "36a1ab5da961b1cd96b7fc0880fdec355af35dcd3d8a7a5f3012a0977c6f2bab"
+    },
+    {
+      "path": "Stafford38/Geometry/DivisorialBoundaryExtension.lean",
+      "mode": "100644",
+      "git_blob": "8ce927e57e9fa400dd4f8e8ed00b69170d27029f",
+      "sha256": "8b9663163d0ed8231a09426fc0abd12bd0ff9f7434daca4cc674511f1bb06c27"
+    },
+    {
+      "path": "Stafford38/Geometry/DivisorialVisibleFrameCore.lean",
+      "mode": "100644",
+      "git_blob": "cb2fc32bb409eb679b643fc3e162a9ac522a1c31",
+      "sha256": "6249b40bd3b9606e57d90f92220b8d6f68cc65643a8a10d1fe3d963936da37fa"
+    },
+    {
+      "path": "Stafford38/Geometry/DivisorialVisibleFrameStage2.lean",
+      "mode": "100644",
+      "git_blob": "766c01fbfcdb429d2a2587c45338a182b1c5815a",
+      "sha256": "c3620ff7a10a4ac05527ce43b31665c4b29d5ff34170cce53121f400c442ee34"
+    },
+    {
+      "path": "Stafford38/Geometry/DivisorialVisibleFrameStage4.lean",
+      "mode": "100644",
+      "git_blob": "672cd0cad28351ae49dbd08509f1160775a45f23",
+      "sha256": "3c19ce3f42abf60e3c98058b384c214f96414ae7cdc549ac1f5de10fe49fd673"
+    },
+    {
+      "path": "Stafford38/Geometry/DivisorialVisibleFrameStage5.lean",
+      "mode": "100644",
+      "git_blob": "dd7f283aadc8d1f777701a58d263aab1f355461f",
+      "sha256": "86cd32238106b663aedc997fc732263c66cc64d9083d89c8fc867cb9c33cba9d"
+    },
+    {
+      "path": "Stafford38/Geometry/DivisorialVisibleFrameStageAssembly.lean",
+      "mode": "100644",
+      "git_blob": "62e16b35defc4f76871a45e155669bce83565be6",
+      "sha256": "0067e270328b8995f868b8906a1ac9549ff8d356c13859bbd83c64cfbe7cd215"
+    },
+    {
+      "path": "Stafford38/Geometry/EtaleCotangentBasis.lean",
+      "mode": "100644",
+      "git_blob": "65168e3bc00e6bdbef1186368f7a2fa01c481938",
+      "sha256": "c9e49563b8ef35ce5a71f3ade176e2df9aba0945aa701eecf392240e62a0b94c"
+    },
+    {
+      "path": "Stafford38/Geometry/EtaleDerivationExtension.lean",
+      "mode": "100644",
+      "git_blob": "69cf27ce84b747a06844d8b6b9c8feac04629356",
+      "sha256": "3164fb3964271e4f6b6a8b6da944aeb38dbb0ad2486a6e57f981243266c6bebc"
+    },
+    {
+      "path": "Stafford38/Geometry/EtaleGenericOpenExtraAwayB.lean",
+      "mode": "100644",
+      "git_blob": "ea13284c8581bc99036cf23b17237e72a91a7cce",
+      "sha256": "6afef48049c9d2dea5e5f198cd6dde79c1e0c6badabefd41ffbc0f1534cffe78"
+    },
+    {
+      "path": "Stafford38/Geometry/EtaleGenericOpenLocalAwayB.lean",
+      "mode": "100644",
+      "git_blob": "f8338169dfbcf78639cdfbdc1ab6302a2545e1e8",
+      "sha256": "216909db902e8dcf0ef672fe920c569f89696c1b6eb1dad0f40071fe3d3c012a"
+    },
+    {
+      "path": "Stafford38/Geometry/EtaleGenericOpenTransport.lean",
+      "mode": "100644",
+      "git_blob": "de080407def7db4098d97a9c668d2c67f5c29c6b",
+      "sha256": "42d1fdfebe5c91f17e46d5497485dca5036f99936440879d0d08d439d8b626fb"
+    },
+    {
+      "path": "Stafford38/Geometry/EtaleLocalChartFinitePartialDerivation.lean",
+      "mode": "100644",
+      "git_blob": "8bdf7b81e510debc34abe89f4fbf63cb32cea58c",
+      "sha256": "71dd5097a11ce2dc76a80bcb190a8750a7acd6b61196c8d15459371ea2334e6f"
+    },
+    {
+      "path": "Stafford38/Geometry/EtalePointCompletion.lean",
+      "mode": "100644",
+      "git_blob": "ed8aa8d51c53ff2389586034f3b4fb1047d33153",
+      "sha256": "9e59a35fad7cdd19f388726c5011e5bd470713d172ccbee9bfe7943dc0dc5473"
+    },
+    {
+      "path": "Stafford38/Geometry/EtaleProjectiveTangentComparison.lean",
+      "mode": "100644",
+      "git_blob": "cc75477a900fd77d122569859b057b4eedc74ecb",
+      "sha256": "172c6b09754aa2af6b82815bdfbdaea593701430cc7295e739553757f217f888"
+    },
+    {
+      "path": "Stafford38/Geometry/EtaleTangentChartSpan.lean",
+      "mode": "100644",
+      "git_blob": "acf83ee57661d3ba2312d553a704e67a9049794e",
+      "sha256": "e15eb1d36750bfa65bbadc2b4ebf7e4a9c6f1557e05e0104c5433d4a1911591a"
+    },
+    {
+      "path": "Stafford38/Geometry/EtaleTangentKernel.lean",
+      "mode": "100644",
+      "git_blob": "80e7669281f83ae279550d344b6fa4f17a6ef06b",
+      "sha256": "0b8ce83b86eab8fb7a6b4b4d4758a48b1ceeb78c4e13c58ad16f585927fef747"
+    },
+    {
+      "path": "Stafford38/Geometry/ExactDivisorialVisibleFrameExistence.lean",
+      "mode": "100644",
+      "git_blob": "13c65cecdc52bfc9fefaf9613322b900a748408d",
+      "sha256": "4ef12d170d16787717220b8e9dce191f59b9c4a6cca0a47f1b2e0ba13e9f5413"
+    },
+    {
+      "path": "Stafford38/Geometry/ExactVisibleDivisorFrameInterface.lean",
+      "mode": "100644",
+      "git_blob": "b993121f2c26dc684a5ee4a4fa8477a97dd1b04b",
+      "sha256": "135eddde0a6d4e0a292ca86222f3e4c3767b073d28fadb025bcda19bddd560ee"
+    },
+    {
+      "path": "Stafford38/Geometry/FibreConicalVanishingIdeal.lean",
+      "mode": "100644",
+      "git_blob": "2168e8341731e79b0ce726de59ff5ece5c7734c6",
+      "sha256": "d0d27160364bc83b9543b16a22bb49ddacb8a9d0241bbad61d0dc33a223070db"
+    },
+    {
+      "path": "Stafford38/Geometry/FieldEquivFiniteType.lean",
+      "mode": "100644",
+      "git_blob": "2127d49e21cba5ecaca20291b190b77ddcc00303",
+      "sha256": "a4cf7bd11fe615987b41eb9ad779270d48dfc11fd025c4e6b47e539f578d0e84"
+    },
+    {
+      "path": "Stafford38/Geometry/FiniteBirationalAway.lean",
+      "mode": "100644",
+      "git_blob": "010baaade182eaaed278ffca90833f782114df20",
+      "sha256": "3dba2e9aa7f72e993c531fcae4c61d9c159220ced45ddd24f9c557ded9d0ca5d"
+    },
+    {
+      "path": "Stafford38/Geometry/FiniteGradientBoundaryCertificateOver.lean",
+      "mode": "100644",
+      "git_blob": "583652c7d41d60292e4613a4a5536035c65bdbb4",
+      "sha256": "f5ddb4f70e793b60a90270700c1e15addb402a870a4c7710d87b0835224d738b"
+    },
+    {
+      "path": "Stafford38/Geometry/FiniteGradientBoundaryProducer.lean",
+      "mode": "100644",
+      "git_blob": "99fa0b134bddd6ebeb964f05fce9397972c7fba5",
+      "sha256": "cab1c1a3c0871842f0e8927c8f67430356d7f1e41ad915a360145ccc195b6a33"
+    },
+    {
+      "path": "Stafford38/Geometry/FiniteGradientFromTangentInclusion.lean",
+      "mode": "100644",
+      "git_blob": "0fdff05160d9f066b4d4729ce4361ec7ab7d2dc1",
+      "sha256": "14351805ad0ca4a29a71f86183ef9d49fecda2aa48b0235cb71db960ad34f36e"
+    },
+    {
+      "path": "Stafford38/Geometry/FiniteGradientResidueExtension.lean",
+      "mode": "100644",
+      "git_blob": "49ea4845a285315b930845e819727fe08d32f91c",
+      "sha256": "8c697892bf41a3598c4bb446fd9a56c3d9bce45348f66e891236ab2bf79eec1f"
+    },
+    {
+      "path": "Stafford38/Geometry/FiniteSeparableDVRChartFoundation.lean",
+      "mode": "100644",
+      "git_blob": "739825edc3806688028bcea1b0e70d48bbe047d1",
+      "sha256": "ec847bd8f7663ede942183c95aa3d9a51225749008c3a6fc108cff64d02fe226"
+    },
+    {
+      "path": "Stafford38/Geometry/FiniteTypeCurveHeight.lean",
+      "mode": "100644",
+      "git_blob": "951a504c64cf8f2f4df489e9f18796a134025fc8",
+      "sha256": "21351936fbf1189081613d574d39d433a1e1a5385d61eba4d4148f7f60ebbf63"
+    },
+    {
+      "path": "Stafford38/Geometry/FiniteTypeCurveNormalization.lean",
+      "mode": "100644",
+      "git_blob": "4941501cc00ac194be8ae7168388c1a0a2f876eb",
+      "sha256": "6b65938728ee4f536b66673b116aa7bd9d99bc66b2933cf0040dd79bb5769773"
+    },
+    {
+      "path": "Stafford38/Geometry/FixedWitnessTangentSqueeze.lean",
+      "mode": "100644",
+      "git_blob": "3945d64ea600c11943d8bf8abd69dd31b7847a61",
+      "sha256": "1c5b6870044c564909028c4417af0f58577b81cabdc0c14f096d5a3141b36fdc"
+    },
+    {
+      "path": "Stafford38/Geometry/FormalDivisorAxisLift.lean",
+      "mode": "100644",
+      "git_blob": "511ceb11d20c7cf1614c79418a451ed8de66d604",
+      "sha256": "e57d4117349fced0da96898e50ce3ec766a0dffa187f8efdcb28274cb413059e"
+    },
+    {
+      "path": "Stafford38/Geometry/FormalDivisorLaurentConormal.lean",
+      "mode": "100644",
+      "git_blob": "c943293229b144d07fe95cd22630ac9228a258c0",
+      "sha256": "6fa7f83ee04b517fce14db1a867842dee85c09d17196924806ea020a55833bb1"
+    },
+    {
+      "path": "Stafford38/Geometry/FormalDivisorTangent.lean",
+      "mode": "100644",
+      "git_blob": "456ec7b9dc530a1f0f3274db60f34b30a1120807",
+      "sha256": "390362a3b8dc06b64930e9afc69840aeff654f7616c57d0a27989976caf8e7f1"
+    },
+    {
+      "path": "Stafford38/Geometry/FormallyEtaleCompletion.lean",
+      "mode": "100644",
+      "git_blob": "f411b8230535c34db7cfcced3d2e7f075d107d26",
+      "sha256": "e79522194f21994055f67892211a4d24e1391beba8ca658f73835cd417990c97"
+    },
+    {
+      "path": "Stafford38/Geometry/FormallyEtaleCompletionEquivalence.lean",
+      "mode": "100644",
+      "git_blob": "b5b21cc69efdd86e33ae4854c2bbe7f0d227a192",
+      "sha256": "b3660199aecc1afdd6b596e5b6370a0c1f0e53cdc4e62277f6db98d3a2147a76"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralAsymptoticConormal.lean",
+      "mode": "100644",
+      "git_blob": "6ebf60b6df4512f95b46860d2bfe43312d21cbd5",
+      "sha256": "d39b6c7d218ae28c22b78b31fd06503a2f3ff9fe4262ebf5b49d7f1121cfeba7"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean",
+      "mode": "100644",
+      "git_blob": "915d8ab9911ef5353860b0ba273e6f0e31b4598a",
+      "sha256": "2964c159b0d76a80cc6f25f2929cb16e979a949956f601acbb7cf67a521a766c"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean",
+      "mode": "100644",
+      "git_blob": "b708b3f1e07396e9dd5a63e005c660fddfa4daa6",
+      "sha256": "d215b43080c8909dc002603f3c24b2937906d636ef22b53d7a384f952d333567"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralCoisotropicExclusion.lean",
+      "mode": "100644",
+      "git_blob": "21c5fea818b84276cf4b5688d0e4862acae170a7",
+      "sha256": "ed46130139c2f8a0e1ab610f10f885bc648c62fdd3875ed28c014bcd3a965906"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralCoisotropicSets.lean",
+      "mode": "100644",
+      "git_blob": "df6e0d53ebcc6dca8c8a77b3cbfda8806b2c8122",
+      "sha256": "eadebd9c359e9e2605a358600fc1c400ce2b16d03f5e810d3c098d2d60d101f3"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralCoisotropicSetsTest.lean",
+      "mode": "100644",
+      "git_blob": "b3c46a5dd75a1ae578c0eaf5a7ee882e4dc94162",
+      "sha256": "516c44cdf0be729bf9b6bd9892bbc6d3f8c42aacc857826ef139779d9acf4fde"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralComponentConormalContainment.lean",
+      "mode": "100644",
+      "git_blob": "4f8af87080fe3c813f2b0e97acad24863e1fb250",
+      "sha256": "42751c52a3cc81c29d0ceebf8fb9f4461d2e000d49ab9b86754cf29797121664"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralConormalAxis.lean",
+      "mode": "100644",
+      "git_blob": "e3218d8c73a46f951b673ac8624a57d5f107f9a6",
+      "sha256": "1f6e2fe251533b15c21e76c89b08c0a338ac528250bf3699e225310add327425"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralConormalContainment.lean",
+      "mode": "100644",
+      "git_blob": "cd0cade15ab376e462fc6036892ab6a7e2f0ffe8",
+      "sha256": "bb354b8a18b0aa95c6485969490734d41497deefbab394b7de4b75fef8c1bef8"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralConstantCoordinateAxis.lean",
+      "mode": "100644",
+      "git_blob": "4ca46d68262db7a0e0cff859bd9ef5957cc658be",
+      "sha256": "a6692ed466276a835a9df5be4f85f8d92e7319e60078c6254fc9acd3db2a8267"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralCoordinateAvoidance.lean",
+      "mode": "100644",
+      "git_blob": "c6d4ac4be1dcd19e0f9017cd75b9eb64823e99b2",
+      "sha256": "8ce87e3abc6e9a6eac003204684b92bef76f0d6556ed367f76c8aa6d4b70d488"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean",
+      "mode": "100644",
+      "git_blob": "5e9c324663e02f562ef46697c3c2a7cdc01de2c7",
+      "sha256": "a3285cd095f0212fe1f78f0645552fd252a368856fbf4270311333e0e43298e7"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralDivisorialVisibleFrameColumn.lean",
+      "mode": "100644",
+      "git_blob": "97c9cf3cce5d158d2db86227d60fb60b23f459a8",
+      "sha256": "df67c774cdecfee26a90ffddc618431fe2e61a04ae43b268b2ffcb21bdf85c84"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralDivisorialVisibleFrameCoreData.lean",
+      "mode": "100644",
+      "git_blob": "9a14d4ae5110cb022480e4ed6ea198880d11e488",
+      "sha256": "7b58084a2a49d94970bdd6a02b7a6623cd283b4ae104a06e48a5a030b040276e"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralDivisorialVisibleFrameData.lean",
+      "mode": "100644",
+      "git_blob": "dbf19d3c358461e0a09914258f8cc9130f08aed9",
+      "sha256": "53000cd4383d9fd01b7ad87a061264caeafcfb566ab9c53ade2bc96f4ac46d4b"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralDivisorialVisibleFrameResidueSupport.lean",
+      "mode": "100644",
+      "git_blob": "d38fc067723eec79f50e0184946157e05b821bab",
+      "sha256": "588f98a1915c7b2d51310ec345566bfab85385fe354bf4d99fd43db1830cc445"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralDivisorialVisibleFrameWitness.lean",
+      "mode": "100644",
+      "git_blob": "f06588808a3c3d86144dc0ed40e228e8abc0b3dd",
+      "sha256": "4b33da7d778c4fa30f82f5e6c85846adbb625369e350cd13cd24bece903aaf68"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralTangentLatticePresentation.lean",
+      "mode": "100644",
+      "git_blob": "0b5e389879dbf5ff9e8ce122ea69c132baeb5ba4",
+      "sha256": "ede0aaedcbccbc0fd6aea4c3c68c0240c122098d3c7c59a5bc5ff9479fbe2551"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralTangentLimitCriterion.lean",
+      "mode": "100644",
+      "git_blob": "8abe3fc35a67e39978b6ee6352eb387692de384a",
+      "sha256": "5e5215105cf279484838397cd2cab5d2c461469a7b694470f309ddf772fcff26"
+    },
+    {
+      "path": "Stafford38/Geometry/GeneralTangentLimitCriterionTest.lean",
+      "mode": "100644",
+      "git_blob": "6801179927844be759bf18bd23abe7352bee1a11",
+      "sha256": "7f78374223b4a9996939cf895035c83337c78b6f9b81f10df553a69642d66edf"
+    },
+    {
+      "path": "Stafford38/Geometry/GenericPointKaehlerConormal.lean",
+      "mode": "100644",
+      "git_blob": "0d826836cccfd4f685884023c53a36191e362bf1",
+      "sha256": "f70e06ffdd6ccacab8cb0a511d2f90d97e142d0f4248a700b9d6adec061c17e8"
+    },
+    {
+      "path": "Stafford38/Geometry/GenericSmoothOpen.lean",
+      "mode": "100644",
+      "git_blob": "484351fd6ae205a1d5839d48609eb422403d1b77",
+      "sha256": "f2adbd980a8fdbd1a9b04f3af057d10a0fdd6e0871024ade2d4a0422ac14d76b"
+    },
+    {
+      "path": "Stafford38/Geometry/GroundPointETCompatibility.lean",
+      "mode": "100644",
+      "git_blob": "47ad6048ffa0c1a1a41bbb59607f74b322f82d67",
+      "sha256": "900527652b291b941a5e93fa472efdbe8ed0c562a682cd61576c86f290022943"
+    },
+    {
+      "path": "Stafford38/Geometry/HomogenizedAffineEvaluation.lean",
+      "mode": "100644",
+      "git_blob": "ae4aae48a2d6f181aa83485a87888497deeb2515",
+      "sha256": "c9fb166588f42e23bdf3bfc1bddcb1bc71dae894f116b5516699c3aa45798b7e"
+    },
+    {
+      "path": "Stafford38/Geometry/IntegralClosureCenterDVR.lean",
+      "mode": "100644",
+      "git_blob": "d4f290f97776b4df718d08db58b3007373bf6c74",
+      "sha256": "8708827dbff29f7b484bdd0a2e12f7a2d4f2b7ae90e9123c7c4cb451537672a3"
+    },
+    {
+      "path": "Stafford38/Geometry/IntegralPolynomialExtensionDimension.lean",
+      "mode": "100644",
+      "git_blob": "faa87a830445b53dbf9e03c03786eff5747f8aad",
+      "sha256": "ce7afde5406854a37e8ad00422881bf201988d578394fecb40d8fe2200999d9d"
+    },
+    {
+      "path": "Stafford38/Geometry/JacobianConormalComparison.lean",
+      "mode": "100644",
+      "git_blob": "fb04000415acb0f34811ad4310447465a1591cbf",
+      "sha256": "4ef65c4ddef56a6e95b23a096e439ea92cde049f5de0a5ce191457f0b3d98255"
+    },
+    {
+      "path": "Stafford38/Geometry/KaehlerDVRVisibility.lean",
+      "mode": "100644",
+      "git_blob": "60cfe3ff32be1332e7eedb3a37dcd289b17e4f2a",
+      "sha256": "e88cc1c3b2324985de8cb80b4783937a61cfe95b6a8d67a9420d60ad803bbe4a"
+    },
+    {
+      "path": "Stafford38/Geometry/KaehlerSpanSeparableAdjoin.lean",
+      "mode": "100644",
+      "git_blob": "ee25b4b07bb90b126305146305211b2edbafc15b",
+      "sha256": "b264b522e5431f8dceb14f1e48e5b944b354eecf8a7b0eb18950e2e76091fe70"
+    },
+    {
+      "path": "Stafford38/Geometry/KaehlerTranscendenceBasis.lean",
+      "mode": "100644",
+      "git_blob": "3b0492502f385e9a9e3f38f77e94e7219f6219e6",
+      "sha256": "186c8bda82c98cd72b8dd49e628e95e77ea5617f604480b336c21e32e912da09"
+    },
+    {
+      "path": "Stafford38/Geometry/KaehlerVisibleDerivationFrame.lean",
+      "mode": "100644",
+      "git_blob": "e21d33d8e05b36c70fc1016bbca448ff6ff86aa3",
+      "sha256": "40b52ccb5a99d834939100992b008c44e7b0686d1c6590633d6a3811a17d7ab7"
+    },
+    {
+      "path": "Stafford38/Geometry/LaurentConormalDirection.lean",
+      "mode": "100644",
+      "git_blob": "1aa2feaff3cdce6016ab480da7e70c6e1895f2d9",
+      "sha256": "4b36d20a98de531dd04fdac91b1ec816f9d208b8e1114de72ec3bbe8955425db"
+    },
+    {
+      "path": "Stafford38/Geometry/LaurentConormalResidueExtension.lean",
+      "mode": "100644",
+      "git_blob": "48265be5c69a8517f6232becb5ca6fbdf94f11ad",
+      "sha256": "6768b3c65f6fd9391ef2a31ffc36fcbf5704599b08035fd10660be915ddc6aba"
+    },
+    {
+      "path": "Stafford38/Geometry/LocalNormalizationCenterEquivalence.lean",
+      "mode": "100644",
+      "git_blob": "a1f9654475b87966c1706985a8216be0826901b8",
+      "sha256": "4b83f2ecc97b9f7ab554cd9bb40936d4387477acade27c438f8be618b31cd67d"
+    },
+    {
+      "path": "Stafford38/Geometry/LocalizationInStagesAtPrime.lean",
+      "mode": "100644",
+      "git_blob": "5d40b9224419392056959e57c46289ecf46d5dbf",
+      "sha256": "b0c6473141847376ca79b985c772c4d80baa8827067df780f68a518d50daede3"
+    },
+    {
+      "path": "Stafford38/Geometry/LocalizationStageFractionCoefficients.lean",
+      "mode": "100644",
+      "git_blob": "02a39bb0a05863d011a22a49121cabf5d5bd777e",
+      "sha256": "b2d2c804fb1c7c441ab204b2b64c6d4175d083d6ebff818201d83d5cab894ba9"
+    },
+    {
+      "path": "Stafford38/Geometry/LocalizedProjectiveChartTransition.lean",
+      "mode": "100644",
+      "git_blob": "ac23abe003b1c52d8574e9ef3aec3383b5d4d789",
+      "sha256": "350a81a34004905c7c7ee05c1a6035a1798ee3002cf20472daa3cd2a64a95183"
+    },
+    {
+      "path": "Stafford38/Geometry/MvPolynomialFractionFieldTranscendenceBasis.lean",
+      "mode": "100644",
+      "git_blob": "dcc80655aef587bba5dce46a474b8a80df663768",
+      "sha256": "29c3792988821b40b9cb831951044efcf95e145dfdd767419783858103a24e59"
+    },
+    {
+      "path": "Stafford38/Geometry/NormalizationHeightOne.lean",
+      "mode": "100644",
+      "git_blob": "a90acecaec389ff6622c9e290a1c6e977dbacaef",
+      "sha256": "bf6b9cb60894b861a4d7eec07f52c3491234c62245928ffb9a9f5bfbe67c372f"
+    },
+    {
+      "path": "Stafford38/Geometry/NormalizedLatticeProjectiveConeAdapter.lean",
+      "mode": "100644",
+      "git_blob": "fecd8def200868d8c10b93663b4a516830a0af75",
+      "sha256": "8a13291ee91038fe90e3366d56c95fa720d313330989d3b94ed351ed21cff312"
+    },
+    {
+      "path": "Stafford38/Geometry/OneVariableAmbientConormal.lean",
+      "mode": "100644",
+      "git_blob": "42d3b3e45db4e0c3d3227d5139953aac6627a7b7",
+      "sha256": "65bbf9630db8f9151c0a94e96866fdef6d4d4b7dc474d12ef2adc26878bf2adc"
+    },
+    {
+      "path": "Stafford38/Geometry/OneVariablePrimeConormal.lean",
+      "mode": "100644",
+      "git_blob": "b3d4bcdd25e87434ded8caae71c0b5ae94a70145",
+      "sha256": "a99154a632cf68ed5377c20c78f0ed46401b5e625bf7f6b95d190f0ae4321390"
+    },
+    {
+      "path": "Stafford38/Geometry/OptionCoordinateEtaleComposition.lean",
+      "mode": "100644",
+      "git_blob": "b1b4430a6d132ccd359509d70a1524bbba1ce558",
+      "sha256": "05acb86725cbdeec135da314b1935aabe1c385854612ae0f350f9ed06975009e"
+    },
+    {
+      "path": "Stafford38/Geometry/OriginalPrimeCoordinateAvoidanceWitness.lean",
+      "mode": "100644",
+      "git_blob": "7f99ced902abe7d5b468989428c851c652ed2869",
+      "sha256": "6c64971f85ac829d0002141231b857665761d47987adf0eea983bb142c9e47b1"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperActualDivisorTangent.lean",
+      "mode": "100644",
+      "git_blob": "78fee6edccc4867da321046958ef088c25c32d31",
+      "sha256": "884e06c30d733c43cfd804186dabcb0a0da7a815631b687feacbbdb7b905b74c"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperActualWitnessConormalData.lean",
+      "mode": "100644",
+      "git_blob": "32ee3e402f3cb88475a32fb83ce158b242e38879",
+      "sha256": "fe798f75fffbe0ed7e402cf0d0249ed018ba7eb579f4a10f786b57ab2cee5b63"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperCompletedResidueDerivationFrame.lean",
+      "mode": "100644",
+      "git_blob": "9e6ac1f04dc75f8875df5061de209872d5565d62",
+      "sha256": "f7dd5281d602f815f06c16ad08d3f2fafb2f20f28076854ead653469ac80a7d4"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperDivisorTangent.lean",
+      "mode": "100644",
+      "git_blob": "b266753fbd2afbd9e647cce0c53611a38a2d88f8",
+      "sha256": "ae0f28d865e7d869c3beb6806d085a28c8173b9ed56f7cd20038bbc68b7075b9"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperGenericTangentRank.lean",
+      "mode": "100644",
+      "git_blob": "733d79509288b05f5d4a3daa22cdd3cc124373d7",
+      "sha256": "66d2824a1f454298592e130423ffc6a03bfb242390cb5fb969fdeccec432dccb"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperHamiltonianFlow.lean",
+      "mode": "100644",
+      "git_blob": "3b9d7bef72dbaade9b1d62063e3cf32673c0da3f",
+      "sha256": "7ed966e18d40abc23fa66719857c2e6f65ed50a3a648e21d77248d727aaa6e53"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperLaurentArcTangency.lean",
+      "mode": "100644",
+      "git_blob": "afe06142f28dc6de3ade46eef5b49a2fab36fe0f",
+      "sha256": "f788518b8c626bf7fff384fe49bf91798a3f9a8a8a828c55d38981a13d347ec9"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperLaurentChartDerivation.lean",
+      "mode": "100644",
+      "git_blob": "86a937899f74972db965e756b0445a18bea3d332",
+      "sha256": "4c62063a956559d32e82d4c85683de0f4b60c1bcb06ba173064b479907d94f52"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperResidueDerivationFrame.lean",
+      "mode": "100644",
+      "git_blob": "fac7b63a85063ba1b9d3cdd2ebab9fc19e35d365",
+      "sha256": "f1100ee5508bc8842c1fb864cc9794170ee8d648b6645b550157156e9cc7efb6"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperResidueGroundAlgebraTransport.lean",
+      "mode": "100644",
+      "git_blob": "77e2a36072d728ccda3c6eaf386379412ccefeb4",
+      "sha256": "4987eda07300e9e566bae2dfbd54615ce605fb8f07a62847c8b66ab9d4dc40f0"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperRetainedChartAssembly.lean",
+      "mode": "100644",
+      "git_blob": "8b625b07681f51d9a6c4cc9321bb0d64ddaebec3",
+      "sha256": "ccb22421d624da909a4d090fe48b891a1a4d9ac8db1f81a316e9b838a082db84"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperRetainedChartWitnessColumns.lean",
+      "mode": "100644",
+      "git_blob": "ddc4cf53bfbbcda83419bb32052399d2c9810d98",
+      "sha256": "c9540f678179cb491d0a567c165cb579d744a29ec0ba4b3fdafad7de59444c45"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperSameWitnessComponentFieldRank.lean",
+      "mode": "100644",
+      "git_blob": "e4590b78967dfb444e39793ce843c840e46d8cbb",
+      "sha256": "e9c97bcf4d93fcd91e6e703d020047ae5e24df6c1e5cd5af2c89d68be6527fb1"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperSameWitnessTangentDimension.lean",
+      "mode": "100644",
+      "git_blob": "9af38edd259c1fc94b8e08c65239aabe23fce91e",
+      "sha256": "7e2f71f2a2bdc2da3596bcae553762025408e87916c463cf5dd5db1e571cdd46"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperUnitPowerFactorization.lean",
+      "mode": "100644",
+      "git_blob": "f8a23d5211083dfe5a2cee0e6a2a87c625066286",
+      "sha256": "3839d9b8b28925d9ada61045b49a3322b0b3e1eafeba7c8fac271cb5d65f19b9"
+    },
+    {
+      "path": "Stafford38/Geometry/PaperVisibleFrameFieldRank.lean",
+      "mode": "100644",
+      "git_blob": "814efc07850f5a6a8fc9a07693758020429f4ea1",
+      "sha256": "48c3cd2bb5b1e932f8dd96014968e906019f9b599a47554452150ff7852c9ee4"
+    },
+    {
+      "path": "Stafford38/Geometry/PointwiseConormalContainment.lean",
+      "mode": "100644",
+      "git_blob": "4b09613ce2ecfae6763eac67cd42a245cdb93e6e",
+      "sha256": "e6a184b56594b60eb56bb2396c6825db5c776b0db336ab9a3c7ff731ba990e63"
+    },
+    {
+      "path": "Stafford38/Geometry/PowerSeriesArcTangency.lean",
+      "mode": "100644",
+      "git_blob": "62b8ea0f0e02ea9dc84bd87ae7e6070ed6ba61a5",
+      "sha256": "8b3d4e8922ddd36a4eab93ecbcad9a97fc53917c2bd91234f0a3b67f6acccca0"
+    },
+    {
+      "path": "Stafford38/Geometry/PowerSeriesTangentLimit.lean",
+      "mode": "100644",
+      "git_blob": "b1b46375b883265c308a6262d9d9a68ed6f8d193",
+      "sha256": "5d0ca09fee2b1c330c0f2487e9cee88b182b1968193a51346d0986eab28ea55b"
+    },
+    {
+      "path": "Stafford38/Geometry/PrescribedAffineResidueCompletion.lean",
+      "mode": "100644",
+      "git_blob": "09e5a83f3859a642736f76a0a23d8507d08d299c",
+      "sha256": "c7ce185e6592e29c010c55aecd78ebd8e7672c3db5fa666fe00cf12e3ee315db"
+    },
+    {
+      "path": "Stafford38/Geometry/PrescribedAffineResidueCompletionConsumer.lean",
+      "mode": "100644",
+      "git_blob": "ece2ffdf3b84b4079f2019114f92b849ad4a1bcb",
+      "sha256": "6c7f97bebf86a795ae334f0126aad549b30d15d58d0483fe1a2a6a4c4da7d7df"
+    },
+    {
+      "path": "Stafford38/Geometry/PrescribedCompletionDerivationCommutation.lean",
+      "mode": "100644",
+      "git_blob": "0dccb7d4fa37ca4b51875d4056cf51238e320356",
+      "sha256": "85fe191ad56e114912984c75bcff6da05d73cdc49402548137f9d35b72daf76c"
+    },
+    {
+      "path": "Stafford38/Geometry/PrescribedCompletionNonzero.lean",
+      "mode": "100644",
+      "git_blob": "dbe7257b1c69d14d684b517dba55759dcf7b4e28",
+      "sha256": "3ed809eb4de5345c05380de19352565f7061ff9da8498ea76ae742d908b248a5"
+    },
+    {
+      "path": "Stafford38/Geometry/PrescribedCompletionNonzeroConsumer.lean",
+      "mode": "100644",
+      "git_blob": "e8f8d2ae062cab4524d0ba35187403336badd722",
+      "sha256": "6f7ce440b73a5cd036f3b3a9bec4245e806db070608a61055ec16b7d5ae461b4"
+    },
+    {
+      "path": "Stafford38/Geometry/PrescribedEtaleGroundPoint.lean",
+      "mode": "100644",
+      "git_blob": "75fddc5fdf7d396282a9ec0254e1e6294fc5c623",
+      "sha256": "8324cad08d3ef4796b736bb0952eb0a18a8297f2cf68e0d0d26e7f6381910820"
+    },
+    {
+      "path": "Stafford38/Geometry/PrescribedGroundPointPowerSeriesMap.lean",
+      "mode": "100644",
+      "git_blob": "48944a16d78d57b7edb1f67a61cbe33687cd2400",
+      "sha256": "114091951f2ee1dbb7f066ccc3235dd960c4ec51c25098a409c2a4bdaf06e32f"
+    },
+    {
+      "path": "Stafford38/Geometry/PrescribedGroundPointUnitPowerChart.lean",
+      "mode": "100644",
+      "git_blob": "e9eae4d6b712b590f481fb15d392f7f078a41ab3",
+      "sha256": "aac6eed3f958c826c42de3360ec7f054aee285f1d8e7747ed11511e6967285df"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveBoundaryFrameRank.lean",
+      "mode": "100644",
+      "git_blob": "97c8807c58ae28fddcfd2c6187429dfacd3fff93",
+      "sha256": "d9889d3075220d9c48aa94d42c58f8c0981a79b252de0df01adc39e0ae427e81"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveChartCoordinates.lean",
+      "mode": "100644",
+      "git_blob": "78773bc0e6199c091bc0f1c1b854924b65cc4070",
+      "sha256": "b2f8030524a47e6b7e1d293ff0ef0dc0495fc51a2f4e38f3e3a155064fe4c8be"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveChartNormalizationBridge.lean",
+      "mode": "100644",
+      "git_blob": "aaac0514ba74b240873a25dae93192070f84e515",
+      "sha256": "15db2c47b7ced8ad3020cea34d73e3e2128971d8a1ce1a373ca5ba44a616f542"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveChartNormalizationCenter.lean",
+      "mode": "100644",
+      "git_blob": "20bb0592910524c249644f663ca41c28cf40159e",
+      "sha256": "99534e1b8e6f13717dfa390d068bc543aa77c455b09f7a8968152df9b7d97e67"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveChartNormalizationFinite.lean",
+      "mode": "100644",
+      "git_blob": "c0225e9a23dbc246013d3c540dfadd2e36741033",
+      "sha256": "6d9f5519e894dd2ce7b22ab195e7bd5910901dacbacfbe7a1492dde6630c2bf8"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveChartSameFieldOverlap.lean",
+      "mode": "100644",
+      "git_blob": "3a91254a85a9684b186976f57e45501067dd43ad",
+      "sha256": "d4604b3a8b16c972b9c7f815c36c79340a24b884679e2014dfca697c6f5b6492"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveCoefficientLocalization.lean",
+      "mode": "100644",
+      "git_blob": "6c9d40eb4aab5d206cd47e819dc26cff8a2e084a",
+      "sha256": "589fec0037d46ff99142620fb5be12889ae27cf18945d8cee55a260d271ae728"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveConormalDehomogenization.lean",
+      "mode": "100644",
+      "git_blob": "955ed5877d7c8056409d38dedb933fbce2e17804",
+      "sha256": "1f9e22cc2ed7e8750267d1a3ff1c78bc9cb0e142a7109e678580c4bd6d5a5230"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveConormalDirections.lean",
+      "mode": "100644",
+      "git_blob": "88e88d3507cf5466a8dc3dd20364a0dbbdb5c757",
+      "sha256": "9d598913523aa5b18d1b77b3b3fffc43c09eada203580040f72b5945b2e74cb7"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveDVRCenter.lean",
+      "mode": "100644",
+      "git_blob": "71e1290bda7a851cda384eb4b6fdcb5ce90f500f",
+      "sha256": "9a08e148eafe63d76f8708118b08c7fb5abf848a63537f3de7546dd0a340dbfa"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveDivisorOrderGap.lean",
+      "mode": "100644",
+      "git_blob": "81124952db788989dec48e88c9e87c7b082dbc78",
+      "sha256": "eaa2ed748c49355211f16390a813dcb7b50f79322c5057f8c31381c5cb5cfd77"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveEquationFormalChart.lean",
+      "mode": "100644",
+      "git_blob": "6e0a78ad19f832d66ebb709deb68ed6490c375ca",
+      "sha256": "f9337fc78db59115941bd9429eb9bf561844a72ac79d79c56019317b8c32e654"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveTangentInclusion.lean",
+      "mode": "100644",
+      "git_blob": "1c7ca11a2b7f4e5738631e4e32f0af5b9257a220",
+      "sha256": "8d1fecd0f6763a7fb22a988298f092882c6ec6f28ae34b882bdfb4a5e6d68ee5"
+    },
+    {
+      "path": "Stafford38/Geometry/ProjectiveValuationNormalization.lean",
+      "mode": "100644",
+      "git_blob": "f34a25373cd48910982c98daa95a5215d9e07fec",
+      "sha256": "2076233925731bfbf96a3093f1deceb0a5405e842ab265ffd991aa488c559a5a"
+    },
+    {
+      "path": "Stafford38/Geometry/RelativeCoefficientDVRPlace.lean",
+      "mode": "100644",
+      "git_blob": "0fa740b99e67910b0b01aa0baf5cde12e4c69160",
+      "sha256": "6c870f751dd44980b75f2a62f69a878137c4f67430a4a3b5534608a6171dd219"
+    },
+    {
+      "path": "Stafford38/Geometry/RelativeDivisorialTower.lean",
+      "mode": "100644",
+      "git_blob": "666cf6517f4d478935cd2bff8f867e05391eed8e",
+      "sha256": "faaac28aab822cadb393a3337fa6628d39bd960559476ec4d5b542dda3468805"
+    },
+    {
+      "path": "Stafford38/Geometry/RelativeFractionFieldTransport.lean",
+      "mode": "100644",
+      "git_blob": "71ba78c972041b09bc03f43cc3ca19ea40be0794",
+      "sha256": "acfabbdf6333234f7f2055528c6fdd648a724dd511abe9ee11603ccbb76be014"
+    },
+    {
+      "path": "Stafford38/Geometry/RelativeRetainedBoundaryPlace.lean",
+      "mode": "100644",
+      "git_blob": "acecad853e4b27838c4c2925670cdbe20e188748",
+      "sha256": "a44bfb3ef7dcc964dd73341f98d7ca8d7f502913e5ebaffdba820c42493971a0"
+    },
+    {
+      "path": "Stafford38/Geometry/ResidueBasisLocalization.lean",
+      "mode": "100644",
+      "git_blob": "9fc1951fbf9d1b77dda0a55d06c58733f3f81254",
+      "sha256": "03028f38a1e79c8822dbf900c41c8b52390bef3c25d2d7c77618a6b058e39c09"
+    },
+    {
+      "path": "Stafford38/Geometry/ResidueLiftIndependence.lean",
+      "mode": "100644",
+      "git_blob": "e9db859bf8ae6771959a9e656fd86b24f09c62e3",
+      "sha256": "81a91af4a9867d8f20b72b26ce2be51c9028219159c0425406ea1818b56df80b"
+    },
+    {
+      "path": "Stafford38/Geometry/ResidueMinorSelection.lean",
+      "mode": "100644",
+      "git_blob": "617642203494703a20148db10b9e28be4d393eb6",
+      "sha256": "eca518b85f93f7412abdecd27fb40a652d4056f91e023e618f392257737aa956"
+    },
+    {
+      "path": "Stafford38/Geometry/RetainedChartQuotientEmbedding.lean",
+      "mode": "100644",
+      "git_blob": "445808f2edf1ac0590b3f5d3f8f2cc787813df46",
+      "sha256": "df8896026569fce2d24a021debcf027f7b56969647eaa02d9679ed0e8303a8f6"
+    },
+    {
+      "path": "Stafford38/Geometry/RetainedComponentEquationPackage.lean",
+      "mode": "100644",
+      "git_blob": "c616889ad4eef1737aeae321dc0429827f01720a",
+      "sha256": "0100137ecb398b6df0b58e52f30502ebab5a3e16edd3a5ba16d46aa86c01fcac"
+    },
+    {
+      "path": "Stafford38/Geometry/RetainedDVRPlace.lean",
+      "mode": "100644",
+      "git_blob": "2bcd783573d33bce0f14caa52127936bd383a52a",
+      "sha256": "be12784f8c721f30e0d2f007a6455f36eb78c0b2837c583119324920ec392322"
+    },
+    {
+      "path": "Stafford38/Geometry/RetainedGroundMapIdentification.lean",
+      "mode": "100644",
+      "git_blob": "6340affc56a36469bb72222ea515ecaabdd3288d",
+      "sha256": "fd714bac332b0b07bf826d96bae9c712f0e8a0cb6c6d685a6f88259dcd124567"
+    },
+    {
+      "path": "Stafford38/Geometry/RetainedPlaceConormalTransport.lean",
+      "mode": "100644",
+      "git_blob": "08e6d5ce6cfaf9711db90e4342a923eaad630e2f",
+      "sha256": "873878953a0d512f58040523db0d4e37797f3c7cd481047a388002961731182d"
+    },
+    {
+      "path": "Stafford38/Geometry/RetainedProjectiveCompletion.lean",
+      "mode": "100644",
+      "git_blob": "df48311558d5f7c411ffa00c909b77b93faed948",
+      "sha256": "32c1676b1db921a21affdde4b95ba5b39f578491711110da158a086876322cec"
+    },
+    {
+      "path": "Stafford38/Geometry/RetractionSpecialization.lean",
+      "mode": "100644",
+      "git_blob": "240cf731633771b8eabb6d1de9b6dce07678ded7",
+      "sha256": "4184e121aaadfee38862c6c46880564086f0d3f78837c06e593d2a9de99b0d6e"
+    },
+    {
+      "path": "Stafford38/Geometry/SameWitnessRelativeTranscendenceDegree.lean",
+      "mode": "100644",
+      "git_blob": "e077d057c1bf351b78511d92dce13f32368affd4",
+      "sha256": "dd6e214da689cbb853fef4584e1b3999a0741ff8b50dd10e875ab912de6c7af2"
+    },
+    {
+      "path": "Stafford38/Geometry/SameWitnessTranscendenceDegreeBound.lean",
+      "mode": "100644",
+      "git_blob": "818201fa968cb146ac46bad0654f9073ff84a22a",
+      "sha256": "3630c41e1c1100a49a61308e208ecc86df30f76b6f2a404e815999471fb77ef0"
+    },
+    {
+      "path": "Stafford38/Geometry/ScalarExtensionPoints.lean",
+      "mode": "100644",
+      "git_blob": "5c97f497441fe4bd572284746d7672da8b68fbb7",
+      "sha256": "459af59e8f7bf897153326c7931f60ac12f48ebf2eaf4bc54db870b20bf2f34c"
+    },
+    {
+      "path": "Stafford38/Geometry/SelectedResidueCoefficientLocalization.lean",
+      "mode": "100644",
+      "git_blob": "14a8300479b185048dec8a08875132c898adc6b3",
+      "sha256": "bf3f35d356694b32b2f00afb1f23a9ad5cf32e8ee0a401f099035f545b50763c"
+    },
+    {
+      "path": "Stafford38/Geometry/SelectedResidueNormalizationLocalization.lean",
+      "mode": "100644",
+      "git_blob": "96a7d9f806b4cdb87af4ec99a2cafdb6c7c526ed",
+      "sha256": "b05f52bd7f937fcf2a8347fb72245ac0836d621548306db8382c10123c383c3b"
+    },
+    {
+      "path": "Stafford38/Geometry/SeparableResidueDerivationExtension.lean",
+      "mode": "100644",
+      "git_blob": "d70e57faf9929745a5fee043d05419075e506386",
+      "sha256": "875951a9b1fa35d0b0d3e0a3008d065c66a1e8cbeab888c07d808683115e459b"
+    },
+    {
+      "path": "Stafford38/Geometry/SmoothAffineConormal.lean",
+      "mode": "100644",
+      "git_blob": "d53950df6e2bd9ffe420a10a1db329f48ba93d31",
+      "sha256": "f316320d87a6a7056f6c789b08701bd7c43c61b3634039bb64048d5eaeb78146"
+    },
+    {
+      "path": "Stafford38/Geometry/SmoothAffinePointScalarExtension.lean",
+      "mode": "100644",
+      "git_blob": "8629b7a1bec4f20d6939369ea98601531008864a",
+      "sha256": "c9f32a7c2ade7be420827de6c74cf19e8cb8c231cfa33520f16f99d9de9a97e6"
+    },
+    {
+      "path": "Stafford38/Geometry/SmoothConormalFibreVanishing.lean",
+      "mode": "100644",
+      "git_blob": "c1a6c096716d3f0f6290a5f9b19795d609005ebd",
+      "sha256": "6eb4c517baeca93a2caf4f47eb8350109d07650609c40a83a202e92148b81765"
+    },
+    {
+      "path": "Stafford38/Geometry/SmoothLocalDirectSummandAdapter.lean",
+      "mode": "100644",
+      "git_blob": "4391819123a8f5337fa09a7aa201569abd4120cd",
+      "sha256": "d34691c59b396cc478491c5b4b74f17781b75487e26b1c65032637f230f3f59f"
+    },
+    {
+      "path": "Stafford38/Geometry/SmoothLocalParameterCompletion.lean",
+      "mode": "100644",
+      "git_blob": "3d4af12b8c9b257742d3854f9f08b3a3d0ccee40",
+      "sha256": "3957c351599bf12769a636cd0049d84a053e2880736a5c9b2ee14daaeee85a3e"
+    },
+    {
+      "path": "Stafford38/Geometry/SmoothLocalTiltedArcAxisLift.lean",
+      "mode": "100644",
+      "git_blob": "fc5dc35e6ccdcca2ba3fe2ad53fa972142a772ad",
+      "sha256": "10b13c1270996059957da0318e10b845afda10ed30d0d4b3a97afa11e3b9c0da"
+    },
+    {
+      "path": "Stafford38/Geometry/SplitTangentMatrix.lean",
+      "mode": "100644",
+      "git_blob": "45467de6521798264939421b3fd5c6c0fe01c4cf",
+      "sha256": "c762c1d0bad0be7f829f3dd7e4cdc6982de6cc64d36931f86f6ac2bb0654fa2b"
+    },
+    {
+      "path": "Stafford38/Geometry/TiltedArcAvoidance.lean",
+      "mode": "100644",
+      "git_blob": "ae93927891494a5e7b54e4e3f4cee1aeab9fce9e",
+      "sha256": "34d7b68370db8a46f1d2b9ee575e62934c5a745c5c4908f4afd530c20b5c9846"
+    },
+    {
+      "path": "Stafford38/Geometry/UnitPowerCenterTransport.lean",
+      "mode": "100644",
+      "git_blob": "0808fe4aea19edfba45f5e3111ff26e153436d2c",
+      "sha256": "509aaaae6c7242e4f1a054637ac04fe34c896669666030d93015463c31283a18"
+    },
+    {
+      "path": "Stafford38/Geometry/ValuationCenterDominatesLocalPrime.lean",
+      "mode": "100644",
+      "git_blob": "668db932d439ba534bbf4095566ba00caa69fa79",
+      "sha256": "2d387e77e6bb2584da1ecd8994b29f3f52f6d6ac0c8e03ef938c4c4293772cc9"
+    },
+    {
+      "path": "Stafford38/LeftDenominatorTransport.lean",
+      "mode": "100644",
+      "git_blob": "82c09ecdf9ddc4d57f5e36323558a2267476c4ba",
+      "sha256": "3363bbdd96f537d598e29f8b60c672fefc81e97ee01764a19b9efaa160467287"
+    },
+    {
+      "path": "Stafford38/LeftHandedCorollary.lean",
+      "mode": "100644",
+      "git_blob": "762f9ad6332cbaffd209d00fa05f73503013f639",
+      "sha256": "b64cc4823e7d3968f310f55e9a5436fccfd19241fc982bc95c7f99b9216c26e9"
+    },
+    {
+      "path": "Stafford38/LinearAlgebra/PairReplacement.lean",
+      "mode": "100644",
+      "git_blob": "80cdb15c22670a63fb15d46497efe3ac58c73dae",
+      "sha256": "cf64f9409fd725429e416787a1fe1fa73737ec6b9667789412796785a0331ee0"
+    },
+    {
+      "path": "Stafford38/LinearAlgebra/SymplecticComplement.lean",
+      "mode": "100644",
+      "git_blob": "f1c2fc0ef635fd68034dd76ab3d460f0f1b9f1f2",
+      "sha256": "5db92c92a3972be1f86b231211392ec7d3983470373f230253231d32d8b93643"
+    },
+    {
+      "path": "Stafford38/LocalizationCorollaries.lean",
+      "mode": "100644",
+      "git_blob": "4d6b3bcd0d14d9200e5aa5ec4c0bf4a827602ebc",
+      "sha256": "cb9f318c84b2b2553ca5e83bcb2c54e19fd12076cd21bd88ddd74113fdbc9ca0"
+    },
+    {
+      "path": "Stafford38/LocalizedDifferentialClearing.lean",
+      "mode": "100644",
+      "git_blob": "fc7f1926b8990458d998271a7933e289acb15b50",
+      "sha256": "13bd059f4f85d8a5c91773542f65e047196042fbe4b23cf39ab555292786a46e"
+    },
+    {
+      "path": "Stafford38/LocalizedDifferentialCorollaries.lean",
+      "mode": "100644",
+      "git_blob": "8e1e4f22f3a49b753436dfd231782e33331eb6aa",
+      "sha256": "2fa74c192b1b68120d4995ccf587269cb5863b74abe8bfc869d01da65f257993"
+    },
+    {
+      "path": "Stafford38/LocalizedPolynomialCommutant.lean",
+      "mode": "100644",
+      "git_blob": "5fbc089772fccdf5d36ba791bffa11f668cfa837",
+      "sha256": "8a599e8dab798a48d70535c10e9b2fa7a4117a3b28e16bc19513f70b0d0bb5de"
+    },
+    {
+      "path": "Stafford38/LocalizedPolynomialDerivations.lean",
+      "mode": "100644",
+      "git_blob": "de6e582b458af4a638a1af59860348c11b3bc6a2",
+      "sha256": "1def6084adca8cb2060e6dbd06f4524968f50a11652a99ba57dc2bb6857e33fa"
+    },
+    {
+      "path": "Stafford38/LocalizedWeylAction.lean",
+      "mode": "100644",
+      "git_blob": "8a66a6aab03bf7af85514b9929cbf5d62044d1b1",
+      "sha256": "60935adb6c58cd509da89ade3bc51ef865e68f3da374966037a06044c39cbd17"
+    },
+    {
+      "path": "Stafford38/NoncharacteristicHyperplane.lean",
+      "mode": "100644",
+      "git_blob": "193310a5869bd1cc0172a69848598135e2135b8c",
+      "sha256": "0c27bd9d6b55ee088223998369813234d0e5cdd473d0b0a356b717c5a70d4895"
+    },
+    {
+      "path": "Stafford38/NoncharacteristicHypersurface.lean",
+      "mode": "100644",
+      "git_blob": "8e024a010849c95c0fb08e918d85d287cc79e82a",
+      "sha256": "41e9de66aab5b9b927dfe7442935cf626c5503402945373b1e82a5d1780519cb"
+    },
+    {
+      "path": "Stafford38/Ore/CoordinateStage.lean",
+      "mode": "100644",
+      "git_blob": "64d82bab3e1b26ddb44212217c115c89dea462b6",
+      "sha256": "1cee3f25b865a0a8713b1c4cdd14ccea604dedbdafeec5601b0088b1e3e02e73"
+    },
+    {
+      "path": "Stafford38/Ore/IteratedPairStage.lean",
+      "mode": "100644",
+      "git_blob": "a740e6df31f6ca6075751c535d731f4bdba4afbc",
+      "sha256": "0b1c8cafe2bd801692d18dbc40baf903a5e800d5d828f93ea4a4e27bc84a01fe"
+    },
+    {
+      "path": "Stafford38/Ore/LinearNormalForm.lean",
+      "mode": "100644",
+      "git_blob": "9b260c00fe96cde59bf00e7c9c94c4a57551ee4b",
+      "sha256": "9077f09f3e553c601fdb9c18c3799bb6ade3336f2aedc4454e233c2ef1bf3964"
+    },
+    {
+      "path": "Stafford38/Ore/PairStage.lean",
+      "mode": "100644",
+      "git_blob": "9e9e199981f9fee23052838c3584fe5e6ac319aa",
+      "sha256": "51f409a23ddfa06faf0e5b9933505d500860fdf4647a71f026a9eb46a5dd26d3"
+    },
+    {
+      "path": "Stafford38/Ore/PairUniversal.lean",
+      "mode": "100644",
+      "git_blob": "11b518bb23fec9f8a59720f01cadb5769fd5cc1b",
+      "sha256": "23a989c832c8432e36e69858967c973c0d1bfe9af0b12f4c585481dbb8deeb5a"
+    },
+    {
+      "path": "Stafford38/Ore/ScalarAlgebra.lean",
+      "mode": "100644",
+      "git_blob": "6e347d94a3bac238e11a1fdbc00c72eda40ef610",
+      "sha256": "6b48cbbb447c8b59ac8f6efa1fff105cca3de93804d1d80e714dec4e5c6651d1"
+    },
+    {
+      "path": "Stafford38/PaperCyclicity.lean",
+      "mode": "100644",
+      "git_blob": "c7b7ad55680dea216fecf0e859833084ec97f708",
+      "sha256": "2752c0956fae98dc5fd3573dd2a4814cfac62ff12102dd02e2f4243c5bdaac27"
+    },
+    {
+      "path": "Stafford38/PaperInputs.lean",
+      "mode": "100644",
+      "git_blob": "40aef5c79a3c640eb9e4cd109616bbf6e4198699",
+      "sha256": "52d3d8840f5182fd0500e6172b3e79b99d89481d0345bdb2b77fd9e95eb25f67"
+    },
+    {
+      "path": "Stafford38/PolynomialDifferentialOperators.lean",
+      "mode": "100644",
+      "git_blob": "de89b9fa00ceccce3d6caa6b30c6188e41a84dd3",
+      "sha256": "de0241c9cb3524d6e490796a06a41d946e483a9a5075852de76c52c1ed504efb"
+    },
+    {
+      "path": "Stafford38/PolynomialOperatorCommutators.lean",
+      "mode": "100644",
+      "git_blob": "a4c8b84ff5ed04c9d14a4a7736cf32221c425480",
+      "sha256": "2d80d760e95eee309e82b9849e49f8f7495cfcbeef0026b939ed65bb558c90e0"
+    },
+    {
+      "path": "Stafford38/PolynomialOperatorTaylorProjection.lean",
+      "mode": "100644",
+      "git_blob": "66f1550afcd3c629b97b6b7b99716af2b28fc3c3",
+      "sha256": "d9d20608f1acc7d3926b30bf7ce44b9672f99c66b72fe34f640b2fccb8161a78"
+    },
+    {
+      "path": "Stafford38/Quotient/EulerSurjectivity.lean",
+      "mode": "100644",
+      "git_blob": "1a900a3f2a8e87b608fe9f38dfcecbe8b3829a92",
+      "sha256": "0e7d1219dea4384db77d48eca394ed078af388f6e50f27769e24d37f5fe98589"
+    },
+    {
+      "path": "Stafford38/Statement.lean",
+      "mode": "100644",
+      "git_blob": "5200d0d6f1cdb241d723ced9153ae27760e891ee",
+      "sha256": "9f5b59cf691a71ec8bab69310f089db70eaad09ddd9374fca3aa393e9b5e83ad"
+    },
+    {
+      "path": "Stafford38/TorsionCyclicity.lean",
+      "mode": "100644",
+      "git_blob": "9cd91848d93d83bee627ef68c30efed0528da7ed",
+      "sha256": "cb9f38f83e96a2d86385b34a08a84e9fdbb84a67bca87c463fe8c41adf47aa9b"
+    },
+    {
+      "path": "Stafford38/TorsionModule.lean",
+      "mode": "100644",
+      "git_blob": "1b413c92816b6a9b16051fa9a30929c54f8e3766",
+      "sha256": "ce56c9bb5dd90145a7852238fd35e834095ffa95ac1a011fb9d4b294f36ee0d6"
+    },
+    {
+      "path": "Stafford38/UniversalAssembly.lean",
+      "mode": "100644",
+      "git_blob": "84cd86391dccb643fb21608bc2e2cf8b4b406c20",
+      "sha256": "c2c0fb5cd90b589038d2dbdca6d17f19adf0abb5830a579217e850cfa0c7d349"
+    },
+    {
+      "path": "Stafford38/Weyl/AssociatedGraded.lean",
+      "mode": "100644",
+      "git_blob": "d6e82956b634f50094563a9b94e377df3c3a40b7",
+      "sha256": "2726f5f10a056c4fdf81e584a238352e2d71e89c08ce97f354590860b44ee299"
+    },
+    {
+      "path": "Stafford38/Weyl/CommutatorSymbol.lean",
+      "mode": "100644",
+      "git_blob": "225f0fc846d0776655a3db978cd25a219471323e",
+      "sha256": "bc19e4ecbbc07e3097a369b29efea0444eb33e261fa99a1c1969a1cfd61da9dd"
+    },
+    {
+      "path": "Stafford38/Weyl/CoordinateCommutatorSymbol.lean",
+      "mode": "100644",
+      "git_blob": "5c09932b6e066d9dc21f4380510c2a3fc6587d30",
+      "sha256": "e7c4bd9fdb009878d2c915480dc124c75c8741c227f3d7bb39b3b7643db2df03"
+    },
+    {
+      "path": "Stafford38/Weyl/Domain.lean",
+      "mode": "100644",
+      "git_blob": "27f0052969da0bd382a301c92bed41f1e360cbbc",
+      "sha256": "2528e06c79f3330359e631cd095f6bf593943862e6968290640ec6304f9d30dd"
+    },
+    {
+      "path": "Stafford38/Weyl/EulerProductIdentities.lean",
+      "mode": "100644",
+      "git_blob": "f0bc0f65ded23aa102197747f435c39cf55a8bac",
+      "sha256": "5e13b08869448b55c7bff6bbff07f1a18de9564c66166c404d1db6eb690f63cb"
+    },
+    {
+      "path": "Stafford38/Weyl/EulerRemainder.lean",
+      "mode": "100644",
+      "git_blob": "2eed7f21db4d452b696992ce0dd06c36c39aac2a",
+      "sha256": "8cf9cd8adff6521afdad2caabad4b50dc7f9287f23eb928f4d4f0de5f817bc58"
+    },
+    {
+      "path": "Stafford38/Weyl/EulerResidue.lean",
+      "mode": "100644",
+      "git_blob": "df0a6dc9ed0c8b53a81618cd767ce947a2220360",
+      "sha256": "66ed3432b9f53af0dd7ee39b2e2ad53f6f379a535da8927dea0e9dbcf4184042"
+    },
+    {
+      "path": "Stafford38/Weyl/EulerSubring.lean",
+      "mode": "100644",
+      "git_blob": "de12533b226f9838580a1037bdfca4d0776e48c9",
+      "sha256": "4a0058e4b98f6c541cfd201fb3649f7375b99e42c342fd7446ba72c49d715a50"
+    },
+    {
+      "path": "Stafford38/Weyl/FilteredCommutator.lean",
+      "mode": "100644",
+      "git_blob": "731671fdd4cb8ae314597bcc271bdabf568186c5",
+      "sha256": "0930c3702802631cfa48f7364ed5a34f3c635cf2cd9fcf0f32b716fa666feeca"
+    },
+    {
+      "path": "Stafford38/Weyl/FilteredScalarLifting.lean",
+      "mode": "100644",
+      "git_blob": "7ed26b463a42a659dae328329cbb0095d0d10f9a",
+      "sha256": "30dc3a66ebede3be185386b5aee690fd58d7d2dbfb761c1f5fa23a2af87cd0aa"
+    },
+    {
+      "path": "Stafford38/Weyl/Filtration.lean",
+      "mode": "100644",
+      "git_blob": "0e392e6cfe3c9d35ee43c182e0b5e14b1454b1b6",
+      "sha256": "4d60f6af9a2da736cbe5977eb66a80f713bdbb76ceaa4f9d2f6caa6916037a54"
+    },
+    {
+      "path": "Stafford38/Weyl/GradedAlgebra.lean",
+      "mode": "100644",
+      "git_blob": "2ce19c9c7071a081cb5f85685aac8a59fce74c97",
+      "sha256": "95f6d43329a5f983c690ca921dada9cd4e1d1db0789ab75ea0109385d833fd2b"
+    },
+    {
+      "path": "Stafford38/Weyl/IteratedEquivalence.lean",
+      "mode": "100644",
+      "git_blob": "b279645dc1aac5e832cd6e589d57c1b9d3d741f6",
+      "sha256": "de26ffafcfd72a3dbe51654917a47f189996b09b460a4c230794bd188522d9fb"
+    },
+    {
+      "path": "Stafford38/Weyl/LeadingSymbol.lean",
+      "mode": "100644",
+      "git_blob": "d84cb2ba3cc8fc58a3c065ef5a5763ac34bea528",
+      "sha256": "55cc44e8eaf8591de168ad0749d0758fdb99336e955438be52b2b4a2515aceeb"
+    },
+    {
+      "path": "Stafford38/Weyl/MonicNormalization.lean",
+      "mode": "100644",
+      "git_blob": "a8a98190aa9e85fbd091617f4150c3cbd8a1053c",
+      "sha256": "b9e5eba020ffb6675097242f10a82b7de1e1ac225b11c0f9a3c106fb75a0769f"
+    },
+    {
+      "path": "Stafford38/Weyl/OrderRees.lean",
+      "mode": "100644",
+      "git_blob": "911f651ba701b5d41d06fd4bb16e28652d97577e",
+      "sha256": "4318995a6f95c77415ccd45636d8f564015bf830932f4cbe206b8ca15732c427"
+    },
+    {
+      "path": "Stafford38/Weyl/OuterOreMonic.lean",
+      "mode": "100644",
+      "git_blob": "1a8c433e3dd1ac8483b4c97717a08c1754ac5b49",
+      "sha256": "1479cfa07e60b319a05ff5fb3135227c7be9db12733db6af7066d1e854e6f58b"
+    },
+    {
+      "path": "Stafford38/Weyl/PBW.lean",
+      "mode": "100644",
+      "git_blob": "94fdee8cc2212781fbbe43d0b1084dc01d3ef676",
+      "sha256": "e99c504f2bb9dd411a986066888dd263400e48548573870be68d795fe87e7233"
+    },
+    {
+      "path": "Stafford38/Weyl/PBWFirstContraction.lean",
+      "mode": "100644",
+      "git_blob": "693cc6cb6ff187a1f2e63ee09a3394d8db5b3f83",
+      "sha256": "7f8c13b2e0fa4925793660b40240bb95e55e1847721b14dd6b5148752bc3dd29"
+    },
+    {
+      "path": "Stafford38/Weyl/PBWMonicBridge.lean",
+      "mode": "100644",
+      "git_blob": "cc087219ab965e8c11314a05bcae3338462f13f7",
+      "sha256": "b9f86531e5e67ff7abdbd24570fa293568def41b830afd09f380dde1663842e5"
+    },
+    {
+      "path": "Stafford38/Weyl/PaperEulerGrading.lean",
+      "mode": "100644",
+      "git_blob": "e11f3b3238df4018c478f7b055f0941f093af8d7",
+      "sha256": "e5dfc1f49ad0fc65bc3887147acf5784abdbb29636fd00dbc35ea5fa957ee39a"
+    },
+    {
+      "path": "Stafford38/Weyl/PaperQuotientDescent.lean",
+      "mode": "100644",
+      "git_blob": "bf40ec399d03174953aefc0efeb96765ee2b8a3b",
+      "sha256": "1f10be844c930d20b8c1c82f37cf4723b4f78c65d4558cca13d4061d362186d9"
+    },
+    {
+      "path": "Stafford38/Weyl/PaperRightMonic.lean",
+      "mode": "100644",
+      "git_blob": "8ffd682686b3d38bfcd50dd54a09c6c9c7e57687",
+      "sha256": "2423bd5238cc7d1c39f16e7cd406d865bc81fafe88c0a4289925cd6c8192166e"
+    },
+    {
+      "path": "Stafford38/Weyl/PresentedScalarExtension.lean",
+      "mode": "100644",
+      "git_blob": "f0f6c5ef46e633ceb86880a44ee903a154016cab",
+      "sha256": "c844699fe6ba410cf38f67ace5c351b877bb00b023389ea0379e522ed03f49e4"
+    },
+    {
+      "path": "Stafford38/Weyl/QuotientTransport.lean",
+      "mode": "100644",
+      "git_blob": "f57e11fcb140731fc2feb9a10e024e977fb0e856",
+      "sha256": "b5fac60f9647277258bb93864b78db52de1412fd204208bd2733b9ff94de2c5a"
+    },
+    {
+      "path": "Stafford38/Weyl/SymbolCompatibility.lean",
+      "mode": "100644",
+      "git_blob": "a07cebd5cf0b2539db6c548a7019a0f96071202d",
+      "sha256": "9474ae48ee93b554e1159b6a036b723ffc4160b5e0edc9dd2fa0b39f6ffc3b2c"
+    },
+    {
+      "path": "Stafford38/Weyl/Symplectic.lean",
+      "mode": "100644",
+      "git_blob": "25291b16064a8d9d3ae15e550791adae5465aa3b",
+      "sha256": "66bcb9fa2f583994eb10637ef42f0352997c42c82c065d4040b5ab782a77ecea"
+    },
+    {
+      "path": "Stafford38/Weyl/Transposition.lean",
+      "mode": "100644",
+      "git_blob": "a398b0f64a69ed57a1e4d55a877d7fda6be41dd5",
+      "sha256": "d4705767134d95412876de3e1fb9182e24293e5582eabcb2643489854bd3cb96"
+    },
+    {
+      "path": "Stafford38/Weyl/TranspositionFiltration.lean",
+      "mode": "100644",
+      "git_blob": "12638fa65e90837516c58d6fd2abd58301f6172c",
+      "sha256": "fe970c791c3c8fa4b352d68d595344520bbb322b4be10227805f5500fc2c9249"
+    },
+    {
+      "path": "Stafford38/Weyl/Universal.lean",
+      "mode": "100644",
+      "git_blob": "61c77a5a3cf5096f542cd6e361ce800a13538d26",
+      "sha256": "4a2a1a5cb624e795031e4fd3907db73c0e224c81fa9a854f4ed7e42682d82e66"
+    },
+    {
+      "path": "comparator-fixed-source.json",
+      "mode": "100644",
+      "git_blob": "94b6d8895c0995406f8a4b8528ab32b59180a51a",
+      "sha256": "e4595939e14804a437fb4bbadca2ec4a61567f228e5772dcbf929d5216eeeafa"
+    },
+    {
+      "path": "comparator.json",
+      "mode": "100644",
+      "git_blob": "d3b6c21a59e181031fa8f169088d2caec3f32a35",
+      "sha256": "d05a395a0a8d2d93de18a91cb5cb2ba7541067cf4a0f979caaa143ae333e49d9"
+    },
+    {
+      "path": "docs/audits/cyclicity/manifest.json",
+      "mode": "100644",
+      "git_blob": "ded84369c0a56fd8969d4ceb37128c2d2b58ebcb",
+      "sha256": "9f661a08c44bc02991da4440ac32074a76194117c0f2d7f6fbb1a17f2a3968f3"
+    },
+    {
+      "path": "docs/audits/cyclicity/review.md",
+      "mode": "100644",
+      "git_blob": "92cf536b03b7313137a64839fadc84f3d27c324a",
+      "sha256": "909bf28bff969135371351d2a78763dcd160a58b54d06926bf639ee3db0f1b34"
+    },
+    {
+      "path": "docs/audits/euler/manifest.json",
+      "mode": "100644",
+      "git_blob": "3cfe2b3a4eae923520f6903e62276b4c4fd4a0ed",
+      "sha256": "cd086a2dfd51d54d4e9343efc9bdf0bf49ddd67f52dab59d78c98c8755989e35"
+    },
+    {
+      "path": "docs/audits/euler/review.md",
+      "mode": "100644",
+      "git_blob": "b235bf68e3e55abdea96e36fb18a3a51d7637cb8",
+      "sha256": "de6cbd53471845bf89f35f442a7497e93e0425f731a0b20d12baf506eed54176"
+    },
+    {
+      "path": "docs/audits/exact-source-review-2026-09-08.md",
+      "mode": "100644",
+      "git_blob": "0b216f2263daa3712bdaff54e4b24456e3929f92",
+      "sha256": "e8a0c6cd81c122ca2b3887dbc30baf1d83d18fd320ee541d1f44c61ecbc4269c"
+    },
+    {
+      "path": "docs/audits/fable-inputs-2026-09-08.json",
+      "mode": "100644",
+      "git_blob": "d1015eaf6c0050ea041eb49e02f16463075bb9da",
+      "sha256": "32616832d1b5d2534dfe4d7c0422ad2e810872bd8d962564e235c2ed5d8755d2"
+    },
+    {
+      "path": "docs/audits/hypersurface/manifest.json",
+      "mode": "100644",
+      "git_blob": "d98f7cdbe817ffeefc020eb6779d8069957ccd02",
+      "sha256": "598bace58c2908b50658d5e31878222f61c69b513db26dae891623ce29240afb"
+    },
+    {
+      "path": "docs/audits/hypersurface/review.md",
+      "mode": "100644",
+      "git_blob": "69fff5669c38c80e75261c2bf709ac98420e5f83",
+      "sha256": "3a7c827bedf84917aefdfa42cfcce82c42cff8cb0b011542f95fbc910773486b"
+    },
+    {
+      "path": "docs/audits/manuscript-corollaries.md",
+      "mode": "100644",
+      "git_blob": "0c0d1e03acb05348b0b2747d5bae65da82256cf7",
+      "sha256": "1f7db96920e89469da49e4780a40247538657f774651a421bb255741f58e664b"
+    },
+    {
+      "path": "docs/audits/noncharacteristic/manifest.json",
+      "mode": "100644",
+      "git_blob": "b3967bc71c3ca7215c6bc2d72dc6e1166261ac1e",
+      "sha256": "0a8cdfd3fdf7f75854f5c2bceb4e23011acb0b230f4a876b936c6e476a77f9c9"
+    },
+    {
+      "path": "docs/audits/noncharacteristic/review.md",
+      "mode": "100644",
+      "git_blob": "5cf6e665a0beda6a09e5d654cb43cc0e78379339",
+      "sha256": "460073debcc03527f1bebff7ff7a306e9db9787dc4e3e52b6de918977ca508bc"
+    },
+    {
+      "path": "docs/audits/paper-facing-adapters.json",
+      "mode": "100644",
+      "git_blob": "83ae1313817146cba4d7127b4ddc588ed6895a05",
+      "sha256": "b919f9c7e99ff7f56787e1fb05cdf500a182e903f2b2692c3548b42f43b9e44e"
+    },
+    {
+      "path": "docs/audits/paper-geometry-route-review.md",
+      "mode": "100644",
+      "git_blob": "e2a1d063b4b4f1cabe2879278af7f5938d6b8584",
+      "sha256": "c30a6287c92a26ca0e8ed9869258ecee9854468bc970a8405beb9fdb2bf8c9b0"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/README.md",
+      "mode": "100644",
+      "git_blob": "28c3edfe54857981f3e93c68ff92a62ddf4b861f",
+      "sha256": "795cd892dc08e7b3bdbeedea7a131dade06b86137929e4adb7425268d28208d2"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/cards-1-inputs.json",
+      "mode": "100644",
+      "git_blob": "96f34f7dc971f5bfb436573531049dc27a6ace52",
+      "sha256": "3e44ebb4dd97037cb0d3275cf98488d499b08972ca2f26a47d9e11a74b41a469"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/cards-1.md",
+      "mode": "100644",
+      "git_blob": "8a99993d9b86e31c74c5487b409de46cf857f668",
+      "sha256": "79d229a001c4827362ddac96ce785baf532ae2752ed2414c81bd307a887d930e"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/cards-2-inputs.json",
+      "mode": "100644",
+      "git_blob": "368ee19253f8150ccad4553435630a0e8724e5cf",
+      "sha256": "54a9e0c7b2df43e64bc8b99c97cc9993ff9c62508110ed80d24f2e0dc946369c"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/cards-2.md",
+      "mode": "100644",
+      "git_blob": "ef1243a51743f45dd91e4392ac8ffa16a3c740a0",
+      "sha256": "bb697b81a302ba91837451d2d0857e9d1d7fbeb8dff2cb62a692149d1fdc65e3"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/cards-3-inputs.json",
+      "mode": "100644",
+      "git_blob": "b5199a1659ab5803223906e91fddde05bca21c47",
+      "sha256": "6c80eb009055c286cb587df025ac3bec68e37f7063c4cad52a5dc03e8074f0e5"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/cards-3.md",
+      "mode": "100644",
+      "git_blob": "f9d020b179a33d80b29a5774d2c2930e490fd282",
+      "sha256": "1ad7ca243eadf166e649d51793fb9f5be8772eedf8a1b2a9f1241cdd81f3d15d"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/compact-human-review.json",
+      "mode": "100644",
+      "git_blob": "a6da9f3c117c851f8e2fcbd6b09e0af7cb4e5fce",
+      "sha256": "d693ff7da39234cdc4e1420bbdb272021a8b966d43746505a3f12c65059a6de6"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/compact-human-review.md",
+      "mode": "100644",
+      "git_blob": "054929ceb680f2830814c38eee93df6291e13f45",
+      "sha256": "3aa78d650ba2c8417fb0673fea67b1edce4a5c5edccb4f3162b8a2af0ff0496e"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/math-rendering.md",
+      "mode": "100644",
+      "git_blob": "ccca1e2815a81628bfc037ed2a9733a7bd948673",
+      "sha256": "a52447b05973e6942a8a22f3b9b88dd19cb683623ce289720904c1de7bd46e1f"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/publication-review/README.md",
+      "mode": "100644",
+      "git_blob": "d526d652da4e403573c9580822d1b9cebc014478",
+      "sha256": "e0827330c19316e969d981f7ec0947b5cde32f30bd476bd859053afed1a3b4b9"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/publication-review/browser.json",
+      "mode": "100644",
+      "git_blob": "97936c75d42540ed2103ae7f88fb30e53dd339de",
+      "sha256": "4f1ae26c989aa13d9d3dd2fe10e74eaac98b0a6aa844819852b25ddaf8cb8d0e"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/publication-review/paper-declarations.log",
+      "mode": "100644",
+      "git_blob": "4c70d090962c07d6a0b0ecf7f7407ecf2c5c1660",
+      "sha256": "e35cb0bdcba0772588eb202985a5e61a6e8d328e2574585d457610db50eebfbd"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/publication-review/review-status.json",
+      "mode": "100644",
+      "git_blob": "817bdce7cbd38165a5add77c973f986562029d62",
+      "sha256": "f78d40d7abab7d36c72742cebe2b865be143cf61164dd5ad5470542caf8fc6cc"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/publication-review/tool-tests.log",
+      "mode": "100644",
+      "git_blob": "3b0baa7006382e9d5919aafc722c7e3a3bf005ab",
+      "sha256": "0c2c6a9741c991d6ab22ce33ebf541b6084335812b46714cca53b33f1b5f02a7"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-all-blocks-check.mjs",
+      "mode": "100644",
+      "git_blob": "4d4561fea8924af6eeaa1805663c45d0b11a2c84",
+      "sha256": "7c0eb358f23f8397ead421e55b4670945177a3f1e719b32aa0594653ba4f6bd6"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-browser.mjs",
+      "mode": "100644",
+      "git_blob": "754355ba86365bd5f8289f07f0a42cbef738e1f5",
+      "sha256": "b74da30b049adb6959dd284f1289b54cc11f348a7461bce64e56872eb6f8c83e"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-final-build.log.gz",
+      "mode": "100644",
+      "git_blob": "54332b1b66daf2183c0fd2f54202ffeed1eb4f44",
+      "sha256": "63f9b8b308b03303bc45cb650692ec12cc4b6d236c6b6773363692473a2b8c23"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-formal-tests.log.gz",
+      "mode": "100644",
+      "git_blob": "2ac14a841f3d87dea7dd9b5b02c51998bc35c3b9",
+      "sha256": "008e367e77ac3999570a52767b02477eba63c35af506088a024facd5716ac729"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-probe-Challenge.lean.lean",
+      "mode": "100644",
+      "git_blob": "fc9b48ac262580072a95c133b767b819b697455b",
+      "sha256": "1e67a99cbaacb1124173f098aaa2943c66f30d4dc9009c47c14faedcb1f692cd"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-probe-Challenge.lean.log.gz",
+      "mode": "100644",
+      "git_blob": "17090b0901f874d05456cb696ab2bb45807c66b9",
+      "sha256": "bb3ed575dc0c5c5e202d992d96a0f95bf7303ee3e818f9f2ed163975e0b8ec8b"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-probe-CorollaryChallenge.lean.lean",
+      "mode": "100644",
+      "git_blob": "82aa879d6c46a315effb33a79879e43638a8d630",
+      "sha256": "33b4244cf64840bf2321d4c422c560a8884d3aa64a2ee83e6e5b95ceb7929100"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-probe-CorollaryChallenge.lean.log.gz",
+      "mode": "100644",
+      "git_blob": "14f8b27ed375cac05ecaf493eb5c7dc364823cb2",
+      "sha256": "d708055f8abe7e680679945ae483dfff0cad32be1d3356523c4148cf4e898c8d"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-probe-FixedSourceChallenge.lean.lean",
+      "mode": "100644",
+      "git_blob": "a8ffcc2df2a85987c13f1d17da1d695b7f806e62",
+      "sha256": "64366eb0bd7eba5822ea099effee106ef79b464bd3de56032760b69b2970b4b0"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-probe-FixedSourceChallenge.lean.log.gz",
+      "mode": "100644",
+      "git_blob": "5d44287f5366d755dc075ee9012530a5bf276507",
+      "sha256": "9fff310875221094d7ae2b0863e03fdc65ff418a5a40051490dfe94315a19d53"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-probe-final.lean",
+      "mode": "100644",
+      "git_blob": "2221a33cebba658ec5743753518a1f75eacfdb37",
+      "sha256": "23396cf1ffe44cb35867637781ac9990b1abee0887d835f06b9bfe38219f0508"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-probe-final.lean.names.json",
+      "mode": "100644",
+      "git_blob": "23e05a8ac8b2af7121116df58b2b4872fd1b7e4f",
+      "sha256": "323f2a2bc32e415c36929e030c4d8d9d84c6964dc79bf8554ca7d0ba93bb620a"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-probe-final.log.gz",
+      "mode": "100644",
+      "git_blob": "8176f9e731f559b36b61177c02ddd43c3a0d2ae0",
+      "sha256": "316176355fb92c2426f98f2c29d85e11982b0f747859087082a19fa254d717f6"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-research-build.log.gz",
+      "mode": "100644",
+      "git_blob": "2c468e616cdf073f1bae5b32eefeb5181a1526da",
+      "sha256": "874efdc3725f1d6458809f6cb760a66fb76537d7c5968b9c642ef177e450dfc7"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-display-tests.log.gz",
+      "mode": "100644",
+      "git_blob": "6dcb1a5b566f1e610c1fc9dd0b42758cc0b97732",
+      "sha256": "62b6045029b233dc6d498297c5c84c577af7df2ba4754ff47b840e1aab52c27d"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-filtration-check.lean",
+      "mode": "100644",
+      "git_blob": "e7434a5a47d3d3ff6a9611f246fb495b1c5de7fa",
+      "sha256": "56c8170bc82ea5ccdc9799dcceebebed6690b12e20c45ffe0cd65580d08a5339"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/stafford-audit-filtration-check.log.gz",
+      "mode": "100644",
+      "git_blob": "eb615b935bed9275fe3dc3551f57a87ba33b5303",
+      "sha256": "4d0c04b85d9cf0cef0103c1faa5eba8ba873ff190e818293b272042271b64afe"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/tool-final-review.md",
+      "mode": "100644",
+      "git_blob": "abee76cfff0adb55671bb33f9b49e5c4f644346a",
+      "sha256": "00abafd71b0a781d43e19c0eca9190d2987b4410708d8aa8571fefc082bc0f74"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/tool-review.md",
+      "mode": "100644",
+      "git_blob": "368d1c4ac0252a51b9c6f684b73e17abc891cd28",
+      "sha256": "77464dae949ac0b52d72d8afb9e2cd7e776c50c70366dd5d87ae0e40b11746ec"
+    },
+    {
+      "path": "docs/audits/paper-lean-display/verification.json",
+      "mode": "100644",
+      "git_blob": "3cc1319b9238570f13fa23201eb7c6c045075aa3",
+      "sha256": "b0831543f3d3c27df2b88014f8ed81e6734898997aa6408a126afc1952e5713d"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/actual-orders-chart-source-checkpoint.json",
+      "mode": "100644",
+      "git_blob": "765b3661c187b5b26298e8719f359c21ec5a48d5",
+      "sha256": "36c7d71665b733cba35d02890fe9d8aa4974549a65d4c2e29f17d7cd17eaa008"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/alignment-evidence-history.json.gz",
+      "mode": "100644",
+      "git_blob": "8c019da79633de29946fec8e3f83936301559ab2",
+      "sha256": "0eac0ad56cd3a1465cbb05068645022130403499b1337f9cab847973501c79c7"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/completion-cone-full-verifier.log.gz",
+      "mode": "100644",
+      "git_blob": "907930c8929ef7d3259e6aba17061edd2df9f3a0",
+      "sha256": "c3ae3bfe51e1429e094f370d953adc8e44cf1fe916b47bd295ad42bf861c2707"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/completion-cone-inputs.json.gz",
+      "mode": "100644",
+      "git_blob": "e73e923cb199ba49839c4bd50c02e3a920546611",
+      "sha256": "b9ced2fe1c8d7730819336450a9425420d98d75f7225105ab623b9d433eb9b7e"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/completion-cone-source-checkpoint.json",
+      "mode": "100644",
+      "git_blob": "5da9cb32853bd5f41d1fd231cdf0c87e049d55f2",
+      "sha256": "f09a070d4b7db4ade885a1668099a4d8fd4b6c7f85f5c8ba2ce42012f55166d2"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/completion-cone-source.patch.gz",
+      "mode": "100644",
+      "git_blob": "d914f7a1762673c4dcf1179b788f8f370b55236e",
+      "sha256": "4b2a95ec7469a04dd67deff061ef820b7274b47066a028bbaa2460c38bc7d82c"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/current-integrated-full-verifier-20261002.log.gz",
+      "mode": "100644",
+      "git_blob": "d3697e04bf53913cbdb7ef5d53a26c942841d6f3",
+      "sha256": "a8892ea42fb80b0b2c230385acf7528d13725281d731419a742b33d0eaffde4f"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/current-integrated-full-verifier-input-20261002.json.gz",
+      "mode": "100644",
+      "git_blob": "81455cdf9c6032cdb1d77b90c9e149ad7228e373",
+      "sha256": "61da4467c7f54f6b4ce1491eb77e535c95a6c66ecde1e09d50bb549ea8f681ca"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/current-integrated-palomar-fixed-20261002.log.gz",
+      "mode": "100644",
+      "git_blob": "1c9d27d4cfa83bff4326ad4558c74fde9a9a03b8",
+      "sha256": "d1a760867a3276b7a06c1f6eeb6be2bd47f061137316c97e452a54317e793d27"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/current-integrated-palomar-main-20261002.log.gz",
+      "mode": "100644",
+      "git_blob": "259b61e75c963913fc31c25ddef6c3708574ae6e",
+      "sha256": "c90d185e0a5488cc9358c8f43e2d12f017dc9a693ff084be389771489943f32a"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/current-integrated-verifier-input-20261002.json.gz",
+      "mode": "100644",
+      "git_blob": "663bc477cc256d3664d91f1d47c581e568cf57f4",
+      "sha256": "59cf9104d21ca93b6ade04a3b0a6f17ffe44ce0e21982c2b2c5dd51d5f5baf86"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/integrated-source-checkpoint.json",
+      "mode": "100644",
+      "git_blob": "ff22c4930a26e7c64b0eed97711573380aca132c",
+      "sha256": "ed420f1ed94be160d0b858e6c5bca390cefecf92ed0a385edfb4db73f3ee91b9"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/post-coordinate-full-verifier.log.gz",
+      "mode": "100644",
+      "git_blob": "4f65bd9aa51f10d95b5c5bf72676deeb3558bf79",
+      "sha256": "2aa833c38ba856e3fd5f7553c588c632a3c643b52c5fdc6dd69dd134700fbf36"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/post-coordinate-inputs.json.gz",
+      "mode": "100644",
+      "git_blob": "6b6ad37d52e32d482d6143dc228cbd366f7c8c56",
+      "sha256": "96570d24196328cdf5672bef0bade43606e695e49d14d10fbc60040f25020273"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/post-coordinate-palomar-fixed.log.gz",
+      "mode": "100644",
+      "git_blob": "1c9d27d4cfa83bff4326ad4558c74fde9a9a03b8",
+      "sha256": "d1a760867a3276b7a06c1f6eeb6be2bd47f061137316c97e452a54317e793d27"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/post-coordinate-palomar-main.log.gz",
+      "mode": "100644",
+      "git_blob": "259b61e75c963913fc31c25ddef6c3708574ae6e",
+      "sha256": "c90d185e0a5488cc9358c8f43e2d12f017dc9a693ff084be389771489943f32a"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/post-coordinate-source-checkpoint.json",
+      "mode": "100644",
+      "git_blob": "0fb9e1ae76069884edf0eec79a796dd07b298b22",
+      "sha256": "4f7ecd6faefd2869a919cb3fb351cfcb9756f5612e4d1a39803b7fa8a670ede9"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/post-coordinate-source.patch.gz",
+      "mode": "100644",
+      "git_blob": "86c499b950f94e7dc2fc1e8cec64b77b902ec976",
+      "sha256": "b2e43e930aad970f4deeaf9d612a5e25ea4c42c6662b91136d446e829c44e6c1"
+    },
+    {
+      "path": "docs/audits/paper-route-checkpoints/producer-5113.json",
+      "mode": "100644",
+      "git_blob": "e98ba2358504f83bec76593772fb1775aa8377cf",
+      "sha256": "b8d503547018e4af9627b1e878252c3bae527c4815f64509cf937dc467b36a2d"
+    },
+    {
+      "path": "docs/audits/selected-paper-proof/algebra-and-main.md",
+      "mode": "100644",
+      "git_blob": "8741d4d434ce161b2489cee26a1aeeae33f556ff",
+      "sha256": "b41a0c4864f22263af6f718838daae4fd758e6ee00a6272d27d3b392f6a3e7cc"
+    },
+    {
+      "path": "docs/audits/selected-paper-proof/algebra.md",
+      "mode": "100644",
+      "git_blob": "0b1c733727c2c51331afb684efe06dd2a7cda7a2",
+      "sha256": "f6efbaa7fc9d6c4a8b485f048e4868bee21a6d80096ade07282166d4aee838ab"
+    },
+    {
+      "path": "docs/audits/selected-paper-proof/browser.json",
+      "mode": "100644",
+      "git_blob": "6bae84169cf8314c52a49e2f5a26b988e01170ca",
+      "sha256": "6747579496cdbd0960d8dd53f31872083669091f24d1e946a4bc367d77935efc"
+    },
+    {
+      "path": "docs/audits/selected-paper-proof/definitions-and-appendix.txt",
+      "mode": "100644",
+      "git_blob": "06bdeabc1915b43c9a2be9bc78702f2cf93a13ca",
+      "sha256": "ba1c56f4a9ead5b04bf218477db1bc837f5b17238a071a977a77c90c3753be66"
+    },
+    {
+      "path": "docs/audits/selected-paper-proof/geometry.md",
+      "mode": "100644",
+      "git_blob": "0b38308fd7a4b01d275a28bca2521ada916b7ecb",
+      "sha256": "c05f6d0771709a50971094049d742b4dcdef34f92edffd4ad42e16a6b5567328"
+    },
+    {
+      "path": "docs/audits/selected-paper-proof/integration.json",
+      "mode": "100644",
+      "git_blob": "1e7888491738b77f4098d180ce9fa1e237f6cce8",
+      "sha256": "9459985bf0dd55bc18a9ddb23feeccf00694887949e1d044c3451844a04bd3b4"
+    },
+    {
+      "path": "docs/audits/zenodo-v1.2.2-archive.json",
+      "mode": "100644",
+      "git_blob": "65b497f9bb31359dc0bdb1e86f37d7342b7f089d",
+      "sha256": "478a48693175e04f1f46d267e437b72ba4c8d19ae80e8931a901802a17e77757"
+    },
+    {
+      "path": "docs/audits/zenodo-v1.2.3-archive.json",
+      "mode": "100644",
+      "git_blob": "0d2deaba982d55ce9748f3628f3d473f6afb894c",
+      "sha256": "895225329f61322702e413ef5e9d1d39bae2fdad9176e389678e27c1c832361b"
+    },
+    {
+      "path": "docs/definition-owners.md",
+      "mode": "100644",
+      "git_blob": "62d1b02ddd36e5fd8d1d47f19de95c56c5c5d8cf",
+      "sha256": "55963439623b4de8e6c5e33c20f29fedb7b93337485737a24e2b38526303f28a"
+    },
+    {
+      "path": "docs/dossier/stafford38-challenge-dossier.pdf",
+      "mode": "100644",
+      "git_blob": "ccb75e41b3e37a6810a70a1655690df544c0cdd8",
+      "sha256": "adf95c86d49cbeaa6888cfe222a0d1a00e9cf1549a72bdb2f2f44be5cdb1ac65"
+    },
+    {
+      "path": "docs/dossier/stafford38-challenge-dossier.tex",
+      "mode": "100644",
+      "git_blob": "277375a5d6185305003e57cbeb4292002ad92450",
+      "sha256": "2eae4c3ddd06e8f948673f84536040a7dc861e9ba10a74801523404804e743e4"
+    },
+    {
+      "path": "docs/literature.md",
+      "mode": "100644",
+      "git_blob": "30689cce14c441a2316ae5cf4407b3bc0fc2a5a0",
+      "sha256": "9d463ec878010bbaad3bb8fa7bbca9e88e6af4b68296023997787a787a6b26c9"
+    },
+    {
+      "path": "docs/paper-lean-audit/README.md",
+      "mode": "100644",
+      "git_blob": "b2126ac2c012a4507a5c49ff0ac5aa974c143322",
+      "sha256": "ebad3813751721e40e39decf9f6fa578c612752466a10b1e55d762f09522fbcb"
+    },
+    {
+      "path": "docs/paper-lean-audit/ai_workflow.tex",
+      "mode": "100644",
+      "git_blob": "c621c9d8bc0a17946b52e0f96137516d48b70a67",
+      "sha256": "8d2d829f5412a14fa371bf4cb663a85ab3787da1120ee0bc887bd32678f8c55a"
+    },
+    {
+      "path": "docs/paper-lean-audit/audit-report.md",
+      "mode": "100644",
+      "git_blob": "9699e166274143eae67026d01922328bb9bb93f2",
+      "sha256": "0f4fd8ce9e105a2839a7421bf1154ba25c1ebcbef6cea570fac54adb7d8441d8"
+    },
+    {
+      "path": "docs/paper-lean-audit/human_readable_main.pdf",
+      "mode": "100644",
+      "git_blob": "ab55f19e4cf56e62d42aea7b4e73b63e41f90b31",
+      "sha256": "6299c84959c8ea4a59688d18eb2a6fffa192d446d5c80f170b5c4a4bb544bbba"
+    },
+    {
+      "path": "docs/paper-lean-audit/lean_proof_details.pdf",
+      "mode": "100644",
+      "git_blob": "4f75fc6f18f44f3e87e72f6b829280092e50e359",
+      "sha256": "ebaa365c139e283d7b5f909f113ec97f7c11479d4bfc64f6444ae003cc357658"
+    },
+    {
+      "path": "docs/paper-lean-audit/linked-declarations.json",
+      "mode": "100644",
+      "git_blob": "5b0c131676ae434aa7737b7f3e75190b9d9b6035",
+      "sha256": "2800103804c08c3d110736e01db2e3661a75add88e567e2837eceb52e8a6a242"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/.gitignore",
+      "mode": "100644",
+      "git_blob": "1b878e7fccc3738a3481f34093bbce19f1431b74",
+      "sha256": "910ef9a5c08575dd943f12e99f335d923ea94623510055f0dd3f43571e84c7d0"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/LICENSE.txt",
+      "mode": "100644",
+      "git_blob": "7fbb8cf8a7baca500d4104349288d5ec3cff9cc1",
+      "sha256": "98b6fde2693d4044dce4a071640e90bd8d250dd789d9033dbd5b77c79f389de4"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/ai_annotations.tex",
+      "mode": "100644",
+      "git_blob": "28ffda43be716306980b97a9e374defbe8c085da",
+      "sha256": "8566bcd42311a9ab4c9c2cfdc128427d565f789fe9856fb1b948bb8b4b97a968"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/ai_review.tex",
+      "mode": "100644",
+      "git_blob": "65b248949b1fb2d1e43c18a224c6f7f72d33b741",
+      "sha256": "8a2ee8ec2d14adafac56c1034048dfc4bd287c93f87ffa69cfe7134014db9961"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/ai_workflow.tex",
+      "mode": "100644",
+      "git_blob": "c621c9d8bc0a17946b52e0f96137516d48b70a67",
+      "sha256": "8d2d829f5412a14fa371bf4cb663a85ab3787da1120ee0bc887bd32678f8c55a"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/cyclicity.tex",
+      "mode": "100644",
+      "git_blob": "c0f6c74947fcc7e330229816707f41d613a803cd",
+      "sha256": "5353198b6d2eadf921d5ab5545e439dfa04834472c54a9b4d2fcbf80941c9690"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/global_stafford.tex",
+      "mode": "100644",
+      "git_blob": "018f15a7066d92b2a1b7ad96a7da17749c61411a",
+      "sha256": "5910e0bed20e296a33d05915b8137a9904dbe861d4ee15d48547df12aa130837"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
+      "mode": "100644",
+      "git_blob": "e58512c67953c26e607752e6c89d7685cbad8ad4",
+      "sha256": "eeae8c14b8ca9f3aa14557a43d76e49aa7bd65e89eef71219049398d1113764c"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/lean_proof_details.tex",
+      "mode": "100644",
+      "git_blob": "9086305406a58138bdaf9046594eb35bce6ace2e",
+      "sha256": "ed0b5c99e27db3574b310ace886ad101af8d8694e480169a96674f16e314eae2"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/lean_proof_details_main.tex",
+      "mode": "100644",
+      "git_blob": "e744552e181b3c5bd64f8c934c920f206cfbbf1b",
+      "sha256": "78ec53cfcf143cc2726bace4c78e0eb1c166622e169cc91fbf687b7b138b7185"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/lean_refs.tex",
+      "mode": "100644",
+      "git_blob": "b0b49bb3c335c92bd504dd05c15a2c9cea178695",
+      "sha256": "2831d8279f7aab7fe3aa51fe2a8021bf2b2140c55623f3e364e219d8dec13d74"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/literature_extras.tex",
+      "mode": "100644",
+      "git_blob": "73d92b8592992a78a4b92ff10c1c2bec704f4149",
+      "sha256": "d985e821632ec9c355f3f4cbb63dd8bf1e03ab46076c162057d9823c56347d22"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/main.tex",
+      "mode": "100644",
+      "git_blob": "e37fabf5fd4fd2a67bddfea9ace0236bd872bb27",
+      "sha256": "66fbde4dbf8bcb7944bfcae22bb5858833ffe11ce0716f56075ab1eb478524e0"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/proof_map.tex",
+      "mode": "100644",
+      "git_blob": "9ef90e5ab715800ea461c48ac8c185908fd612a1",
+      "sha256": "36ac1e90b36cc8395ebc9cb36b3a1121a98b222709bcba547aed66a41d1387e8"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/provenance.json",
+      "mode": "100644",
+      "git_blob": "d4eec75f7f883742c4dd3d89a0a197193f88a308",
+      "sha256": "24b10c458acee73d28dbd69ae41f77cda593ca0ba56fcfec457da2533c0662c9"
+    },
+    {
+      "path": "docs/paper-lean-audit/manuscript/references.bib",
+      "mode": "100644",
+      "git_blob": "26bda3d50022c9f9b35de8eec425ee857c9ae6aa",
+      "sha256": "3a67a7cbe002d13c7d4d5356be3cdeabd02dd46924223af7fc77a5019a3701d4"
+    },
+    {
+      "path": "docs/paper-lean-audit/references.bib",
+      "mode": "100644",
+      "git_blob": "56141e24868931bed67862fe16e2a15e4b454dc8",
+      "sha256": "022c2e928e14ca4a6d5f84875a3bd2c50ad9876975de04224581bb1a41fedcd6"
+    },
+    {
+      "path": "docs/paper-lean-audit/review-pdfs.json",
+      "mode": "100644",
+      "git_blob": "ab74418c38ccfb3037061445f9580e0ed33dfd3d",
+      "sha256": "4076be80a74e7ba38eadb0fc8e3d3a869609b1fa1e6d1fd2db2fbead47a25f1b"
+    },
+    {
+      "path": "docs/paper-lean-audit/reviews/README.md",
+      "mode": "100644",
+      "git_blob": "3e5e1c7e1c146637751cb08aa3ed0fd4d2f354bf",
+      "sha256": "611819dcc953199d6b819a2d50c46debe13ae217121f60c1c9a9494b217ec239"
+    },
+    {
+      "path": "docs/paper-lean-audit/source-index.md",
+      "mode": "100644",
+      "git_blob": "1040a37e22663455d31c48864e9e90745bf24a1f",
+      "sha256": "269b9ed859dd445539038a44670cb70f73b6714f2348ffe0dfe56796b76f8eed"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/LICENSE",
+      "mode": "100644",
+      "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/README.md",
+      "mode": "100644",
+      "git_blob": "34b002d0d2c7bb4278a64c7b53fca3edd743df5c",
+      "sha256": "bb7847a32cee43632d3fd0a31ab467793d77b553bf29525dc6f7fd7e3fa82411"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-history/cutover-2026-09-05/original-tree/docs/model-use-evidence.json",
+      "mode": "100644",
+      "git_blob": "e07514ea46c8eca8961c7123a75da19281269e05",
+      "sha256": "e1cfc3898227a21bc1d80e8e09271c54a6259661c25ff33ed4a8d9287277883a"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-history/cutover-2026-09-05/original-tree/docs/model-use.md",
+      "mode": "100644",
+      "git_blob": "d3ff05c4b6bfba8581e61d60a26b88f0aabb0007",
+      "sha256": "d216f768dabd6bb4931de96107f646af3a5d19152c277d8592f53a2a59a6be91"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/CHECKSUMS.sha256",
+      "mode": "100644",
+      "git_blob": "208f26e488b67ec65c179de7a2ee6a23f544ca22",
+      "sha256": "22eef1462c5c9143ee20b785c922242fc08cb33f77d052183b6414c2907fae19"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/LICENSE-CC0-1.0.txt",
+      "mode": "100644",
+      "git_blob": "0e259d42c996742e9e3cba14c677129b2c1b6311",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/README.md",
+      "mode": "100644",
+      "git_blob": "c8bb438a04e561f40e84f1896a7f9bd7fb304d96",
+      "sha256": "959ada0f7ff62518106c71c71d1c887a2f603be3d441680ffdd511b76aed92cc"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v1-initial/bounded-exploration/SKILL.md",
+      "mode": "100644",
+      "git_blob": "ba5addfba0a5ab7b781116cc819acd3344200fb0",
+      "sha256": "1b644bbe5a5c504a2a8fb7cba92c7bcbb9414285c87cbb234a2e308911f56ff4"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v1-initial/evidence-gate/SKILL.md",
+      "mode": "100644",
+      "git_blob": "c70b7f919e88b6a35b48b112bd76dc7e59fa0a73",
+      "sha256": "21864d3b42b8ff903887c4116d109a55721a20dccb20d99525d6b6e5334e1e14"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v1-initial/expert-escalation/SKILL.md",
+      "mode": "100644",
+      "git_blob": "41e766f0f021620d1563f32587b839492fe519bc",
+      "sha256": "6628154aa48677bff677c12e9421683a326e917261ffd3fea6563c2d12c10d89"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v1-initial/math-frontier/SKILL.md",
+      "mode": "100644",
+      "git_blob": "b56f7317e1f1c47408e6fa45c0c1c6c1c399bb4b",
+      "sha256": "aa1f9638df8fccb0443609dec506ea84f64b4f80fc9a1aa19baa80bdda03b810"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v1-initial/parallel-luna/SKILL.md",
+      "mode": "100644",
+      "git_blob": "40e6914ff6329ded08ea639a1ddcbd88ba6cd989",
+      "sha256": "e46d2fc5c3e1f7cff5c7f7d50ae22e3f54458ff20b717105aea2c5efaf17fff5"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v1-initial/program-loop/SKILL.md",
+      "mode": "100644",
+      "git_blob": "4fff20268c9addf168b28186d2f47942f3f6c8d2",
+      "sha256": "170dcd5d75f8c1c95cd013ac92edbcd70b7d96b51874dd35665385c485759d34"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v2-trigger-driven/bounded-exploration/SKILL.md",
+      "mode": "100644",
+      "git_blob": "008c5a6da49df5ff75a039cf80eeba2cb90dc8be",
+      "sha256": "75b87e04cd4d26c580d622b4dccb731afde6e47f5d606df014ff589fbeeca703"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v2-trigger-driven/evidence-gate/SKILL.md",
+      "mode": "100644",
+      "git_blob": "7be46915402cfa54701198c0b84096bd7951df0e",
+      "sha256": "925ecde3e198275fecd8f5888454fbe5971808b394d4edecb2c9631eb38a4b36"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v2-trigger-driven/expert-escalation/SKILL.md",
+      "mode": "100644",
+      "git_blob": "74f68d154fa6bb82dba3d409ccb11bd8d0ce0b0d",
+      "sha256": "cfb91d52ae80c522ede16008c405bcce1fb82fe6275453aedf7782973fb35f04"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v2-trigger-driven/math-frontier/SKILL.md",
+      "mode": "100644",
+      "git_blob": "6ff993064d14f628f8673a94376eec0485f64572",
+      "sha256": "40ae7d7dc94c65984d5bb71cc4f3a7eec95854bbb3ed895499eb79ce6bb5c661"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v2-trigger-driven/parallel-luna/SKILL.md",
+      "mode": "100644",
+      "git_blob": "b2b986e2b25b862df0ce5bdd08a622e3bb742a5f",
+      "sha256": "199f7327c08c54748ceefeff53488162c20ff051216943f532bcf94be85e86e4"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v2-trigger-driven/program-loop/SKILL.md",
+      "mode": "100644",
+      "git_blob": "2172af22dd638d52dc40bd8bf8219fef7b80ca51",
+      "sha256": "8093b8ed9f2ac10e651384d8d3b8ffa7711fe97c7f10d9daf14fe66ca7f2d501"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v3-scoped-promotion/evidence-gate/SKILL.md",
+      "mode": "100644",
+      "git_blob": "ab525f67ca4da4679ba4ec422066ce9ce47265ac",
+      "sha256": "76bfb6b9a307ce53aa69356ddb797fe80b971439896682d178dbac5fb116ab29"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v3-scoped-promotion/math-frontier/SKILL.md",
+      "mode": "100644",
+      "git_blob": "ffc3bb55e726638a3374fde83e571f535e166f82",
+      "sha256": "5ebff5103122ed1a69f17d620ac9ceb89591b6ae281700f5b0c96427315d83dc"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v3-scoped-promotion/parallel-luna/SKILL.md",
+      "mode": "100644",
+      "git_blob": "524ab3e1dcff89fc67d7cf848f5fc5b54ce151b0",
+      "sha256": "212822ad2e745fd2135c412b25af0b217e3bc87bb81c5396c594aacff0faddec"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v3-scoped-promotion/program-loop/SKILL.md",
+      "mode": "100644",
+      "git_blob": "669393338b210ff8c5c4526d23869c0d3b753819",
+      "sha256": "bd99542149f6501c34cd796d26a02782fea5cd3bd0a0dcf68bf350b82c2c1588"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v4-proof-repair/math-frontier/SKILL.md",
+      "mode": "100644",
+      "git_blob": "d32e4a8dcb1e5f06c3fc9b44620f6f4c8d0d562e",
+      "sha256": "9c005138a2048f4abec734e03d4d4dab0dccc80ec44a927c82efaa2d08e734e6"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/archive/research-skills/v4-proof-repair/proof-audit/SKILL.md",
+      "mode": "100644",
+      "git_blob": "d770f7704c5aa671545c68b42216f164e541eda8",
+      "sha256": "76183704f4e0296cb3b0927b09e68fb922d69c0f8bf1e9ef9ec567d395bb0f3d"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/manifest.json",
+      "mode": "100644",
+      "git_blob": "63131ca665ddde192efad7b1ba875a7be1532750",
+      "sha256": "dc5b16061986ab8fdd0e9cebdce76fa1eb7bfc16b20edd28aef7f0d3a94633ba"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/notes/history/gpt-sol-consult-protocol.md",
+      "mode": "100644",
+      "git_blob": "ca49cc2bba87f81ad14160b7dec5e33a6273be1a",
+      "sha256": "f043646e0912239b780dc3438438f92e39f3fe9feb78e9664c5a81438db4da4a"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/notes/history/luna-review-protocol.md",
+      "mode": "100644",
+      "git_blob": "2795e9659e011bb0a991429a2fd3af8dd9c9b206",
+      "sha256": "048b22d317105a0d8ec739ef3f9790567bac6769e9d1831e9471556c0a0de1c8"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/notes/history/luna-review-template.md",
+      "mode": "100644",
+      "git_blob": "de5a3e16982e0006636b47f47a667eee046ce060",
+      "sha256": "204daa1d1f7c1e5ce2a2d3cbb9535884c92e47918269e0497ba45be3fc66530a"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/notes/history/operating-loop.md",
+      "mode": "100644",
+      "git_blob": "86bcbfb8c26c531c6339217379c97249b5f37d6d",
+      "sha256": "24a6eec320ed1cd4847548b03b44cffc91fa306ee41de02c5175ea4f6d6b8865"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/notes/history/research-protocol.md",
+      "mode": "100644",
+      "git_blob": "ed981d3212901c43cb8663f01de4e50335353f0c",
+      "sha256": "9c09c31c19c51c9963febc16a637614273939a28e843238e783aa90637ae637c"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/notes/history/sol-consult-template.md",
+      "mode": "100644",
+      "git_blob": "debbf78ca93d3086f55eae7c107f65f3e6542f2e",
+      "sha256": "a5913078221cdf073c22b488603d920cdc051f4504af545c27ff44a0ab3eb22b"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/workflow-history.txt",
+      "mode": "100644",
+      "git_blob": "137047ebd3278c68d3cd6c5f85782c234fb90373",
+      "sha256": "09b7e8f141a8944761af5d2a17fa12f6618e1404f9221e43a43091b90ffe3e8b"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/workflow-prompts.tex",
+      "mode": "100644",
+      "git_blob": "0b0ae9b415ac1a75265770b64b2fddaa0750fff9",
+      "sha256": "34032fc52e340504bab9d4d854ff4782e6cf946e3ac70f493df13c10a4258534"
+    },
+    {
+      "path": "docs/paper-lean-audit/workflow-evidence/workflow-prompts.txt",
+      "mode": "100644",
+      "git_blob": "1785b5ff202726022ceb3f0b0f6086ae5927f2fe",
+      "sha256": "52d47d44e26a9efa2eecb74c705b68779631371067ed18125ed6acbdaa5d0ccd"
+    },
+    {
+      "path": "docs/paper-lean-specification.md",
+      "mode": "100644",
+      "git_blob": "6b24ab63f6878963ec6e9fbc3546a611bad8f95f",
+      "sha256": "1e7a4bb17af2c2924a41cf5d31fbe4383b54bf9824395d1faefa15e975370648"
+    },
+    {
+      "path": "docs/paper-route-alignment.json",
+      "mode": "100644",
+      "git_blob": "f9da83c8d2c1a577cd31fe8a48dd5bfa807da2df",
+      "sha256": "ecfaed036474b8685e819e64df6c8b30a08624c9ff2fafc11a756c029a44a81f"
+    },
+    {
+      "path": "docs/proof-graph.yaml",
+      "mode": "100644",
+      "git_blob": "3898c5c668fc981040064247289c3708f78b4fd5",
+      "sha256": "7a40e2b7d0fe12feae925c11257c316962e9aa8d088c5416180918d453b03145"
+    },
+    {
+      "path": "docs/proof-guide.md",
+      "mode": "100644",
+      "git_blob": "161ff05a4ddc41d6d099d8c597bd2b1ef3c24b67",
+      "sha256": "ed24ebe9783b49125ff8c3ed86ea708338d5eb3a7a90d7089cbb705080106ac7"
+    },
+    {
+      "path": "docs/proof-source-provenance.md",
+      "mode": "100644",
+      "git_blob": "d0ffa2074b4a94638295f8a7183867b0217e88a0",
+      "sha256": "6a3439d839c77425228a31bd5e9079dbc9ee686d1b0efaa670e942b3fe5b06cc"
+    },
+    {
+      "path": "docs/provenance.md",
+      "mode": "100644",
+      "git_blob": "3b9a89ed35db7dec7e18e3ae6e99cee2661f1532",
+      "sha256": "f39f1fe7769dd71acfeb5144b35ed15d52bc52b34c6da11d9daf9c27fdc1fd67"
+    },
+    {
+      "path": "docs/release-runbook.md",
+      "mode": "100644",
+      "git_blob": "7c3c9a79aeeb24a6145f6a6d9a54f095532a4f6c",
+      "sha256": "d5e49778c3f380cd6b523597c6c62875fa7947524bd3708505e652b2e1f788c0"
+    },
+    {
+      "path": "docs/releases/v1.1.1.md",
+      "mode": "100644",
+      "git_blob": "2a95f60ec232d2e09dc091e88ca95619c5ef5a4a",
+      "sha256": "305fefe9fe105fdb467a97605c928691294e0bfa188119990bd23370bf593ab3"
+    },
+    {
+      "path": "docs/releases/v1.2.0.md",
+      "mode": "100644",
+      "git_blob": "26e7bee8b50a81c3886d3dcd53958884cc9230ac",
+      "sha256": "abc0965024636fc49fdebbe6eec227ad050ee586ef6a9afb4ce1a884550120e7"
+    },
+    {
+      "path": "docs/releases/zenodo-22667041-verified.json",
+      "mode": "100644",
+      "git_blob": "8283ef47dd9238ad041e9419190b087aceb23820",
+      "sha256": "d3954c0bf1a1901378aa5c1106406b135aa103ee4f2d5d9da4ede67bd339a63a"
+    },
+    {
+      "path": "docs/releases/zenodo-23072839-verified.json",
+      "mode": "100644",
+      "git_blob": "2ed822156e509cf390bfe79fa448730ec84b6c7b",
+      "sha256": "100007ac2a37de5b82f63759c3257490092629ae6fe6bb1504be806a81890e19"
+    },
+    {
+      "path": "docs/releases/zenodo.md",
+      "mode": "100644",
+      "git_blob": "f1b2c06faec01ded9ece270bb681963d85ef0446",
+      "sha256": "3f1a55025aa938b90cacc17037199ee6622ce654676467106882d247146c4c74"
+    },
+    {
+      "path": "docs/source-inventory.json",
+      "mode": "100644",
+      "git_blob": "371d50ed5d470cd3d188d4ce42db25088fb704f4",
+      "sha256": "0a09a7817deb23795f172c2320091fd0de464f5d9e87a5262d4f6aaf0320219f"
+    },
+    {
+      "path": "docs/verification-results.json",
+      "mode": "100644",
+      "git_blob": "9b495be20aee1faecf35cf40c9e379863b0032a2",
+      "sha256": "a1cca54a8c46df89797b85dfa24359e3e0b640caa414bcac29c4fd3cc7a81f9d"
+    },
+    {
+      "path": "docs/verification.md",
+      "mode": "100644",
+      "git_blob": "e1de14fc005c768ab236975ab1bb23e1609f86c1",
+      "sha256": "f8d137e7f852f062ed6b14bccd341b59778f77f631f600f4b3ab2a4656942a6f"
+    },
+    {
+      "path": "docs/verification/f6915782/axioms.log.gz",
+      "mode": "100644",
+      "git_blob": "3db4bf68089fed68dcfd0b25899bc1f8c0f36402",
+      "sha256": "2510058685f3ff2cc29c57e007eb02f0abfb7785e28775f14da219405a16dab2"
+    },
+    {
+      "path": "docs/verification/f6915782/build.log.gz",
+      "mode": "100644",
+      "git_blob": "c6983473fb188ca78b1ca7e84882eb5fb6999fee",
+      "sha256": "1fd96c756ea0083367082f7b872a663c1a1c4bece7f49a1d1d76e74283e26819"
+    },
+    {
+      "path": "docs/verification/f6915782/comparator-fixed-source.log.gz",
+      "mode": "100644",
+      "git_blob": "58b29e693f7c9672582b94c4a7e202c4e17b34c6",
+      "sha256": "2099d682721e374b4a02298ec3c67e0d332df69eef48c0e8f46f373ff7571db2"
+    },
+    {
+      "path": "docs/verification/f6915782/comparator.log.gz",
+      "mode": "100644",
+      "git_blob": "c2f2f8e4aef6abff1359d79db8669e93f4155daa",
+      "sha256": "c7b3286a34272fb304ecdb984d2bb6c06d789ad9edbf261d18a3743d01d71c9d"
+    },
+    {
+      "path": "docs/verification/f6915782/independent-consumers.log.gz",
+      "mode": "100644",
+      "git_blob": "a53e9650b47f1f0d9cedf59b5b55f10e17db0418",
+      "sha256": "659120eaa965d62cdfcb8d17cf7201b5c60f702970ed0b3a52e287f969380ca5"
+    },
+    {
+      "path": "docs/verification/f6915782/palomar-fixed-source.log.gz",
+      "mode": "100644",
+      "git_blob": "d66712968e3dac9432881d660638aeceddd7f1bf",
+      "sha256": "74a0dd257cd4ba8678a6e923f83d6fdacd8a4e14812ecd1a521e73c41b5cdee5"
+    },
+    {
+      "path": "docs/verification/f6915782/palomar.log.gz",
+      "mode": "100644",
+      "git_blob": "e0c71c464e60a3200e729c8f51ad804895636428",
+      "sha256": "e3856a0eb8c1cd24a5222a141808c54be0d976d07fb21ba7129470c4b72a8007"
+    },
+    {
+      "path": "docs/verification/f6915782/paper-declarations.log.gz",
+      "mode": "100644",
+      "git_blob": "9cadefbeb74f162e01461ddf32f75119ca11b027",
+      "sha256": "19f59511e19918c19da95c48ea6929b8dd4dc5047340efc22d99aeb99226b97d"
+    },
+    {
+      "path": "docs/verification/f6915782/verify.log.gz",
+      "mode": "100644",
+      "git_blob": "7431c72afbba9715c0b5435352c0ea183478327e",
+      "sha256": "861108600efe75ee1699fba0ea869233a13e220213ede1e0873f28061b5b876e"
+    },
+    {
+      "path": "docs/verification/history/79188b4b-verification-results.json",
+      "mode": "100644",
+      "git_blob": "1c9f59cc12d611a5f8c0c01548bbebc6dce0174c",
+      "sha256": "96de78e238a25ca62f7e5c18f51e360c77bf49a2daa8b8f81d862e10e897becf"
+    },
+    {
+      "path": "docs/verification/history/79188b4b-verification.md",
+      "mode": "100644",
+      "git_blob": "d88b739b36624a7441dcc984d9b7bbf1bda9b38a",
+      "sha256": "6188a828f1213a9ed866a5f6bc74c4eb4682d7a8916045c061e3e253e47e281d"
+    },
+    {
+      "path": "docs/verification/history/cbb2396d-verification-results.json",
+      "mode": "100644",
+      "git_blob": "33596be080b9bfcdc74d7a35ebdbbb057ee10d0c",
+      "sha256": "100afbd3b7653ef3f2f4a5338ba9bf9cdd9990f74d0be1b20ca116dfb8a12556"
+    },
+    {
+      "path": "docs/verification/history/cbb2396d-verification.md",
+      "mode": "100644",
+      "git_blob": "c3f0a0df3a0cde1325326ae596ab1e59e54d900b",
+      "sha256": "92e7cade1ebc3a1e6f62a25d2a4a206c0532a3d837a6014ae181712a16b94541"
+    },
+    {
+      "path": "formalization.yaml",
+      "mode": "100644",
+      "git_blob": "6f67f69f55cc95158c539fa6322300b675e10f5a",
+      "sha256": "312325605253e698c17e205e36caccfebcc6102a06e4615555bd38de23e57e1f"
+    },
+    {
+      "path": "lake-manifest.json",
+      "mode": "100644",
+      "git_blob": "0330711cb5af06f56216993faa16803f981bc29f",
+      "sha256": "df3e09ba3b56d9c7952d97a6a18080d3881a96e55c8bd69c1a30e42e5eb1203b"
+    },
+    {
+      "path": "lakefile.toml",
+      "mode": "100644",
+      "git_blob": "4a369d223dfa8a02264d416796fd529583e3cd4b",
+      "sha256": "e970b27e914ac5e93eed4d4debc49dba066c8075585a35d35856ed4680c098fe"
+    },
+    {
+      "path": "lean-toolchain",
+      "mode": "100644",
+      "git_blob": "025e59548e48cf71f2744154e2890beefe30a258",
+      "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b"
+    },
+    {
+      "path": "proofs/stafford38_reduction.lean",
+      "mode": "100644",
+      "git_blob": "05be3c456ca47f54d269afc17e5e4cdc93ca8494",
+      "sha256": "8f56d0c0b66313beb565a5e12e8ff012035e5ab99c44c05ad0210e7fb578eba4"
+    },
+    {
+      "path": "proofs/weyl_pure_power.lean",
+      "mode": "100644",
+      "git_blob": "4ce21ce5d40c82f446c4e3045f88909c313445ff",
+      "sha256": "391348098dff73c1662d466a2d37b03491008877c97478486ef2b8184b5a20b2"
+    },
+    {
+      "path": "proofs/weyl_symplectic.lean",
+      "mode": "100644",
+      "git_blob": "e343528a04bc2605afef19bb3ad380f8a57d7674",
+      "sha256": "a8c5b63fbe551a6fb242e78f705a5f271112612e99153d9721f4a389b99f16d3"
+    },
+    {
+      "path": "scripts/bootstrap-palomar-tools.sh",
+      "mode": "100755",
+      "git_blob": "fb9f9e094a46d340502c410d97d347d60e0a9a09",
+      "sha256": "06da951744d9e59b420de938d3e891f98a6b13d2a37e76f74719e551c1eff1ff"
+    },
+    {
+      "path": "scripts/build-review-site.py",
+      "mode": "100644",
+      "git_blob": "21047ad72c30b7a5319afe32b7a2e65f40d365b1",
+      "sha256": "7968f03cbae898ab4554b32b702135967c30bbc7f6347a95aed214b0f6385530"
+    },
+    {
+      "path": "scripts/check-consumers.sh",
+      "mode": "100755",
+      "git_blob": "ce99b54b2eb37c458ff35d08f9eba62cf4ff1d72",
+      "sha256": "c0a1b3a86e806e8bb2ecb01f469c47bb0ccce08f2e7c91812b0fc0e1496ddb12"
+    },
+    {
+      "path": "scripts/check-import-closure.sh",
+      "mode": "100755",
+      "git_blob": "06f38ccf51254f9c1250a19bb7173142e3d3cb14",
+      "sha256": "33fc6e4f38d7b5411fa8b5c26ae83a94e79badb181f4e9730a4c3f6c23d8f456"
+    },
+    {
+      "path": "scripts/check-layout.py",
+      "mode": "100644",
+      "git_blob": "b0140dc2621b9098a32c837188425a3b9b3fbc10",
+      "sha256": "a50ff907a1d65b14117ba3088f2af6683595389cb612d537b92c277321a11600"
+    },
+    {
+      "path": "scripts/check-paper-declarations.sh",
+      "mode": "100755",
+      "git_blob": "57b415fad0f24759c29331c9497a847089c3880c",
+      "sha256": "d8f96d8963847f2a5a560b8687bd8f6a4ffbdbeb6766e91748e07f9d9cc761bd"
+    },
+    {
+      "path": "scripts/landrun-wrapper.sh",
+      "mode": "100755",
+      "git_blob": "274f5d03dac3e8812613f11afa940f85e4c6280f",
+      "sha256": "7f85ec518a142d3ea121a1fc26d92054139f549196e56110749fdc67fcdf75ca"
+    },
+    {
+      "path": "scripts/verify-palomar.sh",
+      "mode": "100755",
+      "git_blob": "16955484bf4b621df2968b5f26c30c0313485ad2",
+      "sha256": "abb623c57f966ea038a29aa689546809e9ab73c0f7cc7bba7059c4c005be1084"
+    },
+    {
+      "path": "scripts/verify.sh",
+      "mode": "100755",
+      "git_blob": "41296a2d0044a4a311ae4caa1aabd5349d0f842d",
+      "sha256": "f5a6eea7e283523ddd1eb06551371d06356133d12d4708284f3e92fca79e55e6"
+    },
+    {
+      "path": "tests/ActualChartCenterNonzeroConsumer.lean",
+      "mode": "100644",
+      "git_blob": "c7627366abd1ebec9fc5dc1bfafe5967ff8150f8",
+      "sha256": "6400e7a39da1f83859731173db8ba437e4cf8ddfe23f68f9ba60c99ad6fbfa94"
+    },
+    {
+      "path": "tests/ActualChartNormalizationCenterConsumer.lean",
+      "mode": "100644",
+      "git_blob": "b0715090c836453106431d327e85a04e54453a56",
+      "sha256": "d92617e80b26807cdbcd18450511d6798e449f9eba706c67bf9854abc93e6f47"
+    },
+    {
+      "path": "tests/ActualChartResidueMapCoherenceConsumer.lean",
+      "mode": "100644",
+      "git_blob": "d5d252a773f31d911d2e79736621729227f70867",
+      "sha256": "70e3726013f6fdfdf934c70677cb1111aeb1d282e374ba9cbccede5d6c208144"
+    },
+    {
+      "path": "tests/ActualChartValuationImageConsumer.lean",
+      "mode": "100644",
+      "git_blob": "2013d6760ea9bbc8900b689b83cc2d9904eee1d1",
+      "sha256": "083f93d25a5f5dadcbe7f9a437f262e7504e422e1fabd00f903592d59e9cc656"
+    },
+    {
+      "path": "tests/ActualColumnBindingConsumer.lean",
+      "mode": "100644",
+      "git_blob": "1fc0d2913ad7d11bc65dd38a645f14748894c471",
+      "sha256": "19d93aa6d4ec749e2699025fc29b0180133fa18fb784c9cbc3c0df91f68288f1"
+    },
+    {
+      "path": "tests/ActualColumnCompletionBindingConsumer.lean",
+      "mode": "100644",
+      "git_blob": "d2bc819fd97ca8b236bd32450a7cb29e6a7c3b44",
+      "sha256": "1f64e5189d5a74c5c687f9a9dd1f0c4450bc2f48d3ec44176c2e28cb12d63ba9"
+    },
+    {
+      "path": "tests/ActualCommonOpenColumnGlueConsumer.lean",
+      "mode": "100644",
+      "git_blob": "7818b74aa254c0ea11a86498db50c35403188293",
+      "sha256": "f5fe91df196c6788ee42b9e9bbc18f4a3c13cded5463f038b6da549ca4875d3c"
+    },
+    {
+      "path": "tests/ActualNormalizationCenterResidueKernelConsumer.lean",
+      "mode": "100644",
+      "git_blob": "9d4cdcf365219f830f130ad3f1f0f826da70e0c4",
+      "sha256": "f5a308e751607735ecea35d6a3e02f4be97423f580a74e25b8aeda91330e112c"
+    },
+    {
+      "path": "tests/ActualOptionGroundPointCompletionConsumer.lean",
+      "mode": "100644",
+      "git_blob": "643465fcc8d5fb4272577517921f8d6b691394dd",
+      "sha256": "973b9a1b2d3354d834cd57374103aa682d3a45543d3ab1f193a9a07ab36ee896"
+    },
+    {
+      "path": "tests/ActualPointAxisLiftCheck.lean",
+      "mode": "100644",
+      "git_blob": "f86e769038f1cae8e9a4c5bc8d61df70dea35457",
+      "sha256": "3299ea2c6227a0a745900d60b9ece830053d0ab28e363eb7135234818b5385bf"
+    },
+    {
+      "path": "tests/ActualPointCommonOpenAssemblyCheck.lean",
+      "mode": "100644",
+      "git_blob": "ed8ccbf36136aee15f461f803bd41b68260b729b",
+      "sha256": "d59e584147aade4bee78a5fb7060a071494361b2910101a1997a59e443dad6b5"
+    },
+    {
+      "path": "tests/ActualResidueCenterHeightConsumer.lean",
+      "mode": "100644",
+      "git_blob": "69b98749b04727bf8b37f86062ccdc4c9fdc0ad1",
+      "sha256": "cdbb139fcb65e6e86fbd15a54d5acd4705e133d10b91d960a5a493d21c264cca"
+    },
+    {
+      "path": "tests/ActualSameWitnessDivisorNumeratorCheck.lean",
+      "mode": "100644",
+      "git_blob": "18f860bd60dc6940317f05d6e403634939c5ff3b",
+      "sha256": "5aab9f3827128600177e4a0a926cb8fe91512e1a7d8ed86732af714924214a5a"
+    },
+    {
+      "path": "tests/ActualSameWitnessGroundPointCompletionConsumer.lean",
+      "mode": "100644",
+      "git_blob": "dc2260837952cdee7a42fa22eaf1c2fe1372661b",
+      "sha256": "a77dc9ab2398b195b2dde5c814ef1df60324f42d66131f41fbcd1ef67e0c641a"
+    },
+    {
+      "path": "tests/ActualSelectedNormalizationDivisorEtaleCheck.lean",
+      "mode": "100644",
+      "git_blob": "7b070e5ada3c7b39303e1fec636ddf8233991a2b",
+      "sha256": "faac27190bd3bc16e016153cfb75acf50b0dba661c2f246d3321eaad031a96c2"
+    },
+    {
+      "path": "tests/ActualSelectedResidueBasisConsumer.lean",
+      "mode": "100644",
+      "git_blob": "80e2c4772eb24708863a4bd454805ca210d24e65",
+      "sha256": "cf0372168dcc2b32dfd575fe9b5f27581ad381465461d2447b90801d2862231e"
+    },
+    {
+      "path": "tests/ActualSelectedResidueBasisRowExclusionConsumer.lean",
+      "mode": "100644",
+      "git_blob": "9229a48a2e38046ce754ae2e1ead395a3d40a5f5",
+      "sha256": "56d8710564f99c76e545c3f7cbead9254839285d624c0f50f52c4f3692b02937"
+    },
+    {
+      "path": "tests/ActualWitnessCommonOpenColumnGlueConsumer.lean",
+      "mode": "100644",
+      "git_blob": "0f7efbf358fb2c41bf17340c75afab315e23a773",
+      "sha256": "e59ca06f0cffac4e31a975df7af83482c5b79f1866296c72c4545da9c1e24cd7"
+    },
+    {
+      "path": "tests/ActualWitnessSelectedChartIndexConsumer.lean",
+      "mode": "100644",
+      "git_blob": "1b8def7346a6d51fdcdd060f71de0bc7c5773c14",
+      "sha256": "8a050e102bc17a817827dab4fe1df995afb6e9c0eaaaf2ec785dba4736e07658"
+    },
+    {
+      "path": "tests/ActualWitnessStrictOrderGapConsumer.lean",
+      "mode": "100644",
+      "git_blob": "7136ec2f684c7e40d06dca30bff27e1519e55b71",
+      "sha256": "5eb66960c00a5e354ddbcd432732257200518962a6e7016cd3a944f2afc19919"
+    },
+    {
+      "path": "tests/CanonicalStaffordPredicateConsumer.lean",
+      "mode": "100644",
+      "git_blob": "4a407d78eee170afb5c83325cdd12c061b3b7f31",
+      "sha256": "0d41bbb6c1416146e6cc49d03bf66eeca2b263288f633199d9f4fe485aa16ddd"
+    },
+    {
+      "path": "tests/ChartGenericPointFractionRingConsumer.lean",
+      "mode": "100644",
+      "git_blob": "cb1f40b8e519daf4ff81717e174527f1f6d8326f",
+      "sha256": "e6c12757ea249180eae21294b934bc9f02d805f04cbe221f738baa87b773b356"
+    },
+    {
+      "path": "tests/ChartNormalizationFiniteTypeConsumer.lean",
+      "mode": "100644",
+      "git_blob": "97481994d6e2d743e061304f04cb0d8b62c7e448",
+      "sha256": "7a81100084d65f7b2efeb6e86de94e4e0f74325bacf3c4cef0f1f4ecac2ab357"
+    },
+    {
+      "path": "tests/CoordinateLocalizationAxiomAudit.lean",
+      "mode": "100644",
+      "git_blob": "ce775353b04d3398cdc911fec7f92d9b881c521f",
+      "sha256": "3c010f85701c286780d522d32f5981e91a47c71230e16098e361e7efef17d6e4"
+    },
+    {
+      "path": "tests/CorollaryChallengeOwnerConsumer.lean",
+      "mode": "100644",
+      "git_blob": "c4a50ca66680c3f0933968cff7beb54bbde57179",
+      "sha256": "76052697741592d111101c51826f427a99b9251a566a0c01a7a9f70b28d6b49e"
+    },
+    {
+      "path": "tests/CorollaryConsumer.lean",
+      "mode": "100644",
+      "git_blob": "417510c84f32442b0540f2f4a46b7df74f77cbe5",
+      "sha256": "e8c7423e90b860d1b421b8cafbb2c2c5a14b761abbea7f8a26028959da832a3f"
+    },
+    {
+      "path": "tests/DVRParameterSmoothnessConsumer.lean",
+      "mode": "100644",
+      "git_blob": "81c68cc1a58a7f825cf69366f0c3fad8f1156b83",
+      "sha256": "0b585860aefc9ae5c289bcbde3db678e26949b7f58045424097f24daeff8bda7"
+    },
+    {
+      "path": "tests/DVRUniformizerNumeratorConsumer.lean",
+      "mode": "100644",
+      "git_blob": "3ccfd6e429efe16f7824d57a1314238b3d2e4d10",
+      "sha256": "7d50523e87133bc3050dad159e607e204687f0eaca3a05b67b6a8ec497fa190f"
+    },
+    {
+      "path": "tests/DirectSummandInputAxisConsumer.lean",
+      "mode": "100644",
+      "git_blob": "39c86d04ce61542c14e4aba88ae2b85bc8bd827f",
+      "sha256": "6e22cc196c5332a9d9516b59c6af0aa5fcb228753580fab55cde3cdd1b931792"
+    },
+    {
+      "path": "tests/EtaleCotangentTangentConsumer.lean",
+      "mode": "100644",
+      "git_blob": "e1d01192993ee047fb947205f97c4da7b304fe19",
+      "sha256": "99046c6ef39b2036c60ef26d670f1eefb607029c4801b0d1b299e56efea6ad6f"
+    },
+    {
+      "path": "tests/FieldEquivFiniteTypeConsumer.lean",
+      "mode": "100644",
+      "git_blob": "f79c8243e8a6e3afff1cf92ae18b399ae7a21a8b",
+      "sha256": "2a72bf0ddf1432644ca7c3a0d7d056d54065686d7c97f4ea5fb3abe1e3a99c70"
+    },
+    {
+      "path": "tests/FiniteBirationalAwayActualConsumer.lean",
+      "mode": "100644",
+      "git_blob": "b8aad42aff5e3b9a13497c76598c13559a9d009d",
+      "sha256": "14f2b34a8923dba01b50c8dba3b3e5ddf243c602d8025072f36cd11b8a403624"
+    },
+    {
+      "path": "tests/FiniteTypeCurveHeightConsumer.lean",
+      "mode": "100644",
+      "git_blob": "0035d45e6a14e1bcc9e426eaeaa2d16c779e3e33",
+      "sha256": "11167a83d6d723a415285f3bf4b7705c4f9baa94aec408b59f184385284008d2"
+    },
+    {
+      "path": "tests/FixedSourceChallengeConsumer.lean",
+      "mode": "100644",
+      "git_blob": "4cf1726ec2617faeb93fd6aac46e915a156682d9",
+      "sha256": "d5e26f8a44951384fb8bb02c726de7b675145918d6e21f8ef9cf6596a70cc9db"
+    },
+    {
+      "path": "tests/GeneralDivisorialVisibleFrameResidueSupportConsumer.lean",
+      "mode": "100644",
+      "git_blob": "0a221d278ec77245a1b160ee5650be1a3c25769e",
+      "sha256": "b703841fa88d95d5eef611e65f8cb81202a0763d8213cb1a32c8ace52e9dc7e0"
+    },
+    {
+      "path": "tests/GeneralDivisorialWitnessProducerConsumer.lean",
+      "mode": "100644",
+      "git_blob": "b48fd9c0f7a6f5851bc4e23f7562c47d214b475e",
+      "sha256": "92465d16ed0d0a76d23bd0218781c0d0d18b9e4fbde46cc71e7f55b02b78025b"
+    },
+    {
+      "path": "tests/GeneralTangentLimitAffineClosureConsumer.lean",
+      "mode": "100644",
+      "git_blob": "1056d05c9deebaa464eb62bba3c80bc6edeac392",
+      "sha256": "c7f746db93639f28f3f5e2bb0718a1f48ed29a258e130356d9c4182c3170bc7a"
+    },
+    {
+      "path": "tests/GeneralTangentLimitCriterionKernelExportConsumer.lean",
+      "mode": "100644",
+      "git_blob": "36b44fe9cf310f8e2dfa5b3f3abdb4bfa372bfc5",
+      "sha256": "11190e3b06814878cd9f7ddd838c6b90e4538cc49860bd04820655e3a285cca9"
+    },
+    {
+      "path": "tests/Geometry/A0ChartFormalEtaleConsumer.lean",
+      "mode": "100644",
+      "git_blob": "dc458414be1489a939dd0bf04c9f5df56377f288",
+      "sha256": "cd6c8b60dbdf4c758f8b53ebd260a00770201643202ca44e4f4cf1b0782e6d0e"
+    },
+    {
+      "path": "tests/Geometry/A0NormalizedProjectiveCoordinatesConsumer.lean",
+      "mode": "100644",
+      "git_blob": "67ef172aa3c5202700a6d2b3c1bbf5eab5da43c0",
+      "sha256": "889ae9fdf23f1a45c777100e3d172f230081736858c8b51cef2781fa882fe1a8"
+    },
+    {
+      "path": "tests/Geometry/ActualCenterParameterTransportConsumer.lean",
+      "mode": "100644",
+      "git_blob": "0a5e92d85348ff04a9ba1863d1b081400a9347e8",
+      "sha256": "43e82e507a16fc5ccdb02a475bf5e6cddf8ad2d839d9f6f57cb811687ae3b54e"
+    },
+    {
+      "path": "tests/Geometry/ActualCommonOpenCompletionDerivationConsumer.lean",
+      "mode": "100644",
+      "git_blob": "35dcdb4f07c60aafe2a6c7362abb434f1d8e9253",
+      "sha256": "3701e326be55598a5416f0ebc831f768abb8eebd6a323890ee2edd5c385b720e"
+    },
+    {
+      "path": "tests/Geometry/ActualNormalizationDivisorEtaleConsumer.lean",
+      "mode": "100644",
+      "git_blob": "667f93716c3d4bd1e3dda29512c3c48b346b65c5",
+      "sha256": "f74c6974d013eeda353649c312f6cdd71ac7a05054c46ef75ce291a0daa76a02"
+    },
+    {
+      "path": "tests/Geometry/ActualOptionCoordinateEtaleConsumer.lean",
+      "mode": "100644",
+      "git_blob": "9efea34dfc5d4707ebdff8bbd7a5e3afcb9e7d1b",
+      "sha256": "b1463f16307d33f78864d780f6c31a5a7256d073bde4c0e2668e6b52755eb9aa"
+    },
+    {
+      "path": "tests/Geometry/ActualSmoothOpenChartNumeratorConsumer.lean",
+      "mode": "100644",
+      "git_blob": "9ffaa568915615630584e4349d65e2ea4c0fb2a1",
+      "sha256": "51d207c23a2a5bcce306bbd63684f6dccfc3561c023d6dd8e00b86fa8afeece3"
+    },
+    {
+      "path": "tests/Geometry/ActualWitnessSelectedChartBindingConsumer.lean",
+      "mode": "100644",
+      "git_blob": "f66740d3ea1b035190a6f6123588d77ab743c672",
+      "sha256": "9c5792e239d38f9c2a26c6e4f45024914832f227147acb4fb4800dd180662c1c"
+    },
+    {
+      "path": "tests/Geometry/AffinePointCompletionConsumer.lean",
+      "mode": "100644",
+      "git_blob": "e1e4137f11bb1576e753d6c6279ffa3147b1b9dd",
+      "sha256": "cf256b530635e391e85b1904d466c21509d3cba58be5b6ea25ce828d14b069c3"
+    },
+    {
+      "path": "tests/Geometry/CoefficientRegularityOracle.lean",
+      "mode": "100644",
+      "git_blob": "738cc6725db7d630bb50f078905cbbb51825e075",
+      "sha256": "fe351ce1b386e979182f6f9819767457a3a5e7832d4530ae6e5595174100b356"
+    },
+    {
+      "path": "tests/Geometry/CommonOpenArcCompatibilityConsumer.lean",
+      "mode": "100644",
+      "git_blob": "baa99c18d6628455b61759e0cc4cd3fa00f523de",
+      "sha256": "285fcbe38a6259053ddc103c04c4ff7bfbd8cad79c3e64e482ab9f066d5e89ed"
+    },
+    {
+      "path": "tests/Geometry/CompletionInfrastructureAxioms.lean",
+      "mode": "100644",
+      "git_blob": "e03d9465bcae041c77ce66c0e69b8578f4e6527e",
+      "sha256": "bea46060a6f22354eaea4ed43bf70ffbd4bc318e17dcf348e039bdc0e72a9012"
+    },
+    {
+      "path": "tests/Geometry/CorrectedNormalizedTangentLatticeConcreteOracle.lean",
+      "mode": "100644",
+      "git_blob": "2f53949d5eacb98fa779bcdc9d300bcf065c87b7",
+      "sha256": "92fae5ba67e9f3a4a7ac6f55d59ac7e7922d9a96050d2b9f2317c2cc35162419"
+    },
+    {
+      "path": "tests/Geometry/CorrectedVelocitySpanConsumer.lean",
+      "mode": "100644",
+      "git_blob": "c44fe40b8ce794398f00607548e59a88ec68fdf3",
+      "sha256": "90290fd08de7dc98a7f632c32100c00dbe32f9ce92e57013e78d25b7da3477cd"
+    },
+    {
+      "path": "tests/Geometry/DefinitionOwnerRepairConsumer.lean",
+      "mode": "100644",
+      "git_blob": "15a277a039eaba2eec3e1f12a361734e85c0c221",
+      "sha256": "230eb959d13b45111fca40ffb9e0d8fd4b4c42b83b267aa7082157eab847cd03"
+    },
+    {
+      "path": "tests/Geometry/EtaleGenericOpenExtraAwayBCheck.lean",
+      "mode": "100644",
+      "git_blob": "c37b3c7347ab29e9133afc7fac296a486086c457",
+      "sha256": "027a7950ac9da39b345fff0fbe0ed399c8d5d40f50bdd0f5ccc25de896f8515c"
+    },
+    {
+      "path": "tests/Geometry/EtaleProjectiveTangentComparisonConsumer.lean",
+      "mode": "100644",
+      "git_blob": "04e98fc585ad7d9610ec0649019c574c7174d5eb",
+      "sha256": "078af8cc8f281b8682efbbc59d0ccc15bc262f4e18b1f2923765a3f3826c5976"
+    },
+    {
+      "path": "tests/Geometry/ExactChartTangentConsumer.lean",
+      "mode": "100644",
+      "git_blob": "ed6e0168d3ae1ffb9c578e286e34587fb3d4f11d",
+      "sha256": "25792d697eaa245d49aa2daadcac76c239cd1da3cf535cf6d4eb228bacdde211"
+    },
+    {
+      "path": "tests/Geometry/ExtraAwayBNoRtoQOracle.lean",
+      "mode": "100644",
+      "git_blob": "9300796e8c1fd57d4d83c2090d23b16f20b870dd",
+      "sha256": "47b396b011b05b9d70f3a77e8521b45012b1db2b3cd58740fa7febcf971dcea5"
+    },
+    {
+      "path": "tests/Geometry/FiniteParameterTangentConsumer.lean",
+      "mode": "100644",
+      "git_blob": "303d40b1a8e037a67d0fbb3ebd33f012120b4a0c",
+      "sha256": "dc655b9226d8d9e520c9711ca594ea382cc3826266c11a53eed2c6f021ca6098"
+    },
+    {
+      "path": "tests/Geometry/FormallyEtaleCompletionEquivalenceConsumer.lean",
+      "mode": "100644",
+      "git_blob": "7b9197f7846665ae14370ed173933d5c2cafcca9",
+      "sha256": "df8b86b61e639a2f7ae849b4e37c6055d814e17357a5e8d280f19f334cad4491"
+    },
+    {
+      "path": "tests/Geometry/GenericFibreMatrixColumnsConsumer.lean",
+      "mode": "100644",
+      "git_blob": "4182f17b290f50debdf893b2e91091f79c9c862e",
+      "sha256": "ba99afceaee97a255390738b3f4e09f56272efd88d51ffd84969884d8d30fb9e"
+    },
+    {
+      "path": "tests/Geometry/HomogenizedAffineEvaluationConsumer.lean",
+      "mode": "100644",
+      "git_blob": "be105b33676d6f5de9d71285631e405c5cb9ab76",
+      "sha256": "6e0e4de74b0767e2ff9f6ca5da9885893ae091e79352b6134fddaa20e0c6cf6a"
+    },
+    {
+      "path": "tests/Geometry/KaehlerTranscendenceBasisAxiomAudit.lean",
+      "mode": "100644",
+      "git_blob": "742f467e489d812e8ad824b0266f3d73ae1a1d22",
+      "sha256": "891569c6edc173ff893dee0cc2bb7e1ccb13064899de9aefdcd52dd2cd6ed5ee"
+    },
+    {
+      "path": "tests/Geometry/LocalizationInStagesAtPrimeConsumer.lean",
+      "mode": "100644",
+      "git_blob": "fec79c3d0a9ade50f984c3303e27ec2970306a89",
+      "sha256": "fa346d23fb5ee1c1b18c01469ceb30512a906c2b585ae13807d92eb620c13158"
+    },
+    {
+      "path": "tests/Geometry/LocalizationStageFractionCoefficientsConsumer.lean",
+      "mode": "100644",
+      "git_blob": "8bdb6970743c6911bd186db2aa430015506eeb7d",
+      "sha256": "c4e5fbb68fa9ff8ab8904b79883789ab2eb7064957c31f790290e14157e89670"
+    },
+    {
+      "path": "tests/Geometry/NonAlgebraicallyClosedSmoothConsumer.lean",
+      "mode": "100644",
+      "git_blob": "131e573267afc5a7aa097e68b253d2978ca7f762",
+      "sha256": "077eb8bede44b4dd8a654cd3de20f757d99c479cb236714d0be3bf9ecd39287d"
+    },
+    {
+      "path": "tests/Geometry/OptionNormalizedLatticeProjectiveConeConsumer.lean",
+      "mode": "100644",
+      "git_blob": "3ca8a5005531ef1ce222c9a2c40abda504804015",
+      "sha256": "522ff34295863bd2a57bc263261026500ca32bca9e88ba8297db2a4dcc64be30"
+    },
+    {
+      "path": "tests/Geometry/PaperUnitPowerFactorizationConsumer.lean",
+      "mode": "100644",
+      "git_blob": "682134f4ac5458187d2ea5e999c1b53d1f4fff43",
+      "sha256": "c6bd9310766025e41409f3da7aa56766f32a2bb55a64996125eb82936a088b4b"
+    },
+    {
+      "path": "tests/Geometry/PrescribedCompletionInjectivityConsumer.lean",
+      "mode": "100644",
+      "git_blob": "9d9606d93fc937215611a917d91804864df1dfb3",
+      "sha256": "ef668a4d875783f78b91425161d502a4089ec5f967bd98ff6df8676cb3b8a8b9"
+    },
+    {
+      "path": "tests/Geometry/PrescribedGroundPointPowerSeriesMapConsumer.lean",
+      "mode": "100644",
+      "git_blob": "91880dbac6bcf60e47426f68c53c1fc5f29951c5",
+      "sha256": "4a54d1c801f2dde022aa0e0dcbb6ad5bbf658d410d37c2fc65d9849cf73bf287"
+    },
+    {
+      "path": "tests/Geometry/PrescribedGroundPointUnitPowerConsumer.lean",
+      "mode": "100644",
+      "git_blob": "d8bd54a91cfaf0a3abc30c85ebfa8408e297fe09",
+      "sha256": "3b3d4a2fd378570a7b7fcc0a9c23b31c86ac5352070557fb546b8efdc9e1a9c9"
+    },
+    {
+      "path": "tests/Geometry/ProjectiveChartSameFieldOverlapConsumer.lean",
+      "mode": "100644",
+      "git_blob": "ef4ce6d0b699668c0934e59155f7adb249b62bf7",
+      "sha256": "3560113029260fc8d722e543c27e391c838042f32e3754f6c8d61e7aaaebeb65"
+    },
+    {
+      "path": "tests/Geometry/ProjectiveDerivationDehomogenizationConsumer.lean",
+      "mode": "100644",
+      "git_blob": "fec434bcb7b3dfa2d4b7f66acf270c2fe799720a",
+      "sha256": "b3f1d9e45fca305692ce0d0a608159504fd6e3c34f7bc3be396924ef7e0f5e4b"
+    },
+    {
+      "path": "tests/Geometry/SameWitnessTrdegAxiomAudit.lean",
+      "mode": "100644",
+      "git_blob": "0304da77ba85ae4b699d1cbd5dad188dcc0658c3",
+      "sha256": "e92d43170dfb78d683091944ec755620fe027aa9e3fb05bc9f86ac78450eebd1"
+    },
+    {
+      "path": "tests/Geometry/SelectedCoordinateAxisLiftConsumer.lean",
+      "mode": "100644",
+      "git_blob": "c6a2aba3ac3889a18f2a9ac199077b3db8826651",
+      "sha256": "4038c30063f4946717c72329e93ad327ce44722134e5ce209c6592adf151275d"
+    },
+    {
+      "path": "tests/Geometry/SelectedCorrectionConsumer.lean",
+      "mode": "100644",
+      "git_blob": "4b1da06be81cc04e07c41c9d02c337c021b0ee13",
+      "sha256": "594548cd53f6d8e065e5ebaf81f1dfda1c2e0792b54c6780df639738b200dfe4"
+    },
+    {
+      "path": "tests/Geometry/SmoothAffinePointScalarExtensionConsumer.lean",
+      "mode": "100644",
+      "git_blob": "49a0afa207e38ba779f1532bf664340ed2e15afd",
+      "sha256": "aec5615bf8c0131ff6255ea7a2b46c9a796e62b6361bf25a4de7217982801174"
+    },
+    {
+      "path": "tests/Geometry/SmoothLocalDirectSummandAdapterConsumer.lean",
+      "mode": "100644",
+      "git_blob": "48a08661a4e07834c9bdfed5c4129e04fcef9eaa",
+      "sha256": "b12c0d0eeb9f828d38dd1c8369c590cbe96366e93823e1838185ab6994abcf7e"
+    },
+    {
+      "path": "tests/Geometry/SmoothLocalTiltedArcAxisConsumer.lean",
+      "mode": "100644",
+      "git_blob": "b64c7498020f461f1e6ff3e1a9d199ac1585e399",
+      "sha256": "d9095e1634a20dd6f7cfce885c7d8c333c023b56ee6a016ddfb0c5986a65a161"
+    },
+    {
+      "path": "tests/Geometry/TiltedArcAvoidanceConsumer.lean",
+      "mode": "100644",
+      "git_blob": "47170e6db15fa36c2944545d3946afbf684f5fc0",
+      "sha256": "88dbf3fdff353191213b09914aca8c7f07eac5adc679e011617f181c3bf35176"
+    },
+    {
+      "path": "tests/Geometry/UnitPowerNonzeroPrimeOracle.lean",
+      "mode": "100644",
+      "git_blob": "ecea22e74246f17c78c3bf602f9e4123d2eccdb5",
+      "sha256": "ac8db662d39d348e4a90388884db0608f20da37e3b59f54d5f56fc0335283e3e"
+    },
+    {
+      "path": "tests/LocalNormalizationCenterEquivalenceConsumer.lean",
+      "mode": "100644",
+      "git_blob": "0040f194007d3886b85d0f629322a59fb26c0ddd",
+      "sha256": "1363bb8d739ed619e15ffc8460878d0cb5410a6366fdd67c3cd46b844608d28c"
+    },
+    {
+      "path": "tests/LocalizedDifferentialConsumer.lean",
+      "mode": "100644",
+      "git_blob": "5b466cbd8f30c92aa05280d5b4bde0301286cf5b",
+      "sha256": "7f785df3e8879f93c33c8d0fe374bc4cd440e7404bbe0dfec144b2c09bf9124c"
+    },
+    {
+      "path": "tests/MvPolynomialFractionFieldBasisConsumer.lean",
+      "mode": "100644",
+      "git_blob": "2e3bc41639a08ac7716878fd205b2d9ff7e1f3d2",
+      "sha256": "aa2ef8a31338fc1a0f6128ba9b46c71d37df8371f0e7b8808c61d3fc577a77a1"
+    },
+    {
+      "path": "tests/MvPolynomialFractionFieldGenericConsumer.lean",
+      "mode": "100644",
+      "git_blob": "b9c002cdc6f636b8c7dbe3eb144b75f2918c1d7b",
+      "sha256": "a3d4a36469203f104827bc0676ab75b40cfc1af3b4f3f5b1dcc7856d95e5fb90"
+    },
+    {
+      "path": "tests/NoncharacteristicConsumer.lean",
+      "mode": "100644",
+      "git_blob": "f54c3fe1ca8980ba361abb52f74142c9de47878b",
+      "sha256": "69db37dccd60a71eaf0068b60b892f3c028196c548571f3e727cad7447cf827a"
+    },
+    {
+      "path": "tests/OptionCoordinateEtaleCompositionConsumer.lean",
+      "mode": "100644",
+      "git_blob": "612c958f72105e5ec8095630e73a09f6c618b58c",
+      "sha256": "d58660a4f8c3bb75cdc8d3d9ec70f1b50fab170973335a03611b4d54c5dcd577"
+    },
+    {
+      "path": "tests/PairReplacementConsumer.lean",
+      "mode": "100644",
+      "git_blob": "4158aa847a558df7d04f24f44f5d619adcd254b1",
+      "sha256": "656609938f85752c4832fc12555125e7b2e3d1dade9cdf5216bd55cda73daaf8"
+    },
+    {
+      "path": "tests/PaperActualAxisConsumer.lean",
+      "mode": "100644",
+      "git_blob": "6c59d8642727c14deffa116d004b0c771f3fd85b",
+      "sha256": "eb83e7f1adabf30313297f064cc6fd9d843ebec6de5baf5dd7ce1ed619bd262d"
+    },
+    {
+      "path": "tests/PaperActualGeometryAxiomAudit.lean",
+      "mode": "100644",
+      "git_blob": "fed21720e7caf8b1109322cab31fb447024c6b43",
+      "sha256": "e64f43a534fb7cd10a741d1470b64ca3840f3818ec2e72758d660e7206690bf5"
+    },
+    {
+      "path": "tests/PaperAdaptersConsumer.lean",
+      "mode": "100644",
+      "git_blob": "4b9c0afcad360a63b651711403ebd1b316f8799d",
+      "sha256": "518a2ad7fe4df5dd4a65b6fe81e8464d0bd92330eaaa625a1f7e34ecda561ffe"
+    },
+    {
+      "path": "tests/PaperBasisRightMonicConsumer.lean",
+      "mode": "100644",
+      "git_blob": "480323d26bc72b7fa9fc47994cdc6a6a5e19c32c",
+      "sha256": "4fd981b9052ee5b7aa5da6611217ea20801d61edac28764695bfa8ee53e74bb3"
+    },
+    {
+      "path": "tests/PaperCompletedColumnsConsumer.lean",
+      "mode": "100644",
+      "git_blob": "25f2b0b9b9e8a000624b66c29e45762daeac0d38",
+      "sha256": "f1cf5a19cbbba1c4897982f9e2f83ecc946540b0941385bbf5d957131ac5608f"
+    },
+    {
+      "path": "tests/PaperEulerGradingConsumer.lean",
+      "mode": "100644",
+      "git_blob": "7df122dbbf01b49dfd6c1ccd52a7caadc34fb2df",
+      "sha256": "3330baf8030e8989fd2540e9898e5524c783eedb6c300ff1748755f7ec8bfe30"
+    },
+    {
+      "path": "tests/PaperHamiltonianFlowConsumer.lean",
+      "mode": "100644",
+      "git_blob": "3af324b2fa0c65437f79faeff0072d79e9adecaa",
+      "sha256": "9e5bb476ebe4c557dc361917cba4fc9de5ab20fed20ae7ea133fab812ce7dc56"
+    },
+    {
+      "path": "tests/PaperPairConsumer.lean",
+      "mode": "100644",
+      "git_blob": "ac5a580d6777c0982aa1599495c3ad8f3846c4e6",
+      "sha256": "b0d3429dd81b28688dcfa6f12694cddcaecdde6df551ae34d5bf97d819971c83"
+    },
+    {
+      "path": "tests/PaperRouteConsumer.lean",
+      "mode": "100644",
+      "git_blob": "2a6b7874050e2238435d6ce2e0f0daca12ef22ae",
+      "sha256": "ae264e74349062bfe3242df84faf404fe61a5061a7aa9329153049fbe73a2a7f"
+    },
+    {
+      "path": "tests/PaperSameWitnessTangentAxiomAudit.lean",
+      "mode": "100644",
+      "git_blob": "a8af5b47c06ca212b7d28af2f0a368f0d30896f8",
+      "sha256": "9f3384b650cde5b93fffade5d306dd607129e151f25aa2bb46c828e9d80bf95e"
+    },
+    {
+      "path": "tests/PowerSeriesFirstCoefficientConsumer.lean",
+      "mode": "100644",
+      "git_blob": "3fb014602b9a251924f5a9d95f551b58505e6b45",
+      "sha256": "c693320b3e36a616c2fecd3d0bcbb889bd2b8beb186a6d75d941b444c1915263"
+    },
+    {
+      "path": "tests/PrescribedCompletionDerivationCommutationConsumer.lean",
+      "mode": "100644",
+      "git_blob": "af3e8ce90cb8b8acf80f34e65686942ffe656d0e",
+      "sha256": "67208e2eda5c3bc6d311adae7ed6713f7f2bad6e5934e9c461d3134eb4668999"
+    },
+    {
+      "path": "tests/PrescribedEtaleGroundPointConsumer.lean",
+      "mode": "100644",
+      "git_blob": "9b191598a4646219b5436d7bde2e28b290ba6c8e",
+      "sha256": "e8db7516da4a9336f135c7e282cd4a7ad097c9d622cba4576f3bf4933f05b151"
+    },
+    {
+      "path": "tests/ProjectiveChartCoordinatesConsumer.lean",
+      "mode": "100644",
+      "git_blob": "6310eb83b3edbcb37cf877b8461c7af2a186e82f",
+      "sha256": "f563657cbf21b22b1a50174c7e1f59dff14b7ac4a6637d5a594a6716b7a8bfe1"
+    },
+    {
+      "path": "tests/ProjectiveChartNormalizationBridgeConsumer.lean",
+      "mode": "100644",
+      "git_blob": "7ee47927c795b407187f0796c585f57601454e2d",
+      "sha256": "b498364db2bff388e2d3bc53e9fd203b1f1fe4c7ed0e398e8aa98c379d01f25a"
+    },
+    {
+      "path": "tests/ProjectiveCoefficientLocalizationGenericConsumer.lean",
+      "mode": "100644",
+      "git_blob": "8e86046f5892208d94aabf36d92ec9b7cf95de16",
+      "sha256": "595c41888da8634f812e3d89126282f5a4f20a75d11e33dfedf13cede09faefd"
+    },
+    {
+      "path": "tests/ProjectiveDVRCenterConsumer.lean",
+      "mode": "100644",
+      "git_blob": "80070273e53a475c27cc4f2f48dd0703027c72fc",
+      "sha256": "ce32b79d9fe30b76c6da8ee9cb9d5a43a7cde4bd9f863b67bea88ecea969b14a"
+    },
+    {
+      "path": "tests/ProjectiveDivisorChartBridgeConsumer.lean",
+      "mode": "100644",
+      "git_blob": "5ecc34bc3cd7a62d21df724a56d886c3d0645d22",
+      "sha256": "9537e3a360251cb5c0f59dd66254fbb2045c70a05d419277de71e5a3bbe881f9"
+    },
+    {
+      "path": "tests/ProjectiveNormalizationCenterConsumer.lean",
+      "mode": "100644",
+      "git_blob": "4454b05a77d3162bf1bd40b1557bfa7ff558278d",
+      "sha256": "3836f73498049c2645e82bb74e3b3b7d51f69fa553ca1435ea5f25b6327c5cef"
+    },
+    {
+      "path": "tests/ProjectiveNormalizationFiniteConsumer.lean",
+      "mode": "100644",
+      "git_blob": "c331b27b9fb0eb6a518c47f3410fc3de4e2a5368",
+      "sha256": "6fa45a167e3c6eaebe25accc5c32af6f6ed4b748d253fb56e08efd746a8f0cbc"
+    },
+    {
+      "path": "tests/ProjectiveTangentOwnerConsumer.lean",
+      "mode": "100644",
+      "git_blob": "2120112c08b42c19e1de1fd575ce4747932fc406",
+      "sha256": "d5fecfbe4c836393fdd17824620f03cf18187cb0c9e696dc676e26a62f980896"
+    },
+    {
+      "path": "tests/ResidueBasisLocalizationConsumer.lean",
+      "mode": "100644",
+      "git_blob": "5535ae9cf2a63d18689915e3558074e0e1ca999e",
+      "sha256": "4b760da061c69539c1886f59fcf729b516cac80a5ecaadb5f88fc7243b57f118"
+    },
+    {
+      "path": "tests/RetainedChartQuotientEmbeddingConsumer.lean",
+      "mode": "100644",
+      "git_blob": "eac82cd0ee423a256a7ca8d5947284263ef51a54",
+      "sha256": "6ca29aace056578c74e78fd56ca869904bee457aa99f61f615577af532d8ad30"
+    },
+    {
+      "path": "tests/SameWitnessRelativeTrdegConsumer.lean",
+      "mode": "100644",
+      "git_blob": "26a1245f0954e81211082dc11ce36a1d1ce51d49",
+      "sha256": "5f46bcc4b921e8d939ef4279ffa88a7ba6561da6dcbb1c8d10394bb97793224a"
+    },
+    {
+      "path": "tests/SelectedResidueCoefficientLocalizationConsumer.lean",
+      "mode": "100644",
+      "git_blob": "b33166c5370b666ad0e550de6b7be5482821e254",
+      "sha256": "98dd626a1835c36ff5d20648eb6c1dcbe57002d77f56a50c0c3ec128f8d560d1"
+    },
+    {
+      "path": "tests/SelectedResidueNormalizationLocalizationConsumer.lean",
+      "mode": "100644",
+      "git_blob": "4eb6dd76723057b1bb4d90fa628bc61d7a8fce58",
+      "sha256": "7409f328d9ae3d101eaf7062a29ee7c71338a9029756f100e3e1e6390a5588f4"
+    },
+    {
+      "path": "tests/SymplecticComplementConsumer.lean",
+      "mode": "100644",
+      "git_blob": "22f553d22552c84e0ea779b34503cd73e60dc725",
+      "sha256": "f25a1ae8460c89333404214c5d49289359f4b6deae3223c4da36a92e76ba34f0"
+    },
+    {
+      "path": "tests/TorsionCyclicityConsumer.lean",
+      "mode": "100644",
+      "git_blob": "b64fdc8350a989609e6e1efe148d19a21d665895",
+      "sha256": "56761c994d1626838ca15693e5e690233d96be6749e6d548846c1c59e21352cc"
+    },
+    {
+      "path": "tests/ValuationCenterDominatesLocalPrimeConsumer.lean",
+      "mode": "100644",
+      "git_blob": "ed04d797bb2274ebfd850c66382ea1a5afd7b60a",
+      "sha256": "35ed324e4f3eb7608acc9a97ca93775640f19ad45005dfac2ec2b4551e996439"
+    },
+    {
+      "path": "tests/noncharacteristic_pages_oracle.py",
+      "mode": "100644",
+      "git_blob": "b20b5c61177c458b716b1797115abcbfb4aa543e",
+      "sha256": "5c172d939a21527e5bf381b506d1e124d71c658d1da4f8e2b9e47166fda14164"
+    },
+    {
+      "path": "tests/operator_projection_oracle.py",
+      "mode": "100644",
+      "git_blob": "f3ffd28f7f9594c056b048f5a3e5fa8fa20394dd",
+      "sha256": "1ee02034d6fac6f42aa7e7c99eca12eceeea570798dffa84993327bc751f6af6"
+    },
+    {
+      "path": "tools/paper_lean_audit/.gitignore",
+      "mode": "100644",
+      "git_blob": "b38db2f296ff3664e67b1a2f1869321e5e7af6a0",
+      "sha256": "bc5e8c0a684bb997c97fdbfb1fb4e3bf8a967021536ceee76f81d03dbfd8e218"
+    },
+    {
+      "path": "tools/paper_lean_audit/LICENSE.txt",
+      "mode": "100644",
+      "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "tools/paper_lean_audit/README.md",
+      "mode": "100644",
+      "git_blob": "ceb6e4db5d5598e06c29942546093869b1bc4e17",
+      "sha256": "685715c276bcd9835a96c5f55f92064d6beb525a269d2e306109a62b26f704ca"
+    },
+    {
+      "path": "tools/paper_lean_audit/build.mjs",
+      "mode": "100644",
+      "git_blob": "53976de6988ba2159e0ddaddfb9293f5ef0e5e4f",
+      "sha256": "e2e45a36be7d4dbd5657dff95c9e4a39b78caaa4ebeab193543fdc0b44b667b5"
+    },
+    {
+      "path": "tools/paper_lean_audit/lean.mjs",
+      "mode": "100644",
+      "git_blob": "90f17a6e316b2739e157c2650fca57f6673597c1",
+      "sha256": "5d8dfd2cdaec649baae5ed77f59e01fc865867b79612d07dd5afddd499c2fd5f"
+    },
+    {
+      "path": "tools/paper_lean_audit/package-lock.json",
+      "mode": "100644",
+      "git_blob": "899dc949473b49c4cb508a062f9868619483f51b",
+      "sha256": "d55367d2e7e3f3d06cf4921106630f69f6302c099e083b0c63b40f09637c7006"
+    },
+    {
+      "path": "tools/paper_lean_audit/package.json",
+      "mode": "100644",
+      "git_blob": "d04fcc34f4cff3dec9a08e251749eaf4f4a5492f",
+      "sha256": "bb120919778210fd5117df9b3200c6c810677fbccb09dd9c62a02dcdb86ee60b"
+    },
+    {
+      "path": "tools/paper_lean_audit/paper-lean-map.json",
+      "mode": "100644",
+      "git_blob": "14141423a2efd82e681c89dc377e696f22e3f822",
+      "sha256": "4ac0ef39c13e54c5ec806901b6ce8267be9bfd8c0389c2800cf499426e25d903"
+    },
+    {
+      "path": "tools/paper_lean_audit/provenance.md",
+      "mode": "100644",
+      "git_blob": "67ed80e72eb976c1536025f2938d4221c72fd4ad",
+      "sha256": "6731087cd70d35f9e7a54a2310b50af9e7b50a2344713033c073875d64a1f3fe"
+    },
+    {
+      "path": "tools/paper_lean_audit/review-scope.mjs",
+      "mode": "100644",
+      "git_blob": "6eb4bf343ea27ef40728948793fc8d134051faf4",
+      "sha256": "62a471e5ae3da6d8dea0751c8315b312014ed97c7b36690ee1968434a4dc4120"
+    },
+    {
+      "path": "tools/paper_lean_audit/review.js",
+      "mode": "100644",
+      "git_blob": "1e14633aa790f224500b51a795d61eb28bd2c60d",
+      "sha256": "aa038b13aa261fb759e3767e204dbebaff5b5ac38e24deee17cf13814c163224"
+    },
+    {
+      "path": "tools/paper_lean_audit/style.css",
+      "mode": "100644",
+      "git_blob": "44e0ec5f527faf1f2ef32b2a71e72f948ccff3f3",
+      "sha256": "c8bd6e3a273cd6612aeaca5db90e06350ad120fd70496206dafb9153523be6e1"
+    },
+    {
+      "path": "tools/paper_lean_audit/test/build-validation.test.mjs",
+      "mode": "100644",
+      "git_blob": "02c80ade21b340c69dc61ce49596a92ebc91fed2",
+      "sha256": "6cb4b92446e2bee5c1895e440ed696d9f07bc4f914e10bc698823d9cc8bcfc02"
+    },
+    {
+      "path": "tools/paper_lean_audit/test/helpers.test.mjs",
+      "mode": "100644",
+      "git_blob": "d2f7300c0aebc723a392ab267c1c2ddaaaee1131",
+      "sha256": "e5cab6e1fe2ba3f044c46a7e2e243d9e13fcc00fa436468a7d8f36ae31341a28"
+    },
+    {
+      "path": "tools/paper_lean_audit/test/math-layout.browser.test.mjs",
+      "mode": "100644",
+      "git_blob": "cae7ac5693b6e50e68a623542796e742a689c5c1",
+      "sha256": "7c03fb275c28addcf0feae857f699f55ebfce4d4140f204be3d93ca72486fe5d"
+    },
+    {
+      "path": "tools/paper_lean_audit/test/math-tags.test.mjs",
+      "mode": "100644",
+      "git_blob": "b040c9219f4ed253ee60bd749f4f8b1f52731351",
+      "sha256": "caace21c9f33e965b2b23a256bb68a5478d5c28ca89058694e68b8c30d09e9c1"
+    },
+    {
+      "path": "tools/paper_lean_audit/test/review.browser.test.mjs",
+      "mode": "100644",
+      "git_blob": "9a2f9e4dd3409a31d12ebe493ac600d0c59525c1",
+      "sha256": "45ee9d9ecca3ddcd94802a39f8c8d7da7ed3765031e916b77ee4f0206d0e049b"
+    },
+    {
+      "path": "tools/paper_lean_audit/test/review.scope.test.mjs",
+      "mode": "100644",
+      "git_blob": "88ebcd041cf3a634374696fb95abf9052910ba96",
+      "sha256": "0716f4b12ddb033ec6d9110a691db567c2abdc160483101bd28a824ccef10dec"
+    },
+    {
+      "path": "tools/paper_lean_audit/test/texhtml.newline.test.mjs",
+      "mode": "100644",
+      "git_blob": "88231d3c9880b1eb9b31133edb555186823814d8",
+      "sha256": "cf61ea21cb8e76571cca0f7cada349e2d7778eabde3ffa0e4ad67df84834e0e3"
+    },
+    {
+      "path": "tools/paper_lean_audit/test/texhtml.test.mjs",
+      "mode": "100644",
+      "git_blob": "54c27fbd21126fad5e685805f20c0842f41e43b5",
+      "sha256": "212e3d70c358f7b6e56d56653662a5415a2d6f7536e40c2501df613d88e583b6"
+    },
+    {
+      "path": "tools/paper_lean_audit/texhtml.mjs",
+      "mode": "100644",
+      "git_blob": "ee8cd9e89ceae067ad2dad06f6aa3d4bc33f65b2",
+      "sha256": "a03034980fb904e81295b3f790bbfcded4d1f4a8c4671c828b779c603c3f57a1"
+    }
+  ]
+}
