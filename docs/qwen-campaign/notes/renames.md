@@ -63,3 +63,24 @@ Reused from the repository (nothing re-proved):
 No Mathlib or AlgebraicAnalysis counterpart exists (grep for `tiltedArc`,
 `axis_lift`, `AxisLift`: 0 hits in both package trees).
 No new `def`/`structure`/`abbrev`, so no `new-definitions.md` entry.
+
+## T13 — ChartGroundMap
+
+Archived `Stafford38/Geometry/A0ChartFormalEtale.lean` lines 280-328
+(repair4 addition only) → `Stafford38/Geometry/SameWitness/ChartGroundMap.lean`.
+
+| Archived | New |
+| --- | --- |
+| `Stafford38.Geometry.A0ChartFormalEtale.originalAffineChartToCommonOpen_groundMap` | `Stafford38.Geometry.SameWitness.originalAffineChartToCommonOpen_groundMap` |
+| (consumer of the archived helper in the repair3 audit) | `Stafford38.Geometry.SameWitness.ChartGroundMapConsumer.originalAffineChartToCommonOpen_groundMap_consumer` |
+
+Declaration name unchanged (rule 2.6 clean); only the namespace follows the new
+path, so `$WT/Stafford38/Geometry/A0ChartFormalEtale.lean` stays untouched.
+The theorem signature is byte-identical to the archived text
+(`diff` vs `SCR/T13-statement.lean`, exit 0); the docstring was rewritten to
+say what the lemma proves and drops the word "canonical".
+
+Later phases import `Stafford38.Geometry.SameWitness.ChartGroundMap` and use
+the equation
+`(originalAffineChartToCommonOpen …).comp (algebraMap k _) = algebraMap k _`
+instead of installing a second `Algebra` on the common open (rule 6.2.2).

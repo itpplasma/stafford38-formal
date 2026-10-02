@@ -1,0 +1,75 @@
+T13 Port the ground-map lemma of A0ChartFormalEtale — check log
+machine: faepmac1  toolchain: leanprover/lean4:v4.35.0-rc3  branch: qwen/paper-route
+
+Scope
+- Added declarations of the archived repair4 file, located by
+  diff <(sed 's/^public import/import/' WT/Stafford38/Geometry/A0ChartFormalEtale.lean) \
+       SCR/archive/repair4/Stafford38/Geometry/A0ChartFormalEtale.lean
+  hunks: 1d0 (module), 8,9d6 (expose section), 280a278,329 (the addition).
+- Addition = archived lines 280-328: docstring + theorem
+  `originalAffineChartToCommonOpen_groundMap` (49 lines). Nothing else differs.
+- WT/Stafford38/Geometry/A0ChartFormalEtale.lean was NOT touched
+  (git shows only the two new files staged).
+
+New files
+- WT/Stafford38/Geometry/SameWitness/ChartGroundMap.lean (76 lines)
+  namespace Stafford38.Geometry.SameWitness; rc3 header (module / public import /
+  @[expose] public section / autoImplicit false / maxHeartbeats 1600000,
+  down from the archived 2400000 per rule 2.1).
+  Opens: A0ChartFormalEtale, AffineComponentCoordinateSplit,
+  EtaleGenericOpenTransport, ProjectiveChartSameFieldOverlap.
+- WT/tests/SameWitness/ChartGroundMapConsumer.lean (48 lines), consumer per 2.1.
+
+Statement freeze (6.4)
+- SCR/T13-statement.lean = archived lines 282-300 (theorem signature).
+- module lines 28-46: diff vs SCR/T13-statement.lean -> exit 0 (FREEZE_OK).
+- consumer lines 24-42 vs statement (only the theorem name carries the
+  `_consumer` suffix) -> exit 0 (STATEMENT_IDENTICAL).
+- First consumer attempt failed: stripping `:= by` to `:=` made the `exact`
+  tactic a term-mode do-block ("Unknown identifier `exact`"); restored `:= by`.
+  No statement text was changed by that fix.
+
+Checks (all through guard.sh, one process at a time)
+- guard check -> free_mem_gb=114 disk_free_gb=553 swap_used_gb=0 pressure=1,
+  GUARD OK.
+- lake build Stafford38.Geometry.SameWitness.ChartGroundMap
+  SCR/logs/T13-1.log  GUARD exit=0 reason=finished wall_s=10 peak_rss_gb=0,
+  2927 jobs, "Build completed successfully", 0 errors (only
+  linter.style.haveILetI warnings on the frozen `letI` binders of the
+  statement, plus lake's cached warnings from other modules).
+- after adding set_option linter.style.haveILetI false (matches the T12 port):
+  SCR/logs/T13-2.log GUARD exit=0 wall_s=10 peak_rss_gb=0, 2927 jobs,
+  "Built Stafford38.Geometry.SameWitness.ChartGroundMap (1.8s)", 0 errors.
+- lake env lean --trust=0 -M 32000 tests/SameWitness/ChartGroundMapConsumer.lean
+  attempt 1 SCR/logs/T13-consumer.log exit=1 (see freeze note above);
+  attempt 2 SCR/logs/T13-consumer-2.log GUARD exit=0 wall_s=10 peak_rss_gb=0,
+  #print axioms -> [propext, Classical.choice, Quot.sound] only.
+- sorry/admit/axiom/native_decide/implemented_by/unsafe/skipKernelTC: 0 hits
+  in both new files.
+
+Reuse vs archived repair3 audit
+- $ARCH/assembly/repair3-groundmap-audit.json: verdict PASS, helper
+  Stafford38.Geometry.A0ChartFormalEtale.originalAffineChartToCommonOpen_groundMap,
+  independent_helper_check exit 0 on leanprover/lean4:v4.33.0,
+  axioms [propext, Classical.choice, Quot.sound]. The rc3 re-check above
+  reproduces the same axiom set on the ported name.
+- Reused unchanged from the repository: originalAffineChartToCommonOpen,
+  originalAffineChartOverlapEquiv, selectedChartAwayEquivOfQuotientEquiv,
+  genericOpenBMap_base_eq, genericOpenRing, genericOpenExtraAwayB,
+  componentCoordinate, SelectedAffineChartQuotient/selectedAffineChartDenominator,
+  OriginalAffineChartQuotient/OriginalAffineChartLocalization.
+- Reused from Mathlib: IsLocalization.Away.map, IsLocalization.Away.map_mk'-style
+  simp normal form, IsScalarTower.algebraMap_apply, RingHom.ext, AlgEquiv.commutes.
+  No Mathlib/AlgebraicAnalysis counterpart for a chart-map ground-field identity
+  exists (repo-specific definitions), so the port is the reuse.
+- No new def/structure/abbrev -> no new-definitions.md entry.
+
+Flag for later tasks
+- The frozen statement of this lemma itself contains
+  `letI : Algebra Q U := Algebra.compHom U (algebraMap Q Cq)` (rule 6.2.8
+  diamond source). It is frozen here (6.4) and elaborates in 1.8 s because the
+  proof is short and does not unfold U further. T34/T36 must not add a second
+  `Algebra k U`/`Algebra Q U` path on top of it; use the hom equation this
+  lemma provides (rule 6.2.2/6.2.3).
+- Like T11/T12, this module is not yet in any root list (Stafford38.lean was
+  not touched); T43/T50 must wire it or check it by name.
