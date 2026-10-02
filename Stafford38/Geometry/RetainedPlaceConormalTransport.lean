@@ -211,7 +211,9 @@ theorem componentCoordinate_eq_div
     apply hq0
     rw [hq 0, h, zero_mul]
   rw [hq, hq]
-  simp only [componentProjectivePoint, Fin.cases_zero, Fin.cases_succ, mul_one]
+  simp only [
+    Stafford38.Geometry.ComponentFunctionFieldBoundary.componentProjectivePoint_eq_finCases,
+    Fin.cases_zero, Fin.cases_succ, mul_one]
   field_simp
 
 /-- Every equation of the affine component vanishes at the transported
@@ -488,12 +490,15 @@ theorem regularizedOneRowConormalData_of_transport
   have hcol : (fun i ↦ laurentColumn ell i.succ) = ℓ ∘ xi := by
     funext i
     simp only [laurentColumn, ell, Fin.cases_succ, Function.comp_apply, ← hxi, hℓ]
+  have hground' : ℓ.comp (algebraMap k F) = algebraMap k (LaurentSeries Kres) :=
+    hground
   have hideal : (I.map (MvPolynomial.map (algebraMap k F))).map (MvPolynomial.map ℓ) =
       I.map (groundPolynomialMap (k := k) (K := Kres) (Fin m)) := by
     rw [Ideal.map_map]
     congr 1
     refine RingHom.ext fun f ↦ ?_
-    simp only [RingHom.comp_apply, MvPolynomial.map_map, groundPolynomialMap, hground]
+    simp only [RingHom.comp_apply, MvPolynomial.map_map, groundPolynomialMap,
+      ScalarExtensionPoints.scalarPolynomialMap, hground, groundLaurentMap]
   refine ⟨{
     ell := ell
     q_origin_ne := ?_
@@ -512,7 +517,8 @@ theorem regularizedOneRowConormalData_of_transport
     have hle : I.map (groundPolynomialMap (k := k) (K := Kres) (Fin m)) ≤
         RingHom.ker (MvPolynomial.eval (ℓ ∘ y)) := by
       refine Ideal.map_le_iff_le_comap.mpr fun g hg ↦ ?_
-      rw [Ideal.mem_comap, RingHom.mem_ker, groundPolynomialMap, ← hground,
+      rw [Ideal.mem_comap, RingHom.mem_ker, groundPolynomialMap,
+        ScalarExtensionPoints.scalarPolynomialMap, ← hground',
         MvPolynomial.eval_map, ← MvPolynomial.eval₂_comp_left, hIy g hg, map_zero]
     exact hle hf
   · rw [hcol, ← hpoint, ← hideal]

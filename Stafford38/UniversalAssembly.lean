@@ -4,12 +4,12 @@ import Stafford38.Weyl.MonicNormalization
 import Stafford38.Weyl.PBWMonicBridge
 
 /-!
-# Final assembly from the canonical support theorem
+# Universal theorem assembly
 
-This file discharges the scalar case, normalized symplectic-chart transport,
-and fixed-source certificate transport in the exact universal statement.  Its
-single remaining hypothesis is the concrete support-vanishing theorem for the
-literal canonical right ideal attached to a normalized PBW-monic operator.
+This file handles the scalar and symplectic cases and transports the
+fixed-source certificate. Its final algebraic input is
+`CanonicalSupportVanishing`; `FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic`
+provides the unconditional instance.
 -/
 
 namespace Stafford38.UniversalAssembly

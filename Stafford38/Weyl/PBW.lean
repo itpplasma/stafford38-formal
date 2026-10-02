@@ -157,12 +157,12 @@ theorem oldIndex_injective {n : ℕ} :
   cases i with
   | inl i =>
       cases j with
-      | inl j => simp [oldIndex] at h; subst j; rfl
-      | inr j => simp [oldIndex] at h
+      | inl j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex] at h; subst j; rfl
+      | inr j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex] at h
   | inr i =>
       cases j with
-      | inl j => simp [oldIndex] at h
-      | inr j => simp [oldIndex] at h; subst j; rfl
+      | inl j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex] at h
+      | inr j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex] at h; subst j; rfl
 
 theorem phaseExponent_succ (n : ℕ) (a p : Fin (n + 1) → ℕ) :
     phaseExponent a p =
@@ -180,13 +180,13 @@ theorem phaseExponent_succ (n : ℕ) (a p : Fin (n + 1) → ℕ) :
         · rintro ⟨j, hj⟩
           cases j with
           | inl j => exact Fin.succ_ne_zero j (Sum.inl.inj hj)
-          | inr j => simp [oldIndex] at hj
+          | inr j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex] at hj
       · change a j.succ = _ + _ +
           Finsupp.mapDomain oldIndex
             (phaseExponent (fun i => a i.succ) (fun i => p i.succ))
               (oldIndex (.inl j))
         rw [Finsupp.mapDomain_apply oldIndex_injective]
-        simp [phaseExponent, oldIndex, Finsupp.single_apply,
+        simp [phaseExponent, oldIndex, Stafford38FixedSourceChallenge.oldIndex, Finsupp.single_apply,
           Fin.succ_ne_zero]
   | inr i =>
       refine Fin.cases ?_ (fun j => ?_) i
@@ -195,14 +195,14 @@ theorem phaseExponent_succ (n : ℕ) (a p : Fin (n + 1) → ℕ) :
         · simp [phaseExponent]
         · rintro ⟨j, hj⟩
           cases j with
-          | inl j => simp [oldIndex] at hj
+          | inl j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex] at hj
           | inr j => exact Fin.succ_ne_zero j (Sum.inr.inj hj)
       · change p j.succ = _ + _ +
           Finsupp.mapDomain oldIndex
             (phaseExponent (fun i => a i.succ) (fun i => p i.succ))
               (oldIndex (.inr j))
         rw [Finsupp.mapDomain_apply oldIndex_injective]
-        simp [phaseExponent, oldIndex, Finsupp.single_apply,
+        simp [phaseExponent, oldIndex, Stafford38FixedSourceChallenge.oldIndex, Finsupp.single_apply,
           Fin.succ_ne_zero]
 
 /-- Ordered monomials in the iterated tower: all older pairs occur first, and

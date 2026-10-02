@@ -1,4 +1,5 @@
 import Stafford38.FixedSourceStatement
+import Stafford38.ChallengeDefinitions
 import Mathlib.Order.Lattice.Nat
 
 /-!
@@ -10,9 +11,10 @@ commutator relation, the Bernstein filtration is the span of the images of the
 ordered PBW words of bounded total degree, and the Bernstein degree of an
 element is the least filtration level containing it.
 
-This file repeats those definitions verbatim in the namespace
-`Stafford38FixedSourceChallenge`, without importing the challenge file, and
-proves that they agree with the substantive development:
+The challenge and this transport import their unique definitions from the
+Mathlib-only `Stafford38.ChallengeDefinitions` module; this file does not
+import the placeholder challenge. It proves that the literal definitions
+agree with the substantive development:
 
 * the challenge quotient is definitionally the presented Weyl algebra
   `Stafford38.WeylIteratedEquivalence.PresentedWeyl`;
@@ -28,91 +30,6 @@ proves that they agree with the substantive development:
 theorem `Stafford38.universalFixedSourceStatement`. No degree and no
 normal-form datum is supplied as a hypothesis anywhere.
 -/
-
-namespace Stafford38FixedSourceChallenge
-
-universe u
-
-abbrev PhaseVar (n : ℕ) := Fin n ⊕ Fin n
-
-def relation {k : Type u} [Field k] {n : ℕ}
-    (omega : Matrix (PhaseVar n) (PhaseVar n) k)
-    (a b : FreeAlgebra k (PhaseVar n)) : Prop :=
-  ∃ i j,
-    a = FreeAlgebra.ι k i * FreeAlgebra.ι k j -
-      FreeAlgebra.ι k j * FreeAlgebra.ι k i ∧
-    b = algebraMap k (FreeAlgebra k (PhaseVar n)) (omega i j)
-
-abbrev WeylAlg (k : Type u) [Field k] (n : ℕ) :=
-  RingQuot (relation (k := k) (n := n) (Matrix.J (Fin n) k))
-
-def generator (k : Type u) [Field k] (n : ℕ) (i : PhaseVar n) : WeylAlg k n :=
-  RingQuot.mkAlgHom k (relation (k := k) (n := n) (Matrix.J (Fin n) k))
-    (FreeAlgebra.ι k i)
-
-def oldIndex {n : ℕ} : PhaseVar n → PhaseVar (n + 1)
-  | .inl i => .inl i.succ
-  | .inr i => .inr i.succ
-
-def freeOldMap (k : Type u) [Field k] (n : ℕ) :
-    FreeAlgebra k (PhaseVar n) →ₐ[k] FreeAlgebra k (PhaseVar (n + 1)) :=
-  FreeAlgebra.lift k (fun i => FreeAlgebra.ι k (oldIndex i))
-
-def freeOrderedMonomial (k : Type u) [Field k] :
-    (n : ℕ) → (Fin n → ℕ) → (Fin n → ℕ) → FreeAlgebra k (PhaseVar n)
-  | 0, _, _ => 1
-  | n + 1, a, p =>
-      freeOldMap k n
-          (freeOrderedMonomial k n (fun i => a i.succ) (fun i => p i.succ)) *
-        FreeAlgebra.ι k (.inl (0 : Fin (n + 1))) ^ a 0 *
-        FreeAlgebra.ι k (.inr (0 : Fin (n + 1))) ^ p 0
-
-def orderedMonomial (k : Type u) [Field k] (n : ℕ)
-    (a p : Fin n → ℕ) : WeylAlg k n :=
-  RingQuot.mkAlgHom k (relation (k := k) (n := n) (Matrix.J (Fin n) k))
-    (freeOrderedMonomial k n a p)
-
-def phaseDegree {n : ℕ} (a p : Fin n → ℕ) : ℕ :=
-  (∑ i, a i) + ∑ i, p i
-
-def bernsteinPiece (k : Type u) [Field k] (n N : ℕ) :
-    Submodule k (WeylAlg k n) :=
-  Submodule.span k
-    {z | ∃ a p : Fin n → ℕ,
-      phaseDegree a p ≤ N ∧ z = orderedMonomial k n a p}
-
-noncomputable def bernsteinDegree (k : Type u) [Field k] {n : ℕ}
-    (d : WeylAlg k n) : ℕ :=
-  sInf {N : ℕ | d ∈ bernsteinPiece k n N}
-
-def linearCombination (k : Type u) [Field k] {n : ℕ}
-    (M : Matrix (PhaseVar n) (PhaseVar n) k)
-    (z : PhaseVar n → WeylAlg k n) (i : PhaseVar n) : WeylAlg k n :=
-  ∑ j, algebraMap k (WeylAlg k n) (M i j) * z j
-
-abbrev standardForm (k : Type u) [Field k] (n : ℕ) :
-    Matrix (PhaseVar n) (PhaseVar n) k := Matrix.J (Fin n) k
-
-def IsLinearWeylCoordinate (k : Type u) [Field k] (n : ℕ)
-    (ell : WeylAlg k (n + 1)) : Prop :=
-  ∃ (M N : Matrix (PhaseVar (n + 1)) (PhaseVar (n + 1)) k)
-      (_hM : M * standardForm k (n + 1) * Matrix.transpose M =
-        standardForm k (n + 1))
-      (_hN : N * standardForm k (n + 1) * Matrix.transpose N =
-        standardForm k (n + 1))
-      (_hMN : M * N = 1) (_hNM : N * M = 1),
-      ell = linearCombination k N (generator k (n + 1))
-        (.inl (0 : Fin (n + 1)))
-
-def UniversalFixedSourceStatement : Prop :=
-  ∀ (k : Type u) [Field k] [CharZero k] (n : ℕ)
-    (d : WeylAlg k (n + 1)), d ≠ 0 →
-      ∃ ell R S : WeylAlg k (n + 1),
-        IsLinearWeylCoordinate k n ell ∧
-          (1 : WeylAlg k (n + 1)) =
-            d * R + ell ^ bernsteinDegree k d * d * S
-
-end Stafford38FixedSourceChallenge
 
 namespace Stafford38FixedSourceChallengeTransport
 
@@ -183,7 +100,6 @@ theorem orderedMonomial_eq :
       simp only [Stafford38FixedSourceChallenge.orderedMonomial,
         Stafford38FixedSourceChallenge.freeOrderedMonomial,
         presentedOrderedMonomial, map_one]
-      rfl
   | succ n ih =>
       intro a p
       have htail := ih (fun i => a i.succ) (fun i => p i.succ)
@@ -260,9 +176,33 @@ theorem isLinearWeylCoordinate_iff (n : ℕ)
       Stafford38.FixedSource.IsLinearWeylCoordinate k n ell :=
   Iff.rfl
 
+/-- The literal fixed-source challenge and the substantive exact-source
+proposition are equivalent, including the intrinsic degree and source
+coordinate clauses. -/
+theorem universalFixedSourceStatement_iff :
+    Stafford38FixedSourceChallenge.UniversalFixedSourceStatement.{u} ↔
+      Stafford38.FixedSource.UniversalFixedSourceStatement.{u} := by
+  constructor
+  · intro h k _ _ n d hd
+    obtain ⟨ell, R, S, hcoord, hcert⟩ := h k n d hd
+    have hdeg := bernsteinDegree_eq (k := k) d
+    refine ⟨ell, R, S,
+      (isLinearWeylCoordinate_iff (k := k) n ell).mp hcoord, ?_⟩
+    rw [hdeg] at hcert
+    exact hcert
+  · intro h k _ _ n d hd
+    obtain ⟨ell, R, S, hcoord, hcert⟩ := h k n d hd
+    have hdeg := bernsteinDegree_eq (k := k) d
+    refine ⟨ell, R, S,
+      (isLinearWeylCoordinate_iff (k := k) n ell).mpr hcoord, ?_⟩
+    change 1 = d * R + ell ^ Stafford38.FixedSource.bernsteinDegree k d * d * S at hcert
+    rw [← hdeg] at hcert
+    exact hcert
+
 #print axioms orderedMonomial_eq
 #print axioms bernsteinPiece_eq
 #print axioms bernsteinDegree_eq
 #print axioms isLinearWeylCoordinate_iff
+#print axioms universalFixedSourceStatement_iff
 
 end Stafford38FixedSourceChallengeTransport

@@ -35,13 +35,13 @@ def baseLinearCombination {ι : Type*} [Fintype ι]
     MvPolynomial (Fin n) k :=
   ∑ j, MvPolynomial.C (a j) * f j
 
-/-- The phase-space point whose fibre coordinate is the corresponding finite
-linear combination of differentials at `y`. -/
-def differentialCombinationPoint {ι : Type*} [Fintype ι]
+/-- The zero-start affine fibre translation by the differential of the
+corresponding finite linear combination of base equations. -/
+abbrev differentialCombinationPoint {ι : Type*} [Fintype ι]
     (y : Fin n → k) (a : ι → k) (f : ι → MvPolynomial (Fin n) k) :
     PhaseVar n → k
-  | Sum.inl i => y i
-  | Sum.inr i => ∑ j, a j * differentialAt y (f j) i
+  := affineFibreTranslatePoint y (fun _ => 0)
+      (differentialAt y (baseLinearCombination a f)) 1
 
 /-- Differentiation at a point commutes with the displayed finite linear
 combination. -/
@@ -52,6 +52,19 @@ theorem differentialAt_baseLinearCombination {ι : Type*} [Fintype ι]
       ∑ j, a j * differentialAt y (f j) i := by
   classical
   simp [baseLinearCombination, differentialAt, MvPolynomial.pderiv_mul]
+
+@[simp] theorem differentialCombinationPoint_inl {ι : Type*} [Fintype ι]
+    (y : Fin n → k) (a : ι → k) (f : ι → MvPolynomial (Fin n) k)
+    (i : Fin n) :
+    differentialCombinationPoint y a f (Sum.inl i) = y i := rfl
+
+@[simp] theorem differentialCombinationPoint_inr {ι : Type*} [Fintype ι]
+    (y : Fin n → k) (a : ι → k) (f : ι → MvPolynomial (Fin n) k)
+    (i : Fin n) :
+    differentialCombinationPoint y a f (Sum.inr i) =
+      ∑ j, a j * differentialAt y (f j) i := by
+  simp [differentialCombinationPoint, affineFibreTranslatePoint,
+    differentialAt_baseLinearCombination]
 
 /-- With scalar parameter one, translation by the differential of the
 combined equation is exactly the point represented by the combined
@@ -65,8 +78,8 @@ theorem differentialTranslatePoint_baseLinearCombination_one
   funext i
   rcases i with i | i
   · rfl
-  · simp [differentialTranslatePoint, differentialCombinationPoint,
-      differentialAt_baseLinearCombination]
+  · simp [differentialTranslatePoint, affineFibreTranslatePoint,
+      differentialCombinationPoint, differentialAt_baseLinearCombination]
 
 /--
 Pointwise finite-span form of conormal containment.

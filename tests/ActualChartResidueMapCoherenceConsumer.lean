@@ -1,0 +1,3 @@
+import Stafford38.Geometry.ActualChartResidueMapCoherence
+
+#print axioms Stafford38.Geometry.ActualChartResidueMapCoherence.residue_map_coherence

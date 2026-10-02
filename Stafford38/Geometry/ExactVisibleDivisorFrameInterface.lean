@@ -2,21 +2,13 @@ import Stafford38.Geometry.CanonicalFiniteGradientProjectiveCoordinates
 import Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction
 
 /-!
-# Exact visible-divisor-frame interface
+# Interfaces for compatible visible divisor frames
 
-A bare DVR, coefficient field, and residue-field finiteness do not by
-themselves produce the retained `Data`, normalized projective column, and
-`VisibleDivisorFrame` required by `HasVisibleDivisorFrame`.
-
-The repository already constructs the retained `Data` and the normalized
-column, including the exact parameter identity.  The first unsupported bridge
-is therefore isolated as `HasCompatibleVisibleFrame`: a visible differential
-frame on that same retained column.  Its divisor parameter `D.t` is independent
-of `W.place.parameter`: the former may be chosen as a genuine DVR uniformizer,
-whereas the retained coordinate can have higher valuation after ramification.
-
-The exact producer is supplied separately by
-`ExactDivisorialVisibleFrameExistence`.
+This file packages adapters from retained DVR data, a normalized projective
+column, and a compatible differential frame to `HasVisibleDivisorFrame`.
+`ExactDivisorialVisibleFrameExistence` proves the higher-dimensional producer;
+`GeneralDivisorialVisibleFrame` supplies the richer same-witness record used
+by the paper-facing route.
 -/
 
 namespace Stafford38.Geometry.ExactVisibleDivisorFrameInterface
@@ -49,11 +41,10 @@ set_option synthInstance.maxHeartbeats 400000
 
 variable {k : Type u} [Field k] {m : ℕ}
 
-/-- The exact missing datum after a retained place and normalized projective
-column have been fixed: a visible differential frame on that same column.
-Constructing it still requires a finite differential lattice containing the
-unit and coordinate differentials and the explicit modulo-`D.t` inclusion
-stored in `D.visible`. -/
+/-- The compatibility predicate used by the normalized-column adapter. It
+requires a visible differential frame on the same retained column, including
+the explicit modulo-`D.t` inclusion. The complete producer is
+`ExactDivisorialVisibleFrameExistence`. -/
 def HasCompatibleVisibleFrame
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (hm : 0 < m)
     [CharZero k]
@@ -99,10 +90,9 @@ theorem hasVisibleDivisorFrame_of_compatible_normalized_column
   obtain ⟨D, hQ₀, hQ₁, hQ⟩ := hframe
   exact ⟨W, q, scale, hq0, hq, hratio, D, hQ₀, hQ₁, hQ⟩
 
-/-- Trust-zero prefix: the existing component theorem supplies the retained
-`Data`, a normalized projective column, and the exact parameter identity.  For
-the very same witnesses, a compatible visible frame is sufficient and is the
-only remaining premise. -/
+/-- A trust-zero prefix exposing normalized retained-place data and the
+compatibility premise consumed by the adapter. The complete higher-dimensional
+producer is `ExactDivisorialVisibleFrameExistence`. -/
 theorem exists_normalized_column_with_exact_frame_obligation
     [CharZero k]
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (hm : 0 < m)
@@ -170,10 +160,10 @@ theorem exists_axisAvoiding_normalized_column_with_exact_frame_obligation
   exact hasVisibleDivisorFrame_of_compatible_normalized_column P hm W q scale
     hq0 hq hratio
 
-/-- The exact geometric witness missing after the trust-zero retained-place
-prefix.  Unlike `DivisorialVisibleFrameExistence`, this retains the same
-`Data`, the normalized projective column, its exact parameter identity, and a
-`VisibleDivisorFrame` attached to that column. -/
+/-- A proposition packaging retained `Data`, a normalized projective column,
+the exact parameter identity, and a compatible `VisibleDivisorFrame` on the
+same witnesses. `ExactDivisorialVisibleFrameExistence` constructs this data in
+the canonical application. -/
 def HasNormalizedCompatibleVisibleFrame
     [CharZero k]
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (hm : 0 < m) : Prop :=

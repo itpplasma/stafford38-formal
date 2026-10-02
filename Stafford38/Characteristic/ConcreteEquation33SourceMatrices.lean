@@ -5,26 +5,16 @@ import Stafford38.Characteristic.ArtinianEquation33TraceProducer
 /-!
 # Source matrices for the concrete equation-(3.3) bridge
 
-This file carries out the source-level matrix algebra that precedes the trace
-argument in Singh--Kumar, Proposition 3.2.  It deliberately keeps the
-deformation ring noncommutative and preserves the written left-factor
-orientation of the central parameter.
+This file carries out source-level matrix algebra preceding the trace
+argument in Singh--Kumar, Proposition 3.2. It keeps the deformation ring
+noncommutative and preserves the written left-factor orientation of the
+central parameter. It constructs strict parameter cofactors and literal
+trace cofactors for first-order source matrices.
 
-For strict lifted zeroth-order matrices `A` and `B`, it constructs the three
-strict parameter cofactors `X`, `Y`, and `Omega` in
-
-`[x,B] = cX`, `[y,A] = cY`, and `[B,A] = cOmega`.
-
-For arbitrary first-order matrices `Gamma` and `Theta`, it also constructs
-literal cofactors for the traces of `[Theta,A]` and `[B,Gamma]`.  Hence the
-matrix represented by equation (3.3) has zero trace after parameter and
-coefficient-field reduction.  The concrete localized two-block
-specialization is packaged as the required principal parameter reduction.
-
-The file does not identify this reduced matrix with the operator induced by
-the bracket cofactor `z` on the concrete localized module.  That is the first
-remaining source-specific action identity; its exact signature is recorded at
-the end, without claiming the final operator trace.
+The module records the specialized source action but does not identify it
+with the operator induced by the bracket cofactor on the concrete localized
+module. The canonical-support proof uses the separate
+`PaperLocalizedInvolutivity` route.
 -/
 
 namespace Stafford38.Characteristic.ConcreteEquation33SourceMatrices

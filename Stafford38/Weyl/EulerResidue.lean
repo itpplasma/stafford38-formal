@@ -4,9 +4,10 @@ import proofs.weyl_pure_power
 /-!
 # The positive Euler residue in the canonical right ideal
 
-This module fixes the right-ideal orientation of the Euler Bezout identity.
-The remaining step for quotient surjectivity is to prove that the displayed
-error term has a right factor `x` lying in the Euler-nonnegative subring.
+This module fixes the right-ideal orientation of the Euler Bezout identity
+and proves normalized remainder-residue facts. `PaperEulerGrading` supplies
+the PBW dictionary and right-quotient surjectivity route and is the official
+consumer of this Euler residue.
 -/
 
 namespace Stafford38.WeylEulerResidue

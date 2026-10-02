@@ -1,0 +1,49 @@
+{
+  "scope": "Integrated Lean source and both unchanged Challenge/Solution comparisons. Full printed-proof correspondence remains open; this is not a final release or handover receipt.",
+  "base_commit": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
+  "source_tree": "98df74615d8ef1631895bc8cb5b6b62ee714c62b",
+  "source_patch_sha256": "ea25d292bbcb3542515de74ba10e2d43858f436eecddfda0c65af4733edf042c",
+  "source_files": 591,
+  "freeze_method": "Alternate Git index includes tracked and previously untracked nonignored files; canonical index unchanged. Before and after verifier trees agree.",
+  "verification": {
+    "full_verifier": "passed",
+    "build_jobs": 9096,
+    "consumer_axiom_reports": 128,
+    "paper_linked_declarations": 111,
+    "terminal_axiom_reports": 37,
+    "palomar_main": "passed",
+    "palomar_fixed_source": "passed",
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "artifacts": [
+    {
+      "file": "post-coordinate-inputs.json.gz",
+      "sha256": "96570d24196328cdf5672bef0bade43606e695e49d14d10fbc60040f25020273",
+      "uncompressed_sha256": "cbf2fd9e8857652585fab40aa1156dade8b17cc9c2f8ba19489755845bd15805"
+    },
+    {
+      "file": "post-coordinate-source.patch.gz",
+      "sha256": "b2e43e930aad970f4deeaf9d612a5e25ea4c42c6662b91136d446e829c44e6c1",
+      "uncompressed_sha256": "ea25d292bbcb3542515de74ba10e2d43858f436eecddfda0c65af4733edf042c"
+    },
+    {
+      "file": "post-coordinate-full-verifier.log.gz",
+      "sha256": "2aa833c38ba856e3fd5f7553c588c632a3c643b52c5fdc6dd69dd134700fbf36",
+      "uncompressed_sha256": "339ccd42a0f257291e41500fc5b36b0794d60375e52f1ace51455f452c9387c1"
+    },
+    {
+      "file": "post-coordinate-palomar-main.log.gz",
+      "sha256": "c90d185e0a5488cc9358c8f43e2d12f017dc9a693ff084be389771489943f32a",
+      "uncompressed_sha256": "6b8f1d1e74c39ee9efd0072c0e7df31070af66e105756fc62675d2e3d06cfbad"
+    },
+    {
+      "file": "post-coordinate-palomar-fixed.log.gz",
+      "sha256": "d1a760867a3276b7a06c1f6eeb6be2bd47f061137316c97e452a54317e793d27",
+      "uncompressed_sha256": "3f8872bf9d962cea814842d6fcc23d6ebbb842fc55406461ee64858a41b4f4ea"
+    }
+  ]
+}

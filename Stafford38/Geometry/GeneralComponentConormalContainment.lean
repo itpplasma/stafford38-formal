@@ -26,16 +26,8 @@ private theorem differentialCovector_mul (y : Fin n → k)
     (p q : MvPolynomial (Fin n) k) :
     differentialCovector y (p * q) =
       MvPolynomial.eval y q • differentialCovector y p +
-        MvPolynomial.eval y p • differentialCovector y q := by
-  apply LinearMap.ext
-  intro v
-  change (∑ i, differentialAt y (p * q) i * v i) =
-    MvPolynomial.eval y q * (∑ i, differentialAt y p i * v i) +
-      MvPolynomial.eval y p * (∑ i, differentialAt y q i * v i)
-  simp only [differentialAt, MvPolynomial.pderiv_mul, map_add, map_mul,
-    Finset.mul_sum, ← Finset.sum_add_distrib]
-  refine Finset.sum_congr rfl fun i _ ↦ ?_
-  ring
+        MvPolynomial.eval y p • differentialCovector y q :=
+  Stafford38.Geometry.AffineConormalSpan.differentialCovector_mul y p q
 
 private theorem exists_separator
     (I P : Ideal (MvPolynomial (Fin n) k))

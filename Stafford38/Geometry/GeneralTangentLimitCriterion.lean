@@ -174,7 +174,7 @@ theorem formalProjectiveArcInClosure_iff {n : ℕ}
 
 /-- The columns of a matrix presentation span the generic fibre of the
 original lattice after scalar extension. -/
-private theorem genericFibre_eq_span_matrixColumns
+theorem genericFibre_eq_span_matrixColumns
     {R K : Type*} [CommRing R] [Field K] [Algebra R K]
     {ι κ : Type*} [Fintype κ]
     (L : Submodule R (ι → R)) (B : Matrix ι κ R)
@@ -365,7 +365,7 @@ private theorem rowMul_laurent_of_rowMul
   simpa [rowMul, laurentColumn, map_sum] using
     congrArg (algebraMap (PowerSeries k) (LaurentSeries k)) hj
 
-theorem exists_axis_laurent_smooth_conormal_direction
+theorem exists_axis_laurent_smooth_conormal_direction_with_fibre_closure
     {n dimY : ℕ} {κ : Type*} [Fintype κ] [DecidableEq κ]
     [IsAlgClosed k]
     (I : Ideal (MvPolynomial (Fin n) k))
@@ -382,6 +382,9 @@ theorem exists_axis_laurent_smooth_conormal_direction
        residueColumn (fun i : Fin n ↦ ell i.succ) ∈
          extensionFibreClosure (k := k) (K := LaurentSeries k)
            (smoothEquationConormalLocus I) ∧
+       (fun i : Fin n => if i = D.axis then (1 : k) else 0) ∈
+         MvPolynomial.zeroLocus k
+           (MvPolynomial.vanishingIdeal k (smoothConormalFibreProjection I)) ∧
        Projectivization.mk k
            (fun i : Fin n => if i = D.axis then (1 : k) else 0)
            (by intro h; have hh := congrFun h D.axis; simpa using hh) ∈
@@ -486,26 +489,54 @@ theorem exists_axis_laurent_smooth_conormal_direction
       intro h
       have hh := congrFun h D.axis
       simpa [axisVec] using hh) hvanAxis
-  exact ⟨ell, hrow, hres, ⟨hphaseSmooth, hclosure, by simpa [axisVec] using hproj⟩⟩
+  exact ⟨ell, hrow, hres,
+    ⟨hphaseSmooth, hclosure, ⟨by simpa [axisVec] using hvanAxis,
+      by simpa [axisVec] using hproj⟩⟩⟩
 
-/-- Paper-level tangent-limit criterion.  Starting from an actual rank
-`dimY + 1` direct-summand lattice whose generic fibre is the projective
-tangent cone, this theorem constructs split matrix coordinates internally and
-applies `exists_axis_laurent_smooth_conormal_direction`.  No annihilator,
-matrix retraction, position coefficients, or chart tangent dictionary occurs
-in the input. -/
-theorem tangent_limit_criterion_of_directSummand
+/-- Existing projective-direction API, obtained by forgetting the affine
+fibre-closure conclusion of the canonical stronger construction. -/
+theorem exists_axis_laurent_smooth_conormal_direction
+    {n dimY : ℕ} {κ : Type*} [Fintype κ] [DecidableEq κ]
+    [IsAlgClosed k]
+    (I : Ideal (MvPolynomial (Fin n) k))
+    (q : Fin (n + 1) → PowerSeries k)
+    (B : Matrix (Fin (n + 1)) κ (PowerSeries k))
+    (D : Input (dimY := dimY) I q B) :
+    ∃ ell : Fin (n + 1) → PowerSeries k,
+      rowMul ell B = 0 ∧
+      residueColumn ell = axisRow (k := k) D.axis.succ ∧
+      (let phase : PhaseVar n → LaurentSeries k :=
+        Sum.elim (dehomogenizedPoint (laurentColumn q))
+          (fun i ↦ algebraMap (PowerSeries k) (LaurentSeries k) (ell i.succ));
+       phase ∈ smoothEquationConormalLocus I ∧
+       residueColumn (fun i : Fin n ↦ ell i.succ) ∈
+         extensionFibreClosure (k := k) (K := LaurentSeries k)
+           (smoothEquationConormalLocus I) ∧
+       Projectivization.mk k
+           (fun i : Fin n => if i = D.axis then (1 : k) else 0)
+           (by intro h; have hh := congrFun h D.axis; simpa using hh) ∈
+         projectiveHomogeneousClosure
+           (projectivizedDirectionSet (smoothConormalDirectionSet I))) := by
+  obtain ⟨ell, hrow, hres, hdata⟩ :=
+    exists_axis_laurent_smooth_conormal_direction_with_fibre_closure I q B D
+  exact ⟨ell, hrow, hres, hdata.1, hdata.2.1, hdata.2.2.2⟩
+
+/-- The affine consequence of the paper's tangent-limit argument.  Starting
+from an actual rank `dimY + 1` direct-summand lattice whose generic fibre is
+the projective tangent cone, this theorem constructs split matrix coordinates
+internally and obtains vanishing on the smooth conormal fibre projection.  No
+annihilator, matrix retraction, position coefficients, or chart tangent
+dictionary occurs in the input. -/
+theorem tangent_limit_affine_fibre_closure_of_directSummand
     {n dimY : ℕ} [IsAlgClosed k]
     (I : Ideal (MvPolynomial (Fin n) k))
     (q : Fin (n + 1) → PowerSeries k)
     (L : Submodule (PowerSeries k)
       (Fin (n + 1) → PowerSeries k))
     (D : DirectSummandInput (dimY := dimY) I q L) :
-    Projectivization.mk k
-        (fun i : Fin n => if i = D.axis then (1 : k) else 0)
-        (by intro h; have hh := congrFun h D.axis; simpa using hh) ∈
-      projectiveHomogeneousClosure
-        (projectivizedDirectionSet (smoothConormalDirectionSet I)) := by
+    (fun i : Fin n => if i = D.axis then (1 : k) else 0) ∈
+      MvPolynomial.zeroLocus k
+        (MvPolynomial.vanishingIdeal k (smoothConormalFibreProjection I)) := by
   obtain ⟨P⟩ := exists_splitMatrixPresentation_of_isComplemented
     L D.isComplemented (dimY + 1) D.rank_eq
   let B : Matrix (Fin (n + 1)) (Fin (dimY + 1))
@@ -561,8 +592,51 @@ theorem tangent_limit_criterion_of_directSummand
     htangent := htangent
     haxis := haxis }
   obtain ⟨ell, hrow, hres, hconormal⟩ :=
-    exists_axis_laurent_smooth_conormal_direction I q B low
-  exact hconormal.2.2
+    exists_axis_laurent_smooth_conormal_direction_with_fibre_closure I q B low
+  exact hconormal.2.2.1
+
+/-- The projective-direction conclusion is the standard projectivization of
+the affine fibre-closure endpoint. -/
+theorem tangent_limit_criterion_of_directSummand_with_fibre_closure
+    {n dimY : ℕ} [IsAlgClosed k]
+    (I : Ideal (MvPolynomial (Fin n) k))
+    (q : Fin (n + 1) → PowerSeries k)
+    (L : Submodule (PowerSeries k)
+      (Fin (n + 1) → PowerSeries k))
+    (D : DirectSummandInput (dimY := dimY) I q L) :
+    (fun i : Fin n => if i = D.axis then (1 : k) else 0) ∈
+      MvPolynomial.zeroLocus k
+        (MvPolynomial.vanishingIdeal k (smoothConormalFibreProjection I)) ∧
+    Projectivization.mk k
+        (fun i : Fin n => if i = D.axis then (1 : k) else 0)
+        (by intro h; have hh := congrFun h D.axis; simpa using hh) ∈
+      projectiveHomogeneousClosure
+        (projectivizedDirectionSet (smoothConormalDirectionSet I)) := by
+  have hvan := tangent_limit_affine_fibre_closure_of_directSummand I q L D
+  have hnonzero : (fun i : Fin n => if i = D.axis then (1 : k) else 0) ≠ 0 := by
+    intro h
+    have hh := congrFun h D.axis
+    simpa using hh
+  have hproj := mk_mem_projectiveHomogeneousClosure_of_fibre_zeroLocus
+    I (fun i : Fin n => if i = D.axis then (1 : k) else 0) hnonzero hvan
+  exact ⟨hvan, hproj⟩
+
+/-- Existing paper-facing criterion, derived from the joint affine and
+projective closure result. -/
+theorem tangent_limit_criterion_of_directSummand
+    {n dimY : ℕ} [IsAlgClosed k]
+    (I : Ideal (MvPolynomial (Fin n) k))
+    (q : Fin (n + 1) → PowerSeries k)
+    (L : Submodule (PowerSeries k)
+      (Fin (n + 1) → PowerSeries k))
+    (D : DirectSummandInput (dimY := dimY) I q L) :
+    Projectivization.mk k
+        (fun i : Fin n => if i = D.axis then (1 : k) else 0)
+        (by intro h; have hh := congrFun h D.axis; simpa using hh) ∈
+      projectiveHomogeneousClosure
+        (projectivizedDirectionSet (smoothConormalDirectionSet I)) := by
+  exact (tangent_limit_criterion_of_directSummand_with_fibre_closure
+    I q L D).2
 
 #print axioms exists_axis_laurent_smooth_conormal_direction
 #print axioms formalProjectiveArcInClosure_iff

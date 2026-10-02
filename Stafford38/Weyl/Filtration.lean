@@ -247,8 +247,10 @@ theorem monomialWeight_extend_order (n a p : ℕ)
     congr 1
     apply Finsupp.sum_congr
     intro i hi
-    cases i <;> simp [orderWeight, fibreWeight, oldIndex]
-  all_goals simp [orderWeight, fibreWeight, oldIndex, add_mul]
+    cases i <;> simp [orderWeight, fibreWeight, oldIndex,
+      Stafford38FixedSourceChallenge.oldIndex]
+  all_goals simp [orderWeight, fibreWeight, oldIndex,
+    Stafford38FixedSourceChallenge.oldIndex, add_mul]
 
 theorem phaseExponent_succ_eq_extend (n : ℕ)
     (a p : Fin (n + 1) → ℕ) :

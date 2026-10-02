@@ -1,0 +1,4 @@
+import Stafford38.Geometry.ActualWitnessCommonOpenColumnGlue
+
+#check Stafford38.Geometry.ActualWitnessCommonOpenColumnGlue.actual_witness_commonOpen_eq_pointLocal
+#print axioms Stafford38.Geometry.ActualWitnessCommonOpenColumnGlue.actual_witness_commonOpen_eq_pointLocal

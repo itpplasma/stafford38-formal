@@ -1,0 +1,3 @@
+import Stafford38.Geometry.LocalNormalizationCenterEquivalence
+#check Stafford38.Geometry.LocalNormalizationCenterEquivalence.exists_localization_equiv_of_height_one
+#print axioms Stafford38.Geometry.LocalNormalizationCenterEquivalence.exists_localization_equiv_of_height_one

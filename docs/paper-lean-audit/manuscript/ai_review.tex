@@ -8,14 +8,22 @@
 \usepackage{xcolor}
 \usepackage{xurl}
 \usepackage[normalem]{ulem}
+% Give long inline review markup a little extra line-breaking room without
+% changing the author text or the mathematical content.
+\setlength{\emergencystretch}{.75em}
 % AI compile repair: the retained draft uses the undefined typo \cots.
 % EDIT-02 beside that occurrence makes this repair visible in the PDF.
 \providecommand{\cots}{\cdots}
+% Permit a line break after commas in long inline coordinate lists.
+\begingroup\lccode`~=`,
+\lowercase{\endgroup\def~}{\mathchar"613B\allowbreak}
+\mathcode`,="8000
 \definecolor{AIadded}{RGB}{160,25,25}
 \definecolor{AIreview}{RGB}{25,70,145}
 \newcommand{\AIadd}[1]{{\color{AIadded}#1}}
-\newcommand{\AIremove}[1]{{\color{AIreview}\sout{#1}}}
-\newcommand{\AIreplace}[2]{\AIremove{#1}\AIadd{#2}}
+\newcommand{\AIremove}[1]{{\color{AIreview}%
+  \ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}}
+\newcommand{\AIreplace}[2]{\AIremove{#1}\,\AIadd{#2}}
 \newenvironment{AIaddition}[1]
   {\par\begingroup\color{AIadded}\noindent
    \textbf{AI addition: #1.}\par\smallskip\ignorespaces}
@@ -27,17 +35,18 @@
       \normalfont\small\color{AIreview}\textbf{AI comment #1.} #2}}%
   \par\smallskip}
 \newcommand{\AIreviewlegend}{%
-  \AIcomment{Review guide}{\textbf{Johanna:} review the red text and proposed
-  corrections as mathematics and prose; no Lean reading is required.
-  \textbf{Max:} review the whole selected paper proof against its checked Lean
-  route, including definitions and exact matches. The interface and paper use
-  the same frozen revisions. Readable correspondence notes are optional aids,
-  not another review assignment. Red text awaits author acceptance; blue strike-through
-  preserves small original passages. Replaced long proofs remain verbatim in
-  marked source-history comments and Git history. Historical alternatives are
-  outside the selected publication proof. Resolve a box after its task is done.}}
+  \AIcomment{Review guide}{Red text proposes additions or corrections;
+  blue struck text preserves the original wording.
+  \textbf{Johanna:} review the proposals as mathematics and prose, and resolve
+  their boxes after accepting or revising them. No Lean installation, code
+  editing, or proof replay is required for her review.
+  \textbf{Max:} review the whole paper--Lean correspondence, including
+  every statement, its hypotheses, and the definitions entering the challenge. Comparison
+  notes explain proof differences beside the relevant passages; the technical
+  supplement gives mathematical accounts and optional declaration links. The
+  side-by-side review interface links statements to their checked sources.}}
 
-% Lean cross-references (AI addition, 2026-09-30 paper--Lean audit).
+% Lean cross-references for the paper--Lean audit.
 % Each formalized result is followed by \formalref{...}; every \leandecl or
 % \leanlib names one declaration by file, line and fully qualified name at
 % the pinned revisions below. The review generator in itpplasma/stafford38-formal

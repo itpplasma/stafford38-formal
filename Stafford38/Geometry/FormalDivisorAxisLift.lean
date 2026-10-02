@@ -132,6 +132,87 @@ theorem axisRow_residue_formalTangentMatrix_eq_zero
 
 /-! ## Complete local axis lift -/
 
+/-- A supplied correction constructs the axis annihilator and split tangent
+lattice. Constant corrections use this owner without a matrix inverse. -/
+theorem exists_formalDivisorAxisLift_of_selected_correction
+    [CharZero k]
+    {ι : Type v} {κ : Type w} [Fintype ι] [Fintype κ]
+    [DecidableEq ι] [DecidableEq κ]
+    (q : ι → PowerSeries k)
+    (Z : Matrix ι κ (PowerSeries k))
+    (rows : κ ↪ ι) (chart zero axis : ι)
+    (a b : ℕ) (u₀ u₁ : PowerSeries k) (lambda : κ → PowerSeries k)
+    (hqchart : q chart = 1)
+    (hZchart : ∀ j, Z chart j = 0)
+    (ha : 0 < a)
+    (hab : a < b)
+    (hqzero : q zero = (PowerSeries.X : PowerSeries k) ^ a * u₀)
+    (hu₀ : PowerSeries.constantCoeff u₀ ≠ 0)
+    (hZzero : ∀ j, ∃ w : PowerSeries k,
+      Z zero j = (PowerSeries.X : PowerSeries k) ^ a * w)
+    (hqaxis : q axis = (PowerSeries.X : PowerSeries k) ^ b * u₁)
+    (hZaxis : ∀ j, ∃ w : PowerSeries k,
+      Z axis j = (PowerSeries.X : PowerSeries k) ^ b * w)
+    (hselected : ∀ j, PowerSeries.derivative k (q (rows j)) =
+      Z.mulVec lambda (rows j))
+    (hminor :
+      PowerSeries.constantCoeff (selectedMinor Z rows).det ≠ 0) :
+    ∃ (c : ℕ) (tau : ι → PowerSeries k)
+      (C : Matrix (FormalTangentColumn κ) ι (PowerSeries k))
+      (ell : ι → PowerSeries k),
+      tau chart = 0 ∧
+      (∀ j, tau (rows j) = 0) ∧
+      c ≤ a - 1 ∧
+      (∀ i,
+        PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+          (PowerSeries.X : PowerSeries k) ^ c * tau i) ∧
+      (∃ i, PowerSeries.constantCoeff (tau i) ≠ 0) ∧
+      PowerSeries.constantCoeff (tau axis) = 0 ∧
+      (∀ column : FormalTangentColumn κ,
+        PowerSeries.constantCoeff
+          (formalTangentMatrix q Z tau axis column) = 0) ∧
+      C * formalTangentMatrix q Z tau = 1 ∧
+      rowMul ell (formalTangentMatrix q Z tau) = 0 ∧
+      residueColumn ell = axisRow (k := k) axis := by
+  obtain ⟨c, tau, htauchart, htauselected, hc, hfactor, hprimitive, hinjective⟩ :=
+    exists_formalDivisorTangent_residue_injective_of_selected_correction
+      q Z rows chart zero a u₀ lambda hqchart hZchart ha hqzero hu₀
+        hZzero hselected hminor
+  have htauaxis : PowerSeries.constantCoeff (tau axis) = 0 :=
+    constantCoeff_normalizedTransverse_axis_eq_zero
+      q Z lambda tau axis a b c u₁ ha hab hc hqaxis hZaxis (hfactor axis)
+  have hb : 0 < b := lt_trans ha hab
+  have haxiscolumns : ∀ column : FormalTangentColumn κ,
+      PowerSeries.constantCoeff
+        (formalTangentMatrix q Z tau axis column) = 0 :=
+    constantCoeff_formalTangentMatrix_axis_eq_zero
+      q Z tau axis b u₁ hb hqaxis hZaxis htauaxis
+  obtain ⟨C, hCB⟩ :=
+    powerSeries_exists_leftInverse_of_residue_mulVec_injective
+      (formalTangentMatrix q Z tau) hinjective
+  let a₀ : ι → k := axisRow (k := k) axis
+  let ell : ι → PowerSeries k :=
+    annihilatorLift (constantColumn a₀)
+      (formalTangentMatrix q Z tau) C
+  have hresidueInput : residueColumn (constantColumn a₀) = a₀ :=
+    residueColumn_constantColumn a₀
+  have haxisRow :
+      rowMul a₀
+        (fun i column => PowerSeries.constantCoeff
+          (formalTangentMatrix q Z tau i column)) = 0 :=
+    axisRow_residue_formalTangentMatrix_eq_zero
+      q Z tau axis haxiscolumns
+  have hell :
+      rowMul ell (formalTangentMatrix q Z tau) = 0 ∧
+        residueColumn ell = a₀ := by
+    simpa [ell] using
+      (powerSeries_annihilatorLift_spec
+        (constantColumn a₀) a₀ (formalTangentMatrix q Z tau) C
+          hCB hresidueInput haxisRow)
+  exact ⟨c, tau, C, ell, htauchart,
+    htauselected, hc, hfactor, hprimitive, htauaxis, haxiscolumns,
+    hCB, hell.1, by simpa [a₀] using hell.2⟩
+
 /-- The complete local formal-divisor axis lift.
 
 The correction and primitive normalization are constructed from the formal
@@ -184,45 +265,18 @@ theorem exists_formalDivisorAxisLift
       C * formalTangentMatrix q Z tau = 1 ∧
       rowMul ell (formalTangentMatrix q Z tau) = 0 ∧
       residueColumn ell = axisRow (k := k) axis := by
-  obtain ⟨lambda, c, tau, hlambda, hselected, htauchart,
-      htauselected, hc, hfactor, hprimitive, hinjective⟩ :=
-    exists_formalDivisorTangent_residue_injective
-      q Z rows chart zero a u₀ hqchart hZchart ha hqzero hu₀
-        hZzero hminor
-  have htauaxis : PowerSeries.constantCoeff (tau axis) = 0 :=
-    constantCoeff_normalizedTransverse_axis_eq_zero
-      q Z lambda tau axis a b c u₁ ha hab hc hqaxis hZaxis (hfactor axis)
-  have hb : 0 < b := lt_trans ha hab
-  have haxiscolumns : ∀ column : FormalTangentColumn κ,
-      PowerSeries.constantCoeff
-        (formalTangentMatrix q Z tau axis column) = 0 :=
-    constantCoeff_formalTangentMatrix_axis_eq_zero
-      q Z tau axis b u₁ hb hqaxis hZaxis htauaxis
-  obtain ⟨C, hCB⟩ :=
-    powerSeries_exists_leftInverse_of_residue_mulVec_injective
-      (formalTangentMatrix q Z tau) hinjective
-  let a₀ : ι → k := axisRow (k := k) axis
-  let ell : ι → PowerSeries k :=
-    annihilatorLift (constantColumn a₀)
-      (formalTangentMatrix q Z tau) C
-  have hresidueInput : residueColumn (constantColumn a₀) = a₀ :=
-    residueColumn_constantColumn a₀
-  have haxisRow :
-      rowMul a₀
-        (fun i column => PowerSeries.constantCoeff
-          (formalTangentMatrix q Z tau i column)) = 0 :=
-    axisRow_residue_formalTangentMatrix_eq_zero
-      q Z tau axis haxiscolumns
-  have hell :
-      rowMul ell (formalTangentMatrix q Z tau) = 0 ∧
-        residueColumn ell = a₀ := by
-    simpa [ell] using
-      (powerSeries_annihilatorLift_spec
-        (constantColumn a₀) a₀ (formalTangentMatrix q Z tau) C
-          hCB hresidueInput haxisRow)
-  exact ⟨lambda, c, tau, C, ell, hlambda, hselected, htauchart,
-    htauselected, hc, hfactor, hprimitive, htauaxis, haxiscolumns,
-    hCB, hell.1, by simpa [a₀] using hell.2⟩
+  let v : ι → PowerSeries k := fun i => PowerSeries.derivative k (q i)
+  let lambda : κ → PowerSeries k := correctionCoefficients Z rows v
+  have hselected : ∀ j, v (rows j) = Z.mulVec lambda (rows j) := by
+    intro j
+    exact sub_eq_zero.mp (correctedVector_selectedRow_eq_zero Z rows v hminor j)
+  obtain ⟨c, tau, C, ell, htauchart, htauselected, hc, hfactor, hprimitive,
+      htauaxis, haxiscolumns, hCB, hell, hresidue⟩ :=
+    exists_formalDivisorAxisLift_of_selected_correction
+      q Z rows chart zero axis a b u₀ u₁ lambda hqchart hZchart ha hab
+        hqzero hu₀ hZzero hqaxis hZaxis hselected hminor
+  exact ⟨lambda, c, tau, C, ell, rfl, hselected, htauchart, htauselected,
+    hc, hfactor, hprimitive, htauaxis, haxiscolumns, hCB, hell, hresidue⟩
 
 #print axioms constantCoeff_normalizedTransverse_axis_eq_zero
 #print axioms constantCoeff_formalTangentMatrix_axis_eq_zero

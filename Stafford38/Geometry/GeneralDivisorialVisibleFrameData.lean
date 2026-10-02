@@ -1,0 +1,3 @@
+import Stafford38.Geometry.GeneralDivisorialVisibleFrameWitness
+
+set_option autoImplicit false

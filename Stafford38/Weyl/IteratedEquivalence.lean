@@ -2,6 +2,7 @@ import AlgebraicAnalysis.Ore.Associativity
 import Stafford38.Ore.IteratedPairStage
 import Stafford38.Ore.PairUniversal
 import Stafford38.Weyl.Universal
+import Stafford38.ChallengeDefinitions
 
 /-!
 # The presented Weyl algebra maps to the iterated Ore construction
@@ -282,14 +283,12 @@ def presentedToIterated (n : Nat) :
     (iteratedGenerator k n) (iteratedGenerator_commutator k n) i
 
 /-- The quotient presentation of the rank-`n` Weyl algebra. -/
-abbrev PresentedWeyl (n : Nat) :=
-  FreeWeyl k (Fin n ⊕ Fin n) (Matrix.J (Fin n) k)
+abbrev PresentedWeyl (n : Nat) := Stafford38Challenge.WeylAlg k n
 
 /-- Insert an old index after the newly adjoined coordinate or momentum. -/
-def oldIndex {n : Nat} :
-    (Fin n ⊕ Fin n) → (Fin (n + 1) ⊕ Fin (n + 1))
-  | .inl i => .inl i.succ
-  | .inr i => .inr i.succ
+abbrev oldIndex {n : Nat} :
+    (Fin n ⊕ Fin n) → (Fin (n + 1) ⊕ Fin (n + 1)) :=
+  Stafford38FixedSourceChallenge.oldIndex
 
 /-- The old rank-`n` generators inside the rank-`n+1` presentation. -/
 def oldGenerator (n : Nat) (i : Fin n ⊕ Fin n) : PresentedWeyl k (n + 1) :=
@@ -302,22 +301,22 @@ theorem oldGenerator_commutator (n : Nat) (i j : Fin n ⊕ Fin n) :
   cases i with
   | inl i =>
       cases j with
-      | inl j => simp [oldIndex, Matrix.J] <;> rfl
+      | inl j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J] <;> rfl
       | inr j =>
           by_cases h : i = j
           · subst j
-            simp [oldIndex, Matrix.J]
+            simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J]
             calc
               _ = -algebraMap k (PresentedWeyl k (n + 1)) 1 :=
                 map_neg (algebraMap k (PresentedWeyl k (n + 1))) 1
               _ = -1 := by rw [map_one]
-          · simp [oldIndex, Matrix.J, h] <;> rfl
+          · simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J, h] <;> rfl
   | inr i =>
       cases j with
       | inl j =>
           by_cases h : i = j <;>
-            simp [oldIndex, Matrix.J, h] <;> rfl
-      | inr j => simp [oldIndex, Matrix.J] <;> rfl
+            simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J, h] <;> rfl
+      | inr j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J] <;> rfl
 
 /-- The canonical rank-shift embedding preserving the old generators. -/
 def previousWeylEmbedding (n : Nat) :
@@ -361,7 +360,7 @@ theorem presentedCoordinate_commutes_oldGenerator (n : Nat)
       exact h
   | inr i =>
       have hi : (0 : Fin (n + 1)) ≠ i.succ := i.succ_ne_zero.symm
-      simp only [oldIndex] at h
+      simp only [oldIndex, Stafford38FixedSourceChallenge.oldIndex] at h
       have hJ : Matrix.J (Fin (n + 1)) k (.inl 0) (.inr i.succ) = 0 := by
         simp [Matrix.J, hi]
       rw [hJ] at h
@@ -491,7 +490,7 @@ theorem presentedToIterated_previous (n : Nat) :
   intro i
   simp only [AlgHom.comp_apply, previousWeylEmbedding_generator,
     presentedToIterated_generator]
-  cases i <;> unfold oldGenerator oldIndex <;>
+  cases i <;> unfold oldGenerator oldIndex Stafford38FixedSourceChallenge.oldIndex <;>
     rw [presentedToIterated_generator] <;> rfl
 
 @[simp] theorem presentedToIterated_coordinate (n : Nat) :

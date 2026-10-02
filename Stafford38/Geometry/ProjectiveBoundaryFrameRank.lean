@@ -1,4 +1,5 @@
 import Stafford38.Geometry.CanonicalAsymptoticLaurentProducer
+import Stafford38.Geometry.ProjectiveChartCoordinates
 
 /-!
 # Projective residue frames and the generic tangent rank bound
@@ -34,12 +35,15 @@ universe u v w
 variable {K : Type u} [Field K]
 
 /-- Coordinates remaining after choosing an arbitrary projective chart. -/
-abbrev ChartAffineIndex (ι : Type v) (chart : ι) := {i : ι // i ≠ chart}
+abbrev ChartAffineIndex (ι : Type v) (chart : ι) :=
+  Stafford38.Geometry.ProjectiveChartCoordinates.ChartAffineIndex ι chart
 
-/-- Differential of `q_i / q_chart` in the projective direction `w`. -/
-def chartDehomogenizedTangentColumn {ι : Type v} (chart : ι)
+/-- Differential of `q_i / q_chart` in the projective direction `w`.
+This historical arbitrary-chart name specializes the shared chart owner. -/
+abbrev chartDehomogenizedTangentColumn {ι : Type v} (chart : ι)
     (q w : ι → K) : ChartAffineIndex ι chart → K :=
-  fun i ↦ (w i.1 * q chart - q i.1 * w chart) / q chart ^ 2
+  Stafford38.Geometry.ProjectiveChartCoordinates.dehomogenizedTangentColumn
+    chart q w
 
 /-- Adjoin the projective position column to a family of tangent columns. -/
 def augmentedProjectiveMatrix {ι : Type v} {κ : Type w}

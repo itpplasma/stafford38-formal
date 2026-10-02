@@ -16,7 +16,8 @@ for entry in provenance['files']:
     actual = hashlib.sha256((snapshot / entry['path']).read_bytes()).hexdigest()
     if actual != entry['sha256']:
         raise SystemExit('Manuscript snapshot hash mismatch: ' + entry['path'])
-paper = (snapshot / 'human_readable_main.tex').read_text()
+paper_files = manifest.get('paper_files', ['human_readable_main.tex'])
+paper = '\n'.join((snapshot / file).read_text() for file in paper_files)
 paper = re.sub(r'(?m)^\s*%.*$', '', paper)
 linked = {(('library' if macro == 'leanlib' else 'formal'), file, name)
           for macro, file, line, name in re.findall(

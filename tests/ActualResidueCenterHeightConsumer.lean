@@ -1,0 +1,3 @@
+import Stafford38.Geometry.ActualResidueCenterHeight
+
+#print axioms Stafford38.Geometry.ActualResidueCenterHeight.height_one_of_localized_algebraic_residue

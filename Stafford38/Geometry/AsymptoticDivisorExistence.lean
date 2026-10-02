@@ -7,24 +7,15 @@ import Mathlib.RingTheory.PrincipalIdealDomain
 import Mathlib.RingTheory.Valuation.LocalSubring
 
 /-!
-# A scheme-free boundary valuation for a nonconstant affine coordinate
+# Coordinate-zero local model for a boundary place
 
-The global asymptotic-conormal argument needs a boundary place at which the
-distinguished affine coordinate tends to zero.  This file constructs that
-place without projective schemes or normalization.
-
-If `x` is transcendental over `k` in a field `K`, evaluation embeds the DVR
-`k[X]_(X)` in `K`; its parameter maps to `x`.  This already produces the
-strict order gap for the rational projective pair `[x:x²]`.  Independently,
-Zorn's theorem extends the local map to a valuation subring of all of `K`,
-which contains `x` in its maximal ideal and excludes `x⁻¹`.
-
-The exact remaining commutative-algebra input is a *discrete extension* of
-this place to the finitely generated function field: a discrete valuation
-subring of `K` centred at `x=0`.  Mathlib has the unrestricted valuation-ring
-extension and the source DVR, but no theorem preserving rank one/discreteness
-under the extension (nor the equivalent normalization/height-one-prime
-construction).
+For a transcendental coordinate `x`, evaluation embeds the DVR
+`k[X]_(X)` in the ambient field, and its local parameter maps to `x`. This
+file also records unrestricted valuation-ring extension and the strict order
+gap for `[x:x²]`. The finite-type rank-one extension is assembled by
+`RelativeRetainedBoundaryPlace.exists_data_of_fg_charZero`; the visible
+normalized frame is assembled by `GeneralDivisorialVisibleFrame`. The scope
+here is the one-coordinate local model, not the projective-chart comparison.
 -/
 
 namespace Stafford38.Geometry.AsymptoticDivisorExistence
@@ -99,9 +90,9 @@ theorem coordinateZeroLocalMap_algebraMap_X
   rw [coordinateZeroLocalMap, IsLocalization.lift_eq]
   exact Polynomial.aeval_X x
 
-/-- The coordinate-zero DVR map is an embedding, not merely a place with a
-kernel.  Thus the remaining problem is extension of this discrete valuation,
-not repair of the source local model. -/
+/-- The coordinate-zero map embeds the source local DVR. The relative
+finite-type extension is constructed in
+`RelativeRetainedBoundaryPlace.exists_data_of_fg_charZero`. -/
 theorem coordinateZeroLocalMap_injective
     {K : Type v} [Field K] [Algebra k K]
     (x : K) (hx : Transcendental k x) :
@@ -118,14 +109,10 @@ theorem coordinateZeroLocalMap_injective
     exact congrArg (algebraMap (Polynomial k) (CoordinateZeroLocalRing k))
       (heval hab)
 
-/-- The local line at `x = 0` is already a DVR and maps to the ambient
-function field.  Consequently the rational projective pair `[x:x²]` has the
-strict order gap required by `ProjectiveDivisorOrderGap`, unconditionally.
-
-This is a genuine rank-one discrete producer, stronger than the Zorn
-valuation below.  It does not yet contain the remaining affine coordinates;
-extending this DVR place to the whole finitely generated function field while
-retaining discreteness is the named residual theorem. -/
+/-- The source local line at `x = 0` is a DVR and gives the strict order gap
+for `[x:x²]`. The relative extension to the full finitely generated field,
+with its coefficient field retained, is provided by
+`RelativeRetainedBoundaryPlace.exists_data_of_fg_charZero`. -/
 theorem exists_coordinateZeroDVR_projectiveOrderGap
     {K : Type v} [Field K] [Algebra k K]
     (x : K) (hx : Transcendental k x) :
@@ -176,19 +163,10 @@ structure BoundaryValuationData
   factor_commutes :
     valuation.toSubring.subtype.comp factor = coordinateZeroLocalMap k x hx
 
-/-- The exact divisorial refinement missing from the library.  Unlike
-`BoundaryValuationData`, this package asks that the valuation ring be a DVR.
-It is deliberately only a data structure: this file does not postulate that
-such a refinement exists.
-
-The classical missing theorem is:
-
-*Divisorial valuation extension.*  If `K/k` is a finitely generated function
-field and `x ∈ K` is nonconstant, then there is a discrete valuation subring
-of `K` in whose maximal ideal `x` lies.
-
-For the Stafford application `x` is also a unit of the affine coordinate
-domain, so this centre is necessarily on the boundary. -/
+/-- A rank-one refinement of the coordinate boundary valuation. This
+structure records a DVR centered at the chosen nonzero coordinate; existence
+under finite-type characteristic-zero hypotheses is constructed by
+`RelativeRetainedBoundaryPlace.exists_data_of_fg_charZero`. -/
 structure DiscreteBoundaryRefinement
     {K : Type v} [Field K] [Algebra k K]
     (x : K) where
@@ -214,13 +192,9 @@ theorem exists_boundaryValuationData
     factor_commutes := rfl
   }⟩
 
-/-- A genuine discrete boundary refinement feeds the already formalized DVR
-order-gap theorem with no further geometry hidden in the implication.
-
-The rational projective pair is `[q₀:q₁]=[x:x²]`; its affine ratio is `x`.
-At the discrete boundary both `q₀` and the ratio vanish, so their orders are
-  strictly separated.  This is the exact handoff from a full-function-field
-discrete refinement; existence of that refinement is the missing theorem. -/
+/-- A supplied discrete boundary refinement yields the strict order gap for
+the rational projective pair `[x:x²]`. The finite-type construction of such
+retained places is in `RelativeRetainedBoundaryPlace`. -/
 theorem exists_projectiveOrderGap_of_discreteBoundaryRefinement
     {K : Type v} [Field K] [Algebra k K]
     (x : K) (D : DiscreteBoundaryRefinement k x) :

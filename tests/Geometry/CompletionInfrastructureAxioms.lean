@@ -1,0 +1,11 @@
+import Stafford38.Geometry.AdicCompletionMap
+import Stafford38.Geometry.AdicCompletionRingEquiv
+import Stafford38.Geometry.AffinePointCompletion
+import Stafford38.Geometry.FormallyEtaleCompletion
+
+#print axioms Stafford38.Geometry.AdicCompletionMap.mapOfRingHom_comp
+#print axioms Stafford38.Geometry.FormallyEtaleCompletion.exists_formalSmooth_lift_to_baseCompletion
+#print axioms Stafford38.Geometry.FormallyEtaleCompletion.extendFormalSmoothLift
+#print axioms Stafford38.Geometry.AffinePointCompletion.powerSeriesCompletionAtPoint
+
+#print axioms Stafford38.Geometry.AdicCompletionRingEquiv.ofRingEquiv

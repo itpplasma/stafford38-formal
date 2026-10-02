@@ -1,0 +1,3 @@
+import Stafford38.Geometry.ActualChartValuationImage
+
+#print axioms Stafford38.Geometry.ActualChartValuationImage.chartGenericPointSubalgebra_le_valuationSubring

@@ -180,7 +180,8 @@ theorem eval₂_projectiveDehomogenize
   rw [show
       Stafford38.Geometry.ProjectiveEquationFormalChart.projectiveDehomogenize H =
         MvPolynomial.bind₁
-          (Fin.cases 1 fun i ↦ MvPolynomial.X i) H by rfl]
+          (Fin.cases 1 fun i ↦ MvPolynomial.X i) H by
+    simp [Stafford38.Geometry.ProjectiveEquationFormalChart.projectiveDehomogenize]]
   change MvPolynomial.eval₂Hom f y
       (MvPolynomial.bind₁ (Fin.cases 1 fun i ↦ MvPolynomial.X i) H) = _
   rw [MvPolynomial.eval₂Hom_bind₁]

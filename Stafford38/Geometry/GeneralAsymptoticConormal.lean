@@ -51,7 +51,7 @@ theorem coordinate_axis_mem_smooth_fibre_closure
     (K := K) (groundEquationConormalLocus (k := k) (K := K) I.asIdeal) y xi hgeneric
   have hzero := hclosure _ hpoly
   have hzero' : MvPolynomial.eval₂ (algebraMap k K) (residueColumn xi) P = 0 := by
-    simpa [residuePolynomialMap] using hzero
+    simpa [residuePolynomialMap, scalarPolynomialMap] using hzero
   rw [hres] at hzero'
   apply (FaithfulSMul.algebraMap_injective k K)
   rw [map_zero]

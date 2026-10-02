@@ -1,0 +1,4 @@
+import Stafford38.Geometry.ActualWitnessSelectedChartIndex
+
+#check Stafford38.Geometry.ActualWitnessSelectedChartIndex.exists_succ_chart_index
+#print axioms Stafford38.Geometry.ActualWitnessSelectedChartIndex.exists_succ_chart_index

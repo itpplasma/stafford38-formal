@@ -1,0 +1,4 @@
+import Stafford38.Geometry.ActualSelectedResidueBasis
+
+#print axioms Stafford38.Geometry.ActualSelectedResidueBasis.exists_selected_residue_basis_indices
+#print axioms Stafford38.Geometry.ActualSelectedResidueBasis.exists_actual_selected_residue_basis

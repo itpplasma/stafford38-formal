@@ -1,0 +1,4 @@
+import Stafford38.Geometry.DVRUniformizerNumerator
+
+#check Stafford38.Geometry.DVRUniformizerNumerator.exists_numerator_of_dvr_localization
+#print axioms Stafford38.Geometry.DVRUniformizerNumerator.exists_numerator_of_dvr_localization

@@ -1,0 +1,4 @@
+import Stafford38.Geometry.ActualCenterParameterTransport
+#print axioms Stafford38.Geometry.ActualCenterParameterTransport.atPrimeEquiv
+#print axioms Stafford38.Geometry.ActualCenterParameterTransport.span_transport_across_ring_equiv
+#print axioms Stafford38.Geometry.ActualCenterParameterTransport.transport_parameter_and_two_orders

@@ -3,19 +3,16 @@ import Stafford38.Characteristic.ConcreteInducedZAction
 /-!
 # Commutator expansion for source-row action equations
 
-This file proves the algebraic calculation between two common-basis first-order
-source equations and the induced commutator action on the special fibre.  It is
-independent of the Weyl presentation, localization, Artinianity, and trace
-arguments.
+This file proves the algebraic calculation between two common-basis
+first-order source equations and the induced commutator action on the special
+fibre. It is independent of the Weyl presentation, localization,
+Artinianity, adapted basis, and trace arguments.
 
-The deformation module remains only a left module over the noncommutative ring.
-The parameter is central and square-zero.  Exactness of its action is used only
-after the commutator has been expanded.  The commutators with the first-order
-matrices disappear only after applying the commutative specialization.
-
-The result records the actual specialized action of the source expansion and
-isolates the remaining trace-comparison obligation.  It does not assert an
-equality with a residue-mapped coefficient matrix.
+The deformation module is a left module over the noncommutative ring; the
+parameter is central and square-zero. The result records the specialized
+action expansion without identifying it with a residue-mapped coefficient
+matrix. The canonical-support proof uses the separate localized
+involutivity development.
 -/
 
 namespace Stafford38.Characteristic.SourceActionCommutatorExpansion

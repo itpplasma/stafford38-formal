@@ -63,7 +63,8 @@ theorem eval₂_eq_zero_of_commonScale_componentProjectivePoint
     rw [hcone] at hformula
     have hone := congrArg (Polynomial.eval 1) hformula
     have hpt : componentProjectivePoint P =
-        Fin.cases 1 fun i ↦ componentCoordinate P i := rfl
+        Fin.cases 1 fun i ↦ componentCoordinate P i := by
+      simp [componentProjectivePoint]
     simpa [hpt] using hone.symm
   apply hι
   rw [map_zero]

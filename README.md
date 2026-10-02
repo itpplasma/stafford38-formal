@@ -1,215 +1,46 @@
-# Stafford's Conjecture 3.8 for Weyl algebras
+# Stafford 3.8 formal proof
 
-For every characteristic-zero field `k`, every `n ≥ 0`, and every nonzero
-`d ∈ Aₙ(k)`, there exist `F, R, S ∈ Aₙ(k)` such that
+For every characteristic-zero field `k`, rank `n`, and nonzero element `d` of the `n`th Weyl algebra `A`, the development proves that there are `F`, `R`, and `S` in `A` such that
 
 ```text
 1 = d R + F d S.
 ```
 
-The [Lean theorem](Stafford38/FoundationClosure.lean) preserves this written
-order. The [exact-degree strengthening](Stafford38/FixedSourceStatement.lean)
-chooses, at positive rank, a linear Weyl coordinate `ℓ` and takes
-`F = ℓ^(bernsteinDegree k d)`. Rank zero is the field case.
+The order is part of the result: `1` lies in the right ideal `dA + FdA`. At rank zero the algebra is the field. The fixed-source theorem chooses `F` as a linear Weyl coordinate raised to the intrinsic Bernstein degree of `d`.
 
-Release: **v1.2.0**. It adds the manuscript torsion-cyclicity
-and noncharacteristic corollaries, their independent consumers, and a pinned
-[paper/Lean audit](docs/paper-lean-audit/README.md). Dependency versions are unchanged.
+## Formal proof
 
-## Literature and source index
+The terminal proof first changes symplectic coordinates so that `d` is monic in one momentum variable. It studies the quotient by `dA + x^N dA`, where `x` is the paired coordinate and `N` is the Bernstein degree. An Euler identity gives surjectivity of right multiplication by `x`. Filtered support estimates and Poisson involutivity constrain the characteristic variety; the coisotropic-exclusion argument yields the contradiction. Scalar descent and quotient triviality assemble the ordered certificate.
 
-**[Literature → proof ingredients → Lean modules](docs/literature.md)** is the
-starting point for tracing the mathematical foundations. It gives full
-citations, source roles, module links, and the distinction between proved
-imports, project constructions, background, and prior art.
+`ChallengeDefinitions` owns the problem statements and the single-element certificate predicate. The separate `Solution` modules prove those statements and do not import challenge placeholders. The fixed-source comparison connects intrinsic word degree to formal Bernstein degree. Derived results include right Ore localization, formal adjoints, localized differential operators, evolutionary identities, and torsion-module cyclicity.
 
-**[Sta78]** J. T. Stafford, *[Module Structure of Weyl Algebras](https://doi.org/10.1112/jlms/s2-18.3.429)*, Journal of the London Mathematical Society (2) 18 (1978), 429–442. Source of Conjecture 3.8 (p. 438). The 1978 conjecture is the target, not a proof of its general case.
+## Verification and scope
 
-**[Gab81]** Ofer Gabber, *[The Integrability of the Characteristic Variety](https://doi.org/10.2307/2374101)*, American Journal of Mathematics 103 (1981), no. 3, 445–468. Classical involutivity theorem. The required Weyl-quotient version is proved in Lean by the Gabber block; the citation is not an axiom.
+Verification receipts apply to the exact source revisions and configurations they name. The prior terminal-proof checkpoint is linked from the [route record](docs/paper-route-alignment.json); it is not a verification claim about every later source edit, and its job counts are omitted here.
 
-**[HTT08]** Ryoshi Hotta, Kiyoshi Takeuchi, and Toshiyuki Tanisaki, *[D-Modules, Perverse Sheaves, and Representation Theory](https://doi.org/10.1007/978-0-8176-4523-6)*, Progress in Mathematics 236, Birkhäuser, 2008. Background for differential operators, good filtrations and characteristic varieties (Chapters 1–2). No claim of a line-by-line formalization of this book.
+The current same-witness work has scoped green evidence for the frozen ground-point completion output and the selected-normalization formally-etale core. The existing `ActualPointAxisLift.exists_actual_point_axis_lift` is checked under its explicit ground-point, formally-etale, order, and chart inputs. The common-open direct-summand adapter and affine conormal endpoint are also checked under their stated column, smoothness, and closure inputs. The unconditional same-witness closure assembly and its original-prime endpoint remain open, so these components do not yet establish full manuscript correspondence or a new release.
 
-**[Bel26]** Gwyn Bellamy, *[Module structure of Weyl algebras](https://doi.org/10.1112/jlms.70373)*, Journal of the London Mathematical Society 113 (2026), no. 1, e70373. Historical status and adjacent results, especially Sections 3 and 6; not an imported proof theorem.
+The main and fixed-source Challenge/Solution comparisons passed Palomar at an earlier post-coordinate checkpoint; a new-release comparison remains required. The Palomar entry certifies its named theorem and source only.
 
-## Verification snapshot
+## Source roles
 
-Release `v1.2.0` adds manuscript cyclicity, noncharacteristic and literal hypersurface proofs, public Euler product links, and the paper correspondence hub. Source `f6915782d2281e3d3b51011b97ace866928053b9` passed an isolated clean-checkout replay with a reused compiled cache: 36 endpoint reports, 17 consumers, 101 paper-linked declarations and both Comparator configurations accepted by NanoDa and Lean. The audit tool passed 34 tests without skips. See the [verification receipt](docs/verification-results.json) and [paper source index](docs/paper-lean-audit/source-index.md). Human review remains open.
+The formal repository owns Lean declarations and verification records. Overleaf is the manuscript editing authority; pinned paper revisions provide review provenance. The archive retains development history. The Palomar entry [PALOMAR-2026-09-05-000007, version 2](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=2) certifies its named theorem and source only.
 
-| Dependency | Exact version |
-| --- | --- |
-| Lean | `leanprover/lean4:v4.33.0` |
-| Mathlib | `db584cd6d46c92f209a44c0f1c829460d327499d` (`v4.33.0`) |
-| [AlgebraicAnalysis](https://github.com/itpplasma/algebraic-analysis) | `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8` (`v0.3.0`); the historical report used `dfdd2da091a9d67e7a29cc7914f192d746a2400d` (`v0.2.0`) |
+See the [proof guide](docs/proof-guide.md), [definition-owner registry](docs/definition-owners.md), [proof-source provenance](docs/proof-source-provenance.md), and [paper-route status](docs/paper-route-alignment.json) for proof structure, canonical owners, review inputs, and current scope. The [literature index](docs/literature.md) identifies sources used by the development.
 
-From the checked-out commit with Lean installed through Elan:
+## Reproducing the checkpoint
 
-```sh
-lake exe cache get
-lake build
-scripts/verify.sh
-scripts/bootstrap-palomar-tools.sh
-scripts/verify-palomar.sh
-```
+Use the source revision and toolchain named in the verification receipt. From that checkout:
 
-## Proof architecture
+    lake exe cache get
+    lake build
+    scripts/verify.sh
+    scripts/bootstrap-palomar-tools.sh
+    scripts/verify-palomar.sh
+    scripts/verify-palomar.sh comparator-fixed-source.json
 
-1. **Symplectic monicization.** A linear symplectic change makes a non-scalar
-   element monic with degree equal to its Bernstein degree:
-   [`scalar_or_normalized_symplectic_image`](Stafford38/Weyl/MonicNormalization.lean).
-2. **Canonical quotient.** Form the right-ideal quotient
-   `A/(dA + xᴺdA)` and retain the coefficient order through the presentation:
-   [`canonicalRightIdeal`](Stafford38/Weyl/EulerResidue.lean)
-   and the [quotient transport](Stafford38/Weyl/QuotientTransport.lean).
-3. **Euler surjectivity.** The positive Euler residue and right division make
-   multiplication by `x` surjective on the quotient:
-   [`positiveEulerResidue_identity`](Stafford38/Weyl/EulerResidue.lean) and
-   [`presentedCanonicalQuotient_rightMul_coordinate_surjective`](Stafford38/Weyl/EulerRemainder.lean).
-4. **Characteristic support.** Opposing filtered Koszul length inequalities
-   force the characteristic support away from `x = 0`:
-   [`canonical_support_avoidance`](Stafford38/Characteristic/CanonicalKoszulContradiction.lean).
-5. **Involutivity.** Prove the radical of the graded annihilator involutive
-   for every cyclic Weyl quotient:
-   [`weylAssociatedGradedRadicalInvolutivity`](Stafford38/Characteristic/GabberGlobalAssembly.lean).
-6. **Asymptotic conormal geometry.** For a transcendental selected coordinate,
-   produce a visible divisor frame
-   ([`generalDivisorialVisibleFrameExistence`](Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean),
-   built on [`ExactDivisorialVisibleFrameExistence`](Stafford38/Geometry/ExactDivisorialVisibleFrameExistence.lean)),
-   turn it into a finite-gradient boundary certificate
-   ([`FiniteGradientResidueExtension`](Stafford38/Geometry/FiniteGradientResidueExtension.lean)),
-   and descend its conormal axis to the ground field
-   ([`GeneralConormalAxis`](Stafford38/Geometry/GeneralConormalAxis.lean)).
-   Combine with the algebraic-coordinate branch
-   ([`GeneralAsymptoticLaurentAxis`](Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean))
-   and obtain the projective conormal direction:
-   [`coordinate_axis_mem_projective_conormal_directions`](Stafford38/Geometry/GeneralAsymptoticConormal.lean).
-   The separately proved
-   [tangent-limit criterion](Stafford38/Geometry/GeneralTangentLimitCriterion.lean)
-   is auxiliary and is not imported by this route.
-7. **Coisotropic exclusion.** Apply the general fibre-conical set theorem with
-   its self-involutive vanishing-ideal hypothesis:
-   [`exists_zero_base_coordinate_of_isFibreConical`](Stafford38/Geometry/GeneralCoisotropicSets.lean)
-   and the [canonical support application](Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean).
-8. **Certificate extraction and transport.** Descend from an algebraic closure,
-   extract membership of `1` in the right ideal, and undo the symplectic change:
-   [`exists_fixedSource_certificate_of_orderCharacteristicSupport_eq_empty`](Stafford38/Characteristic/CanonicalCertificate.lean)
-   and [`universalStatement`](Stafford38/FoundationClosure.lean).
+The recorded toolchain is Lean `leanprover/lean4:v4.33.0`, Mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`, and AlgebraicAnalysis `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`. A different source revision requires its own verification receipt.
 
-The [proof guide](docs/proof-guide.md), [dependency graph](docs/proof-graph.yaml),
-and [paper/Lean correspondence](docs/paper-lean-specification.md) explain these
-interfaces and their exact hypotheses.
+## Ownership and licenses
 
-## Corollaries
-
-The certificate passes to [right Ore localizations](Stafford38/LocalizationCorollaries.lean).
-Formal adjoint gives the [left-handed identity](Stafford38/LeftHandedCorollary.lean)
-`1 = R d + S d F`. The development also proves the result for
-[intrinsic differential operators](Stafford38/LocalizedDifferentialCorollaries.lean)
-on polynomial coefficient localizations, including principal opens, partial
-Laurent rings, and fraction rings.
-
-The [evolutionary and tensor results](Stafford38/EvolutionaryCorollary.lean)
-have an independent algebraic proof. Each potential coefficient must commute
-with the chosen Weyl pair; coefficients need not commute with one another.
-
-## Stafford 1978
-
-J. T. Stafford, *Module structure of Weyl algebras*, Journal of the London
-Mathematical Society (2) 18 (1978), 429–442, states Conjecture 3.8 on page 438.
-That article is the source of the conjecture and its historical context. It
-proves the conjecture for `n = 1` and for monomial `d`, not in general.
-
-Gwyn Bellamy, *Module structure of Weyl algebras*, Journal of the London
-Mathematical Society **113** (2026), no. 1, e70373,
-[10.1112/jlms.70373](https://doi.org/10.1112/jlms.70373), surveys the area. Its
-Section 3 states the weaker cyclicity form as Conjecture 3.4, observes that
-Stafford's formulation is stronger, and reports the problem as open. That is
-the state of the art this development is measured against.
-
-This repository supplies a new proof of the general case, together with the
-exact Bernstein-degree fixed-source strengthening. The literature search behind
-that reading covers the sources in the [literature index](docs/literature.md); it found
-no earlier proof of Conjecture 3.8 in general. Whether the argument is genuinely
-new is therefore unknown rather than established: the search was not exhaustive,
-no expert has confirmed it, and priority is not claimed. Kernel verification
-establishes that the Lean proof is correct, and nothing about novelty or
-significance.
-
-## Palomar
-
-[`Challenge.lean`](Challenge.lean) states the ordinary theorem using a small
-Mathlib presentation of the Weyl algebra. [`Solution.lean`](Solution.lean)
-transports the substantive theorem to that presentation.
-[`comparator.json`](comparator.json) compares
-`Stafford38Challenge.universalStatement` with only the three permitted axioms.
-The second pair, described under [exact-source comparison](#exact-source-comparison),
-is compared through [`comparator-fixed-source.json`](comparator-fixed-source.json).
-The independent check uses Comparator, NanoDa, and Lean's kernel; see
-[verification](docs/verification.md) for the pinned tools and sandbox boundary.
-
-The [challenge dossier](docs/dossier/stafford38-challenge-dossier.tex) defines
-every object before the statement, in the manuscript's words and in Lean's,
-lists both Challenges, both Solutions and both Comparator configurations from
-the repository files, and contains a clickable map of the imported proof
-architecture.
-
-The registered headline theorem is [Palomar PALOMAR-2026-09-05-000007 v2](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=2).
-The newer auxiliary declarations and manuscript audit are checked locally and
-archived with the software; they do not change that registry record. See the
-[release procedure](docs/release-runbook.md) and [archive citations](docs/releases/zenodo.md).
-
-## Repository ownership
-
-| Artifact | Canonical home |
-| --- | --- |
-| Reusable application-independent mathematics | Public [algebraic-analysis](https://github.com/itpplasma/algebraic-analysis), an external immutable dependency |
-| Stafford-specific formal proof, interface, and reproducibility documentation | Public [stafford38-formal](https://github.com/itpplasma/stafford38-formal), this repository |
-| Manuscript, bibliography, and proof-map supplement | Overleaf editing authority, with a [versioned audit snapshot](docs/paper-lean-audit/manuscript/) here |
-| Research history and provenance records | Private [stafford38](https://github.com/itpplasma/stafford38) |
-
-The formal package contains no manuscript source and uses no research archive
-as a build dependency. No public paper or arXiv identifier has been assigned.
-
-## Authorship, assistance, and license
-
-Christopher Albert is the recorded human author and maintainer. AI systems
-assisted research, Lean development, counterexamples, and review under human
-direction. [Structured metadata](formalization.yaml) records the corroborated
-model identifiers and the limits of that disclosure; [provenance](docs/provenance.md)
-records the source and dependency revisions.
-
-Formal code and documentation are Apache-2.0; see [LICENSE](LICENSE) and
-[NOTICE](NOTICE). The separate manuscript and supplements are CC BY 4.0.
-Cite this repository with [CITATION.cff](CITATION.cff). Releases are archived
-on Zenodo. The concept DOI
-[10.5281/zenodo.22390721](https://doi.org/10.5281/zenodo.22390721) always
-resolves to the newest version;
-[10.5281/zenodo.22391362](https://doi.org/10.5281/zenodo.22391362) cites
-`v1.0.1` exactly.
-
-## Exact-source comparison
-
-The original `Challenge.lean` and `Solution.lean` are byte-identical to the
-verified `v1.0.2` files. They compare Stafford's arbitrary-multiplier
-statement, including rank zero. The additional
-[FixedSourceChallenge.lean](FixedSourceChallenge.lean) and
-[FixedSourceSolution.lean](FixedSourceSolution.lean), new in `v1.1.0`, compare
-the stronger positive-rank manuscript statement with
-`F = ell ^ bernsteinDegree k d`. The Challenge imports only Mathlib. Its Weyl
-algebra is the same `RingQuot` presentation; `ell` is the first coordinate of
-an invertible linear symplectic change of the generators; and
-`bernsteinDegree k d` is intrinsic to the presented element: the least `N`
-such that `d` lies in the span of the ordered PBW words of total degree at
-most `N`. No degree, normal form, or equivalence is supplied as a hypothesis.
-The [transport module](Stafford38/FixedSourceChallengeTransport.lean) proves
-that this filtration is the development's Bernstein filtration and that the
-least level is the checked PBW normal-form degree, and the Solution combines
-that with the proved theorem. The
-[consumer test](tests/FixedSourceChallengeConsumer.lean) evaluates the
-intrinsic degree at the unit (`0`, once without the transport) and at a
-coordinate (`1`), and instantiates the compared theorem at both.
-
-Run `scripts/verify-palomar.sh` for the original pair and
-`scripts/verify-palomar.sh comparator-fixed-source.json` for the strengthening.
-Each Challenge contains one deliberate placeholder; neither Solution imports
-either Challenge. Historical verification reports certify their recorded
-snapshots, not subsequent changes.
+Christopher Albert is the recorded human author and maintainer. AI systems assisted research, formalization, counterexamples, and review under human direction. The formal code and documentation use Apache-2.0; the manuscript and supplements use CC BY 4.0. See `LICENSE`, `NOTICE`, and `CITATION.cff`. Historical release records remain attached to their original sources.

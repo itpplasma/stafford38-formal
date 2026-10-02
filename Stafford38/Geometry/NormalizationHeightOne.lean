@@ -1,37 +1,21 @@
-import Mathlib
+import Mathlib.RingTheory.NoetherNormalization
+import Mathlib.RingTheory.Ideal.KrullsHeightTheorem
+import Mathlib.RingTheory.DedekindDomain.IntegralClosure
+import Mathlib.RingTheory.DedekindDomain.Dvr
 
 /-!
-# Normalization finiteness and height-one places
+# Normalization and height-one local rings
 
-Lane C's construction needs four standard commutative-algebra facts that the
-paper cites by name.  None of them should ever become a project axiom, so they
-are proved here from Mathlib alone.
+A finite-type domain over a characteristic-zero field has finite normalization
+in its own fraction field. The proof uses Noether normalization to a polynomial
+ring, applies Mathlib's integral-closure finiteness there, and restricts scalars
+back to the domain.
 
-* `finite_normalization_of_fg_domain` is Noether's finiteness theorem: the
-  integral closure of a finitely generated domain over a characteristic-zero
-  field, inside its own fraction field, is a finite module.  Mathlib has no
-  declaration for this.  `IsIntegralClosure.finite` requires the base to be
-  integrally closed already, which is exactly the hypothesis a normalization
-  argument cannot assume; the proof below routes around it by Noether
-  normalization to a polynomial ring, which *is* integrally closed, and then
-  descends finiteness along the finite extension.
-* `exists_height_one_minimal_prime` produces the zero divisor: in a Noetherian
-  domain, a nonzero nonunit has a minimal prime of height exactly one.  Krull's
-  principal ideal theorem gives `≤ 1` and nonvanishing gives `≥ 1`.
-* `isDiscreteValuationRing_localization_of_height_eq_one` is the DVR criterion.
-  It carries **no global dimension hypothesis**: the component may have
-  dimension greater than one, so the usual Dedekind-domain route is unavailable
-  and the argument goes through the local Krull-dimension bound and the
-  `IsDiscreteValuationRing` TFAE instead.
-* `height_le_height_under_of_isIntegral` and
-  `height_under_le_height_of_hasGoingDown` compare the height of a prime with
-  the height of its contraction along an integral extension, which is what
-  transports a height-one prime of the normalization back to the chart ring.
-
-All five are candidates for upstream contribution to Mathlib; nothing here is
-Stafford-specific.  The proofs are kept exactly as machine-verified, including
-the `haveI` style option, so that the checked artefact is not perturbed for
-cosmetics.
+In a Noetherian domain, a nonzero nonunit has a minimal prime of height one.
+For a Noetherian integrally closed domain, localization at a height-one prime
+is a discrete valuation ring, without any global dimension restriction.
+Contraction along an integral extension gives the height bound used to compare
+the normalization center with its affine-chart center.
 -/
 
 namespace Stafford38.Geometry.NormalizationHeightOne

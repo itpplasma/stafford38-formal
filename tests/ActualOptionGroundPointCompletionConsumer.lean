@@ -1,0 +1,6 @@
+import Stafford38.Geometry.ActualOptionGroundPointCompletion
+
+set_option autoImplicit false
+
+#check Stafford38.Geometry.ActualOptionGroundPointCompletion.exists_groundPoint_chart_from_option_map
+#print axioms Stafford38.Geometry.ActualOptionGroundPointCompletion.exists_groundPoint_chart_from_option_map

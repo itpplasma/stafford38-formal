@@ -1,4 +1,11 @@
-import Mathlib
+import Mathlib.Analysis.Complex.Basic
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Algebra.Polynomial.FieldDivision
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.Positivity
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.LinearCombination
 import Stafford38.EvolutionaryCertificate
 
 /-!

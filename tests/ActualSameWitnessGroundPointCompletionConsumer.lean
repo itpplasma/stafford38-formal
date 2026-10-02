@@ -1,0 +1,7 @@
+import Stafford38.Geometry.ActualSameWitnessGroundPointCompletion
+import Stafford38.Geometry.EtaleCotangentBasis
+
+-- The constructor supplies the chosen ground-point chart with no added chart hypothesis.
+#check Stafford38.Geometry.ActualSameWitnessGroundPointCompletion.actualSameWitnessGroundPointOutput
+#print axioms Stafford38.Geometry.ActualSameWitnessGroundPointCompletion.exists_actual_same_witness_groundpoint_chart
+#print axioms Stafford38.Geometry.EtaleCotangentBasis.coordinateDerivation_algebraMap

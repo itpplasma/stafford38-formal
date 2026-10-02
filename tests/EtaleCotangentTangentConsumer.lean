@@ -1,0 +1,25 @@
+import Stafford38.Geometry.EtaleDerivationExtension
+import Stafford38.Geometry.EtaleTangentChartSpan
+import Stafford38.Geometry.EtaleCotangentBasis
+import Stafford38.Geometry.EtaleTangentKernel
+
+#print axioms Stafford38.Geometry.EtaleCotangentBasis.basisOfFormallyEtale
+#print axioms Stafford38.Geometry.EtaleCotangentBasis.basisOfFormallyEtale_apply
+#print axioms Stafford38.Geometry.EtaleCotangentBasis.basisAfterPoint
+#print axioms Stafford38.Geometry.EtaleCotangentBasis.basisAfterPoint_apply
+#print axioms Stafford38.Geometry.EtaleCotangentBasis.coordinateDerivation
+#print axioms Stafford38.Geometry.EtaleCotangentBasis.coordinateDerivation_apply_parameter
+#print axioms Stafford38.Geometry.EtaleCotangentBasis.derivationFromValues_apply_parameter
+#print axioms Stafford38.Geometry.EtaleCotangentBasis.derivation_eq_from_parameter_values
+#print axioms Stafford38.Geometry.EtaleCotangentBasis.derivation_eq_sum_coordinateDerivations
+#print axioms Stafford38.Geometry.EtaleTangentKernel.derivation_eq_sum_pderiv
+#print axioms Stafford38.Geometry.EtaleTangentKernel.derivationVector_mem_zariskiTangentSpace_of_vanishes
+#print axioms Stafford38.Geometry.EtaleTangentKernel.chartDerivation_mem_zariskiTangentSpace
+
+#print axioms Stafford38.Geometry.EtaleTangentKernel.mkDerivation_vanishes_of_mem_zariskiTangentSpace
+
+#print axioms Stafford38.Geometry.EtaleTangentChartSpan.tangentVector_eq_sum_parameterDerivations
+
+#print axioms Stafford38.Geometry.EtaleDerivationExtension.extendDerivation
+
+#print axioms Stafford38.Geometry.EtaleDerivationExtension.extendDerivation_algebraMap

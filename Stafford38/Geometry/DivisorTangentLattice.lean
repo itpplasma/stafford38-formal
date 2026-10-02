@@ -1,4 +1,11 @@
-import Mathlib
+import Mathlib.RingTheory.Derivation.Basic
+import Mathlib.RingTheory.LocalRing.MaximalIdeal.Basic
+import Mathlib.RingTheory.Nakayama
+import Mathlib.RingTheory.Finiteness.Ideal
+import Mathlib.Tactic.FieldSimp
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.Module
+import Lean.Elab.Tactic.Omega
 
 /-!
 # The divisor-tangent lattice lemma
@@ -11,28 +18,19 @@ Suppose the homogeneous coordinates `Q₀, Q₁, Q j` lie in `V` with
 Q₀ = t^a * u,   Q₁ = t^(a+e) * w,   Q j₀ = 1,   a, e ≥ 1,   u a unit.
 ```
 
-The affine coordinates are `x j = Q j / Q₀` and `x₁ = Q₁ / Q₀`.  Let `W` be
+The affine coordinates are `x j = Q j / Q₀` and `x₁ = Q₁ / Q₀`. Let `W` be
 a finitely generated `V`-lattice in `Ω` containing `d t`, `d u`, `d w` and
 the `d (Q j)`; in the geometric application `W` is the image of `Ω_{V/k}`.
 The *visibility* hypothesis asks that `W` is spanned modulo `t W` by `d t`
-and the `d (Q j)`.  Under it,
-the differential `d x₁` is a combination of the `d (x j)` with coefficients
-in the maximal ideal of `V`:
+and the `d (Q j)`. Under it,
+`d x₁ = ∑ j, c j • d (x j)` with each `c j ∈ m_V`.
 
-```text
-d x₁ = ∑ j, c j • d (x j),      c j ∈ m_V.
-```
-
-This is the algebraic content of the asymptotic-conormal lemma: after
-completing `V` the covector `e₁ - ∑ c j e_j` has residue exactly the first
-axis, and it annihilates every tangent vector at the generic point because
-the identity holds in the module of differentials.  The proof is Nakayama's
-lemma applied to the lattice spanned by the scaled differentials
-`t^(a+1) u^2 • d (x j)`.
-
-No geometry enters here: the visibility hypothesis is an explicit statement
-about the derivation restricted to `V`, and producing a place that satisfies
-it is the remaining geometric input of lane C.
+After completing `V`, the covector `e₁ - ∑ c j e_j` has residue the first
+axis and annihilates generic tangent vectors. The proof is Nakayama's lemma
+applied to the lattice spanned by the scaled differentials
+`t^(a+1) u^2 • d (x j)`. This module proves the implication from explicit
+visibility data; the canonical and generic producers are
+`ExactDivisorialVisibleFrameExistence` and `GeneralDivisorialVisibleFrame`.
 -/
 
 namespace Stafford38.Geometry.DivisorTangentLattice

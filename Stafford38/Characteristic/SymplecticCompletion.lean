@@ -1,5 +1,6 @@
 import Stafford38.Weyl.Symplectic
 import Stafford38.Characteristic.HomogeneousChart
+import Stafford38.Characteristic.PaperSymplecticBasis
 
 /-!
 # Symplectic completion of a phase vector
@@ -233,16 +234,74 @@ theorem exists_symplectic_mulVec_eq {n : ℕ}
     {e v : PhaseVar n → k} (he : e ≠ 0) (hv : v ≠ 0) :
     ∃ M : Matrix (PhaseVar n) (PhaseVar n) k,
       M ∈ Matrix.symplecticGroup (Fin n) k ∧ Matrix.mulVec M e = v := by
-  by_cases hev : phasePairing k e v ≠ 0
-  · exact ⟨transvectionSending k e v, transvectionSending_mem k e v,
-      transvectionSending_mulVec k e v hev⟩
-  rcases exists_phasePairing_bridge k he hv with ⟨w, hew, hwv⟩
-  refine ⟨transvectionSending k w v * transvectionSending k e w, ?_, ?_⟩
-  · exact (Matrix.symplecticGroup (Fin n) k).mul_mem
-      (transvectionSending_mem k w v) (transvectionSending_mem k e w)
-  · rw [← Matrix.mulVec_mulVec]
-    rw [transvectionSending_mulVec k e w hew]
-    exact transvectionSending_mulVec k w v hwv
+  by_cases hn : n = 0
+  · subst n
+    letI : IsEmpty (PhaseVar 0) := inferInstance
+    have he0 : e = 0 := by funext i; exact isEmptyElim i
+    exact (he he0).elim
+  · let m := n - 1
+    have hn' : n = m + 1 := by dsimp [m]; omega
+    let B : LinearMap.BilinForm k (PhaseVar n → k) :=
+      { toFun := fun x =>
+          { toFun := fun y => phasePairing k x y
+            map_add' := phasePairing_add_right k x
+            map_smul' := by
+              intro c y
+              simpa [smul_eq_mul] using phasePairing_smul_right k c x y }
+        map_add' := by
+          intro x y
+          apply LinearMap.ext
+          intro z
+          exact phasePairing_add_left k x y z
+        map_smul' := by
+          intro c x
+          apply LinearMap.ext
+          intro z
+          simpa [smul_eq_mul] using phasePairing_smul_left k c x z }
+    have hAlt : ∀ x, B x x = 0 := by
+      intro x
+      exact phasePairing_self k x
+    have hB : B.Nondegenerate := by
+      constructor
+      · intro x hx
+        by_contra hxne
+        obtain ⟨z, hz⟩ := exists_phasePairing_right_ne_zero k hxne
+        exact hz (hx z)
+      · intro y hy
+        by_contra hyne
+        obtain ⟨z, hz⟩ := exists_phasePairing_left_ne_zero k hyne
+        exact hz (hy z)
+    have hdim : Module.finrank k (PhaseVar n → k) = 2 * (m + 1) := by
+      rw [Module.finrank_eq_card_basis (Pi.basisFun k (PhaseVar n))]
+      simp [hn']
+      ring
+    obtain ⟨g, hg, hge⟩ :=
+      Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_equiv_sending_nonzero
+        m B hAlt hB hdim e v he hv
+    let f : (PhaseVar n → k) →ₗ[k] PhaseVar n → k := g.toLinearMap
+    let M : Matrix (PhaseVar n) (PhaseVar n) k := LinearMap.toMatrix' f
+    have hcomp : B.comp f f = B := by
+      apply (LinearMap.BilinForm.ext_iff_basis (Pi.basisFun k (PhaseVar n))).2
+      intro i j
+      exact hg _ _
+    have hBmatrix : B.toMatrix' = standardForm k n := by
+      ext i j
+      rw [LinearMap.BilinForm.toMatrix'_apply]
+      change phasePairing k (Pi.single i 1) (Pi.single j 1) = _
+      have hsingle (i : PhaseVar n) : Pi.single i (1 : k) = phaseBasis k i := by
+        funext l
+        simp [Pi.single_apply, phaseBasis]
+      rw [hsingle, hsingle, phasePairing_basis]
+    have hmatrix := LinearMap.BilinForm.toMatrix'_comp B f f
+    have hM : Matrix.transpose M * standardForm k n * M = standardForm k n := by
+      calc
+        Matrix.transpose M * standardForm k n * M = (B.comp f f).toMatrix' := by
+          simpa [M, hBmatrix] using hmatrix.symm
+        _ = standardForm k n := by rw [hcomp, hBmatrix]
+    refine ⟨M, SymplecticGroup.mem_iff'.2 hM, ?_⟩
+    calc
+      Matrix.mulVec M e = f e := by simpa [M] using LinearMap.toMatrix'_mulVec f e
+      _ = v := hge
 
 theorem exists_symplectic_column_eq {n : ℕ} (t : PhaseVar n)
     {v : PhaseVar n → k} (hv : v ≠ 0) :

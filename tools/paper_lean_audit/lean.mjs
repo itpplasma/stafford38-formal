@@ -3,7 +3,14 @@
 // statement (docstring and signature, without the proof body).
 import { escapeHtml } from './texhtml.mjs';
 
-const DECL_RE = /^\s*(?:@\[[^\]]*\]\s*)*(?:(?:private|protected|noncomputable|nonrec|partial|unsafe|scoped|local)\s+)*(theorem|lemma|def|abbrev|structure|class|instance|inductive|opaque|axiom)\s+([^\s:({\[]+)/;
+const DECL_RE = /^\s*(?:@\[[^\]]*\]\s*)*(?:(?:private|public|meta|protected|noncomputable|nonrec|partial|unsafe|scoped|local)\s+)*(theorem|lemma|def|abbrev|structure|class|instance|inductive|opaque|axiom)\s+([^\s:({\[]+)/;
+const SCOPE_RE = /^\s*(?:@\[[^\]]*\]\s*)*((?:(?:public|noncomputable|meta)\s+)*)(namespace|section)(?:\s+(\S+))?\s*$/;
+
+// The dot before an explicit universe binder (`name.{u}`) is syntax,
+// rather than part of the declaration's exported name.
+function declarationName(match) {
+  return match[2].replace(/\.$/, '');
+}
 
 // Replace comments and string contents with spaces while preserving newlines
 // and offsets. Lean block comments nest, and declaration-looking text in a
@@ -43,15 +50,24 @@ function maskLeanCommentsAndStrings(text) {
   return out.join('');
 }
 
-export function namespaceAt(lines, index) {
+function scopeAt(lines, index) {
   const stack = [];
+  let defaultVisibility = 'public';
   const codeLines = maskLeanCommentsAndStrings(lines.join('\n')).split('\n');
   for (let i = 0; i < index; i++) {
     const line = codeLines[i];
-    let m = /^\s*namespace\s+(\S+)/.exec(line);
-    if (m) { stack.push(...m[1].split('.').map((part) => ({ part, kind: 'ns', group: m[1] }))); continue; }
-    m = /^\s*(?:noncomputable\s+)?section(?:\s+(\S+))?\s*$/.exec(line);
-    if (m) { stack.push({ part: null, kind: 'sec', group: m[1] ?? '' }); continue; }
+    if (/^\s*module\s*$/.test(line)) { defaultVisibility = 'private'; continue; }
+    let m = SCOPE_RE.exec(line);
+    if (m) {
+      const visibility = /\bpublic\b/.test(m[1]) ? 'public'
+        : stack.at(-1)?.visibility ?? defaultVisibility;
+      if (m[2] === 'namespace' && m[3]) {
+        stack.push(...m[3].split('.').map((part) => ({ part, kind: 'ns', group: m[3], visibility })));
+      } else if (m[2] === 'section') {
+        stack.push({ part: null, kind: 'sec', group: m[3] ?? '', visibility });
+      }
+      continue;
+    }
     m = /^\s*end(?:\s+(\S+))?\s*$/.exec(line);
     if (m) {
       const name = m[1] ?? '';
@@ -72,7 +88,14 @@ export function namespaceAt(lines, index) {
       }
     }
   }
-  return stack.filter((f) => f.kind === 'ns').map((f) => f.part);
+  return {
+    namespace: stack.filter((f) => f.kind === 'ns').map((f) => f.part),
+    visibility: stack.at(-1)?.visibility ?? defaultVisibility,
+  };
+}
+
+export function namespaceAt(lines, index) {
+  return scopeAt(lines, index).namespace;
 }
 
 export function findDeclaration(text, fullName, hintLine) {
@@ -83,13 +106,15 @@ export function findDeclaration(text, fullName, hintLine) {
   codeLines.forEach((line, i) => {
     const m = DECL_RE.exec(line);
     if (!m) return;
-    const declared = m[2].replace(/^_root_\./, '');
+    const declared = declarationName(m).replace(/^_root_\./, '');
     if (declared === short || fullName.endsWith('.' + declared) || declared === fullName) {
-      const ns = namespaceAt(lines, i);
-      const qualified = m[2].startsWith('_root_.') ? declared : [...ns, declared].join('.');
+      const scope = scopeAt(lines, i);
+      const ns = scope.namespace;
+      const qualified = declarationName(m).startsWith('_root_.') ? declared : [...ns, declared].join('.');
       const modifierText = m[0].slice(0, m[0].indexOf(m[1]));
       const visibility = /\bprivate\b/.test(modifierText) ? 'private'
-        : /\blocal\b/.test(modifierText) ? 'local' : 'public';
+        : /\blocal\b/.test(modifierText) ? 'local'
+        : /\bpublic\b/.test(modifierText) ? 'public' : scope.visibility;
       candidates.push({ line: i + 1, qualified, keyword: m[1], visibility, exported: visibility === 'public' });
     }
   });
@@ -118,7 +143,7 @@ export function extractStatement(lines, declLine, maxLines = 45, withBody = fals
   let start = declLine - 1;
   // Include a directly preceding docstring and attributes.
   let k = start - 1;
-  while (k >= 0 && /^\s*@\[/.test(lines[k])) k--;
+  while (k >= 0 && /^\s*(?:@\[[^\]]*\]\s*)+$/.test(lines[k])) k--;
   if (k >= 0 && /-\/\s*$/.test(lines[k])) {
     let d = k;
     while (d >= 0 && !/^\s*\/--/.test(lines[d])) d--;
@@ -135,7 +160,7 @@ export function extractStatement(lines, declLine, maxLines = 45, withBody = fals
     const line = lines[i];
     const codeLine = codeLines[i];
     if (out.length >= maxLines) { truncated = true; break; }
-    if (i > declLine - 1 && (DECL_RE.test(codeLine) || /^\s*(?:end|namespace|section|variable|open|#check|#print)\b/.test(codeLine))) break;
+    if (i > declLine - 1 && (DECL_RE.test(codeLine) || SCOPE_RE.test(codeLine) || /^\s*(?:end|variable|open|#check|#print)\b/.test(codeLine))) break;
     if (inBody) {
       // Blank lines inside a definition do not terminate it. Look past blank
       // lines/comments for the next command, rather than dropping later fields.
@@ -143,7 +168,7 @@ export function extractStatement(lines, declLine, maxLines = 45, withBody = fals
         let next = i + 1;
         while (next < lines.length && /^\s*$/.test(codeLines[next])) next++;
         if (next === lines.length || DECL_RE.test(codeLines[next]) ||
-            (/^\s*(?:end|namespace|section|variable|open|#\w+)\b/.test(codeLines[next])) ||
+            SCOPE_RE.test(codeLines[next]) || (/^\s*(?:end|variable|open|#\w+)\b/.test(codeLines[next])) ||
             (/^\s*/.exec(codeLines[next])[0].length <= declarationIndent && !/^\s*\|/.test(codeLines[next]))) break;
       }
       if (/:=\s*by\b/.test(codeLine)) { truncated = true; break; }
@@ -176,8 +201,8 @@ export function declarationContext(lines, declLine) {
   const scopes = [{ name: null, declarations: [] }];
   for (let i = 0; i < declLine - 1; i++) {
     const line = code[i];
-    let m = /^\s*(?:namespace\s+(\S+)|(?:noncomputable\s+)?section(?:\s+(\S+))?)\s*$/.exec(line);
-    if (m) { scopes.push({ name: m[1] ?? m[2] ?? '', declarations: [] }); continue; }
+    let m = SCOPE_RE.exec(line);
+    if (m) { scopes.push({ name: m[3] ?? '', declarations: [] }); continue; }
     m = /^\s*end(?:\s+(\S+))?\s*$/.exec(line);
     if (m && scopes.length > 1) {
       let at = scopes.length - 1;
@@ -235,7 +260,7 @@ export function declarationTrust(lines, declLine, keyword) {
   if (keyword === 'axiom') return 'axiom';
   const code = maskLeanCommentsAndStrings(lines.join('\n')).split('\n');
   let end = declLine;
-  while (end < code.length && !DECL_RE.test(code[end]) && !/^\s*(?:end|namespace|section|#\w+)\b/.test(code[end])) end++;
+  while (end < code.length && !DECL_RE.test(code[end]) && !SCOPE_RE.test(code[end]) && !/^\s*(?:end|#\w+)\b/.test(code[end])) end++;
   return /\b(?:sorry|admit)\b/.test(code.slice(declLine - 1, end).join('\n')) ? 'placeholder' : 'source declaration';
 }
 
@@ -264,14 +289,17 @@ export function definitionNames(text) {
   return maskLeanCommentsAndStrings(text).split('\n').flatMap((line, i) => {
     const m = DECL_RE.exec(line);
     if (!m || !['def', 'abbrev'].includes(m[1]) || /\b(?:private|local)\b/.test(m[0])) return [];
-    const name = m[2].startsWith('_root_.') ? m[2].slice(7) : [...namespaceAt(lines, i), m[2]].join('.');
+    const scope = scopeAt(lines, i);
+    if (scope.visibility !== 'public' && !/\bpublic\b/.test(m[0])) return [];
+    const declared = declarationName(m);
+    const name = declared.startsWith('_root_.') ? declared.slice(7) : [...scope.namespace, declared].join('.');
     return [{ name, line: i + 1 }];
   });
 }
 
 const KEYWORDS = new Set(['theorem', 'lemma', 'def', 'abbrev', 'structure', 'class', 'instance', 'inductive', 'where',
   'fun', 'by', 'let', 'have', 'show', 'from', 'if', 'then', 'else', 'match', 'with', 'noncomputable', 'private',
-  'protected', 'variable', 'namespace', 'section', 'end', 'open', 'Type', 'Prop', 'Sort', 'extends', 'in', 'at']);
+  'protected', 'public', 'meta', 'module', 'variable', 'namespace', 'section', 'end', 'open', 'Type', 'Prop', 'Sort', 'extends', 'in', 'at']);
 
 export function highlightLean(src, identifierLink = () => null) {
   let out = '';

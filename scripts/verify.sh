@@ -158,11 +158,7 @@ challenge_holes = re.findall(r"\b(?:sorry|admit)\b", challenge_code)
 if challenge_holes != ["sorry"]:
     raise SystemExit("Challenge.lean must contain exactly one deliberate sorry and no admit")
 imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", challenge_code)
-expected_imports = [
-    "Mathlib.Algebra.RingQuot",
-    "Mathlib.Algebra.FreeAlgebra",
-    "Mathlib.LinearAlgebra.SymplecticGroup",
-]
+expected_imports = ["Stafford38.ChallengeDefinitions"]
 if imports != expected_imports:
     raise SystemExit(f"unexpected Challenge imports: {imports!r}")
 
@@ -173,14 +169,31 @@ strong_code = code_without_comments_or_strings(strong_challenge.read_text(encodi
 if re.findall(r"\b(?:sorry|admit)\b", strong_code) != ["sorry"]:
     raise SystemExit("FixedSourceChallenge.lean must contain exactly one deliberate sorry and no admit")
 strong_imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", strong_code)
-expected_strong_imports = [
+expected_strong_imports = expected_imports
+if strong_imports != expected_strong_imports:
+    raise SystemExit(f"unexpected FixedSourceChallenge imports: {strong_imports!r}")
+
+# Both comparison inputs share this one definition owner. Its exact direct
+# imports and the loaded-environment scans below keep the owner Mathlib-only;
+# the source audit includes it and rejects any proof placeholder or axiom.
+owner_code = code_without_comments_or_strings(
+    Path("Stafford38/ChallengeDefinitions.lean").read_text(encoding="utf-8"))
+owner_imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", owner_code)
+expected_owner_imports = [
     "Mathlib.Algebra.RingQuot",
     "Mathlib.Algebra.FreeAlgebra",
     "Mathlib.LinearAlgebra.SymplecticGroup",
     "Mathlib.Order.Lattice.Nat",
 ]
-if strong_imports != expected_strong_imports:
-    raise SystemExit(f"unexpected FixedSourceChallenge imports: {strong_imports!r}")
+if owner_imports != expected_owner_imports:
+    raise SystemExit(f"unexpected challenge definition owner imports: {owner_imports!r}")
+
+# The two intentional theorem placeholders are permitted, but neither
+# comparison input may introduce an additional project axiom.
+for label, code in (("Challenge.lean", challenge_code),
+                    ("FixedSourceChallenge.lean", strong_code)):
+    if re.search(r"(?m)^\s*axiom\s+", code):
+        raise SystemExit(f"project axiom declaration in {label}")
 
 # Neither Solution may import either Challenge, at source level; the loaded
 # environment audit below repeats this for the transitive closure.

@@ -1,15 +1,16 @@
 import Stafford38.Characteristic.LinearAction
 import Mathlib.RingTheory.MvPolynomial.Homogeneous
+import Mathlib.Algebra.MvPolynomial.Monad
+import Mathlib.Algebra.CharZero.Infinite
 
 /-!
-# Homogeneous symbols and prospective monic charts
+# Homogeneous symbols and nonzero chart columns
 
 Over a characteristic-zero field, a nonzero homogeneous phase-space symbol
-has a nonvanishing point over the original field. Linear substitution evaluates
-the transformed symbol along a coordinate axis at the corresponding matrix
-column. Axis restriction to one variable identifies this value with the exact
-pure-power coefficient. The remaining chart-existence obligation is to place
-the chosen nonzero vector into a prescribed column of a symplectic matrix.
+has a nonvanishing point over the original field. Linear substitution
+identifies evaluation along a chosen matrix column with the corresponding
+pure-power coefficient. `SymplecticCompletion` constructs a symplectic matrix
+with the required nonzero vector in that column.
 -/
 
 namespace Stafford38.CharacteristicHomogeneousChart

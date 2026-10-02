@@ -1,4 +1,3 @@
-import Mathlib
 import Stafford38.Geometry.DivisorTangentLattice
 import Stafford38.Geometry.KaehlerSpanSeparableAdjoin
 

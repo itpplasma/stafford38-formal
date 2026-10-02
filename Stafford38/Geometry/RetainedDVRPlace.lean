@@ -2,6 +2,7 @@ import Stafford38.Geometry.RelativeFractionFieldTransport
 import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
 import Mathlib.RingTheory.Polynomial.Quotient
 import Mathlib.RingTheory.Trace.Quotient
+import Mathlib.RingTheory.Finiteness.Quotient
 
 /-!
 # A retained source-DVR place

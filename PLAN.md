@@ -1,19 +1,16 @@
-# Stafford38 formalization status
+# Stafford 3.8 formalization status
 
 ```yaml
 terminal_claim: Stafford Conjecture 3.8 and fixed-source strengthening
-phase_i_status: done
-phase_ii_status: done at verified source f6915782
-paper_status: complete
-formal_status: terminal theorem and documented corollaries verified
-open_theorem_holes: []
-public_release: v1.2.0 authorized by the author
-active_task: human manuscript and correspondence review; release v1.2.0 and archive verification complete
+terminal_proof: complete at named verified source checkpoints
+paper_correspondence: open; same-witness assembly into original-prime endpoint remains unverified
+current_alignment_checkpoint: docs/audits/paper-route-checkpoints/actual-orders-chart-source-checkpoint.json
+historical_release: v1.2.3 is a release of the unchanged challenge
+new_full_correspondence_release: not recorded
+active_work: derive a green same-witness closure and original-prime endpoint from the checked chart, parameter, order, completion, and single-tilt outputs
+handover: not ready
 ```
 
-The README, `docs/proof-guide.md`, `docs/proof-graph.yaml`, and
-`docs/verification-results.json` contain the detailed architecture and
-evidence. The author requested the manuscript cyclicity and noncharacteristic
-corollaries, complete cross-links, a verifier replay and an archived release.
-The main theorem is complete; these additions retain the pinned dependencies.
-Release/documentation checks and mathematical verification are recorded separately.
+A proved terminal theorem does not establish correspondence of every intermediate manuscript argument. The preserved author proof remains visible; local mathematical proposals remain marked for review. New formal bridges must derive their geometric inputs from the retained witness rather than assume them in a terminal wrapper.
+
+The README and `docs/paper-route-alignment.json` summarize the proof route and the current scoped evidence. Historical release and audit receipts remain tied to their named sources and configurations.

@@ -363,7 +363,9 @@ theorem exactDivisorialVisibleFrameExistence :
     normalizedComponentProjectivePoint_zero_nonunit
       (canonicalRightIdeal (presentedCoordinate k n) d N) i hdisjoint P hBP
       W q scale hq
-  have halg := halgAll scale q hq ⟨chart, hchart⟩ hq0nonunit
+  have halg := halgAll scale q
+    (by simpa only [componentProjectivePoint_eq_finCases] using hq)
+    ⟨chart, hchart⟩ hq0nonunit
   have hchart_ne : chart ≠ 0 := by
     intro hzero
     apply hq0nonunit

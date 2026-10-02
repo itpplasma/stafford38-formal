@@ -1,5 +1,9 @@
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.Kaehler.Basic
+import Mathlib.RingTheory.Valuation.LocalSubring
+import Mathlib.RingTheory.Valuation.ValuationSubring
 import Stafford38.Geometry.NormalizationHeightOne
-import Mathlib
 
 /-!
 # Divisorial visible-frame construction core

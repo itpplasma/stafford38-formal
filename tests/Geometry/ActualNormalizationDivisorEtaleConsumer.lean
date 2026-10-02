@@ -1,0 +1,3 @@
+import Stafford38.Geometry.ActualNormalizationDivisorEtale
+#print axioms Stafford38.Geometry.ActualNormalizationDivisorEtale.formallyEtale_at_actual_normalization_center_of_specified_parameter
+#print axioms Stafford38.Geometry.ActualNormalizationDivisorEtale.formallyEtale_at_actual_normalization_center

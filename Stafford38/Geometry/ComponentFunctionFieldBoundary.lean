@@ -3,6 +3,7 @@ import Stafford38.Geometry.AffineComponentCoordinateSplit
 import Stafford38.Geometry.ProjectiveValuationNormalization
 import Stafford38.Geometry.RelativeFractionFieldTransport
 import Stafford38.Geometry.RelativeRetainedBoundaryPlace
+import Stafford38.Geometry.ProjectiveChartCoordinates
 
 /-!
 # Discrete boundary places for affine components
@@ -22,6 +23,7 @@ open Stafford38.Geometry.ProjectiveValuationNormalization
 open Stafford38.Geometry.RelativeFractionFieldTransport
 open Stafford38.Geometry.RelativeCoefficientDVR
 open Stafford38.Geometry.RelativeRetainedBoundaryPlace
+open Stafford38.Geometry.ProjectiveChartCoordinates
 
 noncomputable section
 
@@ -43,10 +45,16 @@ theorem componentFunctionField_fg
     (FractionRing (MvPolynomial (Fin m) k ⧸ P.asIdeal))
 
 /-- The affine component point in homogeneous coordinates. -/
-def componentProjectivePoint
+abbrev componentProjectivePoint
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) :
-    Fin (m + 1) → FractionRing (MvPolynomial (Fin m) k ⧸ P.asIdeal) :=
-  Fin.cases 1 fun i ↦ componentCoordinate P i
+  Fin (m + 1) → FractionRing (MvPolynomial (Fin m) k ⧸ P.asIdeal) :=
+  insertProjectiveChart (0 : Fin (m + 1)) (zerothChartEquiv (m := m))
+    (fun i ↦ componentCoordinate P i)
+
+@[simp] theorem componentProjectivePoint_eq_finCases
+    (P : PrimeSpectrum (MvPolynomial (Fin m) k)) :
+    componentProjectivePoint P = Fin.cases 1 (fun i ↦ componentCoordinate P i) :=
+  insertProjectiveChart_zero _
 
 /-- The stronger retained form preserves the actual coordinate-local algebra
 map required by the completed-DVR machinery. -/

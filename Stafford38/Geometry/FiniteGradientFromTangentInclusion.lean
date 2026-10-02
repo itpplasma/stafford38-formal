@@ -2,22 +2,13 @@ import Stafford38.Geometry.FiniteGradientBoundaryProducer
 import Stafford38.Geometry.ProjectiveTangentInclusion
 
 /-!
-# Extracting a finite gradient certificate from tangent inclusion
+# Finite-gradient extraction from affine conormal membership
 
-The formal-divisor construction already produces a projective power-series
-arc and a row annihilating its explicit tangent columns.  The remaining local
-commutative-algebra condition is that the equation-defined Zariski tangent
-space at the dehomogenized Laurent point be contained in the span of those
-columns.  Under exactly that condition, finite-dimensional annihilator
-duality places the affine tail of the row in the span of equation
-differentials.  A finitely supported expansion can then be reindexed by a
-finite type, producing the finite-gradient boundary certificate used by the
-canonical asymptotic consumer.
-
-Thus no separate finite-generation theorem for the ideal is needed.  The
-global normalization argument has only to establish the displayed tangent
-inclusion for the completed boundary chart (and separately handle any
-residue-field transport).
+This file converts equation-conormal membership at a Laurent point into a
+finite gradient identity and boundary certificate. The actual
+retained-witness route constructs the one-row datum in
+`PaperActualWitnessConormalData`; this module is the reusable extraction
+lemma and does not construct a chart or boundary place.
 -/
 
 namespace Stafford38.Geometry.FiniteGradientFromTangentInclusion

@@ -139,6 +139,8 @@ test('browser review state is revision-safe, attributable, and importable withou
       await page.locator('#import').setInputFiles({
         name: 'broken.json', mimeType: 'application/json', buffer: Buffer.from('{ broken'),
       });
+      await page.waitForFunction(() =>
+        /Import failed: invalid JSON/.test(document.getElementById('review-status').textContent));
       assert.match(await page.locator('#review-status').textContent(), /Import failed: invalid JSON/);
       assert.equal(await page.locator('#reviewer').inputValue(), 'Alice');
       assert.equal(await page.locator('[data-item="item-one"]').evaluate((el) => el.classList.contains('complete')), true);
@@ -154,6 +156,8 @@ test('browser review state is revision-safe, attributable, and importable withou
       await page.locator('#import').setInputFiles({
         name: 'malformed.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(malformed)),
       });
+      await page.waitForFunction(() =>
+        /Review items must be an object/.test(document.getElementById('review-status').textContent));
       assert.match(await page.locator('#review-status').textContent(), /Review items must be an object/);
       assert.equal(await page.locator('#reviewer').inputValue(), 'Alice');
       assert.deepEqual(pageErrors, []);

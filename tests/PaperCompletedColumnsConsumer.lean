@@ -1,0 +1,10 @@
+import Stafford38.Geometry.PaperCompletedResidueDerivationFrame
+import Stafford38.Geometry.PaperRetainedChartAssembly
+
+-- Kernel and axiom audits of the actual-column interfaces.
+-- These checks do not certify the still-pending full paper correspondence.
+#print axioms Stafford38.Geometry.PaperCompletedResidueDerivationFrame.exists_completed_derivation_frame_of_residue_coordinates
+#print axioms Stafford38.Geometry.PaperCompletedResidueDerivationFrame.exists_projective_derivation_frame_of_residue_coordinates
+#print axioms Stafford38.Geometry.PaperRetainedChartAssembly.exists_retained_projective_derivation_columns
+#print axioms Stafford38.Geometry.PaperRetainedChartAssembly.component_equations_vanish_after_point_transport
+#print axioms Stafford38.Geometry.PaperRetainedChartAssembly.component_generic_kernel_after_point_transport

@@ -1,6 +1,4 @@
-import Mathlib.Algebra.RingQuot
-import Mathlib.Algebra.FreeAlgebra
-import Mathlib.LinearAlgebra.SymplecticGroup
+import Stafford38.ChallengeDefinitions
 
 /-!
 # Stafford's Conjecture 3.8
@@ -23,46 +21,12 @@ that hypothesis. This file states the intended nonzero form, for every
 characteristic-zero field and every rank `n ≥ 0`. For `n = 0` the Weyl algebra
 is the field itself and a nonzero `d` is a unit.
 
-The statement below uses only Mathlib: the Weyl algebra is the free
-associative `k`-algebra on `2n` generators modulo the commutator relations
-given by Mathlib's standard symplectic matrix `Matrix.J`. The compared theorem
-is `universalStatement`; its `sorry` is the deliberate hole filled by
-`Solution.lean`.
+The presentation and statement are owned by the Mathlib-only
+`Stafford38.ChallengeDefinitions` module, also used directly by `Solution.lean`.
+This file contains the deliberate placeholder filled by the solution.
 -/
 
 namespace Stafford38Challenge
-
-/-- Index type of the `2n` generators of the Weyl algebra. The left summand
-`Sum.inl i` indexes the coordinate `xᵢ`, the right summand `Sum.inr i` the
-momentum `∂ᵢ`. -/
-abbrev PhaseVar (n : ℕ) := Fin n ⊕ Fin n
-
-/-- The defining relations of the Weyl algebra, as a relation on the free
-algebra: for every pair of generators `i, j`, the commutator
-`ι i * ι j - ι j * ι i` is identified with the scalar `omega i j`. With
-`omega = Matrix.J`, which is `fromBlocks 0 (-1) 1 0`, this gives
-`∂ᵢ xⱼ - xⱼ ∂ᵢ = δᵢⱼ` and makes any two coordinates and any two momenta
-commute. -/
-def relation {k : Type*} [Field k] {n : ℕ}
-    (omega : Matrix (PhaseVar n) (PhaseVar n) k)
-    (a b : FreeAlgebra k (PhaseVar n)) : Prop :=
-  ∃ i j,
-    a = FreeAlgebra.ι k i * FreeAlgebra.ι k j -
-      FreeAlgebra.ι k j * FreeAlgebra.ι k i ∧
-    b = algebraMap k (FreeAlgebra k (PhaseVar n)) (omega i j)
-
-/-- The `n`th Weyl algebra `Aₙ(k)`: the free associative unital `k`-algebra on
-`PhaseVar n` modulo the relations `relation (Matrix.J (Fin n) k)`. -/
-abbrev WeylAlg (k : Type*) [Field k] (n : ℕ) :=
-  RingQuot (relation (k := k) (n := n) (Matrix.J (Fin n) k))
-
-/-- Stafford's Conjecture 3.8 in its intended nonzero form: for every field
-`k` of characteristic zero, every `n`, and every nonzero `d ∈ Aₙ(k)`, there are
-`F, R, S ∈ Aₙ(k)` with `1 = d * R + F * d * S`. Multiplication is the algebra
-product, so the written order of the factors is Stafford's. -/
-def UniversalStatement : Prop :=
-  ∀ (k : Type*) [Field k] [CharZero k] (n : ℕ) (d : WeylAlg k n),
-    d ≠ 0 → ∃ F R S : WeylAlg k n, (1 : WeylAlg k n) = d * R + F * d * S
 
 /-- The compared theorem. The proof is supplied by `Solution.lean`. -/
 theorem universalStatement : UniversalStatement := by

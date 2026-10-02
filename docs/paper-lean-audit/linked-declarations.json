@@ -1,14 +1,11 @@
 {
   "schema_version": 1,
-  "paper_commit": "093527797b85f4547e7a5be03556fa9725b6077c",
-  "formal_source_commit": "7baaeddc6f54b9760b0255f4f8115c37f6486a5d",
+  "paper_commit": "bd913a381b714fd8f909159a33fe845b5373ba0f",
+  "paper_worktree_patch_sha256": "22d88fcf3df0551faa703500f572fd7e46fd9cca82d035e8ad8f982ae476da32",
+  "formal_source_commit": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
+  "source_scope": "Manuscript names at the frozen base and patch digest; the formal base is provenance, not a claim that uncommitted additions occur in that commit. Verifier input receipts freeze the actual Lean worktree.",
   "library_commit": "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8",
   "declarations": [
-    {
-      "repo": "formal",
-      "file": "Challenge.lean",
-      "name": "Stafford38Challenge.UniversalStatement"
-    },
     {
       "repo": "formal",
       "file": "CorollaryChallenge.lean",
@@ -16,7 +13,12 @@
     },
     {
       "repo": "formal",
-      "file": "FixedSourceChallenge.lean",
+      "file": "Stafford38/ChallengeDefinitions.lean",
+      "name": "Stafford38Challenge.UniversalStatement"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/ChallengeDefinitions.lean",
       "name": "Stafford38FixedSourceChallenge.UniversalFixedSourceStatement"
     },
     {
@@ -136,6 +138,21 @@
     },
     {
       "repo": "formal",
+      "file": "Stafford38/Characteristic/PaperLocalizedInvolutivity.lean",
+      "name": "Stafford38.Characteristic.PaperLocalizedInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive_viaLocalization"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Characteristic/PaperSymplecticBasis.lean",
+      "name": "Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Characteristic/PaperSymplecticBasis.lean",
+      "name": "Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis_with_pair"
+    },
+    {
+      "repo": "formal",
       "file": "Stafford38/Characteristic/Polynomial.lean",
       "name": "Stafford38.Characteristic.SymbolRing"
     },
@@ -148,11 +165,6 @@
       "repo": "formal",
       "file": "Stafford38/Characteristic/PostScalarExtensionPoisson.lean",
       "name": "Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive"
-    },
-    {
-      "repo": "formal",
-      "file": "Stafford38/Characteristic/RadicalMinimalPrimeInvolutivity.lean",
-      "name": "Stafford38.Characteristic.RadicalMinimalPrimeInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive"
     },
     {
       "repo": "formal",
@@ -246,6 +258,11 @@
     },
     {
       "repo": "formal",
+      "file": "Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean",
+      "name": "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance"
+    },
+    {
+      "repo": "formal",
       "file": "Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean",
       "name": "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic"
     },
@@ -276,8 +293,18 @@
     },
     {
       "repo": "formal",
+      "file": "Stafford38/Geometry/GeneralConormalAxis.lean",
+      "name": "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental"
+    },
+    {
+      "repo": "formal",
       "file": "Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean",
       "name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameExistence"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean",
+      "name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameWithResidueAlgebraicity"
     },
     {
       "repo": "formal",
@@ -293,6 +320,16 @@
       "repo": "formal",
       "file": "Stafford38/Geometry/LaurentConormalDirection.lean",
       "name": "Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Geometry/PaperActualWitnessConormalData.lean",
+      "name": "Stafford38.Geometry.PaperActualWitnessConormalData.exists_regularizedOneRowConormalData_of_actual_witness"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Geometry/PaperSameWitnessTangentDimension.lean",
+      "name": "Stafford38.Geometry.PaperSameWitnessTangentDimension.tangent_finrank_le_residue_add_one_of_witness"
     },
     {
       "repo": "formal",
@@ -363,11 +400,6 @@
       "repo": "formal",
       "file": "Stafford38/TorsionCyclicity.lean",
       "name": "Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair"
-    },
-    {
-      "repo": "formal",
-      "file": "Stafford38/TorsionCyclicity.lean",
-      "name": "Stafford38.TorsionCyclicity.span_adjusted_pair_eq_span_pair"
     },
     {
       "repo": "formal",
@@ -481,6 +513,11 @@
     },
     {
       "repo": "formal",
+      "file": "Stafford38/Weyl/PaperRightMonic.lean",
+      "name": "Stafford38.WeylPaperRightMonic.presentedOuter_right_monic_decomposition"
+    },
+    {
+      "repo": "formal",
       "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
       "name": "Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_map_orderInitialIdeal_le"
     },
@@ -524,5 +561,9 @@
       "file": "AlgebraicAnalysis/Module/UniformBoundaryVanishing.lean",
       "name": "AlgebraicAnalysis.exists_uniform_subsingleton_localized"
     }
+  ],
+  "paper_files": [
+    "human_readable_main.tex",
+    "lean_proof_details.tex"
   ]
 }

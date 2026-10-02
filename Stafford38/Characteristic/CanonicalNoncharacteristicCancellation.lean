@@ -2,19 +2,14 @@ import Stafford38.Characteristic.AssociatedGradedModule
 import Stafford38.Characteristic.CanonicalAxisAvoidanceConsumer
 
 /-!
-# The exact strictness interface for canonical noncharacteristic cancellation
+# Coordinate-cancellation criteria on the associated graded
 
-For the canonical filtered Weyl quotient, the previously isolated
-`CoordinateCancellation` condition is not an additional mysterious property:
-it is exactly injectivity of the distinguished coordinate on every actual
-order-associated-graded piece.  This file proves that equivalence and gives a
-commutative saturation criterion which is sufficient for it.
-
-The remaining implication is the load-bearing noncharacteristic theorem:
-`IsPBWMonicAt` must force the displayed coordinate action to be injective (or,
-equivalently, force saturation of the canonical order initial ideal by the
-coordinate).  Monicity and unrestricted surjectivity alone do not prove that
-strictness statement; no such implication is assumed here.
+For the canonical filtered Weyl quotient, this file identifies
+`CoordinateCancellation` with injectivity of the distinguished coordinate on
+every actual order-associated-graded piece. It also proves a sufficient
+initial-ideal saturation criterion. The unconditional support exclusion used
+by `FoundationClosure` is proved by
+`CanonicalKoszulContradiction.canonical_support_avoidance`.
 -/
 
 namespace Stafford38.CanonicalNoncharacteristicCancellation

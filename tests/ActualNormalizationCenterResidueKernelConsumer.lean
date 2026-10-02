@@ -1,0 +1,3 @@
+import Stafford38.Geometry.ActualNormalizationCenterResidueKernel
+
+#print axioms Stafford38.Geometry.ActualNormalizationCenterResidueKernel.residue_kernel_eq_canonical_center_comap

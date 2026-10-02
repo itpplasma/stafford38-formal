@@ -1,0 +1,3 @@
+import Stafford38.Geometry.ActualChartCenterNonzero
+
+#print axioms Stafford38.Geometry.ActualChartCenterNonzero.actual_chart_normalization_center_ne_bot

@@ -12,6 +12,26 @@ export function escapeHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+// KaTeX positions `\\tag` inside its full-width display box. A long formula can
+// therefore run underneath the tag even when the surrounding display scrolls.
+// Move KaTeX's rendered tag node into a sibling so the formula can scroll alone.
+function detachKaTeXTag(html) {
+  const markerAt = html.indexOf('class="katex-tag"');
+  if (markerAt < 0) return null;
+  const start = html.lastIndexOf('<span', markerAt);
+  if (start < 0) return null;
+  const spanToken = /<\/?span\b[^>]*>/g;
+  spanToken.lastIndex = start;
+  let depth = 0;
+  for (let match; (match = spanToken.exec(html));) {
+    depth += match[0].startsWith('</') ? -1 : 1;
+    if (depth === 0) {
+      return { formula: html.slice(0, start) + html.slice(spanToken.lastIndex), tag: html.slice(start, spanToken.lastIndex) };
+    }
+  }
+  return null;
+}
+
 export function stripComments(tex) {
   return tex.split('\n').map((line) => {
     for (let i = 0; i < line.length; i++) {
@@ -138,7 +158,13 @@ export class TexRenderer {
     const finalTag = explicitTag ?? tag;
     if (finalTag && display) body = `${body}\\tag{${finalTag}}`;
     try {
-      return katex.renderToString(body, { displayMode: display, throwOnError: true, macros: { ...this.macros }, strict: 'ignore', trust: false });
+      const html = katex.renderToString(body, { displayMode: display, throwOnError: true, macros: { ...this.macros }, strict: 'ignore', trust: false });
+      if (finalTag && display) {
+        const split = detachKaTeXTag(html);
+        if (!split) throw new Error('KaTeX did not emit a separable equation tag');
+        return `<div class="dmath-layout"><div class="dmath-formula" title="Scroll horizontally to see the entire formula">${split.formula}</div><span class="dmath-tag" aria-hidden="true">${split.tag}</span></div>`;
+      }
+      return html;
     } catch (e) {
       this.warnings.push(`KaTeX: ${e.message.split('\n')[0]} in: ${src.slice(0, 80)}`);
       return `<code class="tex-error">${escapeHtml(src)}</code>`;
@@ -344,6 +370,7 @@ export class TexRenderer {
           case 'section': case 'section*': case 'subsection': case 'subsection*':
             { const a = readArg(); out += `<h5 class="tex-sec">${this.text(a.content, a.base)}</h5>`; i = j; continue; }
           case 'item': out += '<br>• '; i = j; continue;
+          case 'newline': out += '<br>'; i = j; continue;
           case 'S': out += '§'; i = j; continue;
           case 'ldots': case 'dots': out += '…'; i = j; continue;
           case 'cdots': case 'cots': out += '⋯'; i = j; continue;

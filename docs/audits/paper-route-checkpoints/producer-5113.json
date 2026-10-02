@@ -1,0 +1,13 @@
+{
+  "scope": "Historical isolated producer checkpoint; current status is in paper-route-alignment.json.",
+  "base": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
+  "checkpoint": {
+    "status": "private checked producer; canonical-owner adaptation and controller integration pending",
+    "source_sha256": "5113d83b8cf33b55696196f0941d4372f9c0911d94bb7bfba9abc4b9cfb15f87",
+    "olean_sha256": "bb113b5057df35eae32245f07ff2f0f9b045c85b7495d117e5c7438b86930eb9",
+    "checks": "Full private compile passed; separate trust-zero import and axiom checks passed for rich producer and weak projection, using only propext, Classical.choice, Quot.sound.",
+    "constructed": "One retained W/q/chart/scale with an actual visible K\u00e4hler frame D, canonical uniformizer, source-image equality, scalar-map coherence, and algebraicity over its residue coordinates.",
+    "not_yet_checked": "Actual same-witness tangent-rank and matrix assembly; identity of this place with the local ring of the divisor used in the author manuscript; final combined official-route replay.",
+    "promotion": "Not a final verifier receipt or whole-paper correspondence claim."
+  }
+}

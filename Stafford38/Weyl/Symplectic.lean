@@ -23,7 +23,7 @@ universe u
 variable (k : Type u) [Field k]
 
 abbrev standardForm (n : ℕ) : Matrix (Fin n ⊕ Fin n) (Fin n ⊕ Fin n) k :=
-  Matrix.J (Fin n) k
+  Stafford38Challenge.standardForm k n
 
 def standardSymplecticHpres {n : ℕ}
     (M : Matrix (Fin n ⊕ Fin n) (Fin n ⊕ Fin n) k)

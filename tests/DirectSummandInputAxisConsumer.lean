@@ -1,0 +1,4 @@
+import Stafford38.Geometry.DirectSummandInputOfActualChart
+
+#check Stafford38.Geometry.DirectSummandInputOfActualChart.directSummandInput_of_actual_chart_columns
+#print axioms Stafford38.Geometry.DirectSummandInputOfActualChart.directSummandInput_of_actual_chart_columns

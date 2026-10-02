@@ -5,21 +5,13 @@ import Stafford38.Characteristic.HyperplaneRestriction
 import Stafford38.Weyl.QuotientTransport
 
 /-!
-# The exact Rees--Koszul form of canonical axis cancellation
+# Rees--Koszul criteria for canonical axis cancellation
 
-For the canonical quotient `Q = A / (dA + x^N dA)`, PBW monicity already
-makes right multiplication by `x` surjective on `Q`.  This is the vanishing
-of ordinary degree-zero restriction.
-
-The requested axis-monic initial-ideal theorem is stronger: it says that the
-same one-element Koszul restriction vanishes after passing to the actual
-order-associated graded module, equivalently after specialization of the
-order-Rees module.  This file proves that equivalence literally.  Thus the
-remaining bridge is strict Rees--Koszul base change for this canonical
-quotient; ordinary quotient surjectivity is not silently promoted to it.
-
-No D-module theorem, noncharacteristic pullback theorem, or project axiom is
-used here.
+This file relates ordinary coordinate surjectivity to restriction on the
+actual order-associated-graded module and to a one-element Rees--Koszul
+complex. It does not identify ordinary quotient surjectivity with graded
+surjectivity. The current canonical-support proof uses the separate
+canonical-page argument in `CanonicalKoszulContradiction`.
 -/
 
 namespace Stafford38.CanonicalAxisMonicInitialTop

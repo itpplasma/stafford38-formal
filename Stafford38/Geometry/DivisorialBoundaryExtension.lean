@@ -1,28 +1,19 @@
 import Stafford38.Geometry.AsymptoticDivisorExistence
 import Mathlib.RingTheory.DedekindDomain.IntegralClosure
 import Mathlib.RingTheory.DedekindDomain.Dvr
+import Mathlib.RingTheory.DedekindDomain.Instances
 import Mathlib.RingTheory.Ideal.Over
 import Mathlib.RingTheory.Localization.AsSubring
 
 /-!
 # Discrete boundary places in finite extensions
 
-This file closes the valuation-theoretic extension step whenever the ambient
-function field is finite separable over the fraction field of the chosen DVR.
-The construction is the classical one: take the integral closure, choose a
-prime above the maximal ideal, and localize.  Mathlib proves that the integral
-closure is Dedekind and that its localization at a nonzero prime is a DVR.
-
-The resulting localization is realized as an actual subring of the ambient
-field, so the theorem produces a `ValuationSubring`, not merely an abstract
-local ring.  The distinguished nonzero nonunit remains a nonunit at the
-chosen place.
-
-For a general finitely generated extension, the remaining reduction is to
-present the ambient field as a finite separable extension of the fraction
-field of a DVR whose parameter maps to the selected coordinate.  In
-characteristic zero this is the usual finite transcendence-basis step; no
-such presentation is assumed or named in the theorem proved here.
+This module constructs a discrete valuation subring above the maximal ideal
+when the ambient field is a finite separable extension of a DVR fraction
+field. It realizes the local ring inside the ambient field and retains the
+selected nonzero nonunit. `RelativeDivisorialTower` and
+`RelativeRetainedBoundaryPlace` assemble this step for a finitely generated
+characteristic-zero field and a prescribed transcendental coordinate.
 -/
 
 namespace Stafford38.Geometry.DivisorialBoundaryExtension

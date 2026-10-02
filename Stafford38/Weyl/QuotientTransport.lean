@@ -1,6 +1,7 @@
 import Stafford38.Quotient.EulerSurjectivity
 import Stafford38.Weyl.EulerRemainder
 import Stafford38.Weyl.IteratedEquivalence
+import Stafford38.Weyl.PaperEulerGrading
 
 /-!
 # Transport of the canonical right quotient
@@ -92,7 +93,7 @@ def transportedRightIdeal {A B : Type*} [Ring A] [Ring B] [Algebra k A]
 /-! ## The two generators and quotient -/
 
 /-- The literal canonical right ideal in the presented Weyl algebra. -/
-def presentedCanonicalRightIdeal (n N : ℕ) (d : PresentedWeyl k (n + 1)) :
+abbrev presentedCanonicalRightIdeal (n N : ℕ) (d : PresentedWeyl k (n + 1)) :
     RightIdeal (PresentedWeyl k (n + 1)) :=
   canonicalRightIdeal (presentedCoordinate k n) d N
 
@@ -246,8 +247,9 @@ theorem presentedCanonicalRightQuotient_rightMul_coordinate_surjective
       canonicalRightIdeal (pairCoordinate (B := IteratedPairStage k n))
         (presentedToIterated k (n + 1) d) N := by
     exact presented_canonicalRightIdeal_map (k := k) n N d
-  have hsurj := presentedCanonicalQuotient_rightMul_coordinate_surjective
-    k n N hd
+  have hsurj :=
+    Stafford38.PaperEulerGrading.presentedCanonicalQuotient_rightMul_coordinate_surjective
+      k n N hd
   have hsurj' : Function.Surjective
       (rightMul (transportedRightIdeal e I)
         (e (presentedCoordinate k n))) := by

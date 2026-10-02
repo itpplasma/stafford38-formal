@@ -14,8 +14,9 @@ confuse in that situation:
 * `K` is the residue field of the boundary valuation, and the completed
   coordinates live in `PowerSeries K` and `LaurentSeries K`.
 
-Ground coefficients are sent to Laurent series by the displayed composite
-`k -> K -> LaurentSeries K`.  The fibre closure itself is taken over `K`.
+Ground coefficients use the canonical map `k -> LaurentSeries K`; the theorem
+`groundLaurentComposite_eq_algebraMap` proves that it agrees with the tower
+composite `k -> K -> LaurentSeries K`.  The fibre closure itself is taken over `K`.
 The resulting contradiction uses only field and algebra-tower structure; in
 particular it does not require `K` to be algebraically closed and does not
 choose a map `K -> k`.
@@ -54,28 +55,38 @@ variable {n : ℕ}
 
 /-- The coefficient map used by equations over the ground field after
 completion at a boundary with residue field `K`. -/
-def groundLaurentMap : k →+* LaurentSeries K :=
-  (algebraMap K (LaurentSeries K)).comp (algebraMap k K)
+abbrev groundLaurentMap : k →+* LaurentSeries K :=
+  algebraMap k (LaurentSeries K)
+
+/-- The coefficient tower composite agrees with the canonical structure map.
+This bridge is needed because the tower instance is not available as a typeclass
+instance for arbitrary `k → K → LaurentSeries K`. -/
+theorem groundLaurentComposite_eq_algebraMap :
+    (algebraMap K (LaurentSeries K)).comp (algebraMap k K) =
+      groundLaurentMap (k := k) (K := K) := by
+  refine RingHom.ext fun a => ?_
+  simp only [RingHom.comp_apply, HahnSeries.algebraMap_apply',
+    PowerSeries.algebraMap_apply, Algebra.algebraMap_self_apply]
 
 /-- Ground-field polynomials evaluated in the completed residue-field
 Laurent series ring. -/
-def groundPolynomialMap (σ : Type*) :
+abbrev groundPolynomialMap (σ : Type*) :
     MvPolynomial σ k →+* MvPolynomial σ (LaurentSeries K) :=
-  MvPolynomial.map (groundLaurentMap (k := k) (K := K))
+  scalarPolynomialMap (k := k) (K := LaurentSeries K) σ
 
 /-- The same ground polynomial after first extending its coefficients to the
 residue field. -/
-def residuePolynomialMap (σ : Type*) :
+abbrev residuePolynomialMap (σ : Type*) :
     MvPolynomial σ k →+* MvPolynomial σ K :=
-  MvPolynomial.map (algebraMap k K)
+  scalarPolynomialMap (k := k) (K := K) σ
 
 /-- Fibre lift after extending the ground coefficients to `K`. -/
 def residueFibreLift (P : MvPolynomial (Fin n) k) :
     MvPolynomial (PhaseVar n) K :=
   fibreLift (residuePolynomialMap (k := k) (K := K) (Fin n) P)
 
-/-- The two routes from a ground-field fibre polynomial to Laurent series
-agree exactly: extend to `K` first or map directly along the composite. -/
+/-- Extending first to `K` or using the ground coefficient map gives the same
+Laurent-series evaluation. -/
 theorem eval_residueFibreLift_eq_ground
     (P : MvPolynomial (Fin n) k)
     (q : PhaseVar n → LaurentSeries K) :
@@ -88,6 +99,7 @@ theorem eval_residueFibreLift_eq_ground
         (MvPolynomial.map (algebraMap k K) P)) = _
   rw [← MvPolynomial.map_rename]
   rw [MvPolynomial.eval₂_map]
+  rw [← groundLaurentComposite_eq_algebraMap (k := k) (K := K)]
   rfl
 
 /-- Evaluation of a ground polynomial agrees with evaluation of its
@@ -101,7 +113,7 @@ theorem eval_residuePolynomialMap_eq_ground
   change MvPolynomial.eval₂ (algebraMap K (LaurentSeries K)) v
       (MvPolynomial.map (algebraMap k K) P) = _
   rw [MvPolynomial.eval₂_map]
-  rfl
+  rw [← groundLaurentComposite_eq_algebraMap (k := k) (K := K)]
 
 /-- Fibre-only evaluation ignores the base part of a phase point, also for
 the explicit ground-to-Laurent coefficient map. -/
@@ -119,7 +131,7 @@ theorem eval_ground_fibreLift
 
 /-- The projected closure of Laurent-valued phase points, with regular fibre
 residue, formed over `K`.  Its base coordinates may have poles. -/
-def residueExtensionFibreClosure
+abbrev residueExtensionFibreClosure
     (S : Set (PhaseVar n → LaurentSeries K)) : Set (Fin n → K) :=
   extensionFibreClosure (k := K) (K := LaurentSeries K) S
 
@@ -139,8 +151,8 @@ theorem residue_mem_residueExtensionFibreClosure_of_laurent_generic
 /-! ## Ground-field contradiction -/
 
 /-- The scalar-extended equation-conormal locus associated with a ground
-ideal.  Its coefficients use the explicit composite `k -> K -> Laurent`. -/
-def groundEquationConormalLocus
+ideal, using the canonical `k -> LaurentSeries K` coefficient map. -/
+abbrev groundEquationConormalLocus
     (I : Ideal (MvPolynomial (Fin n) k)) :
     Set (PhaseVar n → LaurentSeries K) :=
   equationConormalLocus
@@ -206,7 +218,7 @@ theorem false_of_ground_fibreOnly_symbol_one_on_residue_and_vanishing
     hclosure _ hP
   have hzero' :
       MvPolynomial.eval₂ (algebraMap k K) (residueColumn xi) P = 0 := by
-    simpa [residuePolynomialMap] using hzero
+    simpa [residuePolynomialMap, scalarPolynomialMap] using hzero
   rw [hresidue, haxis] at hzero'
   exact one_ne_zero hzero'
 

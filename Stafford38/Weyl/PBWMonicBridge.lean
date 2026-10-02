@@ -3,15 +3,13 @@ import Stafford38.Weyl.MonicNormalization
 /-!
 # From principal-axis normalization to PBW monicity
 
-Axis restriction does not merge coefficients: its degree-`N` coefficient is
-exactly the coefficient of the pure selected-variable monomial. The same pure
-coefficient passes unchanged from the degree-`N` principal component to the
-full checked PBW normal form. Together with the Bernstein bound, this yields a
-coefficient-one pure momentum term and excludes every higher momentum power.
-
-The resulting data retain the symplectic matrices, inverse identities, scalar,
-and exact normalized image. Converting this PBW statement to `Polynomial.Monic`
-for the outer Ore layer remains separate.
+Axis restriction identifies the degree-`N` coefficient with the selected
+pure-variable coefficient. The same coefficient passes from the principal
+component to the checked PBW normal form; together with the Bernstein bound
+this yields a coefficient-one pure momentum term and excludes higher
+momentum powers. `OuterOreMonic` converts the result to `Polynomial.Monic`;
+`PaperRightMonic` supplies the paper-facing right-coefficient decomposition
+and lower-coefficient bounds.
 -/
 
 namespace Stafford38.WeylPBWMonicBridge
