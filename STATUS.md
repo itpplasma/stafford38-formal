@@ -14,6 +14,8 @@ The remaining mathematical task is to assemble these components for one actual g
 
 The checked-in toolchain remains Lean 4.33.0, with the pinned Mathlib and AlgebraicAnalysis revisions recorded in the repository configuration. The saved Lean 4.35.0-rc3 candidate is being reconstructed with exact remote dependency pins in an isolated worktree. It must pass the full build, independent consumers, axiom audits and current Palomar source checks before promotion and release.
 
+The public Euler rising/falling polynomial names now abbreviate the shared `Stafford38.Evolution` definitions. The affected module passed a focused `--trust=0` compile with only the standard Lean axioms; this does not replace the outstanding full-verifier run.
+
 Recent integrated geometry components have passed targeted builds and independent `--trust=0` consumer/axiom checks using only the standard axioms. An earlier full checkpoint passed 9,168 build jobs and 301 consumer/axiom reports; that receipt applies to its recorded source, not automatically to subsequent additions. The current full module build passed 9,181 jobs. The full verifier stopped at its 900-second limit during the serial consumer checks, without a reported build error. Its remaining stages have not passed as a whole; no completed full-verifier receipt for this checkpoint is claimed here.
 
 AlgebraicAnalysis v0.3.3 is separately released on Lean 4.35.0-rc3. Its archived mathematical source is `bbbbf3fc358ca8100b158cec4cf47f336ab70163`, DOI [10.5281/zenodo.23104842](https://doi.org/10.5281/zenodo.23104842). The final formal migration will pin that source.

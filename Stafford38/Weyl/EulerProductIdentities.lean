@@ -14,46 +14,32 @@ noncomputable section
 
 variable {A : Type*} [Ring A] [Algebra ℚ A]
 
-def fallingEulerPolynomial : ℕ → Polynomial ℚ
-  | 0 => 1
-  | n + 1 => fallingEulerPolynomial n * (Polynomial.X - Polynomial.C (n : ℚ))
+/-- Public names specialize the shared coefficient-ring factorial polynomials. -/
+abbrev fallingEulerPolynomial : ℕ → Polynomial ℚ :=
+  Stafford38.Evolution.fallingPoly ℚ
 
-def risingEulerPolynomial : ℕ → Polynomial ℚ
-  | 0 => 1
-  | n + 1 => risingEulerPolynomial n *
-      (Polynomial.X + Polynomial.C ((n + 1 : ℕ) : ℚ))
+abbrev risingEulerPolynomial : ℕ → Polynomial ℚ :=
+  Stafford38.Evolution.risingPoly ℚ
 
 /-- The falling polynomial is the product of the Euler factors `X-i`. -/
 theorem fallingEulerPolynomial_eq_prod (n : ℕ) :
     fallingEulerPolynomial n = ∏ i ∈ Finset.range n,
       (Polynomial.X - Polynomial.C (i : ℚ)) := by
+  change Stafford38.Evolution.fallingPoly ℚ n = _
   induction n with
-  | zero => simp [fallingEulerPolynomial]
+  | zero => simp [Stafford38.Evolution.fallingPoly]
   | succ n ih =>
-      rw [fallingEulerPolynomial, ih, Finset.prod_range_succ]
+      rw [Stafford38.Evolution.fallingPoly_succ, ih, Finset.prod_range_succ]
 
 /-- The rising polynomial is the product of the Euler factors `X+(i+1)`. -/
 theorem risingEulerPolynomial_eq_prod (n : ℕ) :
     risingEulerPolynomial n = ∏ i ∈ Finset.range n,
       (Polynomial.X + Polynomial.C ((i + 1 : ℕ) : ℚ)) := by
+  change Stafford38.Evolution.risingPoly ℚ n = _
   induction n with
-  | zero => simp [risingEulerPolynomial]
+  | zero => simp [Stafford38.Evolution.risingPoly]
   | succ n ih =>
-      rw [risingEulerPolynomial, ih, Finset.prod_range_succ]
-
-private theorem fallingEulerPolynomial_eq_owner (n : ℕ) :
-    fallingEulerPolynomial n = Stafford38.Evolution.fallingPoly ℚ n := by
-  induction n with
-  | zero => rfl
-  | succ n ih =>
-      rw [fallingEulerPolynomial, Stafford38.Evolution.fallingPoly_succ, ih]
-
-private theorem risingEulerPolynomial_eq_owner (n : ℕ) :
-    risingEulerPolynomial n = Stafford38.Evolution.risingPoly ℚ n := by
-  induction n with
-  | zero => rfl
-  | succ n ih =>
-      rw [risingEulerPolynomial, Stafford38.Evolution.risingPoly_succ, ih]
+      rw [Stafford38.Evolution.risingPoly_succ, ih, Finset.prod_range_succ]
       push_cast
       rfl
 
@@ -61,7 +47,6 @@ private theorem risingEulerPolynomial_eq_owner (n : ℕ) :
 theorem eulerPolynomialEval_falling (x d : A)
     (h : d * x = x * d + 1) (n : ℕ) :
     Stafford.eulerPolynomialEval x d (fallingEulerPolynomial n) = x ^ n * d ^ n := by
-  rw [fallingEulerPolynomial_eq_owner]
   change Polynomial.aeval (Stafford38.Evolution.euler x d)
     (Stafford38.Evolution.fallingPoly ℚ n) = x ^ n * d ^ n
   rw [Stafford38.Evolution.aeval_fallingPoly]
@@ -72,7 +57,6 @@ theorem eulerPolynomialEval_falling (x d : A)
 theorem eulerPolynomialEval_rising (x d : A)
     (h : d * x = x * d + 1) (n : ℕ) :
     Stafford.eulerPolynomialEval x d (risingEulerPolynomial n) = d ^ n * x ^ n := by
-  rw [risingEulerPolynomial_eq_owner]
   change Polynomial.aeval (Stafford38.Evolution.euler x d)
     (Stafford38.Evolution.risingPoly ℚ n) = d ^ n * x ^ n
   rw [Stafford38.Evolution.aeval_risingPoly]

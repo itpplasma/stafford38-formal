@@ -209,7 +209,7 @@
       "file": "euler-owner.patch.gz",
       "sha256": "01eda505e4c71e2e7968b47a341b62e01c683d355f43ce132ad63aaad6c79eb7",
       "uncompressed_sha256": "6cf699a0cca3c789bb8d32c3a62f79e760dc60fe39241f6e7424b46872e98768",
-      "scope": "Unintegrated checked-source simplification deriving rational Euler products from Evolution owners."
+      "scope": "At the stopped-state checkpoint this was an unintegrated checked-source simplification deriving rational Euler products from Evolution owners. It was subsequently applied to Stafford38/Weyl/EulerProductIdentities.lean and passed a focused Lean --trust=0 compile; this is not a full-repository verifier receipt."
     },
     {
       "file": "module-build.log.gz",
