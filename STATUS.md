@@ -1,6 +1,6 @@
 # Current status
 
-Updated 2 October 2026. Work resumed at the owner's request. Geometry assembly, Lean 4.35.0-rc3 migration, current Palomar qualification and reviewer-package repairs are being prepared in isolated worktrees. The final paper-aligned release and human-review handover remain open.
+Updated 2 October 2026. Work resumed at the owner's request. The 40 temporary formal-proof worktrees from the earlier exploration were reconciled and removed; the verified Euler-owner cleanup is on `main`. The unconditional paper-route assembly, Lean 4.35.0-rc3 migration, current Palomar qualification and reviewer-package repairs remain open. This is not the final paper-aligned release or human-review handover.
 
 ## Proof and correspondence
 
@@ -12,7 +12,7 @@ The remaining mathematical task is to assemble these components for one actual g
 
 ## Toolchain and checks
 
-The checked-in toolchain remains Lean 4.33.0, with the pinned Mathlib and AlgebraicAnalysis revisions recorded in the repository configuration. The saved Lean 4.35.0-rc3 candidate is being reconstructed with exact remote dependency pins in an isolated worktree. It must pass the full build, independent consumers, axiom audits and current Palomar source checks before promotion and release.
+The checked-in toolchain remains Lean 4.33.0, with the pinned Mathlib and AlgebraicAnalysis revisions recorded in the repository configuration. The saved Lean 4.35.0-rc3 candidate remains separate from the checked-in proof. It must pass the full build, independent consumers, axiom audits and current Palomar source checks before promotion and release.
 
 The public Euler rising/falling polynomial names now abbreviate the shared `Stafford38.Evolution` definitions. The affected module passed a focused `--trust=0` compile with only the standard Lean axioms; this does not replace the outstanding full-verifier run.
 
@@ -32,4 +32,4 @@ See [the route map](docs/paper-route-alignment.json), [definition owners](docs/d
 
 ## Saved candidate state
 
-[The stopped-state archive](docs/audits/stopped-2026-10-02/README.md) records the exact bases, hashes and limitations of the unintegrated rc3 migration, affine-fibre closure candidate, dependency guard, verifier preparation and definition cleanup. Those archives preserve work for resumption; they are not part of the checked proof import graph.
+[The stopped-state archive](docs/audits/stopped-2026-10-02/README.md) records exact bases, hashes and limitations for the unintegrated rc3 migration, affine-fibre closure candidate, dependency guard and verifier preparation. It also retains provenance for the Euler-owner cleanup now on `main`. The remaining candidate archives are not part of the checked proof import graph.
