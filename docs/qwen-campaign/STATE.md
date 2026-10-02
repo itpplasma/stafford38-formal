@@ -8,9 +8,9 @@ commit" and owner-gate rows.
 
 | Id | Title | Status | Attempts | Last log | Note |
 | --- | --- | --- | --- | --- | --- |
-| T00 | Resource and state check | todo | 0 | | |
-| T01 | Create campaign worktree | todo | 0 | | |
-| T02 | Baseline build of prerequisites | todo | 0 | | |
+| T00 | Resource and state check | done | 1 | docs/qwen-campaign/notes/T00-check.log | GUARD OK; 116 GiB free RAM, 553 GiB free disk, no foreign lake/lean; MAIN clean outside docs/qwen-campaign |
+| T01 | Create campaign worktree | done | 1 | docs/qwen-campaign/notes/T01-worktree.log | WT at /Users/ert/proj/stafford38-qwen on qwen/paper-route @2a9c264; .lake APFS clone (cp -cR, 22 s, df delta 0 GiB); manifest identical, toolchain leanprover/lean4:v4.35.0-rc3 |
+| T02 | Baseline build of prerequisites | doing | 1 | docs/qwen-campaign/notes/T02-check.log | running guarded baseline build of 11 prerequisite modules |
 | T10 | Extract archived candidates | todo | 0 | | |
 | T11 | Port AwayFactorToAtPrime | todo | 0 | | |
 | T12 | Port axis lift from ground point | todo | 0 | | |
@@ -54,8 +54,8 @@ commit" and owner-gate rows.
 
 ## Measurements
 
-- Free memory / disk at T00:
-- MAIN commit at T00:
+- Free memory / disk at T00: 116 GiB truly free (guard), swap used 0 GiB, pressure normal; disk 553 GiB free of 1.8 Ti on /System/Volumes/Data
+- MAIN commit at T00: 2a9c264c5ad881fec8f70b9ad0d53861b72279b0 (branch main; untracked only docs/qwen-campaign/run-pi.sh, docs/qwen-campaign/runs/, docs/qwen-campaign/notes/)
 - T02 prerequisite build (wall time, peak RSS, jobs):
 - Single-file check turnaround:
 - T50 full build (wall time, peak RSS):
@@ -68,6 +68,15 @@ commit" and owner-gate rows.
 ## Controller hints
 
 (controller only; Pi reads the hints for its task before starting)
+
+- T02: The controller already replaced `WT/.lake` with a clone of the rc3 build
+  cache of `stafford38-rc3-final-worker` and aligned the package git remotes
+  to the manifest URLs (MAIN's `.lake` is the old 4.33 cache and must not be
+  used). Do not run `lake update`/`cache get`. Just run the T02 build through
+  guard.sh. If lake prints `fetching revision` or starts compiling Mathlib
+  modules (`Building Mathlib.`), kill it via the guard timeout and report
+  `blocked`: that means the cache does not match. Compiling `Stafford38.*`
+  modules is expected.
 
 ## Blocked
 

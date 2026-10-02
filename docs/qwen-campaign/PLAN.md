@@ -243,8 +243,13 @@ Owned: `WT` (new), `STATE.md`.
 
 1. `test ! -e /Users/ert/proj/stafford38-qwen` (stop if it exists).
 2. `git -C $MAIN worktree add -b qwen/paper-route /Users/ert/proj/stafford38-qwen main`
-3. Clone the build cache without copying bytes:
-   `cp -cR $MAIN/.lake /Users/ert/proj/stafford38-qwen/.lake`
+3. Clone the build cache without copying bytes. **Use the rc3 cache of
+   `stafford38-rc3-final-worker`, not `$MAIN/.lake`** (MAIN's `.lake` still
+   holds the old Lean 4.33 Mathlib `db584cd…`; lake would switch revisions
+   and invalidate every Mathlib `.olean`):
+   `cp -cR /Users/ert/proj/stafford38-rc3-final-worker/.lake /Users/ert/proj/stafford38-qwen/.lake`
+   then make every package's git remote equal the URL in `lake-manifest.json`
+   (`git -C .lake/packages/<name> remote set-url origin <url>`) so lake does not fetch.
 4. `df -g /System/Volumes/Data` before and after; the difference must be
    below 2 GiB. If more than 2 GiB was used, stop and report.
 5. `diff $MAIN/lake-manifest.json $WT/lake-manifest.json` and
