@@ -31,8 +31,10 @@ concrete derivative fields with an abstract derivative certificate and stable
 getters. Columns08db failed the retained Laurent action/tower match in scluster3116538.
 Sol repaired it using the accepted T22 scalar scopes; Columns5405 generic prefix failed3116945 at the scalar action bridge. Sol
 stopped repeated dictionary rewriting after82cd failed3117210 and is inspecting
-actual instance terms in one guarded scluster diagnostic3117466. The full module
-and Closure59b remain queued behind a successful prefix. T36's frozen statement is unchanged.
+actual instance terms. Action equality passed, but imported-term rewriting
+failed; Sol revised the boundary to transport known certificate field goals.
+Frozenb3ce now checks as scluster3118467: prefix, module, literal consumer, then
+Closure59b after success. T36's frozen statement is unchanged.
 T35 passed independently on both clusters. The alternative geometry endpoint
 also passed its Linux module at WT71e966a; full solution assembly/comparisons
 remain required. No guard threshold is relaxed. Both isolated cluster
@@ -254,7 +256,9 @@ Before you define anything or prove a helper lemma:
 - New files for this campaign live in `Stafford38/Geometry/SameWitness/`.
 - Every top-level theorem gets a docstring: one sentence of mathematics and
   the paper location if the task gives one.
-- A proof longer than about 60 lines is split into named lemmas.
+- Keep proofs short. About 60 lines guides new construction; do not delay a
+  working derived generic bridge with an optional refactor when its checks pass
+  under the fixed budgets. T36's terminal assembly keeps its stated 60-line bound.
 - No `letI`/`haveI` of `Algebra`, `SMul`, `Module` or `IsScalarTower` inside
   a proof about concrete heavy types. Follow the rules in section 6.
 - Keep the existing file style: `module` header, `public import`,

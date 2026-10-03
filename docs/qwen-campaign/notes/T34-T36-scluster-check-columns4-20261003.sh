@@ -16,7 +16,7 @@ metadata=json.loads(Path('../T34-T36-scluster-frozen-inputs-columns4-20261003.js
 for name,digest in metadata['hashes'].items():
  if hashlib.sha256(Path(name).read_bytes()).hexdigest()!=digest:
   raise SystemExit('Frozen input changed: '+name)
-out=Path('../logs/T34-T36-scluster-stages-5');out.mkdir(exist_ok=False)
+out=Path('../logs/T34-T36-scluster-stages-6');out.mkdir(exist_ok=False)
 argv=['lake','env','lean','--trust=0','-M8000','.lake/qwen/T34-columns-prefix.lean']
 with (out/'Columns-prefix.log').open('w') as stream: result=subprocess.run(argv,stdout=stream,stderr=subprocess.STDOUT)
 (out/'Columns-prefix.exit').write_text(str(result.returncode)+'\n')

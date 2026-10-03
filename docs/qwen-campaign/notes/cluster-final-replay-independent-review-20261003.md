@@ -121,3 +121,13 @@ harness SHA-256 is
 `8cebc5ff3e1111500e75ca03b3fff0a64ceb642c98f0b53f4d0ac13b33af43c0`.
 **Scoped result: PASS for the added prebuild stage.** No Lean, network, SSH,
 scheduler, or cluster action was run.
+
+## Completed-cache reuse delta
+
+The owner requested one efficient Linux/Palomar run, with no duplicate cluster
+validation. The controller added a copy of the completed bootstrap `.lake`
+into the fresh source checkout before tooling/dependency materialization.
+Luna independently reviewed this five-line delta: PASS. The fresh checkout
+has no `.lake`; cp -a creates the intended independent cache copy. All source
+manifest, ten package HEAD, full verifier and four Comparator checks remain.
+No active cache writer may overlap it; fixed resource caps remain unchanged.

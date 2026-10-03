@@ -54,7 +54,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
-| T34 | Columns, derivatives, numerator | doing | 12 | notes/T34-T36-scluster-frozen-inputs-columns4-20261003.json | Positions9417 acceptedWT1a3fcfd; Columns08db failed3116538 Laurent scalar scopes; Sol82cd prefix failed3117210 at dictionaryrewrite; oneSdiagnostic3117466 inspectsactualinstances; module/consumer+closure59b pending |
+| T34 | Columns, derivatives, numerator | doing | 13 | notes/T34-T36-scluster-frozen-inputs-columns4-20261003.json | Positions9417 acceptedWT1a3fcfd; action equality passed but importedrewritefailed; Solb3ce reversestransport atcertificatefields; prefix/module/unchangedconsumer→Closure59b job3118467 |
 | T35 | Étale structure as ring homs | done | 6 | notes/T35-linux-accepted-checks.md | Scluster3113113 fullmodule+unchangedtrust0consumerPASS329.04s,peak7406MiB,three permitted axioms,zero PSI/swap/children; frozenf30 WT4c1678e committed/pushed; fullroute pending |
 | T36 | Same-witness closure theorem | doing | 3 | notes/T36-linux-resume.md | Generic retained chart candidate; stale positions call corrected, source59b8e450; frozen target unchanged; actual compile follows successful T34 in3116538; T35 accepted; Luna audits retained-position interface in parallel |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
@@ -68,17 +68,17 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T51 | Repository verifier | todo | 0 | | Single frozen Linux run shared withT73 plus4 actualPalomar comparisons; no duplicated cluster verification |
 | T52 | Status drafts | todo | 0 | | |
 | T53 | Integrate into main | owner | 0 | | owner gate |
-| T60 | Definition owners patch | doing | 2 | notes/T60-resume-definition-report.md | Luna refreshed bounded-record registry proposal; final acceptance awaits checked source names |
-| T61 | Paper map of new theorems | doing | 2 | notes/T61-resume-paper-map.md | Luna maps all24 current declarations to selected-paper locators/no-counterpart; formal and human acceptance remain pending |
+| T60 | Definition owners patch | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol prepared14 retainedcontractowners, helpersexcluded; registry/compiler acceptance awaitsfinalsource |
+| T61 | Paper map of new theorems | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol repaired57cards/403resolvedrefs/100SameWitnessdeclarations; Nodeaudit+browserwalkpass; finalpins/compiler/humanreviewpending |
 | T62 | Unreachable/duplicate report | doing | 1 | | Luna preparing source-graph and duplicate-owner report; final route still required |
 | T70 | Frozen public commit | owner | 0 | | owner gate |
 | T71 | Final Linux host preflight | todo | 0 | | Approved local/cluster route selected after T70; candidate bootstrap receipts do not replace final preflight |
 | T72 | Launch Linux driver | doing | 1 | notes/cluster-final-replay-independent-review-20261003.md | Cluster driver repaired by Sol and independently reviewed PASS with wrong-pin/failure/mutation/mode/root oracles; final launch awaits T70 and fresh allocation preflight |
 | T73 | Collect Linux result | todo | 0 | | |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
-| T80 | Re-anchor review map | todo | 0 | | |
+| T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
 | T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Guided generator navigation/resume browser oracle passed64tests; public commit40967b6 pushed; complete frozen-map walkthrough pending |
-| T82 | Rebuild manuscript PDFs | done | 2 | notes/T82-pdf-resume-20261003.md | Current paper53882beb replay: three builds exit0,34/11/34pages,zero undefined references/citations; all tracked TeX/bib hashes unchanged; citation changes require revalidation |
+| T82 | Rebuild manuscript PDFs | doing | 2 | notes/T82-locator-pdf-receipt-20261003.json | All3PDFs compile0undefined afterlocator-onlydaf4304; finalcitations/sourcepins remain pending |
 | T83 | Supplementary bundle (local) | todo | 0 | | |
 | T84 | Review handover | owner | 0 | | owner gate |
 | T90 | Release drafts | todo | 0 | | |

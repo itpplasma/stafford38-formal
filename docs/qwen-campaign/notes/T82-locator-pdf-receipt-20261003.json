@@ -1,0 +1,23 @@
+{
+  "scope": "locator-only manuscript refresh; formal verification/correspondence pending",
+  "paper_commit": "daf43041f8363f39f35b3c894e6a7e3cd72cd3cc",
+  "source_sha256": "c792f4b651740c3fe94ddbb8ebf8ee7c552637dd52b06746c0b79ec3e2057485",
+  "formal_inline_anchor_check": "113 names/lines resolve against current WT; full final source pin pending",
+  "pdfs": {
+    "human_readable_main": {
+      "pdf": "2f8427a88e6e4a61e2a5def4a37340c239f64e102fab605493a2b3f753278e25",
+      "log": "4394f219c24e814538107f3f80fa728741ea525f1363712906b79ca870f6c745",
+      "undefined_count": 0
+    },
+    "lean_proof_details": {
+      "pdf": "1d490fada404c950de26cb3654d44e436c6acc8834fa5e5c3cae9fa72d9c0498",
+      "log": "2210bd96e0bb6bf766d1d7f0f41a0310764748ad400fdcaf0c920a38297a7aa1",
+      "undefined_count": 0
+    },
+    "main": {
+      "pdf": "09a50263ebbff2d2be81c81d514a09db362afb88c90e9bc43036cc827ddb267c",
+      "log": "51a866c06f33d239f5f7effb166f26930679580005b3e148945e753eb13dcb01",
+      "undefined_count": 0
+    }
+  }
+}
