@@ -70,9 +70,9 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T44 | Literal route consumers | doing | 1 | | Luna preparing archived literal consumers/current names; checks await route modules |
 | T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry83f and all4assembliesPASS3127814; sharedchallenges unchanged; finalroute/comparator gates pending |
 | T46 | Tidy final package | doing | 2 | notes/T46-final-cleanup-proposal.md | Obsolete four Mac/Pi wrappers and unused ignore file removed after reference audit; historical receipts/useful math preserved; final public status/Palomar package checks await route acceptance |
-| T50 | Full library build | doing | 1 | final3128039 | SinglefinalLinuxverifier buildstage; exactpublic45037fb, no separatefullbuild |
-| T51 | Repository verifier | doing | 1 | final3128039 | 3128526 fullbuildPASS4475jobs; verifierfailedprivate-bodyinspectionguard; Solminimalenvironmentviewrepairactive |
-| T52 | Status drafts | todo | 0 | | |
+| T50 | Full library build | done | 1 | notes/T73-dependency-guard-failure-3128526-20261003.md | Exact public45037fb full build PASS4475jobs; repository verifier acceptance remains separate |
+| T51 | Repository verifier | doing | 1 | final3128039 | 3128526 fullbuildPASS4475jobs; verifierfailedprivate-bodyinspectionguard; Sol strict private-owner/body loading repair active; no incomplete dependency accepted |
+| T52 | Status drafts | doing | 1 | README.md; STATUS.md | Current source and scoped acceptance documented; final verifier/release receipts still required |
 | T53 | Integrate into main | done | 1 | notes/T42-four-assemblies-linux-accepted-20261003.md | Controllerintegrated55explicitproof/toolpaths afterboundedacceptance; authoritative docs and unrelateduntracked preserved |
 | T60 | Definition owners patch | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol prepared14 retainedcontractowners, helpersexcluded; registry/compiler acceptance awaitsfinalsource |
 | T61 | Paper map of new theorems | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol repaired57cards/403resolvedrefs/100SameWitnessdeclarations; Nodeaudit+browserwalkpass; finalpins/compiler/humanreviewpending |
@@ -90,7 +90,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T90 | Release drafts | todo | 0 | | |
 | T91 | Signed tag, release, Zenodo | todo | 0 | | Authorized controller publication after Linux/Palomar and matching asset gates |
 | T92 | Verify Zenodo archive | todo | 0 | | |
-| T93 | Citation drafts | todo | 0 | | |
+| T93 | Citation drafts | todo | 0 | | Apply only verified final archive DOIs; synchronize paper GitHub and Overleaf |
+| T94 | Final review emails | todo | 0 | | Send authorized Johanna/Max handovers only after releases, archive comparisons and citations; record delivery |
 
 ## Current execution (resumed 2026-10-03 by owner)
 

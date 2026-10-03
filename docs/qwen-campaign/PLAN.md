@@ -20,47 +20,26 @@ marked proposals. Finish T34–T36 and T40–T51, then deliver matching formal a
 releases. Verify both Zenodo archives and cite them from the paper. This is
 one delivery, with proof and asset checks as its acceptance gates.
 
-Current checkpoint (3 October 2026): T22, T30, T31, T32, T33, T34, T35 and T36 passed Linux
-module and literal trust-zero consumer checks. T32 is committed and pushed at
-`da00639e7d2fd3cbb188f137d228c99d5cfcdbcd`; see its acceptance packet in
-`notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
-T35 passed on scluster3113113 and is committed/pushed; see
-notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd.
-T34 Columns actual modules and unchanged literal trust-zero consumer passed
-scluster3125101 and are committed/pushed at WT1fedc6e, with only the three
-permitted axioms. The allocation drained normally; see
-notes/T34-columns-linux-accepted-checks-20261003.md.
-Full T36 Closure4307877 and its unchanged unconditional literal trust-zero
-consumer passed scluster3126415, with exactly the three permitted axioms and
-a drained guard0 allocation, and are committed/pushedWT5607e3e. See
-notes/T36-closure-linux-accepted-checks-20261003.md. The necessary canonical
-original-chart map equality is retained and proved by the existing Etale
-producer; strengthened Etale3c79 passed3126127, committed/pushedWT3be4598.
-Historical and latest Etale receipts are preserved. Earlier memory and
-scope/interface diagnostics remain in their notes. T22 and T30–T36 are now
-complete. Next check the original-prime wrapper and all four actual solution
-assemblies, then integrate the accepted source and run the single final
-Linux verifier plus four Palomar comparisons. Bounded terminal component
-check3126840 ran on one scluster allocation after all19 input sources
-matched the candidate byte-for-byte. Its first module found a witness
-extraction mismatch (Nonempty versus record); allocation drained. This
-failed Luna task was escalated to Sol for explicit extraction. The repaired
-wrapper8af and unchanged literal consumer passed3127001, with only the
-three permitted axioms, and are committed/pushedWT7d645f2. Shared terminal
-and all four solution assembly builds continue in that allocation. Human
-paper review remains pending.
-T35 passed independently on both clusters. The alternative geometry endpoint
-also passed its Linux module at WT71e966a; full solution assembly/comparisons
-remain required. No guard threshold is relaxed. Both isolated cluster
-bootstraps passed exact pins and T32 module/consumer.
-Actual Linux guard fixtures passed on
-scluster3112916 after Sol repairs; production strict traversal still awaits the
-completed proof. See notes/T43-linux-fixtures-accepted-20261003.md.
-T45 has a frozen implementation and independent static audit, with compilation
-and route comparisons pending. The public guided-review generator is committed
-at 40967b6740c2ceaf515a2fb47a5ca9571be6495f; the complete final map/site walkthrough
-remains a gate. Update this checkpoint and ledger as each acceptance finishes;
-preparation alone does not close a task.
+Current checkpoint (3 October 2026): all manuscript-route modules, their
+literal trust-zero consumers, the shared terminal theorem and all four solution
+assemblies passed their bounded Linux checks. Accepted source is integrated and
+pushed in MAIN. The unchanged challenges are shared by the main paper route and
+the separately labeled generic/Laurent solution variant.
+
+The final public checkout at 45037fbc passed the full 4475-job Linux build in
+scluster3128526. Its verifier then failed strict inspection of private Mathlib
+dependencies; the four actual Palomar comparators have not run. Sol owns the
+single scluster slot for a minimal inspection repair and its independent
+fixtures and production route checks. Preserve the failed receipts. After this
+concrete repair passes, freeze and push its public source, then run the full
+verifier and four comparators once with the existing accepted cache.
+
+The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
+57-card browser walkthrough. The public review site is deployed. All three
+manuscript PDFs compile with zero undefined references at paper bb3190f8.
+Refresh their source pins after the guard repair and their citations after
+verified archive publication. Human review remains pending. No new release,
+DOI or final email has been claimed or sent.
 
 Efficiency update (owner steering, 3 October 2026): assign each proof check
 to one Linux slot. Use acluster and scluster for distinct tasks, never duplicate
