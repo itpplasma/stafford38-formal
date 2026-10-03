@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.FilteredQuotientRees
+module
+public import Stafford38.Characteristic.FilteredQuotientRees
+
+@[expose] public section
 
 /-!
 # Exact specialization of the filtered quotient Rees direct sum

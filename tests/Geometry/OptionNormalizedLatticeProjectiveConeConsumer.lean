@@ -1,7 +1,10 @@
-import Stafford38.Geometry.NormalizedLatticeProjectiveConeAdapter
-import Mathlib.RingTheory.Ideal.Quotient.Operations
-import Mathlib.RingTheory.Etale.Basic
-import Mathlib.Algebra.MvPolynomial.Rename
+module
+public import Stafford38.Geometry.NormalizedLatticeProjectiveConeAdapter
+public import Mathlib.RingTheory.Ideal.Quotient.Operations
+public import Mathlib.RingTheory.Etale.Basic
+public import Mathlib.Algebra.MvPolynomial.Rename
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 3000000
@@ -143,7 +146,7 @@ def q : Fin 2 → PowerSeries ℚ := fun i =>
 
 def Z : Matrix (Fin 2) (Fin 0) (PowerSeries ℚ) := fun _ j => Fin.elim0 j
 
-def tau : Fin 2 → PowerSeries ℚ := fun i => PowerSeries.derivative ℚ (q i)
+def tau : Fin 2 → PowerSeries ℚ := fun i => PowerSeries.derivative (q i)
 
 def alpha : Fin 0 → PowerSeries ℚ := Fin.elim0
 
@@ -166,7 +169,7 @@ theorem htransverse : ∀ (j : Fin 0) (i : Fin 2),
   exact Fin.elim0 j
 
 theorem hraw : ∀ i, algebraMap (PowerSeries ℚ) (LaurentSeries ℚ)
-      (PowerSeries.derivative ℚ (q i)) =
+      (PowerSeries.derivative (q i)) =
     coordinateDerivation (k := ℚ) (σ := Option (Fin 0)) (B := C)
       (L := LaurentSeries ℚ) (none : Option (Fin 0)) (qC i) +
       ∑ j : Fin 0, algebraMap (PowerSeries ℚ) (LaurentSeries ℚ) (alpha j) *
@@ -196,7 +199,7 @@ theorem literal_option_normalized_projective_cone_oracle :
       projectiveTangentCone (fun i => rho (qC i))
         (zariskiTangentSpace (dehomogenizedPoint (fun i => rho (qC i)))
           ((⊥ : Ideal P).map (MvPolynomial.map (algebraMap ℚ (LaurentSeries ℚ))))) := by
-  have hcorrection : ∀ i, PowerSeries.derivative ℚ (q i) - Z.mulVec alpha i =
+  have hcorrection : ∀ i, PowerSeries.derivative (q i) - Z.mulVec alpha i =
       (PowerSeries.X : PowerSeries ℚ) ^ 0 * tau i := by
     intro i
     simp [tau]

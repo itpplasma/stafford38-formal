@@ -1,7 +1,11 @@
-import Stafford38.Geometry.GeneralConormalContainment
-import Stafford38.Geometry.ConormalPrincipalOpenDensity
-import Stafford38.Geometry.SmoothAffineConormal
-import Mathlib.RingTheory.Ideal.MinimalPrime.Localization
+module
+public import Stafford38.Geometry.GeneralConormalContainment
+public import Stafford38.Geometry.ConormalPrincipalOpenDensity
+public import Stafford38.Geometry.SmoothAffineConormal
+public import Mathlib.RingTheory.Ideal.MinimalPrime.Localization
+public import Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian
+
+@[expose] public section
 
 namespace Stafford38.Geometry.GeneralComponentConormalContainment
 

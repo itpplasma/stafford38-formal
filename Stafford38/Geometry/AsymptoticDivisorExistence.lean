@@ -1,10 +1,13 @@
-import Stafford38.Geometry.ProjectiveDivisorOrderGap
-import Mathlib.FieldTheory.IsAlgClosed.Basic
-import Mathlib.Algebra.Polynomial.FieldDivision
-import Mathlib.RingTheory.DedekindDomain.Dvr
-import Mathlib.RingTheory.Localization.AtPrime.Basic
-import Mathlib.RingTheory.PrincipalIdealDomain
-import Mathlib.RingTheory.Valuation.LocalSubring
+module
+public import Stafford38.Geometry.ProjectiveDivisorOrderGap
+public import Mathlib.FieldTheory.IsAlgClosed.Basic
+public import Mathlib.Algebra.Polynomial.FieldDivision
+public import Mathlib.RingTheory.DedekindDomain.Dvr
+public import Mathlib.RingTheory.Localization.AtPrime.Basic
+public import Mathlib.RingTheory.PrincipalIdealDomain
+public import Mathlib.RingTheory.Valuation.LocalSubring
+
+@[expose] public section
 
 /-!
 # Coordinate-zero local model for a boundary place

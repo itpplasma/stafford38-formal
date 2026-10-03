@@ -1,6 +1,9 @@
-import AlgebraicAnalysis.Module.FilteredTwoTermTotalPages
-import Stafford38.Characteristic.FilteredTwoTermPageEquivalences
-import Stafford38.Characteristic.FilteredTwoTermPageActions
+module
+public import AlgebraicAnalysis.Module.FilteredTwoTermTotalPages
+public import Stafford38.Characteristic.FilteredTwoTermPageEquivalences
+public import Stafford38.Characteristic.FilteredTwoTermPageActions
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

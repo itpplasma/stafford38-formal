@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+module
+public import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+
+@[expose] public section
 
 /-!
 # Finite retained component equations

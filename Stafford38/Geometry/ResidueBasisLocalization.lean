@@ -1,7 +1,10 @@
-import Mathlib.RingTheory.FiniteStability
-import Mathlib.RingTheory.Localization.BaseChange
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.Algebraic.Basic
+module
+public import Mathlib.RingTheory.FiniteStability
+public import Mathlib.RingTheory.Localization.BaseChange
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.Algebraic.Basic
+
+@[expose] public section
 
 noncomputable section
 set_option autoImplicit false

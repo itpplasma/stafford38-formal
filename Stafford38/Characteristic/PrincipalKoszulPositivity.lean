@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Module.PrincipalKoszulPositivity
-import Stafford38.Characteristic.MinimalPrimeFiniteLengthLocalization
+module
+public import AlgebraicAnalysis.Module.PrincipalKoszulPositivity
+public import Stafford38.Characteristic.MinimalPrimeFiniteLengthLocalization
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

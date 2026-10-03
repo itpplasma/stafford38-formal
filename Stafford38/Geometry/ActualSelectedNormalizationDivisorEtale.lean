@@ -1,12 +1,16 @@
-import Stafford38.Geometry.ActualNormalizationDivisorEtale
-import Stafford38.Geometry.ActualChartNormalizationCenter
-import Stafford38.Geometry.ActualOptionColumnBinding
-import Stafford38.Geometry.ActualChartResidueMapCoherence
-import Stafford38.Geometry.ActualNormalizationCenterResidueKernel
-import Stafford38.Geometry.FieldEquivFiniteType
-import Stafford38.Geometry.SelectedResidueNormalizationLocalization
-import Stafford38.Geometry.ResidueBasisLocalization
-import Mathlib.Algebra.MvPolynomial.Rename
+module
+public import Stafford38.Geometry.ActualNormalizationDivisorEtale
+public import Stafford38.Geometry.ActualChartNormalizationCenter
+public import Stafford38.Geometry.ActualOptionColumnBinding
+public import Stafford38.Geometry.ActualChartResidueMapCoherence
+public import Stafford38.Geometry.ActualNormalizationCenterResidueKernel
+public import Stafford38.Geometry.FieldEquivFiniteType
+public import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+public import Stafford38.Geometry.ResidueBasisLocalization
+public import Mathlib.Algebra.MvPolynomial.Rename
+
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 5000000
@@ -89,11 +93,14 @@ abbrev actualSelectedChartAlgebra
 noncomputable def actualSelectedNormalization
     {k : Type u} [Field k] [CharZero k] {m : ℕ} {hm : 0 < m}
     (P : PrimeSpectrum (MvPolynomial (Fin m) k))
-    (w : GeneralDivisorialVisibleFrameWitness hm P) := by
+    (w : GeneralDivisorialVisibleFrameWitness hm P) :
+    Subalgebra (actualSelectedChartAlgebra P w).toSubring
+      (ComponentFractionField P) := by
   let W := w.column.W
   let F := ComponentFractionField P
   letI : Algebra (CoordinateZeroLocalRing W.coefficientField) F := W.ambientAlgebra
   let Q := actualSelectedChartAlgebra P w
+  letI : Algebra Q F := Q.val.toAlgebra
   letI : Algebra Q.toSubring F := Q.toSubring.subtype.toAlgebra
   exact integralClosure Q.toSubring F
 
@@ -193,8 +200,8 @@ theorem formallyEtale_at_selected_actual_normalization_center_core
     s ≠ 0 → s ∈ actualSelectedNormalizationCenterPrime P w hQV →
     ∀ (hspan :
       letI : (actualSelectedNormalizationCenterPrime P w hQV).IsPrime := hP_B;
-      Ideal.span {algebraMap B
-        (Localization.AtPrime (actualSelectedNormalizationCenterPrime P w hQV)) s} =
+      Ideal.span (Set.singleton (algebraMap B
+        (Localization.AtPrime (actualSelectedNormalizationCenterPrime P w hQV)) s)) =
           maximalIdeal (Localization.AtPrime (actualSelectedNormalizationCenterPrime P w hQV))),
     ∀ (fOption : MvPolynomial (Option t) k →ₐ[k] B),
     (fOption (MvPolynomial.X (none : Option t)) = s) →
@@ -542,8 +549,8 @@ theorem formallyEtale_at_selected_actual_normalization_center_core
     rw [hcontract]
     exact hsP
   have hspan' :
-      Ideal.span {algebraMap B
-        (Localization.AtPrime (p.comap (algebraMap B L))) s} =
+      Ideal.span (Set.singleton (algebraMap B
+        (Localization.AtPrime (p.comap (algebraMap B L))) s)) =
           maximalIdeal (Localization.AtPrime (p.comap (algebraMap B L))) := by
     exact span_atPrime_congr (k := k) (B := B)
       (p.comap (algebraMap B L)) P_B hcontractB s hspan

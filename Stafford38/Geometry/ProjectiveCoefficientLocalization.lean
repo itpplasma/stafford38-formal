@@ -1,7 +1,10 @@
-import Mathlib.Algebra.MvPolynomial.Equiv
-import Mathlib.RingTheory.Localization.Algebra
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.Etale.Basic
+module
+public import Mathlib.Algebra.MvPolynomial.Equiv
+public import Mathlib.RingTheory.Localization.Algebra
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.Etale.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

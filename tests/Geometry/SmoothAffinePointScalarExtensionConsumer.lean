@@ -1,4 +1,7 @@
-import Stafford38.Geometry.SmoothAffinePointScalarExtension
+module
+public import Stafford38.Geometry.SmoothAffinePointScalarExtension
+
+@[expose] public section
 
 set_option autoImplicit false
 

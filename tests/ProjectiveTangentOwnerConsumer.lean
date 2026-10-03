@@ -1,17 +1,20 @@
-import Stafford38.Geometry.PaperDivisorTangent
-import Stafford38.Geometry.ProjectiveBoundaryFrameRank
-import Stafford38.Geometry.ProjectiveConormalDehomogenization
-import Mathlib.Tactic
+module
+public import Stafford38.Geometry.PaperDivisorTangent
+public import Stafford38.Geometry.ProjectiveBoundaryFrameRank
+public import Stafford38.Geometry.ProjectiveConormalDehomogenization
+public import Mathlib.Tactic
 
-private def sampleQ : Fin 3 → ℚ := fun i =>
+@[expose] public section
+
+def sampleQ : Fin 3 → ℚ := fun i =>
   if i.val = 0 then 2 else if i.val = 1 then 3 else 5
 
-private def sampleW : Fin 3 → ℚ := fun i =>
+def sampleW : Fin 3 → ℚ := fun i =>
   if i.val = 0 then 7 else if i.val = 1 then 11 else 13
 
-private abbrev fin3Zero : Fin 3 := 0
-private abbrev fin3One : Fin 3 := Fin.succ (0 : Fin 2)
-private abbrev fin3Two : Fin 3 := Fin.succ (Fin.succ (0 : Fin 1))
+abbrev fin3Zero : Fin 3 := 0
+abbrev fin3One : Fin 3 := Fin.succ (0 : Fin 2)
+abbrev fin3Two : Fin 3 := Fin.succ (Fin.succ (0 : Fin 1))
 
 private theorem sampleQ_zero : sampleQ fin3Zero = 2 := by
   norm_num [sampleQ, fin3Zero]
@@ -26,11 +29,11 @@ private theorem sampleW_one : sampleW fin3One = 11 := by
 private theorem sampleW_two : sampleW fin3Two = 13 := by
   norm_num [sampleW, fin3Two]
 
-private abbrev chartOneIndexZero :
+abbrev chartOneIndexZero :
     Stafford38.Geometry.ProjectiveChartCoordinates.ChartAffineIndex
       (Fin 3) (1 : Fin 3) := ⟨0, by decide⟩
 
-private abbrev chartOneIndexTwo :
+abbrev chartOneIndexTwo :
     Stafford38.Geometry.ProjectiveChartCoordinates.ChartAffineIndex
       (Fin 3) fin3One := ⟨fin3Two, by decide⟩
 

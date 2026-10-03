@@ -1,4 +1,7 @@
-import Stafford38.Geometry.FormallyEtaleCompletionEquivalence
+module
+public import Stafford38.Geometry.FormallyEtaleCompletionEquivalence
+
+@[expose] public section
 
 open Polynomial
 

@@ -1,7 +1,10 @@
-import Mathlib.Tactic.NoncommRing
-import Mathlib.Tactic.Ring
-import Stafford38.ChallengeDefinitions
-import AlgebraicAnalysis.Commutator
+module
+public import Mathlib.Tactic.NoncommRing
+public import Mathlib.Tactic.Ring
+public import Stafford38.ChallengeDefinitions
+public import AlgebraicAnalysis.Commutator
+
+@[expose] public section
 
 /-!
 # The linear symplectic layer of the A₂ reduction

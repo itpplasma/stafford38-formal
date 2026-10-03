@@ -1,7 +1,10 @@
-import Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
-import Stafford38.Geometry.ProjectiveChartNormalizationFinite
-import Stafford38.Geometry.FiniteBirationalAway
-import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+module
+public import Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
+public import Stafford38.Geometry.ProjectiveChartNormalizationFinite
+public import Stafford38.Geometry.FiniteBirationalAway
+public import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 5000000
@@ -81,6 +84,7 @@ theorem actual_selected_normalization_is_away_equiv
     apply Subtype.ext
     rfl
   letI : IsScalarTower Q.toSubring Q B := hTowerSubring
+  letI : Module.Finite Q.toSubring B := hfiniteSubring
   have hfinite : Module.Finite Q B :=
     Module.Finite.of_restrictScalars_finite Q.toSubring Q B
   letI : IsFractionRing Q F :=

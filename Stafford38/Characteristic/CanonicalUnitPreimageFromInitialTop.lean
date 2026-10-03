@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.CanonicalUnitCoordinatePreimage
+module
+public import Stafford38.Characteristic.CanonicalUnitCoordinatePreimage
+
+@[expose] public section
 
 /-!
 # A strict unit preimage from degree-zero initial-ideal generation
@@ -38,14 +41,14 @@ universe u
 
 variable (k : Type u) [Field k] [Algebra ℚ k]
 
-private abbrev CanonicalIdeal (n N : ℕ)
+abbrev CanonicalIdeal (n N : ℕ)
     (d : PresentedWeyl k (n + 1)) :=
   canonicalRightIdeal (presentedCoordinate k n) d N
 
-private abbrev OrderHomogeneous (n N : ℕ) :=
+abbrev OrderHomogeneous (n N : ℕ) :=
   MvPolynomial.weightedHomogeneousSubmodule k (@orderWeight n) N
 
-private abbrev orderDecomposition (n : ℕ) :=
+abbrev orderDecomposition (n : ℕ) :=
   MvPolynomial.weightedHomogeneousSubmodule k (@orderWeight n)
 
 local instance orderGradedAlgebraInstance (n : ℕ) :

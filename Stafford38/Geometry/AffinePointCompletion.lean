@@ -1,7 +1,11 @@
-import Mathlib.Algebra.MvPolynomial.Eval
-import Mathlib.RingTheory.MvPolynomial.Ideal
-import Mathlib.RingTheory.MvPowerSeries.Equiv
-import Stafford38.Geometry.AdicCompletionRingEquiv
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Mathlib.Algebra.MvPolynomial.Eval
+public import Mathlib.RingTheory.MvPolynomial.Ideal
+public import Mathlib.RingTheory.MvPowerSeries.Equiv
+public import Stafford38.Geometry.AdicCompletionRingEquiv
+
+@[expose] public section
 
 set_option autoImplicit false
 

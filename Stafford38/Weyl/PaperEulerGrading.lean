@@ -1,4 +1,7 @@
-import Stafford38.Weyl.EulerRemainder
+module
+public import Stafford38.Weyl.EulerRemainder
+
+@[expose] public section
 
 /-!
 # The paper's Euler grading and the concrete Euler subring

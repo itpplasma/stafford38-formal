@@ -1,6 +1,9 @@
-import Stafford38.Geometry.CompletedDVRCoefficientSection
-import Mathlib.RingTheory.PowerSeries.Trunc
-import Mathlib.RingTheory.DiscreteValuationRing.Basic
+module
+public import Stafford38.Geometry.CompletedDVRCoefficientSection
+public import Mathlib.RingTheory.PowerSeries.Trunc
+public import Mathlib.RingTheory.DiscreteValuationRing.Basic
+
+@[expose] public section
 
 /-!
 # A chosen-coordinate power-series map to a completed DVR

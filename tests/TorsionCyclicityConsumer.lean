@@ -1,5 +1,8 @@
-import CorollaryChallenge
-import Stafford38.TorsionCyclicity
+module
+public import CorollaryChallenge
+public import Stafford38.TorsionCyclicity
+
+@[expose] public section
 
 /-! An independent consumer checks the literal Mathlib-only corollary statement. -/
 

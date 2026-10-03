@@ -1,5 +1,9 @@
-import Stafford38.Weyl.OuterOreMonic
-import AlgebraicAnalysis.Ore.RightPBW
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Weyl.OuterOreMonic
+public import AlgebraicAnalysis.Ore.RightPBW
+
+@[expose] public section
 
 set_option maxHeartbeats 1000000
 
@@ -182,6 +186,10 @@ def coordinateBernsteinPiece (n L : ℕ) :
     have hnonzero : MvPolynomial.coeff (pairExponent n a 0 m)
         (flattenPairSymbols k n
           (Polynomial.C (coordinateCoefficientNormalForm k n z))) ≠ 0 := by
+      change AddMonoidAlgebra.coeff
+        (flattenPairSymbols k n
+          (Polynomial.C (coordinateCoefficientNormalForm k n z)))
+        (pairExponent n a 0 m) ≠ 0
       rw [coeff_flattenPairSymbols]
       simpa [Polynomial.coeff_C] using hm
     have hbound := h (pairExponent n a 0 m) hnonzero
@@ -207,12 +215,18 @@ def coordinateBernsteinPiece (n L : ℕ) :
       have hz : MvPolynomial.coeff q
           (flattenPairSymbols k n
             (Polynomial.C (coordinateCoefficientNormalForm k n z))) = 0 := by
+        change AddMonoidAlgebra.coeff
+          (flattenPairSymbols k n
+            (Polynomial.C (coordinateCoefficientNormalForm k n z))) q = 0
         rw [hqsplit, coeff_flattenPairSymbols]
         simp [Polynomial.coeff_C, hp]
       exact hq hz
     have hsource : MvPolynomial.coeff old
         ((coordinateCoefficientNormalForm k n z).coeff (aq 0)) ≠ 0 := by
       have := hq
+      change AddMonoidAlgebra.coeff
+        (flattenPairSymbols k n
+          (Polynomial.C (coordinateCoefficientNormalForm k n z))) q ≠ 0 at this
       rw [hqsplit, coeff_flattenPairSymbols] at this
       simpa [Polynomial.coeff_C, hpzero] using this
     have hbound := h (aq 0) old hsource
@@ -278,8 +292,8 @@ theorem coordinateDerivation_mem_coordinateBernsteinPiece {n L : ℕ}
       rw [mul_comm, Algebra.smul_def]
       congr 1
       simp
-    rw [← Nat.cast_succ, hcast, MvPolynomial.coeff_smul, hzero]
-    simp
+    rw [← Nat.cast_succ, hcast]
+    simp [MvPolynomial.coeff, AddMonoidAlgebra.coeff_smul_apply, hzero]
   have hbound := hz (a + 1) m hsource
   simp only [monomialWeight, bernsteinWeight] at hbound ⊢
   omega
@@ -306,6 +320,9 @@ theorem presentedOuterCoefficient_mem_coordinateBernsteinPiece
     simpa only [presentedNestedNormalForm_coeff] using hm
   have hfull : MvPolynomial.coeff (pairExponent n a p m)
       (presentedNormalFormLinearEquiv k (n + 1) d) ≠ 0 := by
+    change AddMonoidAlgebra.coeff
+      (presentedNormalFormLinearEquiv k (n + 1) d)
+      (pairExponent n a p m) ≠ 0
     rw [← flatten_presentedNestedNormalForm k n d,
       coeff_flattenPairSymbols]
     exact hnested

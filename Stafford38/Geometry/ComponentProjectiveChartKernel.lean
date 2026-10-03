@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ComponentProjectiveChartFactorization
+module
+public import Stafford38.Geometry.ComponentProjectiveChartFactorization
+
+@[expose] public section
 
 /-! Exact affine generic-point kernel of the projective cone in any chart. -/
 

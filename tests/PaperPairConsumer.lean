@@ -1,5 +1,8 @@
-import PaperPairChallenge
-import Stafford38.TorsionCyclicity
+module
+public import PaperPairChallenge
+public import Stafford38.TorsionCyclicity
+
+@[expose] public section
 
 namespace Stafford38PaperPairChallenge
 

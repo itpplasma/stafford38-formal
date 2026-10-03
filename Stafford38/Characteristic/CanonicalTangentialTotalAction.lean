@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.CanonicalTangentialPageOperators
-import Stafford38.Characteristic.CommutingPolynomialAction
+module
+public import Stafford38.Characteristic.CanonicalTangentialPageOperators
+public import Stafford38.Characteristic.CommutingPolynomialAction
+
+@[expose] public section
 
 /-!
 # Tangential symbol action on the canonical total pages

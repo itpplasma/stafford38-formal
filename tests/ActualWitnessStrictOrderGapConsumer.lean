@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ActualWitnessStrictOrderGap
+module
+public import Stafford38.Geometry.ActualWitnessStrictOrderGap
+
+@[expose] public section
 
 /- This consumer exposes the arbitrary-uniformizer interface; the unit-power
 behavioral oracle is retained in PaperUnitPowerFactorizationConsumer. -/

@@ -1,6 +1,7 @@
-import Stafford38.FixedSourceStatement
-import Stafford38.ChallengeDefinitions
-import Mathlib.Order.Lattice.Nat
+module
+public import Stafford38.FixedSourceStatement
+public import Stafford38.ChallengeDefinitions
+public import Mathlib.Order.Lattice.Nat
 
 /-!
 # Transport for the Mathlib-only exact-source challenge
@@ -13,7 +14,8 @@ element is the least filtration level containing it.
 
 The challenge and this transport import their unique definitions from the
 Mathlib-only `Stafford38.ChallengeDefinitions` module; this file does not
-import the placeholder challenge. It proves that the literal definitions
+public import the placeholder challenge. It proves that the literal definitions
+
 agree with the substantive development:
 
 * the challenge quotient is definitionally the presented Weyl algebra
@@ -30,6 +32,8 @@ agree with the substantive development:
 theorem `Stafford38.universalFixedSourceStatement`. No degree and no
 normal-form datum is supplied as a hypothesis anywhere.
 -/
+
+@[expose] public section
 
 namespace Stafford38FixedSourceChallengeTransport
 

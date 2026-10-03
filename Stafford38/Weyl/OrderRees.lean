@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.AssociatedGradedModule
-import Mathlib.Algebra.Polynomial.Coeff
+module
+public import Stafford38.Characteristic.AssociatedGradedModule
+public import Mathlib.Algebra.Polynomial.Coeff
+
+@[expose] public section
 
 /-!
 # The differential-order Rees ring

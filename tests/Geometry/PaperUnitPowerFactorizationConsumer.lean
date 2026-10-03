@@ -1,4 +1,7 @@
-import Stafford38.Geometry.PaperUnitPowerFactorization
+module
+public import Stafford38.Geometry.PaperUnitPowerFactorization
+
+@[expose] public section
 
 set_option autoImplicit false
 

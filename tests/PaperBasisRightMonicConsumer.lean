@@ -1,8 +1,11 @@
-import Stafford38.Characteristic.PaperSymplecticBasis
-import Stafford38.Characteristic.SymplecticCompletion
-import Stafford38.Weyl.PaperRightMonic
-import Mathlib.LinearAlgebra.Matrix.BilinearForm
-import Mathlib.LinearAlgebra.Basis.Basic
+module
+public import Stafford38.Characteristic.PaperSymplecticBasis
+public import Stafford38.Characteristic.SymplecticCompletion
+public import Stafford38.Weyl.PaperRightMonic
+public import Mathlib.LinearAlgebra.Matrix.BilinearForm
+public import Mathlib.LinearAlgebra.Basis.Basic
+
+@[expose] public section
 
 open LinearMap (BilinForm)
 open Stafford
@@ -107,7 +110,11 @@ theorem rightMonic_degreeOne_literal_oracle :
       (presentedNormalFormLinearEquiv ℚ 1
         (presentedMomentum ℚ 0 + presentedCoordinate ℚ 0)) = 1 := by
     rw [hnf]
-    simp
+    simp [MvPolynomial.coeff, MvPolynomial.coeff_X]
+    intro h
+    have hv := congrArg
+      (fun f : (Fin 1 ⊕ Fin 1) →₀ ℕ => f (Sum.inr (0 : Fin 1))) h
+    simp at hv
   have hmonic : IsPBWMonicAt ℚ (.inr (0 : Fin 1)) 1
       (presentedMomentum ℚ 0 + presentedCoordinate ℚ 0) := ⟨hpiece, hcoef⟩
   obtain ⟨a, ha, hdecomp⟩ :=

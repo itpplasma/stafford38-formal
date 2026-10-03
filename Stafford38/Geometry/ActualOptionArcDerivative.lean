@@ -1,4 +1,7 @@
-import Stafford38.Geometry.PrescribedCompletionDerivationCommutation
+module
+public import Stafford38.Geometry.PrescribedCompletionDerivationCommutation
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000
@@ -32,22 +35,22 @@ variable [Algebra (MvPolynomial (Option (Fin d)) k) A] [Algebra k A]
   [IsScalarTower k (MvPolynomial (Option (Fin d)) k) A]
   [Algebra.EssFiniteType (MvPolynomial (Option (Fin d)) k) A]
 
-local notation "R" => MvPolynomial (Option (Fin d)) k
+local notation "ChartBase" => MvPolynomial (Option (Fin d)) k
 
 /-- Any one-variable power-series arc whose values on the Option-chart
 parameters have the indicated first-order coefficients differentiates by the
 corresponding weighted sum of the canonical coordinate derivations. -/
 theorem arc_derivative_eq_option_coordinate_sum
-    {T : Type*} [CommRing T] [Algebra R T] [Algebra k T]
-    [IsScalarTower k R T] [Algebra.FormallyEtale R T]
+    {T : Type*} [CommRing T] [Algebra ChartBase T] [Algebra k T]
+    [IsScalarTower k ChartBase T] [Algebra.FormallyEtale ChartBase T]
     (φ : T →ₐ[k] PowerSeries k) (α : Fin d → k)
     (β : Option (Fin d) → k)
     (hcoord : ∀ j : Option (Fin d),
-      φ (algebraMap R T (MvPolynomial.X j)) =
+      φ (algebraMap ChartBase T (MvPolynomial.X j)) =
         PowerSeries.C (β j) +
           PowerSeries.C (j.elim 1 α) * PowerSeries.X)
     (b : T) :
-    PowerSeries.derivative k (φ b) =
+    PowerSeries.derivative (R := k) (φ b) =
       φ (EtaleCotangentBasis.coordinateDerivation
         (k := k) (σ := Option (Fin d)) (B := T) (L := T) none b) +
         ∑ j : Fin d, PowerSeries.C (α j) *
@@ -65,7 +68,7 @@ theorem arc_derivative_eq_option_coordinate_sum
         change φ (r * x) = φ r * φ x
         exact φ.map_mul r x }
   let Dleft : Derivation k T (PowerSeries k) :=
-    (PowerSeries.derivative k).compAlgebraMap T
+    (PowerSeries.derivative (R := k)).compAlgebraMap T
   let Dright : Derivation k T (PowerSeries k) :=
     (φlin.compDer (EtaleCotangentBasis.coordinateDerivation
       (k := k) (σ := Option (Fin d)) (B := T) (L := T) none)) +
@@ -73,20 +76,20 @@ theorem arc_derivative_eq_option_coordinate_sum
         (φlin.compDer (EtaleCotangentBasis.coordinateDerivation
           (k := k) (σ := Option (Fin d)) (B := T) (L := T) (some j)))
   have hleft (j : Option (Fin d)) :
-      Dleft (algebraMap R T (MvPolynomial.X j)) = PowerSeries.C (j.elim 1 α) := by
-    change PowerSeries.derivative k
-      (φ (algebraMap R T (MvPolynomial.X j))) = _
+      Dleft (algebraMap ChartBase T (MvPolynomial.X j)) = PowerSeries.C (j.elim 1 α) := by
+    change PowerSeries.derivative (R := k)
+      (φ (algebraMap ChartBase T (MvPolynomial.X j))) = _
     rw [hcoord j]
     cases j <;> simp [Derivation.map_add, Derivation.leibniz]
   have hright (j : Option (Fin d)) :
-      Dright (algebraMap R T (MvPolynomial.X j)) = PowerSeries.C (j.elim 1 α) := by
+      Dright (algebraMap ChartBase T (MvPolynomial.X j)) = PowerSeries.C (j.elim 1 α) := by
     change (Derivation.coeFnAddMonoidHom
       ((φlin.compDer (EtaleCotangentBasis.coordinateDerivation
         (k := k) (σ := Option (Fin d)) (B := T) (L := T) none)) +
         ∑ i : Fin d, PowerSeries.C (α i) •
           (φlin.compDer (EtaleCotangentBasis.coordinateDerivation
             (k := k) (σ := Option (Fin d)) (B := T) (L := T) (some i)))))
-      (algebraMap R T (MvPolynomial.X j)) = _
+      (algebraMap ChartBase T (MvPolynomial.X j)) = _
     rw [map_add, map_sum]
     cases j with
     | none => simp [φlin,
@@ -97,17 +100,17 @@ theorem arc_derivative_eq_option_coordinate_sum
     calc
       Dleft = EtaleCotangentBasis.derivationFromValues
           (k := k) (σ := Option (Fin d)) (B := T) (L := PowerSeries k)
-          (fun j => Dleft (algebraMap R T (MvPolynomial.X j))) :=
+          (fun j => Dleft (algebraMap ChartBase T (MvPolynomial.X j))) :=
         (EtaleCotangentBasis.derivation_eq_from_parameter_values Dleft).symm
       _ = EtaleCotangentBasis.derivationFromValues
           (k := k) (σ := Option (Fin d)) (B := T) (L := PowerSeries k)
-          (fun j => Dright (algebraMap R T (MvPolynomial.X j))) := by
+          (fun j => Dright (algebraMap ChartBase T (MvPolynomial.X j))) := by
         congr 1
         funext j
         rw [hleft j, hright j]
       _ = Dright := EtaleCotangentBasis.derivation_eq_from_parameter_values Dright
   calc
-    PowerSeries.derivative k (φ b) = Dleft b := rfl
+    PowerSeries.derivative (R := k) (φ b) = Dleft b := rfl
     _ = Dright b := congrArg (fun D : Derivation k T (PowerSeries k) => D b) hderiv
     _ = φ (EtaleCotangentBasis.coordinateDerivation
           (k := k) (σ := Option (Fin d)) (B := T) (L := T) none b) +
@@ -128,9 +131,9 @@ restricted along the canonical tilted arc obeys the Option-coordinate
 derivative formula. -/
 theorem localToFinSuccArc_derivative_eq_option_coordinate_sum
     (M : Ideal A) [M.IsMaximal] (eM : (A ⧸ M) ≃ₐ[k] k)
-    [Algebra.FormallyEtale R (Localization.AtPrime M)]
+    [Algebra.FormallyEtale ChartBase (Localization.AtPrime M)]
     (α : Fin d → k) (b : Localization.AtPrime M) :
-    PowerSeries.derivative k
+    PowerSeries.derivative (R := k)
       (tiltedArc (k := k) α
         (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM b)) =
       tiltedArc (k := k) α
@@ -160,16 +163,16 @@ theorem localToFinSuccArc_derivative_eq_option_coordinate_sum
             change tiltedArc (k := k) α (MvPowerSeries.C c) = PowerSeries.C c
             exact Stafford38.Geometry.SmoothLocalTiltedArcAxisLift.tiltedArc_C α c }
   have hcoord (j : Option (Fin d)) :
-      φ (algebraMap R T (MvPolynomial.X j)) =
+      φ (algebraMap ChartBase T (MvPolynomial.X j)) =
         PowerSeries.C (residueCoordinates (σ := Option (Fin d)) M eM j) +
           PowerSeries.C (j.elim 1 α) * PowerSeries.X := by
     cases j with
     | none =>
         change tiltedArc (k := k) α
-          (Φ (algebraMap R T (MvPolynomial.X none))) = _
-        have hmap : algebraMap R T (MvPolynomial.X none) =
-            algebraMap A T (algebraMap R A (MvPolynomial.X none)) :=
-          IsScalarTower.algebraMap_apply R A T _
+          (Φ (algebraMap ChartBase T (MvPolynomial.X none))) = _
+        have hmap : algebraMap ChartBase T (MvPolynomial.X none) =
+            algebraMap A T (algebraMap ChartBase A (MvPolynomial.X none)) :=
+          IsScalarTower.algebraMap_apply ChartBase A T _
         rw [hmap, localToFinSuccPowerSeries_none (k := k) (B := A) M eM]
         change tiltedArc (k := k) α
           (MvPowerSeries.C (residueCoordinates (σ := Option (Fin d)) M eM none) +
@@ -189,10 +192,10 @@ theorem localToFinSuccArc_derivative_eq_option_coordinate_sum
               simp
     | some j =>
         change tiltedArc (k := k) α
-          (Φ (algebraMap R T (MvPolynomial.X (some j)))) = _
-        have hmap : algebraMap R T (MvPolynomial.X (some j)) =
-            algebraMap A T (algebraMap R A (MvPolynomial.X (some j))) :=
-          IsScalarTower.algebraMap_apply R A T _
+          (Φ (algebraMap ChartBase T (MvPolynomial.X (some j)))) = _
+        have hmap : algebraMap ChartBase T (MvPolynomial.X (some j)) =
+            algebraMap A T (algebraMap ChartBase A (MvPolynomial.X (some j))) :=
+          IsScalarTower.algebraMap_apply ChartBase A T _
         rw [hmap, localToFinSuccPowerSeries_some (k := k) (B := A) M eM j]
         change tiltedArc (k := k) α
           (MvPowerSeries.C (residueCoordinates (σ := Option (Fin d)) M eM (some j)) +

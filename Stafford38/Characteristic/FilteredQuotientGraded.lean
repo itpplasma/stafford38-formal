@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.FilteredQuotient
+module
+public import Stafford38.Characteristic.FilteredQuotient
+
+@[expose] public section
 
 /-!
 # The graded bridge for a filtered right-ideal quotient

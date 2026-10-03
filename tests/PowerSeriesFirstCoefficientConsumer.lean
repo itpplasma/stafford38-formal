@@ -1,5 +1,8 @@
-import Stafford38.Geometry.AsymptoticChartArcAdapter
-import Stafford38.Geometry.PowerSeriesArcTangency
+module
+public import Stafford38.Geometry.AsymptoticChartArcAdapter
+public import Stafford38.Geometry.PowerSeriesArcTangency
+
+@[expose] public section
 
 open Stafford38.Geometry.AsymptoticChartArcAdapter
 open Stafford38.Geometry.ContinuousPowerSeriesTangentFrame
@@ -35,7 +38,7 @@ theorem projectiveFirstJet_uses_canonical_first_coefficient :
 
 theorem first_coefficient_is_derivative_at_constant_term :
     powerSeriesFirstCoefficient singletonArc =
-      fun i => PowerSeries.constantCoeff (PowerSeries.derivative ℚ (singletonArc i)) :=
+      fun i => PowerSeries.constantCoeff (PowerSeries.derivative (singletonArc i)) :=
   powerSeriesFirstCoefficient_eq_constantCoeff_derivative singletonArc
 
 #print axioms generic_first_coefficient_reads_linear_term

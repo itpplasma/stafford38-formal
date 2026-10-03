@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.LocalizedTwoBlockQuotient
+module
+public import Stafford38.Characteristic.LocalizedTwoBlockQuotient
+
+@[expose] public section
 
 /-!
 # Principal specialization kernels after the localized two-block quotient

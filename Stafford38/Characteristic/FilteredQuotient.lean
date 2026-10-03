@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.InitialIdeal
-import Stafford38.Weyl.AssociatedGraded
+module
+public import Stafford38.Characteristic.InitialIdeal
+public import Stafford38.Weyl.AssociatedGraded
+
+@[expose] public section
 
 /-!
 # Differential-order filtration on a right-ideal quotient

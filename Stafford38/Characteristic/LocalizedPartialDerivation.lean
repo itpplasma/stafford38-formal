@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.PostScalarExtensionPoisson
-import Stafford38.Characteristic.LocalizedDerivationQuotient
+module
+public import Stafford38.Characteristic.PostScalarExtensionPoisson
+public import Stafford38.Characteristic.LocalizedDerivationQuotient
+
+@[expose] public section
 
 /-!
 # Polynomial partial derivatives on a prime localization

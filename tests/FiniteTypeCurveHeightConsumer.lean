@@ -1,5 +1,8 @@
-import Stafford38.Geometry.FiniteTypeCurveHeight
-import Mathlib.RingTheory.Polynomial.Quotient
+module
+public import Stafford38.Geometry.FiniteTypeCurveHeight
+public import Mathlib.RingTheory.Polynomial.Quotient
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,5 +1,9 @@
-import Stafford38.CanonicalSupportVanishingReduction
-import Stafford38.Geometry.ScalarExtensionPoints
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.CanonicalSupportVanishingReduction
+public import Stafford38.Geometry.ScalarExtensionPoints
+
+@[expose] public section
 
 /-!
 # Conditional Laurent symbol control
@@ -70,7 +74,7 @@ theorem exists_canonical_fibrePolynomial
       (@Stafford38.WeylFiltration.orderWeight (n + 1)) N d)
     (canonical_orderPrincipalComponent_isFibreOnly k n N hd)
 
-private abbrev orderDecompositionGroundExtension :=
+abbrev orderDecompositionGroundExtension :=
   MvPolynomial.weightedHomogeneousSubmodule k
     (@Stafford38.WeylFiltration.orderWeight n)
 

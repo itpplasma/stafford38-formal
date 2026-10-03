@@ -1,7 +1,10 @@
-import Stafford38.Geometry.GeneralConormalAxis
-import Stafford38.Geometry.GeneralConstantCoordinateAxis
-import Stafford38.Geometry.GeneralCoordinateAvoidance
-import Stafford38.Geometry.CanonicalConstantCoordinateBranch
+module
+public import Stafford38.Geometry.GeneralConormalAxis
+public import Stafford38.Geometry.GeneralConstantCoordinateAxis
+public import Stafford38.Geometry.GeneralCoordinateAvoidance
+public import Stafford38.Geometry.CanonicalConstantCoordinateBranch
+
+@[expose] public section
 
 /-!
 # Laurent conormal axes for coordinate-avoiding prime varieties

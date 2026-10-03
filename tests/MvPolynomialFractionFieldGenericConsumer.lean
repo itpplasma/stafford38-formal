@@ -1,4 +1,7 @@
-import Stafford38.Geometry.MvPolynomialFractionFieldTranscendenceBasis
+module
+public import Stafford38.Geometry.MvPolynomialFractionFieldTranscendenceBasis
+
+@[expose] public section
 
 set_option autoImplicit false
 

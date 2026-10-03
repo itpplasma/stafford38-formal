@@ -1,6 +1,10 @@
-import Stafford38.Characteristic.FilteredQuotientGraded
-import Stafford38.Characteristic.InitialIdealHomogeneous
-import Stafford38.Weyl.QuotientTransport
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Characteristic.FilteredQuotientGraded
+public import Stafford38.Characteristic.InitialIdealHomogeneous
+public import Stafford38.Weyl.QuotientTransport
+
+@[expose] public section
 
 /-!
 # Conditional consumer for canonical axis avoidance
@@ -34,16 +38,14 @@ universe u
 
 variable (k : Type u) [Field k] [Algebra ℚ k]
 
-private abbrev CanonicalIdeal (n N : ℕ)
-    (d : PresentedWeyl k (n + 1)) :=
-  canonicalRightIdeal (presentedCoordinate k n) d N
-
 /-- The distinguished coordinate belongs to differential order zero. -/
 theorem presentedCoordinate_mem_orderPiece_zero (n : ℕ) :
     presentedCoordinate k n ∈ orderPiece k (n + 1) 0 := by
   rw [orderPiece, mem_presentedWeightPiece,
     presentedCoordinate, presentedNormalFormLinearEquiv_generator]
   intro m hm
+  change AddMonoidAlgebra.coeff
+    (MvPolynomial.X (.inl (0 : Fin (n + 1)))) m ≠ 0 at hm
   rw [MvPolynomial.coeff_X'] at hm
   split at hm
   · next heq =>
@@ -58,9 +60,9 @@ def CoordinateCancellation (n N : ℕ)
   ∀ (m : ℕ) (z : PresentedWeyl k (n + 1)),
     z ∈ orderPiece k (n + 1) m →
     z * presentedCoordinate k n ∈
-        rightIdealKSubmodule k (CanonicalIdeal k n N d) ⊔
+        rightIdealKSubmodule k (canonicalRightIdeal (presentedCoordinate k n) d N) ⊔
           presentedStrictLowerPiece k orderWeight m →
-    z ∈ rightIdealKSubmodule k (CanonicalIdeal k n N d) ⊔
+    z ∈ rightIdealKSubmodule k (canonicalRightIdeal (presentedCoordinate k n) d N) ⊔
       presentedStrictLowerPiece k orderWeight m
 
 /-- Cancellation plus unrestricted quotient surjectivity lowers an arbitrary
@@ -74,9 +76,9 @@ theorem exists_strict_coordinate_preimage
     (hz : z ∈ orderPiece k (n + 1) m) :
     ∃ y : PresentedWeyl k (n + 1),
       y ∈ orderPiece k (n + 1) m ∧
-      qmk (CanonicalIdeal k n N d) (y * presentedCoordinate k n) =
-        qmk (CanonicalIdeal k n N d) z := by
-  let I := CanonicalIdeal k n N d
+      qmk (canonicalRightIdeal (presentedCoordinate k n) d N) (y * presentedCoordinate k n) =
+        qmk (canonicalRightIdeal (presentedCoordinate k n) d N) z := by
+  let I := canonicalRightIdeal (presentedCoordinate k n) d N
   let x := presentedCoordinate k n
   have hsurj : Function.Surjective (rightMul I x) := by
     exact presentedCanonicalRightQuotient_rightMul_coordinate_surjective
@@ -137,37 +139,37 @@ theorem canonical_graded_coordinate_surjective
     (hcancel : CoordinateCancellation k n N d) :
     Function.Surjective
       (quotientOrderHomogeneousAction (N := m) (M := 0)
-        k (CanonicalIdeal k n N d)
+        k (canonicalRightIdeal (presentedCoordinate k n) d N)
         (principalComponentOnPiece k (@orderWeight (n + 1)) 0
           ⟨presentedCoordinate k n,
             presentedCoordinate_mem_orderPiece_zero k n⟩)) := by
   intro q
   obtain ⟨z, rfl⟩ := orderPieceToQuotientGraded_surjective
-    k (CanonicalIdeal k n N d) m q
+    k (canonicalRightIdeal (presentedCoordinate k n) d N) m q
   obtain ⟨y, hy, hyx⟩ :=
     exists_strict_coordinate_preimage k n N m hd hcancel z z.property
-  refine ⟨orderPieceToQuotientGraded k (CanonicalIdeal k n N d) m ⟨y, hy⟩, ?_⟩
+  refine ⟨orderPieceToQuotientGraded k (canonicalRightIdeal (presentedCoordinate k n) d N) m ⟨y, hy⟩, ?_⟩
   rw [quotientOrderHomogeneousAction_mk_mul]
-  have hyx' : (rightIdealKSubmodule k (CanonicalIdeal k n N d)).mkQ
+  have hyx' : (rightIdealKSubmodule k (canonicalRightIdeal (presentedCoordinate k n) d N)).mkQ
         (y * presentedCoordinate k n) =
-      (rightIdealKSubmodule k (CanonicalIdeal k n N d)).mkQ z :=
+      (rightIdealKSubmodule k (canonicalRightIdeal (presentedCoordinate k n) d N)).mkQ z :=
     congrArg
       (filteredRightQuotientEquivRightQuotient k
-        (CanonicalIdeal k n N d)).symm hyx
+        (canonicalRightIdeal (presentedCoordinate k n) d N)).symm hyx
   apply (Submodule.Quotient.eq _).2
-  change (orderPieceToQuotientPiece k (CanonicalIdeal k n N d) m
+  change (orderPieceToQuotientPiece k (canonicalRightIdeal (presentedCoordinate k n) d N) m
       ⟨y * presentedCoordinate k n, _⟩ :
-        FilteredRightQuotient k (CanonicalIdeal k n N d)) -
-      orderPieceToQuotientPiece k (CanonicalIdeal k n N d) m z ∈
-        quotientOrderStrictLowerPiece k (CanonicalIdeal k n N d) m
-  rw [show (orderPieceToQuotientPiece k (CanonicalIdeal k n N d) m
+        FilteredRightQuotient k (canonicalRightIdeal (presentedCoordinate k n) d N)) -
+      orderPieceToQuotientPiece k (canonicalRightIdeal (presentedCoordinate k n) d N) m z ∈
+        quotientOrderStrictLowerPiece k (canonicalRightIdeal (presentedCoordinate k n) d N) m
+  rw [show (orderPieceToQuotientPiece k (canonicalRightIdeal (presentedCoordinate k n) d N) m
       ⟨y * presentedCoordinate k n, _⟩ :
-        FilteredRightQuotient k (CanonicalIdeal k n N d)) =
-      (rightIdealKSubmodule k (CanonicalIdeal k n N d)).mkQ
+        FilteredRightQuotient k (canonicalRightIdeal (presentedCoordinate k n) d N)) =
+      (rightIdealKSubmodule k (canonicalRightIdeal (presentedCoordinate k n) d N)).mkQ
         (y * presentedCoordinate k n) from rfl]
-  rw [show (orderPieceToQuotientPiece k (CanonicalIdeal k n N d) m z :
-      FilteredRightQuotient k (CanonicalIdeal k n N d)) =
-      (rightIdealKSubmodule k (CanonicalIdeal k n N d)).mkQ z from rfl]
+  rw [show (orderPieceToQuotientPiece k (canonicalRightIdeal (presentedCoordinate k n) d N) m z :
+      FilteredRightQuotient k (canonicalRightIdeal (presentedCoordinate k n) d N)) =
+      (rightIdealKSubmodule k (canonicalRightIdeal (presentedCoordinate k n) d N)).mkQ z from rfl]
   rw [hyx', sub_self]
   exact Submodule.zero_mem _
 
@@ -180,9 +182,10 @@ theorem coe_coordinate_order_symbol (n : ℕ) :
       SymbolRing k (n + 1)) =
       MvPolynomial.X (.inl (0 : Fin (n + 1))) := by
   ext m
-  change MvPolynomial.coeff m
+  change AddMonoidAlgebra.coeff
       (presentedPrincipalComponent k orderWeight 0
-        (presentedCoordinate k n)) = _
+        (presentedCoordinate k n)) m =
+    AddMonoidAlgebra.coeff (MvPolynomial.X (.inl (0 : Fin (n + 1)))) m
   rw [coeff_presentedPrincipalComponent, presentedCoordinate,
     presentedNormalFormLinearEquiv_generator, MvPolynomial.coeff_X']
   by_cases hm : Finsupp.single (.inl (0 : Fin (n + 1))) 1 = m
@@ -197,9 +200,9 @@ theorem canonical_orderInitialIdeal_sup_coordinate_eq_top
     (hd : Stafford38.WeylPBWMonicBridge.IsPBWMonicAt k
       (.inr (0 : Fin (n + 1))) N d)
     (hcancel : CoordinateCancellation k n N d) :
-    orderInitialIdeal k (CanonicalIdeal k n N d) ⊔
+    orderInitialIdeal k (canonicalRightIdeal (presentedCoordinate k n) d N) ⊔
         Ideal.span {MvPolynomial.X (.inl (0 : Fin (n + 1)))} = ⊤ := by
-  let I := CanonicalIdeal k n N d
+  let I := canonicalRightIdeal (presentedCoordinate k n) d N
   let X : MvPolynomial.weightedHomogeneousSubmodule k
       (@orderWeight (n + 1)) 0 :=
     principalComponentOnPiece k (@orderWeight (n + 1)) 0
@@ -259,7 +262,7 @@ theorem canonical_orderCharacteristicSupport_disjoint_coordinate_zeroLocus
       (.inr (0 : Fin (n + 1))) N d)
     (hcancel : CoordinateCancellation k n N d) :
     Disjoint
-      (orderCharacteristicSupport k (CanonicalIdeal k n N d))
+      (orderCharacteristicSupport k (canonicalRightIdeal (presentedCoordinate k n) d N))
       (PrimeSpectrum.zeroLocus
         ({MvPolynomial.X (.inl (0 : Fin (n + 1)))} :
           Set (SymbolRing k (n + 1)))) := by
@@ -270,7 +273,7 @@ theorem canonical_orderCharacteristicSupport_disjoint_coordinate_zeroLocus
   rw [PrimeSpectrum.mem_zeroLocus] at hpx
   have htop := canonical_orderInitialIdeal_sup_coordinate_eq_top
     k n N hd hcancel
-  have hle : orderInitialIdeal k (CanonicalIdeal k n N d) ⊔
+  have hle : orderInitialIdeal k (canonicalRightIdeal (presentedCoordinate k n) d N) ⊔
       Ideal.span {MvPolynomial.X (.inl (0 : Fin (n + 1)))} ≤ p.asIdeal :=
     sup_le hp (Ideal.span_le.mpr hpx)
   rw [htop] at hle

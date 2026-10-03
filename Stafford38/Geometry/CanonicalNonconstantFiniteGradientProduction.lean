@@ -1,7 +1,10 @@
-import Stafford38.Geometry.AffineComponentCoordinateSplit
-import Stafford38.Geometry.CanonicalConstantCoordinateBranch
-import Stafford38.Geometry.CanonicalResidueExtensionAssembly
-import Stafford38.Geometry.FiniteGradientResidueExtension
+module
+public import Stafford38.Geometry.AffineComponentCoordinateSplit
+public import Stafford38.Geometry.CanonicalConstantCoordinateBranch
+public import Stafford38.Geometry.CanonicalResidueExtensionAssembly
+public import Stafford38.Geometry.FiniteGradientResidueExtension
+
+@[expose] public section
 
 /-!
 # Finite-gradient component interface

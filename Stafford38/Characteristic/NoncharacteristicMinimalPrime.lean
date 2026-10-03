@@ -1,5 +1,10 @@
-import Stafford38.Characteristic.GabberGlobalAssembly
-import Stafford38.Characteristic.CanonicalNormalAxisSupport
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Mathlib.RingTheory.MvPolynomial.EulerIdentity
+public import Stafford38.Characteristic.GabberGlobalAssembly
+public import Stafford38.Characteristic.CanonicalNormalAxisSupport
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.NoncharacteristicMinimalPrime
 
@@ -63,9 +68,15 @@ private theorem iterPderiv_eq_factorial_of_homogeneous
         rw [show iterPderiv i (r + 1) f =
           MvPolynomial.pderiv i (iterPderiv i r f) by
             simp [iterPderiv, Function.iterate_succ_apply']]
-        rw [MvPolynomial.coeff_pderiv]
+        simp only [MvPolynomial.coeff_pderiv]
         have hi := ihr (m + 1)
         simp only [Finsupp.single_add] at hi ⊢
+        change MvPolynomial.coeff
+          (Finsupp.single i m + Finsupp.single i 1) (iterPderiv i r f) *
+            ((Finsupp.single i m) i + 1) =
+          MvPolynomial.coeff
+            (Finsupp.single i m + (Finsupp.single i r + Finsupp.single i 1)) f *
+            ↑((m + (r + 1)).descFactorial (r + 1))
         rw [hi]
         have harg :
             ((Finsupp.single i m + Finsupp.single i 1) + Finsupp.single i r) =

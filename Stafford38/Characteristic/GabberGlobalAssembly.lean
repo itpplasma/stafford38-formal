@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.BGab001CoefficientFieldTrace
-import Stafford38.Characteristic.CanonicalGabberInvolutivityInterface
+module
+public import Stafford38.Characteristic.BGab001CoefficientFieldTrace
+public import Stafford38.Characteristic.CanonicalGabberInvolutivityInterface
+
+@[expose] public section
 
 /-!
 # Gabber involutivity for Weyl quotients

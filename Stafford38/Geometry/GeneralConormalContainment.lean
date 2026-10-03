@@ -1,5 +1,8 @@
-import Stafford38.Geometry.AffineConormalClosure
-import Stafford38.Geometry.PaperHamiltonianFlow
+module
+public import Stafford38.Geometry.AffineConormalClosure
+public import Stafford38.Geometry.PaperHamiltonianFlow
+
+@[expose] public section
 
 /-!
 # Generic equation-conormal containment

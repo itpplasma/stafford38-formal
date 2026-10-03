@@ -1,5 +1,8 @@
-import Stafford38.Geometry.PaperCompletedResidueDerivationFrame
-import Stafford38.Geometry.PaperRetainedChartAssembly
+module
+public import Stafford38.Geometry.PaperCompletedResidueDerivationFrame
+public import Stafford38.Geometry.PaperRetainedChartAssembly
+
+@[expose] public section
 
 -- Kernel and axiom audits of the actual-column interfaces.
 -- These checks do not certify the still-pending full paper correspondence.

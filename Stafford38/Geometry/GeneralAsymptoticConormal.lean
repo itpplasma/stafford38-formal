@@ -1,6 +1,9 @@
-import Stafford38.Geometry.GeneralAsymptoticLaurentAxis
-import Stafford38.Geometry.SmoothConormalFibreVanishing
-import Stafford38.Geometry.ConormalScalarExtensionVanishing
+module
+public import Stafford38.Geometry.GeneralAsymptoticLaurentAxis
+public import Stafford38.Geometry.SmoothConormalFibreVanishing
+public import Stafford38.Geometry.ConormalScalarExtensionVanishing
+
+@[expose] public section
 
 /-!
 # Asymptotic conormal directions of coordinate-avoiding varieties

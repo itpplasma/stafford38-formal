@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ProjectiveValuationNormalization
-import Stafford38.Geometry.RelativeRetainedBoundaryPlace
-import Mathlib.RingTheory.PowerSeries.Inverse
+module
+public import Stafford38.Geometry.ProjectiveValuationNormalization
+public import Stafford38.Geometry.RelativeRetainedBoundaryPlace
+public import Mathlib.RingTheory.PowerSeries.Inverse
+
+@[expose] public section
 
 /-!
 # Transport from a retained valuation ring to its power-series completion

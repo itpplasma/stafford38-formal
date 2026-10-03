@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.EndomorphismKernelSupport
+module
+public import AlgebraicAnalysis.Module.EndomorphismKernelSupport
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

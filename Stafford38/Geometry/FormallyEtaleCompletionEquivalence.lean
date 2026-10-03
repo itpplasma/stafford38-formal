@@ -1,8 +1,11 @@
-import Mathlib.RingTheory.AdicCompletion.Completeness
-import Mathlib.RingTheory.AdicCompletion.Algebra
-import Mathlib.RingTheory.Etale.Basic
-import Mathlib.RingTheory.Ideal.Quotient.PowTransition
-import Stafford38.Geometry.AdicCompletionMap
+module
+public import Mathlib.RingTheory.AdicCompletion.Completeness
+public import Mathlib.RingTheory.AdicCompletion.Algebra
+public import Mathlib.RingTheory.Etale.Basic
+public import Mathlib.RingTheory.Ideal.Quotient.PowTransition
+public import Stafford38.Geometry.AdicCompletionMap
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1000000
@@ -26,9 +29,9 @@ private theorem factor_evalₐ_comp (m n : ℕ) (hmn : m ≤ n) (x : AdicComplet
     simpa [smul_eq_mul, Ideal.mul_top] using hc'
   simpa using (I ^ m).neg_mem hc
 
-private def baseAlgHom : A →ₐ[A] B := IsScalarTower.toAlgHom A A B
+def baseAlgHom : A →ₐ[A] B := IsScalarTower.toAlgHom A A B
 
-private theorem idealPowMap_eq (n : ℕ) (hJ : J = I.map (algebraMap A B)) :
+theorem idealPowMap_eq (n : ℕ) (hJ : J = I.map (algebraMap A B)) :
     (I ^ n).map (algebraMap A B) = J ^ n := by
   rw [Ideal.map_pow, hJ]
 
@@ -102,7 +105,7 @@ private theorem reverseStage_compatible (hJ : J = I.map (algebraMap A B))
     _ = reverseStage I J hJ ψ m (Ideal.Quotient.mkₐ A (J ^ m) b) := by
       exact (reverseStage_mk I J hJ ψ m b).symm
 
-private theorem reverseCompletionMap_compatible (hJ : J = I.map (algebraMap A B))
+theorem reverseCompletionMap_compatible (hJ : J = I.map (algebraMap A B))
     (ψ : B →ₐ[A] AdicCompletion I A) {m n : ℕ} (hmn : m ≤ n) :
     (Ideal.Quotient.factorPow I hmn).comp
         (((reverseStage I J hJ ψ n).toRingHom).comp (AdicCompletion.evalₐ J n).toRingHom) =
@@ -123,7 +126,7 @@ private theorem reverseCompletionMap_compatible (hJ : J = I.map (algebraMap A B)
       exact factor_evalₐ_comp J m n hmn x
 
 /-- The reverse map on completions induced by the supplied lift to the base completion. -/
-private def reverseCompletionMap (hJ : J = I.map (algebraMap A B))
+def reverseCompletionMap (hJ : J = I.map (algebraMap A B))
     (ψ : B →ₐ[A] AdicCompletion I A) :
     AdicCompletion J B →+* AdicCompletion I A :=
   AdicCompletion.liftRingHom I
@@ -232,7 +235,7 @@ private theorem eval_forwardCompletionMap (hJ : J = I.map (algebraMap A B))
     (Stafford38.Geometry.AdicCompletionMap.eval_mapOfRingHom
       (algebraMap A B) I J hJ x n)
 
-private theorem forward_reverse_completion
+theorem forward_reverse_completion
     [Algebra.FormallyUnramified A B]
     (hJ : J = I.map (algebraMap A B))
     (ψ : B →ₐ[A] AdicCompletion I A)
@@ -246,7 +249,7 @@ private theorem forward_reverse_completion
   exact DFunLike.congr_fun (forward_reverse_stage I J hJ ψ hres n)
     (AdicCompletion.evalₐ J n x)
 
-private theorem reverse_forward_completion
+theorem reverse_forward_completion
     (hJ : J = I.map (algebraMap A B))
     (ψ : B →ₐ[A] AdicCompletion I A)
     (x : AdicCompletion I A) :

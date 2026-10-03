@@ -1,4 +1,7 @@
-import Mathlib.LinearAlgebra.Span.Basic
+module
+public import Mathlib.LinearAlgebra.Span.Basic
+
+@[expose] public section
 
 /-!
 An elementary span identity used when a raw velocity differs from a corrected

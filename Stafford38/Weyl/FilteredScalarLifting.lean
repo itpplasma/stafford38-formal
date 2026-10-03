@@ -1,8 +1,11 @@
-import AlgebraicAnalysis.Ore.Associativity
-import Stafford38.Weyl.PresentedScalarExtension
-import Mathlib.RingTheory.Flat.Equalizer
-import Mathlib.LinearAlgebra.TensorProduct.RightExactness
-import Mathlib.LinearAlgebra.TensorProduct.Basis
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import Stafford38.Weyl.PresentedScalarExtension
+public import Mathlib.RingTheory.Flat.Equalizer
+public import Mathlib.LinearAlgebra.TensorProduct.RightExactness
+public import Mathlib.LinearAlgebra.TensorProduct.Basis
+
+@[expose] public section
 
 /-!
 # Filtered scalar lifting for the presented Weyl algebra

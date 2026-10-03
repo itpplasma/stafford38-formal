@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ComponentProjectiveClosureNormalization
-import Stafford38.Geometry.LaurentConormalResidueExtension
-import Stafford38.Geometry.RetainedComponentEquationPackage
+module
+public import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+public import Stafford38.Geometry.LaurentConormalResidueExtension
+public import Stafford38.Geometry.RetainedComponentEquationPackage
+
+@[expose] public section
 
 /-!
 # Ground coefficients in the retained completed chart

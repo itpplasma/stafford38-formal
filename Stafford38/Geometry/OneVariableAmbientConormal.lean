@@ -1,6 +1,10 @@
-import Stafford38.Characteristic.CanonicalBaseVariety
-import Stafford38.Geometry.OneVariablePrimeConormal
-import Mathlib.FieldTheory.Perfect
+module
+public import Mathlib.Tactic.Cases
+public import Stafford38.Characteristic.CanonicalBaseVariety
+public import Stafford38.Geometry.OneVariablePrimeConormal
+public import Mathlib.FieldTheory.Perfect
+
+@[expose] public section
 
 /-!
 # Ambient rank-one conormal production

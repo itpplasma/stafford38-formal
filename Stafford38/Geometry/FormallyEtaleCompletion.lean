@@ -1,8 +1,11 @@
-import Mathlib.RingTheory.AdicCompletion.Completeness
-import Mathlib.RingTheory.AdicCompletion.RingHom
-import Mathlib.RingTheory.Smooth.AdicCompletion
-import Mathlib.RingTheory.Etale.Basic
-import Stafford38.Geometry.AdicCompletionMap
+module
+public import Mathlib.RingTheory.AdicCompletion.Completeness
+public import Mathlib.RingTheory.AdicCompletion.RingHom
+public import Mathlib.RingTheory.Smooth.AdicCompletion
+public import Mathlib.RingTheory.Etale.Basic
+public import Stafford38.Geometry.AdicCompletionMap
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1000000

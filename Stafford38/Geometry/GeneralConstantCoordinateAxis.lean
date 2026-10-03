@@ -1,7 +1,10 @@
-import Stafford38.Geometry.AffineComponentCoordinateSplit
-import Stafford38.Geometry.ConstantCoordinateConormal
-import Mathlib.RingTheory.Nullstellensatz
-import Stafford38.Geometry.SmoothConormalFibreVanishing
+module
+public import Stafford38.Geometry.AffineComponentCoordinateSplit
+public import Stafford38.Geometry.ConstantCoordinateConormal
+public import Mathlib.RingTheory.Nullstellensatz
+public import Stafford38.Geometry.SmoothConormalFibreVanishing
+
+@[expose] public section
 
 namespace Stafford38.Geometry.GeneralConstantCoordinateAxis
 

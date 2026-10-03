@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ActualOptionCoordinateEtale
+module
+public import Stafford38.Geometry.ActualOptionCoordinateEtale
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false
@@ -18,14 +21,14 @@ abbrev P := Stafford38.Geometry.AsymptoticDivisorExistence.coordinateZeroPrime E
 abbrev T := Localization.AtPrime P
 abbrev B := MvPolynomial (Option σ) k
 
-private def actualChartMap : B →ₐ[k] T :=
+def actualChartMap : B →ₐ[k] T :=
   (IsScalarTower.toAlgHom k S T).comp
     (Stafford38.Geometry.ProjectiveCoefficientLocalization.optionCoordinateMap
       (k := k) (E := E) (σ := σ))
 
-private def actualCoordinate (i : Option σ) : B := MvPolynomial.X i
+def actualCoordinate (i : Option σ) : B := MvPolynomial.X i
 
-private def actualMap : B →ₐ[k] T :=
+def actualMap : B →ₐ[k] T :=
   MvPolynomial.aeval (fun i => actualChartMap (actualCoordinate i))
 
 theorem actual_map_formallyEtale :

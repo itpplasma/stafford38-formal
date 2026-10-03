@@ -1,5 +1,8 @@
-import Stafford38.Geometry.FiniteGradientBoundaryProducer
-import Stafford38.Geometry.ProjectiveTangentInclusion
+module
+public import Stafford38.Geometry.FiniteGradientBoundaryProducer
+public import Stafford38.Geometry.ProjectiveTangentInclusion
+
+@[expose] public section
 
 /-!
 # Finite-gradient extraction from affine conormal membership

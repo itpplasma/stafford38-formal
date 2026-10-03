@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.SquareZeroLocalizedRing
+module
+public import Stafford38.Characteristic.SquareZeroLocalizedRing
+
+@[expose] public section
 
 /-!
 # Localized specialization respects the localized action

@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ActualOptionGroundPointCompletion
+module
+public import Stafford38.Geometry.ActualOptionGroundPointCompletion
+
+@[expose] public section
 
 set_option autoImplicit false
 

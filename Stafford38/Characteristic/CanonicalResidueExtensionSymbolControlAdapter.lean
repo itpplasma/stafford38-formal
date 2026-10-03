@@ -1,7 +1,10 @@
-import Stafford38.Characteristic.CanonicalLaurentSymbolControl
-import Stafford38.Characteristic.GeometricSupportScalarExtension
-import Stafford38.Characteristic.MinimalPrimePoisson
-import Stafford38.Geometry.CanonicalResidueExtensionAssembly
+module
+public import Stafford38.Characteristic.CanonicalLaurentSymbolControl
+public import Stafford38.Characteristic.GeometricSupportScalarExtension
+public import Stafford38.Characteristic.MinimalPrimePoisson
+public import Stafford38.Geometry.CanonicalResidueExtensionAssembly
+
+@[expose] public section
 
 /-!
 # Residue-extension symbol control from base-relative Poisson closure

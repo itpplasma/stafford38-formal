@@ -1,7 +1,10 @@
-import Stafford38.Geometry.EtaleDerivationExtension
-import Stafford38.Geometry.EtaleTangentChartSpan
-import Stafford38.Geometry.EtaleCotangentBasis
-import Stafford38.Geometry.EtaleTangentKernel
+module
+public import Stafford38.Geometry.EtaleDerivationExtension
+public import Stafford38.Geometry.EtaleTangentChartSpan
+public import Stafford38.Geometry.EtaleCotangentBasis
+public import Stafford38.Geometry.EtaleTangentKernel
+
+@[expose] public section
 
 #print axioms Stafford38.Geometry.EtaleCotangentBasis.basisOfFormallyEtale
 #print axioms Stafford38.Geometry.EtaleCotangentBasis.basisOfFormallyEtale_apply

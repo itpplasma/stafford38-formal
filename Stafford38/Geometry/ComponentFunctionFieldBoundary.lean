@@ -1,9 +1,12 @@
-import AlgebraicAnalysis.FieldTheory.FunctionField
-import Stafford38.Geometry.AffineComponentCoordinateSplit
-import Stafford38.Geometry.ProjectiveValuationNormalization
-import Stafford38.Geometry.RelativeFractionFieldTransport
-import Stafford38.Geometry.RelativeRetainedBoundaryPlace
-import Stafford38.Geometry.ProjectiveChartCoordinates
+module
+public import AlgebraicAnalysis.FieldTheory.FunctionField
+public import Stafford38.Geometry.AffineComponentCoordinateSplit
+public import Stafford38.Geometry.ProjectiveValuationNormalization
+public import Stafford38.Geometry.RelativeFractionFieldTransport
+public import Stafford38.Geometry.RelativeRetainedBoundaryPlace
+public import Stafford38.Geometry.ProjectiveChartCoordinates
+
+@[expose] public section
 
 /-!
 # Discrete boundary places for affine components

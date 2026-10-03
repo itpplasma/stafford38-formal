@@ -1,8 +1,11 @@
-import Stafford38.Geometry.PrescribedGroundPointPowerSeriesMap
-import Stafford38.Geometry.PaperUnitPowerFactorization
-import Stafford38.Geometry.PrescribedEtaleGroundPoint
-import Mathlib.Logic.Equiv.Fin.Basic
-import Mathlib.RingTheory.MvPowerSeries.Rename
+module
+public import Stafford38.Geometry.PrescribedGroundPointPowerSeriesMap
+public import Stafford38.Geometry.PaperUnitPowerFactorization
+public import Stafford38.Geometry.PrescribedEtaleGroundPoint
+public import Mathlib.Logic.Equiv.Fin.Basic
+public import Mathlib.RingTheory.MvPowerSeries.Rename
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2000000

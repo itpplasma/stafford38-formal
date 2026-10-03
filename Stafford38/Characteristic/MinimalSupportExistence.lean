@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.MinimalSupportExistence
+module
+public import AlgebraicAnalysis.Module.MinimalSupportExistence
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

@@ -1,7 +1,10 @@
-import Mathlib.RingTheory.Localization.Integer
-import Mathlib.RingTheory.Localization.Away.Basic
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.Finiteness.Cardinality
+module
+public import Mathlib.RingTheory.Localization.Integer
+public import Mathlib.RingTheory.Localization.Away.Basic
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.Finiteness.Cardinality
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 500000

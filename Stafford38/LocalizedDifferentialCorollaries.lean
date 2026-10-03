@@ -1,6 +1,9 @@
-import Stafford38.LocalizedDifferentialClearing
-import Stafford38.LeftDenominatorTransport
-import Stafford38.FoundationClosure
+module
+public import Stafford38.LocalizedDifferentialClearing
+public import Stafford38.LeftDenominatorTransport
+public import Stafford38.FoundationClosure
+
+@[expose] public section
 
 namespace Stafford38.LocalizedDifferentialCorollaries
 

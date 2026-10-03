@@ -1,12 +1,15 @@
-import Stafford38.Geometry.ProjectiveConormalDehomogenization
-import Stafford38.Geometry.LaurentConormalDirection
-import Stafford38.Geometry.SmoothAffineConormal
-import Stafford38.Geometry.ConormalScalarExtensionVanishing
-import Stafford38.Geometry.SmoothConormalFibreVanishing
-import Stafford38.Geometry.ProjectiveConormalDirections
-import Stafford38.Geometry.FormalDivisorLaurentConormal
-import Stafford38.Geometry.GeneralTangentLatticePresentation
-import Stafford38.Geometry.LocalizedProjectiveChartTransition
+module
+public import Stafford38.Geometry.ProjectiveConormalDehomogenization
+public import Stafford38.Geometry.LaurentConormalDirection
+public import Stafford38.Geometry.SmoothAffineConormal
+public import Stafford38.Geometry.ConormalScalarExtensionVanishing
+public import Stafford38.Geometry.SmoothConormalFibreVanishing
+public import Stafford38.Geometry.ProjectiveConormalDirections
+public import Stafford38.Geometry.FormalDivisorLaurentConormal
+public import Stafford38.Geometry.GeneralTangentLatticePresentation
+public import Stafford38.Geometry.LocalizedProjectiveChartTransition
+
+@[expose] public section
 
 /-!
 # The split-lattice tangent-limit calculation

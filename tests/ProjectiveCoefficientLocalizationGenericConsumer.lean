@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ProjectiveCoefficientLocalization
+module
+public import Stafford38.Geometry.ProjectiveCoefficientLocalization
+
+@[expose] public section
 
 set_option autoImplicit false
 

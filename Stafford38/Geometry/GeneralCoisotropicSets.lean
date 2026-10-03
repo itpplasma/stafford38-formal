@@ -1,5 +1,8 @@
-import Stafford38.Geometry.FibreConicalVanishingIdeal
-import Stafford38.Geometry.GeneralCoisotropicExclusion
+module
+public import Stafford38.Geometry.FibreConicalVanishingIdeal
+public import Stafford38.Geometry.GeneralCoisotropicExclusion
+
+@[expose] public section
 
 /-!
 # Coisotropic sets and their vanishing ideals

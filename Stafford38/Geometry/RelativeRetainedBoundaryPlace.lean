@@ -1,4 +1,7 @@
-import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
+module
+public import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
+
+@[expose] public section
 
 /-!
 # Relative retained boundary places

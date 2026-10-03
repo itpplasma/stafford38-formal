@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Ore.Associativity
-import proofs.weyl_symplectic
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import proofs.weyl_symplectic
+
+@[expose] public section
 
 /-!
 # General-rank linear symplectic changes of Weyl generators

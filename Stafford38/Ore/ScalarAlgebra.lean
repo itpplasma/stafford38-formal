@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Ore.Associativity
-import Stafford38.Ore.CoordinateStage
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import Stafford38.Ore.CoordinateStage
+
+@[expose] public section
 
 /-!
 # Scalar algebra structure on an Ore extension

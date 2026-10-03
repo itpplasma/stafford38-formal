@@ -1,11 +1,15 @@
-import Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
-import Stafford38.Geometry.ProjectiveChartSameFieldOverlap
-import Stafford38.Geometry.AsymptoticChartArcAdapter
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Stafford38.Geometry.ComponentFunctionFieldBoundary
-import Stafford38.Geometry.ComponentProjectiveClosure
-import Stafford38.Geometry.ComponentProjectiveChartKernel
-import Stafford38.Geometry.ActualWitnessSelectedChartBinding
+module
+public import Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
+public import Stafford38.Geometry.ProjectiveChartSameFieldOverlap
+public import Stafford38.Geometry.AsymptoticChartArcAdapter
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Stafford38.Geometry.ComponentFunctionFieldBoundary
+public import Stafford38.Geometry.ComponentProjectiveClosure
+public import Stafford38.Geometry.ComponentProjectiveChartKernel
+public import Stafford38.Geometry.ActualWitnessSelectedChartBinding
+
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

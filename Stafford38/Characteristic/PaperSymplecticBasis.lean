@@ -1,9 +1,12 @@
-import Stafford38.LinearAlgebra.SymplecticComplement
-import Mathlib.LinearAlgebra.Basis.Prod
-import Mathlib.LinearAlgebra.Basis.Bilinear
-import Mathlib.LinearAlgebra.BilinearForm.Hom
-import Mathlib.LinearAlgebra.Dimension.Free
-import Mathlib.LinearAlgebra.Projection
+module
+public import Stafford38.LinearAlgebra.SymplecticComplement
+public import Mathlib.LinearAlgebra.Basis.Prod
+public import Mathlib.LinearAlgebra.Basis.Bilinear
+public import Mathlib.LinearAlgebra.BilinearForm.Hom
+public import Mathlib.LinearAlgebra.Dimension.Free
+public import Mathlib.LinearAlgebra.Projection
+
+@[expose] public section
 
 /-!
 # Paper-facing symplectic basis completion

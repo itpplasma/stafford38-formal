@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ComponentProjectiveChartKernel
+module
+public import Stafford38.Geometry.ComponentProjectiveChartKernel
+
+@[expose] public section
 
 noncomputable section
 set_option autoImplicit false

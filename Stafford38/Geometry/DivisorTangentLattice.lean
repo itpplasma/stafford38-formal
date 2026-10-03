@@ -1,11 +1,14 @@
-import Mathlib.RingTheory.Derivation.Basic
-import Mathlib.RingTheory.LocalRing.MaximalIdeal.Basic
-import Mathlib.RingTheory.Nakayama
-import Mathlib.RingTheory.Finiteness.Ideal
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Module
-import Lean.Elab.Tactic.Omega
+module
+public import Mathlib.RingTheory.Derivation.Basic
+public import Mathlib.RingTheory.LocalRing.MaximalIdeal.Basic
+public import Mathlib.RingTheory.Nakayama
+public import Mathlib.RingTheory.Finiteness.Ideal
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Ring
+public import Mathlib.Tactic.Module
+public import Lean.Elab.Tactic.Omega
+
+@[expose] public section
 
 /-!
 # The divisor-tangent lattice lemma
@@ -319,6 +322,14 @@ theorem exists_coefficients (hinj : Function.Injective (algebraMap V F)) :
     simp only [scaledDifferential, ← algebraMap_smul (R := V) (A := F) (M := Ω), smul_smul,
       map_mul, map_pow]
     ring_nf
+  let c := algebraMap V F D.t ^ (D.a + 1) * algebraMap V F D.u ^ 2
+  letI : Module.IsTorsionFree F Ω :=
+    Module.IsTorsionFree.of_smul_eq_zero (fun r z hz ↦ by
+      by_cases hr : r = 0
+      · exact Or.inl hr
+      · right
+        have hcancel := congrArg (fun z : Ω => r⁻¹ • z) hz
+        simpa [smul_smul, inv_mul_cancel₀ hr] using hcancel)
   exact smul_right_injective Ω hscale hleft
 
 theorem exists_maximalIdeal_coefficients (hinj : Function.Injective (algebraMap V F)) :

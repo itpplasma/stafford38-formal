@@ -1,8 +1,11 @@
-import Mathlib.Data.Fin.Tuple.Basic
-import Mathlib.Algebra.MvPolynomial.Eval
-import Mathlib.Algebra.MvPolynomial.Monad
-import Mathlib.Algebra.MvPolynomial.Rename
-import Mathlib.RingTheory.MvPolynomial.Homogeneous
+module
+public import Mathlib.Data.Fin.Tuple.Basic
+public import Mathlib.Algebra.MvPolynomial.Eval
+public import Mathlib.Algebra.MvPolynomial.Monad
+public import Mathlib.Algebra.MvPolynomial.Rename
+public import Mathlib.RingTheory.MvPolynomial.Homogeneous
+
+@[expose] public section
 
 /-!
 # Shared coordinates for projective affine charts

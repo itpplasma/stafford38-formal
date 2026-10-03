@@ -1,6 +1,9 @@
-import Mathlib.RingTheory.NoetherNormalization
-import Mathlib.RingTheory.KrullDimension.Polynomial
-import Mathlib.RingTheory.Ideal.GoingUp
+module
+public import Mathlib.RingTheory.NoetherNormalization
+public import Mathlib.RingTheory.KrullDimension.Polynomial
+public import Mathlib.RingTheory.Ideal.GoingUp
+
+@[expose] public section
 
 /-!
 # A height bound for an integral extension of a one-variable polynomial ring

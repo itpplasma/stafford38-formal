@@ -1,4 +1,7 @@
-import Stafford38.Geometry.GeneralConormalAxis
+module
+public import Stafford38.Geometry.GeneralConormalAxis
+
+@[expose] public section
 set_option autoImplicit false
 universe u
 open Stafford38.Geometry.GeneralConormalAxis

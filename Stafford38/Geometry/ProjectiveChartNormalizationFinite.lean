@@ -1,6 +1,9 @@
-import Stafford38.Geometry.NormalizationHeightOne
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.FiniteType
+module
+public import Stafford38.Geometry.NormalizationHeightOne
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.FiniteType
+
+@[expose] public section
 
 /-!
 # Finiteness of the normalization in a chosen fraction-field model

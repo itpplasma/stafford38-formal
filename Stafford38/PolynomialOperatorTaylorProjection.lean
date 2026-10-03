@@ -1,5 +1,8 @@
-import Stafford38.PolynomialOperatorCommutators
-import AlgebraicAnalysis.LinearAlgebra.FiniteTaylorReconstruction
+module
+public import Stafford38.PolynomialOperatorCommutators
+public import AlgebraicAnalysis.LinearAlgebra.FiniteTaylorReconstruction
+
+@[expose] public section
 
 /-!
 # One-coordinate Taylor projection for polynomial operators

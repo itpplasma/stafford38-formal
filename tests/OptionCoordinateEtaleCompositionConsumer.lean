@@ -1,4 +1,7 @@
-import Stafford38.Geometry.OptionCoordinateEtaleComposition
+module
+public import Stafford38.Geometry.OptionCoordinateEtaleComposition
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false
@@ -18,12 +21,12 @@ abbrev P := Polynomial E
 abbrev p := Stafford38.Geometry.AsymptoticDivisorExistence.coordinateZeroPrime E
 abbrev T := Localization.AtPrime p
 
-private def polynomialEvalValues : Option Selected → Polynomial k := fun i =>
+def polynomialEvalValues : Option Selected → Polynomial k := fun i =>
   match i with
   | none => Polynomial.X
   | some _ => 0
 
-private def polynomialEvalMap : Rsrc →ₐ[k] Polynomial k :=
+def polynomialEvalMap : Rsrc →ₐ[k] Polynomial k :=
   MvPolynomial.aeval polynomialEvalValues
 
 local instance : Algebra Rsrc (Polynomial k) := polynomialEvalMap.toRingHom.toAlgebra
@@ -56,13 +59,13 @@ local instance : IsScalarTower k P T := by
   intro a
   rfl
 
-private def localChartValues : Option Selected → T := fun j =>
+def localChartValues : Option Selected → T := fun j =>
   match j with
   | none => algebraMap P T (Polynomial.X : P)
   | some i => algebraMap P T
       (Polynomial.C (algebraMap A E (MvPolynomial.X i)))
 
-private def localChartMap : Rsrc →ₐ[k] T := MvPolynomial.aeval localChartValues
+def localChartMap : Rsrc →ₐ[k] T := MvPolynomial.aeval localChartValues
 
 local instance : Algebra Rsrc T := localChartMap.toRingHom.toAlgebra
 

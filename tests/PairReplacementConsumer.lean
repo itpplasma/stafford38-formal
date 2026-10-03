@@ -1,4 +1,7 @@
-import Stafford38.LinearAlgebra.PairReplacement
+module
+public import Stafford38.LinearAlgebra.PairReplacement
+
+@[expose] public section
 
 /-! Independent exact-type consumers for the Mathlib-only pair argument. -/
 

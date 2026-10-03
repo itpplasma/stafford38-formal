@@ -1,8 +1,12 @@
-import AlgebraicAnalysis.Ore.Associativity
-import Stafford38.Weyl.IteratedEquivalence
-import Stafford38.Ore.LinearNormalForm
-import Stafford38.Characteristic.Polynomial
-import Mathlib.LinearAlgebra.Basis.Basic
+module
+public import Mathlib.RingTheory.MvPolynomial.Basic
+public import AlgebraicAnalysis.Ore.Associativity
+public import Stafford38.Weyl.IteratedEquivalence
+public import Stafford38.Ore.LinearNormalForm
+public import Stafford38.Characteristic.Polynomial
+public import Mathlib.LinearAlgebra.Basis.Basic
+
+@[expose] public section
 
 /-!
 # Ordered PBW basis from Ore normal forms
@@ -185,7 +189,7 @@ theorem phaseExponent_succ (n : ℕ) (a p : Fin (n + 1) → ℕ) :
           Finsupp.mapDomain oldIndex
             (phaseExponent (fun i => a i.succ) (fun i => p i.succ))
               (oldIndex (.inl j))
-        rw [Finsupp.mapDomain_apply oldIndex_injective]
+        rw [Finsupp.mapDomain_apply_of_injective oldIndex_injective]
         simp [phaseExponent, oldIndex, Stafford38FixedSourceChallenge.oldIndex, Finsupp.single_apply,
           Fin.succ_ne_zero]
   | inr i =>
@@ -201,7 +205,7 @@ theorem phaseExponent_succ (n : ℕ) (a p : Fin (n + 1) → ℕ) :
           Finsupp.mapDomain oldIndex
             (phaseExponent (fun i => a i.succ) (fun i => p i.succ))
               (oldIndex (.inr j))
-        rw [Finsupp.mapDomain_apply oldIndex_injective]
+        rw [Finsupp.mapDomain_apply_of_injective oldIndex_injective]
         simp [phaseExponent, oldIndex, Stafford38FixedSourceChallenge.oldIndex, Finsupp.single_apply,
           Fin.succ_ne_zero]
 

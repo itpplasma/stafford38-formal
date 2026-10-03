@@ -1,6 +1,9 @@
-import Stafford38.Weyl.FilteredScalarLifting
-import Stafford38.Characteristic.EmptySupportVanishing
-import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
+module
+public import Stafford38.Weyl.FilteredScalarLifting
+public import Stafford38.Characteristic.EmptySupportVanishing
+public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
+
+@[expose] public section
 
 /-!
 # Paper-facing scalar extension and quotient descent

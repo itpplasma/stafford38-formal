@@ -1,5 +1,8 @@
-import Mathlib.RingTheory.Etale.Kaehler
-import Mathlib.LinearAlgebra.TensorProduct.Tower
+module
+public import Mathlib.RingTheory.Etale.Kaehler
+public import Mathlib.LinearAlgebra.TensorProduct.Tower
+
+@[expose] public section
 
 set_option autoImplicit false
 open scoped TensorProduct

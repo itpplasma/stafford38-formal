@@ -1,7 +1,10 @@
-import Mathlib.RingTheory.PowerSeries.Derivative
-import Mathlib.RingTheory.PowerSeries.PiTopology
-import Stafford38.Geometry.FixedWitnessTangentSqueeze
-import Stafford38.Geometry.SeparableResidueDerivationExtension
+module
+public import Mathlib.RingTheory.PowerSeries.Derivative
+public import Mathlib.RingTheory.PowerSeries.PiTopology
+public import Stafford38.Geometry.FixedWitnessTangentSqueeze
+public import Stafford38.Geometry.SeparableResidueDerivationExtension
+
+@[expose] public section
 
 /-!
 # Continuous derivation frames on a supplied power-series chart
@@ -42,7 +45,7 @@ def powerSeriesFirstCoefficient {R : Type*} [CommSemiring R]
 @[simp] theorem powerSeriesFirstCoefficient_eq_constantCoeff_derivative
     {R : Type*} [CommSemiring R] {ι : Type*} (q : ι → PowerSeries R) :
     powerSeriesFirstCoefficient q =
-      fun i ↦ PowerSeries.constantCoeff (PowerSeries.derivative R (q i)) := by
+      fun i ↦ PowerSeries.constantCoeff (PowerSeries.derivative (R := R) (q i)) := by
   funext i
   rw [powerSeriesFirstCoefficient, ← PowerSeries.coeff_zero_eq_constantCoeff,
     PowerSeries.coeff_derivative]
@@ -127,7 +130,7 @@ theorem continuous_coefficientwiseDerivation
 along `k → K → K[[t]]`. -/
 noncomputable def uniformizerDerivation :
     Derivation k (PowerSeries K) (PowerSeries K) :=
-  (PowerSeries.derivative K).restrictScalars k
+  (PowerSeries.derivative (R := K)).restrictScalars k
 
 @[simp]
 theorem uniformizerDerivation_C (a : K) :

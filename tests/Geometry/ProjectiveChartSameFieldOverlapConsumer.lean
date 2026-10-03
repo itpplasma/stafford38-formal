@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ProjectiveChartSameFieldOverlap
+module
+public import Stafford38.Geometry.ProjectiveChartSameFieldOverlap
+
+@[expose] public section
 
 set_option autoImplicit false
 

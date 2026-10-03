@@ -1,7 +1,10 @@
-import Stafford38.Geometry.ActualCommonOpenColumnGlue
-import Stafford38.Geometry.ActualOptionColumnBinding
-import Stafford38.Geometry.ActualWitnessSelectedChartBinding
-import Stafford38.Geometry.AsymptoticChartArcAdapter
+module
+public import Stafford38.Geometry.ActualCommonOpenColumnGlue
+public import Stafford38.Geometry.ActualOptionColumnBinding
+public import Stafford38.Geometry.ActualWitnessSelectedChartBinding
+public import Stafford38.Geometry.AsymptoticChartArcAdapter
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

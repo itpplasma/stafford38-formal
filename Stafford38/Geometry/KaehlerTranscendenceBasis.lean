@@ -8,7 +8,7 @@ public import Mathlib.RingTheory.AlgebraicIndependent.Adjoin
 public import Mathlib.LinearAlgebra.TensorProduct.Basis
 public import Mathlib.LinearAlgebra.Basis.Basic
 
-public section
+@[expose] public section
 set_option autoImplicit false
 
 open scoped TensorProduct

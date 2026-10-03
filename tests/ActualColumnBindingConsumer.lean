@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ActualChartValuationImage
-import Stafford38.Geometry.ActualSmoothOpenChartNumerator
-import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+module
+public import Stafford38.Geometry.ActualChartValuationImage
+public import Stafford38.Geometry.ActualSmoothOpenChartNumerator
+public import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+
+@[expose] public section
 
 #check Stafford38.Geometry.ActualChartValuationImage.normalizedCoordinate_mem_chartGenericPointSubalgebra
 #check Stafford38.Geometry.ActualChartValuationImage.exists_actual_normalizedProjectiveColumn

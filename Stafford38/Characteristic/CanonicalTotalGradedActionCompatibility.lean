@@ -1,6 +1,10 @@
-import Stafford38.Characteristic.CanonicalTotalGradedBridge
-import Stafford38.Characteristic.CanonicalTangentialTotalAction
-import Stafford38.Characteristic.CanonicalTangentialRingEquivalence
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Characteristic.CanonicalTotalGradedBridge
+public import Stafford38.Characteristic.CanonicalTangentialTotalAction
+public import Stafford38.Characteristic.CanonicalTangentialRingEquivalence
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalTotalGradedActionCompatibility
 
@@ -31,10 +35,10 @@ set_option maxHeartbeats 800000
 universe u
 variable (k : Type u) [Field k] [Algebra ℚ k]
 
-private abbrev CI (n N : ℕ) (d : PresentedWeyl k (n + 1)) :=
+abbrev CI (n N : ℕ) (d : PresentedWeyl k (n + 1)) :=
   presentedCanonicalRightIdeal (k := k) n N d
 
-private abbrev K (n N : ℕ) (d : PresentedWeyl k (n + 1))
+abbrev K (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :=
   canonicalFilteredTwoTerm k n N d hd
 
@@ -104,7 +108,7 @@ def targetRepresentative (n N : ℕ) (d : PresentedWeyl k (n + 1))
     rw [h, G_at_neg k n N m d hd]
     exact ⟨a, a.property, rfl⟩⟩
 
-private theorem sourceRepresentative_cast (n N : ℕ) (d : PresentedWeyl k (n + 1))
+theorem sourceRepresentative_cast (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
     {p q : ℤ} (m : ℕ) (hp : p = -(m : ℤ)) (hq : q = -(m : ℤ))
     (h : p = q) (a : orderPiece k (n + 1) m) :
@@ -114,7 +118,7 @@ private theorem sourceRepresentative_cast (n N : ℕ) (d : PresentedWeyl k (n + 
   cases h
   rfl
 
-private theorem targetRepresentative_cast (n N : ℕ) (d : PresentedWeyl k (n + 1))
+theorem targetRepresentative_cast (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
     {p q : ℤ} (m : ℕ) (hp : p = -(m : ℤ)) (hq : q = -(m : ℤ))
     (h : p = q) (a : orderPiece k (n + 1) m) :
@@ -124,7 +128,7 @@ private theorem targetRepresentative_cast (n N : ℕ) (d : PresentedWeyl k (n + 
   cases h
   rfl
 
-private theorem sourceRepresentative_lof_eq (n N : ℕ) (d : PresentedWeyl k (n + 1))
+theorem sourceRepresentative_lof_eq (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
     {p q : ℤ} (m : ℕ) (hp : p = -(m : ℤ)) (hq : q = -(m : ℤ))
     (a : orderPiece k (n + 1) m) :
@@ -134,7 +138,7 @@ private theorem sourceRepresentative_lof_eq (n N : ℕ) (d : PresentedWeyl k (n 
   cases h
   rfl
 
-private theorem targetRepresentative_lof_eq (n N : ℕ) (d : PresentedWeyl k (n + 1))
+theorem targetRepresentative_lof_eq (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
     {p q : ℤ} (m : ℕ) (hp : p = -(m : ℤ)) (hq : q = -(m : ℤ))
     (a : orderPiece k (n + 1) m) :

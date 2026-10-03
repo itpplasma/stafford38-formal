@@ -1,6 +1,10 @@
-import Stafford38.Characteristic.CanonicalFilteredGradedBridge
-import Stafford38.Characteristic.FilteredTwoTermTotalActions
-import Stafford38.Weyl.FilteredCommutator
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Characteristic.CanonicalFilteredGradedBridge
+public import Stafford38.Characteristic.FilteredTwoTermTotalActions
+public import Stafford38.Weyl.FilteredCommutator
+
+@[expose] public section
 
 /-!
 # Tangential filtered operators on the canonical quotient
@@ -30,10 +34,10 @@ universe u
 
 variable (k : Type u) [Field k] [Algebra ℚ k]
 
-private abbrev CI (n N : ℕ) (d : PresentedWeyl k (n + 1)) :=
+abbrev CI (n N : ℕ) (d : PresentedWeyl k (n + 1)) :=
   presentedCanonicalRightIdeal (k := k) n N d
 
-private abbrev K (n N : ℕ) (d : PresentedWeyl k (n + 1))
+abbrev K (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :=
   canonicalFilteredTwoTerm k n N d hd
 
@@ -41,7 +45,7 @@ abbrev PageOperator (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) (e : ℤ) :=
   (K k n N d hd).PageOperator e
 
-private theorem oldGenerator_mem_orderPiece
+theorem oldGenerator_mem_orderPiece
     (n : ℕ) (i : Fin n ⊕ Fin n) :
     oldGenerator k n i ∈ orderPiece k (n + 1)
       (match i with | .inl _ => 0 | .inr _ => 1) := by
@@ -65,7 +69,7 @@ private theorem oldGenerator_mem_orderPiece
         simp [oldIndex, monomialWeight, orderWeight, fibreWeight]
       · contradiction
 
-private theorem rightMul_commute
+theorem rightMul_commute
     (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (a : PresentedWeyl k (n + 1))
     (ha : a * presentedCoordinate k n = presentedCoordinate k n * a) :

@@ -1,4 +1,7 @@
-import Stafford38.Geometry.SmoothLocalTiltedArcAxisLift
+module
+public import Stafford38.Geometry.SmoothLocalTiltedArcAxisLift
+
+@[expose] public section
 
 #check Stafford38.Geometry.SmoothLocalTiltedArcAxisLift.tilted_local_axis_lift_of_selected_coordinate_rows_on_arc
 #check Stafford38.Geometry.SmoothLocalTiltedArcAxisLift.exists_tilted_local_axis_lift_of_selected_coordinate_rows

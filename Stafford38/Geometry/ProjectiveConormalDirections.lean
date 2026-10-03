@@ -1,6 +1,9 @@
-import Mathlib.LinearAlgebra.Projectivization.Basic
-import Mathlib.RingTheory.MvPolynomial.Homogeneous
-import Stafford38.Geometry.SmoothAffineConormal
+module
+public import Mathlib.LinearAlgebra.Projectivization.Basic
+public import Mathlib.RingTheory.MvPolynomial.Homogeneous
+public import Stafford38.Geometry.SmoothAffineConormal
+
+@[expose] public section
 
 /-!
 # Projective conormal directions

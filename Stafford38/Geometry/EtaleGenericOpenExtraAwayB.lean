@@ -1,4 +1,7 @@
-import Stafford38.Geometry.EtaleGenericOpenLocalAwayB
+module
+public import Stafford38.Geometry.EtaleGenericOpenLocalAwayB
+
+@[expose] public section
 
 set_option autoImplicit false
 

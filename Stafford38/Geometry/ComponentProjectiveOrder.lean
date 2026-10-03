@@ -1,7 +1,10 @@
-import Stafford38.Characteristic.CanonicalBaseVariety
-import Stafford38.Geometry.ComponentFunctionFieldBoundary
-import Stafford38.Geometry.RetainedProjectiveCompletion
-import Mathlib.RingTheory.Nullstellensatz
+module
+public import Stafford38.Characteristic.CanonicalBaseVariety
+public import Stafford38.Geometry.ComponentFunctionFieldBoundary
+public import Stafford38.Geometry.RetainedProjectiveCompletion
+public import Mathlib.RingTheory.Nullstellensatz
+
+@[expose] public section
 
 /-!
 # Vanishing of the normalized projective denominator

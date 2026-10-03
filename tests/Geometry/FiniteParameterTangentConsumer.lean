@@ -1,5 +1,8 @@
-import Stafford38.Geometry.EtaleProjectiveTangentComparison
-import Mathlib.Tactic.FinCases
+module
+public import Stafford38.Geometry.EtaleProjectiveTangentComparison
+public import Mathlib.Tactic.FinCases
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace FiniteParameterTangentConsumer

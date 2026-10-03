@@ -1,14 +1,17 @@
-import Stafford38.Geometry.ActualSameWitnessDivisorNumerator
-import Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
-import Stafford38.Geometry.GroundPointETCompatibility
-import Stafford38.Geometry.ActualOptionGroundPointCompletion
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Stafford38.Geometry.ProjectiveChartNormalizationFinite
-import Stafford38.Geometry.IntegralClosureCenterDVR
-import Stafford38.Geometry.ActualChartValuationImage
-import Stafford38.Geometry.RetainedGroundMapIdentification
-import Stafford38.Geometry.ComponentFunctionFieldBoundary
-import Stafford38.Geometry.UnitPowerCenterTransport
+module
+public import Stafford38.Geometry.ActualSameWitnessDivisorNumerator
+public import Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
+public import Stafford38.Geometry.GroundPointETCompatibility
+public import Stafford38.Geometry.ActualOptionGroundPointCompletion
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Stafford38.Geometry.ProjectiveChartNormalizationFinite
+public import Stafford38.Geometry.IntegralClosureCenterDVR
+public import Stafford38.Geometry.ActualChartValuationImage
+public import Stafford38.Geometry.RetainedGroundMapIdentification
+public import Stafford38.Geometry.ComponentFunctionFieldBoundary
+public import Stafford38.Geometry.UnitPowerCenterTransport
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000
