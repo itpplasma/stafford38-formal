@@ -24,9 +24,24 @@ private structure Report where
   incomplete : Array Issue
   deriving Inhabited, Repr
 
-private meta def moduleOf? (env : Environment) (n : Name) : Option Name := do
-  let idx ← env.getModuleIdxFor? n
-  some env.header.moduleNames[idx.toNat]!
+/-- Recover only a structurally validated private declaration's defining module
+so the runner can load that module; this never makes its absent body acceptable. -/
+private meta def privateOwner? (env : Environment) (n : Name) : Option Name := do
+  let .num privateHead 0 ← privatePrefix? n | none
+  let rec stripHeader : Name → Option Name
+    | .str .anonymous "_private" => some .anonymous
+    | .str p s => return .str (← stripHeader p) s
+    | _ => none
+  let owner ← stripHeader privateHead
+  guard (!owner.isAnonymous)
+  guard (env.header.moduleNames.contains owner)
+  guard (mkPrivateNameCore owner (privateToUserName n) == n)
+  return owner
+
+private meta def moduleOf? (env : Environment) (n : Name) : Option Name :=
+  match env.getModuleIdxFor? n with
+  | some idx => some env.header.moduleNames[idx.toNat]!
+  | none => privateOwner? env n
 
 private meta def dependencyPath (root : Name) (parent : Std.HashMap Name Name) (target : Name) : Array Name := Id.run do
   let mut path := #[target]
@@ -50,6 +65,7 @@ private meta def inspectRoot
     (env : Environment)
     (root : Name)
     (bannedOwners bannedNames requiredNames allowedAxioms : Array Name) : Report := Id.run do
+  let env := env.setExporting false
   let mut todo : Array Name := #[root]
   let mut seen : Std.HashSet Name := {}
   let mut parent : Std.HashMap Name Name := {}

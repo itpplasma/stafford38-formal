@@ -22,7 +22,7 @@ ROOT_MODULES = (
     "FixedSourceSolution",
 )
 INCOMPLETE = re.compile(
-    r"^STAFFORD_DEPENDENCY_GUARD_INCOMPLETE\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)$",
+    r"^STAFFORD_DEPENDENCY_GUARD_INCOMPLETE\t([^\t\r\n]+)\t([^\t\r\n]+)\t([^\t\r\n]+)\t([^\t\r\n]+)$",
     re.MULTILINE,
 )
 
@@ -226,6 +226,10 @@ def main() -> int:
                 if error.stderr:
                     sys.stderr.write(error.stderr.decode(errors="replace") if isinstance(error.stderr, bytes) else error.stderr)
                 return 1
+            if raw_log := os.environ.get("STAFFORD_DEPENDENCY_GUARD_RAW_LOG"):
+                with Path(raw_log).open("a", encoding="utf-8") as stream:
+                    stream.write(f"body_load_round={attempt}; import_all={len(loaded)}\n")
+                    stream.write(output)
             print(f"body_load_round={attempt}; import_all={len(loaded)}")
             sys.stdout.write(display_output(output))
             missing = INCOMPLETE.findall(output)
@@ -233,9 +237,9 @@ def main() -> int:
                 return rc
 
             new_owners = []
-            for _, _name, owner, kind in missing:
+            for root_name, name, owner, kind in missing:
                 if owner == "none":
-                    print(f"fail-closed: unavailable dependency has no module owner ({kind})", file=sys.stderr)
+                    print(f"fail-closed: unavailable dependency has no module owner (root={root_name}, declaration={name}, kind={kind})", file=sys.stderr)
                     return 1
                 if owner not in loaded and owner not in seen_owner_additions:
                     new_owners.append(owner)
