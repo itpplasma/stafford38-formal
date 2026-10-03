@@ -36,8 +36,17 @@ a missing ground-point owner namespace and retained valuation local-ring
 instance. The first scope repair2145331 exposed the retained ambient action
 needed to type that proof. Candidate1b2ec5e reuses the exact accepted
 CoordinatePresentation adapter, scoping that action within the local-ring
-proof type/value. Closure-only3125610 uses accepted caches and the unchanged
-statement and literal consumer.
+proof type/value. That scope check passed its instance elaboration;
+existing setup.hchart then resolved the selected chart index. The remaining
+Closure bridge transports the retained axis-lift certificate to the
+packaged qPre and unit-series presentation using proved chart equalities.
+That abstract transfer passed stage25. Its sole next error is the missing
+certificate identifying stored etale.φk with the canonical original-chart
+map. The existing producer already builds that exact map. Retain its
+reflexive hφAction equality, transport the column identity through it,
+and recheck the latest T35 interface and Closure. Historical T35 receipts
+remain unchanged. Public theorem statements and literal consumers stay
+unchanged; accepted caches are reused. See notes/T36-actual-closure-checks-20261003.md.
 T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
 unchanged. Full Closure acceptance remains pending.
