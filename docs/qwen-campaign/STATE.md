@@ -67,7 +67,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T41 | Original-prime wrapper | done | 3 | notes/T41-original-prime-linux-accepted-checks-20261003.md | Actual8af module+unchangedconsumerPASS3127001,3axioms; drained; committed/pushedWT7d645f2. Subsequentassemblyfailed separately |
 | T42 | Rewire terminal geometric theorem | done | 5 | notes/T42-four-assemblies-linux-accepted-20261003.md | Sharedterminal+4solutionsPASS3127814,3allowedaxioms,guard0/drained; WTe380306 pushed. Earlier2adapter failures retained |
 | T43 | Strict dependency guard | done | 9 | notes/T73-strict-guard-all-routes-linux-accepted-20261003.md | Actual4terminalroots+independentfixtures+main/alt required/excluded routes PASS3129931; guard0/3.05GB/zero swap/nochildren |
-| T44 | Literal route consumers | doing | 1 | finalC2-resume3131801 | All5 exactclosure/originalprime consumer reports observed once in freshlog17:26:21Z, exactly3allowedaxioms; fullconsumerstage/drain pending |
+| T44 | Literal route consumers | done | 1 | finalC2-resume3131801 | All116consumerfiles completed;317 requiredimport/axiomreports PASS. Five exactclosure/originalprime reports each once, exactly3allowedaxioms; wholeverifier/drain stillpending |
 | T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry83f and all4assembliesPASS3127814; sharedchallenges unchanged; finalroute/comparator gates pending |
 | T46 | Tidy final package | doing | 2 | notes/T46-final-cleanup-proposal.md | Obsolete four Mac/Pi wrappers and unused ignore file removed after reference audit; historical receipts/useful math preserved; final public status/Palomar package checks await route acceptance |
 | T50 | Full library build | done | 2 | finalC2-resume3131801 | Fresh exactC2 fullbuildPASS4475jobs (mtime16:41:29Z afterverifierstart16:32:53Z); historicalC1build retained; completeverifier acceptance separate |
@@ -233,3 +233,15 @@ checks also passed: their roots reach the generic/Laurent endpoint and exclude
 the same-witness endpoint, forbidden0/unavailable0. The complete verifier, retained proof-library build and
 four actual Palomar comparisons remain pending; this milestone does not
 qualify the release. No duplicate final check is scheduled.
+
+## Fresh complete literal-consumer audit
+
+The same exactC2 run scluster3131801 completed all116 literal consumer files
+and reported `Literal consumers and import/axiom audits: 317 reports passed`.
+The fresh completed consumer log SHA-256 is
+`96686584ecf6205a78f045cd1c7e7d61821201da304ff16ce321a52fc93f5993`.
+Its331 distinct printed reports include the317 required audited reports; the
+controller separately parsed all5 new closure/original-prime full names, each
+with exactly propext, Classical.choice and Quot.sound. This completes T44.
+The paper-name/endpoint audits, complete verifier exit, retained proof-library
+build, four comparisons and final guard/source-identity receipt remain required.

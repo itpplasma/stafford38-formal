@@ -41,7 +41,8 @@ with exact failure/drain/cache gates and all tracked-byte/mode, verifier and
 comparator checks intact. Fresh C2 fixtures,4475job fullbuild and strict4terminalroot inspection passed.
 Both fresh main required/excluded route checks also passed at17:03:45Z.
 Both fresh alternative required/excluded route checks also passed.
-Consumer/name/axiom checks and four actual comparisons remain required.
+All116 literal consumer files completed;317 required reports passed their
+import/axiom audit. Paper-name and endpoint audits plus four actual comparisons remain required.
 No paper/proof pin changes. Preserve all failed receipts.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
