@@ -1,15 +1,19 @@
-import AlgebraicAnalysis.Ore.Associativity
-import Stafford38.Weyl.IteratedEquivalence
-import Stafford38.Weyl.Universal
-import Stafford38.Weyl.PBW
-import Stafford38.Weyl.Filtration
-import Stafford38.Weyl.LeadingSymbol
-import Stafford38.Weyl.PBWMonicBridge
-import Stafford38.Weyl.EulerResidue
-import Stafford38.Characteristic.InitialIdeal
-import Stafford38.Characteristic.GeometricSupportDescent
-import Stafford38.UniversalAssembly
-import Stafford38.CanonicalSupportVanishingReduction
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import AlgebraicAnalysis.Ore.Associativity
+public import Stafford38.Weyl.IteratedEquivalence
+public import Stafford38.Weyl.Universal
+public import Stafford38.Weyl.PBW
+public import Stafford38.Weyl.Filtration
+public import Stafford38.Weyl.LeadingSymbol
+public import Stafford38.Weyl.PBWMonicBridge
+public import Stafford38.Weyl.EulerResidue
+public import Stafford38.Characteristic.InitialIdeal
+public import Stafford38.Characteristic.GeometricSupportDescent
+public import Stafford38.UniversalAssembly
+public import Stafford38.CanonicalSupportVanishingReduction
+
+@[expose] public section
 
 /-!
 # Coefficient extension for the presented Weyl algebra
@@ -64,7 +68,7 @@ private theorem algebraMap_matrixJ (n : Nat) (i j : Fin n ⊕ Fin n) :
       | inl j => simp [Matrix.J, Matrix.one_apply]
       | inr j => by_cases h : i = j <;> simp [Matrix.J, h]
 
-private theorem presentedWeylScalarExtension_commutator (n : Nat)
+theorem presentedWeylScalarExtension_commutator (n : Nat)
     (i j : Fin n ⊕ Fin n) :
     commutator
         (freeWeylGenerator (Matrix.J (Fin n) K) i)
@@ -267,13 +271,12 @@ theorem symbolScalarExtension_weightedHomogeneousComponent (n : Nat)
     MvPolynomial.coeff m
       (MvPolynomial.weightedHomogeneousComponent w N
         (MvPolynomial.map (algebraMap k K) f))
-  rw [MvPolynomial.coeff_map,
+  simp only [MvPolynomial.coeff_map,
     MvPolynomial.coeff_weightedHomogeneousComponent,
     MvPolynomial.coeff_weightedHomogeneousComponent]
   simp only [finsupp_weight_eq_monomialWeight]
   by_cases hm : monomialWeight w m = N
   · simp [hm]
-    rw [MvPolynomial.coeff_map]
   · simp [hm]
 
 theorem presentedWeylScalarExtension_mem_weightPiece (n : Nat)
@@ -339,8 +342,7 @@ theorem presentedWeylScalarExtension_isPBWMonicAt (n : Nat)
   change MvPolynomial.coeff (Finsupp.single (.inr (0 : Fin (n + 1))) N)
       (MvPolynomial.map (algebraMap k K)
         (presentedNormalFormLinearEquiv k (n + 1) z)) = 1
-  rw [MvPolynomial.coeff_map]
-  simp [hz.2]
+  simpa only [MvPolynomial.coeff_map, map_one] using congrArg (algebraMap k K) hz.2
 
 @[simp] theorem presentedWeylScalarExtension_coordinate (n : Nat) :
     presentedWeylScalarExtension (k := k) (K := K) (n + 1)

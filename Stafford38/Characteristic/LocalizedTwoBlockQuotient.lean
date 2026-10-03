@@ -1,8 +1,11 @@
-import Stafford38.Characteristic.LocalizedHighPowerTwoBlockVanishing
-import Mathlib.Algebra.Module.RingHom
-import Mathlib.RingTheory.Ideal.Quotient.Basic
-import Mathlib.RingTheory.TwoSidedIdeal.Kernel
-import Mathlib.RingTheory.TwoSidedIdeal.Operations
+module
+public import Stafford38.Characteristic.LocalizedHighPowerTwoBlockVanishing
+public import Mathlib.Algebra.Module.RingHom
+public import Mathlib.RingTheory.Ideal.Quotient.Basic
+public import Mathlib.RingTheory.TwoSidedIdeal.Kernel
+public import Mathlib.RingTheory.TwoSidedIdeal.Operations
+
+@[expose] public section
 
 /-!
 # The localized two-block quotient

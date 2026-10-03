@@ -1,6 +1,9 @@
-import Stafford38.Geometry.FormalDivisorAxisLift
-import Stafford38.Geometry.ProjectiveConormalDehomogenization
-import Stafford38.Geometry.LaurentConormalDirection
+module
+public import Stafford38.Geometry.FormalDivisorAxisLift
+public import Stafford38.Geometry.ProjectiveConormalDehomogenization
+public import Stafford38.Geometry.LaurentConormalDirection
+
+@[expose] public section
 
 /-!
 # From a formal divisor tangent to a Laurent conormal point

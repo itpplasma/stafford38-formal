@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Ore.Associativity
-import proofs.weyl_pure_power
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import proofs.weyl_pure_power
+
+@[expose] public section
 
 /-!
 # The positive Euler residue in the canonical right ideal

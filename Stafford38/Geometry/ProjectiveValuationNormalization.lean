@@ -1,7 +1,10 @@
-import Mathlib.RingTheory.Localization.Integer
-import Mathlib.RingTheory.Valuation.ValuationSubring
-import Mathlib.RingTheory.Filtration
-import Mathlib.RingTheory.AdicCompletion.Algebra
+module
+public import Mathlib.RingTheory.Localization.Integer
+public import Mathlib.RingTheory.Valuation.ValuationSubring
+public import Mathlib.RingTheory.Filtration
+public import Mathlib.RingTheory.AdicCompletion.Algebra
+
+@[expose] public section
 
 /-!
 # Finite projective normalization in a valuation subring

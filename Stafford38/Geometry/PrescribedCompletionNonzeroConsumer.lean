@@ -1,5 +1,9 @@
-import Stafford38.Geometry.PrescribedAffineResidueCompletionConsumer
-import Stafford38.Geometry.PrescribedCompletionNonzero
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Geometry.PrescribedAffineResidueCompletionConsumer
+public import Stafford38.Geometry.PrescribedCompletionNonzero
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false
@@ -59,7 +63,7 @@ theorem centeredCoordinate_vanishes_but_series_is_nonzero
       simp at hcoord
     have hc := congrArg (MvPolynomial.coeff (Finsupp.single i 1)) h
     dsimp [f] at hc
-    rw [MvPolynomial.coeff_sub, MvPolynomial.coeff_X_same,
+    simp only [MvPolynomial.coeff_sub, MvPolynomial.coeff_X_same,
       MvPolynomial.coeff_C_of_ne_zero hi] at hc
     exact one_ne_zero (sub_eq_zero.mp hc)
   have hB : algebraMap R B f ≠ 0 := by

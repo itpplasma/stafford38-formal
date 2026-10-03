@@ -1,6 +1,9 @@
-import AlgebraicAnalysis.Ore.Associativity
-import Stafford38.Ore.ScalarAlgebra
-import proofs.weyl_symplectic
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import Stafford38.Ore.ScalarAlgebra
+public import proofs.weyl_symplectic
+
+@[expose] public section
 
 /-!
 # Universal property of the presented Weyl algebra

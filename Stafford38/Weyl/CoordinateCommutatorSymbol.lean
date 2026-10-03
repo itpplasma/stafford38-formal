@@ -1,4 +1,7 @@
-import Stafford38.Weyl.CommutatorSymbol
+module
+public import Stafford38.Weyl.CommutatorSymbol
+
+@[expose] public section
 
 /-!
 # Coordinate commutators on arbitrary PBW sums

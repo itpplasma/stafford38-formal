@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ActualCommonOpenColumnGlue
+module
+public import Stafford38.Geometry.ActualCommonOpenColumnGlue
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

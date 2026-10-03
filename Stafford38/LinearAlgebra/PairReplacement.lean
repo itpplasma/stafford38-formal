@@ -1,6 +1,9 @@
-import Mathlib.LinearAlgebra.Span.Basic
-import Mathlib.Algebra.Module.FinitePresentation
-import Mathlib.Tactic.NoncommRing
+module
+public import Mathlib.LinearAlgebra.Span.Basic
+public import Mathlib.Algebra.Module.FinitePresentation
+public import Mathlib.Tactic.NoncommRing
+
+@[expose] public section
 
 /-!
 # Generic pair replacement for right modules

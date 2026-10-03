@@ -1,8 +1,11 @@
-import Stafford38.Geometry.SelectedResidueCoefficientLocalization
-import Stafford38.Geometry.SameWitnessRelativeTranscendenceDegree
-import Stafford38.Geometry.SameWitnessTranscendenceDegreeBound
-import Stafford38.Geometry.MvPolynomialFractionFieldTranscendenceBasis
-import Stafford38.Geometry.ActualChartValuationImage
+module
+public import Stafford38.Geometry.SelectedResidueCoefficientLocalization
+public import Stafford38.Geometry.SameWitnessRelativeTranscendenceDegree
+public import Stafford38.Geometry.SameWitnessTranscendenceDegreeBound
+public import Stafford38.Geometry.MvPolynomialFractionFieldTranscendenceBasis
+public import Stafford38.Geometry.ActualChartValuationImage
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

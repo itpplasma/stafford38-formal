@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.FilteredTwoTermPages
+module
+public import AlgebraicAnalysis.Module.FilteredTwoTermPages
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

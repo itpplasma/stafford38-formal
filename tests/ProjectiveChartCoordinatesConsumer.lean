@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ChartArcAnnihilation
-import Stafford38.Geometry.ComponentFunctionFieldBoundary
-import Stafford38.Geometry.ProjectiveEquationFormalChart
+module
+public import Stafford38.Geometry.ChartArcAnnihilation
+public import Stafford38.Geometry.ComponentFunctionFieldBoundary
+public import Stafford38.Geometry.ProjectiveEquationFormalChart
+
+@[expose] public section
 
 open Stafford38.Geometry.ChartArcAnnihilation
 open Stafford38.Geometry.ComponentFunctionFieldBoundary

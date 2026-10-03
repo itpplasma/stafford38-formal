@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.CanonicalTangentialTotalAction
-import Stafford38.Characteristic.FilteredTwoTermBoundaryNaturality
+module
+public import Stafford38.Characteristic.CanonicalTangentialTotalAction
+public import Stafford38.Characteristic.FilteredTwoTermBoundaryNaturality
+
+@[expose] public section
 
 /-!
 # Tangential-linear boundary maps for the canonical quotient

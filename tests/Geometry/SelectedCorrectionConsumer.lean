@@ -1,5 +1,8 @@
-import Stafford38.Geometry.FormalDivisorAxisLift
-import Mathlib.Tactic.NormNum
+module
+public import Stafford38.Geometry.FormalDivisorAxisLift
+public import Mathlib.Tactic.NormNum
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.CanonicalTotalGradedActionCompatibility
-import Stafford38.Characteristic.CanonicalOldTangentialFiniteness
-import Stafford38.Characteristic.CanonicalTangentialSuccessors
+module
+public import Stafford38.Characteristic.CanonicalTotalGradedActionCompatibility
+public import Stafford38.Characteristic.CanonicalOldTangentialFiniteness
+public import Stafford38.Characteristic.CanonicalTangentialSuccessors
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalGradedTangentialEquivalences
 

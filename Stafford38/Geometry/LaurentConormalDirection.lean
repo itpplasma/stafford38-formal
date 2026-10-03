@@ -1,6 +1,9 @@
-import Mathlib.RingTheory.LaurentSeries
-import Stafford38.Geometry.RetractionSpecialization
-import Stafford38.Geometry.ScalarExtensionPoints
+module
+public import Mathlib.RingTheory.LaurentSeries
+public import Stafford38.Geometry.RetractionSpecialization
+public import Stafford38.Geometry.ScalarExtensionPoints
+
+@[expose] public section
 
 /-!
 # Laurent specialization of projected conormal directions

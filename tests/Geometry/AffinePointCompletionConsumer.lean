@@ -1,4 +1,7 @@
-import Stafford38.Geometry.AffinePointCompletion
+module
+public import Stafford38.Geometry.AffinePointCompletion
+
+@[expose] public section
 
 open MvPolynomial
 

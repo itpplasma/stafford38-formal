@@ -1,4 +1,8 @@
-import Stafford38.Geometry.ActualCommonOpenArcCompatibility
+module
+public import Stafford38.Geometry.ActualCommonOpenArcCompatibility
+
+
+@[expose] public section
 
 set_option autoImplicit false
 

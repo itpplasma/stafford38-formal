@@ -1,5 +1,9 @@
 # Complete paper–Lean display review
 
+This is the historical display audit at the source pins recorded in `verification.json`. It does not cover the current same-witness assembly or the next release. The [current route map](../../paper-route-alignment.json) records their scope.
+
+The five historical Lean probes are preserved byte for byte as `.lean.txt` files, with their original paths, source commit and hashes in [the archive index](archive-source-locations.json). This keeps the evidence intact without submitting old diagnostic programs as current Lean sources. Historical receipts retain their original paths; restore the recorded filenames to replay those probes at their recorded configuration.
+
 All 55 cards were independently reviewed in three frozen partitions. The
 [inputs](cards-1-inputs.json), [first report](cards-1.md), [second report](cards-2.md),
 [third report](cards-3.md), and [tool review](tool-review.md) preserve the findings

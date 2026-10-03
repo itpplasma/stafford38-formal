@@ -1,8 +1,11 @@
-import Stafford38.Geometry.RetainedPlaceConormalTransport
-import Stafford38.Geometry.ResidueMinorSelection
-import Stafford38.Geometry.PaperResidueDerivationFrame
-import Stafford38.Geometry.PaperCompletedResidueDerivationFrame
-import Stafford38.Geometry.RetainedGroundMapIdentification
+module
+public import Stafford38.Geometry.RetainedPlaceConormalTransport
+public import Stafford38.Geometry.ResidueMinorSelection
+public import Stafford38.Geometry.PaperResidueDerivationFrame
+public import Stafford38.Geometry.PaperCompletedResidueDerivationFrame
+public import Stafford38.Geometry.RetainedGroundMapIdentification
+
+@[expose] public section
 
 /-!
 # Generic-point equations for an actual retained chart

@@ -1,5 +1,8 @@
-import Stafford38.Geometry.FormalDivisorAxisLift
-import Mathlib.RingTheory.PowerSeries.Inverse
+module
+public import Stafford38.Geometry.FormalDivisorAxisLift
+public import Mathlib.RingTheory.PowerSeries.Inverse
+
+@[expose] public section
 
 /-!
 # The strict projective order gap at a divisor

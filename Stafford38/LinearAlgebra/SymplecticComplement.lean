@@ -1,4 +1,7 @@
-import Mathlib.LinearAlgebra.BilinearForm.Orthogonal
+module
+public import Mathlib.LinearAlgebra.BilinearForm.Orthogonal
+
+@[expose] public section
 
 /-!
 # Nondegenerate symplectic planes and their orthogonal complements

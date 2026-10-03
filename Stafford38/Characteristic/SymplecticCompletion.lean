@@ -1,6 +1,11 @@
-import Stafford38.Weyl.Symplectic
-import Stafford38.Characteristic.HomogeneousChart
-import Stafford38.Characteristic.PaperSymplecticBasis
+module
+public import Mathlib.LinearAlgebra.Matrix.BilinearForm
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Weyl.Symplectic
+public import Stafford38.Characteristic.HomogeneousChart
+public import Stafford38.Characteristic.PaperSymplecticBasis
+
+@[expose] public section
 
 /-!
 # Symplectic completion of a phase vector
@@ -284,7 +289,7 @@ theorem exists_symplectic_mulVec_eq {n : ℕ}
       apply (LinearMap.BilinForm.ext_iff_basis (Pi.basisFun k (PhaseVar n))).2
       intro i j
       exact hg _ _
-    have hBmatrix : B.toMatrix' = standardForm k n := by
+    have hBmatrix : LinearMap.BilinForm.toMatrix' B = standardForm k n := by
       ext i j
       rw [LinearMap.BilinForm.toMatrix'_apply]
       change phasePairing k (Pi.single i 1) (Pi.single j 1) = _
@@ -295,7 +300,7 @@ theorem exists_symplectic_mulVec_eq {n : ℕ}
     have hmatrix := LinearMap.BilinForm.toMatrix'_comp B f f
     have hM : Matrix.transpose M * standardForm k n * M = standardForm k n := by
       calc
-        Matrix.transpose M * standardForm k n * M = (B.comp f f).toMatrix' := by
+        Matrix.transpose M * standardForm k n * M = LinearMap.BilinForm.toMatrix' (B.comp f f) := by
           simpa [M, hBmatrix] using hmatrix.symm
         _ = standardForm k n := by rw [hcomp, hBmatrix]
     refine ⟨M, SymplecticGroup.mem_iff'.2 hM, ?_⟩

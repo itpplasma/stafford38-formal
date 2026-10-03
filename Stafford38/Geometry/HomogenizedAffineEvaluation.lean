@@ -1,6 +1,10 @@
-import Stafford38.Geometry.ProjectiveEquationFormalChart
-import Stafford38.Geometry.LocalizedProjectiveChartTransition
-import Stafford38.Geometry.FormalDivisorLaurentConormal
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Geometry.ProjectiveEquationFormalChart
+public import Stafford38.Geometry.LocalizedProjectiveChartTransition
+public import Stafford38.Geometry.FormalDivisorLaurentConormal
+
+@[expose] public section
 
 /-!
 # Evaluation after homogenization in the zeroth projective chart

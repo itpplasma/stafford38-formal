@@ -1,5 +1,8 @@
-import Stafford38.Geometry.EtaleProjectiveTangentComparison
-import Mathlib.RingTheory.Ideal.Quotient.Operations
+module
+public import Stafford38.Geometry.EtaleProjectiveTangentComparison
+public import Mathlib.RingTheory.Ideal.Quotient.Operations
+
+@[expose] public section
 
 open Stafford38.Geometry.EtaleTangentChartSpan
 open Stafford38.Geometry.EtaleCotangentBasis

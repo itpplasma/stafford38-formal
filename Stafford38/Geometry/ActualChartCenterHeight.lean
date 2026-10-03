@@ -1,5 +1,8 @@
-import Stafford38.Geometry.FiniteTypeCurveHeight
-import Mathlib.RingTheory.Ideal.Height
+module
+public import Stafford38.Geometry.FiniteTypeCurveHeight
+public import Mathlib.RingTheory.Ideal.Height
+
+@[expose] public section
 
 set_option autoImplicit false
 

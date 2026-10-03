@@ -1,4 +1,7 @@
-import Stafford38.Geometry.PaperGenericTangentRank
+module
+public import Stafford38.Geometry.PaperGenericTangentRank
+
+@[expose] public section
 
 set_option autoImplicit false
 

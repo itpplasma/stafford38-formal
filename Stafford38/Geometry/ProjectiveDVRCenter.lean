@@ -1,5 +1,8 @@
-import Mathlib.RingTheory.Valuation.Discrete.IsDiscreteValuationRing
-import Mathlib.RingTheory.Valuation.LocalSubring
+module
+public import Mathlib.RingTheory.Valuation.Discrete.IsDiscreteValuationRing
+public import Mathlib.RingTheory.Valuation.LocalSubring
+
+@[expose] public section
 
 /-!
 # Equality of a centered DVR with a dominating valuation ring

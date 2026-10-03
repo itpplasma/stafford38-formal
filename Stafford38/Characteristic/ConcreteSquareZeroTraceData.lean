@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.FilteredQuotientTwoJet
-import Stafford38.Characteristic.OrderReesTwoJetBracket
-import Stafford38.Characteristic.SquareZeroTraceData
+module
+public import Stafford38.Characteristic.FilteredQuotientTwoJet
+public import Stafford38.Characteristic.OrderReesTwoJetBracket
+public import Stafford38.Characteristic.SquareZeroTraceData
+
+@[expose] public section
 
 /-!
 # Concrete square-zero trace data for a filtered Weyl quotient

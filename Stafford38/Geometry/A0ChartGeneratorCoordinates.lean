@@ -1,4 +1,7 @@
-import Stafford38.Geometry.A0ChartFormalEtale
+module
+public import Stafford38.Geometry.A0ChartFormalEtale
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2400000

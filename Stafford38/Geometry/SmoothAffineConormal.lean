@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ConormalPrincipalOpenDensity
-import Stafford38.Geometry.GenericSmoothOpen
+module
+public import Stafford38.Geometry.ConormalPrincipalOpenDensity
+public import Stafford38.Geometry.GenericSmoothOpen
+
+@[expose] public section
 
 /-!
 # Density of the conormal over the smooth affine locus

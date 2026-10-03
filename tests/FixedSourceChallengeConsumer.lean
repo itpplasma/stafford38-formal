@@ -1,4 +1,7 @@
-import FixedSourceSolution
+module
+public import FixedSourceSolution
+
+@[expose] public section
 
 /-!
 # Consumers for the exact-source challenge statement

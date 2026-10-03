@@ -1,9 +1,12 @@
-import Stafford38.Characteristic.ConcreteSquareZeroTraceData
-import Stafford38.Characteristic.MinimalPrimeFiniteLengthLocalization
-import Stafford38.Characteristic.SquareZeroOreLocalization
-import Mathlib.Algebra.Module.LocalizedModule.Basic
-import Mathlib.GroupTheory.QuotientGroup.Basic
-import Mathlib.RingTheory.OreLocalization.Ring
+module
+public import Stafford38.Characteristic.ConcreteSquareZeroTraceData
+public import Stafford38.Characteristic.MinimalPrimeFiniteLengthLocalization
+public import Stafford38.Characteristic.SquareZeroOreLocalization
+public import Mathlib.Algebra.Module.LocalizedModule.Basic
+public import Mathlib.GroupTheory.QuotientGroup.Basic
+public import Mathlib.RingTheory.OreLocalization.Ring
+
+@[expose] public section
 
 /-!
 # Localization preserves the square-zero deformation sequence

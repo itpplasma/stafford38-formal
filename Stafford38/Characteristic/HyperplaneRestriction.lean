@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.HyperplaneRestriction
+module
+public import AlgebraicAnalysis.Module.HyperplaneRestriction
+
+@[expose] public section
 
 /-!
 # Compatibility import for algebraic hyperplane restriction

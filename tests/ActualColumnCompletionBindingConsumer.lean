@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ActualOptionColumnBinding
-import Stafford38.Geometry.ActualDivisorUniformizerNumerator
+module
+public import Stafford38.Geometry.ActualOptionColumnBinding
+public import Stafford38.Geometry.ActualDivisorUniformizerNumerator
+
+@[expose] public section
 
 open Stafford38.Geometry.ActualOptionColumnBinding
 

@@ -1,5 +1,8 @@
-import Stafford38.Geometry.AsymptoticChartArcAdapter
-import Stafford38.Geometry.PowerSeriesArcTangency
+module
+public import Stafford38.Geometry.AsymptoticChartArcAdapter
+public import Stafford38.Geometry.PowerSeriesArcTangency
+
+@[expose] public section
 
 open Stafford38.Geometry.AsymptoticChartArcAdapter
 open Stafford38.Geometry.ContinuousPowerSeriesTangentFrame

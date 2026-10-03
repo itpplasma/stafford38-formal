@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ScalarExtensionPoints
+module
+public import Stafford38.Geometry.ScalarExtensionPoints
+
+@[expose] public section
 
 /-!
 # Poisson closure after scalar extension

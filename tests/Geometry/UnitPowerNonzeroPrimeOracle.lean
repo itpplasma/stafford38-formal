@@ -1,5 +1,8 @@
-import Stafford38.Geometry.PaperUnitPowerFactorization
-import Mathlib.RingTheory.Ideal.NatInt
+module
+public import Stafford38.Geometry.PaperUnitPowerFactorization
+public import Mathlib.RingTheory.Ideal.NatInt
+
+@[expose] public section
 
 set_option autoImplicit false
 

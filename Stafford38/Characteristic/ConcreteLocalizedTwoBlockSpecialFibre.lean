@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.LocalizedOrderReesTwoJetSpecializationKernel
-import Stafford38.Characteristic.LocalizedTwoBlockPrincipalKernelDescent
+module
+public import Stafford38.Characteristic.LocalizedOrderReesTwoJetSpecializationKernel
+public import Stafford38.Characteristic.LocalizedTwoBlockPrincipalKernelDescent
+
+@[expose] public section
 
 /-!
 # The concrete localized two-block special fibre
@@ -42,9 +45,7 @@ variable [OreLocalization.OreSet
   (OppositeDenominators (filteredQuotientTwoJetTraceData k I) S)]
 variable [IsLocalRing (Localization S)]
 
-private abbrev concreteData := filteredQuotientTwoJetTraceData k I
-
-local notation "D" => concreteData k I
+local notation "D" => filteredQuotientTwoJetTraceData k I
 local notation "Cₗ" =>
   OreLocalization (OppositeDenominators D S)
     ((OrderReesTwoJet (n := n) k)ᵐᵒᵖ)

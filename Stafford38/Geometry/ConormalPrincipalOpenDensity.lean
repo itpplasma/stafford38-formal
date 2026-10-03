@@ -1,5 +1,8 @@
-import Mathlib.RingTheory.Nullstellensatz
-import Stafford38.Geometry.AffineConormalClosure
+module
+public import Mathlib.RingTheory.Nullstellensatz
+public import Stafford38.Geometry.AffineConormalClosure
+
+@[expose] public section
 
 /-!
 # Density of the equation conormal over a principal open

@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.CanonicalFilteredGradedBridge
-import Stafford38.Characteristic.AssociatedGradedModule
-import Stafford38.Characteristic.FilteredTwoTermTotalPages
+module
+public import Stafford38.Characteristic.CanonicalFilteredGradedBridge
+public import Stafford38.Characteristic.AssociatedGradedModule
+public import Stafford38.Characteristic.FilteredTwoTermTotalPages
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalTotalGradedBridge
 
@@ -38,7 +41,7 @@ def negIndex : ℕ → ℤ
 theorem negIndex_eq (m : ℕ) : negIndex m = -(m : ℤ) := by
   cases m <;> simp [negIndex, Int.negSucc_eq]
 
-private noncomputable def nonpositiveDirectSumToNat
+noncomputable def nonpositiveDirectSumToNat
     (e : ∀ m : ℕ, A (negIndex m) ≃ₗ[k] B m) :
     DirectSum ℤ A →ₗ[k] DirectSum ℕ B :=
   DirectSum.toModule k ℤ (DirectSum ℕ B) (fun p =>
@@ -48,20 +51,20 @@ private noncomputable def nonpositiveDirectSumToNat
     | Int.negSucc n =>
         (DirectSum.lof k ℕ B (n + 1)).comp (e (n + 1)).toLinearMap)
 
-private noncomputable def natDirectSumToNonpositive
+noncomputable def natDirectSumToNonpositive
     (e : ∀ m : ℕ, A (negIndex m) ≃ₗ[k] B m) :
     DirectSum ℕ B →ₗ[k] DirectSum ℤ A :=
   DirectSum.toModule k ℕ (DirectSum ℤ A) (fun m =>
     (DirectSum.lof k ℤ A (negIndex m)).comp (e m).symm.toLinearMap)
 
-@[simp] private theorem natDirectSumToNonpositive_lof
+@[simp] theorem natDirectSumToNonpositive_lof
     (e : ∀ m : ℕ, A (negIndex m) ≃ₗ[k] B m) (m : ℕ) (x : B m) :
     natDirectSumToNonpositive k e (DirectSum.lof k ℕ B m x) =
       DirectSum.lof k ℤ A (negIndex m) ((e m).symm x) := by
   rw [natDirectSumToNonpositive, DirectSum.toModule_lof]
   rfl
 
-private noncomputable def nonpositiveDirectSumLinearEquiv
+noncomputable def nonpositiveDirectSumLinearEquiv
     (e : ∀ m : ℕ, A (negIndex m) ≃ₗ[k] B m)
     (hpos : ∀ p, 0 < p → Subsingleton (A p)) :
     DirectSum ℤ A ≃ₗ[k] DirectSum ℕ B := by
@@ -135,10 +138,10 @@ private noncomputable def nonpositiveDirectSumLinearEquiv
 
 end ReindexNonpositive
 
-private abbrev CI (n N : ℕ) (d : PresentedWeyl k (n + 1)) :=
+abbrev CI (n N : ℕ) (d : PresentedWeyl k (n + 1)) :=
   presentedCanonicalRightIdeal (k := k) n N d
 
-private abbrev K (n N : ℕ) (d : PresentedWeyl k (n + 1))
+abbrev K (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :=
   canonicalFilteredTwoTerm k n N d hd
 

@@ -1,9 +1,12 @@
-import Mathlib.RingTheory.Smooth.Locus
-import Mathlib.RingTheory.Localization.BaseChange
-import Mathlib.RingTheory.TensorProduct.MvPolynomial
-import Mathlib.RingTheory.TensorProduct.Quotient
-import Stafford38.Geometry.SmoothAffineConormal
-import Stafford38.Geometry.ScalarExtensionPoints
+module
+public import Mathlib.RingTheory.Smooth.Locus
+public import Mathlib.RingTheory.Localization.BaseChange
+public import Mathlib.RingTheory.TensorProduct.MvPolynomial
+public import Mathlib.RingTheory.TensorProduct.Quotient
+public import Stafford38.Geometry.SmoothAffineConormal
+public import Stafford38.Geometry.ScalarExtensionPoints
+
+@[expose] public section
 
 set_option autoImplicit false
 

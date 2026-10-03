@@ -1,7 +1,10 @@
-import AlgebraicAnalysis.Ore.Associativity
-import Stafford38.Weyl.EulerSubring
-import Stafford38.Weyl.EulerResidue
-import Stafford38.Weyl.OuterOreMonic
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import Stafford38.Weyl.EulerSubring
+public import Stafford38.Weyl.EulerResidue
+public import Stafford38.Weyl.OuterOreMonic
+
+@[expose] public section
 
 /-!
 # Positive outer-Ore remainders

@@ -1,10 +1,13 @@
-import Stafford38.Geometry.GeneralDivisorialVisibleFrame
-import Stafford38.Geometry.PaperVisibleFrameFieldRank
-import Stafford38.Geometry.PaperResidueGroundAlgebraTransport
-import Stafford38.Geometry.PaperGenericTangentRank
-import Stafford38.Geometry.RetainedPlaceConormalTransport
-import Stafford38.Geometry.ScalarExtensionPoints
-import Stafford38.Geometry.FormalDivisorLaurentConormal
+module
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrame
+public import Stafford38.Geometry.PaperVisibleFrameFieldRank
+public import Stafford38.Geometry.PaperResidueGroundAlgebraTransport
+public import Stafford38.Geometry.PaperGenericTangentRank
+public import Stafford38.Geometry.RetainedPlaceConormalTransport
+public import Stafford38.Geometry.ScalarExtensionPoints
+public import Stafford38.Geometry.FormalDivisorLaurentConormal
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 12000000

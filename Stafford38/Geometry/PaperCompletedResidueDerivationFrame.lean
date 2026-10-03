@@ -1,4 +1,7 @@
-import Stafford38.Geometry.PaperResidueDerivationFrame
+module
+public import Stafford38.Geometry.PaperResidueDerivationFrame
+
+@[expose] public section
 
 /-!
 # Completed columns from residue coordinates

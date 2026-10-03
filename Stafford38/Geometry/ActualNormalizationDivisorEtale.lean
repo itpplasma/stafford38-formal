@@ -1,7 +1,10 @@
-import Stafford38.Geometry.ActualOptionCoordinateEtale
-import Stafford38.Geometry.DVRUniformizerNumerator
-import Stafford38.Geometry.LocalizationStageFractionCoefficients
-import Stafford38.Geometry.NormalizationHeightOne
+module
+public import Stafford38.Geometry.ActualOptionCoordinateEtale
+public import Stafford38.Geometry.DVRUniformizerNumerator
+public import Stafford38.Geometry.LocalizationStageFractionCoefficients
+public import Stafford38.Geometry.NormalizationHeightOne
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false
@@ -42,8 +45,8 @@ theorem formallyEtale_at_actual_normalization_center_of_specified_parameter
     (hfinite : Algebra.FiniteType (FractionRing (MvPolynomial σ k)) (Localization M))
     (hheight : (p.comap (algebraMap B (Localization M))).height = 1)
     (a : B) (ha0 : a ≠ 0) (_haP : a ∈ p.comap (algebraMap B (Localization M)))
-    (hspan : Ideal.span {algebraMap B
-      (Localization.AtPrime (p.comap (algebraMap B (Localization M)))) a} =
+    (hspan : Ideal.span (Set.singleton (algebraMap B
+      (Localization.AtPrime (p.comap (algebraMap B (Localization M)))) a)) =
         maximalIdeal (Localization.AtPrime (p.comap (algebraMap B (Localization M)))))
     (fOption : MvPolynomial (Option σ) k →ₐ[k] B)
     (hnoneB : fOption (MvPolynomial.X none) = a)

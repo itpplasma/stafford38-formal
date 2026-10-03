@@ -1,8 +1,11 @@
-import Stafford38.Geometry.GeneralDivisorialVisibleFrame
-import Stafford38.Geometry.PaperActualDivisorTangent
-import Stafford38.Geometry.ComponentProjectiveOrder
-import Stafford38.Geometry.ProjectiveDivisorOrderGap
-import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
+module
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrame
+public import Stafford38.Geometry.PaperActualDivisorTangent
+public import Stafford38.Geometry.ComponentProjectiveOrder
+public import Stafford38.Geometry.ProjectiveDivisorOrderGap
+public import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
+
+@[expose] public section
 
 /-!
 # Actual retained-witness order gap

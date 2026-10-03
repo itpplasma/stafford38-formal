@@ -1,4 +1,7 @@
-import Stafford38.LocalizationCorollaries
+module
+public import Stafford38.LocalizationCorollaries
+
+@[expose] public section
 
 namespace Stafford38.LocalizationCorollaries
 

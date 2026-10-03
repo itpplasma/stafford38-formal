@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ComponentProjectiveClosureNormalization
-import Stafford38.Geometry.ProjectiveChartCoordinates
+module
+public import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+public import Stafford38.Geometry.ProjectiveChartCoordinates
+
+@[expose] public section
 
 set_option autoImplicit false
 

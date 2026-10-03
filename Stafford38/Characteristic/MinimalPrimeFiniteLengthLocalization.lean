@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.MinimalPrimeFiniteLengthLocalization
+module
+public import AlgebraicAnalysis.Module.MinimalPrimeFiniteLengthLocalization
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

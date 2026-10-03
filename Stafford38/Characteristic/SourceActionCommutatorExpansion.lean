@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.ConcreteInducedZAction
+module
+public import Stafford38.Characteristic.ConcreteInducedZAction
+
+@[expose] public section
 
 /-!
 # Commutator expansion for source-row action equations

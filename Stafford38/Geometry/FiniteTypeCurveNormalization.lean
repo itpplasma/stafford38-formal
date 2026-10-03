@@ -1,6 +1,9 @@
-import Mathlib.RingTheory.NoetherNormalization
-import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
-import Mathlib.RingTheory.Localization.Integral
+module
+public import Mathlib.RingTheory.NoetherNormalization
+public import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
+public import Mathlib.RingTheory.Localization.Integral
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

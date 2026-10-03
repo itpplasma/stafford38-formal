@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ContinuousPowerSeriesTangentFrame
-import Stafford38.Geometry.ResidueMinorSelection
-import Mathlib.LinearAlgebra.Basis.VectorSpace
+module
+public import Stafford38.Geometry.ContinuousPowerSeriesTangentFrame
+public import Stafford38.Geometry.ResidueMinorSelection
+public import Mathlib.LinearAlgebra.Basis.VectorSpace
+
+@[expose] public section
 
 /-!
 # Derivation frames visible in residue coordinates

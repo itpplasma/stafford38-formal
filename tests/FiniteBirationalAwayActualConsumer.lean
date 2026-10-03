@@ -1,8 +1,11 @@
-import Stafford38.Geometry.FiniteBirationalAway
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Stafford38.Geometry.ProjectiveChartNormalizationFinite
-import Stafford38.Geometry.GeneralDivisorialVisibleFrameWitness
-import Stafford38.Geometry.AsymptoticChartArcAdapter
+module
+public import Stafford38.Geometry.FiniteBirationalAway
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Stafford38.Geometry.ProjectiveChartNormalizationFinite
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameWitness
+public import Stafford38.Geometry.AsymptoticChartArcAdapter
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 500000

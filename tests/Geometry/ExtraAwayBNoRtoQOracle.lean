@@ -1,5 +1,8 @@
-import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
-import Mathlib.Data.Nat.Prime.Int
+module
+public import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
+public import Mathlib.Data.Nat.Prime.Int
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ValuationCenterDominatesLocalPrime
+module
+public import Stafford38.Geometry.ValuationCenterDominatesLocalPrime
+
+@[expose] public section
 
 noncomputable section
 set_option autoImplicit false

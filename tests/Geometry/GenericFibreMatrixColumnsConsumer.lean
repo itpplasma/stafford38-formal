@@ -1,4 +1,7 @@
-import Stafford38.Geometry.GeneralTangentLimitCriterion
+module
+public import Stafford38.Geometry.GeneralTangentLimitCriterion
+
+@[expose] public section
 
 namespace Stafford38.Geometry.GenericFibreMatrixColumnsConsumer
 

@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Module.FilteredTwoTermSuccessorNaturality
-import Stafford38.Characteristic.FilteredTwoTermTotalActions
+module
+public import AlgebraicAnalysis.Module.FilteredTwoTermSuccessorNaturality
+public import Stafford38.Characteristic.FilteredTwoTermTotalActions
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

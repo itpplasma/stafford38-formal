@@ -1,9 +1,12 @@
-import Stafford38.Geometry.GeneralDivisorialVisibleFrame
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Stafford38.Geometry.RetainedPlaceConormalTransport
-import Stafford38.Geometry.HomogenizedAffineEvaluation
-import Stafford38.Geometry.ActualChartValuationImage
-import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+module
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrame
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Stafford38.Geometry.RetainedPlaceConormalTransport
+public import Stafford38.Geometry.HomogenizedAffineEvaluation
+public import Stafford38.Geometry.ActualChartValuationImage
+public import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

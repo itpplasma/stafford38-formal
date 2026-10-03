@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ValuationCenterDominatesLocalPrime
-import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
+module
+public import Stafford38.Geometry.ValuationCenterDominatesLocalPrime
+public import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

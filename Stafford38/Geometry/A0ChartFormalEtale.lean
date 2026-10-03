@@ -1,8 +1,11 @@
-import Stafford38.Geometry.ProjectiveChartSameFieldOverlap
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
-import Mathlib.RingTheory.Etale.Basic
-import Mathlib.RingTheory.Localization.Away.Basic
+module
+public import Stafford38.Geometry.ProjectiveChartSameFieldOverlap
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
+public import Mathlib.RingTheory.Etale.Basic
+public import Mathlib.RingTheory.Localization.Away.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2400000
@@ -275,6 +278,58 @@ theorem formallyEtale_originalAffineChartToCommonOpen
     Algebra.FormallyEtale.of_isLocalization
       (Submonoid.powers (originalAffineChartDenominator P j))
   exact Algebra.FormallyEtale.comp A₀ S C
+
+
+/-- The canonical original-affine map preserves the ground field through
+the canonical selected-chart algebra on the common open. -/
+theorem originalAffineChartToCommonOpen_groundMap
+    {k : Type u} [Field k] {m : ℕ}
+    {Q : Type v} [CommRing Q] [Algebra k Q]
+    {B : Type w} [CommRing B] [Algebra Q B]
+    (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (j : Fin m)
+    (hxj : componentCoordinate P j ≠ 0)
+    (hsel : SelectedAffineChartQuotient (k := k) P j ≃ₐ[k] Q)
+    (M : Ideal B) [M.IsPrime] (f : Q)
+    (e : Localization.Away f ≃ₐ[Q]
+      Localization.Away (algebraMap Q B f)) :
+    let g := hsel (selectedAffineChartDenominator P j)
+    let Cq := genericOpenRing M f e
+    let U := genericOpenExtraAwayB M f e g
+    letI : Semiring U := (inferInstance : CommSemiring U).toSemiring
+    letI : Algebra Q Cq := inferInstance
+    letI : Algebra Q U := Algebra.compHom U (algebraMap Q Cq)
+    (originalAffineChartToCommonOpen P j hxj hsel M f e).comp
+        (algebraMap k (OriginalAffineChartQuotient (k := k) P)) =
+      (algebraMap Q U).comp (algebraMap k Q) := by
+  dsimp only
+  let g := hsel (selectedAffineChartDenominator P j)
+  let Cq := genericOpenRing M f e
+  let U := genericOpenExtraAwayB M f e g
+  letI : Semiring U := (inferInstance : CommSemiring U).toSemiring
+  letI : Algebra Q Cq := inferInstance
+  letI : Algebra Q U := Algebra.compHom U (algebraMap Q Cq)
+  let A₀ := OriginalAffineChartQuotient (k := k) P
+  let S₀ := OriginalAffineChartLocalization (k := k) P j
+  let T := Localization.Away g
+  let overlap : S₀ ≃ₐ[k] T :=
+    (originalAffineChartOverlapEquiv P j hxj).trans
+      (selectedChartAwayEquivOfQuotientEquiv P j hsel)
+  have hz : genericOpenBMap M f e (algebraMap Q B g) = algebraMap Q Cq g :=
+    genericOpenBMap_base_eq M f e g
+  letI : IsLocalization.Away (algebraMap Q Cq g) U := by
+    rw [← hz]
+    infer_instance
+  let ψ : T →+* U := IsLocalization.Away.map
+    (S := T) (Q := U) (algebraMap Q Cq) g
+  apply RingHom.ext
+  intro c
+  change ψ (overlap (algebraMap A₀ S₀ (algebraMap k A₀ c))) =
+    algebraMap Q U (algebraMap k Q c)
+  rw [← IsScalarTower.algebraMap_apply k A₀ S₀ c, overlap.commutes]
+  rw [IsScalarTower.algebraMap_apply k Q T c]
+  simp [ψ, IsLocalization.Away.map]
+  rfl
+
 
 end Stafford38.Geometry.A0ChartFormalEtale
 end

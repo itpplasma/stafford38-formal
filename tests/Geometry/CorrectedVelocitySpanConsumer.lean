@@ -1,5 +1,8 @@
-import Mathlib
-import Stafford38.Geometry.CorrectedVelocitySpan
+module
+public import Mathlib
+public import Stafford38.Geometry.CorrectedVelocitySpan
+
+@[expose] public section
 
 open Stafford38.Geometry.CorrectedVelocitySpan
 

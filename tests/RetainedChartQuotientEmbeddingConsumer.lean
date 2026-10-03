@@ -1,4 +1,7 @@
-import Stafford38.Geometry.RetainedChartQuotientEmbedding
+module
+public import Stafford38.Geometry.RetainedChartQuotientEmbedding
+
+@[expose] public section
 
 noncomputable section
 set_option autoImplicit false

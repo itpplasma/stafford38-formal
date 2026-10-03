@@ -1,4 +1,7 @@
-import Stafford38.Geometry.OptionCoordinateEtaleComposition
+module
+public import Stafford38.Geometry.OptionCoordinateEtaleComposition
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

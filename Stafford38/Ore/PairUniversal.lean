@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Ore.Associativity
-import Stafford38.Ore.PairStage
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import Stafford38.Ore.PairStage
+
+@[expose] public section
 
 /-!
 # Universal property of a coordinate-momentum pair stage

@@ -1,5 +1,8 @@
-import Stafford38.Geometry.A0ChartGeneratorCoordinates
-import Stafford38.Geometry.ChartGenericPointFractionRing
+module
+public import Stafford38.Geometry.A0ChartGeneratorCoordinates
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2400000

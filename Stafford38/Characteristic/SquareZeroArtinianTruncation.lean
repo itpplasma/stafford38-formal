@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.SquareZeroAnnihilatorBracket
+module
+public import Stafford38.Characteristic.SquareZeroAnnihilatorBracket
+
+@[expose] public section
 
 /-!
 # Artinian truncation in a square-zero deformation

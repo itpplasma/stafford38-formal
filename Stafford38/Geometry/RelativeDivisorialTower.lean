@@ -1,8 +1,11 @@
-import Stafford38.Geometry.DivisorialBoundaryExtension
-import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
-import Mathlib.RingTheory.AlgebraicIndependent.Transcendental
-import Mathlib.RingTheory.FiniteType
-import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
+module
+public import Stafford38.Geometry.DivisorialBoundaryExtension
+public import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
+public import Mathlib.RingTheory.AlgebraicIndependent.Transcendental
+public import Mathlib.RingTheory.FiniteType
+public import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
+
+@[expose] public section
 
 /-!
 # Relative transcendence tower containing a selected coordinate

@@ -1,5 +1,8 @@
-import Stafford38.Geometry.SmoothAffinePointScalarExtension
-import Mathlib.RingTheory.Smooth.Basic
+module
+public import Stafford38.Geometry.SmoothAffinePointScalarExtension
+public import Mathlib.RingTheory.Smooth.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,7 +1,10 @@
-import Stafford38.Geometry.SelectedResidueCoefficientLocalization
-import Stafford38.Geometry.ProjectiveChartNormalizationCenter
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
+module
+public import Stafford38.Geometry.SelectedResidueCoefficientLocalization
+public import Stafford38.Geometry.ProjectiveChartNormalizationCenter
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
+
+@[expose] public section
 
 noncomputable section
 set_option autoImplicit false

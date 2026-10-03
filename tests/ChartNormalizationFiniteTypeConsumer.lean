@@ -1,12 +1,15 @@
-import Stafford38.Geometry.ProjectiveChartNormalizationFinite
-import Stafford38.Geometry.AffineComponentCoordinateSplit
-import Stafford38.Geometry.ComponentFunctionFieldBoundary
-import Stafford38.Geometry.ComponentProjectiveClosure
-import Stafford38.Geometry.ComponentProjectiveChartFactorization
-import Stafford38.Geometry.ComponentProjectiveChartKernel
-import Stafford38.Geometry.ProjectiveChartCoordinates
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Mathlib.RingTheory.FiniteType
+module
+public import Stafford38.Geometry.ProjectiveChartNormalizationFinite
+public import Stafford38.Geometry.AffineComponentCoordinateSplit
+public import Stafford38.Geometry.ComponentFunctionFieldBoundary
+public import Stafford38.Geometry.ComponentProjectiveClosure
+public import Stafford38.Geometry.ComponentProjectiveChartFactorization
+public import Stafford38.Geometry.ComponentProjectiveChartKernel
+public import Stafford38.Geometry.ProjectiveChartCoordinates
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Mathlib.RingTheory.FiniteType
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

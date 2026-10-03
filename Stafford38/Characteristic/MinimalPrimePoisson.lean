@@ -1,6 +1,9 @@
-import Mathlib.RingTheory.Ideal.MinimalPrime.Basic
-import Stafford38.Characteristic.BaseRelativePoisson
-import Stafford38.Characteristic.PostScalarExtensionPoisson
+module
+public import Mathlib.RingTheory.Ideal.MinimalPrime.Basic
+public import Stafford38.Characteristic.BaseRelativePoisson
+public import Stafford38.Characteristic.PostScalarExtensionPoisson
+
+@[expose] public section
 
 /-!
 # Minimal-prime assembly for base-relative Poisson closure

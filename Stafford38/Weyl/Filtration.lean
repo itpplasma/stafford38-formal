@@ -1,4 +1,8 @@
-import Stafford38.Weyl.PBW
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Weyl.PBW
+
+@[expose] public section
 
 /-!
 # Weighted PBW truncations

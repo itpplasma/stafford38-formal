@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.BaseRelativePoisson
-import Stafford38.Geometry.AffineConormalSpan
+module
+public import Stafford38.Characteristic.BaseRelativePoisson
+public import Stafford38.Geometry.AffineConormalSpan
+
+@[expose] public section
 
 /-!
 # Hamiltonian flows in the paper's proof

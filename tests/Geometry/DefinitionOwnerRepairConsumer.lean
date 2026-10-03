@@ -1,7 +1,10 @@
-import proofs.stafford38_reduction
-import Stafford38.Geometry.ComponentProjectiveChartKernel
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Stafford38.Geometry.ProjectiveChartSameFieldOverlap
+module
+public import proofs.stafford38_reduction
+public import Stafford38.Geometry.ComponentProjectiveChartKernel
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Stafford38.Geometry.ProjectiveChartSameFieldOverlap
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,4 +1,7 @@
-import Stafford38.NoncharacteristicHyperplane
+module
+public import Stafford38.NoncharacteristicHyperplane
+
+@[expose] public section
 
 open Stafford38
 open Stafford38.NoncharacteristicHyperplane

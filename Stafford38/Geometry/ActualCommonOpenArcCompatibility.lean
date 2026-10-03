@@ -1,4 +1,8 @@
-import Stafford38.Geometry.ActualCommonOpenCompletionDerivation
+module
+public import Stafford38.Geometry.ActualCommonOpenCompletionDerivation
+
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

@@ -1,4 +1,7 @@
-import Stafford38.Geometry.CoisotropicTranslation
+module
+public import Stafford38.Geometry.CoisotropicTranslation
+
+@[expose] public section
 
 /-!
 # Base-relative Poisson closure

@@ -1,7 +1,10 @@
-import Stafford38.Geometry.CanonicalFiniteGradientProjectiveCoordinates
-import Stafford38.Geometry.FiniteGradientResidueExtension
-import Stafford38.Geometry.FiniteGradientBoundaryProducer
-import Stafford38.Geometry.FiniteGradientFromTangentInclusion
+module
+public import Stafford38.Geometry.CanonicalFiniteGradientProjectiveCoordinates
+public import Stafford38.Geometry.FiniteGradientResidueExtension
+public import Stafford38.Geometry.FiniteGradientBoundaryProducer
+public import Stafford38.Geometry.FiniteGradientFromTangentInclusion
+
+@[expose] public section
 
 /-!
 # One-row conormal data and finite-gradient adapters

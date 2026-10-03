@@ -1,7 +1,10 @@
-import Mathlib.LinearAlgebra.Dual.Lemmas
-import Mathlib.LinearAlgebra.Finsupp.LinearCombination
-import Stafford38.Characteristic.BaseZeroSection
-import Stafford38.Geometry.PointwiseConormalContainment
+module
+public import Mathlib.LinearAlgebra.Dual.Lemmas
+public import Mathlib.LinearAlgebra.Finsupp.LinearCombination
+public import Stafford38.Characteristic.BaseZeroSection
+public import Stafford38.Geometry.PointwiseConormalContainment
+
+@[expose] public section
 
 /-!
 # Affine conormals are finite spans of equation differentials

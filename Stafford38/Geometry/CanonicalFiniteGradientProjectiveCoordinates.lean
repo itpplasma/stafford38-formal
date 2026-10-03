@@ -1,7 +1,10 @@
-import Stafford38.Geometry.ComponentFunctionFieldBoundary
-import Stafford38.Geometry.ComponentProjectiveClosureNormalization
-import Stafford38.Geometry.ComponentProjectiveOrder
-import Stafford38.Geometry.RetainedProjectiveCompletion
+module
+public import Stafford38.Geometry.ComponentFunctionFieldBoundary
+public import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+public import Stafford38.Geometry.ComponentProjectiveOrder
+public import Stafford38.Geometry.RetainedProjectiveCompletion
+
+@[expose] public section
 
 /-!
 # Exact normalized projective coordinates at a retained boundary place

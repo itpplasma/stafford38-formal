@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.ArtinianAdaptedBasisTraceAdapter
-import Mathlib.Data.Fintype.Sort
-import Mathlib.Data.Prod.Lex
+module
+public import Stafford38.Characteristic.ArtinianAdaptedBasisTraceAdapter
+public import Mathlib.Data.Fintype.Sort
+public import Mathlib.Data.Prod.Lex
+
+@[expose] public section
 
 /-!
 # Existence of filtration-adapted bases

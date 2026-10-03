@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.CanonicalLaurentSymbolControl
-import Stafford38.Geometry.FiniteGradientResidueExtension
-import Stafford38.Geometry.OneVariableAmbientConormal
+module
+public import Stafford38.Characteristic.CanonicalLaurentSymbolControl
+public import Stafford38.Geometry.FiniteGradientResidueExtension
+public import Stafford38.Geometry.OneVariableAmbientConormal
+
+@[expose] public section
 
 /-!
 # Canonical geometry over the boundary residue field

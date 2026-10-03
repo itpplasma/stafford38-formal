@@ -1,8 +1,11 @@
-import Mathlib.FieldTheory.IsAlgClosed.Basic
-import Mathlib.RingTheory.Ideal.MinimalPrime.Basic
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.MvPolynomial.Basic
-import Mathlib.RingTheory.Spectrum.Prime.Defs
+module
+public import Mathlib.FieldTheory.IsAlgClosed.Basic
+public import Mathlib.RingTheory.Ideal.MinimalPrime.Basic
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.MvPolynomial.Basic
+public import Mathlib.RingTheory.Spectrum.Prime.Defs
+
+@[expose] public section
 
 /-!
 # Constant or transcendental coordinates on an affine component

@@ -1,7 +1,10 @@
-import Stafford38.Geometry.PaperDivisorTangent
-import Stafford38.Geometry.ProjectiveBoundaryFrameRank
-import Stafford38.Geometry.ProjectiveConormalDehomogenization
-import Mathlib.Tactic
+module
+public import Stafford38.Geometry.PaperDivisorTangent
+public import Stafford38.Geometry.ProjectiveBoundaryFrameRank
+public import Stafford38.Geometry.ProjectiveConormalDehomogenization
+public import Mathlib.Tactic
+
+@[expose] public section
 
 private def sampleQ : Fin 3 → ℚ := fun i =>
   if i.val = 0 then 2 else if i.val = 1 then 3 else 5

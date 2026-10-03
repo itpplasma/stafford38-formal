@@ -1,5 +1,8 @@
-import Stafford38.Geometry.AffineConormalSpan
-import Stafford38.Geometry.PowerSeriesArcTangency
+module
+public import Stafford38.Geometry.AffineConormalSpan
+public import Stafford38.Geometry.PowerSeriesArcTangency
+
+@[expose] public section
 
 /-!
 # From an annihilating arc frame to an affine conormal covector

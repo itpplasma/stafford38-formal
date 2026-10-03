@@ -1,6 +1,9 @@
-import Stafford38.Geometry.PowerSeriesTangentLimit
-import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
-import Mathlib.RingTheory.PowerSeries.Inverse
+module
+public import Stafford38.Geometry.PowerSeriesTangentLimit
+public import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+public import Mathlib.RingTheory.PowerSeries.Inverse
+
+@[expose] public section
 
 /-!
 # Splitting a rectangular power-series matrix from a selected minor

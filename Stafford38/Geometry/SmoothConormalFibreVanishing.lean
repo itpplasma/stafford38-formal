@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ProjectiveConormalDirections
-import Stafford38.Geometry.LaurentConormalDirection
+module
+public import Stafford38.Geometry.ProjectiveConormalDirections
+public import Stafford38.Geometry.LaurentConormalDirection
+
+@[expose] public section
 
 /-!
 # Fibre equations of the smooth conormal closure

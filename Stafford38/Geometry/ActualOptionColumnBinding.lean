@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ActualSmoothOpenChartNumerator
-import Stafford38.Geometry.SelectedResidueNormalizationLocalization
-import Mathlib.RingTheory.MvPolynomial
+module
+public import Stafford38.Geometry.ActualSmoothOpenChartNumerator
+public import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+public import Mathlib.RingTheory.MvPolynomial
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

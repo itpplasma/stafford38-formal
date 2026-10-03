@@ -1,7 +1,10 @@
-import Stafford38.FoundationClosure
-import Stafford38.LeftHandedCorollary
-import Stafford38.EvolutionaryCorollary
-import Stafford38.LocalizationCorollaries
+module
+public import Stafford38.FoundationClosure
+public import Stafford38.LeftHandedCorollary
+public import Stafford38.EvolutionaryCorollary
+public import Stafford38.LocalizationCorollaries
+
+@[expose] public section
 
 open Stafford38 Stafford38.FixedSource
 open Stafford38.WeylIteratedEquivalence
