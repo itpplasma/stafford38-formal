@@ -71,7 +71,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry83f and all4assembliesPASS3127814; sharedchallenges unchanged; finalroute/comparator gates pending |
 | T46 | Tidy final package | doing | 2 | notes/T46-final-cleanup-proposal.md | Obsolete four Mac/Pi wrappers and unused ignore file removed after reference audit; historical receipts/useful math preserved; final public status/Palomar package checks await route acceptance |
 | T50 | Full library build | done | 1 | notes/T73-dependency-guard-failure-3128526-20261003.md | Exact public45037fb full build PASS4475jobs; repository verifier acceptance remains separate |
-| T51 | Repository verifier | doing | 3 | notes/T73-final-C2-submission-3131361-20261003.json | C1fullbuildPASS/strictguardfailed; minimal repair+allboundedrouteguardsPASS; 3131361 setupfailed beforeverifier; boundedresume repairactive |
+| T51 | Repository verifier | doing | 3 | notes/T73-final-C2-submission-3131361-20261003.json | C1fullbuildPASS/strictguardfailed; minimal repair+allboundedrouteguardsPASS; 3131361 setupfailed beforeverifier; reviewed sameC2 resume3131801 active |
 | T52 | Status drafts | doing | 1 | README.md; STATUS.md | Current source and scoped acceptance documented; final verifier/release receipts still required |
 | T53 | Integrate into main | done | 1 | notes/T42-four-assemblies-linux-accepted-20261003.md | Controllerintegrated55explicitproof/toolpaths afterboundedacceptance; authoritative docs and unrelateduntracked preserved |
 | T60 | Definition owners patch | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol prepared14 retainedcontractowners, helpersexcluded; registry/compiler acceptance awaitsfinalsource |
@@ -80,7 +80,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T70 | Frozen public commit | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Exact publicC2=12ae3cc49152672a48a96f13994314b65ae38197 pushed before final launch; priorC1 retained |
 | T71 | Final Linux host preflight | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Prior3129931guard0/drained; empty userqueue/node20idle;3controlhashes exact; fresh source/receiptpaths absent |
 | T72 | Launch Linux driver | done | 3 | notes/T73-final-C2-submission-3131361-20261003.json | SoleS3131361 exactC2 fresh public clone; reviewed2CPU8GiB cache-reuse driver; fullverifier+4comparators |
-| T73 | Collect Linux result | doing | 3 | notes/T73-final-C2-submission-3131361-20261003.json | 3131361 failed generatedcache symlink ignore beforeverifier; exactC2/pins passed, guarddrained. Sol boundedresume repairactive;4comparatorsunexecuted |
+| T73 | Collect Linux result | doing | 3 | notes/T73-final-C2-submission-3131361-20261003.json | 3131361setupfailure retained; reviewed sameC2 resume3131801 active, fullverifier+4comparators required |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
 | T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+C2/P3/S3refreshPASS519refs/0errorswarnings;57unchangedcards inherit actualbrowserwalk; PDFassetgatePASS; humanreviewpending |
@@ -218,3 +218,5 @@ component; final README/status and Palomar package checks await proof acceptance
 - S3129931 completed all strict production/fixture/main/alternative route stages PASS and drained guard0/nochildren. Exact publicC2 final replay3131361 launched after fresh preflight; this is the only active cluster run. All four actual Palomar comparisons remain its required stages.
 
 - FinalC2 attempt3131361 failed before any verifier/comparator: generated `.lake` symlink was not covered by directory-only Git ignore. Public source identity, tooling, cache reuse, dependency materialization and10pins passed; guarddrained normally/nochildren. Exact failed receipt archived. Sol repairs only generated-cache Git metadata handling for a bounded same-source resume; no proof or manuscript pin changes.
+
+- SameC2 boundedresume3131801 launched after3131361normaldrain, emptyqueue/node20idle and exactdriverhash5720dad. Independentreview/Git behavior oracle PASS; narrowgeneratedcachemetadataignore retains alltrackedbyte/mode/source/pin/fullverifier/comparator gates. No proof/paper pin changed. Newreceiptroot final-receipts-guard-repaired-resume1; originalfailure preserved.
