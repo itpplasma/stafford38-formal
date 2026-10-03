@@ -1,17 +1,17 @@
 {
  "schema": 1,
- "version": "2026-10-03-v0.2.0-frozen-review",
+ "version": "2026-10-03-final-review",
  "title": "Stafford 3.8: paper ↔ Lean correspondence audit",
  "subtitle": "57 review cards in manuscript order. Formal v1.3.0 verification and all four local Palomar comparisons passed; Johanna’s and Max’s reviews remain pending.",
  "sources": {
   "paper": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "2fde6c6311b9cc2e8b789649132ff87bdbcdb3d5",
+   "commit": "973fa2831cf7520fc42566587e3946b4b7444093",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-   "note": "Frozen public P4 manuscript snapshot S4 after the verified formal v1.3.0 citation.",
+   "note": "Frozen final P5 manuscript snapshot S5 after both byte-verified release DOI citations; mathematical review text unchanged since P4.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "4d19a183846beb50f37ad2b4e51e836a76ed8bac",
-   "sha256": "a6a50d1a46fccb964ba72a0f60a85aec46b4d20e7d17e7a248dd152e62c87a88"
+   "origin_commit": "75f79630141f2bbeedc4e154288978020c7f2e83",
+   "sha256": "a68b21fc1012da2f431aeb91e17226d657f483eb4a2cf8a152499b2fd427ea6b"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
@@ -756,9 +756,9 @@
     139
    ],
    "statement_relation": "n/a",
-   "route_relation": "different",
-   "correspondence": "The selected paper and formalization follow quotient vanishing, the divisorial/Laurent geometry and algebraic-closure descent.",
-   "route": null,
+   "route_relation": "similar",
+   "correspondence": "The selected review sketch and Lean proof share the quotient-vanishing route: Euler surjectivity, monic-symbol support control, filtered length vanishing, Gabber involutivity, conormal exclusion, then algebraic-closure descent. The sketch is a high-level account; it does not claim line-by-line proof correspondence.",
+   "route": "similar: common quotient-vanishing architecture, with Lean making the same-witness geometric construction and field descent explicit.",
    "lean": [],
    "depends_on": [],
    "in_graph": false,
@@ -2111,9 +2111,9 @@
     558
    ],
    "statement_relation": "n/a",
-   "route_relation": "different",
-   "correspondence": "The old finitely-generated-subfield reduction is struck out. The red replacement says the geometric sections work over an algebraically closed field K and the assembly takes K=overline{k}; it writes k₀:=k solely to preserve the subsequent formulas. The pinned formal proof descends order-initial ideals. The current proposed replacement makes the later k₀ and K notation consistent; author acceptance remains separate.",
-   "route": "different: Lean never reduces to a finitely generated field nor uses C; it base-changes the normalized monic d' to AlgebraicClosure k, proves support vanishing for every algebraically closed char-0 field, and descends the order initial ideal (in(I_Kbar) <= in(I).Kbar[x,xi], FilteredInitialLifting) back to k",
+   "route_relation": "similar",
+   "correspondence": "Current selected review text (the red replacement) describes work over k followed by K=overline{k}, matching Lean’s algebraic-closure support argument and order-initial-ideal descent. The earlier finitely generated subfield and embedding into C are struck out and retained as historical author-baseline material; FIELD-01 author acceptance remains pending.",
+   "route": "similar: the current red replacement says the geometric argument is run over an algebraically closed K and the assembly uses K=overline{k}, matching the Lean base-change and order-initial-ideal descent route. The struck author-baseline finitely-generated-subfield-to-C reduction differs and remains in historical_issues.",
    "lean": [
     {
      "file": "Stafford38/Weyl/PresentedScalarExtension.lean",
@@ -2179,6 +2179,15 @@
      "auditor": "A",
      "id": "S4-09",
      "status": "historical finding; recheck against current excerpt"
+    },
+    {
+     "severity": "minor",
+     "summary": "The struck author-baseline passage reduces to a finitely generated subfield and embeds it into C; this differs from the formal proof route.",
+     "fix": "Current red replacement describes the algebraic-closure route used by Lean.",
+     "aicomment": "FIELD-01",
+     "auditor": "current-map",
+     "id": "FIELD-ROUTE-HIST",
+     "status": "historical author-baseline route; red replacement pending author acceptance"
     }
    ],
    "issues": [
@@ -2558,9 +2567,9 @@
     678
    ],
    "label": "lem:euler",
-   "statement_relation": "paper-wrong",
+   "statement_relation": "exact",
    "route_relation": "same",
-   "correspondence": "The original products are false for the displayed Euler operator E=x₁p; the red replacements are the correct falling and rising products. Paper P2 cites the public evaluation identities in Stafford38/Weyl/EulerProductIdentities.lean, together with the existing power-multiplication helper. Both public identities are present at pinned formal source A3.",
+   "correspondence": "The current selected review statement is the corrected falling and rising product identities, which match the public pinned declarations eval_fallingEulerProduct and eval_risingEulerProduct. The false shifted formulas remain recorded under historical_issues (S5-05); the correction is AI-proposed and author acceptance is pending.",
    "route": null,
    "lean": [
     {
@@ -2598,7 +2607,7 @@
      "aicomment": "ALG-02 (agree)",
      "auditor": "B",
      "id": "S5-05",
-     "status": "open pending review"
+     "status": "historical false author-baseline statement retained; corrected selected review text proposed, author acceptance pending"
     }
    ],
    "issues": []
@@ -5682,9 +5691,9 @@
     1541,
     1552
    ],
-   "statement_relation": "none",
+   "statement_relation": "n/a",
    "route_relation": "n/a",
-   "correspondence": "This is proposed discussion of future work, not a theorem to certify. The current snapshot contains the red outlook replacement; its suggested research directions remain prose.",
+   "correspondence": "This is proposed discussion of future work, not a theorem to certify. The current snapshot contains the red outlook replacement; its suggested research directions remain prose. The current review text is discussion/prose; mathematical consequences are mapped on their individual cards.",
    "route": null,
    "lean": [],
    "depends_on": [],
@@ -5773,9 +5782,9 @@
     1645,
     1656
    ],
-   "statement_relation": "none",
+   "statement_relation": "n/a",
    "route_relation": "n/a",
-   "correspondence": "The current appendix explicitly lists four consequences; each is mapped separately below. The general localization, left-handed, localized differential-operator, and evolutionary declarations exist at the frozen formal pin. This is not a claim that the prose is independently formalized.",
+   "correspondence": "The current appendix explicitly lists four consequences; each is mapped separately below. The general localization, left-handed, localized differential-operator, and evolutionary declarations exist at the frozen formal pin. This is not a claim that the prose is independently formalized. The current review text is discussion/prose; mathematical consequences are mapped on their individual cards.",
    "route": null,
    "lean": [
     {
@@ -6072,9 +6081,9 @@
    ],
    "label": "prop:noncar",
    "statement_relation": "exact",
-   "route_relation": "different",
-   "correspondence": "The pinned formal source defines noncharacteristic finiteness by the cokernel module and proves its equivalence to finiteness of the literal restricted coordinate ring R/(J+(x₀)). It proves that finiteness for the canonical annihilator and separately proves the zero-section support conclusion in prime-spectrum form. For the paper's intermediate finite-projection claim, `canonicalPrincipalHypersurfaceIdeal` is defined as the sum of the principal ideal generated by `presentedPrincipalComponent k orderWeight N d` (the canonical principal symbol P after the monic chart) and the ideal generated by Lean's normal coordinate `X (.inl 0)` (paper x₁). `canonical_principal_hypersurface_finite` states that the resulting full-symbol-ring quotient is finite as a module over `oldTangentialCoeffRing` T. The `normalMomentumPolynomialEquiv_tangentialMap` bridge identifies the induced T-action with the canonical tangential-coordinate inclusion. Thus the formal result covers the literal algebraic finite-map clause, though it does not state the paper's particular generating list 1, ξ₁, …, ξ₁^{N−1}.\n\nInput: d is PBW-monic at the normal momentum with order N. The principal-hypersurface result proves the literal quotient by the canonical principal component and x0 finite over the canonical tangential coefficient ring. The conormal-support conclusion is pointwise in prime spectrum with the stated tangential-momentum containment.",
-   "route": "similar (monic symbol in xi_1)",
+   "route_relation": "similar",
+   "correspondence": "The pinned formal source defines noncharacteristic finiteness by the cokernel module and proves its equivalence to finiteness of the literal restricted coordinate ring R/(J+(x₀)). It proves that finiteness for the canonical annihilator and separately proves the zero-section support conclusion in prime-spectrum form. For the paper's intermediate finite-projection claim, `canonicalPrincipalHypersurfaceIdeal` is defined as the sum of the principal ideal generated by `presentedPrincipalComponent k orderWeight N d` (the canonical principal symbol P after the monic chart) and the ideal generated by Lean's normal coordinate `X (.inl 0)` (paper x₁). `canonical_principal_hypersurface_finite` states that the resulting full-symbol-ring quotient is finite as a module over `oldTangentialCoeffRing` T. The `normalMomentumPolynomialEquiv_tangentialMap` bridge identifies the induced T-action with the canonical tangential-coordinate inclusion. Thus the formal result covers the literal algebraic finite-map clause, though it does not state the paper's particular generating list 1, ξ₁, …, ξ₁^{N−1}. The current selected proof and Lean proof therefore share the monic-symbol finiteness argument, with Lean expressing finiteness via the literal quotient and module structure.\n\nInput: d is PBW-monic at the normal momentum with order N. The principal-hypersurface result proves the literal quotient by the canonical principal component and x0 finite over the canonical tangential coefficient ring. The conormal-support conclusion is pointwise in prime spectrum with the stated tangential-momentum containment.",
+   "route": "similar (monic principal symbol gives finite restricted projection; Lean states finiteness through the literal quotient and canonical module endpoint)",
    "lean": [
     {
      "file": "Stafford38/Characteristic/CanonicalNormalSymbolFiniteness.lean",
@@ -6617,7 +6626,7 @@
  ],
  "overview": "Compare the complete preserved manuscript proof with the formal proof, including definitions, hypotheses and supporting lemmas. The main solution follows the manuscript construction; the earlier generic/Laurent argument is labeled as an alternative. Marked manuscript corrections remain proposals for Johanna’s review, and Max’s full correspondence review remains pending.",
  "how_to_use": "Start the guided review and follow all57 cards in paper order. Compare each paper claim with its Lean statement, definitions, hypotheses and supporting proof, including both shared challenges and solution variants. Record discrepancies in the review notes and export the findings JSON when finished.",
- "provenance": "Frozen P4 paper/S4 public snapshot, signed formal v1.3.0 source and pinned AlgebraicAnalysis0.3.3. The complete C2 verifier, all four local Palomar comparisons and399 public owner/name compiler checks passed. The release code is byte-identical to C2. Automated formal acceptance and both pending human correspondence reviews are separate claims.",
+ "provenance": "Frozen P5 paper/S5 public snapshot, signed formal v1.3.0 source and pinned AlgebraicAnalysis0.3.3. The complete C2 verifier, all four local Palomar comparisons and399 public owner/name compiler checks passed. Release code is byte-identical to C2. Both releases are byte-verified on Zenodo. Current P5 changes citations only since archived P4. Automated formal acceptance and both pending human correspondence reviews are separate claims.",
  "challenge_definitions": [
   {
    "repo": "formal",
@@ -6916,15 +6925,15 @@
  ],
  "global_issues": [],
  "candidate": {
-  "status": "Frozen P4/S4 and formal v1.3.0 release sources; formal verification and all4comparisons passed; both human reviews pending",
+  "status": "Frozen P5/S5 and signed formal v1.3.0 sources; formal verification, all four comparisons and399 public names passed; both human reviews pending",
   "manuscript": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "2fde6c6311b9cc2e8b789649132ff87bdbcdb3d5",
+   "commit": "973fa2831cf7520fc42566587e3946b4b7444093",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-   "note": "Frozen public P4 manuscript snapshot S4 after the verified formal v1.3.0 citation.",
+   "note": "Frozen final P5 manuscript snapshot S5 after both byte-verified release DOI citations; mathematical review text unchanged since P4.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "4d19a183846beb50f37ad2b4e51e836a76ed8bac",
-   "sha256": "a6a50d1a46fccb964ba72a0f60a85aec46b4d20e7d17e7a248dd152e62c87a88"
+   "origin_commit": "75f79630141f2bbeedc4e154288978020c7f2e83",
+   "sha256": "a68b21fc1012da2f431aeb91e17226d657f483eb4a2cf8a152499b2fd427ea6b"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
@@ -6935,11 +6944,11 @@
    "verified_proof_source": "12ae3cc49152672a48a96f13994314b65ae38197",
    "observed_source_manifest_scope": "656 protected source/tool files; excludes documentation, citation/release metadata and review map"
   },
-  "note": "Formal v1.3.0 archive DOI10.5281/zenodo.23126868 is byte-verified. This review freeze records P4/S4; whole-proof correspondence and both human reviews remain pending."
+  "note": "Both published archives are byte-verified: formal v1.3.0 DOI10.5281/zenodo.23126868 and supplementary v0.2.0 DOI10.5281/zenodo.23127103. The immutable supplementary bundle retains its P4/S4 review freeze; the live review uses final citation-only P5/S5. Both human reviews remain pending."
  },
  "same_witness_declaration_map_candidate": {
   "status": "All public mapped owner/name queries passed in the399-check compiler receipt; private helpers remain source-only. Human proof-correspondence review pending.",
-  "paper_lines_observed_against": "a6a50d1a46fccb964ba72a0f60a85aec46b4d20e7d17e7a248dd152e62c87a88",
+  "paper_lines_observed_against": "a68b21fc1012da2f431aeb91e17226d657f483eb4a2cf8a152499b2fd427ea6b",
   "rows": [
    {
     "lean": "Stafford38.Geometry.SameWitness.retainedClosureChartData",
@@ -16677,5 +16686,6 @@
    }
   ],
   "warning": "Navigational correspondence proposals only. Full statement and proof correspondence remains open."
- }
+ },
+ "comparison_scope": "Relations classify the current selected review text in human_readable_main.tex, including AIadd/AIreplace proposal text. Historical author-baseline text remains recorded under historical_issues; marked corrections and route replacements remain subject to human author review. This map does not treat a proposed correction as accepted publication text."
 }

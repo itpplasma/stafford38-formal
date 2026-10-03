@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "paper_commit": "4d19a183846beb50f37ad2b4e51e836a76ed8bac",
+  "paper_commit": "75f79630141f2bbeedc4e154288978020c7f2e83",
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
   "paper_source": {
     "repo": "itpplasma/stafford38-formal",
-    "commit": "2fde6c6311b9cc2e8b789649132ff87bdbcdb3d5",
+    "commit": "973fa2831cf7520fc42566587e3946b4b7444093",
     "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-    "sha256": "a6a50d1a46fccb964ba72a0f60a85aec46b4d20e7d17e7a248dd152e62c87a88"
+    "sha256": "a68b21fc1012da2f431aeb91e17226d657f483eb4a2cf8a152499b2fd427ea6b"
   },
   "formal_source": {
     "repo": "itpplasma/stafford38-formal",
@@ -25,19 +25,19 @@
     "LICENSE.txt"
   ],
   "source_hashes": {
-    "human_readable_main.tex": "a6a50d1a46fccb964ba72a0f60a85aec46b4d20e7d17e7a248dd152e62c87a88",
+    "human_readable_main.tex": "a68b21fc1012da2f431aeb91e17226d657f483eb4a2cf8a152499b2fd427ea6b",
     "main.tex": "b55ef1f254b7611b37b4bdf7633991400cdb4512bd03e0532d1f90f561cf7cbe",
     "ai_review.tex": "396398a87768215c4eb1a4d6d6eea6740df6d2d26dcea5fba8a357350e8e9d6f",
     "lean_proof_details.tex": "fb8b61d1570ade614cdb451f1a93544c09f1d2abeac6ba7a254b8d7bf5cc982a",
-    "references.bib": "8fd36d0da6bc94b10f7e4b04dc5a5a7a7fa1e8dfc17cd31c17b5e780efa7f394",
+    "references.bib": "f8c071eec22d2417c685edd622e550a49d1930c4625a6e83ee34c435a9c0d4bf",
     "LICENSE.txt": "98b6fde2693d4044dce4a071640e90bd8d250dd789d9033dbd5b77c79f389de4"
   },
   "pdfs": {
-    "human_readable_main.pdf": "8bf003db76ca308786d848b98f171b11b697a7b21efea920e659b20d0519962d",
-    "lean_proof_details.pdf": "e41058299ce6bae2dea20acc2d1ca00e92a1af13842512280dc84c37e60d8c98"
+    "human_readable_main.pdf": "cc24d7c51862cc8e01af4522e0645b8aff109b716ee5fa1c5e06e51ef2b239fe",
+    "lean_proof_details.pdf": "05545874019c70532f1d830539ecbfe6a2cd0201249e7338d7c966b163404eaf"
   },
-  "main_pdf_sha256": "3f75f098de2fb5fdc92a595fc6c38d2bdca10cf595575f9c550c64595bf9d730",
-  "human_acceptance": "pending; visible author proof is preserved. The only author-body change since P3 is the marked AI archive-citation update at line 174; proposed proof corrections remain review material for Johanna. Max\u2019s full correspondence review remains pending.",
+  "main_pdf_sha256": "a730b2e632612d4c9ea19c5f20383864ed490d3090219d684ef3d43bbdacf027",
+  "human_acceptance": "pending; the visible author proof is preserved. Since P4, the only paper changes are the archive citation at line 204 and the final two bibliography entries for the formal and supplementary archives. Proposed proof corrections remain review material for Johanna. Max’s full correspondence review remains pending.",
   "verification": "All three actual latexmk compilations exited 0 with zero undefined citations, references, or control sequences; exact compile-input hashes matched before and after. The paper pins the published formal v1.3.0 source R and the recorded AlgebraicAnalysis revision. Separately, the complete C2 repository verifier, all four actual Palomar comparisons, and all 399 public review-map-name compiler checks passed. These checks do not replace whole-paper correspondence review or human acceptance.",
   "build_results": {
     "human_readable_main": {
@@ -46,10 +46,10 @@
       "undefined_citations": 0,
       "undefined_references": 0,
       "undefined_control_sequences": 0,
-      "bytes": 833207,
-      "pdf_sha256": "8bf003db76ca308786d848b98f171b11b697a7b21efea920e659b20d0519962d",
-      "tex_log_sha256": "b12a67d3d97f03d4076d789b7883db0c1ac13c7e3ced89b893a3f0575120f04d",
-      "build_log_sha256": "68995065b7fdb1bf4c844988190d940991093c259bf7fce1dbbfc67d2f0db60c"
+      "bytes": 833504,
+      "pdf_sha256": "cc24d7c51862cc8e01af4522e0645b8aff109b716ee5fa1c5e06e51ef2b239fe",
+      "tex_log_sha256": "8546734955f4c1775d28cac599744afc98c684fc9047b62da71a98567102c5c2",
+      "build_log_sha256": "6d63c90bb40c84684107b96b65183f93bc5fd38a3b92d2d39723aa2bf3d0bf96"
     },
     "lean_proof_details": {
       "exit": 0,
@@ -58,8 +58,8 @@
       "undefined_references": 0,
       "undefined_control_sequences": 0,
       "bytes": 406579,
-      "pdf_sha256": "e41058299ce6bae2dea20acc2d1ca00e92a1af13842512280dc84c37e60d8c98",
-      "tex_log_sha256": "482ac62c055c7ce5d1638e4fccab6d18721a8b81386f8d03a81ba359aff3c028",
+      "pdf_sha256": "05545874019c70532f1d830539ecbfe6a2cd0201249e7338d7c966b163404eaf",
+      "tex_log_sha256": "ad577096b063410a73b1b6d2faa86186d3908bbccdf2fce9357d7927cc1b078b",
       "build_log_sha256": "833d8b673236c2ce71081667f53bb0a76553bbcfe73dd49450748b148996cc2a"
     },
     "main": {
@@ -68,13 +68,13 @@
       "undefined_citations": 0,
       "undefined_references": 0,
       "undefined_control_sequences": 0,
-      "bytes": 833207,
-      "pdf_sha256": "3f75f098de2fb5fdc92a595fc6c38d2bdca10cf595575f9c550c64595bf9d730",
-      "tex_log_sha256": "a923dd81f1dd4881f63ee0f1d96ab33fcc77b1f9b198f6c6c3c926526240e42d",
-      "build_log_sha256": "1b03e2769af16669a5b7017594b80482cba6e9f36b801858efed1cc4427b4909"
+      "bytes": 833504,
+      "pdf_sha256": "a730b2e632612d4c9ea19c5f20383864ed490d3090219d684ef3d43bbdacf027",
+      "tex_log_sha256": "954ce52d9d8baedcfd7386a57992ce620d9252261326a0e99958ac69aa146bea",
+      "build_log_sha256": "3bfc33436cbd1e70a7825cae011edd3dbf7e202f34ef691001327dd40bfb30ed"
     }
   },
-  "historical_receipt": "docs/qwen-campaign/notes/T82-P3-S3-PDF-build-20261003.tar.gz",
+  "historical_receipt": "T82-P4-S4-PDF-build-20261003.tar.gz",
   "compilation_inputs": [
     "human_readable_main.tex",
     "main.tex",
@@ -85,11 +85,11 @@
   "licensing_file_note": "LICENSE.txt is source-packet licensing material copied after compilation; it is not a TeX compilation input.",
   "build_instructions": {
     "repo": "itpplasma/stafford38-paper",
-    "commit": "4d19a183846beb50f37ad2b4e51e836a76ed8bac",
+    "commit": "75f79630141f2bbeedc4e154288978020c7f2e83",
     "file": "README.md",
     "sha256": "683aeafc367b369a313c2eaaad74f2bb67d17cbc253927206f447205998edde0"
   },
-  "build_packet": "T82-P4-S4-PDF-build-20261003.tar.gz",
+  "build_packet": "T82-P5-S5-PDF-build-20261003.tar.gz",
   "formal_release": {
     "version": "v1.3.0",
     "doi": "10.5281/zenodo.23126868",

@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-03",
+  "review_url": "https://itpplasma.github.io/stafford38-formal/",
+  "paper_source": {
+    "repo": "itpplasma/stafford38-formal",
+    "commit": "973fa2831cf7520fc42566587e3946b4b7444093",
+    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
+    "note": "Frozen final P5 manuscript snapshot S5 after both byte-verified release DOI citations; mathematical review text unchanged since P4.",
+    "origin_repo": "itpplasma/stafford38-paper",
+    "origin_commit": "75f79630141f2bbeedc4e154288978020c7f2e83",
+    "sha256": "a68b21fc1012da2f431aeb91e17226d657f483eb4a2cf8a152499b2fd427ea6b"
+  },
+  "formal_source": {
+    "repo": "itpplasma/stafford38-formal",
+    "commit": "54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b",
+    "note": "Signed formal v1.3.0 release; all656 protected source/tool files byte-identical to verified C2. Formal DOI10.5281/zenodo.23126868."
+  },
+  "comparison_scope": "Relations classify the current selected review text in human_readable_main.tex, including AIadd/AIreplace proposal text. Historical author-baseline text remains recorded under historical_issues; marked corrections and route replacements remain subject to human author review. This map does not treat a proposed correction as accepted publication text.",
+  "card_count": 57,
+  "statement_relations": {
+    "partial": 8,
+    "lean-stronger": 9,
+    "equivalent": 11,
+    "exact": 21,
+    "n/a": 8
+  },
+  "route_relations": {
+    "n/a": 25,
+    "same": 18,
+    "similar": 13,
+    "lean-only": 1
+  },
+  "formal_acceptance": {
+    "status": "passed",
+    "verified_source": "12ae3cc49152672a48a96f13994314b65ae38197",
+    "receipt": "docs/verification-results.json",
+    "linux_repository_verifier": "passed",
+    "palomar_local_configurations": 4,
+    "palomar_local_status": "passed",
+    "public_owner_name_checks": 399,
+    "public_owner_name_status": "passed",
+    "open_formal_blockers": []
+  },
+  "reviews": {
+    "johanna": {
+      "status": "pending",
+      "scope": "Visible original manuscript and all marked correction proposals; editing authority Overleaf.",
+      "proposal_ids": [
+        "INTRO-01",
+        "WF-01",
+        "DUP-01",
+        "ALG-01",
+        "LIT-01",
+        "ALG-07",
+        "ALG-08",
+        "FIELD-01",
+        "ALG-02",
+        "ALG-03",
+        "NOTATION-01",
+        "ALG-04",
+        "ALG-09",
+        "COMP-06",
+        "EDIT-02",
+        "GEO-04",
+        "ROUTE-01",
+        "GEO-01",
+        "GEO-06",
+        "GEO-02",
+        "GEO-03",
+        "GEO-05",
+        "ALG-05",
+        "ALG-06",
+        "COMP-16",
+        "EDIT-01",
+        "REF-01",
+        "SCOPE-01"
+      ]
+    },
+    "max": {
+      "status": "pending",
+      "scope": "All57 cards, all claims, hypotheses, definitions and supporting proofs; unchanged main/fixed-source challenges and main/alternative solution variants.",
+      "record_findings": "Use Start guided review, record discrepancies, export review JSON.",
+      "card_ids": [
+        "abstract",
+        "thm:main",
+        "challenge-main",
+        "challenge-fixed-source",
+        "global-stafford",
+        "intro-proof-sketch",
+        "context-prior-art",
+        "formal-verification",
+        "conv:pair",
+        "conv:H",
+        "cotangent",
+        "def:filtration",
+        "def:good-filtration",
+        "def:char-variety",
+        "def:symplectic-poisson",
+        "def:involutive",
+        "ithm:gabber",
+        "lem:componentwise-involutive",
+        "monic-scalar",
+        "phi-g",
+        "lem:sympcompl",
+        "prop:monic",
+        "reduction-k0",
+        "rem:transport",
+        "def:monic-xi1",
+        "lem:order-symbol",
+        "eq:I-Q",
+        "euler-grading",
+        "lem:euler",
+        "lem:euler-residue",
+        "prop:x-surjective",
+        "vc-setup",
+        "def:length",
+        "lem:tangential-finiteness",
+        "lem:page-inequality",
+        "lem:strict-support-inequality",
+        "lem:Uzero",
+        "cor:charP",
+        "prop:char-avoids",
+        "dir-def",
+        "lem:tangent-limit",
+        "thm:asymptotic-conormal",
+        "thm:asymptotic-conormal-proof",
+        "def:fibre-can",
+        "thm:coisotropic-exclusion",
+        "proof-main",
+        "lem:initial-base-change",
+        "cyclicity",
+        "outlook",
+        "ai-workflow",
+        "further-work",
+        "appendix-right-ore",
+        "appendix-left-handed",
+        "appendix-localized-differential",
+        "appendix-evolutionary",
+        "def:noncar",
+        "prop:noncar"
+      ]
+    }
+  },
+  "releases": {
+    "formal": {
+      "version": "v1.3.0",
+      "doi": "10.5281/zenodo.23126868",
+      "files": 1163,
+      "archive_status": "byte-verified"
+    },
+    "supplementary": {
+      "version": "v0.2.0",
+      "doi": "10.5281/zenodo.23127103",
+      "files": 24,
+      "archive_status": "byte-verified",
+      "review_freeze": "P4/S4/R; current P5/S5 updates citations only, and live classification labels distinguish proposed corrections from historical originals."
+    }
+  },
+  "owner_followups": [
+    "Johanna manuscript acceptance",
+    "Max complete correspondence review",
+    "Chris online Palomar registration"
+  ],
+  "email_handover": {
+    "status": "pending; send at actual end"
+  }
+}
