@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
-  "paper_commit": "4d19a183846beb50f37ad2b4e51e836a76ed8bac",
-  "snapshot_scope": "Exact six P4 manuscript inputs after verified formal DOI citation and source links to formal v1.3.0. Visible author proof and marked proposals preserved; both human reviews pending.",
-  "previous_snapshot_commit": "22b44d56af302bbf8dd3542316d8b15a2b0c5315",
+  "paper_commit": "75f79630141f2bbeedc4e154288978020c7f2e83",
+  "snapshot_scope": "Exact six P5 manuscript inputs after byte-verified formal v1.3.0 and supplementary v0.2.0 DOI citations. Only citation text and bibliography changed since P4; visible author proof and marked proposals preserved; both human reviews pending.",
+  "previous_snapshot_commit": "2fde6c6311b9cc2e8b789649132ff87bdbcdb3d5",
   "retired_files": [
     "lean_refs.tex",
     "ai_annotations.tex",
@@ -18,7 +18,7 @@
   "files": [
     {
       "path": "human_readable_main.tex",
-      "sha256": "a6a50d1a46fccb964ba72a0f60a85aec46b4d20e7d17e7a248dd152e62c87a88",
+      "sha256": "a68b21fc1012da2f431aeb91e17226d657f483eb4a2cf8a152499b2fd427ea6b",
       "status": "active"
     },
     {
@@ -38,7 +38,7 @@
     },
     {
       "path": "references.bib",
-      "sha256": "8fd36d0da6bc94b10f7e4b04dc5a5a7a7fa1e8dfc17cd31c17b5e780efa7f394",
+      "sha256": "f8c071eec22d2417c685edd622e550a49d1930c4625a6e83ee34c435a9c0d4bf",
       "status": "active"
     },
     {
