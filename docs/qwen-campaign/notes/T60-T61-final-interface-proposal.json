@@ -1,0 +1,192 @@
+{
+  "schema": "stafford38-review-map-proposal/v1",
+  "status": "unintegrated locator proposal; not correspondence acceptance",
+  "frozen_inputs": {
+    "lean_worktree": "/home/ert/proj/stafford38-qwen",
+    "lean_base": "ab9f76d47d811739a5cfbcab635efe2017953340",
+    "controller_packet": "dcc4836c5da914fec83b297a67c79a55189a0689375cdcd2cc8fd56365b35b91",
+    "frozen_packet_patch_sha256": "b5bed3d46f74802593e0028b998e5297a3ef2032888bf2c5d15438540ffbbb8d",
+    "live_worktree_tracked_binary_diff_sha256": "5a6a342451a417e3e9e3e5f558120b8f57464d28152b6df022ff687de85f8a0d",
+    "paper_worktree": "/home/ert/proj/stafford38-paper",
+    "paper_commit": "53882beb19c1491c43867fa78ee3b5bba3f18169",
+    "paper_file": "human_readable_main.tex",
+    "paper_sha256": "fd707283bda604800400fd86cb31f9e3ab083f29a3fb8e556c230ccd83aaaa3b",
+    "map_note": "The /tmp/stafford-map-resolution-luna candidate map has stale formal pins/reanchors; its stable IDs are copied only as a completeness checklist."
+  },
+  "ordered_review_entries": [
+    {"id":"abstract","carry_forward":true},
+    {"id":"thm:main","carry_forward":true},
+    {
+      "id":"challenge-main",
+      "insert_after":"thm:main",
+      "paper_anchor":"thm:main; formal challenge reference ChallengeDefinitions.lean:75",
+      "claim":"Unchanged Stafford38Challenge.UniversalStatement.",
+      "main_variant":{"file":"Solution.lean","declaration":"Stafford38Challenge.universalStatement","substantive_route":"Stafford38.universalStatement"},
+      "alternative_variant":{"file":"AlternativeSolution.lean","declaration":"Stafford38Challenge.universalStatement","substantive_route":"Stafford38.GenericLaurentVariant.universalStatement"},
+      "shared_challenge_statement":"Stafford38Challenge.UniversalStatement",
+      "status":"compare exact propositions and routes separately; same declaration spelling is disambiguated by file; no proof-equivalence claim"
+    },
+    {
+      "id":"challenge-fixed-source",
+      "insert_after":"challenge-main",
+      "paper_anchor":"thm:main; formal challenge reference ChallengeDefinitions.lean:190",
+      "claim":"Unchanged Stafford38FixedSourceChallenge.UniversalFixedSourceStatement.",
+      "main_variant":{"file":"FixedSourceSolution.lean","declaration":"Stafford38FixedSourceChallenge.universalFixedSourceStatement","substantive_route":"Stafford38.universalFixedSourceStatement"},
+      "alternative_variant":{"file":"AlternativeFixedSourceSolution.lean","declaration":"Stafford38FixedSourceChallenge.universalFixedSourceStatement","substantive_route":"Stafford38.GenericLaurentVariant.universalFixedSourceStatement"},
+      "shared_challenge_statement":"Stafford38FixedSourceChallenge.UniversalFixedSourceStatement",
+      "status":"compare exact propositions and routes separately; same declaration spelling is disambiguated by file; no proof-equivalence claim"
+    },
+    {"id":"global-stafford","carry_forward":true},
+    {"id":"intro-proof-sketch","carry_forward":true},
+    {"id":"context-prior-art","carry_forward":true},
+    {"id":"formal-verification","carry_forward":true},
+    {"id":"conv:pair","carry_forward":true},
+    {"id":"conv:H","carry_forward":true},
+    {"id":"cotangent","carry_forward":true},
+    {"id":"def:filtration","carry_forward":true},
+    {"id":"def:good-filtration","carry_forward":true},
+    {"id":"def:char-variety","carry_forward":true},
+    {"id":"def:symplectic-poisson","carry_forward":true},
+    {"id":"def:involutive","carry_forward":true},
+    {"id":"ithm:gabber","carry_forward":true},
+    {"id":"lem:componentwise-involutive","carry_forward":true},
+    {"id":"monic-scalar","carry_forward":true},
+    {"id":"phi-g","carry_forward":true},
+    {"id":"lem:sympcompl","carry_forward":true},
+    {"id":"prop:monic","carry_forward":true},
+    {"id":"reduction-k0","carry_forward":true},
+    {"id":"rem:transport","carry_forward":true},
+    {"id":"def:monic-xi1","carry_forward":true},
+    {"id":"lem:order-symbol","carry_forward":true},
+    {"id":"eq:I-Q","carry_forward":true},
+    {"id":"euler-grading","carry_forward":true},
+    {"id":"lem:euler","carry_forward":true},
+    {"id":"lem:euler-residue","carry_forward":true},
+    {"id":"prop:x-surjective","carry_forward":true},
+    {"id":"vc-setup","carry_forward":true},
+    {"id":"def:length","carry_forward":true},
+    {"id":"lem:tangential-finiteness","carry_forward":true},
+    {"id":"lem:page-inequality","carry_forward":true},
+    {"id":"lem:strict-support-inequality","carry_forward":true},
+    {"id":"lem:Uzero","carry_forward":true},
+    {"id":"cor:charP","carry_forward":true},
+    {"id":"prop:char-avoids","carry_forward":true},
+    {"id":"dir-def","carry_forward":true},
+    {"id":"lem:tangent-limit","carry_forward":true},
+    {
+      "id":"thm:asymptotic-conormal",
+      "carry_forward":true,
+      "paper_anchor":"human_readable_main.tex:1133-1316",
+      "main_formal_endpoint":"Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure delegates to the SameWitness original-prime wrapper and ground-point closure construction.",
+      "alternative_formal_endpoint":"Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure uses the separate generic/Laurent route.",
+      "route_boundary":"The printed arc proof remains visible. The current paper-conforming formal route uses the SameWitness endpoint; the generic/Laurent route is separate. Correspondence is explicitly open."
+    },
+    {"id":"thm:asymptotic-conormal-proof","carry_forward":true},
+    {"id":"def:fibre-can","carry_forward":true},
+    {"id":"thm:coisotropic-exclusion","carry_forward":true},
+    {"id":"proof-main","carry_forward":true},
+    {"id":"lem:initial-base-change","carry_forward":true},
+    {"id":"cyclicity","carry_forward":true},
+    {"id":"outlook","carry_forward":true},
+    {"id":"ai-workflow","carry_forward":true},
+    {"id":"further-work","carry_forward":true},
+    {"id":"appendix-right-ore","carry_forward":true},
+    {"id":"appendix-left-handed","carry_forward":true},
+    {"id":"appendix-localized-differential","carry_forward":true},
+    {"id":"appendix-evolutionary","carry_forward":true},
+    {"id":"def:noncar","carry_forward":true},
+    {"id":"prop:noncar","carry_forward":true}
+  ],
+  "new_formal_interfaces": [
+    {
+      "phase":"T32",
+      "public_declarations":[
+        "Stafford38.Geometry.SameWitness.CommonOpenArcFactors",
+        "Stafford38.Geometry.SameWitness.CommonOpenPointData",
+        "Stafford38.Geometry.SameWitness.CommonOpenChartData",
+        "Stafford38.Geometry.SameWitness.CommonOpenMapData",
+        "Stafford38.Geometry.SameWitness.CommonOpenArcCompatibility",
+        "Stafford38.Geometry.SameWitness.CommonOpenData"
+      ],
+      "contract_summary":"Records retain factors, selected point, chart, maps, compatibility and composed common-open data. Identify separate supporting packages; do not map projections/producer wrappers as extra mathematical owners.",
+      "paper_relation":"supporting inputs to conormal construction; no direct one-to-one printed definition"
+    },
+    {
+      "phase":"T33",
+      "public_declarations":[
+        "Stafford38.Geometry.SameWitness.CommonOpenArcTransport",
+        "Stafford38.Geometry.SameWitness.CommonOpenArcData"
+      ],
+      "private_source_support":[
+        "Stafford38/Geometry/SameWitness/CommonOpenArc.lean:pointLocalArc_unit_of_not_mem",
+        "Stafford38/Geometry/SameWitness/CommonOpenArc.lean:exists_commonOpenArcTransport"
+      ],
+      "contract_summary":"Retain Laurent arc transport and ground-map/nonzero-factor equations on the common open, bound to the same retained witness.",
+      "paper_relation":"support only; not a line-by-line realization of the visible printed arc argument"
+    },
+    {
+      "phase":"T34",
+      "public_declarations":[
+        "Stafford38.Geometry.SameWitness.CommonOpenPositionData",
+        "Stafford38.Geometry.SameWitness.CommonOpenColumnsData"
+      ],
+      "contract_summary":"Retain point-local positions and common-open images, derivative-column identities, and selected numerator identities consumed by the endpoint.",
+      "paper_relation":"technical support for the paper's coordinate-row and derivative construction; correspondence remains under review"
+    },
+    {
+      "phase":"T35",
+      "public_declarations":["Stafford38.Geometry.SameWitness.CommonOpenEtaleData"],
+      "private_source_support":[
+        "Stafford38/Geometry/SameWitness/CommonOpenEtale.lean:coordinateMapToOpen",
+        "Stafford38/Geometry/SameWitness/CommonOpenEtale.lean:formallyEtale_coordinateMapToOpen"
+      ],
+      "contract_summary":"Package original-chart and selected-coordinate k-algebra maps, both formally-etale facts, and equality of the induced algebra action with the explicit map.",
+      "paper_relation":"a dependency/interface certificate with no direct printed theorem counterpart"
+    },
+    {
+      "phase":"T36",
+      "public_declarations":["Stafford38.Geometry.SameWitness.axis_mem_smoothConormalFibreProjection_closure_of_groundPointOutput"],
+      "private_source_support":["Stafford38/Geometry/SameWitness/AffineFibreClosure.lean:retainedClosureChartData"],
+      "hypotheses":"Positive dimension; prime point and visible-frame witness; actualSameWitnessGroundPointOutput; nonzero smooth principal-open witness.",
+      "contract_summary":"Under those inputs, the distinguished axis lies in the smooth conormal fibre projection closure.",
+      "paper_relation":"conditional SameWitness assembly supports the formal paper-conforming endpoint; it is not itself proof correspondence",
+      "status":"check/acceptance pending"
+    },
+    {
+      "phase":"shared route-neutral endpoint",
+      "public_declarations":[
+        "Stafford38.Geometry.GeneralCoisotropicSets.CoordinateAxisClosureInput",
+        "Stafford38.Geometry.GeneralCoisotropicExclusion.CoordinateAxisClosureInput (equivalent local contract; compare exact type)",
+        "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical_using",
+        "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate",
+        "Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_genericLaurent",
+        "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate_using",
+        "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate",
+        "Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate_genericLaurent",
+        "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_using"
+      ],
+      "contract_summary":"AxisClosureInput is the universal prime-coordinate-avoidance-to-smooth-conormal-axis premise. The _using theorems receive that premise explicitly so either asymptotic-conormal endpoint can feed the shared coisotropic/canonical-support argument.",
+      "variants":{
+        "paper-conforming":"GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure",
+        "generic-laurent":"AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure"
+      },
+      "paper_relation":"shared downstream theorem plumbing is route-neutral; it does not identify or equate the two upstream proofs"
+    },
+    {
+      "phase":"terminal route variants",
+      "public_declarations":[
+        "Stafford38.GenericLaurentVariant.universalStatement",
+        "Stafford38.GenericLaurentVariant.universalFixedSourceStatement",
+        "Stafford38Challenge.universalStatement (AlternativeSolution.lean)",
+        "Stafford38FixedSourceChallenge.universalFixedSourceStatement (AlternativeFixedSourceSolution.lean)"
+      ],
+      "paper_relation":"generic/Laurent proof is an explicitly labeled alternative; selected manuscript retains Johanna's proof"
+    }
+  ],
+  "non_claims": [
+    "No whole-proof correspondence acceptance is made.",
+    "No paper correction is accepted by this proposal.",
+    "Private helpers are source-linked support, not public declaration names or registry owners.",
+    "The diagnostic candidate map is not updated, re-pinned, or made authoritative."
+  ]
+}

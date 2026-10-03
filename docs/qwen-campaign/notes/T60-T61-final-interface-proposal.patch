@@ -1,0 +1,14 @@
+--- a/docs/definition-owners.md
++++ b/docs/definition-owners.md
+@@ -59,2 +59,7 @@
+ | Same-witness affine conormal endpoint | `Geometry.ActualSameWitnessAffineFibreEndpoint.axis_mem_smoothConormalFibreProjection_closure_of_actual_columns` | The endpoint consumes actual-column identities plus explicit smoothness, numerator, and closure hypotheses. A green conditional endpoint is not itself a proof that the ground-point output supplies those hypotheses. |
++| Same-witness common-open records | `Geometry.SameWitness.CommonOpenPointData`; `CommonOpenChartData`; `CommonOpenMapData`; `CommonOpenArcCompatibility`; `CommonOpenData` | T32 records retain the selected point, chart, maps, arc-factor compatibility, and their composition. Producer theorems and projection abbreviations do not add owners. |
++| Same-witness arc transport | `Geometry.SameWitness.CommonOpenArcTransport`; `CommonOpenArcData` | T33 retains the Laurent arc, common-open transport equations, ground-field compatibility, and nonzero factors, bound to the same normalization witness. Generic-open localizations and arc constructors remain existing owners. |
++| Same-witness common-open positions and columns | `Geometry.SameWitness.CommonOpenPositionData`; `CommonOpenColumnsData` | T34 retains point-local positions, their common-open images, derivative-column identities, and selected numerator identities as endpoint support. |
++| Same-witness common-open etale maps | `Geometry.SameWitness.CommonOpenEtaleData` | T35 packages the original-chart and selected-coordinate algebra maps with their formally-etale facts and the equality to the existing induced algebra action. |
++| Same-witness ground-point affine conormal closure endpoint | `Geometry.SameWitness.axis_mem_smoothConormalFibreProjection_closure_of_groundPointOutput` | T36 proves the axis-in-closure statement under its explicit retained-ground-point and smooth-open hypotheses. The hypothesis-bearing endpoint is distinct from the unconditional original-prime wrapper. |
+ | Strict upper-triangular matrix predicate | `ArtinianEquation33TraceProducer.IsStrictUpperTriangularOver` | `ArtinianTriangularTrace.IsStrictUpperTriangular` is an abbreviation at the fixed coefficient field. |
+ | Presented canonical right ideal | `WeylEulerResidue.canonicalRightIdeal` | `WeylQuotientTransport.presentedCanonicalRightIdeal` abbreviates its presented-coordinate specialization. |
+ 
+ ## Distinct concepts retained
+ 
