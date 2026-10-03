@@ -1,0 +1,22 @@
+{
+  "source_commit": "12ae3cc49152672a48a96f13994314b65ae38197",
+  "argv": [
+    "sbatch",
+    "--parsable",
+    "--partition=compute",
+    "--nodes=1",
+    "--ntasks=1",
+    "--cpus-per-task=2",
+    "--mem=8G",
+    "--time=06:10:00",
+    "--nodelist=node20",
+    "--job-name=stafford-final-12ae3cc",
+    "--output=/home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-guard-repaired-12ae3cc.slurm",
+    "--wrap=srun --nodes=1 --ntasks=1 --cpus-per-task=2 --cpu-bind=cores env STAFFORD_STORAGE=/home/ert/stafford38-campaign STAFFORD_OUTER_GUARD_LOG=/home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-guard-repaired-outer-guard.log python3 /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/control/linux-slurm-guard.py run --timeout 21600 --log /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-guard-repaired-outer-guard.log --cwd /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815 -- bash /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/control/cluster-final-guard-repaired-20261003.sh /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815 12ae3cc49152672a48a96f13994314b65ae38197"
+  ],
+  "driver_sha256": "1b861f175547cb8e0073aa636af9bfd54f481d56c2b59e0ee0bfb77467a7f838",
+  "preflight": "PriorS3129931 guard0/drained; userqueueempty/node20idle; source/receiptfresh; control3hashesexact",
+  "submission_exit": 0,
+  "submission_stdout": "3131361",
+  "submission_stderr": ""
+}

@@ -1,0 +1,31 @@
+{
+  "url": "https://itpplasma.github.io/stafford38-formal/",
+  "checked_utc": "2026-10-03T16:05:07.601621+00:00",
+  "http_status": 200,
+  "workflow": {
+    "id": 37135476927,
+    "url": "https://github.com/itpplasma/stafford38-formal/actions/runs/37135476927",
+    "head_sha": "e00b8f6bc54a90d30f33c30144d6493a7417193e",
+    "conclusion": "success"
+  },
+  "expected_pins": {
+    "formal_C2": "12ae3cc49152672a48a96f13994314b65ae38197",
+    "paper_S3": "22b44d56af302bbf8dd3542316d8b15a2b0c5315"
+  },
+  "content_sha256": "04494ea51750c93b3a639727df2d2b1856311306732ae0e368f5e36b67c738ff",
+  "content_length": 6129752,
+  "headers": {
+    "etag": "\"6ac1278c-5d8858\"",
+    "last-modified": "Sat, 03 Oct 2026 16:04:28 GMT",
+    "content-type": "text/html; charset=utf-8",
+    "cache-control": "max-age=600"
+  },
+  "checks": {
+    "formal_C2": true,
+    "paper_S3": true,
+    "guided_start": true,
+    "challenge_main": true,
+    "challenge_fixed_source": true
+  },
+  "passed": true
+}

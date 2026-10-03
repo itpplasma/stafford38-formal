@@ -31,9 +31,10 @@ scluster3128526. Its verifier then failed strict inspection of private Mathlib
 dependencies; the four actual Palomar comparators have not run. The strict repaired production guard and independent fixtures passed on
 scluster3129931; both main required/excluded route checks also passed. The
 repair is frozen and pushed at 12ae3cc49152672a48a96f13994314b65ae38197.
-Sol owns the single slot until its alternative route checks and drain finish.
-Then run the complete verifier and four comparators on that public source,
-reusing the accepted cache. Preserve all earlier failed receipts.
+Both alternative route checks also passed, and3129931 drained guard0.
+The sole final public-source verifier and four comparator run is scluster3131361,
+launched after an empty-queue/idle-node preflight with exact control hashes.
+It reuses the accepted cache. Preserve all earlier failed receipts.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
 57-card browser walkthrough. The public review site is deployed. All three
