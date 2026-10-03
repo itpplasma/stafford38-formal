@@ -127,3 +127,104 @@ Frozen source SHA-256:
 - CommonOpen: `eeb116e7807c5bb7ff28a516ea66ecf838d086239c13982ae8a70100f1b4e176`.
 Literal consumers are unchanged; T31 recheck and T32 module/consumer checks
 are pending the controller. No heartbeat or resource limits were raised.
+
+## Two residual certificate transports
+
+The next Linux and independent Mac direct checks reproduced only two errors;
+no deterministic timeout remained. Linux: module 140 seconds, total 142.6
+seconds, peak 3850 MiB, exit 1. Mac: wall 127 seconds, peak 3550 MiB, exit 1.
+The retained-axis certificate uses w.column.chart, while the selected chart
+record stores setup.j.succ. Its proof now simplifies with the existing
+setup.hchart equality as well as the canonical fFin accessor.
+The abstract factors application now supplies point.hEtM explicitly in its
+instance argument; other dictionaries unify from the expected certificate.
+No concrete scalar instance is installed. Final target/consumer remain unchanged.
+Latest CommonOpen SHA-256:
+`0ba47c57e87aed0280559382e0e1905d152af75050d36c7fdadefe677a066e30`.
+
+## Explicit retained coefficient action
+
+Linux module3: exit 1, total 132.9 seconds, peak 3877 MiB. Chart transport
+passed; no timeout remained. The sole substantive error was missing Algebra k B
+while elaborating the explicit factors application. Its Algebra k A argument
+now receives coords.coeff.toAlgebra directly. T31 and both literal consumers
+remain untouched. No scalar action is installed in a concrete proof context.
+Latest CommonOpen SHA-256:
+`190a4ab3f8993953818de3e207c2ed6f9c5c432aa0d648d43cc7ed558469909b`.
+The attempted Mac direct check stopped on free-RAM safeguards before proof
+diagnostics; future checks are owned by the controller on Linux.
+
+## Complete retained dictionary application
+
+Linux module4: exit 1, module 129 seconds, peak 3859 MiB. The explicit coefficient
+action passed, and the remaining error was the polynomial-coordinate action.
+The factors application now spells out all action-bearing arguments together:
+coefficient action coords.coeff.toAlgebra; canonical Q/B inclusion; retained
+polynomial action coords.fFin.toRingHom.toAlgebra; explicit Mathlib
+IsScalarTower.of_algHom with the same coefficient/map dictionaries;
+essential finite type derived from coords.hBfinite over abstract rings;
+point.hM; and point.hEtM. Only canonical ring structure synthesis remains.
+
+The small abstract theorem essFiniteType_of_coordinateMap reuses Mathlib
+Algebra.EssFiniteType.of_comp and IsScalarTower.of_algHom. Its local scalar
+instances are installed only on generic B, never on the concrete normalization.
+Repository, Mathlib, AlgebraicAnalysis and definition-owner searches found no
+existing owner of this exact bundled theorem. It has a mathematical docstring
+and a four-line proof. No new hypothesis is added to the closure target.
+
+Latest CommonOpen SHA-256:
+`8d4a7fe3eb780e61a3b18f396f7ff82c8891bc1b850b2aea75732699a8558f7d`.
+T31 and literal consumers remain unchanged. No builds or host operations were
+performed; the controller owns Linux-only checks under the user's steering.
+
+## Projection contract oracle and bounded arc producer
+
+Linux module5 failed at a nested projection: `coords.fFin.toRingHom.toAlgebra`
+requested Algebra k B during projection elaboration despite the surrounding
+explicit coefficient argument. Its action dictionary now uses explicit
+`@AlgHom.toRingHom` followed by explicit `@RingHom.toAlgebra`.
+A separate bounded arc producer owns the factors application; the main producer
+now combines already-typed point/chart/maps/arc values.
+
+Actual pinned Mathlib parameter contracts were read and printed under guard:
+`T32-sol-probe-1.log`, exit 0, peak 2707.5 MiB.
+The independent positive explicit-projection oracle passed trust zero:
+`T32-sol-probe-3.log`, exit 0, peak 2760.1 MiB.
+The isolated old-projection negative oracle reproduced the missing Algebra k B:
+`T32-sol-probe-4.log`, expected exit 1, peak 2775.4 MiB.
+Probe2 initially needed a noncomputable section for its data-valued example;
+it was corrected in the isolated positive probe before the passing run.
+All logs are under `/mnt/storage/stafford38-campaign-rc3-20261003/logs/`.
+
+New helper proposal: `nonempty_commonOpenArcCompatibility`, same source;
+isolates the retained arc factors from concrete final record assembly.
+Latest CommonOpen SHA-256:
+`8656c5e830bd4326493a866a7272f939aa5dcc0cedd0416a59a755a3fe10fa43`.
+One controller-granted module check is running under the Linux guard, timeout
+2700 seconds, two CPUs and 8 GiB aggregate RSS; no limits were raised.
+
+## Passing guarded module check
+
+Frozen source `8656c5e830bd4326493a866a7272f939aa5dcc0cedd0416a59a755a3fe10fa43`
+passed the controller-granted Linux module check on mailuefterl.
+Command: `python3 MAIN/docs/qwen-campaign/linux-guard.py run --timeout 2700
+--log /mnt/storage/stafford38-campaign-rc3-20261003/logs/T32-sol-module-1.log
+--cwd /home/ert/proj/stafford38-qwen -- lake build Stafford38.Geometry.SameWitness.CommonOpen`.
+Module elapsed: 210 seconds; guard total: 213.47 seconds.
+Both command and guard exit codes: 0; reason: finished; stop causes: none.
+Guard receipt: `/mnt/storage/stafford38-campaign-rc3-20261003/logs/T32-sol-module-1.json`.
+Host mailuefterl; affinity [0,1]; threads 2; RSS cap 8589934592 bytes;
+peak RSS 4052676608 bytes; minimum node available 77096456192 bytes;
+peak incremental swap 102400 bytes; no live children at exit.
+Log SHA-256: `8681e5eb2cb886dad7fe8e5aecd5be389b0ad9bc55c35392909f6cf84fb7a268`.
+Only warning: retained final-target hpoint argument is unused because the
+coordinate record already stores its ground-point output. Target preserved.
+The controller must run the unchanged trust-zero literal consumer before
+acceptance. No worker commit, push, ledger edit, or promotion occurred.
+
+## Controller Linux acceptance
+
+The frozen source8656c5e module and unchanged trust-zero literal consumer both
+passed. See [the acceptance receipt](T32-linux-accepted-checks.md) and its archived
+logs. The controller committed and pushed the accepted module; full-route
+verification and manuscript review remain pending.

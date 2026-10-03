@@ -1,5 +1,20 @@
 # Qwen campaign state
 
+Latest owner steering, 3 October 2026: finish the proof as the immediate
+priority, faithful to Johanna’s original manuscript proof with necessary
+corrections. Execute only on local Linux `mailuefterl` and Linux allocations
+on `acluster`/`scluster`. Mac execution and candidate synchronization are no
+longer authorized. All campaign Mac checks had already ended at this steering;
+no new Mac action is scheduled. Historical Mac receipts remain unchanged.
+T32’s frozen source passed its Linux module and unchanged trust-zero consumer
+checks. T33/T35 checks now have the exclusive local Linux slot. Both cluster preflights are complete; allocation
+smokes and isolated pinned Linux bootstraps are next.
+One delivery: finish the faithful proof, cut matching formal/supplementary
+releases, verify both Zenodo archives, and cite them from the paper. Challenge
+statements stay unchanged; main solution follows the paper, with the older
+route preserved as a labeled solution variant. Tidy obsolete unused material.
+The owner performs Palomar online submission; we deliver local checks/package.
+
 Synchronization checkpoint, 3 October 2026: incoming campaign documents and notes were preserved at `origin/wip/sync-20261003/faepmac1/stafford38-formal` (`4fed8b73c008`). The latest proof files are separately preserved at `origin/wip/sync-20261003/faepmac1/stafford38-qwen` (`c3dccd4b3f93`). See [the controller branch map](../../PLAN.md#branches-for-resuming-saved-work) and [exact snapshot manifest](../synchronization-2026-10-03.json). Rows marked `doing` remain preparation awaiting acceptance; synchronization does not resume jobs or certify candidates. No local Stafford executor was observed on faepmac1 at 05:40 UTC.
 
 Plan: `PLAN.md` in this folder. The controller updates task rows,
@@ -23,7 +38,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T22 | Ring-hom form of the endpoint | done | 2 | notes/T22-accepted-checks.tar.gz | Sol removed two redundant rfl tactics; module and trust0 consumer exit0,5s each,peak2009/1860MiB,three allowed axioms; statement unchanged; static audit reanchored PASS; WT commit e2ba158 |
 | T30 | Chart and away data | done | 1 | notes/T30-accepted-checks.tar.gz | Luna module/consumer exit0,7/3s,peak2.1/0.9GiB,three allowed axioms; existing numerator/chart owners retained; WT commit ef715e7; independent Linux module and trust0 consumer also passed (notes/linux-baseline-20261003.md) |
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
-| T32 | Maximal ideal and common open | doing | 8 | notes/T32-sol-resume.md | Linux and direct Mac exposed arbitrary fFin mismatch,missing getter maximality,and final constructor whnf timeout; canonical T31 map plus bounded Sol certificate assembly now checking |
+| T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | doing | 1 | | Luna preparing canonical-ground arc transport in parallel; checks queued |
 | T34 | Columns, derivatives, numerator | retry | 2 | notes/T34-sol-resume.md | Luna exposed concrete scalar-action duplication; Sol moved transport to abstract maps and retained missing qPre equality; Lean checks pending |
 | T35 | Étale structure as ring homs | doing | 1 | | Luna preparing explicit étale map transport in parallel; checks queued |
@@ -33,6 +48,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |
 | T43 | Strict dependency guard | doing | 2 | notes/T43-guarded-fixtures-20261003.log.gz | Guarded Mac fixture oracle PASS, exit0,18s,peak595MiB; strict production traversal still awaits terminal build; prior unguarded diagnostic is not acceptance |
 | T44 | Literal route consumers | doing | 1 | | Luna preparing archived literal consumers/current names; checks await route modules |
+| T45 | Shared-challenge solution variants | doing | 1 | notes/solution-variant-resume-design.md | Luna implementing shared downstream assembly with distinct paper and historical geometric endpoints; tooling worker extends isolated comparisons; challenges unchanged |
+| T46 | Tidy final package | todo | 0 | | Authorized obsolete-unused cleanup after references; preserve alternative route, pins and historical receipts |
 | T50 | Full library build | todo | 0 | | |
 | T51 | Repository verifier | todo | 0 | | |
 | T52 | Status drafts | todo | 0 | | |
@@ -44,7 +61,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T71 | Remote preflight on mailuefterl | todo | 0 | | |
 | T72 | Launch Linux driver | todo | 0 | | |
 | T73 | Collect Linux result | todo | 0 | | |
-| T74 | Official Palomar dispatch | owner | 0 | | owner gate |
+| T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | todo | 0 | | |
 | T81 | Build review site | todo | 0 | | |
 | T82 | Rebuild manuscript PDFs | done | 2 | notes/T82-pdf-resume-20261003.md | Current paper53882beb replay: three builds exit0,34/11/34pages,zero undefined references/citations; all tracked TeX/bib hashes unchanged; citation changes require revalidation |
@@ -60,14 +77,14 @@ to Sol. Historical Pi/Qwen records remain preserved.
 - Linux controller resume: MAIN `3214f5c8f336`, WT restored at `c3dccd4b3f93` on `campaign/paper-route-20261003`; unrelated untracked `cluster-guard.py` preserved. Authoritative documentation remains in MAIN.
 - All 578 candidate Lean/configuration source hashes matched the saved Mac WT before the first check. Manifest SHA-256 `181dc71c535a28f43a1bb7db37de14b6781cc7a1de2512cb76595d05b3285342`; this identifies candidates, not accepted proof evidence.
 - Mac guarded T31 check reproduced the saved failure in 22 seconds, peak 2163 MiB, two threads, 8 GiB cap. The first invocation failed before Lean because SSH lacked Lake in PATH; the corrected invocation supplied the installed rc3 bin path.
-- Local canonical cache is still 4.33 and must not be reused. A fresh Linux rc3 cache and local Linux resource guard are being prepared under the archived mailuefterl execution contract; final frozen replay remains a separate gate.
+- Local canonical cache is still 4.33 and must not be reused. A fresh Linux rc3 cache and local Linux resource guard are accepted under the archived mailuefterl execution contract; final frozen replay remains a separate gate.
 - Local Linux guard accepted after Sol repaired foreign-process refusal, signal cleanup and descendant lock retention; synthetic behavioral suite passed without Lean. Fresh guarded dependency setup exited0 at peak2435MiB, followed by an explicit cache run exit0 at peak916MiB. Manifest bytes remained unchanged (SHA-256 `29658324d2c247fb161a35c9869ac7e3c43491614304343a81337c65fae5dcbc`) and all ten package HEADs matched their pinned revisions. Linux prerequisite modules and all three T22/T30/T31 trust0 consumers passed, with only the three permitted axioms and zero swap growth (notes/linux-baseline-20261003.md); this setup is not the final frozen replay.
 - Luna workers assessed disjoint T31–T44 and release inputs. T31 escalated to `gpt-6.1-sol` after its recorded failed task; downstream acceptance waits for checked prerequisites. No release or final email has been sent.
 - The active user instruction resumes the full campaign, authorizes regular commits/pushes and both releases, and requests the final review email after completion.
 - Workers use `gpt-6-luna`; failed bounded tasks escalate to Sol. No Qwen/Pi campaign driver is used in this resumed run.
 - The owner's follow-up explicitly replaces serial task selection with heavy parallelism. Independent workers/subagents prepare disjoint candidates concurrently; actual dependencies govern acceptance. The controller schedules bounded Lean checks across approved hosts.
 - The controller owns authoritative state, integration, commits, pushes and promotion. Workers return evidence without committing or changing the ledger.
-- The owner's further instruction authorizes local guarded Lean and concurrent acluster/scluster allocations. Small jobs use 8 GiB RAM and two actual threads. Mac guard starts at 12 GiB free RAM and stops below 4 GiB; cluster CPU reservations must cover RAM when enforcement cannot be verified. Pins, archived receipts, mathematical statements and protected-host restrictions remain in force.
+- The owner's further instruction authorizes local guarded Lean and concurrent acluster/scluster allocations. Small jobs use 8 GiB RAM and two actual CPUs. The latest owner steering restricts active execution to Linux here and acluster/scluster; cluster CPU reservations must cover RAM when enforcement cannot be verified. Pins, archived receipts, mathematical statements and protected-host restrictions remain in force.
 - Resume preflight: MAIN `ecedcf5`, WT `0340cf2`, both clean; guard OK, 104 GiB free RAM, 553 GiB free disk, no lake/lean processes.
 
 ## Previous resume instructions (historical)

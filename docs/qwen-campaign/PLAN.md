@@ -7,10 +7,18 @@ releases and a final review email. This replaces the former serial Pi/Qwen
 execution model. The historical directory and branch names are retained
 for receipt continuity; no Qwen worker or driver is used.
 
-The controller resumed on Linux `mailuefterl` on 3 October 2026. Current
-paths are below; historical Mac paths in task commands identify the saved
-remote checkout and must be adapted for local work. The existing Mac proof
-checkout is a guarded check host, with source hashes compared before runs.
+The controller runs on Linux `mailuefterl`. The owner clarified on
+3 October 2026 that all campaign execution uses this Linux host and Linux
+compute allocations on `acluster` and `scluster`. Do not run checks, sync
+candidates, bootstrap caches, or schedule campaign work on any Mac. Saved
+Mac branches and receipts remain historical provenance only.
+
+Immediate priority: finish the same-witness proof faithful to Johanna’s
+original manuscript argument, with necessary explicit corrections. Derive
+each input from the retained witness; preserve the visible author proof and
+marked proposals. Complete T32–T36 and T40–T51, then deliver matching formal and supplementary
+releases. Verify both Zenodo archives and cite them from the paper. This is
+one delivery, with proof and asset checks as its acceptance gates.
 
 Campaign folder (absolute): `/home/ert/proj/stafford38-formal/docs/qwen-campaign`
 
@@ -18,10 +26,10 @@ Campaign folder (absolute): `/home/ert/proj/stafford38-formal/docs/qwen-campaign
 | --- | --- |
 | `MAIN` | `/home/ert/proj/stafford38-formal` (controller checkout, branch `main`; do not edit Lean here) |
 | `WT` | `/home/ert/proj/stafford38-qwen` (campaign worktree, branch `campaign/paper-route-20261003`, restored from `c3dccd4b3f93`; all Lean edits go here) |
-| `CAMP` | `$MAIN/docs/qwen-campaign` (this plan, `STATE.md`, `guard.sh`, notes) |
+| `CAMP` | `$MAIN/docs/qwen-campaign` (this plan, `STATE.md`, Linux guards, notes) |
 | `ARCH` | `$MAIN/docs/audits/paused-2026-10-02` (archived failed candidates; read-only) |
 | `SCR` | `$WT/.lake/qwen` (scratch files, extracted archives and logs; never committed) |
-| `GUARD` | `$CAMP/guard.sh` on the Mac; `python3 $CAMP/linux-guard.py` on Linux |
+| `GUARD` | `python3 $CAMP/linux-guard.py` on local Linux; reviewed allocation guard on acluster/scluster |
 
 ## 0. How workers and controller operate
 
@@ -71,9 +79,11 @@ for actions already authorized. Preserve the separate human-review status.
 | T35 étale maps | T13, T22 interface, T32 | T33/T34 |
 | T36 closure | Accepted T22 and T30–T35; frozen target and unconditional consumer | T40/T41/T42 candidates and T43/T44 preparation |
 | T40–T44 terminal integration | Completed closure; no cycles; unchanged target; strict guard and consumers | Definition-owner and paper-map preparation |
-| T50–T53 full verification/integration | Accepted proof modules and strict dependency guard | T60–T62, review-anchor and release-draft preparation |
+| T45 solution variants | Shared unchanged challenges; route-neutral downstream assembly; genuinely distinct geometric endpoints | T46 cleanup and variant tooling |
+| T46 package cleanup | Reference/dependency evidence; retain both useful solution routes and historical receipts | Final declaration and paper maps |
+| T50–T53 full verification/integration | Accepted proof modules, both isolated solution variants, cleanup and strict dependency guards | T60–T62, review-anchor and release-draft preparation |
 | T60–T62 documentation | Final accepted declaration names | Review tooling and manuscript compilation |
-| T70–T74 source freeze and replay | Integrated public source; final Linux and official receipts | Review-bundle work pinned to the same freeze |
+| T70–T74 source freeze and replay | Integrated public source; final Linux receipts and Palomar-ready package | Review-bundle work pinned to the same freeze |
 | T80–T84 review bundle | Frozen source inputs and completed map/compilation checks | T90 release materials |
 | T90–T93 publication/citations | All verification, source/asset matching and archive gates | Independent formal and supplementary artifact checks |
 
@@ -83,6 +93,17 @@ T84 prepares the review handover; the requested email is sent after both
 releases, archive verification and final citations, as the owner instructed.
 
 ## 1. Goal and end state
+
+The owner further clarified the final package: challenge statements remain
+unchanged. The main solution uses the paper-conforming retained-witness route.
+Preserve the older verified route as a separately labeled solution variant,
+sharing the challenge when possible; copy a challenge only if packaging needs
+it and preserve its exact statement. Mark both routes in release notes. Remove
+obsolete unused front doors, candidate scaffolding and files after checking
+references and retaining the useful alternative route; Git history preserves
+their development. The owner will perform Palomar’s online submission. Our
+job is to deliver a tidy package with local source-policy and kernel-comparison
+receipts ready for that submission; do not submit/register online on his behalf.
 
 The terminal Lean theorem of Stafford Conjecture 3.8 is already proved, but
 its geometric core uses an older route (generic-divisor/Laurent axis via
@@ -147,10 +168,10 @@ with small top-level lemmas over abstract types.
 
 ### 2.3 Machines
 
-- The original session's shell was on faepmac1. Guarded checks there and scheduled
-  jobs on `acluster` and `scluster` are explicitly authorized by the owner.
-  Use cluster compute allocations; login nodes are for submission and
-  lightweight inspection. Preserve persistent services and foreign jobs.
+- Execute only on local Linux `mailuefterl` and Linux compute allocations
+  on `acluster` and `scluster`, as the owner explicitly instructed. No Mac
+  execution or source synchronization. Cluster login nodes are for submission
+  and lightweight inspection. Preserve foreign jobs and persistent services.
 - Never connect to, run on, or schedule anything on `faepop*` or `faepcr*`.
 - `mailuefterl` remains the Phase 7 replay host under its archived contract.
   Additional cluster diagnostics do not replace that final replay receipt.
@@ -158,7 +179,7 @@ with small top-level lemmas over abstract types.
 ### 2.4 Git
 
 - Workers never commit, push, tag, merge or promote. The controller commits
-  accepted proof changes in `WT` on `qwen/paper-route`, and authoritative
+  accepted proof changes in `WT` on `campaign/paper-route-20261003`, and authoritative
   campaign/integration records in `MAIN`, staging explicit paths only.
 - The controller pushes accepted checkpoints regularly and performs the
   authorized integration and new signed releases after their gates pass.
@@ -200,12 +221,11 @@ Before you define anything or prove a helper lemma:
 
 ## 3. Resources: RAM, disk, time
 
-The owner requested realistic budgets and parallel checks on the local Mac,
-acluster and scluster on 3 October 2026. The shell currently reports
-faepmac1, 256 GiB RAM and 28 logical CPUs; it also runs persistent model
-services. Recent campaign checks used at most approximately 3 GiB resident.
-A small check therefore starts with **8 GiB RAM and 2 actual Lean threads**.
-The old 60 GiB free-memory threshold and 64 GiB job cap are superseded.
+The active hosts are local Linux `mailuefterl`, `acluster`, and `scluster`.
+Initial module and consumer checks use **8 GiB RAM and two actual CPUs**.
+The local rc3 Linux cache is already bootstrapped and pin-checked. Cluster
+allocations use isolated source/build trees with the same frozen source and
+pins; preserve all historical verification evidence.
 
 - The controller grants one local guarded slot per host and separate bounded
   cluster allocations. Independent allocations may run concurrently against
@@ -227,19 +247,7 @@ The old 60 GiB free-memory threshold and 64 GiB job cap are superseded.
   swap is the recorded baseline under the archived mailuefterl contract.
   Its synthetic behavior receipt is `notes/linux-guard-sol-evidence.tar.gz`.
 
-  The default Mac guard requires 12 GiB truly free RAM, normal kernel memory
-  pressure, swap below 12 GiB and 100 GiB free disk. Its atomic host lock
-  prevents overlapping guarded jobs. It sets `LEAN_NUM_THREADS=2`, samples
-  aggregate process-group RSS each second, and terminates the job above
-  8 GiB RSS, below 4 GiB free RAM, at warning/critical memory pressure,
-  12 GiB swap, 50 GiB free disk, or the wall timeout. It also terminates
-  three consecutive macOS CPU-average samples above the two-CPU budget.
-  This is a delayed watchdog,
-  not a macOS kernel CPU quota; brief bursts can occur before it reacts.
-  Lean's two-thread setting is per process; Lake can launch multiple
-  processes, which the aggregate watchdog supervises.
-  Logs include peak RSS in MiB and aggregate CPU percentage. Never stop
-  unrelated services or foreign jobs to obtain capacity.
+  Never stop unrelated services or foreign jobs to obtain capacity.
 - Cluster jobs request one task with an explicit memory limit, CPU allocation
   and time limit. Set Lean and native-library thread counts to the intended
   actual CPU count. Check whether memory cgroups enforce the request. If RAM
@@ -283,12 +291,14 @@ The old 60 GiB free-memory threshold and 64 GiB job cap are superseded.
   | 93 | timeout | Look at the log for the last file compiled. Usually a proof is too heavy: split it. Do not raise the timeout yourself. |
   | 95 | sustained CPU oversubscription | Reduce concurrent compilation or thread use. Do not raise the CPU cap without a separately allocated resource budget. |
 
-- **Disk hygiene.** The only new worktree in the whole campaign is `WT`
-  (task T01). Its `.lake` is an APFS clone of `MAIN/.lake` and costs almost
-  no extra space. Never run `lake clean`, `lake update`, `lake exe cache get`,
-  `rm -rf .lake`, or anything that downloads toolchains or dependencies,
-  unless a task says so. Keep logs in `$SCR/logs`. Logs larger than 50 MB:
-  compress with `gzip` after reading what you need.
+- **Disk hygiene.** Reuse the existing campaign `WT` and its fresh Linux
+  rc3 cache under `/mnt/storage/stafford38-campaign-rc3-20261003/lake`.
+  Cluster snapshots/build trees are isolated per accepted source input. Never
+  copy Darwin build artifacts. Dependency/toolchain bootstrap is permitted
+  only for the pinned Linux environment on a newly allocated check host,
+  through the allocation guard after preflight; record unchanged manifest
+  bytes and every package HEAD. Do not clean or replace existing caches.
+  Keep command logs and terminal receipts; compress large logs.
 - **Context hygiene (your memory).** Never print a whole log or a whole large
   file. Use `grep -n "error" <log> | head -20`, `tail -40 <log>`,
   `sed -n 'A,Bp' <file>`. Read Lean files in pieces of at most 150 lines.
@@ -338,24 +348,17 @@ uncommitted changes outside `docs/qwen-campaign/`.
 
 Owned: `WT` (new), `STATE.md`.
 
-1. `test ! -e /Users/ert/proj/stafford38-qwen` (stop if it exists).
-2. `git -C $MAIN worktree add -b qwen/paper-route /Users/ert/proj/stafford38-qwen main`
-3. Clone the build cache without copying bytes. **Use the rc3 cache of
-   `stafford38-rc3-final-worker`, not `$MAIN/.lake`** (MAIN's `.lake` still
-   holds the old Lean 4.33 Mathlib `db584cd…`; lake would switch revisions
-   and invalidate every Mathlib `.olean`):
-   `cp -cR /Users/ert/proj/stafford38-rc3-final-worker/.lake /Users/ert/proj/stafford38-qwen/.lake`
-   then make every package's git remote equal the URL in `lake-manifest.json`
-   (`git -C .lake/packages/<name> remote set-url origin <url>`) so lake does not fetch.
-4. `df -g /System/Volumes/Data` before and after; the difference must be
-   below 2 GiB. If more than 2 GiB was used, stop and report.
-5. `diff $MAIN/lake-manifest.json $WT/lake-manifest.json` and
-   `cat $WT/lean-toolchain` must show identical manifests and
-   `leanprover/lean4:v4.35.0-rc3`.
-6. `mkdir -p $WT/.lake/qwen/logs $WT/Stafford38/Geometry/SameWitness $CAMP/notes`
+1. Reuse `/home/ert/proj/stafford38-qwen` on `campaign/paper-route-20261003`;
+   it was restored from saved source `c3dccd4b3f93`. Preserve unrelated edits.
+2. Use its fresh Linux rc3 cache, not MAIN’s historical Lean 4.33 cache.
+3. For cluster checks, freeze the exact source commit plus complete binary
+   patch and new-file manifest before creating an isolated Linux snapshot.
+4. Bootstrap only the pinned toolchain and manifest dependencies under the
+   allocated resource guard. Check manifest byte identity and all package HEADs.
+5. Keep each host’s build artifacts isolated; never fetch them from a Mac.
 
-Accept: the worktree exists on branch `qwen/paper-route`; the pins are
-identical. No commit is needed.
+Accept: source identity, Linux environment and pins match the selected input.
+Existing T01 historical receipts remain unchanged.
 
 ### T02 Baseline build of the prerequisites
 
@@ -962,7 +965,26 @@ new ones from `$CAMP/notes/renames.md`; statements stay literal.
 
 Accept: every consumer prints only the three allowed axioms.
 
-## 11. Phase 5: full verification on faepmac1
+### T45 Shared challenges and distinct solution variants
+
+Keep `Challenge.lean` and `FixedSourceChallenge.lean` unchanged. Main
+`Solution.lean` and `FixedSourceSolution.lean` use the checked same-witness
+paper route. `AlternativeSolution.lean` and `AlternativeFixedSourceSolution.lean`
+use the preserved generic/Laurent geometric endpoint through shared downstream
+assembly. Check each solution in isolation against its original challenge and
+check declaration dependencies to establish that the endpoints differ. Copy a
+challenge only if the actual packaging contract requires it, with its statement
+unchanged. Document the two routes in the release and owner handover.
+
+### T46 Tidy the final package
+
+Delete obsolete unused scaffolding and front doors after checking imports,
+tooling and documentation references. Preserve historical verification receipts,
+pinned dependencies and the useful alternative solution. Refresh retained roots
+and run the complete verifier after cleanup. This cleanup is authorized by the
+owner for this delivery; Git history preserves removed development material.
+
+## 11. Phase 5: full verification on Linux
 
 ### T50 Full library build
 
@@ -979,9 +1001,10 @@ must be `0`.
 
 Owned: `STATE.md`.
 `$GUARD run --timeout 21600 --log $SCR/logs/T51.log -- bash scripts/verify.sh`.
-This is the only task allowed to let `scripts/bootstrap-palomar-tools.sh`
-install the pinned Lean toolchain or Palomar tools if they are missing (it
-checks the exact commit `470d5ce…`).
+This task may let `scripts/bootstrap-palomar-tools.sh` install the pinned
+Palomar tools if missing (it checks Lean commit `470d5ce…`). The pinned
+Linux Lean/dependency bootstrap for a new cluster allocation is separately
+authorized in section 3; package revisions and budgets remain unchanged.
 
 Accept: exit 0. Then list `.lake/verification/*.log` with sizes and record
 the last line of each in `$CAMP/notes/T51-receipt.md`, with
@@ -1006,8 +1029,12 @@ do not merge or promote candidates.
 
 ## 12. Phase 6: readability and duplication pass (report-first)
 
-This phase only adds documentation and proposals. It renames or deletes
-nothing that existed before the campaign.
+The owner now authorizes removal of obsolete unused material. Keep the useful
+older solution route as a labeled alternative. Determine actual import, test,
+review-map and release consumers before deleting; preserve pinned dependencies,
+unchanged challenges and the evidence needed for the final release. Git history
+retains prior candidate scaffolding. The controller integrates cleanup and runs
+the complete verifier afterward.
 
 ### T60 Definition owners
 
@@ -1024,7 +1051,7 @@ Owned: `$CAMP/notes/T61-paper-map.md`.
 
 For each top-level theorem in `Stafford38/Geometry/SameWitness/`, one row:
 Lean name, file:line, one sentence of mathematics, the matching place in
-`/Users/ert/proj/stafford38-paper/human_readable_main.tex` (search with
+`/home/ert/proj/stafford38-paper/human_readable_main.tex` (search with
 `grep -n` for the key words: normalization, ground point, étale, tilt, arc,
 tangent, conormal). Write "no paper counterpart" when there is none. Do not
 edit the manuscript.
@@ -1043,7 +1070,8 @@ Owned: `$CAMP/notes/T62-cleanup-report.md`.
    at most 20.
 3. Propose, per group, which declaration is the owner. Delete nothing.
 
-The owner decides on a later clean-up campaign.
+The controller performs the authorized cleanup in this delivery, preserving
+the useful alternative route and all still-used proof/review interfaces.
 
 ## 13. Phase 7: Linux replay and Palomar comparisons
 
@@ -1102,9 +1130,14 @@ files named in the contract back to `$CAMP/notes/linux-receipt/`, record exit
 status and the comparator results for both challenges, and mark `done` only
 if every ordered command passed.
 
-### T74 OWNER GATE: official Palomar workflow dispatch
+### T74 OWNER HANDOVER: Palomar-ready package
 
-Uses the contract's `official_dispatch` section. Owner and controller only.
+The owner will perform Palomar’s online submission. Deliver the immutable
+source/release links, unchanged challenges, paper-conforming main solution,
+labeled alternative solution and local source-policy/kernel-comparison receipts.
+Record exact submission commands and target names. Do not dispatch or register
+online on the owner’s behalf. Official online status remains pending until he
+submits; the historical dispatch contract remains in the archived dossier.
 
 ## 14. Phases 8–9: review bundle and release
 
@@ -1114,7 +1147,7 @@ Owned: `$WT/docs/paper-lean-audit/*` map file named by the script's `--map`
 argument (find the current map with `ls $WT/docs/paper-lean-audit`).
 
 ```sh
-cd $WT && python3 scripts/reanchor-review-map.py --paper /Users/ert/proj/stafford38-paper \
+cd $WT && python3 scripts/reanchor-review-map.py --paper /home/ert/proj/stafford38-paper \
   --paper-file human_readable_main.tex --map <map file>
 ```
 
@@ -1130,7 +1163,7 @@ entry (through `GUARD`, 900 s) shows no `unknown identifier`.
 
 ### T82 Rebuild the manuscript PDFs (no text edits)
 
-In `/Users/ert/proj/stafford38-paper`, following its README:
+In `/home/ert/proj/stafford38-paper`, following its README:
 
 ```sh
 latexmk -pdf human_readable_main.tex && latexmk -pdf lean_proof_details.tex && latexmk -pdf main.tex
@@ -1143,7 +1176,7 @@ If a reference to a Lean name breaks, report it for the controller.
 
 ### T83 Supplementary bundle (local only)
 
-In `/Users/ert/proj/stafford38-supplementary`, follow steps 2–4 of
+In `/home/ert/proj/stafford38-supplementary`, follow steps 2–4 of
 `docs/release-preparation.md` with the frozen commits. Run
 `python3 scripts/rebuild.py`. Do not create tags, releases or DOIs.
 Record every check in `$CAMP/notes/T83-supplementary-receipt.md`.
