@@ -20,7 +20,7 @@ marked proposals. Finish T34–T36 and T40–T51, then deliver matching formal a
 releases. Verify both Zenodo archives and cite them from the paper. This is
 one delivery, with proof and asset checks as its acceptance gates.
 
-Current checkpoint (3 October 2026): T22, T30, T31, T32, T33, T34 and T35 passed Linux
+Current checkpoint (3 October 2026): T22, T30, T31, T32, T33, T34, T35 and T36 passed Linux
 module and literal trust-zero consumer checks. T32 is committed and pushed at
 `da00639e7d2fd3cbb188f137d228c99d5cfcdbcd`; see its acceptance packet in
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
@@ -29,7 +29,8 @@ notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1
 T34 Columns actual modules and unchanged literal trust-zero consumer passed
 scluster3125101 and are committed/pushed at WT1fedc6e, with only the three
 permitted axioms. The allocation drained normally; see
-notes/T34-columns-linux-accepted-checks-20261003.md. Full T36 Closure4307877 and its unchanged unconditional literal trust-zero
+notes/T34-columns-linux-accepted-checks-20261003.md.
+Full T36 Closure4307877 and its unchanged unconditional literal trust-zero
 consumer passed scluster3126415, with exactly the three permitted axioms and
 a drained guard0 allocation, and are committed/pushedWT5607e3e. See
 notes/T36-closure-linux-accepted-checks-20261003.md. The necessary canonical
@@ -39,8 +40,15 @@ Historical and latest Etale receipts are preserved. Earlier memory and
 scope/interface diagnostics remain in their notes. T22 and T30–T36 are now
 complete. Next check the original-prime wrapper and all four actual solution
 assemblies, then integrate the accepted source and run the single final
-Linux verifier plus four Palomar comparisons. Human paper review remains
-pending.
+Linux verifier plus four Palomar comparisons. Bounded terminal component
+check3126840 ran on one scluster allocation after all19 input sources
+matched the candidate byte-for-byte. Its first module found a witness
+extraction mismatch (Nonempty versus record); allocation drained. This
+failed Luna task was escalated to Sol for explicit extraction. The repaired
+wrapper8af and unchanged literal consumer passed3127001, with only the
+three permitted axioms, and are committed/pushedWT7d645f2. Shared terminal
+and all four solution assembly builds continue in that allocation. Human
+paper review remains pending.
 T35 passed independently on both clusters. The alternative geometry endpoint
 also passed its Linux module at WT71e966a; full solution assembly/comparisons
 remain required. No guard threshold is relaxed. Both isolated cluster

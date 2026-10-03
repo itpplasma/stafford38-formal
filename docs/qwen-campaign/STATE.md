@@ -65,8 +65,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T35 | Étale structure as ring homs | done | 7 | notes/T35-canonical-map-linux-accepted-checks-20261003.md | Strengthened3c79 module+unchangedconsumerPASS3126127,3axioms; controller validated namespace after wrapper mismatch. Drained; committed/pushedWT3be4598 |
 | T36 | Same-witness closure theorem | done | 10 | notes/T36-closure-linux-accepted-checks-20261003.md | Full4307877 module+unchangedunconditionaltrust0consumerPASS3126415,3axioms,guard0/drained; committed/pushedWT5607e3e |
 | T40 | Import-cycle check | done | 2 | notes/T40-imports.md | Both current roots exist;272modules/582edges, no forbidden or missing sources. Rerun if imports change; proof acceptance separate |
-| T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |
-| T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |
+| T41 | Original-prime wrapper | doing | 3 | /tmp/stafford-T41-frozen-inputs.json | Sol8af wrapper+unchangedliteralconsumerPASS3127001,3axioms; committed/pushedWT7d645f2; allocation stillrunning sharedassemblies |
+| T42 | Rewire terminal geometric theorem | doing | 3 | /tmp/stafford-T41-frozen-inputs.json | Literalstatement retained; actualterminal+4solutionassemblybuild running3127001 afteracceptedT41wrapper/consumer |
 | T43 | Strict dependency guard | doing | 6 | notes/T43-linux-fixtures-accepted-20261003.md | Actual Linux compiled positive/negative route/body/axiom fixtures PASS, job3112916,371.62s,peak749MiB,zero PSI/swap/children; WT17d138a pushed; production strict traversal awaits final modules |
 | T44 | Literal route consumers | doing | 1 | | Luna preparing archived literal consumers/current names; checks await route modules |
 | T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry module83f PASS after namespace repair, WT71e966a; shared assembly static audit PASS; full compiler/route/comparator gates remain required |
