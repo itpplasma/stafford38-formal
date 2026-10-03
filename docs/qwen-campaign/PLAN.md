@@ -45,7 +45,9 @@ No comparator or final source-after gate ran. The allocation drained with no
 resource stops, swap growth or surviving children. The reviewed remaining-stage
 resume builds the3 existing retained modules explicitly, probes actual receipt
 I/O, runs only the4 comparisons and final identity/pin gates. Do not repeat the
-successful complete verifier. Proof/tool/package pins remain C2 unchanged;
+successful complete verifier. Sole remaining-stage job3136492 was submitted
+at18:43:19Z after empty queue/idle node/exact hash preflight.
+Proof/tool/package pins remain C2 unchanged;
 preserve the full success and subsequent failure receipts.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete

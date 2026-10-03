@@ -1,0 +1,36 @@
+{
+  "source_commit": "12ae3cc49152672a48a96f13994314b65ae38197",
+  "argv": [
+    "sbatch",
+    "--parsable",
+    "--partition=compute",
+    "--nodes=1",
+    "--ntasks=1",
+    "--cpus-per-task=2",
+    "--mem=8G",
+    "--time=06:10:00",
+    "--nodelist=node20",
+    "--job-name=stafford-C2-resume2",
+    "--output=/home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-C2-resume2-12ae3cc.slurm",
+    "--wrap=srun --nodes=1 --ntasks=1 --cpus-per-task=2 --cpu-bind=cores env STAFFORD_STORAGE=/home/ert/stafford38-campaign STAFFORD_OUTER_GUARD_LOG=/home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-C2-resume2-outer-guard.log python3 /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/control/linux-slurm-guard.py run --timeout 21600 --log /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-C2-resume2-outer-guard.log --cwd /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815 -- bash /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/control/cluster-final-retained-library-resume2-20261003.sh /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815 12ae3cc49152672a48a96f13994314b65ae38197"
+  ],
+  "driver_sha256": "e462d482bacf03dd908435e804e72c3e48e81ec02d02e7555b35159d3ba9b8b4",
+  "guard_sha256": "ca59b4b7c067851dca28aaff59b3919ec9224bda16a324fa2233d29d1c898506",
+  "receipt_root": "/home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-receipts-guard-repaired-resume2",
+  "status": "SUBMITTED by controller after reviewed driver committed/pushed and exact staged hashes, empty queue, node20 idle, fresh paths absent",
+  "job_id": "3136492",
+  "submitted_utc": "2026-10-03T18:43:19.466507+00:00",
+  "submit_script_sha256": "484bbfdca36666487a551a75d7f587df567fd0f6035fd765688ed104317c136c",
+  "inherited_full_verifier": {
+    "job": "3131801",
+    "exit": 0,
+    "log_sha256": "acfe9dcd8e48105289ebd6555fe90a6c85043ad963409cab66bbe082d13fcea6"
+  },
+  "remaining_scope": [
+    "receipt-filesystem-probe",
+    "timeout-output-probe",
+    "explicit three retained modules",
+    "four actual Palomar comparisons",
+    "final source/pin integrity"
+  ]
+}

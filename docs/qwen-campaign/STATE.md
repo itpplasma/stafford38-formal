@@ -79,8 +79,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T62 | Unreachable/duplicate report | done | 2 | notes/T62-current-reachability-20261003.md | Frozen580sources/138roots:572reachable,244/246geometry;2useful unimportedmodules retained and full-build covered; no deletion proposed |
 | T70 | Frozen public commit | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Exact publicC2=12ae3cc49152672a48a96f13994314b65ae38197 pushed before final launch; priorC1 retained |
 | T71 | Final Linux host preflight | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Prior3129931guard0/drained; empty userqueue/node20idle;3controlhashes exact; fresh source/receiptpaths absent |
-| T72 | Launch Linux driver | done | 3 | notes/T73-final-C2-submission-3131361-20261003.json | SoleS3131361 exactC2 fresh public clone; reviewed2CPU8GiB cache-reuse driver; fullverifier+4comparators |
-| T73 | Collect Linux result | doing | 3 | notes/T73-full-verifier-pass-retained-target-failure-3131801-20261003.tar.gz | FullverifierPASS; laterinvalidproofsroot/RemoteIOfailed125, drained/nochildren; reviewedremaining-stage resume2 prepared;4actualcomparators/finalidentity pending |
+| T72 | Launch Linux driver | done | 4 | notes/T73-final-C2-resume2-submission-3136492-20261003.json | SoleS3136492 remaining-stage resume exactC2/approvedcache;3existingmodules+4comparators+finalidentity; no fullverifier repeat |
+| T73 | Collect Linux result | doing | 4 | notes/T73-final-C2-resume2-submission-3136492-20261003.json | FullverifierPASS3131801 retained; reviewedremaining-stageS3136492 active;4actualcomparators/finalidentity/guarddrain pending |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
 | T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+C2/P3/S3refreshPASS519refs/0errorswarnings;57unchangedcards inherit actualbrowserwalk; PDFassetgatePASS; humanreviewpending |
@@ -279,3 +279,15 @@ Independent review2 PASS and preserved review1/scope clarification are in
 Read-only home filesystem check reported39% used; quota unavailable. Actual
 allocation I/O probe acceptance remains required. Resume is prepared, not yet
 submitted. No release, new DOI or final review email has been sent.
+
+## Remaining-stage resume submitted
+
+Controller submitted sole scluster3136492 at18:43:19.466507Z using the reviewed
+resume2 driver after commit/push1b8a1af. Staged driver e462d482, submit script
+484bbfdc and accepted guard ca59b4b7 full hashes matched; user queue was empty,
+node20 idle, receipt/guard/slurm paths absent. Exact publicC2 remains unchanged.
+Receipt root is `final-receipts-guard-repaired-resume2`; guard prefix is
+`final-C2-resume2-outer-guard`. The successful verifier in3131801 is inherited;
+only actual I/O probes,3 retained module targets,4 comparators and final
+source/pin identity remain. Original21600/19800-second and2CPU/8GiB caps remain.
+No other proof job or unchanged verifier rerun is scheduled.
