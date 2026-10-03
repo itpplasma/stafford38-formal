@@ -1,8 +1,9 @@
 # Qwen campaign state
 
-Plan: `PLAN.md` in this folder. Pi updates task rows, measurements and
-notes. Only the controller or owner edits "Controller hints", "Frozen
-commit" and owner-gate rows.
+Plan: `PLAN.md` in this folder. The controller updates task rows,
+measurements, hints, frozen commits and promotion gates. Parallel Luna
+workers and subagents return candidates and evidence; failed tasks escalate
+to Sol. Historical Pi/Qwen records remain preserved.
 
 ## Tasks
 
@@ -16,9 +17,9 @@ commit" and owner-gate rows.
 | T12 | Port axis lift from ground point | done | 1 | docs/qwen-campaign/notes/T12-check.log | ported to Stafford38/Geometry/SameWitness/AxisLiftFromGroundPoint.lean, namespace Stafford38.Geometry.SameWitness, docstring+statement byte-identical (diff exit 0), maxHeartbeats 4000000->1600000; build exit 0 (10 s, 3079 jobs, 4.9 s for the module, 0 errors); consumer exit 0 axioms propext/choice/Quot.sound; proof needed no repair - reuses exists_actual_point_axis_lift + T11 pair_factorizations_to_atPrime, no new instances beyond the frozen let-block; commit 8ef595c; flag: still not in any root list, T42/T43/T50 must wire or check by name |
 | T13 | Port chart ground-map lemma | done | 1 | docs/qwen-campaign/notes/T13-check.log | ported repair4 addition (archived lines 280-328) to Stafford38/Geometry/SameWitness/ChartGroundMap.lean, namespace Stafford38.Geometry.SameWitness, theorem signature byte-identical (diff exit 0), maxHeartbeats 2400000->1600000; A0ChartFormalEtale.lean untouched; build exit 0 (10 s, 2927 jobs, module 1.8 s, 0 errors); consumer exit 0 axioms propext/choice/Quot.sound; reuses originalAffineChartToCommonOpen + originalAffineChartOverlapEquiv + selectedChartAwayEquivOfQuotientEquiv + genericOpenBMap_base_eq + Mathlib IsLocalization.Away.map/IsScalarTower.algebraMap_apply; no new def; matches repair3-groundmap-audit PASS on 4.33; commit 0340cf2; flag: frozen statement carries `letI : Algebra Q U := Algebra.compHom U _` (rule 6.2.8 diamond source) - T34/T36 must use the hom equation, not a second Algebra on U; still not in any root list, T43/T50 must wire or check by name |
 | T20 | Instance inventory | done | 2 | docs/qwen-campaign/notes/T20-diagnostics.tar.gz | Sol completed concrete nine-ring and ten-prerequisite inventory after Luna acceptance failed; inherited Q/B,Q/F,Q/U,k/U and staged R/U duplicates; default synthesis timeouts preserved; 264 source hashes and five log hashes checked |
-| T21 | Minimal tower reproducer | doing | 1 | | Luna reproducing the scalar-action mismatch and verifying the abstract hom tower |
-| T22 | Ring-hom form of the endpoint | todo | 0 | | |
-| T30 | Chart and away data | todo | 0 | | |
+| T21 | Minimal tower reproducer | done | 1 | .lake/qwen/logs/T21-luna-2.log | Mathlib quotient and abstract hom towers compile; frozen negative probe captures oldTower/compHom action mismatch; guarded final exit0,10s; receipt in notes/T21-repro.md |
+| T22 | Ring-hom form of the endpoint | doing | 1 | | Luna implementing generic endpoint and literal consumer; guarded Lean slot assigned |
+| T30 | Chart and away data | doing | 1 | | Luna preparing chart setup in parallel; checks queued with controller |
 | T31 | Coordinate presentation | todo | 0 | | |
 | T32 | Maximal ideal and common open | todo | 0 | | |
 | T33 | Arc into Laurent series | todo | 0 | | |
@@ -56,6 +57,7 @@ commit" and owner-gate rows.
 
 - The active user instruction resumes the full campaign, authorizes regular commits/pushes and both releases, and requests the final review email after completion.
 - Workers use `gpt-6-luna`; failed bounded tasks escalate to Sol. No Qwen/Pi campaign driver is used in this resumed run.
+- The owner's follow-up explicitly replaces serial task selection with heavy parallelism. Independent workers/subagents prepare disjoint candidates concurrently; actual dependencies govern acceptance. The controller schedules the shared guarded Lean queue.
 - The controller owns authoritative state, integration, commits, pushes and promotion. Workers return evidence without committing or changing the ledger.
 - Lean execution remains serial through `guard.sh`; pins, archived receipts, mathematical statements and protected-host restrictions remain in force.
 - Resume preflight: MAIN `ecedcf5`, WT `0340cf2`, both clean; guard OK, 104 GiB free RAM, 553 GiB free disk, no lake/lean processes.

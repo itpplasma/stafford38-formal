@@ -1,8 +1,11 @@
-# Qwen campaign: Stafford 3.8 paper-route correspondence
+# Stafford 3.8 parallel proof and release campaign
 
-This file is the work order for a serial campaign carried out by Pi running
-Qwen3.8-Flash-Next (`itpcp/local`). Claude (the controller) and the owner
-steer it. Pi performs the tasks itself, one task per run.
+This is the work order for the controller and parallel agent team. On
+3 October 2026 the owner requested heavy parallelism, Luna workers with
+Sol escalation after failed tasks, regular commits/pushes, both repository
+releases and a final review email. This replaces the former serial Pi/Qwen
+execution model. The historical directory and branch names are retained
+for receipt continuity; no Qwen worker or driver is used.
 
 Campaign folder (absolute): `/Users/ert/proj/stafford38-formal/docs/qwen-campaign`
 
@@ -15,30 +18,63 @@ Campaign folder (absolute): `/Users/ert/proj/stafford38-formal/docs/qwen-campaig
 | `SCR` | `$WT/.lake/qwen` (scratch files, extracted archives and logs; never committed) |
 | `GUARD` | `$CAMP/guard.sh` |
 
-## 0. How every run works
+## 0. How workers and controller operate
 
-1. Read sections 0–4 of this file completely. Then read `$CAMP/STATE.md`.
-2. Pick the first task in `STATE.md` whose status is `todo` or `retry`.
-   Never pick a later task, and never work on two tasks in one run.
-3. Read that task's section in this file (sections 5–14) completely.
-4. Do exactly what the task says, in its order. Read the files the task names
-   before editing them.
-5. Check the task's acceptance criteria yourself, with the commands given.
-   Lean checking and build runs always go through `GUARD` (section 3).
-6. Update `STATE.md` (section 4): status, attempt count, log path, one-line
-   note. If the task is `done` and changed files in `WT`, commit them on the
-   `qwen/paper-route` branch, staging explicit paths only (section 2.4).
-7. End the run with the report block from section 4.3. Then stop. Do not start
-   the next task.
+1. Read sections 0–4, the assigned task, `STATE.md`, relevant controller
+   hints and project provenance before editing. Work only on assigned paths.
+2. The controller assigns independent tasks concurrently using the dependency
+   table below. Later tasks may prepare candidates before prerequisites pass;
+   their acceptance and promotion must wait for those prerequisites.
+3. Use `gpt-6-luna` workers and subagents. A failed bounded task escalates to
+   `gpt-6.1-sol`. Subagents may investigate, review or edit disjoint delegated
+   paths; tell the controller their ownership and dependencies. Never use Qwen.
+4. Share proposed interfaces early with dependent workers. Import actual data
+   dependencies; do not add imports solely to preserve former task order.
+5. Send Lean check requests to the controller. It grants one exclusive
+   execution slot at a time; every Lean command uses `GUARD`. Editing,
+   source analysis, review, documentation and artifact preparation run in
+   parallel while checks are queued. Release the slot after the reported run.
+6. Return candidates, frozen source hashes, commands, logs and acceptance
+   evidence. Workers never edit the authoritative ledger or promote results.
+   The controller reviews, updates `STATE.md`, stages explicit paths, commits
+   accepted work and pushes regularly.
+7. A worker stops its bounded assignment after returning the report in 4.3.
+   The controller continues the full campaign and assigns further work.
 
 If a task's **Stop if** condition fires, or the same error appears after three
-different repair attempts, set the task to `blocked`, write what you tried and
-the exact first error into `$CAMP/notes/<task-id>-blocked.md`, and stop. The
-controller reads it and either changes the plan or gives a hint in `STATE.md`
-under "Controller hints". Always read the hints for your task before you start.
+different repairs, return the exact first error and attempted repairs in
+`notes/<task-id>-blocked.md`. Do not raise budgets, weaken statements or
+bypass guards. The controller repairs the plan or escalates; independent work
+continues. A blocked task is distinct from the active thread goal's status.
 
-Owner gates (tasks marked **OWNER GATE**) are never executed by Pi. When the
-first open task is an owner gate, report `WAITING_FOR_OWNER` and stop.
+Owner gates are controller promotion gates. Workers cannot execute them.
+The current user instruction authorizes integration, pushes, releases and
+the final email after the stated verification gates pass; do not ask again
+for actions already authorized. Preserve the separate human-review status.
+
+### Parallel task dependencies
+
+| Work | Acceptance prerequisites | Work that can overlap |
+| --- | --- | --- |
+| T20–T22 diagnostics and endpoint | Baseline and source-resolved imports; T22 checked against the endpoint | T30 setup, generic transport analysis and release audit |
+| T30 chart setup | Baseline, archived mathematics and literal consumer | T22, T31 interface design, T43/T44 preparation |
+| T31 coordinate presentation | Accepted T30 interface and retained ground-point output | T32 common-open design and generic column/étale analysis |
+| T32 common open | T31 and accepted axis-lift/chart-map helpers | T33 arc, T34 columns and T35 étale candidates from shared interfaces |
+| T33 arc | T32 | T35 and independent portions of T34 |
+| T34 columns | T22 interface, T32/T33 | T35 |
+| T35 étale maps | T13, T22 interface, T32 | T33/T34 |
+| T36 closure | Accepted T22 and T30–T35; frozen target and unconditional consumer | T40/T41/T42 candidates and T43/T44 preparation |
+| T40–T44 terminal integration | Completed closure; no cycles; unchanged target; strict guard and consumers | Definition-owner and paper-map preparation |
+| T50–T53 full verification/integration | Accepted proof modules and strict dependency guard | T60–T62, review-anchor and release-draft preparation |
+| T60–T62 documentation | Final accepted declaration names | Review tooling and manuscript compilation |
+| T70–T74 source freeze and replay | Integrated public source; final Linux and official receipts | Review-bundle work pinned to the same freeze |
+| T80–T84 review bundle | Frozen source inputs and completed map/compilation checks | T90 release materials |
+| T90–T93 publication/citations | All verification, source/asset matching and archive gates | Independent formal and supplementary artifact checks |
+
+Preparatory drafts never count as completed gates. The controller selects
+the final coherent source and publishes only after its required checks pass.
+T84 prepares the review handover; the requested email is sent after both
+releases, archive verification and final citations, as the owner instructed.
 
 ## 1. Goal and end state
 
@@ -96,8 +132,10 @@ with small top-level lemmas over abstract types.
 
 - Each task lists its owned files. Edit only those. Creating a file counts as
   touching it.
-- In `MAIN` you may edit only `$CAMP/STATE.md` and `$CAMP/notes/*`. Never
-  edit `PLAN.md`, `guard.sh`, or anything else in `MAIN`.
+- Workers may edit in `MAIN` only their explicitly assigned `$CAMP/notes/*`.
+  The controller owns `PLAN.md`, `STATE.md`, integration and release metadata.
+  Changes to `guard.sh` require a concrete resource-contract reason; task
+  parallelism alone does not remove its shared Lean execution limit.
 - Never edit files under `.lake/packages/` (Mathlib, AlgebraicAnalysis).
 
 ### 2.3 Machines
@@ -108,11 +146,15 @@ with small top-level lemmas over abstract types.
 
 ### 2.4 Git
 
-- Commit only in `WT` on branch `qwen/paper-route`, only after a task is
-  `done`, staging explicit paths: `git -C $WT add <path> <path>`, then
-  `git -C $WT commit -m "<task-id>: <what was proved>"`.
-- Never push, tag, rebase, `reset --hard`, `clean`, `stash`, delete branches
-  or remove worktrees. Never commit in `MAIN`.
+- Workers never commit, push, tag, merge or promote. The controller commits
+  accepted proof changes in `WT` on `qwen/paper-route`, and authoritative
+  campaign/integration records in `MAIN`, staging explicit paths only.
+- The controller pushes accepted checkpoints regularly and performs the
+  authorized integration and new signed releases after their gates pass.
+- Never move existing tags, `reset --hard`, `clean`, `stash`, delete branches
+  or remove worktrees. Preserve unrelated edits and historical receipts.
+- Review inputs use an exact base commit plus a frozen patch digest including
+  new paths when uncommitted; do not treat a hashed patch as unreproducible.
 
 ### 2.5 Searching before writing (no duplication)
 
@@ -147,14 +189,14 @@ Before you define anything or prove a helper lemma:
 
 ## 3. Resources: RAM, disk, time
 
-This machine (faepmac1: 256 GiB RAM, 28 cores, ~550 GiB free on the data
-volume) also serves the Qwen model you are running on. The model server
-holds a large share of the RAM permanently (about 110–120 GiB of RAM is truly
-free when idle). A Lean build that eats memory evicts your own model's
-weights and stalls you. The Lean budget is therefore **64 GiB resident at
-most**, with 8 Lean threads. Therefore:
+This machine (faepmac1: 256 GiB RAM, 28 cores, approximately 550 GiB free on
+the data volume at campaign setup) also hosts persistent model services.
+Those services hold a large share of RAM. Preserve the shared Lean budget
+of **64 GiB resident at most**, with 8 Lean threads, while parallel workers
+perform source and review work. Therefore:
 
-- **Serial only.** At most one `lake` or `lean` process at any time. Never
+- **Serial Lean execution, parallel agent work.** At most one guarded Lean
+  job at any time. Never
   start a command in the background, never use `&`, `nohup`, `screen` or
   `tmux`. `GUARD` refuses to start when another `lake`/`lean` is alive.
 - **Every** `lake build`, `lake env lean`, `scripts/verify.sh` or other
@@ -178,7 +220,7 @@ most**, with 8 Lean threads. Therefore:
   full library build 14400 s; `scripts/verify.sh` 21600 s.
 - Single-file checks add a Lean memory cap:
   `lake env lean -M 32000 <file>` (the value is in MB).
-- Exit codes and what to do:
+- Exit codes and responses:
 
   | Code | Meaning | Action |
   | --- | --- | --- |
@@ -198,13 +240,14 @@ most**, with 8 Lean threads. Therefore:
   `sed -n 'A,Bp' <file>`. Read Lean files in pieces of at most 150 lines.
   Keep each tool output under about 200 lines.
 
-## 4. STATE.md and run reports
+## 4. STATE.md and worker reports
 
 ### 4.1 Status values
 
 `todo` → `doing` → `done`, or `retry` (controller reopened it), `blocked`
-(needs the controller), `owner` (owner gate). Set `doing` at the start of
-a run and change it before you stop.
+(needs the controller), `owner` (controller promotion gate). The controller
+sets `doing` at assignment and records acceptance or the next repair action.
+Several independent rows may be `doing` at once.
 
 ### 4.2 Ledger row
 
@@ -216,7 +259,7 @@ ask you to record numbers (build time, peak memory) under "Measurements".
 
 ```
 TASK: <id> <title>
-RESULT: done | blocked | WAITING_FOR_OWNER
+RESULT: candidate | done | blocked
 CHANGED: <explicit file list, or none>
 CHECKS: <command → result, one line each, with GUARD summary lines>
 COMMIT: <hash or none>
@@ -594,8 +637,8 @@ of that proof into its own file under rules 6.2.
 Common rules for T30–T35:
 
 - Files go in `$WT/Stafford38/Geometry/SameWitness/`, namespace
-  `Stafford38.Geometry.SameWitness`. Each file imports the previous step's
-  file and only the modules it needs (take them from the archived file's
+  `Stafford38.Geometry.SameWitness`. Each file imports its actual data
+  prerequisites and only the modules it needs (take them from the archived file's
   import list, lines 1–23, and its `open` list, lines 32–75).
 - Objects that are already functions of `P` and `w` (for example
   `actualSelectedChartAlgebra P w`, `actualSelectedNormalization P w`,
@@ -897,8 +940,9 @@ nothing as released. The controller applies and reviews it.
 
 ### T53 OWNER GATE: integrate into main
 
-The controller reviews the branch (full diff, receipts, statement diffs) and
-the owner decides about merge and push. Pi does nothing here.
+The controller reviews the branch (full diff, frozen evidence and statement
+diffs), then performs the already authorized integration and push. Workers
+do not merge or promote candidates.
 
 ## 12. Phase 6: readability and duplication pass (report-first)
 
@@ -945,8 +989,9 @@ The owner decides on a later clean-up campaign.
 
 ### T70 OWNER GATE: frozen public commit
 
-The controller merges, the owner approves the push, and the controller
-records the exact commit in `STATE.md` under "Frozen commit". Pi waits.
+After integration and checks, the controller pushes the authorized source
+and records its exact commit in `STATE.md` under "Frozen commit". Workers
+use that immutable public source for all release and replay inputs.
 
 ### T71 Remote preflight on mailuefterl
 
@@ -987,9 +1032,12 @@ Accept: driver running, recorded. Set T72 `done`; T73 becomes the next task.
 
 Owned: `STATE.md`, `$CAMP/notes/T73-linux-receipt.md`.
 
-One check per run: `ssh mailuefterl 'ps -p <pid> -o pid,etime,cmd; tail -5 <log>'`.
-If the driver still runs, report `RESULT: running`, leave T73 `todo`, and
-stop. The owner restarts Pi later. When it has finished, copy the receipt
+Poll the exact recorded process handle:
+`ssh mailuefterl 'ps -p <pid> -o pid,etime,cmd; tail -5 <log>'`.
+While it runs, leave T73 `doing` and continue independent bundle work.
+An observation timeout is not termination; revalidate the same handle and
+terminal receipt, and never restart merely because a poll timed out.
+When it has finished, copy the receipt
 files named in the contract back to `$CAMP/notes/linux-receipt/`, record exit
 status and the comparator results for both challenges, and mark `done` only
 if every ordered command passed.
@@ -1043,7 +1091,9 @@ Record every check in `$CAMP/notes/T83-supplementary-receipt.md`.
 ### T84 OWNER GATE: review handover
 
 Johanna reviews the mathematical prose and marked proposals; Max reviews the
-complete paper/Lean correspondence. The owner sends the package.
+complete paper/Lean correspondence. Prepare their concrete review package
+here, keeping both human reviews pending. The controller sends the owner's
+requested short email after both releases, archive checks and citations.
 
 ### T90 Release drafts
 
