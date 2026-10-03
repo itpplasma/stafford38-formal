@@ -228,7 +228,8 @@ component; final README/status and Palomar package checks await proof acceptance
 The sole same-source resume scluster3131801 passed both main required/excluded
 route checks at17:03:45Z after the fresh4475-job build and strict terminal
 inspection. Both main roots reach the same-witness endpoint and exclude the
-generic/Laurent solution variant; forbidden0/unavailable0. Alternative route
-checks are active. The complete verifier, retained proof-library build and
+generic/Laurent solution variant; forbidden0/unavailable0. Both alternative route
+checks also passed: their roots reach the generic/Laurent endpoint and exclude
+the same-witness endpoint, forbidden0/unavailable0. The complete verifier, retained proof-library build and
 four actual Palomar comparisons remain pending; this milestone does not
 qualify the release. No duplicate final check is scheduled.
