@@ -1,4 +1,7 @@
-import Stafford38.Geometry.SameWitness.CommonOpenArc
+module
+public import Stafford38.Geometry.SameWitness.CommonOpenArc
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1600000
