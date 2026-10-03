@@ -1,11 +1,13 @@
-import Stafford38.Geometry.SameWitness.CommonOpenPositions
+module
+
+public import Stafford38.Geometry.SameWitness.CommonOpenPositions
 
 open Stafford38.Geometry.GeneralDivisorialVisibleFrame
 open Stafford38.Geometry.SameWitness
 
 universe u
 
-theorem commonOpenPositionData_of_arc_consumer
+noncomputable def commonOpenPositionData_of_arc_consumer
     {k : Type u} [Field k] [CharZero k] [IsAlgClosed k]
     {m : ℕ} (hm : 0 < m)
     (P : PrimeSpectrum (MvPolynomial (Fin m) k))
