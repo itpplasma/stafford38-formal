@@ -1,0 +1,39 @@
+{
+  "source_commit": "12ae3cc49152672a48a96f13994314b65ae38197",
+  "argv": [
+    "sbatch",
+    "--parsable",
+    "--partition=compute",
+    "--nodes=1",
+    "--ntasks=1",
+    "--cpus-per-task=2",
+    "--mem=8G",
+    "--time=06:10:00",
+    "--nodelist=node20",
+    "--job-name=stafford-C2-resume4",
+    "--output=/home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-C2-resume4-12ae3cc.slurm",
+    "--wrap=srun --nodes=1 --ntasks=1 --cpus-per-task=2 --cpu-bind=cores env STAFFORD_STORAGE=/home/ert/stafford38-campaign STAFFORD_OUTER_GUARD_LOG=/home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-C2-resume4-outer-guard.log python3 /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/control/linux-slurm-guard.py run --timeout 21600 --log /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-C2-resume4-outer-guard.log --cwd /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815 -- bash /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/control/cluster-final-cache-layout-resume4-20261003.sh /home/ert/stafford38-campaign/linux-bootstrap-20261003-0815 12ae3cc49152672a48a96f13994314b65ae38197"
+  ],
+  "driver_sha256": "f88e8e0daf0996638d3fdc687c44b36a2680750c866b1f2b114e49f8a50e6e95",
+  "guard_sha256": "ca59b4b7c067851dca28aaff59b3919ec9224bda16a324fa2233d29d1c898506",
+  "receipt_root": "/home/ert/stafford38-campaign/linux-bootstrap-20261003-0815/final-receipts-guard-repaired-resume4",
+  "status": "SUBMITTED by controller after review, commit/push1c3cba2, exact staged hashes, empty queue/node20 idle/fresh paths/frozen cache inode",
+  "job_id": "3137241",
+  "submitted_utc": "2026-10-03T19:05:23.499140+00:00",
+  "submit_script_sha256": "9e2404356ad41f09cd5437d0333d43b35e98975ff3c9534c4e888a57cf67d548",
+  "inherited_full_verifier": {
+    "job": "3131801",
+    "exit": 0,
+    "log_sha256": "acfe9dcd8e48105289ebd6555fe90a6c85043ad963409cab66bbe082d13fcea6"
+  },
+  "inherited_retained_modules": {
+    "job": "3136492",
+    "exit": 0,
+    "log_sha256": "ae4cb0eefad61910d6734ba0df4620d6059d6d1dd791439f818a89b13278dd59"
+  },
+  "remaining_scope": [
+    "cache relocation with allocation-local device identity",
+    "four actual Palomar comparisons",
+    "final source/pin integrity"
+  ]
+}
