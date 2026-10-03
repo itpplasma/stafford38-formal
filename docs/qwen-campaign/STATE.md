@@ -7,8 +7,9 @@ on `acluster`/`scluster`. Mac execution and candidate synchronization are no
 longer authorized. All campaign Mac checks had already ended at this steering;
 no new Mac action is scheduled. Historical Mac receipts remain unchanged.
 T32’s frozen source passed its Linux module and unchanged trust-zero consumer
-checks. T33/T35 checks now have the exclusive local Linux slot. Both cluster preflights are complete; allocation
-smokes and isolated pinned Linux bootstraps are next.
+checks. T33/T35 checks now have the exclusive local Linux slot. Both cluster preflights and allocation
+smokes passed; isolated pinned Linux bootstraps are running (acluster21805716,
+scluster3108325).
 One delivery: finish the faithful proof, cut matching formal/supplementary
 releases, verify both Zenodo archives, and cite them from the paper. Challenge
 statements stay unchanged; main solution follows the paper, with the older
@@ -39,17 +40,17 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T30 | Chart and away data | done | 1 | notes/T30-accepted-checks.tar.gz | Luna module/consumer exit0,7/3s,peak2.1/0.9GiB,three allowed axioms; existing numerator/chart owners retained; WT commit ef715e7; independent Linux module and trust0 consumer also passed (notes/linux-baseline-20261003.md) |
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
-| T33 | Arc into Laurent series | doing | 1 | | Luna preparing canonical-ground arc transport in parallel; checks queued |
+| T33 | Arc into Laurent series | retry | 2 | notes/T33-T35-linux-resume.md | Luna Linux checks failed missing owner,record whnf and coefficient action; Sol owns bounded repair/checks; no budget increase |
 | T34 | Columns, derivatives, numerator | retry | 2 | notes/T34-sol-resume.md | Luna exposed concrete scalar-action duplication; Sol moved transport to abstract maps and retained missing qPre equality; Lean checks pending |
-| T35 | Étale structure as ring homs | doing | 1 | | Luna preparing explicit étale map transport in parallel; checks queued |
+| T35 | Étale structure as ring homs | doing | 1 | notes/T33-T35-linux-resume.md | Frozen Luna candidate passed to Sol for retained-action repair and guarded checks after T33 |
 | T36 | Same-witness closure theorem | doing | 1 | notes/T36-check.md | Luna prepared exact target and assembly; checks await accepted upstream declarations |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
 | T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |
 | T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |
 | T43 | Strict dependency guard | doing | 2 | notes/T43-guarded-fixtures-20261003.log.gz | Guarded Mac fixture oracle PASS, exit0,18s,peak595MiB; strict production traversal still awaits terminal build; prior unguarded diagnostic is not acceptance |
 | T44 | Literal route consumers | doing | 1 | | Luna preparing archived literal consumers/current names; checks await route modules |
-| T45 | Shared-challenge solution variants | doing | 1 | notes/solution-variant-resume-design.md | Luna implementing shared downstream assembly with distinct paper and historical geometric endpoints; tooling worker extends isolated comparisons; challenges unchanged |
-| T46 | Tidy final package | todo | 0 | | Authorized obsolete-unused cleanup after references; preserve alternative route, pins and historical receipts |
+| T45 | Shared-challenge solution variants | doing | 1 | notes/T45-independent-variant-audit.md | Frozen seven-file assembly static audit PASS; exact shared challenge sources unchanged; compiler and declaration-route/comparator checks pending |
+| T46 | Tidy final package | doing | 1 | notes/T46-cleanup-resume.md | Initial reference audit found no safe Lean deletion; final front-door cleanup and status refresh await accepted routes |
 | T50 | Full library build | todo | 0 | | |
 | T51 | Repository verifier | todo | 0 | | |
 | T52 | Status drafts | todo | 0 | | |

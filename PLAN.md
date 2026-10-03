@@ -7,7 +7,7 @@ paper_correspondence: open; same-witness assembly into original-prime endpoint r
 current_alignment_checkpoint: docs/audits/paper-route-checkpoints/actual-orders-chart-source-checkpoint.json
 historical_release: v1.2.3 is a release of the unchanged challenge
 new_full_correspondence_release: not recorded
-active_work: campaign resumed 2026-10-03; candidates checkpointed for synchronization; final acceptance and integration remain open
+active_work: Linux-only campaign on mailuefterl/acluster/scluster; T22/T30/T31/T32 checked and pushed; T33/T35 Sol repair active; final acceptance and integration remain open
 handover: not ready
 ```
 
@@ -21,9 +21,9 @@ The [2 October checkpoint archive](docs/audits/paused-2026-10-02/README.md) coll
 
 1. Prove the same-witness affine-fibre closure and its original-prime wrapper. Supply the smooth-open input from the existing generic-smooth-open theorem and use the direct constant-coordinate branch. Independently check the terminal dependency closure after rewiring.
 2. Replay the complete assembled source on Lean 4.35.0-rc3 with the saved exact published Mathlib and AlgebraicAnalysis pins. The retained baseline and independent consumers passed; combined geometry, terminal wiring and final package checks remain pending.
-3. Make both challenges self-contained under current Palomar source policy without changing their definitions or statements. Run the actual source-policy checks and both kernel comparisons on the final Linux package.
+3. Keep both challenges unchanged and share them between the main paper route and the preserved generic/Laurent solution variants. Run actual source-policy checks, isolated kernel comparisons and declaration-route checks on the final Linux package. Deliver a tidy Palomar-ready package; the owner submits online.
 4. Freeze exact paper, formal, library and generator inputs. Re-anchor every review card; rebuild matching manuscript PDFs and the complete Max correspondence package. Preserve Johanna's visible proof and local annotated proposals.
-5. Remove obsolete review front doors after preserving their historical sources. Synchronize the final manuscript to Overleaf and its GitHub mirror; publish a new signed formal release and verify the resulting Zenodo source archive before recording its DOI.
+5. Remove obsolete unused review front doors and scaffolding after reference checks. Synchronize the final manuscript to Overleaf and its GitHub mirror; publish matching signed formal and supplementary releases, verify both Zenodo archives and cite the verified records from the paper. Record the main and alternative routes in release notes; send the requested review email after delivery.
 
 The controller owns integration and promotion. Isolated worker candidates and fixture passes do not certify the final package. Human review and Palomar registration remain separate from local verification and release.
 
