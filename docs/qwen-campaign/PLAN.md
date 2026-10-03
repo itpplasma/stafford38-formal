@@ -39,13 +39,12 @@ The primary receipt is docs/verification-results.json; historical receipts
 and earlier scoped runner failures remain preserved. No successful verifier,
 library or comparison check will be repeated.
 
-The bounded final name check3138990 stopped before declaration checks because
-its generated input imported standalone test files as library modules.
-Its guard drained. Sol repaired only this check arrangement:391 imported
-names plus2 exact standalone source/name checks. Sole bounded resume3139266
-is running with the original resource caps. Final
-compiler-name acceptance, both archive releases, citations and handovers
-remain to finish. Proof and Palomar acceptance are complete.
+The bounded compiler-name acceptance passed all399 public owner/name checks
+in3139266, with4 isolated groups and guard0/drained. The earlier standalone
+import error is archived; only its check arrangement changed. Release
+qualification is complete. Publish the signed formal v1.3.0 release now,
+verify its Zenodo archive byte for byte, then use the actual DOI in the paper
+and matching supplementary v0.2.0 bundle. Human reviews remain pending.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
 57-card browser walkthrough. The public review site is deployed. All three

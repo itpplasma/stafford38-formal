@@ -11,12 +11,12 @@ snapshot rendering check passed without warnings.
 The [historical receipt](verification/f6915782/verification-results.json), SHA-256 `a1cca54a8c46df89797b85dfa24359e3e0b640caa414bcac29c4fd3cc7a81f9d`, records exact
 commands, source pins, counts and [compressed logs](verification/f6915782/).
 Historical reports remain under `verification/history/`. That receipt records
-its own source, dependencies, configurations and verifier scripts. The later rc3 v1.3.0 candidate has its own source-specific receipt section below; fixture results
+its own source, dependencies, configurations and verifier scripts. The later rc3 v1.3.0 proof source has its own source-specific receipt section below; fixture results
 do not qualify the Stafford proofs. Independent AI reviews
 are retained in [the review index](audits/manuscript-corollaries.md); human
 mathematical review remains open.
 
-## v1.3.0 candidate verification
+## v1.3.0 proof source verification
 
 The complete pinned Linux run passed at frozen public source
 `12ae3cc49152672a48a96f13994314b65ae38197`, using Lean
@@ -36,6 +36,10 @@ statements only at the named source and configuration. They do not establish
 whole-paper proof correspondence. Max’s and Johanna’s human reviews remain
 pending; the visible author proof and marked proposals retain their separate
 review status.
+
+The review-map compiler check separately passed399 public owner/name checks in4 isolated groups on the same C2 source; its [receipt archive](qwen-campaign/notes/T80-399-public-names-linux-accepted-3139266-20261003.tar.gz) retains the exact inputs and outputs. Eleven private helpers and two Global Stafford references remain explicitly source-only.
+
+The release [code-integrity manifest](qwen-campaign/notes/T91-release-code-congruence-20261003.json) records656 protected files byte-identical to C2. Later documentation and review assets do not constitute another proof replay.
 
 ## Logical scope
 

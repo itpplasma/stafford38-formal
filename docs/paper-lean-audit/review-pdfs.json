@@ -38,7 +38,7 @@
   },
   "main_pdf_sha256": "bcda47dfd4e0a7aad0034808cd73c026e70eb7e181fa505edf73a09efcab27a6",
   "human_acceptance": "pending; original passages remain visible and proposals marked for Johanna review; Max full correspondence review pending",
-  "verification": "All three actual latexmk -pdf -interaction=nonstopmode -halt-on-error compilations exited0, with zero undefined citations, references or control sequences. Exact five TeX/bib input hashes matched before/after; the six-file source snapshot also includes licensing material. Source links pin publicC2 and the exact library revision. Strict production/fixture checks passed separately; complete repository verification and four actual Palomar comparisons remain pending. Whole-paper correspondence and both human reviews remain pending.",
+  "verification": "All three actual latexmk compilations exited0 with zero undefined citations, references or control sequences. Exact compilation inputs matched before/after. Source links pin C2 and the exact library revision. Separately, the complete C2 repository verifier and all four Palomar comparisons passed, with final source/pins unchanged;399 public review-map names passed compiler checks. Whole-paper correspondence and both human reviews remain pending.",
   "build_results": {
     "human_readable_main": {
       "exit": 0,
