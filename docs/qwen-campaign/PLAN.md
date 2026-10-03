@@ -1195,6 +1195,8 @@ Accept: driver running, recorded. Set T72 `done`; T73 becomes the next task.
 
 ### T73 Collect the Linux result
 
+Concrete tooling failure3October2026:3128039 stopped before any full verifier/comparator because bwrap0.8.0 did not meet required0.12.0. See notes/T73-tooling-failure-3128039-20261003.md. Repair only the isolated tooling, then resume the same byte/mode-checked public clone with separate receipts; the completed cache copy is reused. No full proof run has yet occurred.
+
 Owned: `STATE.md`, `$CAMP/notes/T73-linux-receipt.md`.
 
 Poll the exact recorded process handle (or recorded Slurm job/step for a
