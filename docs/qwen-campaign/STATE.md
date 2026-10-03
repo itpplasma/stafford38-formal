@@ -7,7 +7,8 @@ on `acluster`/`scluster`. Mac execution and candidate synchronization are no
 longer authorized. All campaign Mac checks had already ended at this steering;
 no new Mac action is scheduled. Historical Mac receipts remain unchanged.
 T32’s frozen source passed its Linux module and unchanged trust-zero consumer
-checks. T33/T35 checks now have the exclusive local Linux slot. Both cluster preflights and allocation
+checks. T33 passed its Linux module and literal trust-zero consumer; T35 now has
+the exclusive local Linux slot. Both cluster preflights and allocation
 smokes passed; isolated pinned Linux bootstraps are running (acluster21805716,
 scluster3108325).
 One delivery: finish the faithful proof, cut matching formal/supplementary
@@ -40,7 +41,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T30 | Chart and away data | done | 1 | notes/T30-accepted-checks.tar.gz | Luna module/consumer exit0,7/3s,peak2.1/0.9GiB,three allowed axioms; existing numerator/chart owners retained; WT commit ef715e7; independent Linux module and trust0 consumer also passed (notes/linux-baseline-20261003.md) |
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
-| T33 | Arc into Laurent series | retry | 2 | notes/T33-T35-linux-resume.md | Luna Linux checks failed missing owner,record whnf and coefficient action; Sol owns bounded repair/checks; no budget increase |
+| T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
 | T34 | Columns, derivatives, numerator | retry | 2 | notes/T34-sol-resume.md | Luna exposed concrete scalar-action duplication; Sol moved transport to abstract maps and retained missing qPre equality; Lean checks pending |
 | T35 | Étale structure as ring homs | doing | 1 | notes/T33-T35-linux-resume.md | Frozen Luna candidate passed to Sol for retained-action repair and guarded checks after T33 |
 | T36 | Same-witness closure theorem | doing | 1 | notes/T36-check.md | Luna prepared exact target and assembly; checks await accepted upstream declarations |

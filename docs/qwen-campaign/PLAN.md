@@ -16,15 +16,15 @@ Mac branches and receipts remain historical provenance only.
 Immediate priority: finish the same-witness proof faithful to Johanna’s
 original manuscript argument, with necessary explicit corrections. Derive
 each input from the retained witness; preserve the visible author proof and
-marked proposals. Complete T32–T36 and T40–T51, then deliver matching formal and supplementary
+marked proposals. Finish T34–T36 and T40–T51, then deliver matching formal and supplementary
 releases. Verify both Zenodo archives and cite them from the paper. This is
 one delivery, with proof and asset checks as its acceptance gates.
 
-Current checkpoint (3 October 2026): T22, T30, T31 and T32 passed Linux
+Current checkpoint (3 October 2026): T22, T30, T31, T32 and T33 passed Linux
 module and literal trust-zero consumer checks. T32 is committed and pushed at
 `da00639e7d2fd3cbb188f137d228c99d5cfcdbcd`; see its acceptance packet in
-`notes/T32-linux-accepted-checks.md`. T33 failed its bounded Luna check and
-is assigned to Sol together with T35. T34–T44 remain unaccepted. Both cluster
+`notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
+T35 is with Sol; T34–T44 remain unaccepted. Both cluster
 allocation smokes passed; pinned isolated Linux bootstraps are running
 (acluster21805716 and scluster3108325). T45 has
 a frozen implementation and independent static audit, with compilation and
