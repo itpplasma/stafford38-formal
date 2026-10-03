@@ -15,7 +15,7 @@ commit" and owner-gate rows.
 | T11 | Port AwayFactorToAtPrime | done | 1 | docs/qwen-campaign/notes/T11-check.log | ported to Stafford38/Geometry/SameWitness/AwayFactorToAtPrime.lean, namespace Stafford38.Geometry.SameWitness, statements byte-identical; build exit 0 (10 s, 1579 jobs); consumer exit 0, axioms propext/choice/Quot.sound only; reused Mathlib IsLocalization.Away.lift + lift_comp (replaces archived ext/simp), map_units; commit 134f04b; flag: nothing imports the new module yet, so T43/T50 must add it to a root list or check it by name |
 | T12 | Port axis lift from ground point | done | 1 | docs/qwen-campaign/notes/T12-check.log | ported to Stafford38/Geometry/SameWitness/AxisLiftFromGroundPoint.lean, namespace Stafford38.Geometry.SameWitness, docstring+statement byte-identical (diff exit 0), maxHeartbeats 4000000->1600000; build exit 0 (10 s, 3079 jobs, 4.9 s for the module, 0 errors); consumer exit 0 axioms propext/choice/Quot.sound; proof needed no repair - reuses exists_actual_point_axis_lift + T11 pair_factorizations_to_atPrime, no new instances beyond the frozen let-block; commit 8ef595c; flag: still not in any root list, T42/T43/T50 must wire or check by name |
 | T13 | Port chart ground-map lemma | done | 1 | docs/qwen-campaign/notes/T13-check.log | ported repair4 addition (archived lines 280-328) to Stafford38/Geometry/SameWitness/ChartGroundMap.lean, namespace Stafford38.Geometry.SameWitness, theorem signature byte-identical (diff exit 0), maxHeartbeats 2400000->1600000; A0ChartFormalEtale.lean untouched; build exit 0 (10 s, 2927 jobs, module 1.8 s, 0 errors); consumer exit 0 axioms propext/choice/Quot.sound; reuses originalAffineChartToCommonOpen + originalAffineChartOverlapEquiv + selectedChartAwayEquivOfQuotientEquiv + genericOpenBMap_base_eq + Mathlib IsLocalization.Away.map/IsScalarTower.algebraMap_apply; no new def; matches repair3-groundmap-audit PASS on 4.33; commit 0340cf2; flag: frozen statement carries `letI : Algebra Q U := Algebra.compHom U _` (rule 6.2.8 diamond source) - T34/T36 must use the hom equation, not a second Algebra on U; still not in any root list, T43/T50 must wire or check by name |
-| T20 | Instance inventory | todo | 0 | | paused by owner before first Pi attempt finished |
+| T20 | Instance inventory | doing | 1 | | resumed by controller with Luna; real instance inventory and guarded synth checks in progress |
 | T21 | Minimal tower reproducer | todo | 0 | | |
 | T22 | Ring-hom form of the endpoint | todo | 0 | | |
 | T30 | Chart and away data | todo | 0 | | |
@@ -52,7 +52,15 @@ commit" and owner-gate rows.
 | T92 | Verify Zenodo archive | todo | 0 | | |
 | T93 | Citation drafts | todo | 0 | | |
 
-## How to resume (paused 2026-10-03 by owner)
+## Current execution (resumed 2026-10-03 by owner)
+
+- The active user instruction resumes the full campaign, authorizes regular commits/pushes and both releases, and requests the final review email after completion.
+- Workers use `gpt-6-luna`; failed bounded tasks escalate to Sol. No Qwen/Pi campaign driver is used in this resumed run.
+- The controller owns authoritative state, integration, commits, pushes and promotion. Workers return evidence without committing or changing the ledger.
+- Lean execution remains serial through `guard.sh`; pins, archived receipts, mathematical statements and protected-host restrictions remain in force.
+- Resume preflight: MAIN `ecedcf5`, WT `0340cf2`, both clean; guard OK, 104 GiB free RAM, 553 GiB free disk, no lake/lean processes.
+
+## Previous resume instructions (historical)
 
 - Plan: `docs/qwen-campaign/PLAN.md` (work order, 43 tasks); ledger: this file; worker prompt: `prompt.md`.
 - Driver: `cd docs/qwen-campaign && nohup ./drive.sh 9 "T22 T36 T42 T43 T51" > runs/drive4.out 2>&1 &`
