@@ -1,22 +1,22 @@
 {
  "schema": 1,
- "version": "2026-10-03-complete-candidate-pending-freeze",
+ "version": "2026-10-03-v0.2.0-frozen-review",
  "title": "Stafford 3.8: paper ↔ Lean correspondence audit",
- "subtitle": "57 stable review cards in manuscript order. Final public source pins frozen; full verifier, four comparisons and human correspondence reviews pending.",
+ "subtitle": "57 review cards in manuscript order. Formal v1.3.0 verification and all four local Palomar comparisons passed; Johanna’s and Max’s reviews remain pending.",
  "sources": {
   "paper": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "22b44d56af302bbf8dd3542316d8b15a2b0c5315",
+   "commit": "2fde6c6311b9cc2e8b789649132ff87bdbcdb3d5",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-   "note": "Final selected public manuscript snapshot S3, originating at public paper commit P3.",
+   "note": "Frozen public P4 manuscript snapshot S4 after the verified formal v1.3.0 citation.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "a5a703f588ef3a2c43e8fc21f89db8bf494af5db",
-   "sha256": "48f6b8132426f0378d2d1b7f79598cc87a693ab00f1daae8a16760d3b39dc2c4"
+   "origin_commit": "4d19a183846beb50f37ad2b4e51e836a76ed8bac",
+   "sha256": "a6a50d1a46fccb964ba72a0f60a85aec46b4d20e7d17e7a248dd152e62c87a88"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "12ae3cc49152672a48a96f13994314b65ae38197",
-   "note": "Final public MAIN source pin C2; mapped mathematical source files were checked byte-identical to the prior accepted map references."
+   "commit": "54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b",
+   "note": "Signed formal v1.3.0 release; all656 protected source/tool files byte-identical to verified C2. Formal DOI10.5281/zenodo.23126868."
   },
   "library": {
    "repo": "itpplasma/algebraic-analysis",
@@ -6615,9 +6615,9 @@
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   }
  ],
- "overview": "Candidate correspondence map with line anchors refreshed to the current annotated manuscript. The historical public paper snapshot and formal release remain recorded under sources; final formal source pins and complete whole-paper proof correspondence are pending. Card comparisons retain unresolved author proposals and route differences.",
- "how_to_use": "Review the cards as a candidate correspondence map anchored to the manuscript snapshot recorded above. Check exact statements, hypotheses, proof routes and publication endpoints against the final formal source pins when supplied. Author proposals remain pending; this candidate is not whole-paper sign-off.",
- "provenance": "Candidate based on current selected paper worktree locator-only edits and shared formal WT. Final paper/formal source pins, declaration checks, proof acceptance, and human correspondence review remain pending; no whole-proof correspondence is asserted.",
+ "overview": "Compare the complete preserved manuscript proof with the formal proof, including definitions, hypotheses and supporting lemmas. The main solution follows the manuscript construction; the earlier generic/Laurent argument is labeled as an alternative. Marked manuscript corrections remain proposals for Johanna’s review, and Max’s full correspondence review remains pending.",
+ "how_to_use": "Start the guided review and follow all57 cards in paper order. Compare each paper claim with its Lean statement, definitions, hypotheses and supporting proof, including both shared challenges and solution variants. Record discrepancies in the review notes and export the findings JSON when finished.",
+ "provenance": "Frozen P4 paper/S4 public snapshot, signed formal v1.3.0 source and pinned AlgebraicAnalysis0.3.3. The complete C2 verifier, all four local Palomar comparisons and399 public owner/name compiler checks passed. The release code is byte-identical to C2. Automated formal acceptance and both pending human correspondence reviews are separate claims.",
  "challenge_definitions": [
   {
    "repo": "formal",
@@ -6916,28 +6916,30 @@
  ],
  "global_issues": [],
  "candidate": {
-  "status": "formal C2 and paper P3/S3 source pins frozen; final full verifier and four actual Palomar comparisons pending; human correspondence reviews pending",
+  "status": "Frozen P4/S4 and formal v1.3.0 release sources; formal verification and all4comparisons passed; both human reviews pending",
   "manuscript": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "22b44d56af302bbf8dd3542316d8b15a2b0c5315",
+   "commit": "2fde6c6311b9cc2e8b789649132ff87bdbcdb3d5",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-   "sha256": "48f6b8132426f0378d2d1b7f79598cc87a693ab00f1daae8a16760d3b39dc2c4",
+   "note": "Frozen public P4 manuscript snapshot S4 after the verified formal v1.3.0 citation.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "a5a703f588ef3a2c43e8fc21f89db8bf494af5db",
-   "note": "Final selected public manuscript snapshot S3, originating at public paper commit P3."
+   "origin_commit": "4d19a183846beb50f37ad2b4e51e836a76ed8bac",
+   "sha256": "a6a50d1a46fccb964ba72a0f60a85aec46b4d20e7d17e7a248dd152e62c87a88"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
-   "observed_base_commit": "12ae3cc49152672a48a96f13994314b65ae38197",
-   "status": "Final public MAIN pin C2 12ae3cc49152672a48a96f13994314b65ae38197; every mapped Lean source file matches its recorded hash at this revision.",
+   "observed_base_commit": "54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b",
+   "status": "Immutable signed releaseR; protected code equals fully verified C2;399 public owner/name compiler checks passed on C2.",
    "observed_worktree_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-   "observed_source_manifest_sha256": "b73e0bb5d1895022a215bf39f9f7a1dd9cd28e518859749bb9f548d7f263e55b"
+   "observed_source_manifest_sha256": "0b3d27e473d06dc22da27fd1287eea1d316559b8bd5ca95b5ea637061fe16cb6",
+   "verified_proof_source": "12ae3cc49152672a48a96f13994314b65ae38197",
+   "observed_source_manifest_scope": "656 protected source/tool files; excludes documentation, citation/release metadata and review map"
   },
-  "note": "Formal C2 and final paper pins P3/S3 are frozen. The final full verifier and four Palomar comparisons remain pending; whole-proof correspondence and both human reviews remain pending."
+  "note": "Formal v1.3.0 archive DOI10.5281/zenodo.23126868 is byte-verified. This review freeze records P4/S4; whole-proof correspondence and both human reviews remain pending."
  },
  "same_witness_declaration_map_candidate": {
-  "status": "pending T80 public-declaration compiler checks; human proof-correspondence review remains pending",
-  "paper_lines_observed_against": "19d78e44ce9b9eac25eb044d46871aa6bb4239e28f272949af8859165c129174",
+  "status": "All public mapped owner/name queries passed in the399-check compiler receipt; private helpers remain source-only. Human proof-correspondence review pending.",
+  "paper_lines_observed_against": "a6a50d1a46fccb964ba72a0f60a85aec46b4d20e7d17e7a248dd152e62c87a88",
   "rows": [
    {
     "lean": "Stafford38.Geometry.SameWitness.retainedClosureChartData",

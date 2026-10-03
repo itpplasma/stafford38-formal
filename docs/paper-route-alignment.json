@@ -38,9 +38,9 @@
     "author_baseline_sha256": "6fcd4afc1008978154762755a0a142ad69a22e03ee3d57223df2618f4f0b3800",
     "restoration_commit": "bd913a381b714fd8f909159a33fe845b5373ba0f",
     "review_status": "Author proofs remain visible. Marked local proposals are review material, not a replacement proof.",
-    "current_review_commit": "a5a703f588ef3a2c43e8fc21f89db8bf494af5db",
-    "current_review_sha256": "48f6b8132426f0378d2d1b7f79598cc87a693ab00f1daae8a16760d3b39dc2c4",
-    "public_snapshot_commit": "22b44d56af302bbf8dd3542316d8b15a2b0c5315"
+    "current_review_commit": "4d19a183846beb50f37ad2b4e51e836a76ed8bac",
+    "current_review_sha256": "a6a50d1a46fccb964ba72a0f60a85aec46b4d20e7d17e7a248dd152e62c87a88",
+    "public_snapshot_commit": "2fde6c6311b9cc2e8b789649132ff87bdbcdb3d5"
   },
   "same_witness_route": {
     "status": "closure and original-prime modules, literal consumers, shared solution assemblies, full verifier, and four Palomar comparisons passed on Linux at frozen source 12ae3cc49152672a48a96f13994314b65ae38197",

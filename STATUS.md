@@ -1,6 +1,6 @@
 # Current status
 
-Updated 3 October 2026. The v1.3.0 source `12ae3cc49152672a48a96f13994314b65ae38197` passed the complete pinned Linux verifier and all four Palomar comparator configurations. The fresh C2 run passed a 4,475-job Lake build and strict dependency inspection of all four terminal roots with zero forbidden or unavailable dependencies. T34, T35, T36, and T41 modules, literal trust-zero consumers, and all four main and alternative solution assemblies passed with only propext, Classical.choice, and Quot.sound. Formal v1.3.0 is published and its1,163-file Zenodo archive is byte-verified (DOI10.5281/zenodo.23126868). Paper-correspondence reviews and the final handover remain pending.
+Updated 3 October 2026. The v1.3.0 source `12ae3cc49152672a48a96f13994314b65ae38197` passed the complete pinned Linux verifier and all four Palomar comparator configurations. The fresh C2 run passed a 4,475-job Lake build and strict dependency inspection of all four terminal roots with zero forbidden or unavailable dependencies. T34, T35, T36, and T41 modules, literal trust-zero consumers, and all four main and alternative solution assemblies passed with only propext, Classical.choice, and Quot.sound. Formal v1.3.0 is published and its 1,163-file Zenodo archive is byte-verified (DOI 10.5281/zenodo.23126868). Paper-correspondence reviews and the final handover remain pending.
 
 ## Proof and correspondence
 
@@ -26,7 +26,7 @@ AlgebraicAnalysis v0.3.3 is separately released on rc3. Its archived mathematica
 
 ## Manuscript and review tools
 
-The manuscript remains close to Johanna's historical human-readable version: the author proof is preserved, and necessary mathematical corrections, comments and amendments remain visible. The selected paper source is P3 commit `a5a703f588ef3a2c43e8fc21f89db8bf494af5db`; its public formal-repository snapshot is S3 `22b44d56af302bbf8dd3542316d8b15a2b0c5315`, and the formal source is C2 `12ae3cc49152672a48a96f13994314b65ae38197`. The refreshed map and PDF asset checks passed on these named inputs. Max’s full correspondence review remains pending as a separate human assessment.
+The manuscript remains close to Johanna's historical human-readable version: the author proof is preserved, and necessary mathematical corrections, comments and amendments remain visible. The selected paper source is P4 commit `4d19a183846beb50f37ad2b4e51e836a76ed8bac`; its public formal-repository snapshot is S4 `2fde6c6311b9cc2e8b789649132ff87bdbcdb3d5`, and the linked formal source is signed release R `54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b` (protected code byte-identical to verified C2). The refreshed map and PDF asset checks passed on these named inputs. Max’s full correspondence review remains pending as a separate human assessment.
 
 The generator's approval digest now includes its review-scope module, and run-in paragraph headings render correctly. Packaging and rendering fixtures passed in their recorded worktrees. The refreshed review map and manuscript PDFs match the named paper snapshot and formal source; the asset-gate receipt is recorded with the campaign evidence. Human correspondence review remains pending.
 

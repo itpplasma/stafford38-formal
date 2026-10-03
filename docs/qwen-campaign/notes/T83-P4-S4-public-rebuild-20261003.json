@@ -1,0 +1,20 @@
+{
+  "kind": "public-pinned review rebuild and package integrity",
+  "recorded_utc": "2026-10-03T20:35:18.616332+00:00",
+  "result": "passed",
+  "formal_release": "54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b",
+  "paper_origin": "4d19a183846beb50f37ad2b4e51e836a76ed8bac",
+  "public_snapshot": "2fde6c6311b9cc2e8b789649132ff87bdbcdb3d5",
+  "generator": "40967b6740c2ceaf515a2fb47a5ca9571be6495f",
+  "public_only_rebuild": "existing scripts/rebuild.py fetched exact public pins and generator; npm ci; build.mjs --check; exit0",
+  "map_sha256": "d7387039c835eb5d872ff8e105da7eb70f004f1468a69317fc7e3132c84b7762",
+  "index_sha256": "139187e09da12f3a0c5d8156cd3147efdcb8ec656629ec067b0da1830b3579f8",
+  "human_pdf_sha256": "8bf003db76ca308786d848b98f171b11b697a7b21efea920e659b20d0519962d",
+  "details_pdf_sha256": "e41058299ce6bae2dea20acc2d1ca00e92a1af13842512280dc84c37e60d8c98",
+  "pdf_receipt_sha256": "99035d822d6ddc6e8b4342a1aeddc7a77273282fff4859eec40302160943e244",
+  "cards": 57,
+  "public_names_compiler_checked": 399,
+  "human_reviews": "pending",
+  "filename_fix": "Copy the generator-configured output stem to index.html before applying the relative PDF link; no generator runtime change.",
+  "map_formatting": "Original indentation/UTF-8 retained; parsed map unchanged from successful renderer input."
+}

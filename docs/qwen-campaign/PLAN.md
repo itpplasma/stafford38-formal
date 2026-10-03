@@ -48,7 +48,7 @@ is pushed to GitHub and Overleaf. Finish matching supplementary v0.2.0. Human re
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
 57-card browser walkthrough. The public review site is deployed. All three
-manuscript PDFs compile with zero undefined references at paper a5a703f5, with snapshot 22b44d56 and formal links to 12ae3cc.
+manuscript PDFs compile with zero undefined references at paper P4 4d19a183, with public snapshot S4 2fde6c63 and formal release links to R54c4f0c.
 The refreshed map/PDF asset gate passed. Refresh their citations after
 verified archive publication. Human review remains pending. Formal v1.3.0 and its byte-verified DOI are published; supplementary
 v0.2.0, final citations and final emails remain to finish.
