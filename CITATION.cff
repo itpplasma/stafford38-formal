@@ -12,6 +12,7 @@ authors:
     affiliation: "Graz University of Technology"
 version: v1.3.1
 date-released: "2026-10-03"
+doi: 10.5281/zenodo.23127367
 identifiers:
   - type: doi
     value: 10.5281/zenodo.23126868

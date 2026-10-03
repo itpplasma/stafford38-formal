@@ -1,0 +1,15 @@
+{
+  "tag": "v1.3.1",
+  "release_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
+  "archive_sha256": "62eea6ae5488a387189d1072068b441612867a0c9fa6a8f2bf9f66903916fe80",
+  "archive_prefix": "itpplasma-stafford38-formal-7a037be/",
+  "expected_files": 1172,
+  "archived_files": 1172,
+  "missing": [],
+  "extras": [],
+  "mismatches": [],
+  "result": "passed",
+  "comparison": "Every archived non-directory member compared byte for byte with the exact tagged Git blob; no extraction.",
+  "doi": "10.5281/zenodo.23127367",
+  "record_url": "https://zenodo.org/records/23127367"
+}
