@@ -31,11 +31,17 @@ concrete record, accessors, generic helpers and numerator, then rejected the
 concrete producer at the existing kernel memory limit. Its thin-helper repair
 also exceeded the unchanged 8 GiB full-module guard in3122526. Sol split the
 generic derivative declarations unchanged into CommonOpenColumnDerivatives.
-Generic module4cfa695d passed scluster3123290. The proof-only Prop certificate
-still exceeded the8GiB cap in3123682. Sol is isolating its concrete derivative
-application in CommonOpenArcDerivatives, separate from the accepted numerator
-proof, before rebuilding Columns/consumer/Closure. No budget, mathematical
-field or terminal statement is changed.
+Generic module4cfa695d passed scluster3123290. The isolated concrete derivative
+application fdd51016 exceeded8GiB in3124137 independently of numerator/Data.
+Read-only comparison found its scalar actions aligned with accepted Positions
+and Etale. Explicit k/B/Q/d/n candidate eec70c0c also exceeded8GiB in3124330;
+Columns, its consumer and Closure did not run. Scratch-only progressive
+partial application3124499 passed all seven groups, including the complete
+call, in38.61s with2051276800-byte peak and no survivors. This establishes
+successful elaboration, not proof acceptance: kernel validation of the
+concrete declaration remains the isolated boundary. Sol now investigates
+the exact conversion there; no unchanged resubmission or cap increase.
+No budget, mathematical field or terminal statement is changed.
 T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
 unchanged. No full Columns or Closure acceptance is claimed.

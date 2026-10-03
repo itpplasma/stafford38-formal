@@ -19,11 +19,17 @@ helpers and numerator, then rejected the concrete producer at the existing
 kernel memory limit. The thin-helper repair3122526 also exceeded the unchanged
 8 GiB full-module guard. Sol split the generic derivative declarations unchanged
 into CommonOpenColumnDerivatives (61a24d93); concrete Columns is a74e78eb.
-Generic module4cfa695d passed scluster3123290. The proof-only Prop certificate
-still exceeded the8GiB cap in3123682. Sol is isolating its concrete derivative
-application in CommonOpenArcDerivatives, separate from the accepted numerator
-proof, before rebuilding Columns/consumer/Closure. No budget, mathematical
-field or terminal statement is changed. T35 also passed independently on acluster21805719. Both cluster
+Generic module4cfa695d passed scluster3123290. The isolated concrete derivative
+application fdd51016 exceeded8GiB in3124137 independently of numerator/Data.
+Read-only comparison found its scalar actions aligned with accepted Positions
+and Etale. Explicit k/B/Q/d/n candidate eec70c0c also exceeded8GiB in3124330;
+Columns, its consumer and Closure did not run. Scratch-only progressive
+partial application3124499 passed all seven groups, including the complete
+call, in38.61s with2051276800-byte peak and no survivors. This establishes
+successful elaboration, not proof acceptance: kernel validation of the
+concrete declaration remains the isolated boundary. Sol now investigates
+the exact conversion there; no unchanged resubmission or cap increase.
+No budget, mathematical field or terminal statement is changed. T35 also passed independently on acluster21805719. Both cluster
 bootstraps passed exact pins and T32. Alternative geometry endpoint passed
 scluster3114679, committedWT71e966a; full alternative assembly/comparators
 remain required. Actual guard fixtures passed3112916. No guard or proof
@@ -61,7 +67,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
-| T34 | Columns, derivatives, numerator | doing | 26 | notes/T34-T36-scluster-frozen-inputs-columns4-20261003.json | Generic4cfa passed; concrete producer memory isolation moves derivative application to CommonOpenArcDerivatives; module/consumer/Closure remain pending under8GiB |
+| T34 | Columns, derivatives, numerator | doing | 28 | notes/T34-memory-block-20261003.md | Generic4cfa passed; concrete eec70 kernel validation exceeds8GiB. Complete application #check3124499 passes; exact conversion repair active, downstream pending |
 | T35 | Étale structure as ring homs | done | 6 | notes/T35-linux-accepted-checks.md | Scluster3113113 fullmodule+unchangedtrust0consumerPASS329.04s,peak7406MiB,three permitted axioms,zero PSI/swap/children; frozenf30 WT4c1678e committed/pushed; fullroute pending |
 | T36 | Same-witness closure theorem | doing | 4 | notes/T36-chart-linux-accepted-checks-20261003.md | Verbatimgenericcharthelper trust0PASSacluster21805723,3axioms/noresourcefailure; fullclosure59b+unconditionalliteralconsumer queued afterT34 |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
