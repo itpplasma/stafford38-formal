@@ -6,17 +6,17 @@
  "sources": {
   "paper": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "9fdeac1f1f432459b97e7f421937a1ee8b7e8d9f",
+   "commit": "22b44d56af302bbf8dd3542316d8b15a2b0c5315",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-   "note": "Final selected public manuscript snapshot S2, originating at public paper commit P2.",
+   "note": "Final selected public manuscript snapshot S3, originating at public paper commit P3.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "bb3190f8b962f95a0d6ebe30bac0f80ea3ec1388",
+   "origin_commit": "a5a703f588ef3a2c43e8fc21f89db8bf494af5db",
    "sha256": "48f6b8132426f0378d2d1b7f79598cc87a693ab00f1daae8a16760d3b39dc2c4"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "45037fbc16329df7a208eb3de91aca31d720f03c",
-   "note": "Accepted public MAIN formal source pin; all mapped Lean source files byte-match this revision in the current candidate tree."
+   "commit": "12ae3cc49152672a48a96f13994314b65ae38197",
+   "note": "Final public MAIN source pin C2; mapped mathematical source files were checked byte-identical to the prior accepted map references."
   },
   "library": {
    "repo": "itpplasma/algebraic-analysis",
@@ -6916,24 +6916,24 @@
  ],
  "global_issues": [],
  "candidate": {
-  "status": "paper-and-formal-source-pins-frozen; final-full-verifier-and-four-Palomar-comparisons-pending; human-review-pending",
+  "status": "formal C2 and paper P3/S3 source pins frozen; final full verifier and four actual Palomar comparisons pending; human correspondence reviews pending",
   "manuscript": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "9fdeac1f1f432459b97e7f421937a1ee8b7e8d9f",
+   "commit": "22b44d56af302bbf8dd3542316d8b15a2b0c5315",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
    "sha256": "48f6b8132426f0378d2d1b7f79598cc87a693ab00f1daae8a16760d3b39dc2c4",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "bb3190f8b962f95a0d6ebe30bac0f80ea3ec1388",
-   "note": "Final selected public manuscript snapshot S2, originating at public paper commit P2."
+   "origin_commit": "a5a703f588ef3a2c43e8fc21f89db8bf494af5db",
+   "note": "Final selected public manuscript snapshot S3, originating at public paper commit P3."
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
-   "observed_base_commit": "e380306b0b847595cca7124259a2f4b8881c35a8",
-   "status": "Accepted public MAIN pin 45037fbc16329df7a208eb3de91aca31d720f03c; all mapped Lean files byte-match this revision.",
+   "observed_base_commit": "12ae3cc49152672a48a96f13994314b65ae38197",
+   "status": "Final public MAIN pin C2 12ae3cc49152672a48a96f13994314b65ae38197; every mapped Lean source file matches its recorded hash at this revision.",
    "observed_worktree_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
    "observed_source_manifest_sha256": "b73e0bb5d1895022a215bf39f9f7a1dd9cd28e518859749bb9f548d7f263e55b"
   },
-  "note": "Formal source pin C45037fb and final paper pins P2/S2 are frozen. The final full verifier and four Palomar comparisons remain pending. Whole-proof correspondence and both human reviews remain pending."
+  "note": "Formal C2 and final paper pins P3/S3 are frozen. The final full verifier and four Palomar comparisons remain pending; whole-proof correspondence and both human reviews remain pending."
  },
  "same_witness_declaration_map_candidate": {
   "status": "pending T80 public-declaration compiler checks; human proof-correspondence review remains pending",

@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
-  "paper_commit": "a5a703f588ef3a2c43e8fc21f89db8bf494af5db",
+  "paper_commit": "bb3190f8b962f95a0d6ebe30bac0f80ea3ec1388",
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
   "paper_source": {
     "repo": "itpplasma/stafford38-formal",
-    "commit": "22b44d56af302bbf8dd3542316d8b15a2b0c5315",
+    "commit": "9fdeac1f1f432459b97e7f421937a1ee8b7e8d9f",
     "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
     "sha256": "48f6b8132426f0378d2d1b7f79598cc87a693ab00f1daae8a16760d3b39dc2c4"
   },
   "formal_source": {
     "repo": "itpplasma/stafford38-formal",
-    "commit": "12ae3cc49152672a48a96f13994314b65ae38197"
+    "commit": "45037fbc16329df7a208eb3de91aca31d720f03c"
   },
   "library_source": {
     "repo": "itpplasma/algebraic-analysis",
@@ -27,18 +27,18 @@
   "source_hashes": {
     "human_readable_main.tex": "48f6b8132426f0378d2d1b7f79598cc87a693ab00f1daae8a16760d3b39dc2c4",
     "main.tex": "b55ef1f254b7611b37b4bdf7633991400cdb4512bd03e0532d1f90f561cf7cbe",
-    "ai_review.tex": "7b63c12e75b713e2c72506777274502df18ae397408ce0475f3225a7d63a492b",
+    "ai_review.tex": "a026f5fc71d59972638abaaf8cb2d84645087393179637b6076cd23cacf25eae",
     "lean_proof_details.tex": "fb8b61d1570ade614cdb451f1a93544c09f1d2abeac6ba7a254b8d7bf5cc982a",
     "references.bib": "22a4e3e4e4e7f806abd39eb22bb6405887e280a7fc75e661f69585529010c4f0",
     "LICENSE.txt": "98b6fde2693d4044dce4a071640e90bd8d250dd789d9033dbd5b77c79f389de4"
   },
   "pdfs": {
-    "human_readable_main.pdf": "d00c12d63d4f77e0eeaf2226579a11cddc078d5134464b024312160438f90429",
-    "lean_proof_details.pdf": "e984e778629569c9f7074cbacb36d995b275145999dfbba16c892841633fbe55"
+    "human_readable_main.pdf": "bc33c1829b0e9e235ea5e38f55e37dc41d31200d653dcb7bc8aeea833978192a",
+    "lean_proof_details.pdf": "9882ae5ace54703f6b9332f8cc548e3e2aa12238fe6bec43b1f69696baa1d7c3"
   },
-  "main_pdf_sha256": "bcda47dfd4e0a7aad0034808cd73c026e70eb7e181fa505edf73a09efcab27a6",
+  "main_pdf_sha256": "62e29ad1de3472a4b447a380a1484bb6cdc7b630fd7f281546ccf8a54f01c099",
   "human_acceptance": "pending; original passages remain visible and proposals marked for Johanna review; Max full correspondence review pending",
-  "verification": "All three actual latexmk -pdf -interaction=nonstopmode -halt-on-error compilations exited0, with zero undefined citations, references or control sequences. Exact five TeX/bib input hashes matched before/after; the six-file source snapshot also includes licensing material. Source links pin publicC2 and the exact library revision. Strict production/fixture checks passed separately; complete repository verification and four actual Palomar comparisons remain pending. Whole-paper correspondence and both human reviews remain pending.",
+  "verification": "All three latexmk -pdf -interaction=nonstopmode -halt-on-error compilations exited0, with zero undefined citations, references or control sequences. Source links pin the exact public formal/library revisions. This PDF/source receipt does not establish whole-paper correspondence; final repository verification and four Palomar comparisons are running separately.",
   "build_results": {
     "human_readable_main": {
       "exit": 0,
@@ -62,20 +62,5 @@
       "undefined_control_sequences": 0
     }
   },
-  "historical_receipt": "docs/qwen-campaign/notes/T82-P2-S2-review-pdfs-receipt.json",
-  "compilation_inputs": [
-    "human_readable_main.tex",
-    "main.tex",
-    "ai_review.tex",
-    "lean_proof_details.tex",
-    "references.bib"
-  ],
-  "licensing_file_note": "LICENSE.txt is source-packet licensing material copied after compilation; it is not a TeX compilation input.",
-  "build_instructions": {
-    "repo": "itpplasma/stafford38-paper",
-    "commit": "a5a703f588ef3a2c43e8fc21f89db8bf494af5db",
-    "file": "README.md",
-    "sha256": "ce5d79c55cf748753dda1b3172230b631ee50aade650e250eac60ae7b320ae49"
-  },
-  "build_packet": "docs/qwen-campaign/notes/T82-P3-S3-PDF-build-20261003.tar.gz"
+  "historical_receipt": "docs/qwen-campaign/notes/T82-prior-review-pdfs-receipt.json"
 }

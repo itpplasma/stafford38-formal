@@ -83,8 +83,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T73 | Collect Linux result | doing | 1 | final3128039 | 3128526 finalverifierfailedstrictguard afterfullbuildPASS; receipts/drainarchived;4comparatorsunexecuted |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
-| T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+finalP2/S2mapcheckPASS,57/57actualbrowsercards,0errors; deployedassetbuildPASS; humanreviewpending |
-| T82 | Rebuild manuscript PDFs | doing | 2 | notes/T82-locator-pdf-receipt-20261003.json | All3PDFs compile0undefined atpaperbb3190f; publicformal/librarylinkpins+matchingreceiptaccepted; releaseDOIcitationsremainpending |
+| T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+C2/P3/S3refreshPASS519refs/0errorswarnings;57unchangedcards inherit actualbrowserwalk; PDFassetgatePASS; humanreviewpending |
+| T82 | Rebuild manuscript PDFs | doing | 2 | notes/T82-locator-pdf-receipt-20261003.json | All3PDFs compile0undefined atpapera5a703f/snapshot22b44d5/formal12ae3cc; matchingreceipt+assetgatePASS; releaseDOIcitationspending |
 | T83 | Supplementary bundle (local) | todo | 0 | | |
 | T84 | Review handover | owner | 0 | | owner gate |
 | T90 | Release drafts | todo | 0 | | |
@@ -212,3 +212,5 @@ component; final README/status and Palomar package checks await proof acceptance
 - Final verifier3128526 failed strictdependencyinspection after4475-job fullbuildPASS; all earlier source/pin/tool/cache stages passed. Guarddrained normally withno survivors. Sol traced unavailableprivateMathlib helpers to inspecting env.isExporting publicview; smallestrepair selectsprivateenvironmentview, retainingallbody/owner/axiom/forbiddenroutechecks. Markerregexnewlinebug also corrected. Boundedactualguardgate required before nextpublicsource verifier; fouractualcomparators unexecuted.
 
 - Strict guard repair3129931 passed actualproduction (all4roots, zero forbidden/unavailable) and independent behavioral fixtures. Frozenpatch899582 and scoped receipt archived; no mathematical source or pin changed. Main/alternative route stages continue in the same sole slot. Fresh public-source verifier and four comparators remain required.
+
+- Public repair source C2 is12ae3cc49152672a48a96f13994314b65ae38197. PaperP3a5a703f588ef3a2c43e8fc21f89db8bf494af5db is pushed to GitHub/Overleaf; public snapshotS3 is22b44d56af302bbf8dd3542316d8b15a2b0c5315. All three PDFs compiled0undefined; matching map/PDF asset gate passed. Main required/excluded routes passed in3129931; alternative stages and final public verifier/comparators remain required.

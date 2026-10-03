@@ -28,16 +28,17 @@ the separately labeled generic/Laurent solution variant.
 
 The final public checkout at 45037fbc passed the full 4475-job Linux build in
 scluster3128526. Its verifier then failed strict inspection of private Mathlib
-dependencies; the four actual Palomar comparators have not run. Sol owns the
-single scluster slot for a minimal inspection repair and its independent
-fixtures and production route checks. Preserve the failed receipts. After this
-concrete repair passes, freeze and push its public source, then run the full
-verifier and four comparators once with the existing accepted cache.
+dependencies; the four actual Palomar comparators have not run. The strict repaired production guard and independent fixtures passed on
+scluster3129931; both main required/excluded route checks also passed. The
+repair is frozen and pushed at 12ae3cc49152672a48a96f13994314b65ae38197.
+Sol owns the single slot until its alternative route checks and drain finish.
+Then run the complete verifier and four comparators on that public source,
+reusing the accepted cache. Preserve all earlier failed receipts.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
 57-card browser walkthrough. The public review site is deployed. All three
-manuscript PDFs compile with zero undefined references at paper bb3190f8.
-Refresh their source pins after the guard repair and their citations after
+manuscript PDFs compile with zero undefined references at paper a5a703f5, with snapshot 22b44d56 and formal links to 12ae3cc.
+The refreshed map/PDF asset gate passed. Refresh their citations after
 verified archive publication. Human review remains pending. No new release,
 DOI or final email has been claimed or sent.
 
