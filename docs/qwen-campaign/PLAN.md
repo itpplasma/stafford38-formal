@@ -29,32 +29,18 @@ notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1
 T34 Columns actual modules and unchanged literal trust-zero consumer passed
 scluster3125101 and are committed/pushed at WT1fedc6e, with only the three
 permitted axioms. The allocation drained normally; see
-notes/T34-columns-linux-accepted-checks-20261003.md. Earlier memory diagnostics
-and the kernel-checked inferred-helper repair remain in
-notes/T34-memory-block-20261003.md. The first full Closure build found only
-a missing ground-point owner namespace and retained valuation local-ring
-instance. The first scope repair2145331 exposed the retained ambient action
-needed to type that proof. Candidate1b2ec5e reuses the exact accepted
-CoordinatePresentation adapter, scoping that action within the local-ring
-proof type/value. That scope check passed its instance elaboration;
-existing setup.hchart then resolved the selected chart index. The remaining
-Closure bridge transports the retained axis-lift certificate to the
-packaged qPre and unit-series presentation using proved chart equalities.
-That abstract transfer passed stage25. Its sole next error is the missing
-certificate identifying stored etale.φk with the canonical original-chart
-map. The existing producer already builds that exact map. Retain its
-reflexive hφAction equality, transport the column identity through it,
-and recheck the latest T35 interface and Closure. Strengthened T35 source
-3c79d87 passed3126127 module and unchanged trust-zero consumer, with exactly
-the three permitted axioms, and is committed/pushedWT3be4598. A runner-only
-consumer namespace mismatch stopped before Closure; the controller verified
-the actual report and authorized Closure-only3126415. See
-notes/T35-canonical-map-linux-accepted-checks-20261003.md. Historical T35
-receipts remain unchanged. Public theorem statements and literal consumers stay
-unchanged; accepted caches are reused. See notes/T36-actual-closure-checks-20261003.md.
-T36's verbatim chart helper passed separately on
-acluster21805723 using the accepted Positions cache. Its frozen statement is
-unchanged. Full Closure acceptance remains pending.
+notes/T34-columns-linux-accepted-checks-20261003.md. Full T36 Closure4307877 and its unchanged unconditional literal trust-zero
+consumer passed scluster3126415, with exactly the three permitted axioms and
+a drained guard0 allocation, and are committed/pushedWT5607e3e. See
+notes/T36-closure-linux-accepted-checks-20261003.md. The necessary canonical
+original-chart map equality is retained and proved by the existing Etale
+producer; strengthened Etale3c79 passed3126127, committed/pushedWT3be4598.
+Historical and latest Etale receipts are preserved. Earlier memory and
+scope/interface diagnostics remain in their notes. T22 and T30–T36 are now
+complete. Next check the original-prime wrapper and all four actual solution
+assemblies, then integrate the accepted source and run the single final
+Linux verifier plus four Palomar comparisons. Human paper review remains
+pending.
 T35 passed independently on both clusters. The alternative geometry endpoint
 also passed its Linux module at WT71e966a; full solution assembly/comparisons
 remain required. No guard threshold is relaxed. Both isolated cluster

@@ -18,15 +18,12 @@ T34 Columns actual modules and unchanged literal consumer passed3125101
 and are committed/pushedWT1fedc6e, with only three permitted axioms. The
 allocation drained normally; see notes/T34-columns-linux-accepted-checks-20261003.md.
 Earlier conversion diagnostics are preserved in notes/T34-memory-block-20261003.md.
-The first full Closure build failed only missing namespace and canonical
-valuation local-ring scope. The first scope repair2145331 exposed the retained ambient action needed
-to type that local-ring proof. Candidate1b2ec5e copies the exact accepted
-CoordinatePresentation proof adapter, scoping that action only within its
-type and value. That instance scope elaborates; setup.hchart then resolves
-the selected chart index. Closure-only3125712 exposed the sole remaining
-hdata presentation mismatch. Sol proves abstract chart equalities to
-transport the existing retained certificate to qPre and the unit tuple;
-the public statement and unconditional literal consumer remain unchanged. T35 also passed independently on acluster21805719. Both cluster
+Full Closure4307877 and its unchanged unconditional literal trust-zero
+consumer passed3126415, with only three permitted axioms and guard0/drained,
+and are committed/pushedWT5607e3e. The strengthened canonical-map Etale
+interface passed3126127 and is committed/pushedWT3be4598. Both acceptance
+packets and earlier scoped failures remain in notes. Original-prime and
+all four solution assemblies are the next bounded Linux check. T35 also passed independently on acluster21805719. Both cluster
 bootstraps passed exact pins and T32. Alternative geometry endpoint passed
 scluster3114679, committedWT71e966a; full alternative assembly/comparators
 remain required. Actual guard fixtures passed3112916. No guard or proof
@@ -66,7 +63,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
 | T34 | Columns, derivatives, numerator | done | 29 | notes/T34-columns-linux-accepted-checks-20261003.md | Actualmodules+unchangedtrust0consumer PASS3125101,3axioms,drained; committed/pushedWT1fedc6e. Positions9417 accepted earlier |
 | T35 | Étale structure as ring homs | done | 7 | notes/T35-canonical-map-linux-accepted-checks-20261003.md | Strengthened3c79 module+unchangedconsumerPASS3126127,3axioms; controller validated namespace after wrapper mismatch. Drained; committed/pushedWT3be4598 |
-| T36 | Same-witness closure theorem | doing | 9 | notes/T36-actual-closure-checks-20261003.md | Instances/index/abstracthdata transport pass. Sole remaining error3125957 requires storedφ equality to canonicalchartmap; LatestT35fieldaccepted; Closure4307877+unchangedconsumer checks3126415 only |
+| T36 | Same-witness closure theorem | done | 10 | notes/T36-closure-linux-accepted-checks-20261003.md | Full4307877 module+unchangedunconditionaltrust0consumerPASS3126415,3axioms,guard0/drained; committed/pushedWT5607e3e |
 | T40 | Import-cycle check | done | 2 | notes/T40-imports.md | Both current roots exist;272modules/582edges, no forbidden or missing sources. Rerun if imports change; proof acceptance separate |
 | T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |
 | T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |
