@@ -12,7 +12,7 @@ No tag, release, DOI, final site URL, or reviewer response is asserted here.
 
 This release records the verified formal source for Stafford's Conjecture 3.8
 and its fixed-source strengthening. The main solution follows the construction
-in Johanna Moser's manuscript, with the accepted explicit corrections listed
+in Johanna Moser's manuscript, with the marked proposed corrections listed
 in the paper-route review record. The visible author proof remains preserved
 in the review manuscript.
 
