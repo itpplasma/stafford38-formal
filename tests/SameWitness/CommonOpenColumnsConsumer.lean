@@ -1,4 +1,6 @@
-import Stafford38.Geometry.SameWitness.CommonOpenColumns
+module
+
+public import Stafford38.Geometry.SameWitness.CommonOpenColumns
 
 set_option autoImplicit false
 set_option maxHeartbeats 1600000
@@ -12,7 +14,7 @@ open Stafford38.Geometry.GeneralDivisorialVisibleFrame
 universe u
 
 /-- Literal consumer for same-witness common-open derivatives and numerator. -/
-theorem commonOpenColumnsData_consumer
+noncomputable def commonOpenColumnsData_consumer
     {k : Type u} [Field k] [CharZero k] [IsAlgClosed k]
     {m : ℕ} (hm : 0 < m)
     (P : PrimeSpectrum (MvPolynomial (Fin m) k))
