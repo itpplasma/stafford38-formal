@@ -102,15 +102,15 @@ $\ell$, obtained by an invertible linear symplectic change of generators.
 $\omega$-preserving automorphism $g$ as in Section~\ref{sec:monic}.}
 \end{theorem}
 \AIadd{\formalref[{Lean also covers $n=0$, where $A_0(k)=k$}]{%
-\leandecl{Stafford38/FoundationClosure.lean}{54}{Stafford38.universalStatement} proves
-\leandecl{Stafford38/Statement.lean}{20}{Stafford38.UniversalStatement};
-\leandecl{Stafford38/FoundationClosure.lean}{58}{Stafford38.universalFixedSourceStatement} proves
-\leandecl{Stafford38/FixedSourceStatement.lean}{31}{Stafford38.FixedSource.UniversalFixedSourceStatement}
-with \leandecl{Stafford38/FixedSourceStatement.lean}{24}{Stafford38.FixedSource.IsLinearWeylCoordinate}
-and \leandecl{Stafford38/FixedSourceStatement.lean}{19}{Stafford38.FixedSource.bernsteinDegree};
+\leandecl{Stafford38/FoundationClosure.lean}{67}{Stafford38.universalStatement} proves
+\leandecl{Stafford38/Statement.lean}{23}{Stafford38.UniversalStatement};
+\leandecl{Stafford38/FoundationClosure.lean}{71}{Stafford38.universalFixedSourceStatement} proves
+\leandecl{Stafford38/FixedSourceStatement.lean}{35}{Stafford38.FixedSource.UniversalFixedSourceStatement}
+with \leandecl{Stafford38/FixedSourceStatement.lean}{28}{Stafford38.FixedSource.IsLinearWeylCoordinate}
+and \leandecl{Stafford38/FixedSourceStatement.lean}{23}{Stafford38.FixedSource.bernsteinDegree};
 Mathlib-only statements compared by Comparator:
-\leandecl{Stafford38/ChallengeDefinitions.lean}{75}{Stafford38Challenge.UniversalStatement},
-\leandecl{Stafford38/ChallengeDefinitions.lean}{190}{Stafford38FixedSourceChallenge.UniversalFixedSourceStatement}.}}
+\leandecl{Stafford38/ChallengeDefinitions.lean}{78}{Stafford38Challenge.UniversalStatement},
+\leandecl{Stafford38/ChallengeDefinitions.lean}{193}{Stafford38FixedSourceChallenge.UniversalFixedSourceStatement}.}}
 
 \AIadd{The machine-checked proof of this result is registered in
 Palomar~\cite{Stafford38Palomar2026,Stafford38Zenodo123}. Its Global Stafford extension
@@ -223,7 +223,7 @@ Every element of $A_n(k)$ can uniquely be written as $\sum_j p^j c_j$ with $c_j\
 \end{convention}
 \AIadd{\formalref{%
 \leandecl{Stafford38/Weyl/IteratedEquivalence.lean}{636}{Stafford38.WeylIteratedEquivalence.presentedIteratedEquiv},
-\leandecl{Stafford38/Weyl/OuterOreMonic.lean}{44}{Stafford38.WeylOuterOreMonic.presentedOuterPolynomial}}}
+\leandecl{Stafford38/Weyl/OuterOreMonic.lean}{47}{Stafford38.WeylOuterOreMonic.presentedOuterPolynomial}}}
 
 \begin{convention}\label{conv:H}
 \AIremove{We define $H:=\{x_1=0\}=\{(0,x_2,\dots,x_n)\}\subseteq\bbA^n$ as a
@@ -254,7 +254,7 @@ $\gr^BA_n(k)=k[x,\xi]$ with the coordinate ring of $T^*X$. We write
 $\pi\colon T^*X\to X$ for the projection forgetting the covector, and for
 $y\in X$ write $T_y^*X=\pi^{-1}(y)\cong(k^n)^*$ for the \emph{fibre} of
 $T^*X$ over $y$.
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/Polynomial.lean}{19}{Stafford38.Characteristic.SymbolRing}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/Polynomial.lean}{22}{Stafford38.Characteristic.SymbolRing}
 (the ring $k[x,\xi]$; the first summand indexes base coordinates $x_i$, and the second indexes fibre coordinates $\xi_i$)}}
 
 We single out the first coordinate $x_1$ and define the distinguished
@@ -284,9 +284,9 @@ In the proof, we use two filtrations of $A_n(k)$.
   $x^\alpha\partial^\beta$ with $|\beta|\le m$.  %We write $\sigma_m(a)$ for the order-$m$ principal symbol.
 \end{itemize}
 \AIadd{\formalref[{as spans of ordered PBW words of bounded weight}]{%
-\leandecl{Stafford38/Weyl/Filtration.lean}{280}{Stafford38.WeylFiltration.bernsteinPiece},
-\leandecl{Stafford38/Weyl/Filtration.lean}{284}{Stafford38.WeylFiltration.orderPiece},
-\leandecl{Stafford38/FixedSourceStatement.lean}{19}{Stafford38.FixedSource.bernsteinDegree}}}
+\leandecl{Stafford38/Weyl/Filtration.lean}{284}{Stafford38.WeylFiltration.bernsteinPiece},
+\leandecl{Stafford38/Weyl/Filtration.lean}{288}{Stafford38.WeylFiltration.orderPiece},
+\leandecl{Stafford38/FixedSourceStatement.lean}{23}{Stafford38.FixedSource.bernsteinDegree}}}
 For both the order filtration and the Bernstein filtration, the associated graded algebra $\mathrm{gr} A_n(k)$ is simply the polynomial ring $k[x,\xi]=k[x_1,\dots,x_n,\xi_1,\dots,\xi_n]$ in $2n$ variables with $\xi_i$ the symbol of $\partial_i$. In particular, $\mathrm{gr} A_n(k)$ is commutative \cite[\AIadd{Prop.~2.10}]{SchnellNotes}.
 \AIadd{Good filtrations and characteristic varieties are treated systematically in Bj\"ork and Hotta--Takeuchi--Tanisaki\cite{Bjork,HTT}.}
 
@@ -316,9 +316,9 @@ spanned by the order symbols of the elements of $I$. Points are prime ideals;
 for a non-closed field this is the correct reading of ``the set of points''.}
 \end{definition}
 \AIadd{\formalref[{for $M=A_n/I$}]{%
-\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{185}{Stafford38.CharacteristicInitialIdeal.orderInitialIdeal},
-\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{193}{Stafford38.CharacteristicInitialIdeal.orderCharacteristicSupport},
-\leandecl{Stafford38/Characteristic/AssociatedGradedModule.lean}{370}{Stafford38.CharacteristicAssociatedGradedModule.annihilator_orderAssociatedGradedModule}}}
+\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{189}{Stafford38.CharacteristicInitialIdeal.orderInitialIdeal},
+\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{197}{Stafford38.CharacteristicInitialIdeal.orderCharacteristicSupport},
+\leandecl{Stafford38/Characteristic/AssociatedGradedModule.lean}{373}{Stafford38.CharacteristicAssociatedGradedModule.annihilator_orderAssociatedGradedModule}}}
 
 
 \begin{definition}[Symplectic form and Poisson bracket]\label{def:symplectic-poisson}
@@ -342,8 +342,8 @@ of $T^*X$, is
  \right).\]
 \end{definition}
 \AIadd{\formalref[{Lean's bracket is the negative of this one; involutivity is unaffected}]{%
-\leandecl{Stafford38/Characteristic/Polynomial.lean}{28}{Stafford38.Characteristic.poissonBracket},
-\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{26}{Stafford38.CharacteristicSymplecticCompletion.phasePairing}}}
+\leandecl{Stafford38/Characteristic/Polynomial.lean}{31}{Stafford38.Characteristic.poissonBracket},
+\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{31}{Stafford38.CharacteristicSymplecticCompletion.phasePairing}}}
 
 \begin{definition}[involutive]\label{def:involutive}
 A reduced closed subset of $T^*\bbA^n$ is \emph{involutive} if its vanishing ideal is closed under the
@@ -352,8 +352,8 @@ Poisson bracket, $\{I(W),I(W)\}\subseteq I(W)$. \AIadd{An ideal $J$ is
 ideal ($\{J,k[x,\xi]\}\subseteq J$): the ideal $(\xi_1,\dots,\xi_n)$ is involutive
 but not Poisson.}
 \end{definition}
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/PostScalarExtensionPoisson.lean}{30}{Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive};
-negative control \leandecl{Stafford38/Geometry/GeneralCoisotropicSetsTest.lean}{160}{Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/PostScalarExtensionPoisson.lean}{33}{Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive};
+negative control \leandecl{Stafford38/Geometry/GeneralCoisotropicSetsTest.lean}{164}{Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson}}}
 
 
 \AIcomment{ALG-01}{\textbf{Proposed change --- author acceptance pending.} Gabber applies to the radical characteristic ideal:
@@ -379,9 +379,9 @@ in the sense of Definition~\ref{def:involutive}.}
 %\[ \{\rad(J),\rad(J)\}\subseteq\rad(J).\]
 \end{theorem}
 \AIadd{\formalref[{proved in Lean, not cited; exactly this scope, over every field of characteristic zero}]{%
-\leandecl{Stafford38/Characteristic/GabberGlobalAssembly.lean}{221}{Stafford38.Characteristic.GabberGlobalAssembly.weylAssociatedGradedRadicalInvolutivity},
-statement \leandecl{Stafford38/Characteristic/CanonicalGabberInvolutivityInterface.lean}{83}{Stafford38.Characteristic.CanonicalGabberInvolutivityInterface.WeylAssociatedGradedRadicalInvolutivity},
-minimal primes \leandecl{Stafford38/Characteristic/GabberGlobalAssembly.lean}{141}{Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive}}}
+\leandecl{Stafford38/Characteristic/GabberGlobalAssembly.lean}{224}{Stafford38.Characteristic.GabberGlobalAssembly.weylAssociatedGradedRadicalInvolutivity},
+statement \leandecl{Stafford38/Characteristic/CanonicalGabberInvolutivityInterface.lean}{86}{Stafford38.Characteristic.CanonicalGabberInvolutivityInterface.WeylAssociatedGradedRadicalInvolutivity},
+minimal primes \leandecl{Stafford38/Characteristic/GabberGlobalAssembly.lean}{144}{Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive}}}
 \AIcomment{LIT-01}{\textbf{Information --- no edit requested.} Statement check: Gabber~\cite{Gabber1981} proves that
 $\sqrt{\Ann\gr M}$ is closed under the Poisson bracket for every finitely
 generated module $M$ with a good filtration over a filtered ring whose associated
@@ -412,8 +412,8 @@ Now take $f,g\in\mathfrak p$. Then $f/1,g/1\in\mathfrak p_\mathfrak p=I_\mathfra
 Thus there is $t\notin\mathfrak p$ with $t\{f,g\}\in\mathfrak p$. Since $\mathfrak p$ is prime and $t\notin\mathfrak p$, this forces $\{f,g\}\in\mathfrak p$.
 \end{proof}
 \AIadd{\formalref{%
-\leandecl{Stafford38/Characteristic/PaperLocalizedInvolutivity.lean}{184}{Stafford38.Characteristic.PaperLocalizedInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive_viaLocalization}}}
-\AIcomment{COMP-01}{\textbf{Information --- no paper edit requested.} Lean follows the printed localization proof: extend the bracket by the quotient rule, use minimality to identify the localized radical with the maximal ideal, and contract. Its bracket has the opposite sign; involutivity is unchanged. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-01}{Mathematical proof (COMP-01, p.~1).}}
+\leandecl{Stafford38/Characteristic/PaperLocalizedInvolutivity.lean}{187}{Stafford38.Characteristic.PaperLocalizedInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive_viaLocalization}}}
+
 
 \section{Mapping to a monic normal form}\label{sec:monic}
 Given a fixed nonzero $d \in A_n(k)$ of Bernstein degree $N$, our first goal is to find a map to replace $d$ by a normal form $\tilde{d}$ that is monic in $p$, i.e. of the form $\tilde d=p^N+\sum_{j<N}p^ja_j$ with coefficients $a_j$ in $C$. \\
@@ -460,9 +460,9 @@ $n=1$, $d=x$, $v=x+\partial$ (so $s(v)=1$), $g=\begin{psmallmatrix}1&-1\\0&1\end
 which preserves $\omega$ and maps $v$ to $e_p=\partial$; yet $\Phi_g(x)=x$ has no
 $p$-term. The red replacement and the corrected proof below use
 $s\circ g^{\mathsf T}$, as the formalization does.}
-\AIadd{\formalref{\leandecl{Stafford38/Weyl/Symplectic.lean}{43}{Stafford38.WeylSymplectic.standardSymplecticAlgHom},
-\leandecl{Stafford38/Weyl/Symplectic.lean}{88}{Stafford38.WeylSymplectic.standardSymplecticAlgEquivOfInverse}
-(with explicit inverse), \leandecl{Stafford38/Weyl/SymbolCompatibility.lean}{411}{Stafford38.WeylSymbolCompatibility.standardSymplecticAlgHom_principal_compatibility}}}
+\AIadd{\formalref{\leandecl{Stafford38/Weyl/Symplectic.lean}{46}{Stafford38.WeylSymplectic.standardSymplecticAlgHom},
+\leandecl{Stafford38/Weyl/Symplectic.lean}{91}{Stafford38.WeylSymplectic.standardSymplecticAlgEquivOfInverse}
+(with explicit inverse), \leandecl{Stafford38/Weyl/SymbolCompatibility.lean}{416}{Stafford38.WeylSymbolCompatibility.standardSymplecticAlgHom_principal_compatibility}}}
 
 \begin{lemma}\label{lem:sympcompl}
 Let $(\mathbb V,\omega)$ be a symplectic $k$-space of dimension $2n$ and $0\neq v\in \mathbb V$.
@@ -500,10 +500,10 @@ on basis vectors, hence by bilinearity preserves $\omega$ on all of
 $\mathbb V$; and $g(v)=e$.
 \end{proof}
 \AIadd{\formalref{%
-\leandecl{Stafford38/Characteristic/PaperSymplecticBasis.lean}{131}{Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis},
-\leandecl{Stafford38/Characteristic/PaperSymplecticBasis.lean}{280}{Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis_with_pair},
-\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{233}{Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_mulVec_eq}}}
-\AIcomment{COMP-02}{\textbf{Information --- no paper edit requested.} Lean checks the printed induction in an arbitrary symplectic space, including completion with the prescribed first vector. The official normalization uses the resulting basis-to-basis map and its matrix. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-02}{Mathematical proof (COMP-02, p.~1).}}
+\leandecl{Stafford38/Characteristic/PaperSymplecticBasis.lean}{134}{Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis},
+\leandecl{Stafford38/Characteristic/PaperSymplecticBasis.lean}{283}{Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis_with_pair},
+\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{238}{Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_mulVec_eq}}}
+
 
 
 
@@ -536,12 +536,12 @@ $\deg_B$\AIadd{; no cancellation between different $p$-degrees occurs, because
 the normal form $\bigoplus_jp^jC$ is unique}.
 \end{proof}
 \AIadd{\formalref[{monicity is stated as: $\tilde d\in B_N$ and the PBW coefficient of $\partial_1^N$ is $1$}]{%
-\leandecl{Stafford38/Weyl/MonicNormalization.lean}{150}{Stafford38.WeylMonicNormalization.exists_normalized_symplectic_image},
-\leandecl{Stafford38/Weyl/MonicNormalization.lean}{173}{Stafford38.WeylMonicNormalization.scalar_or_normalized_symplectic_image},
-\leandecl{Stafford38/Weyl/PBWMonicBridge.lean}{86}{Stafford38.WeylPBWMonicBridge.IsPBWMonicAt},
-\leandecl{Stafford38/Weyl/PaperRightMonic.lean}{652}{Stafford38.WeylPaperRightMonic.presentedOuter_right_monic_decomposition},
-\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{341}{Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_chart_matrices}}}
-\AIcomment{COMP-03}{\textbf{Information --- proof comparison; no edit requested.} The formal normalization uses an explicit symplectic matrix and its inverse. Its symbol substitution is $s(MX)$; with the convention used here this is $s\circ g^{\mathsf T}$. Monicity means that the $p^N$ PBW coefficient is $1$ and the Bernstein degree is at most $N$, which gives the coefficient bounds above. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-03}{Mathematical proof (COMP-03, p.~2).}}
+\leandecl{Stafford38/Weyl/MonicNormalization.lean}{158}{Stafford38.WeylMonicNormalization.exists_normalized_symplectic_image},
+\leandecl{Stafford38/Weyl/MonicNormalization.lean}{181}{Stafford38.WeylMonicNormalization.scalar_or_normalized_symplectic_image},
+\leandecl{Stafford38/Weyl/PBWMonicBridge.lean}{98}{Stafford38.WeylPBWMonicBridge.IsPBWMonicAt},
+\leandecl{Stafford38/Weyl/PaperRightMonic.lean}{669}{Stafford38.WeylPaperRightMonic.presentedOuter_right_monic_decomposition},
+\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{346}{Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_chart_matrices}}}
+
 \AIremove{All coefficients involved belong to a finitely generated subfield $k_0\subset k$, namely the subfield
 generated by the finitely many coefficients of $d$ in the new generators. If we find $R, S, F \in A_n(k_0)$ sufficing Theorem \ref{thm:main}, the same choices extend to $k$ as well, so proving the identity over $k_0$ is sufficient. We therefore replace $k$ by $k_0$, write $A_n:=A_n(k_0)$, and fix an embedding
 $k_0\hookrightarrow\mathbb C$.}
@@ -565,8 +565,8 @@ Consequently an identity $1=\tilde dR+x_1^N\tilde dS$ transports back to
 \]
 \AIadd{using that $c^{-1}$ is a central scalar.}
 \end{remark}
-\AIadd{\formalref{\leandecl{Stafford38/UniversalAssembly.lean}{66}{Stafford38.UniversalAssembly.universalStatement_of_canonicalSupportVanishing},
-\leandecl{Stafford38/FixedSourceAssembly.lean}{21}{Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing}}}
+\AIadd{\formalref{\leandecl{Stafford38/UniversalAssembly.lean}{69}{Stafford38.UniversalAssembly.universalStatement_of_canonicalSupportVanishing},
+\leandecl{Stafford38/FixedSourceAssembly.lean}{24}{Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing}}}
 
 We now use the order filtration on $A_n(k_0)$, where coordinates have
 degree zero and derivatives have degree one, to characterize $P =
@@ -580,7 +580,7 @@ k_0[\xi_1,\ldots,\xi_n]$, written as a polynomial in $\xi_1$ with
 coefficients $c_i \in k_0[\xi_2,\ldots,\xi_n]$, is \emph{monic of degree $N$ in
 $\xi_1$} if $c_N=1$.
 \end{definition}
-\AIadd{\formalref{\texttt{Polynomial.Monic} after \leandecl{Stafford38/Characteristic/NormalSymbolPolynomial.lean}{24}{Stafford38.Characteristic.NormalSymbolPolynomial.normalSymbolAlgEquiv}}}
+\AIadd{\formalref{\texttt{Polynomial.Monic} after \leandecl{Stafford38/Characteristic/NormalSymbolPolynomial.lean}{28}{Stafford38.Characteristic.NormalSymbolPolynomial.normalSymbolAlgEquiv}}}
 
 \begin{lemma}\label{lem:order-symbol}
 Let $\tilde d=p^N+\sum_{j<N}p^{\,j}a_j$ with $a_j\in C$, $\deg_Ba_j\le N-j$,
@@ -612,10 +612,10 @@ $c_N$; hence $c_N$ receives no contribution besides the coefficient of
 $p^N$ itself, giving $c_N=1$ identically, i.e.\ $P$ is monic of degree $N$
 in $\xi_1$. Evaluating at $(1,0,\ldots,0)$ then gives $P(1,0,\ldots,0)=1$.
 \end{proof}
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{313}{Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_isFibreOnly},
-\leandecl{Stafford38/Geometry/ConormalAxisContradiction.lean}{57}{Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_isHomogeneous},
-\leandecl{Stafford38/Characteristic/NormalSymbolPolynomial.lean}{92}{Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic},
-\leandecl{Stafford38/Geometry/ConormalAxisContradiction.lean}{126}{Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_eval_pureMomentumAxis}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{320}{Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_isFibreOnly},
+\leandecl{Stafford38/Geometry/ConormalAxisContradiction.lean}{61}{Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_isHomogeneous},
+\leandecl{Stafford38/Characteristic/NormalSymbolPolynomial.lean}{104}{Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic},
+\leandecl{Stafford38/Geometry/ConormalAxisContradiction.lean}{131}{Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_eval_pureMomentumAxis}}}
 
 
 \section{$x_1$ as a surjective map}\label{sec:euler}
@@ -623,7 +623,7 @@ We define $E=x_1p$ and
 \begin{equation} I=\tilde dA_n+x_1^N\tilde dA_n,\qquad Q=A_n/I.
  \label{eq:I-Q}\end{equation}
 The goal of this subsection will be to show that $Q = Qx_1$ (Proposition \ref{prop:x-surjective}).
-\AIadd{\formalref{\leandecl{Stafford38/Weyl/EulerResidue.lean}{23}{Stafford38.WeylEulerResidue.canonicalRightIdeal}
+\AIadd{\formalref{\leandecl{Stafford38/Weyl/EulerResidue.lean}{26}{Stafford38.WeylEulerResidue.canonicalRightIdeal}
 $=\operatorname{span}\{d,x^Nd\}$ as a right ideal}}
 
 The adjoint action of $E$ defines a grading of $A_n$: %adjoint action = commutator
@@ -637,8 +637,8 @@ By the commutation relations of the Weyl algebra, it holds that
 \end{align}
 Additionally, $x_1$ commutes with the transverse algebra, so\AIadd{, together with $x_1E=(E-1)x_1$,} $x_1$ is normal in $A^{\geq 0}.$
 \AIadd{\formalref[{Lean uses the subring generated by the transverse algebra, $x_1$ and $x_1p$, and one-sided normality $x_1r=r'x_1$, which is all that is used}]{%
-\leandecl{Stafford38/Weyl/EulerSubring.lean}{22}{Stafford38.WeylEulerSubring.eulerSubring},
-\leandecl{Stafford38/Weyl/EulerSubring.lean}{68}{Stafford38.WeylEulerSubring.coordinate_normal_eulerSubring}}}
+\leandecl{Stafford38/Weyl/EulerSubring.lean}{25}{Stafford38.WeylEulerSubring.eulerSubring},
+\leandecl{Stafford38/Weyl/EulerSubring.lean}{71}{Stafford38.WeylEulerSubring.coordinate_normal_eulerSubring}}}
 \AIcomment{ALG-02}{\textbf{Proposed change --- author acceptance pending.} The displayed products below have reversed shifts.
 For $E=x_1p$ and $[p,x_1]=1$, the correct identities are
 $x_1^mp^m=\prod_{i=0}^{m-1}(E-i)$ and
@@ -676,9 +676,9 @@ using $x_1E=(E-1)x_1$ repeatedly and the definition of $E$. The second identity 
 identically from $Ep=p(E-1)$\AIadd{:
 \[p^{m+1}x_1^{m+1}=p\Bigl(\prod_{i=1}^m(E+i)\Bigr)x_1=\Bigl(\prod_{i=1}^m(E+1+i)\Bigr)px_1=\Bigl(\prod_{i=2}^{m+1}(E+i)\Bigr)(E+1).\]}
 \end{proof}
-\AIadd{\formalref{\leandecl{Stafford38/Weyl/EulerProductIdentities.lean}{83}{Stafford38.Weyl.EulerProductIdentities.eval_fallingEulerProduct} and
-\leandecl{Stafford38/Weyl/EulerProductIdentities.lean}{92}{Stafford38.Weyl.EulerProductIdentities.eval_risingEulerProduct} (the corrected products),
-\leandecl{proofs/weyl_pure_power.lean}{142}{Stafford.exists_eulerPolynomial_x_pow_mul_d_pow}}}
+\AIadd{\formalref{\leandecl{Stafford38/Weyl/EulerProductIdentities.lean}{70}{Stafford38.Weyl.EulerProductIdentities.eval_fallingEulerProduct} and
+\leandecl{Stafford38/Weyl/EulerProductIdentities.lean}{79}{Stafford38.Weyl.EulerProductIdentities.eval_risingEulerProduct} (the corrected products),
+\leandecl{proofs/weyl_pure_power.lean}{148}{Stafford.exists_eulerPolynomial_x_pow_mul_d_pow}}}
 
 \begin{lemma}\label{lem:euler-residue}
 There exists an element $U\in A_{\geq0}$ such that
@@ -703,10 +703,10 @@ where
 We can write each $a_j$ in $\Sigma$ in powers of $x_1$, with coefficients in the transverse Weyl algebra. A term $bx_1^rp^j$ coming from \AIreplace{$a_jp^j$}{$p^ja_j$ (Euler degree does not depend on the order of the factors)} has $r\geq0$ and $j<N$, \AIreplace{so and}{and} multiplication by $x_1^N$ gives that term Euler degree at least $N-j>0$. $u$ and $v$ only depend on $E$, so they have Euler degree 0. Therefore every term of $w$ has positive Euler degree, and thus $w\in A_{\geq0}x_1$ \AIadd{(by the remark after~\eqref{eq:nonnegative-pbw})} - or equivalently, there exists a $U\in A^{\geq0}$, such that $w=Ux_1$.
 \end{proof}
 \AIadd{\formalref[{the ring identity is Lean's; the factorization uses left coefficients $c\,x^ap^j$}]{%
-\leandecl{Stafford38/Weyl/EulerResidue.lean}{38}{Stafford38.WeylEulerResidue.positiveEulerResidue_identity},
-\leandecl{Stafford38/Weyl/EulerRemainder.lean}{254}{Stafford38.WeylEulerRemainder.positiveEulerResidue_eq_eulerSubring_mul_coordinate},
-\leandecl{Stafford38/Weyl/EulerRemainder.lean}{402}{Stafford38.WeylEulerRemainder.presentedPositiveEulerResidue}}}
-\AIcomment{COMP-04}{\textbf{Information --- no paper edit requested.} Lean checks the Euler weights of PBW monomials and identifies the nonnegative Euler part with the transverse--Euler subring used in the residue argument. The corrected product identities and one-sided normality give the same surjectivity conclusion. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-04}{Mathematical proof (COMP-04, p.~2).}}
+\leandecl{Stafford38/Weyl/EulerResidue.lean}{41}{Stafford38.WeylEulerResidue.positiveEulerResidue_identity},
+\leandecl{Stafford38/Weyl/EulerRemainder.lean}{257}{Stafford38.WeylEulerRemainder.positiveEulerResidue_eq_eulerSubring_mul_coordinate},
+\leandecl{Stafford38/Weyl/EulerRemainder.lean}{405}{Stafford38.WeylEulerRemainder.presentedPositiveEulerResidue}}}
+
 
 \begin{proposition}\label{prop:x-surjective}
 Right multiplication by $x_1$ on $Q$ is surjective.
@@ -729,10 +729,10 @@ zero: $x_1$ has degree $1$. The needed stability still holds because
 both the transverse algebra and $x_1$ belong to $A_{\geq0}$,
 so $C\subseteq A_{\geq0}$. Replace the degree-zero explanation above.}
 \end{proof}
-\AIadd{\formalref{\leandecl{Stafford38/Weyl/QuotientTransport.lean}{237}{Stafford38.WeylQuotientTransport.presentedCanonicalRightQuotient_rightMul_coordinate_surjective},
-\leandecl{Stafford38/Quotient/EulerSurjectivity.lean}{80}{Stafford38.EulerSurjectivity.rightMul_surjective_of_euler_normal};
-generation by $C$ and $p$: \leandecl{Stafford38/Weyl/EulerRemainder.lean}{307}{Stafford38.WeylEulerRemainder.closure_pairOldSubring_union_coordinate_momentum_eq_top}}}
-\AIcomment{COMP-05}{\textbf{Information --- proof comparison; no edit requested.} The formal proof works element by element with the transverse--Euler subring. The residue identity gives $1+Ux_1\in I$ for a suitable $U$ in that subring; one-sided normality and the monic relation then give surjectivity of right multiplication by $x_1$. This avoids treating a quotient by a vector subspace as an algebra quotient. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-05}{Mathematical proof (COMP-05, p.~3).}}
+\AIadd{\formalref{\leandecl{Stafford38/Weyl/QuotientTransport.lean}{240}{Stafford38.WeylQuotientTransport.presentedCanonicalRightQuotient_rightMul_coordinate_surjective},
+\leandecl{Stafford38/Quotient/EulerSurjectivity.lean}{86}{Stafford38.EulerSurjectivity.rightMul_surjective_of_euler_normal};
+generation by $C$ and $p$: \leandecl{Stafford38/Weyl/EulerRemainder.lean}{310}{Stafford38.WeylEulerRemainder.closure_pairOldSubring_union_coordinate_momentum_eq_top}}}
+
 
 \section{Vanishing cokernel}\label{sec:cokernel}
 \AIadd{In this section and the next, $C$ denotes the commutative symbol ring
@@ -759,7 +759,7 @@ two lengths over a localization of $T$.
     where each successive quotient $M_i/M_{i-1}$ is simple (i.e. has no proper nontrivial submodules). The length is well-defined, as it does not depend on the choice of the composition series. Lengths are additive for short exact sequences.
 \end{definition}
 \AIadd{\formalref{\texttt{Module.length} (Mathlib); finite length of the localized modules:
-\leanlib{AlgebraicAnalysis/Module/MinimalSupportKernelCokernelLengths.lean}{45}{AlgebraicAnalysis.localized_kernel_and_cokernel_isFiniteLength}}}
+\leanlib{AlgebraicAnalysis/Module/MinimalSupportKernelCokernelLengths.lean}{48}{AlgebraicAnalysis.localized_kernel_and_cokernel_isFiniteLength}}}
 
 \begin{lemma}\label{lem:tangential-finiteness}
 The modules $U$ and $V$ are finite over $T$, and
@@ -784,8 +784,8 @@ After localization at a minimal support prime $\mathfrak q$ of $U$, both finite
 $T$-modules have support contained in the closed point. They therefore have
 finite length.
 \end{proof}
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalOldTangentialFiniteness.lean}{70}{Stafford38.Characteristic.CanonicalOldTangentialFiniteness.canonical_finite_old_coordinate_kernel_cokernel},
-\leandecl{Stafford38/Characteristic/CanonicalTangentialSymbolFiniteness.lean}{113}{Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_tangential_coordinate}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalOldTangentialFiniteness.lean}{73}{Stafford38.Characteristic.CanonicalOldTangentialFiniteness.canonical_finite_old_coordinate_kernel_cokernel},
+\leandecl{Stafford38/Characteristic/CanonicalTangentialSymbolFiniteness.lean}{116}{Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_tangential_coordinate}}}
 
 \AIcomment{ALG-04}{\textbf{Max --- correspondence check; no rewrite of this lemma requested.} Check the monic quotient argument giving finite $T$-modules $U,V$, together with the subsequent $T$-action and $T$-linear page maps. Localization applies to the associated graded pages. See COMP-06.}
 \begin{lemma}\label{lem:page-inequality}
@@ -900,8 +900,8 @@ As $\ell(A_R)\ge0$, we conclude
 The red paragraph uses one preimage before localization and exhaustiveness.
 It replaces the unsupported iterated-preimage claim; the page construction,
 kernel chain and length telescoping remain as in the original proof.}
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalPageEulerInequality.lean}{22}{Stafford38.Characteristic.CanonicalPageEulerInequality.canonicalPage_length_target_le_source};
-exhaustion \leanlib{AlgebraicAnalysis/Module/UniformBoundaryVanishing.lean}{103}{AlgebraicAnalysis.exists_uniform_subsingleton_localized}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalPageEulerInequality.lean}{25}{Stafford38.Characteristic.CanonicalPageEulerInequality.canonicalPage_length_target_le_source};
+exhaustion \leanlib{AlgebraicAnalysis/Module/UniformBoundaryVanishing.lean}{106}{AlgebraicAnalysis.exists_uniform_subsingleton_localized}}}
 \AIcomment{COMP-06}{\textbf{Proposed local correction --- author acceptance pending.}
 Localize the $T$-linear total pages. The red corrections supply this step and
 exhaustion; no replacement of the spectral-sequence argument is proposed.
@@ -987,9 +987,9 @@ $\bigl((M'/K)/{x_1}(M'/K)\bigr)_{\mathfrak P}\ne0$, so $(M'/K)/{x_1}(M'/K)\ne0$.
 Therefore $\ell(U_{\mathfrak q})=\ell(V_{\mathfrak q})+\ell\bigl((M'/K)/{x_1}(M'/K)\bigr)
 >\ell(V_{\mathfrak q})$.
 \end{proof}
-\AIadd{\formalref{\leanlib{AlgebraicAnalysis/Module/BaseLocalizedKoszulPositivity.lean}{22}{AlgebraicAnalysis.BaseLocalizedKoszulPositivity.localized_length_cokernel_gt_kernel};
-$x_1$ in no minimal prime: \leandecl{Stafford38/Characteristic/NoncharacteristicMinimalPrime.lean}{107}{Stafford38.Characteristic.NoncharacteristicMinimalPrime.canonical_minimalPrime_mem_of_normalCoordinate_false}}}
-\AIcomment{COMP-07}{\textbf{Information --- proof comparison; no edit requested.} The formal proof uses Gabber directly for minimal primes. If such a prime contained $x_1$, the $N$-fold bracket of the monic symbol $P$ with $x_1$ would put the unit $\pm N!$ in that prime. The subsequent stable-kernel length computation and Nakayama argument agree with the printed proof. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-07}{Mathematical proof (COMP-07, p.~5).}}
+\AIadd{\formalref{\leanlib{AlgebraicAnalysis/Module/BaseLocalizedKoszulPositivity.lean}{25}{AlgebraicAnalysis.BaseLocalizedKoszulPositivity.localized_length_cokernel_gt_kernel};
+$x_1$ in no minimal prime: \leandecl{Stafford38/Characteristic/NoncharacteristicMinimalPrime.lean}{118}{Stafford38.Characteristic.NoncharacteristicMinimalPrime.canonical_minimalPrime_mem_of_normalCoordinate_false}}}
+
 
 \begin{lemma}\label{lem:Uzero}
 The cokernel $U=M/x_1M$ of right multiplication by $x_1$ on
@@ -1002,8 +1002,8 @@ and Lemmas~\ref{lem:page-inequality} and
 \ref{lem:strict-support-inequality} contradict one another.
 Thus $U = M/{x_1}M=0$.
 \end{proof}
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{83}{Stafford38.Characteristic.CanonicalKoszulContradiction.coordinate_cokernel_subsingleton},
-\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{47}{Stafford38.Characteristic.CanonicalKoszulContradiction.no_minimal_coordinate_cokernel_support}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{86}{Stafford38.Characteristic.CanonicalKoszulContradiction.coordinate_cokernel_subsingleton},
+\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{50}{Stafford38.Characteristic.CanonicalKoszulContradiction.no_minimal_coordinate_cokernel_support}}}
 
 
 \section{Characteristics of the characteristic variety}\label{sec:char}
@@ -1023,8 +1023,8 @@ $Q_N/Q_{N-1}$ is $\bar q\cdot P$. Since $\gr Q$ is generated over $k_0[x,\xi]$
 by $\bar q$, we get $P\in\Ann_{k[x,\xi]}\gr Q$, and
 $\Char(Q)=V(\Ann\gr Q)\subseteq V(P)$ because $V$ reverses inclusions.
 \end{proof}
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{277}{Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_mem_initialIdeal},
-\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{287}{Stafford38.CharacteristicInitialIdeal.canonical_orderCharacteristicSupport_subset_principal_zeroLocus}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{281}{Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_mem_initialIdeal},
+\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{291}{Stafford38.CharacteristicInitialIdeal.canonical_orderCharacteristicSupport_subset_principal_zeroLocus}}}
 \begin{proposition}\label{prop:char-avoids}
 The canonical quotient satisfies
 \begin{equation}
@@ -1043,9 +1043,9 @@ support $\operatorname{Supp}_C(M)\cap V({x_1})$. Lastly, $\operatorname{Supp}_C(
 $\Supp_C(M/x_1M)=\Supp_C M\cap V(x_1)$ for the finite $C$-module $M$.}
 \end{proof}
 \AIadd{\formalref[{stated for the support transported along $\xi\mapsto-\xi$, which fixes $x_1$; transported back verbatim}]{%
-\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{120}{Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance},
-\leandecl{Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean}{148}{Stafford38.SpecializedNoncharacteristicEquality.transposedSupport_disjoint_axis_iff}}}
-\AIcomment{COMP-08}{\textbf{Information --- proof comparison; no edit requested.} The formal conclusion is scheme-theoretic: $\Supp(\gr Q)\cap V(x_1)=\varnothing$, equivalently $\Ann(\gr Q)+(x_1)=(1)$. It therefore persists under field extension. The formal statement uses the support transported by $\xi\mapsto-\xi$; this fixes $x_1$, so the avoidance statements are equivalent. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-08}{Mathematical proof (COMP-08, p.~5).}}
+\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{123}{Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance},
+\leandecl{Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean}{151}{Stafford38.SpecializedNoncharacteristicEquality.transposedSupport_disjoint_axis_iff}}}
+
 
 
 
@@ -1061,8 +1061,8 @@ $X\hookrightarrow\mathbb P^n$ as the affine chart $\{Z_0\ne0\}$ via
 $[1:x_1:\cdots:x_n]$, so that $x_i=Z_i/Z_0$ and the hyperplane at infinity
 is $\{Z_0=0\}$\AIadd{.} Let $Y\subset X$ be an irreducible closed subvariety of $X$. We define $\operatorname{Dir}(Y)$ to be the Zariski closure in  $\mathbb P((\mathbb C^n)^*)$  of the nonzero conormal vectors at all smooth affine points of $Y$ projected onto $\mathbb P((\mathbb C^n)^*)$.
 \AIadd{\formalref[{$Y$ given by a prime ideal; conormal space = annihilator of the Zariski tangent space; closure by homogeneous polynomials}]{%
-\leandecl{Stafford38/Geometry/ProjectiveConormalDirections.lean}{37}{Stafford38.Geometry.ProjectiveConormalDirections.smoothConormalDirectionSet},
-\leandecl{Stafford38/Geometry/ProjectiveConormalDirections.lean}{29}{Stafford38.Geometry.ProjectiveConormalDirections.projectiveHomogeneousClosure}}}
+\leandecl{Stafford38/Geometry/ProjectiveConormalDirections.lean}{40}{Stafford38.Geometry.ProjectiveConormalDirections.smoothConormalDirectionSet},
+\leandecl{Stafford38/Geometry/ProjectiveConormalDirections.lean}{32}{Stafford38.Geometry.ProjectiveConormalDirections.projectiveHomogeneousClosure}}}
 
 
 \begin{lemma}\label{lem:tangent-limit}
@@ -1088,8 +1088,8 @@ at the $\mathbb C((t))$-point $\gamma(\eta)$ lies in the closure defined from
 $\mathbb C$-points. The red text extends polynomial vanishing from the
 ground-field smooth conormal locus to the equation-conormal locus over $\mathbb C((t))$.}
 \AIadd{\formalref[{any algebraically closed field and any axis; auxiliary, not used by the formal proof of Theorem~\ref{thm:asymptotic-conormal}}]{%
-\leandecl{Stafford38/Geometry/GeneralTangentLimitCriterion.lean}{497}{Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand};
-scalar extension \leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.lean}{134}{Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing}}}
+\leandecl{Stafford38/Geometry/GeneralTangentLimitCriterion.lean}{629}{Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand};
+scalar extension \leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.lean}{137}{Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing}}}
 \begin{AIaddition}{The generic conormal direction and the passage to $t=0$}
 Let $\eta$ be the generic point of the arc, and write
 $\gamma(\eta)=[v_0:\cdots:v_n]$ with $v_i\in\mathbb C((t))$ and $v_0\neq0$, since the generic point is affine. Put
@@ -1124,19 +1124,19 @@ $[dx_1]\in\Dir(Y)$. No properness is needed, because the limit point
 $\ell'(0)=e_1$ is given explicitly.
 \end{AIaddition}
 \AIadd{\formalref[{generic point only Zariski-tangent; no smoothness needed for this step}]{%
-\leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.lean}{134}{Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing};
-\leandecl{Stafford38/Geometry/SmoothConormalFibreVanishing.lean}{21}{Stafford38.Geometry.SmoothConormalFibreVanishing.fibreLift_mem_vanishingIdeal_equationConormal};
-\leandecl{Stafford38/Geometry/LaurentConormalDirection.lean}{68}{Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic};
-\leandecl{Stafford38/Geometry/GeneralTangentLimitCriterion.lean}{368}{Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction}}}
-\AIcomment{COMP-10}{\textbf{Information --- proof comparison; no edit requested.} The formal tangent-limit criterion is auxiliary. It assumes a generically smooth arc and a direct-summand lattice whose generic span is the lifted tangent space, with the specified axis component vanishing on its residue. Its proof does not use the smoothness hypothesis or the stated rank, but these remain assumptions of the formal statement. The formal proof of Theorem~\ref{thm:asymptotic-conormal} follows a separate Laurent-series route, so it does not certify every step of the printed tangent-limit argument. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-10}{Mathematical proof (COMP-10, p.~5).} ROUTE-01 states the correspondence status.}
+\leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.lean}{137}{Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing};
+\leandecl{Stafford38/Geometry/SmoothConormalFibreVanishing.lean}{24}{Stafford38.Geometry.SmoothConormalFibreVanishing.fibreLift_mem_vanishingIdeal_equationConormal};
+\leandecl{Stafford38/Geometry/LaurentConormalDirection.lean}{71}{Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic};
+\leandecl{Stafford38/Geometry/GeneralTangentLimitCriterion.lean}{501}{Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction}}}
+
 
 \begin{theorem}\label{thm:asymptotic-conormal}
 If $Y$ is nonempty and $Y\cap H=\varnothing$, then
 \[[dx_1]\in\operatorname{Dir}(Y).\]
 \end{theorem}
 \AIadd{\formalref[{over every algebraically closed field of characteristic zero; the formal proof follows a different route, written out after the printed proof}]{%
-\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{63}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions},
-affine-cone form \leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{28}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure}}}
+\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{42}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions},
+affine-cone form \leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{32}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure}}}
 
 \AIcomment{ROUTE-01}{\textbf{Proof correspondence status.} The printed geometric proof remains visible below. The checked theorem reaches the same endpoint by the generic-divisor matrix route summarized in COMP-11. Full correspondence between the two proofs remains open.}
 \begin{proof}
@@ -1181,6 +1181,13 @@ outside $V(w_0w_1)$, i.e. $w_0\neq 0$ and $w_1\neq 0$ at the chosen point\AIadd{
 %tag 0C0S Lemma 10.160.10 says that completed local ring is isomorphic to a power series ring over its residue field
 We can define a completed local ring at $p$, which is isomorphic to a power series ring \cite[Tag 0C0S, Lemma 10.160.10]{Stacks}. We can choose a formal coordinate system centered around $p$ with parameters
 $(t,z_2,\ldots,z_m)$. We choose $t=s$: since our point lies in the smooth locus of $D = \{s = 0\}$, $ds\neq 0$ there, so $s$ extends to a regular system of parameters.
+\AIadd{More specifically, choose distinct rows $i_1,\ldots,i_{m-1}$,
+away from $0,1,j$, such that the restrictions of $dq_{i_k}$ to $T_pD$
+are independent; these exist by the rank condition. Take
+$z_\alpha=q_{i_{\alpha-1}}-q_{i_{\alpha-1}}(p)$ for $\alpha=2,\ldots,m$.
+Together with $t=s$ these form local parameters, because their restrictions
+form a cotangent basis on $D$ and $ds$ is transverse to $D$.}
+
 
 The set $\widetilde Y\setminus\nu^{-1}(Y_{\mathrm{sm}})$ (with $Y_{\mathrm{sm}}$ being the smooth locus of $Y$) is a proper closed subset of $\widetilde Y$ containing $p$. Let $I\subset
 \widehat{\mathcal O}_{\widetilde Y,p}\cong\mathbb C[[t,z_2,\ldots,z_m]]$ be
@@ -1222,15 +1229,27 @@ Since the reductions of $V_2,\ldots,V_m$ are independent and vanish in
 rows $0,1,j$, they have rank $m-1$, so there exist $m-1$ further
 coordinate rows $i_1,\ldots,i_{m-1}$ (necessarily distinct from $0,1,j$) in
 which the corresponding $(m-1)\times(m-1)$ submatrix of $(V_2,\ldots,V_m)$
-is invertible. Because this minor is invertible at $t=0$, it remains
+is invertible. \AIreplace{Because this minor is invertible at $t=0$, it remains
 invertible over $\mathbb C[[t]]$, so there are unique coefficients
-$\lambda_2(t),\ldots,\lambda_m(t)\in\mathbb C[[t]]$ solving
-\[\sum_{\alpha=2}^m \lambda_\alpha(t)\,(V_\alpha)_{i_k} = T_{i_k},
- \qquad k=1,\ldots,m-1.\]
+$\lambda_2(t),\ldots,\lambda_m(t)\in\mathbb C[[t]]$ solving}{With our choice of tangential coordinates, the tilted rows satisfy
+$q_{i_k}=q_{i_k}(p)+z_{k+1}+c_{k+1}t$. Thus the transverse minor is the
+identity and the correction coefficients are the constants $c_\alpha$:}
+\[\AIremove{\sum_{\alpha=2}^m \lambda_\alpha(t)\,(V_\alpha)_{i_k} = T_{i_k},
+ \qquad k=1,\ldots,m-1.}\]
+\AIadd{\[(V_\alpha)_{i_k}=\delta_{\alpha,k+1},\qquad
+ T_{i_k}=c_{k+1},\qquad k=1,\ldots,m-1.\]}
 Setting
-\[ T' := T - \sum_{\alpha=2}^m \lambda_\alpha(t)\,V_\alpha\]
+\[ \AIremove{T' := T - \sum_{\alpha=2}^m \lambda_\alpha(t)\,V_\alpha}\]
+\AIadd{\[T' := T - \sum_{\alpha=2}^m c_\alpha\,V_\alpha.\]}
 therefore gives a column vector whose entries in rows
-$i_1,\ldots,i_{m-1}$ vanish identically by construction. The entries of $V_\alpha$ in rows $0$ and $1$ have valuation at least $a$ and $b$ respectively, whereas
+$i_1,\ldots,i_{m-1}$ vanish identically by construction.
+\AIcomment{GEO-06}{\textbf{Proposed local simplification --- author acceptance pending.}
+Choose the selected projective rows as tangential coordinates before tilting.
+Then the displayed minor is the identity and $\lambda_\alpha(t)=c_\alpha$;
+no power-series matrix inversion is needed. The original wording remains
+visible above. The order estimates and tangent-lattice argument continue
+unchanged; ROUTE-01 records the current formal correspondence status.}
+ The entries of $V_\alpha$ in rows $0$ and $1$ have valuation at least $a$ and $b$ respectively, whereas
 \[ \partial_tq_0=a t^{a-1}u_0+O(t^a),\qquad
  \partial_tq_1=b t^{b-1}u_1+O(t^b).\]
 Because we work over a field of characteristic zero, the displayed
@@ -1284,16 +1303,16 @@ have zero $Z_1$-coordinate, so
 By Lemma~\ref{lem:tangent-limit} $[dx_1] \in \operatorname{Dir}(Y).$
 \end{proof}
 
-\AIcomment{COMP-11}{\textbf{Checked endpoint.} Over an algebraically closed field of characteristic zero, the theorem proves $[dx_1]\in\operatorname{Dir}(Y)$. The constant-coordinate case is immediate. Otherwise one retained divisor valuation and its normalized projective column yield the residue-field tangent bound and the derivative columns used to construct a conormal covector with residue $e_1$. The equation-conormal closure gives the projective direction. The technical supplement gives the argument and states which steps of the printed proof remain unverified. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-11}{COMP-11}.}
+
 \AIadd{\formalref[{any algebraically closed field of characteristic $0$; (i) is the affine-cone form used in Section~\ref{sec:involutive-review}}]{%
-\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{63}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions};
-\leandecl{Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean}{52}{Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameWithResidueAlgebraicity};
-\leandecl{Stafford38/Geometry/PaperSameWitnessTangentDimension.lean}{67}{Stafford38.Geometry.PaperSameWitnessTangentDimension.tangent_finrank_le_residue_add_one_of_witness};
-\leandecl{Stafford38/Geometry/PaperActualWitnessConormalData.lean}{56}{Stafford38.Geometry.PaperActualWitnessConormalData.exists_regularizedOneRowConormalData_of_actual_witness};
-\leandecl{Stafford38/Geometry/GeneralConormalAxis.lean}{50}{Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental};
-\leandecl{Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean}{28}{Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance};
-\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{28}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure};
-\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{63}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions}}}
+\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{42}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions};
+\leandecl{Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean}{55}{Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameWithResidueAlgebraicity};
+\leandecl{Stafford38/Geometry/PaperSameWitnessTangentDimension.lean}{70}{Stafford38.Geometry.PaperSameWitnessTangentDimension.tangent_finrank_le_residue_add_one_of_witness};
+\leandecl{Stafford38/Geometry/PaperActualWitnessConormalData.lean}{59}{Stafford38.Geometry.PaperActualWitnessConormalData.exists_regularizedOneRowConormalData_of_actual_witness};
+\leandecl{Stafford38/Geometry/GeneralConormalAxis.lean}{53}{Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental};
+\leandecl{Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean}{31}{Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance};
+\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{32}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure};
+\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{42}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions}}}
 
 \section{The involutive obstruction}\label{sec:involutive-review}
 \begin{definition}[Fibre-conical]\label{def:fibre-can}
@@ -1323,10 +1342,10 @@ the negative of the one in the paper, which does not affect involutivity.
 For $K=\mathbb C$ this contains Theorem~\ref{thm:coisotropic-exclusion}.
 \end{AIaddition}
 \AIadd{\formalref[{any algebraically closed field of characteristic $0$; $P$ need not be homogeneous}]{%
-\leandecl{Stafford38/Geometry/GeneralCoisotropicSets.lean}{108}{Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical};
-\leandecl{Stafford38/Geometry/GeneralCoisotropicExclusion.lean}{29}{Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate};
-\leandecl{Stafford38/Characteristic/BaseRelativePoisson.lean}{26}{Stafford38.Characteristic.BaseRelativePoisson.IsBaseRelativePoisson};
-\leandecl{Stafford38/Geometry/GeneralCoisotropicSetsTest.lean}{100}{Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer}}}
+\leandecl{Stafford38/Geometry/GeneralCoisotropicSets.lean}{159}{Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical};
+\leandecl{Stafford38/Geometry/GeneralCoisotropicExclusion.lean}{84}{Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate};
+\leandecl{Stafford38/Characteristic/BaseRelativePoisson.lean}{29}{Stafford38.Characteristic.BaseRelativePoisson.IsBaseRelativePoisson};
+\leandecl{Stafford38/Geometry/GeneralCoisotropicSetsTest.lean}{104}{Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer}}}
 
 \begin{proof}
 Supposing that such a $W$ exists, we define $Y=\overline{\pi(W)}$. We write $I(Y)$
@@ -1380,12 +1399,12 @@ fibre of $W$ at a finite base point. Every conormal direction lies in
 $V_+(P)$; that set is closed, so the limiting direction does too.
 This yields the same contradiction $P(1,0,\ldots,0)=0$.}
 \end{proof}
-\AIcomment{COMP-13}{\textbf{Information --- no further paper edit requested.} The formal proof uses the same finite Hamiltonian translations and component conormal containment. The equality of component ideals on a dense open set is checked through a separator and the product rule, then extended by closure. The limiting direction is used in the closure of fibre directions, as in the marked GEO-03 correction. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-13}{Mathematical proof (COMP-13, p.~8).}}
+
 \AIadd{\formalref{%
-\leandecl{Stafford38/Geometry/GeneralCoisotropicExclusion.lean}{29}{Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate};
-\leandecl{Stafford38/Characteristic/BaseRelativePoisson.lean}{69}{Stafford38.Characteristic.BaseRelativePoisson.zeroSection_stable_under_differential_translation_of_isBaseRelativePoisson};
-\leandecl{Stafford38/Geometry/GeneralComponentConormalContainment.lean}{68}{Stafford38.Geometry.GeneralComponentConormalContainment.equationConormalClosure_minimalPrime_subset_zeroLocus};
-\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{28}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure}}}
+\leandecl{Stafford38/Geometry/GeneralCoisotropicExclusion.lean}{84}{Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate};
+\leandecl{Stafford38/Characteristic/BaseRelativePoisson.lean}{72}{Stafford38.Characteristic.BaseRelativePoisson.zeroSection_stable_under_differential_translation_of_isBaseRelativePoisson};
+\leandecl{Stafford38/Geometry/GeneralComponentConormalContainment.lean}{72}{Stafford38.Geometry.GeneralComponentConormalContainment.equationConormalClosure_minimalPrime_subset_zeroLocus};
+\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{32}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure}}}
 \AIcomment{GEO-05}{\textbf{Optional refinement --- not required.} Optional statement refinements suggested by the formal
 version, for the authors to decide: in Section~\ref{sec:conormal-review} say
 that $Y$ is reduced and irreducible (so $I(Y)$ is prime) and identify
@@ -1444,10 +1463,10 @@ Lastly, we can apply the inverse of the automorphism $\Phi_g$, defined in \AIadd
 \[ 1=d\bigl(c^{-1}\Phi_g^{-1}(R)\bigr)+F\,d\bigl(c^{-1}\Phi_g^{-1}(S)\bigr)
   \qquad F=\Phi_g^{-1}(\AIreplace{x}{x_1})^N,\]
 proving Theorem \ref{thm:main}.
-\AIadd{\formalref{\leandecl{Stafford38/FoundationClosure.lean}{38}{Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic}:
-exclusion over $\overline k$ \leandecl{Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean}{107}{Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic},
-descent \leandecl{Stafford38/Weyl/FilteredScalarLifting.lean}{469}{Stafford38.Weyl.FilteredScalarLifting.canonicalSupportDescent},
-certificate \leandecl{Stafford38/Characteristic/CanonicalCertificate.lean}{30}{Stafford38.CharacteristicCanonicalCertificate.exists_fixedSource_certificate_of_orderCharacteristicSupport_eq_empty}}}
+\AIadd{\formalref{\leandecl{Stafford38/FoundationClosure.lean}{41}{Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic}:
+exclusion over $\overline k$ \leandecl{Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean}{222}{Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic},
+descent \leandecl{Stafford38/Weyl/FilteredScalarLifting.lean}{472}{Stafford38.Weyl.FilteredScalarLifting.canonicalSupportDescent},
+certificate \leandecl{Stafford38/Characteristic/CanonicalCertificate.lean}{33}{Stafford38.CharacteristicCanonicalCertificate.exists_fixedSource_certificate_of_orderCharacteristicSupport_eq_empty}}}
 \begin{AIaddition}{Base change of the order initial ideal}
 \begin{lemma}\label{lem:initial-base-change}
 Let $K/k$ be a field extension, $I=\tilde dA_n(k)+x_1^N\tilde dA_n(k)$ and
@@ -1475,12 +1494,12 @@ stays proper in $\Kbar[x,\xi]$.
 \end{proof}
 \end{AIaddition}
 \AIadd{\formalref[{stated for the canonical ideal; the argument uses nothing else}]{%
-\leandecl{Stafford38/Weyl/FilteredScalarLifting.lean}{446}{Stafford38.Weyl.FilteredScalarLifting.presentedWeylScalarExtension_map_orderInitialIdeal_eq};
-\leandecl{Stafford38/Weyl/FilteredScalarLifting.lean}{384}{Stafford38.Weyl.FilteredScalarLifting.target_orderInitialIdeal_le_map_source_orderInitialIdeal};
-\leandecl{Stafford38/Weyl/PresentedScalarExtension.lean}{388}{Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_map_orderInitialIdeal_le};
-\leandecl{Stafford38/Characteristic/EmptySupportVanishing.lean}{80}{Stafford38.CharacteristicEmptySupportVanishing.orderInitialIdeal_eq_top_iff_rightQuotient_subsingleton};
-\leandecl{Stafford38/Characteristic/GeometricSupportDescent.lean}{96}{Stafford38.Characteristic.GeometricSupportDescent.map_scalarPolynomialMap_eq_top_iff}}}
-\AIcomment{COMP-15}{\textbf{Information --- no further paper edit requested.} Lean constructs the quotient scalar-extension isomorphism, checks the associated-graded annihilator comparison, and descends quotient vanishing by faithful scalar extension. Geometry runs over $\Kbar$; rank-zero and scalar cases are handled separately. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-15}{Mathematical proof (COMP-15, p.~9).}}
+\leandecl{Stafford38/Weyl/FilteredScalarLifting.lean}{449}{Stafford38.Weyl.FilteredScalarLifting.presentedWeylScalarExtension_map_orderInitialIdeal_eq};
+\leandecl{Stafford38/Weyl/FilteredScalarLifting.lean}{387}{Stafford38.Weyl.FilteredScalarLifting.target_orderInitialIdeal_le_map_source_orderInitialIdeal};
+\leandecl{Stafford38/Weyl/PresentedScalarExtension.lean}{390}{Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_map_orderInitialIdeal_le};
+\leandecl{Stafford38/Characteristic/EmptySupportVanishing.lean}{83}{Stafford38.CharacteristicEmptySupportVanishing.orderInitialIdeal_eq_top_iff_rightQuotient_subsingleton};
+\leandecl{Stafford38/Characteristic/GeometricSupportDescent.lean}{101}{Stafford38.Characteristic.GeometricSupportDescent.map_scalarPolynomialMap_eq_top_iff}}}
+
 
 \AIreplace{Latly}{Lastly}, as Stafford already showed, from $1 = dR+FdS$ follows cyclicity of the torsion right module:
 \AIadd{\begin{corollary}\label{cor:cyclic}
@@ -1513,11 +1532,11 @@ generator calculation itself is valid.}
     Lastly, since  $A_n\oplus A_n$ can be generated by $(a, 1-Fa)$ and $(1, -F)$ and $(a, 1-Fa)$ is an element of $M$, it follows that $T \cong \AIreplace{/A_n\oplus A_n)/M}{(A_n\oplus A_n)/M}$ can be generated by \AIadd{the image of} $(1, -F)$, i.e. $T$ is cyclic. \AIadd{Thus each pair can be replaced by $t_1-t_2F$; induction on the length of a finite generating list proves the corollary (the zero module is cyclic as well).}
 \end{proof}
 \AIcomment{COMP-16}{\textbf{Proposed local refinement --- author acceptance pending.} Lean checks the displayed matrix calculation directly. The marked pairwise induction and elementary common-annihilator argument avoid invoking a separate two-generator theorem or Ore condition. The conclusion remains ordinary cyclicity. Stafford defines stable generation on \cite[p.~435]{Stafford1978}; no stronger stable-generation conclusion is asserted here. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-16}{Mathematical proof (COMP-16, p.~10).}}
-\AIadd{\formalref{\leandecl{Stafford38/TorsionCyclicity.lean}{63}{Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion},
-paper generator \leandecl{Stafford38/TorsionCyclicity.lean}{36}{Stafford38.TorsionCyclicity.exists_span_adjusted_pair},
-two generators \leandecl{Stafford38/TorsionCyclicity.lean}{49}{Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair},
-domain \leandecl{Stafford38/Weyl/Domain.lean}{22}{Stafford38.WeylDomain.mul_ne_zero};
-Mathlib-only statement \leandecl{CorollaryChallenge.lean}{31}{Stafford38CorollaryChallenge.torsionCyclicStatement}}}
+\AIadd{\formalref{\leandecl{Stafford38/TorsionCyclicity.lean}{66}{Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion},
+paper generator \leandecl{Stafford38/TorsionCyclicity.lean}{39}{Stafford38.TorsionCyclicity.exists_span_adjusted_pair},
+two generators \leandecl{Stafford38/TorsionCyclicity.lean}{52}{Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair},
+domain \leandecl{Stafford38/Weyl/Domain.lean}{25}{Stafford38.WeylDomain.mul_ne_zero};
+Mathlib-only statement \leandecl{CorollaryChallenge.lean}{34}{Stafford38CorollaryChallenge.torsionCyclicStatement}}}
 
 \section{Outlook}
 \AIremove{We have proved}
@@ -1614,7 +1633,7 @@ Opus 5, Sonnet 5 and GPT-6 Luna. These records establish participation and task 
 without assigning a particular mathematical idea to one model.
 
 The completed proof uses Lean~4 and Mathlib and pins AlgebraicAnalysis v0.3.0
-\cite{Lean4,Mathlib2020,AlgebraicAnalysis030}; the later library archive is v0.3.2~\cite{AlgebraicAnalysis032}.
+\cite{Lean4,Mathlib2020,AlgebraicAnalysis030}; the later library archive is v0.3.3~\cite{AlgebraicAnalysis033}.
 Formalization distinguished theorems proving required inputs from
 conditional theorems merely consuming them. Statement comparison and
 independent NanoDa and Lean kernel checks verified the submitted declarations
@@ -1627,13 +1646,13 @@ Palomar~\cite{Stafford38Palomar2026,GlobalStaffordPalomar2026}; their Lean devel
 \AIcomment{REF-01}{\textbf{Proposed change --- author acceptance pending.} Please confirm that the references here point to the order-symbol result and the characteristic-containment statement used in the argument.}
 \AIreplace{AI also proved some related stuff regarding Right Ore localizations, the corresponding left-hand identity, and apparently the corresponding identity over other rings such as differential rings with laurent series coefficients; I am leaving that out for now.}{The formalization also proves the following consequences, which are not otherwise used here:
 the identity in every right Ore localization of $A_n(k)$
-\formalref{\leandecl{Stafford38/LocalizationCorollaries.lean}{28}{Stafford38.LocalizationCorollaries.s38_rightOreLocalization}};
+\formalref{\leandecl{Stafford38/LocalizationCorollaries.lean}{31}{Stafford38.LocalizationCorollaries.s38_rightOreLocalization}};
 the left-handed identity $1=Rd+SdF$ via the formal adjoint
-\formalref{\leandecl{Stafford38/LeftHandedCorollary.lean}{20}{Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement}};
+\formalref{\leandecl{Stafford38/LeftHandedCorollary.lean}{23}{Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement}};
 the identity for finite-order differential operators on localizations of $k[x_1,\dots,x_n]$, including principal opens, Laurent-polynomial coefficients and the fraction field
-\formalref{\leandecl{Stafford38/LocalizedDifferentialCorollaries.lean}{80}{Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential}};
+\formalref{\leandecl{Stafford38/LocalizedDifferentialCorollaries.lean}{83}{Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential}};
 and, independently of the geometric argument, an evolutionary version with arbitrary coefficients commuting with one Weyl pair
-\formalref{\leandecl{Stafford38/EvolutionaryCorollary.lean}{33}{Stafford38.Evolution.evolutionaryCorollary}}.}
+\formalref{\leandecl{Stafford38/EvolutionaryCorollary.lean}{36}{Stafford38.Evolution.evolutionaryCorollary}}.}
 \AIcomment{SCOPE-01}{\textbf{Proposed change --- author acceptance pending.} Review the scope before accepting this paragraph. The coefficients in the stated localization result are Laurent polynomials, not arbitrary Laurent series, and the operators have finite order. Retain further consequences only with their exact hypotheses and proof references; optional formal declaration links are available in the technical supplement.}
 \subsection{Noncharacteristic H}
 An apparently nice \AIremove{(though I do not understand its value)} side theorem that comes from "restriction to the coordinate hyperplane" (after \AIadd{Corollary~}\ref{cor:charP}\AIadd{)}, is that $H = \{x\AIadd{_1}=0\}$ is noncharacteristic:
@@ -1665,7 +1684,7 @@ $\varpi|_{\Char(M)\cap T^*X|_H}\colon\Char(M)\cap T^*X|_H\to T^*H$ is a finite
 morphism.
 \end{definition}
 \AIadd{\formalref[{for $X=\mathbb A^n$, $H=\{x_1=0\}$ and a characteristic ideal $J$: the coordinate-ring map $k[T^*H]\to k[x,\xi]/(J+(x_1))$ is finite}]{%
-\leandecl{Stafford38/NoncharacteristicHyperplane.lean}{70}{Stafford38.NoncharacteristicHyperplane.IsNoncharacteristic}}}
+\leandecl{Stafford38/NoncharacteristicHyperplane.lean}{73}{Stafford38.NoncharacteristicHyperplane.IsNoncharacteristic}}}
 
 \begin{proposition}[\AIreplace{$H=\{x=0\}$}{$H=\{x_1=0\}$} is noncharacteristic for $Q$]\label{prop:noncar}
 With $P$ as in \eqref{eq:P} and $H=\{x_1=0\}$, the projection
@@ -1689,8 +1708,8 @@ $P(\xi_1,0,\dots,0)=\xi_1^{\,N}$; so $V(P)\cap T^*_HX=\{\xi=0\}$ is the zero
 section.
 \end{proof}
 \AIadd{\formalref[{the zero-section statement holds without $x_1=0$: tangential covariables vanishing forces $\xi_1=0$}]{%
-\leandecl{Stafford38/NoncharacteristicHypersurface.lean}{129}{Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite}, \leandecl{Stafford38/NoncharacteristicHyperplane.lean}{232}{Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator},
-\leandecl{Stafford38/NoncharacteristicHyperplane.lean}{328}{Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection}}}
+\leandecl{Stafford38/NoncharacteristicHypersurface.lean}{132}{Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite}, \leandecl{Stafford38/NoncharacteristicHyperplane.lean}{235}{Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator},
+\leandecl{Stafford38/NoncharacteristicHyperplane.lean}{331}{Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection}}}
 \end{appendix}
 
 

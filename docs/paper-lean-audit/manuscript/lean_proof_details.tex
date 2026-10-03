@@ -62,6 +62,7 @@ point to the human-readable paper; this supplement is not required reading
 for editing that paper.}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-01}{bookmark-COMP-01}\hypertarget{comparison-COMP-01}{\textbf{Comparison COMP-01}}\label{comparison-COMP-01}\par\smallskip
+\AIcomment{COMP-01}{\textbf{Information --- no paper edit requested.} Lean follows the printed localization proof: extend the bracket by the quotient rule, use minimality to identify the localized radical with the maximal ideal, and contract. Its bracket has the opposite sign; involutivity is unchanged. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-01}{Mathematical proof (COMP-01, p.~1).}}
 \begin{AIaddition}{Proof as formalized in Lean}
 Lean proves the lemma in the corrected form of ALG-01. Let $J$ be any ideal
 of $R=k[x,\xi]$ with $\{\sqrt J,\sqrt J\}\subseteq\sqrt J$, and let
@@ -84,6 +85,7 @@ from radical involutivity to minimal-prime involutivity.
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-02}{bookmark-COMP-02}\hypertarget{comparison-COMP-02}{\textbf{Comparison COMP-02}}\label{comparison-COMP-02}\par\smallskip
+\AIcomment{COMP-02}{\textbf{Information --- no paper edit requested.} Lean checks the printed induction in an arbitrary symplectic space, including completion with the prescribed first vector. The official normalization uses the resulting basis-to-basis map and its matrix. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-02}{Mathematical proof (COMP-02, p.~1).}}
 \begin{AIaddition}{Proof as formalized in Lean}
 Lean follows the printed basis induction in an arbitrary finite-dimensional
 space with an alternating nondegenerate form. For a prescribed nonzero $v$,
@@ -102,6 +104,7 @@ No change to the paper's basis proof is needed.
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-03}{bookmark-COMP-03}\hypertarget{comparison-COMP-03}{\textbf{Comparison COMP-03}}\label{comparison-COMP-03}\par\smallskip
+\AIcomment{COMP-03}{\textbf{Information --- proof comparison; no edit requested.} The formal normalization uses an explicit symplectic matrix and its inverse. Its symbol substitution is $s(MX)$; with the convention used here this is $s\circ g^{\mathsf T}$. Monicity means that the $p^N$ PBW coefficient is $1$ and the Bernstein degree is at most $N$, which gives the coefficient bounds above. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-03}{Mathematical proof (COMP-03, p.~2).}}
 \begin{AIaddition}{Proof as formalized in Lean}
 Lean writes the change of generators with a matrix $M=g^{\mathsf T}$:
 $\Phi_M(z_i)=\sum_jM_{ij}z_j$, where
@@ -153,6 +156,7 @@ stated equality. The paper can keep its original right-coefficient convention.
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-04}{bookmark-COMP-04}\hypertarget{comparison-COMP-04}{\textbf{Comparison COMP-04}}\label{comparison-COMP-04}\par\smallskip
+\AIcomment{COMP-04}{\textbf{Information --- no paper edit requested.} Lean checks the Euler weights of PBW monomials and identifies the nonnegative Euler part with the transverse--Euler subring used in the residue argument. The corrected product identities and one-sided normality give the same surjectivity conclusion. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-04}{Mathematical proof (COMP-04, p.~2).}}
 \begin{AIaddition}{Proof as formalized in Lean}
 Lean checks the Euler weights of PBW monomials directly:
 $[E,bx_1^ap^j]=(a-j)bx_1^ap^j$ for transverse $b$.
@@ -200,6 +204,7 @@ $U=U'u(E-1)+V'v(E-1)\in R$. Hence $1+Ux_1\in I$.
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-05}{bookmark-COMP-05}\hypertarget{comparison-COMP-05}{\textbf{Comparison COMP-05}}\label{comparison-COMP-05}\par\smallskip
+\AIcomment{COMP-05}{\textbf{Information --- proof comparison; no edit requested.} The formal proof works element by element with the transverse--Euler subring. The residue identity gives $1+Ux_1\in I$ for a suitable $U$ in that subring; one-sided normality and the monic relation then give surjectivity of right multiplication by $x_1$. This avoids treating a quotient by a vector subspace as an algebra quotient. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-05}{Mathematical proof (COMP-05, p.~3).}}
 \begin{AIaddition}{Proof as formalized in Lean}
 Lean argues element by element instead of through the submodule
 $qA_{\ge0}$. Let $R$, $U$ be as in Lemma~\ref{paper:lem:euler-residue} (Lean
@@ -291,6 +296,7 @@ $\ell(U_{\mathfrak q})+\ell(S^{-1}A_R)=\ell(V_{\mathfrak q})
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-07}{bookmark-COMP-07}\hypertarget{comparison-COMP-07}{\textbf{Comparison COMP-07}}\label{comparison-COMP-07}\par\smallskip
+\AIcomment{COMP-07}{\textbf{Information --- proof comparison; no edit requested.} The formal proof uses Gabber directly for minimal primes. If such a prime contained $x_1$, the $N$-fold bracket of the monic symbol $P$ with $x_1$ would put the unit $\pm N!$ in that prime. The subsequent stable-kernel length computation and Nakayama argument agree with the printed proof. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-07}{Mathematical proof (COMP-07, p.~5).}}
 \begin{AIaddition}{Proof as formalized in Lean}
 The length computation (stable kernel $K=\ker x_1^m$, the split
 $\ell(U_{\mathfrak q})=\ell(V_{\mathfrak q})+\ell((M'/K)/x_1(M'/K))$, and
@@ -313,6 +319,7 @@ using $\Ann_{C'}M'=S^{-1}\Ann_CM$ for the finite module $M$.
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-08}{bookmark-COMP-08}\hypertarget{comparison-COMP-08}{\textbf{Comparison COMP-08}}\label{comparison-COMP-08}\par\smallskip
+\AIcomment{COMP-08}{\textbf{Information --- proof comparison; no edit requested.} The formal conclusion is scheme-theoretic: $\Supp(\gr Q)\cap V(x_1)=\varnothing$, equivalently $\Ann(\gr Q)+(x_1)=(1)$. It therefore persists under field extension. The formal statement uses the support transported by $\xi\mapsto-\xi$; this fixes $x_1$, so the avoidance statements are equivalent. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-08}{Mathematical proof (COMP-08, p.~5).}}
 \begin{AIaddition}{Proof as formalized in Lean}
 Lean states the conclusion scheme-theoretically:
 $\Supp_{k[x,\xi]}(\gr Q)\cap V(x_1)=\varnothing$ in $\Spec k[x,\xi]$, for an
@@ -333,6 +340,7 @@ input is used anywhere.
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-10}{bookmark-COMP-10}\hypertarget{comparison-COMP-10}{\textbf{Comparison COMP-10}}\label{comparison-COMP-10}\par\smallskip
+\AIcomment{COMP-10}{\textbf{Information --- proof comparison; no edit requested.} The formal tangent-limit criterion is auxiliary. It assumes a generically smooth arc and a direct-summand lattice whose generic span is the lifted tangent space, with the specified axis component vanishing on its residue. Its proof does not use the smoothness hypothesis or the stated rank, but these remain assumptions of the formal statement. The formal proof of Theorem~\ref{paper:thm:asymptotic-conormal} follows a separate Laurent-series route, so it does not certify every step of the printed tangent-limit argument. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-10}{Mathematical proof (COMP-10, p.~5).} ROUTE-01 states the correspondence status.}
 \begin{AIaddition}{Formal status of Lemma~\ref{paper:lem:tangent-limit}}
 Lean proves the following, over any algebraically closed field $K$ with no
 characteristic assumption. Let $\mathfrak p\subset K[x_1,\dots,x_n]$ be prime,
@@ -353,6 +361,7 @@ given above after that theorem's proof.
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-11}{bookmark-COMP-11}\hypertarget{comparison-COMP-11}{\textbf{Comparison COMP-11}}\label{comparison-COMP-11}\par\smallskip
+\AIcomment{COMP-11}{\textbf{Checked endpoint.} Over an algebraically closed field of characteristic zero, the theorem proves $[dx_1]\in\operatorname{Dir}(Y)$. The constant-coordinate case is immediate. Otherwise one retained divisor valuation and its normalized projective column yield the residue-field tangent bound and the derivative columns used to construct a conormal covector with residue $e_1$. The equation-conormal closure gives the projective direction. The technical supplement gives the argument and states which steps of the printed proof remain unverified. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-11}{COMP-11}.}
 \begin{AIaddition}{Proof of Theorem~\ref{paper:thm:asymptotic-conormal} as formalized in Lean}
 Let $K$ be algebraically closed of characteristic zero, let $\mathfrak p\subset
 K[x_1,\dots,x_n]$ be prime, and suppose $Y=V(\mathfrak p)$ avoids $x_1=0$.
@@ -471,6 +480,7 @@ Those steps of the printed proof remain a separate correspondence question.
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-13}{bookmark-COMP-13}\hypertarget{comparison-COMP-13}{\textbf{Comparison COMP-13}}\label{comparison-COMP-13}\par\smallskip
+\AIcomment{COMP-13}{\textbf{Information --- no further paper edit requested.} The formal proof uses the same finite Hamiltonian translations and component conormal containment. The equality of component ideals on a dense open set is checked through a separator and the product rule, then extended by closure. The limiting direction is used in the closure of fibre directions, as in the marked GEO-03 correction. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-13}{Mathematical proof (COMP-13, p.~8).}}
 \begin{AIaddition}{Proof of Theorem~\ref{paper:thm:coisotropic-exclusion} as formalized in Lean}
 Work in the setting of the formal statement and suppose
 $W\cap\pi^{-1}(H)=\varnothing$. Put $J=I(W)$, which is radical, and $B=J\cap K[x]$.
@@ -515,6 +525,7 @@ not used, and one component $Y_0$ suffices.
 \end{AIaddition}
 
 \par\bigskip\noindent\pdfbookmark[1]{Comparison COMP-15}{bookmark-COMP-15}\hypertarget{comparison-COMP-15}{\textbf{Comparison COMP-15}}\label{comparison-COMP-15}\par\smallskip
+\AIcomment{COMP-15}{\textbf{Information --- no further paper edit requested.} Lean constructs the quotient scalar-extension isomorphism, checks the associated-graded annihilator comparison, and descends quotient vanishing by faithful scalar extension. Geometry runs over $\Kbar$; rank-zero and scalar cases are handled separately. \href{https://itpplasma.github.io/stafford38-formal/lean_proof_details.pdf\#nameddest=comparison-COMP-15}{Mathematical proof (COMP-15, p.~9).}}
 \begin{AIaddition}{Proof as formalized in Lean}
 Lean works over $k$ and runs the geometry over $\Kbar$. It checks the
 paper's quotient scalar-extension and faithful-descent route. The proof has
@@ -597,178 +608,178 @@ remains.
 \ifshowleandetails
 \section*{Declaration links}
 \AIadd{\formalref[{Lean also covers $n=0$, where $A_0(k)=k$}]{%
-\leandecl{Stafford38/FoundationClosure.lean}{54}{Stafford38.universalStatement} proves
-\leandecl{Stafford38/Statement.lean}{20}{Stafford38.UniversalStatement};
-\leandecl{Stafford38/FoundationClosure.lean}{58}{Stafford38.universalFixedSourceStatement} proves
-\leandecl{Stafford38/FixedSourceStatement.lean}{31}{Stafford38.FixedSource.UniversalFixedSourceStatement}
-with \leandecl{Stafford38/FixedSourceStatement.lean}{24}{Stafford38.FixedSource.IsLinearWeylCoordinate}
-and \leandecl{Stafford38/FixedSourceStatement.lean}{19}{Stafford38.FixedSource.bernsteinDegree};
+\leandecl{Stafford38/FoundationClosure.lean}{67}{Stafford38.universalStatement} proves
+\leandecl{Stafford38/Statement.lean}{23}{Stafford38.UniversalStatement};
+\leandecl{Stafford38/FoundationClosure.lean}{71}{Stafford38.universalFixedSourceStatement} proves
+\leandecl{Stafford38/FixedSourceStatement.lean}{35}{Stafford38.FixedSource.UniversalFixedSourceStatement}
+with \leandecl{Stafford38/FixedSourceStatement.lean}{28}{Stafford38.FixedSource.IsLinearWeylCoordinate}
+and \leandecl{Stafford38/FixedSourceStatement.lean}{23}{Stafford38.FixedSource.bernsteinDegree};
 Mathlib-only statements compared by Comparator:
-\leandecl{Stafford38/ChallengeDefinitions.lean}{75}{Stafford38Challenge.UniversalStatement},
-\leandecl{Stafford38/ChallengeDefinitions.lean}{190}{Stafford38FixedSourceChallenge.UniversalFixedSourceStatement}.}}
+\leandecl{Stafford38/ChallengeDefinitions.lean}{78}{Stafford38Challenge.UniversalStatement},
+\leandecl{Stafford38/ChallengeDefinitions.lean}{193}{Stafford38FixedSourceChallenge.UniversalFixedSourceStatement}.}}
 
 \AIadd{\formalref{%
 \leandecl{Stafford38/Weyl/IteratedEquivalence.lean}{636}{Stafford38.WeylIteratedEquivalence.presentedIteratedEquiv},
-\leandecl{Stafford38/Weyl/OuterOreMonic.lean}{44}{Stafford38.WeylOuterOreMonic.presentedOuterPolynomial}}}
+\leandecl{Stafford38/Weyl/OuterOreMonic.lean}{47}{Stafford38.WeylOuterOreMonic.presentedOuterPolynomial}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/Polynomial.lean}{19}{Stafford38.Characteristic.SymbolRing}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/Polynomial.lean}{22}{Stafford38.Characteristic.SymbolRing}
 (the ring $k[x,\xi]$, with its base and cotangent coordinate blocks $x_i$ and $\xi_i$)}}
 
 \AIadd{\formalref[{as spans of ordered PBW words of bounded weight}]{%
-\leandecl{Stafford38/Weyl/Filtration.lean}{280}{Stafford38.WeylFiltration.bernsteinPiece},
-\leandecl{Stafford38/Weyl/Filtration.lean}{284}{Stafford38.WeylFiltration.orderPiece},
-\leandecl{Stafford38/FixedSourceStatement.lean}{19}{Stafford38.FixedSource.bernsteinDegree}}}
+\leandecl{Stafford38/Weyl/Filtration.lean}{284}{Stafford38.WeylFiltration.bernsteinPiece},
+\leandecl{Stafford38/Weyl/Filtration.lean}{288}{Stafford38.WeylFiltration.orderPiece},
+\leandecl{Stafford38/FixedSourceStatement.lean}{23}{Stafford38.FixedSource.bernsteinDegree}}}
 
 \AIadd{\formalref[{for $M=A_n/I$}]{%
-\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{185}{Stafford38.CharacteristicInitialIdeal.orderInitialIdeal},
-\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{193}{Stafford38.CharacteristicInitialIdeal.orderCharacteristicSupport},
-\leandecl{Stafford38/Characteristic/AssociatedGradedModule.lean}{370}{Stafford38.CharacteristicAssociatedGradedModule.annihilator_orderAssociatedGradedModule}}}
+\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{189}{Stafford38.CharacteristicInitialIdeal.orderInitialIdeal},
+\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{197}{Stafford38.CharacteristicInitialIdeal.orderCharacteristicSupport},
+\leandecl{Stafford38/Characteristic/AssociatedGradedModule.lean}{373}{Stafford38.CharacteristicAssociatedGradedModule.annihilator_orderAssociatedGradedModule}}}
 
 \AIadd{\formalref[{Lean's bracket is the negative of this one; involutivity is unaffected}]{%
-\leandecl{Stafford38/Characteristic/Polynomial.lean}{28}{Stafford38.Characteristic.poissonBracket},
-\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{26}{Stafford38.CharacteristicSymplecticCompletion.phasePairing}}}
+\leandecl{Stafford38/Characteristic/Polynomial.lean}{31}{Stafford38.Characteristic.poissonBracket},
+\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{31}{Stafford38.CharacteristicSymplecticCompletion.phasePairing}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/PostScalarExtensionPoisson.lean}{30}{Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive};
-negative control \leandecl{Stafford38/Geometry/GeneralCoisotropicSetsTest.lean}{160}{Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/PostScalarExtensionPoisson.lean}{33}{Stafford38.Characteristic.PostScalarExtensionPoisson.IsInvolutive};
+negative control \leandecl{Stafford38/Geometry/GeneralCoisotropicSetsTest.lean}{164}{Stafford38.Geometry.GeneralCoisotropicSetsTest.zeroSectionIdealOne_not_isPoisson}}}
 
 \AIadd{\formalref[{proved in Lean, not cited; exactly this scope, over every field of characteristic zero}]{%
-\leandecl{Stafford38/Characteristic/GabberGlobalAssembly.lean}{221}{Stafford38.Characteristic.GabberGlobalAssembly.weylAssociatedGradedRadicalInvolutivity},
-statement \leandecl{Stafford38/Characteristic/CanonicalGabberInvolutivityInterface.lean}{83}{Stafford38.Characteristic.CanonicalGabberInvolutivityInterface.WeylAssociatedGradedRadicalInvolutivity},
-minimal primes \leandecl{Stafford38/Characteristic/GabberGlobalAssembly.lean}{141}{Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive}}}
+\leandecl{Stafford38/Characteristic/GabberGlobalAssembly.lean}{224}{Stafford38.Characteristic.GabberGlobalAssembly.weylAssociatedGradedRadicalInvolutivity},
+statement \leandecl{Stafford38/Characteristic/CanonicalGabberInvolutivityInterface.lean}{86}{Stafford38.Characteristic.CanonicalGabberInvolutivityInterface.WeylAssociatedGradedRadicalInvolutivity},
+minimal primes \leandecl{Stafford38/Characteristic/GabberGlobalAssembly.lean}{144}{Stafford38.Characteristic.GabberGlobalAssembly.minimalPrime_isInvolutive}}}
 
 \AIadd{\formalref{%
-\leandecl{Stafford38/Characteristic/PaperLocalizedInvolutivity.lean}{184}{Stafford38.Characteristic.PaperLocalizedInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive_viaLocalization}}}
+\leandecl{Stafford38/Characteristic/PaperLocalizedInvolutivity.lean}{187}{Stafford38.Characteristic.PaperLocalizedInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive_viaLocalization}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Weyl/Symplectic.lean}{43}{Stafford38.WeylSymplectic.standardSymplecticAlgHom},
-\leandecl{Stafford38/Weyl/Symplectic.lean}{88}{Stafford38.WeylSymplectic.standardSymplecticAlgEquivOfInverse}
-(with explicit inverse), \leandecl{Stafford38/Weyl/SymbolCompatibility.lean}{411}{Stafford38.WeylSymbolCompatibility.standardSymplecticAlgHom_principal_compatibility}}}
+\AIadd{\formalref{\leandecl{Stafford38/Weyl/Symplectic.lean}{46}{Stafford38.WeylSymplectic.standardSymplecticAlgHom},
+\leandecl{Stafford38/Weyl/Symplectic.lean}{91}{Stafford38.WeylSymplectic.standardSymplecticAlgEquivOfInverse}
+(with explicit inverse), \leandecl{Stafford38/Weyl/SymbolCompatibility.lean}{416}{Stafford38.WeylSymbolCompatibility.standardSymplecticAlgHom_principal_compatibility}}}
 
 \AIadd{\formalref[{completion to a symplectic basis, then the basis-to-basis isometry}]{%
-\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{233}{Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_mulVec_eq}}}
+\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{238}{Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_mulVec_eq}}}
 
 \AIadd{\formalref[{monicity is stated as: $\tilde d\in B_N$ and the PBW coefficient of $\partial_1^N$ is $1$}]{%
-\leandecl{Stafford38/Weyl/MonicNormalization.lean}{150}{Stafford38.WeylMonicNormalization.exists_normalized_symplectic_image},
-\leandecl{Stafford38/Weyl/MonicNormalization.lean}{173}{Stafford38.WeylMonicNormalization.scalar_or_normalized_symplectic_image},
-\leandecl{Stafford38/Weyl/PBWMonicBridge.lean}{86}{Stafford38.WeylPBWMonicBridge.IsPBWMonicAt},
-\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{341}{Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_chart_matrices}}}
+\leandecl{Stafford38/Weyl/MonicNormalization.lean}{158}{Stafford38.WeylMonicNormalization.exists_normalized_symplectic_image},
+\leandecl{Stafford38/Weyl/MonicNormalization.lean}{181}{Stafford38.WeylMonicNormalization.scalar_or_normalized_symplectic_image},
+\leandecl{Stafford38/Weyl/PBWMonicBridge.lean}{98}{Stafford38.WeylPBWMonicBridge.IsPBWMonicAt},
+\leandecl{Stafford38/Characteristic/SymplecticCompletion.lean}{346}{Stafford38.CharacteristicSymplecticCompletion.exists_symplectic_chart_matrices}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/UniversalAssembly.lean}{66}{Stafford38.UniversalAssembly.universalStatement_of_canonicalSupportVanishing},
-\leandecl{Stafford38/FixedSourceAssembly.lean}{21}{Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing}}}
+\AIadd{\formalref{\leandecl{Stafford38/UniversalAssembly.lean}{69}{Stafford38.UniversalAssembly.universalStatement_of_canonicalSupportVanishing},
+\leandecl{Stafford38/FixedSourceAssembly.lean}{24}{Stafford38.FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing}}}
 
-\AIadd{\formalref{\texttt{Polynomial.Monic} after \leandecl{Stafford38/Characteristic/NormalSymbolPolynomial.lean}{24}{Stafford38.Characteristic.NormalSymbolPolynomial.normalSymbolAlgEquiv}}}
+\AIadd{\formalref{\texttt{Polynomial.Monic} after \leandecl{Stafford38/Characteristic/NormalSymbolPolynomial.lean}{28}{Stafford38.Characteristic.NormalSymbolPolynomial.normalSymbolAlgEquiv}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{313}{Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_isFibreOnly},
-\leandecl{Stafford38/Geometry/ConormalAxisContradiction.lean}{57}{Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_isHomogeneous},
-\leandecl{Stafford38/Characteristic/NormalSymbolPolynomial.lean}{92}{Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic},
-\leandecl{Stafford38/Geometry/ConormalAxisContradiction.lean}{126}{Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_eval_pureMomentumAxis}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{320}{Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_isFibreOnly},
+\leandecl{Stafford38/Geometry/ConormalAxisContradiction.lean}{61}{Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_isHomogeneous},
+\leandecl{Stafford38/Characteristic/NormalSymbolPolynomial.lean}{104}{Stafford38.Characteristic.NormalSymbolPolynomial.canonicalNormalPolynomial_monic},
+\leandecl{Stafford38/Geometry/ConormalAxisContradiction.lean}{131}{Stafford38.Geometry.ConormalAxisContradiction.canonical_orderPrincipalComponent_eval_pureMomentumAxis}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Weyl/EulerResidue.lean}{23}{Stafford38.WeylEulerResidue.canonicalRightIdeal}
+\AIadd{\formalref{\leandecl{Stafford38/Weyl/EulerResidue.lean}{26}{Stafford38.WeylEulerResidue.canonicalRightIdeal}
 $=\operatorname{span}\{d,x^Nd\}$ as a right ideal}}
 
 \AIadd{\formalref[{Lean uses the subring generated by the transverse algebra, $x_1$ and $x_1p$, and one-sided normality $x_1r=r'x_1$, which is all that is used}]{%
-\leandecl{Stafford38/Weyl/EulerSubring.lean}{22}{Stafford38.WeylEulerSubring.eulerSubring},
-\leandecl{Stafford38/Weyl/EulerSubring.lean}{68}{Stafford38.WeylEulerSubring.coordinate_normal_eulerSubring}}}
+\leandecl{Stafford38/Weyl/EulerSubring.lean}{25}{Stafford38.WeylEulerSubring.eulerSubring},
+\leandecl{Stafford38/Weyl/EulerSubring.lean}{71}{Stafford38.WeylEulerSubring.coordinate_normal_eulerSubring}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Weyl/EulerProductIdentities.lean}{83}{Stafford38.Weyl.EulerProductIdentities.eval_fallingEulerProduct} and
-\leandecl{Stafford38/Weyl/EulerProductIdentities.lean}{92}{Stafford38.Weyl.EulerProductIdentities.eval_risingEulerProduct} (the corrected products),
-\leandecl{proofs/weyl_pure_power.lean}{142}{Stafford.exists_eulerPolynomial_x_pow_mul_d_pow}}}
+\AIadd{\formalref{\leandecl{Stafford38/Weyl/EulerProductIdentities.lean}{70}{Stafford38.Weyl.EulerProductIdentities.eval_fallingEulerProduct} and
+\leandecl{Stafford38/Weyl/EulerProductIdentities.lean}{79}{Stafford38.Weyl.EulerProductIdentities.eval_risingEulerProduct} (the corrected products),
+\leandecl{proofs/weyl_pure_power.lean}{148}{Stafford.exists_eulerPolynomial_x_pow_mul_d_pow}}}
 
 \AIadd{\formalref[{the ring identity is Lean's; the factorization uses left coefficients $c\,x^ap^j$}]{%
-\leandecl{Stafford38/Weyl/EulerResidue.lean}{38}{Stafford38.WeylEulerResidue.positiveEulerResidue_identity},
-\leandecl{Stafford38/Weyl/EulerRemainder.lean}{254}{Stafford38.WeylEulerRemainder.positiveEulerResidue_eq_eulerSubring_mul_coordinate},
-\leandecl{Stafford38/Weyl/EulerRemainder.lean}{402}{Stafford38.WeylEulerRemainder.presentedPositiveEulerResidue}}}
+\leandecl{Stafford38/Weyl/EulerResidue.lean}{41}{Stafford38.WeylEulerResidue.positiveEulerResidue_identity},
+\leandecl{Stafford38/Weyl/EulerRemainder.lean}{257}{Stafford38.WeylEulerRemainder.positiveEulerResidue_eq_eulerSubring_mul_coordinate},
+\leandecl{Stafford38/Weyl/EulerRemainder.lean}{405}{Stafford38.WeylEulerRemainder.presentedPositiveEulerResidue}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Weyl/QuotientTransport.lean}{237}{Stafford38.WeylQuotientTransport.presentedCanonicalRightQuotient_rightMul_coordinate_surjective},
-\leandecl{Stafford38/Quotient/EulerSurjectivity.lean}{80}{Stafford38.EulerSurjectivity.rightMul_surjective_of_euler_normal};
-generation by $C$ and $p$: \leandecl{Stafford38/Weyl/EulerRemainder.lean}{307}{Stafford38.WeylEulerRemainder.closure_pairOldSubring_union_coordinate_momentum_eq_top}}}
+\AIadd{\formalref{\leandecl{Stafford38/Weyl/QuotientTransport.lean}{240}{Stafford38.WeylQuotientTransport.presentedCanonicalRightQuotient_rightMul_coordinate_surjective},
+\leandecl{Stafford38/Quotient/EulerSurjectivity.lean}{86}{Stafford38.EulerSurjectivity.rightMul_surjective_of_euler_normal};
+generation by $C$ and $p$: \leandecl{Stafford38/Weyl/EulerRemainder.lean}{310}{Stafford38.WeylEulerRemainder.closure_pairOldSubring_union_coordinate_momentum_eq_top}}}
 
 \AIadd{\formalref{\texttt{Module.length} (Mathlib); finite length of the localized modules:
-\leanlib{AlgebraicAnalysis/Module/MinimalSupportKernelCokernelLengths.lean}{45}{AlgebraicAnalysis.localized_kernel_and_cokernel_isFiniteLength}}}
+\leanlib{AlgebraicAnalysis/Module/MinimalSupportKernelCokernelLengths.lean}{48}{AlgebraicAnalysis.localized_kernel_and_cokernel_isFiniteLength}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalOldTangentialFiniteness.lean}{70}{Stafford38.Characteristic.CanonicalOldTangentialFiniteness.canonical_finite_old_coordinate_kernel_cokernel},
-\leandecl{Stafford38/Characteristic/CanonicalTangentialSymbolFiniteness.lean}{113}{Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_tangential_coordinate}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalOldTangentialFiniteness.lean}{73}{Stafford38.Characteristic.CanonicalOldTangentialFiniteness.canonical_finite_old_coordinate_kernel_cokernel},
+\leandecl{Stafford38/Characteristic/CanonicalTangentialSymbolFiniteness.lean}{116}{Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness.canonical_orderAssociatedGradedModule_finite_tangential_coordinate}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalPageEulerInequality.lean}{22}{Stafford38.Characteristic.CanonicalPageEulerInequality.canonicalPage_length_target_le_source};
-exhaustion \leanlib{AlgebraicAnalysis/Module/UniformBoundaryVanishing.lean}{103}{AlgebraicAnalysis.exists_uniform_subsingleton_localized}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalPageEulerInequality.lean}{25}{Stafford38.Characteristic.CanonicalPageEulerInequality.canonicalPage_length_target_le_source};
+exhaustion \leanlib{AlgebraicAnalysis/Module/UniformBoundaryVanishing.lean}{106}{AlgebraicAnalysis.exists_uniform_subsingleton_localized}}}
 
-\AIadd{\formalref{\leanlib{AlgebraicAnalysis/Module/BaseLocalizedKoszulPositivity.lean}{22}{AlgebraicAnalysis.BaseLocalizedKoszulPositivity.localized_length_cokernel_gt_kernel};
-$x_1$ in no minimal prime: \leandecl{Stafford38/Characteristic/NoncharacteristicMinimalPrime.lean}{107}{Stafford38.Characteristic.NoncharacteristicMinimalPrime.canonical_minimalPrime_mem_of_normalCoordinate_false}}}
+\AIadd{\formalref{\leanlib{AlgebraicAnalysis/Module/BaseLocalizedKoszulPositivity.lean}{25}{AlgebraicAnalysis.BaseLocalizedKoszulPositivity.localized_length_cokernel_gt_kernel};
+$x_1$ in no minimal prime: \leandecl{Stafford38/Characteristic/NoncharacteristicMinimalPrime.lean}{118}{Stafford38.Characteristic.NoncharacteristicMinimalPrime.canonical_minimalPrime_mem_of_normalCoordinate_false}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{83}{Stafford38.Characteristic.CanonicalKoszulContradiction.coordinate_cokernel_subsingleton},
-\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{47}{Stafford38.Characteristic.CanonicalKoszulContradiction.no_minimal_coordinate_cokernel_support}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{86}{Stafford38.Characteristic.CanonicalKoszulContradiction.coordinate_cokernel_subsingleton},
+\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{50}{Stafford38.Characteristic.CanonicalKoszulContradiction.no_minimal_coordinate_cokernel_support}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{277}{Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_mem_initialIdeal},
-\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{287}{Stafford38.CharacteristicInitialIdeal.canonical_orderCharacteristicSupport_subset_principal_zeroLocus}}}
+\AIadd{\formalref{\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{281}{Stafford38.CharacteristicInitialIdeal.canonical_orderPrincipalComponent_mem_initialIdeal},
+\leandecl{Stafford38/Characteristic/InitialIdeal.lean}{291}{Stafford38.CharacteristicInitialIdeal.canonical_orderCharacteristicSupport_subset_principal_zeroLocus}}}
 
 \AIadd{\formalref[{stated for the support transported along $\xi\mapsto-\xi$, which fixes $x_1$; transported back verbatim}]{%
-\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{120}{Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance},
-\leandecl{Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean}{148}{Stafford38.SpecializedNoncharacteristicEquality.transposedSupport_disjoint_axis_iff}}}
+\leandecl{Stafford38/Characteristic/CanonicalKoszulContradiction.lean}{123}{Stafford38.Characteristic.CanonicalKoszulContradiction.canonical_support_avoidance},
+\leandecl{Stafford38/Characteristic/SpecializedNoncharacteristicEquality.lean}{151}{Stafford38.SpecializedNoncharacteristicEquality.transposedSupport_disjoint_axis_iff}}}
 
 \AIadd{\formalref[{$Y$ given by a prime ideal; conormal space = annihilator of the Zariski tangent space; closure by homogeneous polynomials}]{%
-\leandecl{Stafford38/Geometry/ProjectiveConormalDirections.lean}{37}{Stafford38.Geometry.ProjectiveConormalDirections.smoothConormalDirectionSet},
-\leandecl{Stafford38/Geometry/ProjectiveConormalDirections.lean}{29}{Stafford38.Geometry.ProjectiveConormalDirections.projectiveHomogeneousClosure}}}
+\leandecl{Stafford38/Geometry/ProjectiveConormalDirections.lean}{40}{Stafford38.Geometry.ProjectiveConormalDirections.smoothConormalDirectionSet},
+\leandecl{Stafford38/Geometry/ProjectiveConormalDirections.lean}{32}{Stafford38.Geometry.ProjectiveConormalDirections.projectiveHomogeneousClosure}}}
 
 \AIadd{\formalref[{any algebraically closed field and any axis; auxiliary, not used by the formal proof of Theorem~\ref{paper:thm:asymptotic-conormal}}]{%
-\leandecl{Stafford38/Geometry/GeneralTangentLimitCriterion.lean}{497}{Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand};
-scalar extension \leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.lean}{134}{Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing}}}
+\leandecl{Stafford38/Geometry/GeneralTangentLimitCriterion.lean}{629}{Stafford38.Geometry.GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand};
+scalar extension \leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.lean}{137}{Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing}}}
 
 \AIadd{\formalref[{generic point only Zariski-tangent; no smoothness needed for this step}]{%
-\leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.lean}{134}{Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing};
-\leandecl{Stafford38/Geometry/SmoothConormalFibreVanishing.lean}{21}{Stafford38.Geometry.SmoothConormalFibreVanishing.fibreLift_mem_vanishingIdeal_equationConormal};
-\leandecl{Stafford38/Geometry/LaurentConormalDirection.lean}{68}{Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic};
-\leandecl{Stafford38/Geometry/GeneralTangentLimitCriterion.lean}{368}{Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction}}}
+\leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.lean}{137}{Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing};
+\leandecl{Stafford38/Geometry/SmoothConormalFibreVanishing.lean}{24}{Stafford38.Geometry.SmoothConormalFibreVanishing.fibreLift_mem_vanishingIdeal_equationConormal};
+\leandecl{Stafford38/Geometry/LaurentConormalDirection.lean}{71}{Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic};
+\leandecl{Stafford38/Geometry/GeneralTangentLimitCriterion.lean}{501}{Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction}}}
 
 \AIadd{\formalref[{over every algebraically closed field of characteristic zero; the existing Laurent proof has the same conclusion, while its intermediate route differs from the printed proof}]{%
-\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{63}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions},
-affine-cone form \leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{28}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure}}}
+\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{42}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions},
+affine-cone form \leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{32}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure}}}
 
 \AIadd{\formalref[{any algebraically closed field of characteristic $0$; (i) is the affine-cone form used in Section~\ref{paper:sec:involutive-review}}]{%
-\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{63}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions};
-\leandecl{Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean}{336}{Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameExistence};
-\leandecl{Stafford38/Geometry/DivisorTangentLattice.lean}{317}{Stafford38.Geometry.DivisorTangentLattice.VisibleDivisorFrame.exists_maximalIdeal_coefficients};
-\leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.lean}{134}{Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing}}}
+\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{42}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions};
+\leandecl{Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean}{339}{Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameExistence};
+\leandecl{Stafford38/Geometry/DivisorTangentLattice.lean}{335}{Stafford38.Geometry.DivisorTangentLattice.VisibleDivisorFrame.exists_maximalIdeal_coefficients};
+\leandecl{Stafford38/Geometry/ConormalScalarExtensionVanishing.lean}{137}{Stafford38.Geometry.ConormalScalarExtensionVanishing.scalarExtension_vanishing}}}
 
 \AIadd{\formalref[{any algebraically closed field of characteristic $0$; $P$ need not be homogeneous}]{%
-\leandecl{Stafford38/Geometry/GeneralCoisotropicSets.lean}{108}{Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical};
-\leandecl{Stafford38/Geometry/GeneralCoisotropicExclusion.lean}{29}{Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate};
-\leandecl{Stafford38/Characteristic/BaseRelativePoisson.lean}{26}{Stafford38.Characteristic.BaseRelativePoisson.IsBaseRelativePoisson};
-\leandecl{Stafford38/Geometry/GeneralCoisotropicSetsTest.lean}{100}{Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer}}}
+\leandecl{Stafford38/Geometry/GeneralCoisotropicSets.lean}{160}{Stafford38.Geometry.GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical};
+\leandecl{Stafford38/Geometry/GeneralCoisotropicExclusion.lean}{84}{Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate};
+\leandecl{Stafford38/Characteristic/BaseRelativePoisson.lean}{29}{Stafford38.Characteristic.BaseRelativePoisson.IsBaseRelativePoisson};
+\leandecl{Stafford38/Geometry/GeneralCoisotropicSetsTest.lean}{104}{Stafford38.Geometry.GeneralCoisotropicSetsTest.exact_complex_manuscript_coisotropic_consumer}}}
 
 \AIadd{\formalref{%
-\leandecl{Stafford38/Geometry/GeneralCoisotropicExclusion.lean}{29}{Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate};
-\leandecl{Stafford38/Characteristic/BaseRelativePoisson.lean}{69}{Stafford38.Characteristic.BaseRelativePoisson.zeroSection_stable_under_differential_translation_of_isBaseRelativePoisson};
-\leandecl{Stafford38/Geometry/GeneralComponentConormalContainment.lean}{68}{Stafford38.Geometry.GeneralComponentConormalContainment.equationConormalClosure_minimalPrime_subset_zeroLocus};
-\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{28}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure}}}
+\leandecl{Stafford38/Geometry/GeneralCoisotropicExclusion.lean}{84}{Stafford38.Geometry.GeneralCoisotropicExclusion.exists_zero_base_coordinate};
+\leandecl{Stafford38/Characteristic/BaseRelativePoisson.lean}{72}{Stafford38.Characteristic.BaseRelativePoisson.zeroSection_stable_under_differential_translation_of_isBaseRelativePoisson};
+\leandecl{Stafford38/Geometry/GeneralComponentConormalContainment.lean}{72}{Stafford38.Geometry.GeneralComponentConormalContainment.equationConormalClosure_minimalPrime_subset_zeroLocus};
+\leandecl{Stafford38/Geometry/GeneralAsymptoticConormal.lean}{32}{Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/FoundationClosure.lean}{38}{Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic}:
-exclusion over $\overline k$ \leandecl{Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean}{107}{Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic},
-descent \leandecl{Stafford38/Weyl/FilteredScalarLifting.lean}{469}{Stafford38.Weyl.FilteredScalarLifting.canonicalSupportDescent},
-certificate \leandecl{Stafford38/Characteristic/CanonicalCertificate.lean}{30}{Stafford38.CharacteristicCanonicalCertificate.exists_fixedSource_certificate_of_orderCharacteristicSupport_eq_empty}}}
+\AIadd{\formalref{\leandecl{Stafford38/FoundationClosure.lean}{41}{Stafford38.FoundationClosure.canonicalSupportVanishingViaGeneralCoisotropic}:
+exclusion over $\overline k$ \leandecl{Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean}{222}{Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic},
+descent \leandecl{Stafford38/Weyl/FilteredScalarLifting.lean}{472}{Stafford38.Weyl.FilteredScalarLifting.canonicalSupportDescent},
+certificate \leandecl{Stafford38/Characteristic/CanonicalCertificate.lean}{33}{Stafford38.CharacteristicCanonicalCertificate.exists_fixedSource_certificate_of_orderCharacteristicSupport_eq_empty}}}
 
 \AIadd{\formalref[{stated for the canonical ideal; the argument uses nothing else}]{%
-\leandecl{Stafford38/Weyl/FilteredScalarLifting.lean}{384}{Stafford38.Weyl.FilteredScalarLifting.target_orderInitialIdeal_le_map_source_orderInitialIdeal};
-\leandecl{Stafford38/Weyl/PresentedScalarExtension.lean}{388}{Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_map_orderInitialIdeal_le};
-\leandecl{Stafford38/Characteristic/EmptySupportVanishing.lean}{80}{Stafford38.CharacteristicEmptySupportVanishing.orderInitialIdeal_eq_top_iff_rightQuotient_subsingleton};
-\leandecl{Stafford38/Characteristic/GeometricSupportDescent.lean}{96}{Stafford38.Characteristic.GeometricSupportDescent.map_scalarPolynomialMap_eq_top_iff}}}
+\leandecl{Stafford38/Weyl/FilteredScalarLifting.lean}{387}{Stafford38.Weyl.FilteredScalarLifting.target_orderInitialIdeal_le_map_source_orderInitialIdeal};
+\leandecl{Stafford38/Weyl/PresentedScalarExtension.lean}{390}{Stafford38.Weyl.PresentedScalarExtension.presentedWeylScalarExtension_map_orderInitialIdeal_le};
+\leandecl{Stafford38/Characteristic/EmptySupportVanishing.lean}{83}{Stafford38.CharacteristicEmptySupportVanishing.orderInitialIdeal_eq_top_iff_rightQuotient_subsingleton};
+\leandecl{Stafford38/Characteristic/GeometricSupportDescent.lean}{101}{Stafford38.Characteristic.GeometricSupportDescent.map_scalarPolynomialMap_eq_top_iff}}}
 
-\AIadd{\formalref{\leandecl{Stafford38/TorsionCyclicity.lean}{63}{Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion},
-two generators \leandecl{Stafford38/TorsionCyclicity.lean}{49}{Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair},
-domain \leandecl{Stafford38/Weyl/Domain.lean}{22}{Stafford38.WeylDomain.mul_ne_zero};
-Mathlib-only statement \leandecl{CorollaryChallenge.lean}{31}{Stafford38CorollaryChallenge.torsionCyclicStatement}}}
+\AIadd{\formalref{\leandecl{Stafford38/TorsionCyclicity.lean}{66}{Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion},
+two generators \leandecl{Stafford38/TorsionCyclicity.lean}{52}{Stafford38.TorsionCyclicity.exists_span_singleton_eq_span_pair},
+domain \leandecl{Stafford38/Weyl/Domain.lean}{25}{Stafford38.WeylDomain.mul_ne_zero};
+Mathlib-only statement \leandecl{CorollaryChallenge.lean}{34}{Stafford38CorollaryChallenge.torsionCyclicStatement}}}
 
 \AIadd{\formalref[{for $X=\mathbb A^n$, $H=\{x_1=0\}$ and a characteristic ideal $J$: the coordinate-ring map $k[T^*H]\to k[x,\xi]/(J+(x_1))$ is finite}]{%
-\leandecl{Stafford38/NoncharacteristicHyperplane.lean}{70}{Stafford38.NoncharacteristicHyperplane.IsNoncharacteristic}}}
+\leandecl{Stafford38/NoncharacteristicHyperplane.lean}{73}{Stafford38.NoncharacteristicHyperplane.IsNoncharacteristic}}}
 
 \AIadd{\formalref[{the zero-section statement holds without $x_1=0$: tangential covariables vanishing forces $\xi_1=0$}]{%
-\leandecl{Stafford38/NoncharacteristicHypersurface.lean}{129}{Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite}, \leandecl{Stafford38/NoncharacteristicHyperplane.lean}{232}{Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator},
-\leandecl{Stafford38/NoncharacteristicHyperplane.lean}{328}{Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection}}}
+\leandecl{Stafford38/NoncharacteristicHypersurface.lean}{132}{Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite}, \leandecl{Stafford38/NoncharacteristicHyperplane.lean}{235}{Stafford38.NoncharacteristicHyperplane.canonical_isNoncharacteristic_annihilator},
+\leandecl{Stafford38/NoncharacteristicHyperplane.lean}{331}{Stafford38.NoncharacteristicHyperplane.canonicalSupport_conormal_subset_zeroSection}}}
 
 
 % Additional consequence declarations retained from Appendix B.
-\AIadd{\formalref{\leandecl{Stafford38/LocalizationCorollaries.lean}{28}{Stafford38.LocalizationCorollaries.s38_rightOreLocalization}}}
-\AIadd{\formalref{\leandecl{Stafford38/LeftHandedCorollary.lean}{20}{Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement}}}
-\AIadd{\formalref{\leandecl{Stafford38/LocalizedDifferentialCorollaries.lean}{80}{Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential}}}
-\AIadd{\formalref{\leandecl{Stafford38/EvolutionaryCorollary.lean}{33}{Stafford38.Evolution.evolutionaryCorollary}}}
+\AIadd{\formalref{\leandecl{Stafford38/LocalizationCorollaries.lean}{31}{Stafford38.LocalizationCorollaries.s38_rightOreLocalization}}}
+\AIadd{\formalref{\leandecl{Stafford38/LeftHandedCorollary.lean}{23}{Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement}}}
+\AIadd{\formalref{\leandecl{Stafford38/LocalizedDifferentialCorollaries.lean}{83}{Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential}}}
+\AIadd{\formalref{\leandecl{Stafford38/EvolutionaryCorollary.lean}{36}{Stafford38.Evolution.evolutionaryCorollary}}}
 \fi
 
 \bibliographystyle{alpha}
