@@ -1,7 +1,7 @@
 --- a/docs/definition-owners.md
 +++ b/docs/definition-owners.md
-@@ -61,2 +61,10 @@
- | Presented canonical right ideal | `WeylEulerResidue.canonicalRightIdeal` | `WeylQuotientTransport.presentedCanonicalRightIdeal` abbreviates its presented-coordinate specialization. |
+@@ -61,0 +62,9 @@
++| Finite-coordinate algebra-map presentation | `Geometry.SameWitness.CoordinatePresentation.fFin` | This computed abbreviation composes the retained `fOption` with the chosen finite reindexing equivalence `τ`; it exposes the finite-coordinate map used by downstream certificates and is not an independently chosen map. The `CoordinatePresentation` package is proposed in the earlier T60 patch. |
 +| Same-witness common-open point data | `Geometry.SameWitness.CommonOpenPointData` | Retains the selected maximal center, residue identification, formally-étale point localization, and axis-lift choices. `CommonOpenData.M`, `hM`, `eM`, `hEtM`, and its other point accessors are projections of this record, grouped as compatibility names rather than separate owners. |
 +| Same-witness common-open chart coordinates | `Geometry.SameWitness.CommonOpenChartData` | Retains the selected quotient coordinates and chart equations for the same `ChartSetup` and `CoordinatePresentation`; `CommonOpenData` chart accessors project these fields. |
 +| Same-witness common-open map package | `Geometry.SameWitness.CommonOpenMapData` | Retains the selected common-open ring maps and their compatibility equations for the same point and chart; `CommonOpenData` map accessors project these fields. |
@@ -10,5 +10,3 @@
 +| Point-local power-series chart presentation | Stafford38 `Geometry.PrescribedGroundPointUnitPowerChart.localToFinSuccPowerSeries` | `SameWitness.pointLocalPowerSeriesChart` installs the finite-type, scalar-tower, and formally-étale structures and exposes this existing chart as a ring homomorphism; it is a compatibility presentation, not another chart owner. |
 +| Same-witness common-open positions | `Geometry.SameWitness.CommonOpenPositionData` | Retains the point-local power-series positions and their selected common-open images for the same arc. Its chart entries use `pointLocalPowerSeriesChart` and therefore the established point-local chart owner. |
 +| Same-witness common-open columns | `Geometry.SameWitness.CommonOpenColumnsData` | Retains transverse and raw derivative identities and the selected numerator nonvanishing over the same positions and étale maps; it packages these endpoint inputs without redefining the derivative or numerator operations. |
- 
- ## Distinct concepts retained
