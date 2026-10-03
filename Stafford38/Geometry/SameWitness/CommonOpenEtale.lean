@@ -76,6 +76,7 @@ structure CommonOpenEtaleData
   φk : OriginalAffineChartQuotient (k := k) P →ₐ[k] arc.common.U
   ψU : MvPolynomial (Option (Fin (@Fintype.card coords.t coords.htFinite))) k
       →ₐ[k] arc.common.U
+  hφAction : φk.toRingHom = arc.common.φ
   hψAction :
     letI : arc.common.M.IsMaximal := arc.common.hM
     let B := actualSelectedNormalization P w
@@ -192,6 +193,7 @@ theorem nonempty_commonOpenEtaleData
       setup.f setup.e arc.common.g arc.hbaseMap
   exact ⟨{
     φk := φk
+    hφAction := rfl
     ψU := ψU
     hφEtale := hφEtale
     hψEtale := hψEtale
