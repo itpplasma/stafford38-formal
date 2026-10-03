@@ -4,11 +4,11 @@ Updated 3 October 2026. The active candidate work runs on approved Linux hosts. 
 
 ## Proof and correspondence
 
-The repository has a verified proof of the unchanged main Stafford 3.8 challenge and its documented corollaries at named historical checkpoints. The v1.3.0 candidate rewires the terminal asymptotic-conormal step through the same-witness closure and original-prime route; the generic/Laurent route remains available as an alternative. The candidate still needs its shared assemblies and final verifier, and full correspondence with Johanna’s preserved geometric argument remains subject to human review.
+The repository has a verified proof of the unchanged main Stafford 3.8 challenge and its documented corollaries at named historical checkpoints. The v1.3.0 candidate rewires the terminal asymptotic-conormal step through the same-witness closure and original-prime route; the generic/Laurent route remains available as an alternative. The candidate still needs its final verifier, and full correspondence with Johanna’s preserved geometric argument remains subject to human review.
 
 The candidate has accepted same-witness closure and original-prime modules and literal consumers, alongside the previously checked chart, ground-point, étale, column, and tangent components. The shared main and alternative solution assemblies passed on Linux. Final repository verification is separate from the pending whole-paper correspondence review.
 
-The affine-fibre closure and original-prime wrapper now have accepted module and literal-consumer checks. The remaining active proof gate is completion of the shared main and alternative solution assemblies; then the final repository verifier and four Palomar comparisons must pass on the frozen source. The [campaign ledger](docs/qwen-campaign/STATE.md) records the scoped receipts and earlier failed repairs.
+The affine-fibre closure and original-prime wrapper now have accepted module and literal-consumer checks. The remaining proof gates are the final repository verifier and four Palomar comparisons on frozen public source `45037fbc16329df7a208eb3de91aca31d720f03c`. The first run stopped at a bubblewrap version mismatch before any verifier/comparator execution; an isolated tooling repair is in progress. The [campaign ledger](docs/qwen-campaign/STATE.md) records the scoped receipts and earlier failed repairs.
 
 With the shared assemblies passed, run the final dependency audit and repository verifier, followed by the four actual Palomar comparisons. Max’s whole paper-to-Lean review and Johanna’s review of the visible author proof and marked proposals remain pending. Historical terminal receipts and the current scoped module receipts do not certify the assembled candidate or release.
 
@@ -26,12 +26,12 @@ AlgebraicAnalysis v0.3.3 is separately released on rc3. Its archived mathematica
 
 ## Manuscript and review tools
 
-The manuscript remains close to Johanna's historical human-readable version: the author proof is preserved, and necessary mathematical corrections, comments and amendments remain visible. The user-authorized cleanup is synchronized to GitHub and Overleaf at `ce09ead2553154c3521e0515c5e3db7a505832e0`. Relative to its frozen baseline, only eleven complete technical comparison boxes were removed from the main manuscript and moved to the companion; all 28 retained boxes are byte-identical. Max's final whole-paper correspondence package still requires exact final source pins, refreshed anchors and matching PDF receipts.
+The manuscript remains close to Johanna's historical human-readable version: the author proof is preserved, and necessary mathematical corrections, comments and amendments remain visible. The source-linked review is synchronized to GitHub and Overleaf at `e8bc32379f668cdd21096519803b7c55a42e1106`. Relative to its frozen baseline, only eleven complete technical comparison boxes were removed from the main manuscript and moved to the companion; all 28 retained boxes are byte-identical. Max's final whole-paper correspondence package still requires exact final source pins, refreshed anchors and matching PDF receipts.
 
 The generator's approval digest now includes its review-scope module, and run-in paragraph headings render correctly. Packaging and rendering fixtures passed in their recorded worktrees. The current review map and supplementary assets are historical; the archived candidate map and anchor dry run are preparation only.
 
 ## Remaining completion gates
 
-Complete the shared solution assemblies, run the frozen final verifier and four Palomar comparisons, then finish the source-linked review bundle and human reviews. Candidate versions are formal v1.3.0 and supplementary v0.2.0; no new release, tag, or DOI has been published.
+Run the frozen final verifier and four Palomar comparisons, finish the source-linked review bundle, publish and verify both archives, and send the review handovers. Human reviews remain pending after delivery. Candidate versions are formal v1.3.0 and supplementary v0.2.0; no new release, tag, or DOI has been published.
 
 The controller owns integration and promotion. Worker worktrees remain available; [the branch map](PLAN.md#branches-for-resuming-saved-work) identifies each pushed candidate and its recovery command. See [the route map](docs/paper-route-alignment.json), [definition owners](docs/definition-owners.md) and [proof-source provenance](docs/proof-source-provenance.md). The earlier [stopped-state archive](docs/audits/stopped-2026-10-02/README.md) retains its source packets and the incoming cleanup provenance annotations. No new mathematical verification is claimed by synchronization.

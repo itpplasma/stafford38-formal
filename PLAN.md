@@ -19,7 +19,7 @@ The [2 October checkpoint archive](docs/audits/paused-2026-10-02/README.md) pres
 
 ## Remaining completion gates
 
-1. Finish the four shared main and alternative solution assemblies. The T34/T35/T36/T41 modules and literal consumers already passed with only the three permitted axioms.
+1. Completed: all four shared main and alternative solution assemblies passed on Linux, as did the T34/T35/T36/T41 modules and literal consumers, with only the three permitted axioms.
 2. Run the final repository verifier on the frozen candidate with Lean 4.35.0-rc3 and the pinned Mathlib and AlgebraicAnalysis revisions.
 3. Run all four Palomar comparisons on that frozen source: `comparator.json`, `comparator-fixed-source.json`, `comparator-alternative.json`, and `comparator-alternative-fixed-source.json`. Keep both challenges unchanged and preserve the generic/Laurent route as an alternative. Deliver the Palomar-ready package; the owner submits online.
 4. Freeze exact paper, formal, library and generator inputs. Re-anchor every review card; rebuild matching manuscript PDFs and the complete Max correspondence package. Preserve Johanna's visible proof and local annotated proposals.

@@ -56,6 +56,8 @@ prior=json.loads((root/'final-receipts/terminal.json').read_text())
 guard=json.loads((root/'final-outer-guard.json').read_text())
 assert prior['source_commit']==commit and prior['exit_status']==1
 assert prior['failed_or_last_stage']=='tooling'
+assert any(s['stage']=='tooling' and s['exit_status']==1 for s in prior['stages'])
+assert 'expected official Palomar bubblewrap 0.12.0, found bubblewrap 0.8.0' in (root/'final-receipts/tooling.log').read_text()
 assert guard['reason']=='finished' and not guard['live_child_pids_at_exit'] and not guard['stop_cause']
 assert not (root/'final-receipts/full-verifier.command.json').exists()
 assert (root/'final-receipts/compiled-cache-reuse.exit').read_text().strip()=='0'
@@ -71,7 +73,7 @@ export MATHLIB_CACHE_DIR="$run_root/mathlib-cache"
 export CURL_CA_BUNDLE="$curl_runtime/ca-certificates.crt"
 export GIT_CONFIG_GLOBAL=/dev/null
 export GIT_TERMINAL_PROMPT=0
-export PATH="$curl_runtime:$elan_home/toolchains/leanprover--lean4---v4.35.0-rc3/bin:$elan_home/bin:$bootstrap:$PATH"
+export PATH="$curl_runtime:$elan_home/toolchains/leanprover--lean4---v4.35.0-rc3/bin:$elan_home/bin:$bootstrap/bin:$bootstrap:$PATH"
 
 record_command() {
   local name=$1
