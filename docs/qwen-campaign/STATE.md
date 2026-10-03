@@ -6,7 +6,7 @@ Formal v1.3.1 `f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff`, DOI10.5281/zenodo.2312
 
 Final review source is P7 `760c68d2d79a8fd2c4b58f35f32dd90969591300` / S7 `9f6ca3241edcf88da42a3a000f25514d105e2f30`, synchronized to GitHub and Overleaf. All three matching PDFs compiled with zero undefined diagnostics and exact before/after input hashes. The immutable companion freezes P6/S6/R131; P7 adds its verified citation only. All654 protected proof/tool files match C2; descriptor provenance and package-version exceptions are recorded. The complete C2 verifier, all four local Palomar comparisons and399 public-name checks passed and were not repeated.
 
-The current ledger is `docs/paper-lean-audit/review-status.json`. It classifies proposed corrected review text, preserves original findings and records both human reviews pending. Current statement labels are exact21/equivalent11/Lean-stronger9/partial8/n/a8; routes same18/similar13/Lean-only1/n/a25. Paper-wrong, not-formalized and different-route counts are zero; the genuine scope limits remain visible. Finish final live-site confirmation and send the authorized handovers; record actual mail-service receipts. Johanna/Max reviews remain human follow-ups. The owner will resubmit corrected R131 with comparator.json; no new online acceptance is claimed.
+The current ledger is `docs/paper-lean-audit/review-status.json`. It classifies proposed corrected review text, preserves original findings and records both human reviews pending. Current statement labels are exact21/equivalent11/Lean-stronger9/partial8/n/a8; routes same18/similar13/Lean-only1/n/a25. Paper-wrong, not-formalized and different-route counts are zero; the genuine scope limits remain visible. Final live HTTP source pins,57 cards and both PDF hashes passed; both authorized handovers were sent with mail-service sent=true. The campaign is complete. Johanna/Max reviews remain human follow-ups. The owner will resubmit corrected R131 with comparator.json; no new online acceptance is claimed.
 
 Owner steering and earlier checkpoint history, 3 October 2026: finish the proof as the immediate
 priority, faithful to Johanna’s original manuscript proof with necessary
@@ -91,15 +91,15 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T73 | Collect Linux result | done | 6 | notes/T73-four-Palomar-comparisons-linux-accepted-3137241-20261003.tar.gz | R1verifier/R2retained/R4all4comparatorsPASS; final1095filemanifest+10pins exact; guard0/no stops/children/swap |
 | T74 | Palomar-ready owner handover | owner | 2 | formalv1.3.1=f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff | v1.3.0 mechanicalverification passed; review flagged metadata routing. Corrected v1.3.1 published; owner resubmits comparator.json; new online acceptance pending |
 | T80 | Re-anchor review map | done | 4 | notes/T80-399-public-names-linux-accepted-3139266-20261003.tar.gz |393+2+2+2 actualnamechecksPASS;3139266guard0/no stops/children/swap; no proofchange |
-| T81 | Build review site | done | 3 | notes/T81-final-comparison-scope-20261003.json | Corrected labels on57 cards; finalP7/S7/R131 map and matchingPDFs; humanreviews pending |
-| T82 | Rebuild manuscript PDFs | done | 5 | notes/T82-P7-S7-PDF-build-20261003.tar.gz | All3 P7 PDFs compile0undefined, actualsource hashes match; source/PDF asset gate required before finalpush |
+| T81 | Build review site | done | 3 | notes/T81-P7-S7-R131-final-live-receipt-20261003.json | Public HTTP200, exactP7/S7/R131 pins,57cards/currentlabels and both actualPDFhashes PASS; earlier57-card browserwalk inherited |
+| T82 | Rebuild manuscript PDFs | done | 5 | notes/T82-P7-S7-PDF-build-20261003.tar.gz | All3 P7 builds0undefined; actualsourcehashesmatch; source/PDF assetgatePASS and publicPDFhashesPASS |
 | T83 | Supplementary bundle (local) | done | 4 | notes/T83-v0.2.1-corrected-review-package-20261003.json | v0.2.1 exactP6/S6/R131 publicrebuildPASS;18ZIP members/17checksums; version-preservation regressionPASS; published6517aa94 |
 | T84 | Review handover | owner | 1 | docs/paper-lean-audit/review-status.json | Review package ready; Johanna marked proposals and Max all57 full correspondence checks remain pending |
 | T90 | Release drafts | done | 3 | docs/releases/v1.3.1.md; supplementarydocs/release-v0.2.1.md | Both actualDOIs and verification scopes inpublishednotes; oldernotes preserved |
 | T91 | Signed tag, release, Zenodo | done | 4 | notes/T92-formal-v1.3.1-Zenodo-bytecheck-20261003.json | Signedformalv1.3.1 and supplementaryv0.2.1 tags/releases published; immutable |
 | T92 | Verify Zenodo archive | done | 4 | notes/T92-supplementary-v0.2.1-Zenodo-bytecheck-20261003.json | All1172formal and29supplementary tagged files byte-identical toZenodo; zero missing/extras/mismatches |
 | T93 | Citation drafts | done | 4 | paperP7=760c68d2d79a8fd2c4b58f35f32dd90969591300 | ActualverifiedDOIs23127367/23127468 cited; GitHub+Overleaf pushes0 |
-| T94 | Final review emails | todo | 0 | | Send authorized Johanna/Max handovers only after releases, archive comparisons and citations; record delivery |
+| T94 | Final review emails | done | 1 | notes/T94-final-review-email-receipt-20261003.json | Both authorized short English emails sent; work mail service sent=true; Chris&AI signatures; Johanna/Max human reviews remain pending |
 
 ## Earlier execution history (resumed 2026-10-03 by owner)
 
@@ -411,3 +411,7 @@ Receipt root: `final-receipts-guard-repaired-resume4`; guard prefix:
 ## T95 Verification provenance correction
 
 The owner supplied the Palomar review finding. The descriptor now links its historical cbb2396 commit/report hash to the exact historical report, with both completed later replay scopes recorded separately. Formalv1.3.1 is published and all1,172 archive files match. See `notes/T95-v1.3.1-verification-provenance-fix-20261003.json` and the v1.3.1 archive/congruence receipts. No mathematical source or proof-verifier program changed.
+
+## Campaign completed
+
+Formalv1.3.1 and supplementaryv0.2.1 are signed, published and byte-verified. Final P7/S7 citations, PDFs and live guided review are accepted; both authorized review emails were sent. Johanna/Max reviews and the owner’s R131 Palomar resubmission/registration remain explicit human follow-ups. No new mathematical replay is claimed by the provenance patch or final handover records.

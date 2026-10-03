@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "site": "https://itpplasma.github.io/stafford38-formal/",
+  "workflow_run": "https://github.com/itpplasma/stafford38-formal/actions/runs/37155606487",
+  "published_commit": "77633b89f003563878717bb2025abdedbbe33abd",
+  "http_status": 200,
+  "html_bytes": 6130961,
+  "html_sha256": "2af2f360447c92b0e66c6319d40424571150219aabf5b3ec310c045c2ee62dc4",
+  "source_metadata": {
+    "version": "2026-10-03-v1.3.1-v0.2.1-final-review",
+    "paper": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
+    "formal": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
+    "checks": [
+      "statement",
+      "route",
+      "issues",
+      "publication"
+    ],
+    "generator": "680926fc7d7d49fc",
+    "live": "https://itpplasma.github.io/stafford38-formal/"
+  },
+  "guided_cards": 57,
+  "statement_relations": {
+    "partial": 8,
+    "lean-stronger": 9,
+    "equivalent": 11,
+    "exact": 21,
+    "n/a": 8
+  },
+  "route_relations": {
+    "n/a": 25,
+    "same": 18,
+    "similar": 13,
+    "lean-only": 1
+  },
+  "guided_start": "present",
+  "PDF_http_hashes": {
+    "human_readable_main.pdf": "7f3b5f3b2c498a1452a19cc2f4877638a48598a07f482daf9a166b44e764a32c",
+    "lean_proof_details.pdf": "a043efcace06d6fee04f2cbc205a93a53f0999c01cb9e45e4399a435215bd8de"
+  },
+  "scope": "Final public HTTP output matches P7/S7/R131 pins and current57-card classifications; both live PDFs match actual final build. No repeated browser walk or proof verification."
+}

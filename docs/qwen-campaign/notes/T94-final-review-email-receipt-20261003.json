@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-03T21:39:07.291081+00:00",
+  "status": "both authorized handovers sent",
+  "formal_release": "v1.3.1",
+  "formal_doi": "10.5281/zenodo.23127367",
+  "supplementary_release": "v0.2.1",
+  "supplementary_doi": "10.5281/zenodo.23127468",
+  "current_review": "P7/S7/R131",
+  "site": "https://itpplasma.github.io/stafford38-formal/",
+  "messages": [
+    {
+      "recipient": "johanna",
+      "subject": "Stafford 3.8: review the marked paper corrections",
+      "body_sha256": "ad4d092a5df9cda90a524130621226b8a56a1557fcb5e22ef9c0ccd760e4a421",
+      "mail_service_sent": true,
+      "account": "work",
+      "signature": "Chris&AI"
+    },
+    {
+      "recipient": "max",
+      "subject": "Stafford 3.8: complete the Lean\u2013paper comparison",
+      "body_sha256": "b8f80b638bea1838fbb3220194e544bf6fe8068d5cb1a4d6fea725b044ad3ef6",
+      "mail_service_sent": true,
+      "account": "work",
+      "signature": "Chris&AI"
+    }
+  ],
+  "scope": "Mail service confirmed sent=true for each request. Recipient reading and human review acceptance are not claimed."
+}

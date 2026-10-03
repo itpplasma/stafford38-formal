@@ -166,7 +166,12 @@
     "Chris Palomar registration after automated review"
   ],
   "email_handover": {
-    "status": "pending; send at actual end"
+    "status": "sent",
+    "recorded_utc": "2026-10-03T21:39:07.291081+00:00",
+    "johanna": "Marked manuscript proposals on Overleaf",
+    "max": "All57 guided cards: all statements, definitions, hypotheses, supporting proofs and both shared challenges/main-alternative solutions; export findings JSON",
+    "mail_service_confirmation": "sent=true for both authorized recipients",
+    "receipt": "docs/qwen-campaign/notes/T94-final-review-email-receipt-20261003.json"
   },
   "palomar_online": {
     "source": "Owner report on2026-10-03",
@@ -197,5 +202,13 @@
       "review_freeze": "P4/S4/R; current P5/S5 updates citations only, and live classification labels distinguish proposed corrections from historical originals."
     }
   },
-  "frozen_supplementary_ledger": "docs/current-review.json at signed supplementaryv0.2.1; final handover/deposition receipt is external to the immutable18-member ESM bundle."
+  "frozen_supplementary_ledger": "docs/current-review.json at signed supplementaryv0.2.1; final handover/deposition receipt is external to the immutable18-member ESM bundle.",
+  "live_review": {
+    "status": "passed",
+    "receipt": "docs/qwen-campaign/notes/T81-P7-S7-R131-final-live-receipt-20261003.json",
+    "paper": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
+    "formal": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
+    "guided_cards": 57,
+    "PDF_hashes": "Both HTTP PDFs match actual final P7 build"
+  }
 }

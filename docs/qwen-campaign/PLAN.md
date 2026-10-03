@@ -21,7 +21,7 @@ Corrected supplementary v0.2.1 `6517aa94ac04dfc2cae3b8b89636d631da1cded6`, DOI 1
 
 Final paper P7 `760c68d2d79a8fd2c4b58f35f32dd90969591300` / public S7 `9f6ca3241edcf88da42a3a000f25514d105e2f30` cites both verified archives and is pushed to GitHub and Overleaf. P7 changes the companion citation only relative to its immutable P6/S6 freeze. The three matching P7 PDFs compiled with zero undefined diagnostics; exact input hashes matched. The 57-card live review compares proposed corrected text while preserving the original findings. Johanna reviews all marked proposals; Max reviews the entire proof correspondence, including definitions, hypotheses, supporting lemmas and both shared challenges/solution variants. Both human reviews remain pending.
 
-Remaining controller work: confirm final live-site inputs, send the two authorized short review emails and record delivery. Keep the plan and state current, commit explicit paths and push the final handover. Each proof check has one Linux owner; acluster and scluster handled distinct tasks. No duplicate full verifier, comparator, compiler-name, unchanged renderer test or57-card browser run is scheduled.
+Controller delivery complete: final public source pins,57 cards and both PDF hashes matched; both authorized short emails were sent and mail-service confirmation recorded. Keep the plan and state current, commit explicit paths and push the final handover. Each proof check has one Linux owner; acluster and scluster handled distinct tasks. No duplicate full verifier, comparator, compiler-name, unchanged renderer test or57-card browser run is scheduled.
 
 Campaign folder (absolute): `/home/ert/proj/stafford38-formal/docs/qwen-campaign`
 
@@ -1253,6 +1253,14 @@ T74 online Palomar remains the owner’s action: resubmit formal R131 with
 comparator.json after the provenance fix. Existing online acceptance applies
 only to its named older source; none is claimed for R131 yet.
 
-### T94 Final review emails — controller action pending
+### T94 Final review emails — complete
 
-Releases, archive checks and P5/S5 citations are complete. The controller sends the authorized short English emails: Johanna at j.moser@tugraz.at reviews the visible proof and marked manuscript proposals on Overleaf; Max at philipp@student.tugraz.at reviews the complete P5/S5-to-Lean correspondence using the guided map, including statement scope and all four solution comparisons. Sign each with Chris&AI and record delivery. Do not mark either review accepted before receiving the human response. Owner Palomar online registration also remains pending. After delivery, report the remaining human/owner follow-up rather than treating it as proof failure.
+Both short English handovers were sent from the work account and signed
+Chris&AI. Johanna reviews the original visible proof and marked proposals
+on Overleaf; Max compares the entire Lean/paper proof using all 57 guided
+cards and exports findings JSON. The mail service confirmed sent=true for
+both messages; see `notes/T94-final-review-email-receipt-20261003.json`.
+Human review acceptance remains pending. The owner resubmits formal R131
+with comparator.json and performs online registration.
+
+RESULT: campaign complete
