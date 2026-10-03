@@ -1,0 +1,17 @@
+{
+  "job_id": "3139266",
+  "recorded_utc": "2026-10-03T20:05:55.431474+00:00",
+  "source_commit": "12ae3cc49152672a48a96f13994314b65ae38197",
+  "runner_sha256": "b34c8fe29f0af2abbfd3fc3803f9015442448a6daafbb9462aead65d016d20e7",
+  "input_manifest_sha256": "b5ce49dd14ae1c7f1f38804449570608cef3285703e6952cbb3445bdc669dba2",
+  "slurm_script_sha256": "9006256cb99b8571a5765c62d3c2cf93ff9dc4472f17da4a35662cf87bd42619",
+  "preflight": "exact staged hashes; failed3138990guard1 drained; empty queue/node20 idle; fresh receipt path",
+  "scope": "391 imported names +2 byte-exact standalone consumer sources with qualified #check tails; other isolated groups2+2+2; total399",
+  "caps": {
+    "cpus": 2,
+    "memory_bytes": 8589934592,
+    "outer_seconds": 3300
+  },
+  "status": "submitted by controller; actual result pending",
+  "completed_proof_checks": "full verifier, retained modules, all4comparators accepted; no repeat"
+}

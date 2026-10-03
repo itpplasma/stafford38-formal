@@ -41,7 +41,9 @@ library or comparison check will be repeated.
 
 The bounded final name check3138990 stopped before declaration checks because
 its generated input imported standalone test files as library modules.
-Its guard drained; Sol is repairing only this check arrangement. Final
+Its guard drained. Sol repaired only this check arrangement:391 imported
+names plus2 exact standalone source/name checks. Sole bounded resume3139266
+is running with the original resource caps. Final
 compiler-name acceptance, both archive releases, citations and handovers
 remain to finish. Proof and Palomar acceptance are complete.
 
