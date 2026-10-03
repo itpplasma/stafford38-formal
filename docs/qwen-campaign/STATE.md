@@ -14,9 +14,12 @@ WT1a3fcfd. The controller validated the exact private test-name report after
 a wrapper-name mismatch. Corrected wrapper3115702 confirmed positions again,
 then Columns468 failed actual compilation. Sol's abstract derivative
 certificate08db failed the Laurent action/tower match in scluster3116538.
-The repair5405 reuses the accepted T22 scalar scopes; generic prefix failed3116945 at the inherited/explicit action bridge. Sol is
-inspecting explicit instance arguments in guarded diagnostic3117466 before
-repairing that bridge and checking module/consumer and Closure59b. T35 also passed independently on acluster21805719. Both cluster
+Stage10 (scluster3120026, Columns source6a62c97f) now has only a
+deterministic heartbeat timeout in the generic producer. The chart and
+scalar-action bridges typecheck. Sol is splitting that producer into smaller
+proof stages under the unchanged limits; one scluster chain checks the
+prefix, Columns module/literal consumer, then Closure59b. No later stage ran
+after the prefix failed. T35 also passed independently on acluster21805719. Both cluster
 bootstraps passed exact pins and T32. Alternative geometry endpoint passed
 scluster3114679, committedWT71e966a; full alternative assembly/comparators
 remain required. Actual guard fixtures passed3112916. No guard or proof
@@ -54,7 +57,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
-| T34 | Columns, derivatives, numerator | doing | 15 | notes/T34-T36-scluster-frozen-inputs-columns4-20261003.json | Positions9417 accepted; rawaction/ground/étalebridgespass;4c21 faileddependenttowerrewrite3119212; Sol85773 genericcasestransport checkingnextsingleSchain |
+| T34 | Columns, derivatives, numerator | doing | 16 | notes/T34-T36-scluster-frozen-inputs-columns4-20261003.json | Positions9417 accepted; stage10 source6a62c97f fixes chart/action errors but producer hits heartbeat limit; Sol splits proof under same limits; single scluster chain pending |
 | T35 | Étale structure as ring homs | done | 6 | notes/T35-linux-accepted-checks.md | Scluster3113113 fullmodule+unchangedtrust0consumerPASS329.04s,peak7406MiB,three permitted axioms,zero PSI/swap/children; frozenf30 WT4c1678e committed/pushed; fullroute pending |
 | T36 | Same-witness closure theorem | doing | 4 | notes/T36-chart-linux-accepted-checks-20261003.md | Verbatimgenericcharthelper trust0PASSacluster21805723,3axioms/noresourcefailure; fullclosure59b+unconditionalliteralconsumer queued afterT34 |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
@@ -67,11 +70,11 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T50 | Full library build | todo | 0 | | Included in single final Linux verifier T51/T73; no separate repeated full build |
 | T51 | Repository verifier | todo | 0 | | Single frozen Linux run shared withT73 plus4 actualPalomar comparisons; no duplicated cluster verification |
 | T52 | Status drafts | todo | 0 | | |
-| T53 | Integrate into main | owner | 0 | | owner gate |
+| T53 | Integrate into main | todo | 0 | | Authorized controller integration after bounded component acceptance |
 | T60 | Definition owners patch | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol prepared14 retainedcontractowners, helpersexcluded; registry/compiler acceptance awaitsfinalsource |
 | T61 | Paper map of new theorems | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol repaired57cards/403resolvedrefs/100SameWitnessdeclarations; Nodeaudit+browserwalkpass; finalpins/compiler/humanreviewpending |
 | T62 | Unreachable/duplicate report | doing | 1 | | Luna preparing source-graph and duplicate-owner report; final route still required |
-| T70 | Frozen public commit | owner | 0 | | owner gate |
+| T70 | Frozen public commit | todo | 0 | | Authorized controller push before the single Linux/Palomar run |
 | T71 | Final Linux host preflight | todo | 0 | | Approved local/cluster route selected after T70; candidate bootstrap receipts do not replace final preflight |
 | T72 | Launch Linux driver | doing | 1 | notes/cluster-final-replay-independent-review-20261003.md | Cluster driver repaired by Sol and independently reviewed PASS with wrong-pin/failure/mutation/mode/root oracles; final launch awaits T70 and fresh allocation preflight |
 | T73 | Collect Linux result | todo | 0 | | |
@@ -82,7 +85,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T83 | Supplementary bundle (local) | todo | 0 | | |
 | T84 | Review handover | owner | 0 | | owner gate |
 | T90 | Release drafts | todo | 0 | | |
-| T91 | Signed tag, release, Zenodo | owner | 0 | | owner gate |
+| T91 | Signed tag, release, Zenodo | todo | 0 | | Authorized controller publication after Linux/Palomar and matching asset gates |
 | T92 | Verify Zenodo archive | todo | 0 | | |
 | T93 | Citation drafts | todo | 0 | | |
 

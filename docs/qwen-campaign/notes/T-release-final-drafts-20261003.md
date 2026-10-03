@@ -76,65 +76,30 @@ to its original sources and is not replaced by this release.
 ## Email to Johanna Moser
 
 To: j.moser@tugraz.at  
-Subject: Review of the marked Stafford 3.8 manuscript corrections
+Subject: Stafford 3.8: review the marked paper corrections
 
 Dear Johanna,
 
-We have completed the formal and supplementary release checks for the
-paper-route version of Stafford's Conjecture 3.8. The review manuscript keeps
-your proof visible and marks each proposed mathematical correction for your
-attention. Overleaf remains the editing authority; we have not treated the
-formal verification as approval of manuscript changes.
+The formal and supplementary releases are ready: [FINAL_RELEASE_LINKS].
+Please review the marked AI corrections to your original proof on Overleaf:
+[FINAL_OVERLEAF_LINK]. Please accept, revise, or comment on each proposal;
+your review remains pending until you have checked them.
 
-Could you review the marked passages in the annotated manuscript and tell us
-which corrections you accept, would revise, or do not accept? The pinned
-manuscript and review materials are here: `[FINAL_ANNOTATED_MANUSCRIPT_OR_OVERLEAF_REVIEW_LINK]`.
-The released paper and formal revisions are `[FINAL_PAPER_COMMIT_40_HEX]` and
-`[FINAL_FORMAL_COMMIT_40_HEX]`; the local proof-correspondence status and its
-open items are summarized at `[FINAL_PAPER_ROUTE_REVIEW_LINK]`.
-
-Please send your comments or edit the marked proposals in Overleaf, as you
-prefer. We will keep the proposals pending until you have reviewed them.
-
-Best,  
 Chris&AI
 
-## Email to Max Philipp
+## Email to Max
 
 To: philipp@student.tugraz.at  
-Subject: Complete paper-to-Lean review for Stafford's Conjecture 3.8
+Subject: Stafford 3.8: complete the Lean–paper comparison
 
 Dear Max,
 
-The formal and supplementary releases are ready for the complete
-paper-to-Lean correspondence review. Please start at `[GUIDED_REVIEW_START_LINK]`
-and follow the claims in paper order. The interface preserves your place and
-provides previous/next navigation; it also offers a checklist, finding notes,
-and JSON export so you can resume later or return your findings without
-installing Lean or accessing private repositories.
+The releases are ready. Please start at [GUIDED_REVIEW_START_LINK] and compare
+all paper claims with their Lean statements, hypotheses, definitions, and
+supporting proofs, including both shared challenges and solution variants.
+Follow the claims in paper order, record discrepancies in the review notes,
+and send us the exported findings JSON when finished; your progress is saved.
 
-Please compare every paper claim with its Lean declaration, including the
-definitions, hypotheses, and supporting lemma statements. Review both
-`Challenge`/`Solution` comparisons: the `Challenge` and
-`FixedSourceChallenge` statements are shared unchanged, while the main
-solution follows the manuscript construction and the older generic/Laurent
-proof is a separately labeled alternative. The entries mark proposed
-corrections, known gaps, and incomplete correspondence explicitly. Build,
-kernel-comparison, and axiom-audit evidence is linked separately; those checks
-do not decide whether the paper proof and formal proof correspond.
-
-Please record any missing claim, scope difference, hypothesis mismatch,
-unsupported implication, or other issue in the entry notes, then export the
-review JSON here: `[REVIEW_FINDINGS_EXPORT_INSTRUCTIONS_OR_DESTINATION]`.
-The bundle is pinned to paper `[FINAL_PAPER_COMMIT_40_HEX]`, formal
-`[FINAL_FORMAL_COMMIT_40_HEX]`, and generator
-`[FINAL_GENERATOR_COMMIT_40_HEX]`. The supporting receipts are collected at
-`[FINAL_REVIEW_EVIDENCE_INDEX_LINK]`.
-
-Thank you for checking the full correspondence. We will leave the review
-status open until you have completed it.
-
-Best,  
 Chris&AI
 
 ## Send gate

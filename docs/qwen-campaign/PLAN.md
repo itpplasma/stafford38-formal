@@ -26,18 +26,14 @@ module and literal trust-zero consumer checks. T32 is committed and pushed at
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
 T35 passed on scluster3113113 and is committed/pushed; see
 notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd.
-Columns468 failed actual compilation in scluster3115702; Sol replaced the
-concrete derivative fields with an abstract derivative certificate and stable
-getters. Columns08db failed the retained Laurent action/tower match in scluster3116538.
-Sol repaired it using the accepted T22 scalar scopes; Columns5405 generic prefix failed3116945 at the scalar action bridge. Sol
-stopped repeated dictionary rewriting after82cd failed3117210 and is inspecting
-actual instance terms. Action equality passed, but imported-term rewriting
-failed; Sol revised the boundary to transport known certificate field goals.
-The raw action/ground/étale bridges now pass, but4c21 failed the dependent
-tower rewrite in3119212. Sol85773 replaces it with a generic cases-based
-transport; one scluster chain checks prefix/module/literalconsumer before
-Closure59b. T36's verbatim chart helper passed separately on acluster21805723
-using the copied accepted Positions cache, not a second Positions build. T36's frozen statement is unchanged.
+Columns remains the active blocker. Stage10 (scluster3120026, source
+6a62c97f) eliminated the chart and scalar-action type errors; its generic
+producer reached the existing deterministic heartbeat limit. Sol is splitting
+that producer into separately typed proof stages under the unchanged limit.
+One scluster chain checks its prefix, module and literal consumer, followed
+by Closure59b. T36's verbatim chart helper passed separately on
+acluster21805723 using the accepted Positions cache. Its frozen statement is
+unchanged. No full Columns or Closure acceptance is claimed.
 T35 passed independently on both clusters. The alternative geometry endpoint
 also passed its Linux module at WT71e966a; full solution assembly/comparisons
 remain required. No guard threshold is relaxed. Both isolated cluster
