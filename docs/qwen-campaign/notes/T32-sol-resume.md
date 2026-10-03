@@ -93,3 +93,37 @@ definition-owner searches confirmed that the replacement name is unoccupied.
 ## Resource stops on the composed candidate
 
 The frozen source SHA-256 is `2fc6d54524c7db6906ef2a3a9a7e9a3ae270039d2ced3b7307a94fd60658e299`. Mac checks 4, 5 and 6 stopped at the CPU watchdog before reporting a Lean error. Check 4 used the normal two-thread/two-CPU budget (66 seconds, 3544 MiB). Check 5 reduced threads to one, which also inherited a one-CPU watchdog (44 seconds, 2289 MiB). Check 6 explicitly retained the original two-CPU cap with one Lean thread (66 seconds, 3550 MiB), but parallel Lake work still crossed that cap. None is acceptance, and no resource ceiling was raised. The unchanged source is now checking under the Linux guard’s hard two-CPU affinity.
+
+## Linux/Mac diagnostics and retained-action repair
+
+Linux module check: exit 1, module 299 seconds, total 466.5 seconds, peak
+4791 MiB. Independent Mac direct trust-zero check reproduced the errors:
+exit 1, wall 139 seconds, peak 3539 MiB. Log:
+`.lake/campaign-resume/logs/T32-direct-sol-resume-1.log`.
+The five map/arc getter failures now scope the stored point maximality proof.
+
+The first substantive action mismatch exposed a missing interface invariant:
+CoordinatePresentation stored an arbitrary fFin unrelated to fOption and τ,
+while the axis-output theorem uses their exact reindexing composition.
+The controller authorized the necessary T31 repair. The free field is replaced
+by an exposed reducible `CoordinatePresentation.fFin` accessor computing that
+composition and retaining the dot API. The producer no longer stores it;
+its target and literal consumer are unchanged. No new hypothesis is needed.
+
+The point producer is a separate bounded theorem; the final common-open
+producer assembles separately typed point/chart/maps/arc certificates.
+An abstract-ring factors theorem derives CommonOpenArcFactors from the existing
+tilted-product theorem. Its application recovers the intended action from the
+expected certificate, without installing concrete scalar actions.
+
+New helper owner proposals: `nonempty_commonOpenPointData` isolates retained
+axis output; `commonOpenArcFactors_of_tiltedProduct` packages the existing
+abstract factor theorem under the certificate type. Both have mathematical
+docstrings and bounded proofs. The computed fFin accessor is the sole owner
+of the reindexed coordinate map.
+
+Frozen source SHA-256:
+- CoordinatePresentation: `3ffef86177fc2e6b2d552264f47af08553823e4562ad58d51c65fb2cc6d29016`.
+- CommonOpen: `eeb116e7807c5bb7ff28a516ea66ecf838d086239c13982ae8a70100f1b4e176`.
+Literal consumers are unchanged; T31 recheck and T32 module/consumer checks
+are pending the controller. No heartbeat or resource limits were raised.
