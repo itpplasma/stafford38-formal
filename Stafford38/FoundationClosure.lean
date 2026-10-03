@@ -1,8 +1,12 @@
-import Stafford38.Characteristic.CanonicalKoszulContradiction
-import Stafford38.Characteristic.CanonicalGabberInvolutivityInterface
-import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
-import Stafford38.PaperInputs
-import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
+module
+public import Stafford38.Characteristic.CanonicalKoszulContradiction
+public import Stafford38.Characteristic.CanonicalGabberInvolutivityInterface
+public import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
+public import Stafford38.PaperInputs
+public import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
+public import Stafford38.Weyl.PaperQuotientDescent
+
+@[expose] public section
 
 /-! The paper's three assembly interfaces and both universal statements are
 proved from Lean and Mathlib without project or literature axioms. The final
@@ -40,7 +44,7 @@ theorem canonicalSupportVanishingViaGeneralCoisotropic :
     intro k _ _ _ n N d hN hd
     exact SpecializedNoncharacteristicEquality.strictUnitCoordinatePreimage_of_transposedSupport_disjoint_axis
       k n N d (canonicalNoncharacteristicSupportAvoidance k n N d hN hd)
-  exact Weyl.FilteredScalarLifting.canonicalSupportDescent
+  exact Stafford38.PaperQuotientDescent.canonicalSupportDescent_via_quotient
     (Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic
       hunit)
 

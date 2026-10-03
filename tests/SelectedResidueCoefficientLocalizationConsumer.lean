@@ -1,0 +1,8 @@
+module
+public import Stafford38.Geometry.SelectedResidueCoefficientLocalization
+
+@[expose] public section
+#print axioms Stafford38.Geometry.SelectedResidueCoefficientLocalization.selected_lifts_algebraicallyIndependent
+#print axioms Stafford38.Geometry.SelectedResidueCoefficientLocalization.selectedCoefficientResidueMap_injective
+#print axioms Stafford38.Geometry.SelectedResidueCoefficientLocalization.exists_selected_fraction_field_maps
+#check Stafford38.Geometry.SelectedResidueCoefficientLocalization.exists_selected_fraction_field_maps

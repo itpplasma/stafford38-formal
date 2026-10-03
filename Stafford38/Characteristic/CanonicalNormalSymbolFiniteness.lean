@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.NormalSymbolPolynomial
-import Stafford38.Characteristic.AssociatedGradedFinite
-import Stafford38.Characteristic.MonicAnnihilatorFinite
+module
+public import Stafford38.Characteristic.NormalSymbolPolynomial
+public import Stafford38.Characteristic.AssociatedGradedFinite
+public import Stafford38.Characteristic.MonicAnnihilatorFinite
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalNormalSymbolFiniteness
 

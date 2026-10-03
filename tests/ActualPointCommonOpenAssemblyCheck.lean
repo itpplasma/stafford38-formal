@@ -1,0 +1,9 @@
+module
+public import Stafford38.Geometry.ActualPointCommonOpenAssembly
+
+@[expose] public section
+
+#check Stafford38.Geometry.ActualPointCommonOpenAssembly.pointLocalArc_unit_of_not_mem
+#print axioms Stafford38.Geometry.ActualPointCommonOpenAssembly.pointLocalArc_unit_of_not_mem
+#check Stafford38.Geometry.ActualPointCommonOpenAssembly.exists_directSummandInput_of_selected_axis_lift
+#print axioms Stafford38.Geometry.ActualPointCommonOpenAssembly.exists_directSummandInput_of_selected_axis_lift

@@ -1,4 +1,9 @@
-import Stafford38.UniversalAssembly
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.UniversalAssembly
+public import Stafford38.ChallengeDefinitions
+
+@[expose] public section
 
 namespace Stafford38.FixedSource
 
@@ -20,26 +25,17 @@ def bernsteinDegree (k : Type u) [Field k] {n : ℕ}
   MvPolynomial.weightedTotalDegree (@bernsteinWeight n)
     (presentedNormalFormLinearEquiv k n d)
 
-def IsLinearWeylCoordinate (k : Type u) [Field k] (n : ℕ)
+abbrev IsLinearWeylCoordinate (k : Type u) [Field k] (n : ℕ)
     (ell : PresentedWeyl k (n + 1)) : Prop :=
-  ∃ (M N : Matrix (PhaseVar (n + 1)) (PhaseVar (n + 1)) k)
-      (_hM : M * standardForm k (n + 1) * Matrix.transpose M = standardForm k (n + 1))
-      (_hN : N * standardForm k (n + 1) * Matrix.transpose N = standardForm k (n + 1))
-      (_hMN : M * N = 1) (_hNM : N * M = 1),
-      ell = freeWeylLinearCombination N
-        (freeWeylGenerator (standardForm k (n + 1)))
-        (.inl (0 : Fin (n + 1)))
+  Stafford38FixedSourceChallenge.IsLinearWeylCoordinate k n ell
 
 /-- The exact fixed-source strengthening: the source exponent is the actual
 Bernstein degree of the input operator, and the source coordinate is obtained
 from an invertible linear symplectic change of Weyl generators. -/
-def UniversalFixedSourceStatement : Prop :=
-  ∀ (k : Type u) [Field k] [CharZero k] (n : ℕ)
-    (d : PresentedWeyl k (n + 1)), d ≠ 0 →
-      ∃ ell R S : PresentedWeyl k (n + 1),
-        IsLinearWeylCoordinate k n ell ∧
-          (1 : PresentedWeyl k (n + 1)) =
-            d * R + ell ^ bernsteinDegree k d * d * S
+abbrev UniversalFixedSourceStatement : Prop :=
+  Stafford38FixedSourceChallenge.UniversalFixedSourceStatementWithDegree
+    (fun (k : Type u) [Field k] {n : ℕ} (d : PresentedWeyl k n) =>
+      bernsteinDegree k d)
 
 theorem bernsteinDegree_eq_of_piece_of_principal_ne_zero
     (k : Type u) [Field k] {n N : ℕ} {d : PresentedWeyl k n}
@@ -55,12 +51,16 @@ theorem bernsteinDegree_eq_of_piece_of_principal_ne_zero
   have hm : MvPolynomial.coeff m
       (presentedPrincipalComponent k (@bernsteinWeight n) N d) ≠ 0 :=
     MvPolynomial.mem_support_iff.mp hm
+  change AddMonoidAlgebra.coeff
+    (presentedPrincipalComponent k (@bernsteinWeight n) N d) m ≠ 0 at hm
   have hcoeff := hm
+  change AddMonoidAlgebra.coeff
+    (presentedPrincipalComponent k (@bernsteinWeight n) N d) m ≠ 0 at hcoeff
   rw [coeff_presentedPrincipalComponent] at hcoeff
   have hweight : monomialWeight (@bernsteinWeight n) m = N := by
     by_contra hne
-    have hz : MvPolynomial.coeff m
-        (presentedPrincipalComponent k (@bernsteinWeight n) N d) = 0 := by
+    have hz : AddMonoidAlgebra.coeff
+        (presentedPrincipalComponent k (@bernsteinWeight n) N d) m = 0 := by
       rw [coeff_presentedPrincipalComponent]
       simp [hne]
     exact hm hz

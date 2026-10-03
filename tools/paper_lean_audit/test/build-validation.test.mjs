@@ -119,15 +119,19 @@ function fixture(t) {
   const out = path.join(root, 'out');
   const reviews = path.join(root, 'reviews');
   fs.mkdirSync(reviews);
+  let mathlibDir = null;
   const writeMap = () => fs.writeFileSync(mapPath, JSON.stringify(map, null, 2));
   const run = () => {
     writeMap();
-    return spawnSync(process.execPath, [buildScript, '--paper', paper.repo, '--formal', formal.repo,
+    const args = [buildScript, '--paper', paper.repo, '--formal', formal.repo,
       '--library', library.repo, '--global', global.repo, '--map', mapPath, '--out', out,
-      '--reviews', reviews, '--check'], { encoding: 'utf8' });
+      '--reviews', reviews, '--check'];
+    if (mathlibDir) args.push('--mathlib', mathlibDir);
+    return spawnSync(process.execPath, args, { encoding: 'utf8' });
   };
   const htmlPath = path.join(out, 'stafford38-paper-lean-audit.html');
-  return { root, paper, formal, library, global, map, mapPath, reviews, htmlPath, currentPaperSource, run, writeMap };
+  return { root, paper, formal, library, global, map, mapPath, reviews, htmlPath, currentPaperSource, run, writeMap,
+    setMathlibDir: (dir) => { mathlibDir = dir; } };
 }
 
 test('check audits current manuscript links, statement coverage, pins, and section-aware equation tags', (t) => {
@@ -203,6 +207,87 @@ test('private Lean declarations are rejected as public refs and must be marked m
   result = f.run();
   assert.equal(result.status, 1);
   assert.match(result.stderr, /Foo\.localFact is private and is not exported/);
+});
+
+test('unqualified challenge identifiers prefer nearest namespace before a unique exact root owner', (t) => {
+  const f = fixture(t);
+  const formalFile = path.join(f.formal.repo, 'Foo.lean');
+  fs.appendFileSync(formalFile, [
+    'universe u',
+    'namespace Foo',
+    'def WeylAlg.{u} : Type u := PUnit',
+    'theorem takesWeylAlg {k : Type u} [Field k] [CharZero k] (x : WeylAlg.{u}) : True := by',
+    '  trivial',
+    'end Foo',
+    'namespace Foo.Bar',
+    'def WeylAlg : Type := Bool',
+    'theorem takesNestedWeylAlg (x : WeylAlg) : True := by',
+    '  trivial',
+    'end Foo.Bar',
+    'namespace Bar',
+    'def WeylAlg : Type := Int',
+    'def Field : Type := Nat',
+    'def CharZero : Type := Nat',
+    'theorem usesLocalField (x : Field) : True := by',
+    '  trivial',
+    'end Bar',
+    'namespace Baz',
+    'theorem ambiguousWeylAlg (x : WeylAlg) : True := by',
+    '  trivial',
+    'end Baz',
+  ].join('\n') + '\n');
+  git(f.formal.repo, 'add', 'Foo.lean');
+  execFileSync('git', ['-C', f.formal.repo, '-c', 'user.name=Audit Test', '-c', 'user.email=audit@example.test', 'commit', '-qm', 'add namespaced challenge definitions']);
+  f.map.sources.formal.commit = git(f.formal.repo, 'rev-parse', 'HEAD');
+
+  const mathlib = createRepo(f.root, 'mathlib', {
+    'Mathlib/Basic.lean': 'universe u\nclass Field (k : Type u) : Prop where\n  witness : True\nclass CharZero (k : Type u) : Prop where\n  witness : True\n',
+  });
+  f.map.sources.mathlib = { repo: 'mathlib/test', commit: mathlib.commit };
+  f.setMathlibDir(mathlib.repo);
+  const sourceLines = fs.readFileSync(formalFile, 'utf8').split('\n');
+  const lineOf = (needle) => sourceLines.findIndex((line) => line.includes(needle)) + 1;
+  const mathlibLines = fs.readFileSync(path.join(mathlib.repo, 'Mathlib/Basic.lean'), 'utf8').split('\n');
+  const mathlibLineOf = (needle) => mathlibLines.findIndex((line) => line.includes(needle)) + 1;
+  f.map.challenge_definitions = [
+    { repo: 'formal', file: 'Foo.lean', name: 'Foo.WeylAlg', line: lineOf('def WeylAlg.'), note: 'Foo Weyl type.' },
+    { repo: 'formal', file: 'Foo.lean', name: 'Foo.Bar.WeylAlg', line: lineOf('def WeylAlg : Type := Bool'), note: 'Nested Foo.Bar Weyl type.' },
+    { repo: 'formal', file: 'Foo.lean', name: 'Bar.WeylAlg', line: lineOf('def WeylAlg : Type := Int'), note: 'Bar Weyl type.' },
+    { repo: 'formal', file: 'Foo.lean', name: 'Foo.takesWeylAlg', line: lineOf('theorem takesWeylAlg'), note: 'Namespaced use.' },
+    { repo: 'formal', file: 'Foo.lean', name: 'Foo.Bar.takesNestedWeylAlg', line: lineOf('theorem takesNestedWeylAlg'), note: 'Nested namespace use.' },
+    { repo: 'formal', file: 'Foo.lean', name: 'Bar.usesLocalField', line: lineOf('theorem usesLocalField'), note: 'Local name shadows global Field.' },
+    { repo: 'formal', file: 'Foo.lean', name: 'Baz.ambiguousWeylAlg', line: lineOf('theorem ambiguousWeylAlg'), note: 'Ambiguous open name.' },
+    { repo: 'formal', file: 'Foo.lean', name: 'Bar.Field', line: lineOf('def Field'), note: 'Non-owner wrapper name.' },
+    { repo: 'formal', file: 'Foo.lean', name: 'Bar.CharZero', line: lineOf('def CharZero'), note: 'Non-owner wrapper name.' },
+    { repo: 'mathlib', file: 'Mathlib/Basic.lean', name: 'Field', line: mathlibLineOf('class Field'), note: 'Field owner.' },
+    { repo: 'mathlib', file: 'Mathlib/Basic.lean', name: 'CharZero', line: mathlibLineOf('class CharZero'), note: 'CharZero owner.' },
+  ];
+
+  const result = f.run();
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  const html = fs.readFileSync(f.htmlPath, 'utf8');
+  const signature = (id) => {
+    const start = html.indexOf(`id="definition-formal:${id}"`);
+    assert.notEqual(start, -1, `missing rendered definition ${id}`);
+    const pre = html.indexOf('<pre class="lean-src">', start);
+    return html.slice(pre, html.indexOf('</pre>', pre));
+  };
+  const namespaced = signature('Foo.takesWeylAlg');
+  assert.match(namespaced, /href="#definition-formal:Foo\.WeylAlg">WeylAlg\.<\/a>/);
+  assert.match(namespaced, /href="#definition-mathlib:Field">Field<\/a>/);
+  assert.match(namespaced, /href="#definition-mathlib:CharZero">CharZero<\/a>/);
+  assert.doesNotMatch(namespaced, /definition-formal:(?:Field|CharZero)/);
+  const nested = signature('Foo.Bar.takesNestedWeylAlg');
+  assert.match(nested, /href="#definition-formal:Foo\.Bar\.WeylAlg">WeylAlg<\/a>/);
+  assert.doesNotMatch(nested, /href="#definition-formal:Foo\.WeylAlg">WeylAlg<\/a>/);
+  const shadowed = signature('Bar.usesLocalField');
+  assert.match(shadowed, /href="#definition-formal:Bar\.Field">Field<\/a>/);
+  assert.doesNotMatch(shadowed, /href="#definition-mathlib:Field">Field<\/a>/);
+  const ambiguous = signature('Baz.ambiguousWeylAlg');
+  assert.doesNotMatch(ambiguous, /href="#definition-formal:(?:Foo|Bar)\.WeylAlg"/);
+  assert.match(ambiguous, /WeylAlg/);
+  assert.match(html, new RegExp(`id="definition-mathlib:Field"[\\s\\S]*?github\\.com/mathlib/test/blob/${mathlib.commit}/Mathlib/Basic\\.lean#L`));
+  assert.match(html, new RegExp(`id="definition-mathlib:CharZero"[\\s\\S]*?github\\.com/mathlib/test/blob/${mathlib.commit}/Mathlib/Basic\\.lean#L`));
 });
 
 test('review hashes cover card metadata and proof bodies referenced only from a step', (t) => {
@@ -411,4 +496,26 @@ test('commented historical labels do not shadow active equation targets', (t) =>
   assert.equal(result.status, 0, result.stdout + result.stderr);
   const html = fs.readFileSync(f.htmlPath, 'utf8');
   assert.match(html, /href="#item-thm">\(Active\)<\/a>/);
+});
+
+
+test('duplicate review-comment IDs fail the build while inactive copies are ignored', (t) => {
+  const f = fixture(t);
+  const file = path.join(f.paper.repo, 'human_readable_main.tex');
+  fs.appendFileSync(file, [
+    '\\AIcomment{GEO-06}{First proposal.}',
+    '\\AIcomment{GEO-06}{A different proposal with the same identity.}',
+  ].join('\n') + '\n');
+  const rejected = f.run();
+  assert.notEqual(rejected.status, 0);
+  assert.match(rejected.stderr + rejected.stdout, /Duplicate AIcomment ID 'GEO-06' in current manuscript/);
+
+  fs.writeFileSync(file, f.currentPaperSource + [
+    '\\AIcomment{GEO-06}{First proposal.}',
+    '\\AIcomment{GEO-07}{A separate proposal.}',
+    '% \\AIcomment{GEO-06}{Inactive historical copy.}',
+    '\\\\AIcomment{GEO-06}{Escaped text.}',
+  ].join('\n') + '\n');
+  const accepted = f.run();
+  assert.equal(accepted.status, 0, accepted.stderr + accepted.stdout);
 });

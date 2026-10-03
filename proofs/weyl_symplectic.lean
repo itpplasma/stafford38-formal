@@ -1,5 +1,10 @@
-import Mathlib
-import AlgebraicAnalysis.Commutator
+module
+public import Mathlib.Tactic.NoncommRing
+public import Mathlib.Tactic.Ring
+public import Stafford38.ChallengeDefinitions
+public import AlgebraicAnalysis.Commutator
+
+@[expose] public section
 
 /-!
 # The linear symplectic layer of the A₂ reduction
@@ -31,14 +36,10 @@ variable {k A ι : Type*} [Field k] [Ring A] [Algebra k A]
   [Fintype ι] [DecidableEq ι]
 
 /-- Historical namespace for the shared ring commutator. -/
-def commutator (u v : A) : A := AlgebraicAnalysis.ringCommutator u v
+abbrev commutator (u v : A) : A := AlgebraicAnalysis.ringCommutator u v
 
 @[simp] theorem commutator_eq_shared (u v : A) :
     commutator u v = AlgebraicAnalysis.ringCommutator u v := rfl
-
-/-- The linear combination of a family of generators specified by a matrix. -/
-def linearCombination (M : Matrix ι ι k) (z : ι → A) (i : ι) : A :=
-  ∑ j, algebraMap k A (M i j) * z j
 
 lemma commutator_sum_left (u : ι → A) (v : A) :
     commutator (∑ i, u i) v = ∑ i, commutator (u i) v := by
@@ -170,19 +171,6 @@ explicit.  This is still presentation-level algebra: identifying the
 quotient with a PBW Weyl algebra remains separate, while the inverse-matrix
 argument below proves the form-preserving A₂ map is an automorphism. -/
 
-def freeWeylRelation (omega : Matrix ι ι k)
-    (a b : FreeAlgebra k ι) : Prop :=
-  ∃ i j,
-    a = FreeAlgebra.ι k i * FreeAlgebra.ι k j -
-      FreeAlgebra.ι k j * FreeAlgebra.ι k i ∧
-    b = algebraMap k (FreeAlgebra k ι) (omega i j)
-
-abbrev FreeWeyl (k : Type*) [Field k] (ι : Type*)
-    (omega : Matrix ι ι k) := RingQuot (freeWeylRelation omega)
-
-def freeWeylGenerator (omega : Matrix ι ι k) (i : ι) : FreeWeyl k ι omega :=
-  RingQuot.mkAlgHom k (freeWeylRelation omega) (FreeAlgebra.ι k i)
-
 theorem freeWeylGenerator_commutator
     (omega : Matrix ι ι k) (i j : ι) :
     commutator (freeWeylGenerator omega i) (freeWeylGenerator omega j) =
@@ -217,10 +205,10 @@ theorem freeWeylGenerator_commutator
       rw [hmap]
       rfl
 
-def freeWeylLinearCombination
+abbrev freeWeylLinearCombination
     (M : Matrix ι ι k) (z : ι → FreeWeyl k ι omega) (i : ι) :
     FreeWeyl k ι omega :=
-  ∑ j, algebraMap k (FreeWeyl k ι omega) (M i j) * z j
+  linearCombination M z i
 
 def freeWeylMap (M : Matrix ι ι k) (omega : Matrix ι ι k) :
     FreeAlgebra k ι →ₐ[k] FreeWeyl k ι omega :=
@@ -270,7 +258,12 @@ theorem freeWeylSymplecticAlgHom_map_linearCombination
     freeWeylSymplecticAlgHom M omega hpres
         (freeWeylLinearCombination N (freeWeylGenerator omega) i) =
       freeWeylLinearCombination (N * M) (freeWeylGenerator omega) i := by
-  rw [freeWeylLinearCombination, map_sum]
+  change freeWeylSymplecticAlgHom M omega hpres
+      (∑ j, algebraMap k (FreeWeyl k ι omega) (N i j) *
+        freeWeylGenerator omega j) =
+    ∑ j, algebraMap k (FreeWeyl k ι omega) ((N * M) i j) *
+      freeWeylGenerator omega j
+  rw [map_sum]
   simp_rw [map_mul, AlgHom.commutes,
     freeWeylSymplecticAlgHom_generator M omega hpres]
   simp_rw [freeWeylLinearCombination]
@@ -278,15 +271,13 @@ theorem freeWeylSymplecticAlgHom_map_linearCombination
   rw [Finset.sum_comm]
   apply Finset.sum_congr rfl
   intro j hj
-  apply Finset.sum_congr rfl
-  intro l hl
-  rw [mul_assoc]
+  simp [linearCombination, Finset.mul_sum, mul_assoc]
 
 lemma freeWeylLinearCombination_one
     (omega : Matrix ι ι k) (i : ι) :
     freeWeylLinearCombination (1 : Matrix ι ι k)
         (freeWeylGenerator omega) i = freeWeylGenerator omega i := by
-  simp [freeWeylLinearCombination, Matrix.one_apply]
+  simp [freeWeylLinearCombination, linearCombination, Matrix.one_apply]
 
 theorem freeWeylSymplecticAlgHom_comp_generator
     (M N : Matrix ι ι k) (omega : Matrix ι ι k)

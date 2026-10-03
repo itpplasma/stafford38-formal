@@ -1,16 +1,20 @@
-import Stafford38.Characteristic.CanonicalAxisAvoidanceConsumer
-import Stafford38.Characteristic.BaseZeroSection
-import Stafford38.Characteristic.ReducedSupportIdeal
-import Mathlib.RingTheory.Nullstellensatz
+module
+public import Stafford38.Characteristic.CanonicalAxisAvoidanceConsumer
+public import Stafford38.Characteristic.BaseZeroSection
+public import Stafford38.Characteristic.ReducedSupportIdeal
+public import Mathlib.RingTheory.Nullstellensatz
+
+@[expose] public section
 
 /-!
-# The affine base variety feeding the asymptotic argument
+# Affine base points for the visible-frame producer
 
 Over an algebraically closed field, nonempty order-characteristic support
-forces the contracted reduced base ideal to have a rational point.  If the
-support avoids the distinguished coordinate hyperplane, every such base point
-has nonzero distinguished coordinate.  These are exactly the affine premises
-of the remaining projective-boundary theorem.
+forces the contracted reduced base ideal to have a rational point. If the
+support avoids the distinguished coordinate hyperplane, every such point has
+nonzero distinguished coordinate. These lemmas supply affine input to
+`ExactDivisorialVisibleFrameExistence`, which constructs the retained place
+and visible frame.
 -/
 
 namespace Stafford38.Characteristic.CanonicalBaseVariety

@@ -1,31 +1,24 @@
-import Mathlib.RingTheory.PowerSeries.Derivative
-import Mathlib.RingTheory.PowerSeries.PiTopology
-import Stafford38.Geometry.FixedWitnessTangentSqueeze
-import Stafford38.Geometry.SeparableResidueDerivationExtension
+module
+public import Mathlib.RingTheory.PowerSeries.Derivative
+public import Mathlib.RingTheory.PowerSeries.PiTopology
+public import Stafford38.Geometry.FixedWitnessTangentSqueeze
+public import Stafford38.Geometry.SeparableResidueDerivationExtension
+
+@[expose] public section
 
 /-!
 # Continuous derivation frames on a supplied power-series chart
 
-Assume that the completed boundary DVR has already been identified with
-`K[[t]]`.  This file constructs the two kinds of derivations used on that
-chart:
+Assume a completed boundary DVR has already been identified with `K[[t]]`.
+This file constructs the continuous uniformizer derivation and coefficientwise
+extensions of `k`-derivations of `K`; their constant coefficients give affine
+tangent vectors for `FixedWitnessTangentSqueeze`.
 
-* the uniformizer derivation `d/dt`;
-* the coefficientwise extension of every `k`-derivation of `K`.
-
-With the product topology on `K[[t]]` and the discrete topology on `K`, both
-constructions are continuous.  A finite family is indexed by `Option κ`, with
-`none` denoting `d/dt` and `some j` denoting the `j`th coefficient derivation.
-Taking constant coefficients after applying the frame to the chart
-coordinates gives the finite family of affine tangent vectors consumed by
-`FixedWitnessTangentSqueeze`.
-
-The first missing bridge after this file is the chart-to-component tangency
-statement: the supplied completed-DVR chart must prove that every residue
-frame vector annihilates the differential of every equation of the affine
-component.  After that, the remaining inputs to the squeeze are independence
-of the residue vectors and the tangent-dimension bound.  This file does not
-construct the residue-field section or the `K[[t]]` chart.
+The paper-facing same-witness route proves equation tangency and the Laurent
+tangent-rank bound in `PaperLaurentArcTangency` and
+`PaperSameWitnessTangentDimension`. This generic module is not a chart
+producer. Smooth closed-point completion and arc specialization remain
+separate correspondence questions in `docs/paper-route-alignment.json`.
 -/
 
 namespace Stafford38.Geometry.ContinuousPowerSeriesTangentFrame
@@ -41,6 +34,22 @@ noncomputable section
 universe u v
 
 variable {k K : Type u} [Field k] [Field K] [Algebra k K]
+
+/-- The first coefficient of a power-series-valued family.  This is the
+canonical coefficient description of the tangent vector supplied by the
+uniformizer derivation. -/
+def powerSeriesFirstCoefficient {R : Type*} [CommSemiring R]
+    {ι : Type*} (q : ι → PowerSeries R) : ι → R :=
+  fun i ↦ PowerSeries.coeff 1 (q i)
+
+@[simp] theorem powerSeriesFirstCoefficient_eq_constantCoeff_derivative
+    {R : Type*} [CommSemiring R] {ι : Type*} (q : ι → PowerSeries R) :
+    powerSeriesFirstCoefficient q =
+      fun i ↦ PowerSeries.constantCoeff (PowerSeries.derivative (R := R) (q i)) := by
+  funext i
+  rw [powerSeriesFirstCoefficient, ← PowerSeries.coeff_zero_eq_constantCoeff,
+    PowerSeries.coeff_derivative]
+  simp
 
 /-- The `k`-linear coefficientwise action underlying the extended
 derivation. -/
@@ -121,7 +130,7 @@ theorem continuous_coefficientwiseDerivation
 along `k → K → K[[t]]`. -/
 noncomputable def uniformizerDerivation :
     Derivation k (PowerSeries K) (PowerSeries K) :=
-  (PowerSeries.derivative K).restrictScalars k
+  (PowerSeries.derivative (R := K)).restrictScalars k
 
 @[simp]
 theorem uniformizerDerivation_C (a : K) :

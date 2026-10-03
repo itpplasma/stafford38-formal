@@ -1,21 +1,18 @@
-import Stafford38.Geometry.CanonicalFiniteGradientProjectiveCoordinates
-import Stafford38.Geometry.FiniteGradientResidueExtension
-import Stafford38.Geometry.FiniteGradientBoundaryProducer
-import Stafford38.Geometry.FiniteGradientFromTangentInclusion
+module
+public import Stafford38.Geometry.CanonicalFiniteGradientProjectiveCoordinates
+public import Stafford38.Geometry.FiniteGradientResidueExtension
+public import Stafford38.Geometry.FiniteGradientBoundaryProducer
+public import Stafford38.Geometry.FiniteGradientFromTangentInclusion
+
+@[expose] public section
 
 /-!
-# The first explicit boundary producer interface
+# One-row conormal data and finite-gradient adapters
 
-The retained-place and normalized-projective-coordinate files already produce
-the completed projective arc.  The remaining geometric input is only one
-regular affine conormal row on that arc.  This file records that input as an
-ordinary structure and proves the exact finite-gradient certificate consumed
-by the residue-extension endgame.
-
-The structure is deliberately not an axiom and does not assert that such a
-row exists.  Its `conormal` field is the first open bridge in the nonconstant
-boundary construction.  The theorem below is the trust-zero adapter from
-that bridge to the finite equation/gradient certificate.
+`RegularizedOneRowConormalData` records the explicit affine conormal identity
+used to extract a finite-gradient boundary certificate. This file proves the
+finite-support and conormal-span conversion. The actual same-witness
+constructor is `PaperActualWitnessConormalData.exists_regularizedOneRowConormalData_of_actual_witness`.
 -/
 
 namespace Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof
@@ -36,13 +33,12 @@ universe u
 
 variable {k K : Type u} [Field k] [Field K] [Algebra k K]
 
-/-- The exact one-row datum still needed after the normalized retained-place
-construction.  In particular, `conormal` is an explicit affine statement at
-the completed Laurent point; it is not inferred from a tangent-space slogan.
-
-The projective and residue fields are retained because they are part of the
-boundary certificate, even though the affine conormal extractor below uses
-only the displayed `conormal` field to find finite gradient coefficients. -/
+/-- The reusable one-row package for a normalized retained-place chart.
+Its `conormal` field is the explicit affine statement at the completed
+Laurent point. The projective and residue fields are retained as certificate
+data; the extraction theorem uses `conormal` to find finite gradient
+coefficients. `PaperActualWitnessConormalData` constructs it from the same
+retained witness. -/
 structure RegularizedOneRowConormalData
     {m : ℕ} (hm : 0 < m)
     (I : Ideal (MvPolynomial (Fin m) k))

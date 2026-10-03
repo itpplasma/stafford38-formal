@@ -1,18 +1,19 @@
-import Stafford38.Characteristic.InitialIdeal
-import Stafford38.Weyl.AssociatedGraded
+module
+public import Stafford38.Characteristic.InitialIdeal
+public import Stafford38.Weyl.AssociatedGraded
+
+@[expose] public section
 
 /-!
 # Differential-order filtration on a right-ideal quotient
 
-This file constructs the filtration induced on the actual additive quotient by
-a right ideal and identifies each associated graded piece with homogeneous
-symbols modulo the principal components of the filtered ideal.  Thus the
-degreewise object is derived from `A / I`; it is not the cyclic
-`SymbolRing / orderInitialIdeal` model.
-
-The remaining global step is to assemble these degreewise equivalences into a
-graded `SymbolRing`-module equivalence and identify its annihilator/support
-with `orderInitialIdeal`.
+This file constructs the filtration induced on the actual additive quotient
+by a right ideal and identifies each associated-graded piece with homogeneous
+symbols modulo the principal components of the filtered ideal. The
+degreewise quotient derived from `A / I` remains distinct from the cyclic
+`SymbolRing / orderInitialIdeal` model. These constructions feed the
+filtered-quotient development; the final support proof also has the checked
+`PaperQuotientDescent` route.
 -/
 
 namespace Stafford38.CharacteristicFilteredQuotient
@@ -54,15 +55,9 @@ local instance (priority := 10000) pieceModule {n : ℕ}
 
 /-- A right ideal, regarded only as a `k`-linear subspace.  Its carrier is
 literally unchanged. -/
-def rightIdealKSubmodule {A : Type*} [Ring A] [Algebra k A]
-    (I : RightIdeal A) : Submodule k A where
-  carrier := I
-  zero_mem' := I.zero_mem
-  add_mem' := I.add_mem
-  smul_mem' c a ha := by
-    have h := I.smul_mem (MulOpposite.op (algebraMap k A c)) ha
-    rw [Algebra.smul_def, Algebra.commutes]
-    exact h
+abbrev rightIdealKSubmodule {A : Type*} [Ring A] [Algebra k A]
+    (I : RightIdeal A) : Submodule k A :=
+  I.restrictScalars k
 
 @[simp] theorem mem_rightIdealKSubmodule {A : Type*} [Ring A] [Algebra k A]
     (I : RightIdeal A) (a : A) :

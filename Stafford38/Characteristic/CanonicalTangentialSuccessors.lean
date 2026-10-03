@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.CanonicalTangentialTotalAction
-import Stafford38.Characteristic.FilteredTwoTermSuccessorNaturality
+module
+public import Stafford38.Characteristic.CanonicalTangentialTotalAction
+public import Stafford38.Characteristic.FilteredTwoTermSuccessorNaturality
+
+@[expose] public section
 
 /-!
 # Successor pages over the tangential symbol ring

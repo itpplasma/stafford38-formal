@@ -1,4 +1,8 @@
-import Stafford38.Geometry.CanonicalAsymptoticLaurentProducer
+module
+public import Stafford38.Geometry.CanonicalAsymptoticLaurentProducer
+public import Stafford38.Geometry.FiniteGradientBoundaryCertificateOver
+
+@[expose] public section
 
 /-!
 # A finite-gradient boundary producer
@@ -28,6 +32,7 @@ open Stafford38.Geometry.AffineConormalSpan
 open Stafford38.Geometry.CanonicalAsymptoticLaurentProducer
 open Stafford38.Geometry.CoisotropicTranslation
 open Stafford38.Geometry.FormalDivisorLaurentConormal
+open Stafford38.Geometry.FiniteGradientResidueExtension
 open Stafford38.Geometry.ProjectiveConormalDehomogenization
 open Stafford38.Geometry.ScalarExtensionPoints
 open Stafford38.Geometry.PointwiseConormalContainment
@@ -79,42 +84,79 @@ theorem coordinateCovector_mem_affineConormalSpace_of_finite_gradient
 
 /-! ## Corrected local boundary interface -/
 
-/-- A completed projective arc together with the one finite Jacobian
-certificate actually consumed downstream.
-
-The base coordinates are represented by a projective power-series column;
-after dehomogenization they may be Laurent series.  The tail of `ell` is the
-regular fibre covector.  `gradient_identity` certifies conormality directly
-using equations of the scalar-extended target ideal.  The projective Euler
-relation is retained as a check that `ell` is genuinely a projective
-annihilating row, although the affine conormal adapter needs only its tail.
--/
-structure FiniteGradientBoundaryCertificate
+/- A compatibility name for the base-field specialization of the shared
+residue-field certificate. -/
+abbrev FiniteGradientBoundaryCertificate
     (k : Type u) [Field k]
     (m : ℕ) (hm : 0 < m)
-    (I : Ideal (MvPolynomial (Fin m) k)) where
-  equationCount : ℕ
-  q : Fin (m + 1) → PowerSeries k
-  ell : Fin (m + 1) → PowerSeries k
-  q_origin_ne : q 0 ≠ 0
-  projective_annihilation :
-    ∑ i, laurentColumn ell i * laurentColumn q i = 0
-  base_vanish :
-    ∀ f ∈ I.map
-        (scalarPolynomialMap (k := k) (K := LaurentSeries k) (Fin m)),
-      MvPolynomial.eval (dehomogenizedPoint (laurentColumn q)) f = 0
-  equations : Fin equationCount →
-    I.map (scalarPolynomialMap
-      (k := k) (K := LaurentSeries k) (Fin m))
-  coefficients : Fin equationCount → LaurentSeries k
-  gradient_identity : ∀ i : Fin m,
-    laurentColumn ell i.succ =
-      ∑ j, coefficients j *
-        differentialAt (dehomogenizedPoint (laurentColumn q))
-          (equations j).1 i
-  residue_axis :
-    residueColumn (fun i : Fin m ↦ ell i.succ) =
-      (fun i : Fin m ↦ if i = ⟨0, hm⟩ then 1 else 0)
+    (I : Ideal (MvPolynomial (Fin m) k)) :=
+  FiniteGradientBoundaryCertificateOver (k := k) (K := k) m hm I
+
+namespace FiniteGradientBoundaryCertificate
+
+/-! Keep the former constructor/projection names as aliases to the single
+record owner; no second certificate structure is introduced. -/
+abbrev mk {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)} :=
+  FiniteGradientBoundaryCertificateOver.mk
+    (k := k) (K := k) (m := m) (hm := hm) (I := I)
+
+abbrev equationCount {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)}
+    (self : FiniteGradientBoundaryCertificate k m hm I) :=
+  FiniteGradientBoundaryCertificateOver.equationCount
+    (k := k) (K := k) self
+
+abbrev q {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)}
+    (self : FiniteGradientBoundaryCertificate k m hm I) :=
+  FiniteGradientBoundaryCertificateOver.q (k := k) (K := k) self
+
+abbrev ell {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)}
+    (self : FiniteGradientBoundaryCertificate k m hm I) :=
+  FiniteGradientBoundaryCertificateOver.ell (k := k) (K := k) self
+
+abbrev q_origin_ne {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)}
+    (self : FiniteGradientBoundaryCertificate k m hm I) :=
+  FiniteGradientBoundaryCertificateOver.q_origin_ne (k := k) (K := k) self
+
+abbrev projective_annihilation {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)}
+    (self : FiniteGradientBoundaryCertificate k m hm I) :=
+  FiniteGradientBoundaryCertificateOver.projective_annihilation
+    (k := k) (K := k) self
+
+abbrev base_vanish {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)}
+    (self : FiniteGradientBoundaryCertificate k m hm I) :=
+  FiniteGradientBoundaryCertificateOver.base_vanish
+    (k := k) (K := k) self
+
+abbrev equations {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)}
+    (self : FiniteGradientBoundaryCertificate k m hm I) :=
+  FiniteGradientBoundaryCertificateOver.equations (k := k) (K := k) self
+
+abbrev coefficients {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)}
+    (self : FiniteGradientBoundaryCertificate k m hm I) :=
+  FiniteGradientBoundaryCertificateOver.coefficients (k := k) (K := k) self
+
+abbrev gradient_identity {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)}
+    (self : FiniteGradientBoundaryCertificate k m hm I) :=
+  FiniteGradientBoundaryCertificateOver.gradient_identity
+    (k := k) (K := k) self
+
+abbrev residue_axis {k : Type u} [Field k] {m : ℕ} {hm : 0 < m}
+    {I : Ideal (MvPolynomial (Fin m) k)}
+    (self : FiniteGradientBoundaryCertificate k m hm I) :=
+  FiniteGradientBoundaryCertificateOver.residue_axis
+    (k := k) (K := k) self
+
+end FiniteGradientBoundaryCertificate
 
 /-- The corrected finite-gradient certificate produces exactly the Laurent
 conormal witness required by the canonical asymptotic step. -/

@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.SquareZeroTraceData
-import Mathlib.RingTheory.OreLocalization.OreSet
+module
+public import Stafford38.Characteristic.SquareZeroTraceData
+public import Mathlib.RingTheory.OreLocalization.OreSet
+
+@[expose] public section
 
 /-!
 # Ore localization of a square-zero deformation

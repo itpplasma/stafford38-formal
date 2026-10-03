@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.CanonicalUnitCoordinatePreimage
+module
+public import Stafford38.Characteristic.CanonicalUnitCoordinatePreimage
+
+@[expose] public section
 
 /-!
 # A strict unit preimage from degree-zero initial-ideal generation

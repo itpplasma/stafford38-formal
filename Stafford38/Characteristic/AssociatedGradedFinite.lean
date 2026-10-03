@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.AssociatedGradedModule
-import Stafford38.Characteristic.SquareZeroLocalizedExactness
+module
+public import Stafford38.Characteristic.AssociatedGradedModule
+public import Stafford38.Characteristic.SquareZeroLocalizedExactness
+
+@[expose] public section
 
 /-!
 # Finiteness of the actual order-associated graded module

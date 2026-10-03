@@ -1,4 +1,8 @@
-import Mathlib
+module
+public import AlgebraicAnalysis.Commutator
+public import Stafford38.ChallengeDefinitions
+
+@[expose] public section
 
 /-!
 # Transport of Stafford certificates
@@ -15,11 +19,11 @@ namespace Reduction
 
 variable {k A : Type*} [Field k] [Ring A] [Algebra k A]
 
-/-- The commutator `ad Y u = Y * u - u * Y`. -/
-def ad (Y u : A) : A := Y * u - u * Y
+/-- Historical reduction notation for the shared ring commutator. -/
+abbrev ad (Y u : A) : A := AlgebraicAnalysis.ringCommutator Y u
 
-/-- Stafford 3.8 for a single element, in written operator order. -/
-def Stafford38 (e : A) : Prop := ∃ F R S : A, (1 : A) = e * R + F * e * S
+@[simp] theorem ad_eq_shared (Y u : A) :
+    ad Y u = AlgebraicAnalysis.ringCommutator Y u := rfl
 
 /-- The monic right-coefficient presentation `X ^ N + ∑_{i<N} X ^ i * β i`. -/
 def monicElt (X : A) (N : ℕ) (β : Fin N → A) : A :=

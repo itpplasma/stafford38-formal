@@ -1,4 +1,8 @@
-import Stafford38.Geometry.AffineConormalClosure
+module
+public import Stafford38.Geometry.AffineConormalClosure
+public import Stafford38.Geometry.PaperHamiltonianFlow
+
+@[expose] public section
 
 /-!
 # Generic equation-conormal containment
@@ -125,7 +129,7 @@ theorem equationConormalLocus_subset_zeroLocus
   have hy : ∀ f ∈ J.comap baseLift, MvPolynomial.eval y f = 0 := by
     intro f hf
     exact hq.1 f hf
-  have hs := affineConormal_coordinatePoint_isCommonZero J hJ y
+  have hs := Stafford38.Geometry.PaperHamiltonianFlow.affineConormal_coordinatePoint_isCommonZero J hJ y
     (hzero y hy) (J.comap baseLift)
     (fun f => f.2) ξ hq.2
   have hsplit : Sum.elim y ξ = q := by

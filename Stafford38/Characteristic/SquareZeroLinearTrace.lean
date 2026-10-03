@@ -1,5 +1,8 @@
-import Mathlib.LinearAlgebra.Trace
-import Mathlib.LinearAlgebra.Projection
+module
+public import Mathlib.LinearAlgebra.Trace
+public import Mathlib.LinearAlgebra.Projection
+
+@[expose] public section
 
 /-!
 # The square-zero linear trace calculation

@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.AssociatedGradedModule
-import Stafford38.Weyl.OrderRees
-import Mathlib.Algebra.DirectSum.Module
+module
+public import Stafford38.Characteristic.AssociatedGradedModule
+public import Stafford38.Weyl.OrderRees
+public import Mathlib.Algebra.DirectSum.Module
+
+@[expose] public section
 
 /-!
 # The filtered quotient direct sum and associated-graded map

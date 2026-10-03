@@ -51,6 +51,78 @@ test('statements stop before the proof; definitions keep their body', () => {
   assert.match(def.text, /∀ n : Nat, n = n$/);
 });
 
+test('module visibility follows public sections and restores the enclosing scope', () => {
+  const src = ['module',
+    'public import Init',
+    'namespace Review',
+    'def hidden : Nat := 0',
+    '@[expose] public section Visible',
+    'variable (x : Nat)',
+    'abbrev Target : Prop := x = x',
+    'private def internal : Nat := 1',
+    'public theorem proved : Target x := rfl',
+    'end Visible',
+    'def hiddenAgain : Nat := 2',
+    'public def endpoint : Nat := 3',
+    'end Review'].join('\n');
+  assert.equal(findDeclaration(src, 'Review.hidden').exported, false);
+  assert.equal(findDeclaration(src, 'Review.Target').exported, true);
+  assert.equal(findDeclaration(src, 'Review.internal').visibility, 'private');
+  assert.equal(findDeclaration(src, 'Review.proved').exported, true);
+  assert.equal(findDeclaration(src, 'Review.hiddenAgain').exported, false);
+  assert.equal(findDeclaration(src, 'Review.endpoint').exported, true);
+  assert.deepEqual(definitionNames(src), [
+    { name: 'Review.Target', line: 7 },
+    { name: 'Review.endpoint', line: 12 },
+  ]);
+  assert.equal(declarationContext(src.split('\n'), 9)[0].text, 'variable (x : Nat)');
+  assert.deepEqual(declarationContext(src.split('\n'), 11), []);
+  assert.equal(namedResultType(src.split('\n'), 9), 'Target');
+});
+
+test('attributed public namespaces and bare ends preserve names and excerpt boundaries', () => {
+  const lines = ['module',
+    '@[expose] public namespace Outer.Inner',
+    'def first : Nat := 0',
+    'public noncomputable section',
+    'def second : Nat := 1',
+    'end',
+    'meta def third : Nat := 2',
+    'end Outer.Inner',
+    'public def root : Nat := 3'];
+  const src = lines.join('\n');
+  assert.deepEqual(namespaceAt(lines, 6), ['Outer', 'Inner']);
+  assert.equal(findDeclaration(src, 'Outer.Inner.third').exported, true);
+  assert.equal(findDeclaration(src, 'root').line, 9);
+  assert.equal(extractStatement(lines, 3, 45, true).text, 'def first : Nat := 0');
+  assert.equal(extractStatement(lines, 5, 45, true).text, 'def second : Nat := 1');
+  assert.deepEqual(namespaceAt(lines, 8), []);
+});
+
+test('explicit universe binders preserve exported names and namespace selection', () => {
+  const src = ['namespace Challenge',
+    'abbrev UniversalStatement.{u} : Prop := True',
+    'theorem result.{u, v} : UniversalStatement.{u} := trivial',
+    'def _root_.Shared.Predicate.{u} : Prop := True',
+    'end Challenge',
+    'namespace Unrelated',
+    'abbrev UniversalStatement.{u} : Prop := False',
+    'end Unrelated'].join('\n');
+  const target = findDeclaration(src, 'Challenge.UniversalStatement', 7);
+  assert.equal(target.qualified, 'Challenge.UniversalStatement');
+  assert.equal(target.line, 2);
+  assert.equal(target.exact, true);
+  assert.equal(target.exported, true);
+  assert.equal(findDeclaration(src, 'Challenge.result').line, 3);
+  assert.equal(findDeclaration(src, 'Shared.Predicate').line, 4);
+  assert.deepEqual(definitionNames(src), [
+    { name: 'Challenge.UniversalStatement', line: 2 },
+    { name: 'Shared.Predicate', line: 4 },
+    { name: 'Unrelated.UniversalStatement', line: 7 },
+  ]);
+  assert.equal(findDeclaration(src, 'Challenge.UniversalStatement.'), null);
+});
+
 test('TeX helpers: comments, groups, AI markup, references', () => {
   assert.equal(stripComments('a % c\n\\% b'), 'a \n\\% b');
   assert.deepEqual(readGroup('{a{b}c}d', 0), ['a{b}c', 7]);

@@ -1,4 +1,11 @@
-import Mathlib
+module
+public import Stafford38.EvolutionaryCertificate
+public import Mathlib.Algebra.Polynomial.RingDivision
+public import Mathlib.RingTheory.Coprime.Lemmas
+public import Mathlib.RingTheory.Nilpotent.Defs
+public import Mathlib.Algebra.Ring.GeomSum
+
+@[expose] public section
 
 /-!
 # Pure-power Weyl certificates
@@ -18,47 +25,39 @@ noncomputable section
 
 variable {A : Type*} [Ring A] [Algebra ℚ A]
 
-private def theta (x d : A) : A := x * d
+abbrev theta (x d : A) : A := Stafford38.Evolution.euler x d
 
-private def falling (x d : A) : ℕ → A
-  | 0 => 1
-  | n + 1 => falling x d n * (theta x d - (n : A))
+abbrev falling (x d : A) : ℕ → A :=
+  Stafford38.Evolution.falling (theta x d)
 
-private def fallingShift (x d : A) : ℕ → A
-  | 0 => 1
-  | n + 1 => fallingShift x d n * (theta x d - ((n + 1 : ℕ) : A))
+abbrev rising (x d : A) : ℕ → A :=
+  Stafford38.Evolution.rising (theta x d)
 
-private def rising (x d : A) : ℕ → A
-  | 0 => 1
-  | n + 1 => rising x d n * (theta x d + ((n + 1 : ℕ) : A))
+abbrev fallingPoly : ℕ → Polynomial ℚ := Stafford38.Evolution.fallingPoly ℚ
 
-private def risingShift (x d : A) : ℕ → A
-  | 0 => 1
-  | n + 1 => risingShift x d n * (theta x d + ((n + 2 : ℕ) : A))
-
-private def fallingPoly : ℕ → Polynomial ℚ
-  | 0 => 1
-  | n + 1 => fallingPoly n * (Polynomial.X - Polynomial.C (n : ℚ))
-
-private def risingPoly : ℕ → Polynomial ℚ
-  | 0 => 1
-  | n + 1 => risingPoly n * (Polynomial.X + Polynomial.C ((n + 1 : ℕ) : ℚ))
+abbrev risingPoly : ℕ → Polynomial ℚ := Stafford38.Evolution.risingPoly ℚ
 
 private lemma fallingPoly_eq_prod (n : ℕ) :
     fallingPoly n = ∏ i ∈ Finset.range n,
       (Polynomial.X - Polynomial.C (i : ℚ)) := by
+  change Stafford38.Evolution.fallingPoly ℚ n = _
   induction n with
-  | zero => simp [fallingPoly]
+  | zero => simp [Stafford38.Evolution.fallingPoly]
   | succ n ih =>
-      rw [fallingPoly, ih, Finset.prod_range_succ]
+      rw [Stafford38.Evolution.fallingPoly_succ, ih, Finset.prod_range_succ]
 
 private lemma risingPoly_eq_prod (n : ℕ) :
     risingPoly n = ∏ i ∈ Finset.range n,
       (Polynomial.X + Polynomial.C ((i + 1 : ℕ) : ℚ)) := by
+  change Stafford38.Evolution.risingPoly ℚ n = _
   induction n with
-  | zero => simp [risingPoly]
+  | zero => simp [Stafford38.Evolution.risingPoly]
   | succ n ih =>
-      rw [risingPoly, ih, Finset.prod_range_succ]
+      rw [Stafford38.Evolution.risingPoly_succ, ih, Finset.prod_range_succ]
+      congr 1
+      congr 1
+      push_cast
+      rfl
 
 private lemma falling_factor_coprime_rising_factor (i j : ℕ) :
     IsCoprime (Polynomial.X - Polynomial.C (i : ℚ))
@@ -82,205 +81,19 @@ private lemma fallingPoly_isCoprime_risingPoly (n : ℕ) :
   intro j hj
   exact falling_factor_coprime_rising_factor i j
 
-private lemma x_mul_theta_sub_nat
-    (x d : A) (h : d * x = x * d + 1) (n : ℕ) :
-    x * (theta x d - (n : A)) =
-      (theta x d - ((n + 1 : ℕ) : A)) * x := by
-  have hxt : x * theta x d = (theta x d - 1) * x := by
-    dsimp [theta]
-    have h' : x * d = d * x - 1 := by
-      simp [h]
-    calc
-      x * (x * d) = x * (d * x - 1) := by rw [h']
-      _ = x * d * x - x := by noncomm_ring
-      _ = (x * d - 1) * x := by noncomm_ring
-  have hn : (n : A) * x = x * (n : A) := by
-    simpa using (Algebra.commutes (n : ℚ) x)
-  rw [mul_sub, hxt]
-  push_cast
-  rw [← hn]
-  noncomm_ring
-
-private lemma d_mul_theta_add_nat
-    (x d : A) (h : d * x = x * d + 1) (n : ℕ) :
-    d * (theta x d + ((n + 1 : ℕ) : A)) =
-      (theta x d + ((n + 2 : ℕ) : A)) * d := by
-  have hdt : d * theta x d = (theta x d + 1) * d := by
-    dsimp [theta]
-    calc
-      d * (x * d) = (d * x) * d := by noncomm_ring
-      _ = (x * d + 1) * d := by rw [h]
-      _ = (theta x d + 1) * d := rfl
-  have hn : (n : A) * d = d * (n : A) := by
-    simpa using (Algebra.commutes (n : ℚ) d)
-  rw [mul_add, hdt]
-  push_cast
-  simp only [mul_add]
-  rw [← hn]
-  noncomm_ring
-
-private lemma x_mul_falling
-    (x d : A) (h : d * x = x * d + 1) : ∀ n : ℕ,
-    x * falling x d n = fallingShift x d n * x
-  | 0 => by simp [falling, fallingShift]
-  | n + 1 => by
-      change x * (falling x d n * (theta x d - (n : A))) =
-        (fallingShift x d n * (theta x d - ((n + 1 : ℕ) : A))) * x
-      calc
-        x * (falling x d n * (theta x d - (n : A))) =
-            (x * falling x d n) * (theta x d - (n : A)) := by
-              noncomm_ring
-        _ = (fallingShift x d n * x) *
-            (theta x d - (n : A)) := by rw [x_mul_falling x d h n]
-        _ = fallingShift x d n *
-            ((theta x d - ((n + 1 : ℕ) : A)) * x) := by
-              calc
-                fallingShift x d n * x * (theta x d - (n : A)) =
-                    fallingShift x d n *
-                      (x * (theta x d - (n : A))) := by rw [mul_assoc]
-                _ = fallingShift x d n *
-                    ((theta x d - ((n + 1 : ℕ) : A)) * x) := by
-                      rw [x_mul_theta_sub_nat x d h n]
-        _ = (fallingShift x d n *
-            (theta x d - ((n + 1 : ℕ) : A))) * x := by
-              noncomm_ring
-
-private lemma d_mul_rising
-    (x d : A) (h : d * x = x * d + 1) : ∀ n : ℕ,
-    d * rising x d n = risingShift x d n * d
-  | 0 => by simp [rising, risingShift]
-  | n + 1 => by
-      change d * (rising x d n * (theta x d + ((n + 1 : ℕ) : A))) =
-        (risingShift x d n * (theta x d + ((n + 2 : ℕ) : A))) * d
-      calc
-        d * (rising x d n * (theta x d + ((n + 1 : ℕ) : A))) =
-            (d * rising x d n) *
-              (theta x d + ((n + 1 : ℕ) : A)) := by noncomm_ring
-        _ = (risingShift x d n * d) *
-            (theta x d + ((n + 1 : ℕ) : A)) := by rw [d_mul_rising x d h n]
-        _ = risingShift x d n *
-            ((theta x d + ((n + 2 : ℕ) : A)) * d) := by
-              calc
-                risingShift x d n * d *
-                      (theta x d + ((n + 1 : ℕ) : A)) =
-                    risingShift x d n *
-                      (d * (theta x d + ((n + 1 : ℕ) : A))) := by
-                        rw [mul_assoc]
-                _ = risingShift x d n *
-                    ((theta x d + ((n + 2 : ℕ) : A)) * d) := by
-                      rw [d_mul_theta_add_nat x d h n]
-        _ = (risingShift x d n *
-            (theta x d + ((n + 2 : ℕ) : A))) * d := by
-              noncomm_ring
-
-private lemma fallingShift_mul_theta
-    (x d : A) : ∀ n : ℕ,
-    fallingShift x d n * theta x d = falling x d (n + 1)
-  | 0 => by simp [falling, fallingShift]
-  | n + 1 => by
-      change (fallingShift x d n *
-          (theta x d - ((n + 1 : ℕ) : A))) * theta x d =
-        falling x d (n + 2)
-      calc
-        (fallingShift x d n *
-            (theta x d - ((n + 1 : ℕ) : A))) * theta x d =
-            (fallingShift x d n * theta x d) *
-              (theta x d - ((n + 1 : ℕ) : A)) := by
-                have hn : ((n + 1 : ℕ) : A) * theta x d =
-                    theta x d * ((n + 1 : ℕ) : A) := by
-                  simpa using (Algebra.commutes ((n + 1 : ℕ) : ℚ) (theta x d))
-                calc
-                  (fallingShift x d n *
-                      (theta x d - ((n + 1 : ℕ) : A))) * theta x d =
-                      fallingShift x d n *
-                        ((theta x d - ((n + 1 : ℕ) : A)) * theta x d) := by
-                          rw [mul_assoc]
-                  _ = fallingShift x d n *
-                        (theta x d *
-                          (theta x d - ((n + 1 : ℕ) : A))) := by
-                          congr 1
-                          rw [mul_sub, sub_mul, hn]
-                  _ = (fallingShift x d n * theta x d) *
-                        (theta x d - ((n + 1 : ℕ) : A)) := by
-                          rw [mul_assoc]
-        _ = falling x d (n + 1) *
-              (theta x d - ((n + 1 : ℕ) : A)) := by
-                rw [fallingShift_mul_theta x d n]
-        _ = falling x d (n + 2) := by rfl
-
-private lemma risingShift_mul_theta_add_one
-    (x d : A) : ∀ n : ℕ,
-    risingShift x d n * (theta x d + 1) = rising x d (n + 1)
-  | 0 => by simp [rising, risingShift]
-  | n + 1 => by
-      change (risingShift x d n *
-          (theta x d + ((n + 2 : ℕ) : A))) *
-            (theta x d + 1) = rising x d (n + 2)
-      calc
-        (risingShift x d n *
-            (theta x d + ((n + 2 : ℕ) : A))) *
-              (theta x d + 1) =
-            (risingShift x d n * (theta x d + 1)) *
-              (theta x d + ((n + 2 : ℕ) : A)) := by
-                have hn : ((n + 2 : ℕ) : A) * theta x d =
-                    theta x d * ((n + 2 : ℕ) : A) := by
-                  simpa only [map_natCast] using
-                    (Algebra.commutes ((n + 2 : ℕ) : ℚ) (theta x d))
-                calc
-                  (risingShift x d n *
-                      (theta x d + ((n + 2 : ℕ) : A))) *
-                        (theta x d + 1) =
-                      risingShift x d n *
-                        ((theta x d + ((n + 2 : ℕ) : A)) *
-                          (theta x d + 1)) := by
-                            rw [mul_assoc]
-                  _ = risingShift x d n *
-                        ((theta x d + 1) *
-                          (theta x d + ((n + 2 : ℕ) : A))) := by
-                            congr 1
-                            simp only [add_mul, mul_add]
-                            rw [hn]
-                            noncomm_ring
-                  _ = (risingShift x d n * (theta x d + 1)) *
-                        (theta x d + ((n + 2 : ℕ) : A)) := by
-                            rw [mul_assoc]
-        _ = rising x d (n + 1) *
-              (theta x d + ((n + 2 : ℕ) : A)) := by
-                rw [risingShift_mul_theta_add_one x d n]
-        _ = rising x d (n + 2) := by rfl
-
 private lemma x_pow_mul_d_pow
     (x d : A) (h : d * x = x * d + 1) : ∀ n : ℕ,
-    x ^ n * d ^ n = falling x d n
-  | 0 => by simp [falling]
-  | n + 1 => by
-      calc
-        x ^ (n + 1) * d ^ (n + 1) = x * (x ^ n * d ^ n) * d := by
-          rw [pow_succ', pow_succ]
-          simp only [mul_assoc]
-        _ = x * falling x d n * d := by rw [x_pow_mul_d_pow x d h n]
-        _ = fallingShift x d n * (x * d) := by
-          rw [x_mul_falling x d h n]
-          noncomm_ring
-        _ = falling x d (n + 1) := by
-          simpa [theta] using fallingShift_mul_theta x d n
+    x ^ n * d ^ n = falling x d n := by
+  intro n
+  simpa [falling, theta] using
+    (Stafford38.Evolution.pow_mul_pow_eq_falling (x := x) (p := d) h n)
 
 private lemma d_pow_mul_x_pow
     (x d : A) (h : d * x = x * d + 1) : ∀ n : ℕ,
-    d ^ n * x ^ n = rising x d n
-  | 0 => by simp [rising]
-  | n + 1 => by
-      calc
-        d ^ (n + 1) * x ^ (n + 1) = d * (d ^ n * x ^ n) * x := by
-          rw [pow_succ', pow_succ]
-          simp only [mul_assoc]
-        _ = d * rising x d n * x := by rw [d_pow_mul_x_pow x d h n]
-        _ = risingShift x d n * (d * x) := by
-          rw [d_mul_rising x d h n]
-          noncomm_ring
-        _ = rising x d (n + 1) := by
-          rw [h]
-          simpa [theta] using risingShift_mul_theta_add_one x d n
+    d ^ n * x ^ n = rising x d n := by
+  intro n
+  simpa [rising, theta] using
+    (Stafford38.Evolution.pow_mul_pow_eq_rising (x := x) (p := d) h n)
 
 private lemma eval_fallingPoly
     (x d : A)
@@ -291,10 +104,12 @@ private lemma eval_fallingPoly
   induction n with
   | zero => simp [fallingPoly, falling]
   | succ n ih =>
-      rw [fallingPoly, map_mul, map_sub, hev, hC]
+      change ev (Stafford38.Evolution.fallingPoly ℚ (n + 1)) =
+        Stafford38.Evolution.falling (Stafford38.Evolution.euler x d) (n + 1)
+      rw [Stafford38.Evolution.fallingPoly_succ, map_mul, map_sub, hev, hC]
       push_cast
       rw [ih]
-      simp [falling]
+      simp [falling, theta, Stafford38.Evolution.falling_succ]
 
 private lemma eval_risingPoly
     (x d : A)
@@ -305,10 +120,12 @@ private lemma eval_risingPoly
   induction n with
   | zero => simp [risingPoly, rising]
   | succ n ih =>
-      rw [risingPoly, map_mul, map_add, hev, hC]
+      change ev (Stafford38.Evolution.risingPoly ℚ (n + 1)) =
+        Stafford38.Evolution.rising (Stafford38.Evolution.euler x d) (n + 1)
+      rw [Stafford38.Evolution.risingPoly_succ, map_mul, map_add, hev, hC]
       push_cast
       rw [ih]
-      simp [rising]
+      simp [rising, theta, Stafford38.Evolution.rising_succ]
 
 /-- Evaluation of a rational polynomial at the Euler element `x*d`. -/
 def eulerPolynomialEval (x d : A) : Polynomial ℚ →+* A :=

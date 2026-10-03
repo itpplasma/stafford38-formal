@@ -4,13 +4,11 @@ defaultTargets = ["Stafford38", "Solution", "FixedSourceSolution"]
 
 [[require]]
 name = "mathlib"
-git = "https://github.com/leanprover-community/mathlib4"
-rev = "db584cd6d46c92f209a44c0f1c829460d327499d"
+path = "../mathlib4"
 
 [[require]]
 name = "algebraicAnalysis"
-git = "https://github.com/itpplasma/algebraic-analysis.git"
-rev = "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8"
+path = "../algebraicAnalysis"
 
 [[lean_lib]]
 name = "Stafford38"

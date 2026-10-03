@@ -1,0 +1,7 @@
+module
+public import Stafford38.Geometry.ActualWitnessSelectedChartIndex
+
+@[expose] public section
+
+#check Stafford38.Geometry.ActualWitnessSelectedChartIndex.exists_succ_chart_index
+#print axioms Stafford38.Geometry.ActualWitnessSelectedChartIndex.exists_succ_chart_index

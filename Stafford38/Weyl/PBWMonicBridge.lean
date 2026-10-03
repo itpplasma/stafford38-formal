@@ -1,17 +1,19 @@
-import Stafford38.Weyl.MonicNormalization
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Weyl.MonicNormalization
+
+@[expose] public section
 
 /-!
 # From principal-axis normalization to PBW monicity
 
-Axis restriction does not merge coefficients: its degree-`N` coefficient is
-exactly the coefficient of the pure selected-variable monomial. The same pure
-coefficient passes unchanged from the degree-`N` principal component to the
-full checked PBW normal form. Together with the Bernstein bound, this yields a
-coefficient-one pure momentum term and excludes every higher momentum power.
-
-The resulting data retain the symplectic matrices, inverse identities, scalar,
-and exact normalized image. Converting this PBW statement to `Polynomial.Monic`
-for the outer Ore layer remains separate.
+Axis restriction identifies the degree-`N` coefficient with the selected
+pure-variable coefficient. The same coefficient passes from the principal
+component to the checked PBW normal form; together with the Bernstein bound
+this yields a coefficient-one pure momentum term and excludes higher
+momentum powers. `OuterOreMonic` converts the result to `Polynomial.Monic`;
+`PaperRightMonic` supplies the paper-facing right-coefficient decomposition
+and lower-coefficient bounds.
 -/
 
 namespace Stafford38.WeylPBWMonicBridge
@@ -74,14 +76,22 @@ theorem coeff_axisPolynomial {n : ℕ} (t : PhaseVar n)
         rw [hz, mul_zero]
         simp [MvPolynomial.coeff_monomial, hmne]
   | add p q hp hq =>
+      change AddMonoidAlgebra.coeff (axisPolynomial k t (p + q))
+        (Finsupp.single () N) =
+        AddMonoidAlgebra.coeff (p + q) (Finsupp.single t N)
       simp [map_add, hp, hq]
 
 theorem coeff_principal_pure_eq_normalForm {n N : ℕ}
     (t : PhaseVar n) (d : PresentedWeyl k n) :
     MvPolynomial.coeff (Finsupp.single t N)
         (presentedPrincipalComponent k (@bernsteinWeight n) N d) =
-      MvPolynomial.coeff (Finsupp.single t N)
+    MvPolynomial.coeff (Finsupp.single t N)
         (presentedNormalFormLinearEquiv k n d) := by
+  change AddMonoidAlgebra.coeff
+      (presentedPrincipalComponent k (@bernsteinWeight n) N d)
+      (Finsupp.single t N) =
+    AddMonoidAlgebra.coeff (presentedNormalFormLinearEquiv k n d)
+      (Finsupp.single t N)
   rw [coeff_presentedPrincipalComponent]
   simp [monomialWeight, bernsteinWeight]
 

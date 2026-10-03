@@ -1,4 +1,11 @@
-import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
+module
+public import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
+public import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameData
+
+@[expose] public section
+
+set_option autoImplicit false
 
 /-!
 # Divisorial visible frames for arbitrary prime affine components
@@ -18,7 +25,9 @@ open Stafford38.Geometry.AsymptoticDivisorExistence
 open Stafford38.Geometry.AffineComponentCoordinateSplit
 open Stafford38.Geometry.ComponentFunctionFieldBoundary
 open Stafford38.Geometry.ComponentProjectiveClosure
+open Stafford38.Geometry.ComponentProjectiveClosureNormalization
 open Stafford38.Geometry.ComponentProjectiveOrder
+open Stafford38.Geometry.CompletedDVRPowerSeries
 open Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
 open Stafford38.Geometry.ExactVisibleDivisorFrameInterface
 open Stafford38.Geometry.KaehlerDVRVisibility
@@ -27,6 +36,7 @@ open Stafford38.Geometry.ProjectiveValuationNormalization
 open Stafford38.Geometry.RelativeCoefficientDVR
 open Stafford38.Geometry.RelativeRetainedBoundaryPlace
 open Stafford38.Geometry.RetainedDVR
+open Stafford38.Geometry.RetainedGroundMapIdentification
 open Stafford38.Geometry.DivisorTangentLattice
 
 noncomputable section
@@ -36,10 +46,13 @@ set_option synthInstance.maxHeartbeats 400000
 
 universe u
 
-/-- A polynomial inverse modulo the prime component forces the normalized
-projective denominator to vanish at the retained boundary place. The visible
-differential frame is then supplied by the generic divisorial construction. -/
-theorem generalDivisorialVisibleFrameExistence
+set_option maxHeartbeats 4000000 in
+
+/-- The general divisorial producer with its actual Lane-C residue
+algebraicity retained.  The algebraicity is for the same normalized column
+and the same visible frame, under the ground algebra structure induced by the
+retained coefficient map. -/
+theorem generalDivisorialVisibleFrameWithResidueAlgebraicity
     {k : Type u} [Field k] [CharZero k]
     {m : ℕ} (hm : 0 < m)
     (P : PrimeSpectrum (MvPolynomial (Fin m) k))
@@ -47,7 +60,7 @@ theorem generalDivisorialVisibleFrameExistence
       MvPolynomial.X ⟨0, hm⟩ * g - 1 ∈ P.asIdeal)
     (htrans : Transcendental k
       (componentCoordinate P ⟨0, hm⟩)) :
-    HasNormalizedCompatibleVisibleFrame P hm := by
+    Nonempty (GeneralDivisorialVisibleFrameWitness hm P) := by
   let i : Fin m := ⟨0, hm⟩
   let K := ComponentFractionField P
   obtain ⟨E, V, hEV, hVdvr, hxV, htransE, hxm, hEfin, hkaehler, halgAll⟩ :=
@@ -70,9 +83,13 @@ theorem generalDivisorialVisibleFrameExistence
       htransE hxm hEfin
   letI : Algebra (CoordinateZeroLocalRing W.coefficientField) K :=
     W.ambientAlgebra
+  letI : IsScalarTower W.coefficientField
+      (CoordinateZeroLocalRing W.coefficientField) K := W.coefficientTower
   obtain ⟨chart, qraw, scale, hscale, hchartRaw, hqraw⟩ :=
     exists_normalized_projective_lift V (componentProjectivePoint P)
-      ⟨0, by simp [componentProjectivePoint]⟩
+      ⟨0, by
+        simpa only [componentProjectivePoint_eq_finCases, Fin.cases_zero] using
+          (one_ne_zero : (1 : ComponentFractionField P) ≠ 0)⟩
   let q : Fin (m + 1) → V.toSubring := fun a =>
     ⟨qraw a, (qraw a).property⟩
   have hchart : q chart = 1 := by
@@ -84,15 +101,58 @@ theorem generalDivisorialVisibleFrameExistence
   have hq0 : q 0 ≠ 0 := by
     intro hzero
     apply hscale
+    have hz : ((q 0 : V.toSubring) : K) = 0 :=
+      congrArg (fun z : V.toSubring => (z : K)) hzero
     have h := hq 0
-    rw [hzero] at h
-    simpa [componentProjectivePoint] using h.symm
+    rw [hz] at h
+    simpa only [componentProjectivePoint_eq_finCases, Fin.cases_zero, mul_one]
+      using h.symm
   let xV : V.toSubring := ⟨componentCoordinate P i, hxV⟩
   have hratioV : q (Fin.succ i) = q 0 * xV := by
     apply Subtype.ext
     change (q (Fin.succ i) : K) = (q 0 : K) * componentCoordinate P i
     rw [hq, hq]
-    simp [componentProjectivePoint]
+    simp only [componentProjectivePoint_eq_finCases, Fin.cases_zero,
+      Fin.cases_succ, mul_one]
+  let coeff : k →+* V :=
+    (relativeCoefficientMap W.coefficientField W.place).comp
+      (algebraMap k W.coefficientField)
+  have hcoeff : W.place.valuation.toSubring.subtype.comp coeff =
+      algebraMap k K := by
+    ext c
+    change ((relativeCoefficientMap W.coefficientField W.place
+      (algebraMap k W.coefficientField c) : V) : K) = algebraMap k K c
+    calc
+      ((relativeCoefficientMap W.coefficientField W.place
+          (algebraMap k W.coefficientField c) : V) : K) =
+          algebraMap W.coefficientField K
+            (algebraMap k W.coefficientField c) :=
+        DFunLike.congr_fun
+          (relativeCoefficientMap_commutes W.coefficientField W.place)
+          (algebraMap k W.coefficientField c)
+      _ = algebraMap k K c :=
+        IsScalarTower.algebraMap_apply k W.coefficientField K c
+  have hLaneCoeff : W.place.valuation.toSubring.subtype.comp
+      (Stafford38.Geometry.LaneC.groundHom E V hEV) = algebraMap k K := by
+    ext c
+    change ((algebraMap k E c : E) : K) = algebraMap k K c
+    exact IsScalarTower.algebraMap_apply k E K c
+  have hCoeffEq : coeff = Stafford38.Geometry.LaneC.groundHom E V hEV := by
+    apply RingHom.ext
+    intro c
+    apply Subtype.ext
+    change ((coeff c : V) : K) =
+      ((Stafford38.Geometry.LaneC.groundHom E V hEV c : V) : K)
+    calc
+      ((coeff c : V) : K) = algebraMap k K c := by
+        have hc := DFunLike.congr_fun hcoeff c
+        change ((coeff c : V) : K) = algebraMap k K c at hc
+        exact hc
+      _ = ((Stafford38.Geometry.LaneC.groundHom E V hEV c : V) : K) := by
+        have hc := DFunLike.congr_fun hLaneCoeff c
+        change ((Stafford38.Geometry.LaneC.groundHom E V hEV c : V) : K) =
+          algebraMap k K c at hc
+        exact hc.symm
   have hq0nonunit : ¬ IsUnit (q 0) := by
     obtain ⟨g, hg⟩ := hunit
     let F := K
@@ -132,40 +192,65 @@ theorem generalDivisorialVisibleFrameExistence
           (algebraMap (MvPolynomial (Fin m) k ⧸ P.asIdeal) F) hmk)
       rw [map_sub, map_mul, map_one, sub_eq_zero, hphiX, hpoly] at hzero
       exact hzero
-    let coeff : k →+* V :=
-      (relativeCoefficientMap W.coefficientField W.place).comp
-        (algebraMap k W.coefficientField)
-    have hcoeff : W.place.valuation.toSubring.subtype.comp coeff =
-        algebraMap k F := by
-      ext c
-      change ((relativeCoefficientMap W.coefficientField W.place
-        (algebraMap k W.coefficientField c) : V) : F) = algebraMap k F c
-      calc
-        ((relativeCoefficientMap W.coefficientField W.place
-            (algebraMap k W.coefficientField c) : V) : F) =
-            algebraMap W.coefficientField F
-              (algebraMap k W.coefficientField c) :=
-          DFunLike.congr_fun
-            (relativeCoefficientMap_commutes W.coefficientField W.place)
-            (algebraMap k W.coefficientField c)
-        _ = algebraMap k F c :=
-          IsScalarTower.algebraMap_apply k W.coefficientField F c
     exact normalized_denominator_nonunit_of_polynomial_inverse
       (V := W.place.valuation) (coeff := coeff) hcoeff
       (x := fun j ↦ componentCoordinate P j)
       (qzero := q 0) (q := fun j ↦ q (Fin.succ j)) (scale := scale)
       (i := i) (parameter := W.place.parameter) (g := g)
-      (by simpa [componentProjectivePoint] using hq 0)
-      (by intro j; simpa [componentProjectivePoint] using hq (Fin.succ j))
+      (by simpa only [componentProjectivePoint_eq_finCases, Fin.cases_zero, mul_one] using hq 0)
+      (by intro j; simpa only [componentProjectivePoint_eq_finCases, Fin.cases_succ]
+        using hq (Fin.succ j))
       W.parameter_eq_coordinate W.place.parameter_nonunit hinverse
-  have halg := halgAll scale q hq ⟨chart, hchart⟩ hq0nonunit
+  let A_lane : Algebra k (ResidueField V) :=
+    ((residue V).comp (Stafford38.Geometry.LaneC.groundHom E V hEV)).toAlgebra
+  let A_retained : Algebra k (ResidueField V) :=
+    retainedResidueGroundAlgebra P i W
+  have hresMapEq :
+      (residue V).comp (Stafford38.Geometry.LaneC.groundHom E V hEV) =
+        (residue V).comp (retainedComponentCoefficientMap P i W) := by
+    change (residue V).comp (Stafford38.Geometry.LaneC.groundHom E V hEV) =
+      (residue V).comp coeff
+    rw [← hCoeffEq]
+  have hresAlgEq : A_lane = A_retained := by
+    change ((residue V).comp
+        (Stafford38.Geometry.LaneC.groundHom E V hEV)).toAlgebra =
+      ((residue V).comp (retainedComponentCoefficientMap P i W)).toAlgebra
+    exact congrArg RingHom.toAlgebra hresMapEq
+  have halgLane :
+      letI : Algebra k (ResidueField V) := A_lane
+      Algebra.IsAlgebraic
+        (IntermediateField.adjoin k
+        (Set.range fun j : Fin m ↦ residue V (q (Fin.succ j))) :
+        IntermediateField k (ResidueField V))
+        (ResidueField V) := by
+    letI : Algebra k (ResidueField V) := A_lane
+    have hqFinCases : ∀ a,
+        (q a : K) = scale * Fin.cases 1
+          (fun i ↦ componentCoordinate P i) a := by
+      intro a
+      have hpoint : componentProjectivePoint P a =
+          Fin.cases 1 (fun i ↦ componentCoordinate P i) a :=
+        congrFun (componentProjectivePoint_eq_finCases P) a
+      calc
+        (q a : K) = scale * componentProjectivePoint P a := hq a
+        _ = scale * Fin.cases 1 (fun i ↦ componentCoordinate P i) a := by
+          rw [hpoint]
+    exact halgAll scale q hqFinCases
+      ⟨chart, hchart⟩ hq0nonunit
+  have halg := algebraic_adjoin_transfer_of_algebra_eq
+    A_lane A_retained hresAlgEq
+    (Set.range fun j : Fin m ↦ residue V (q (Fin.succ j))) halgLane
   have hchart_ne : chart ≠ 0 := by
     intro hzero
     apply hq0nonunit
     rw [← hzero, hchart]
     exact isUnit_one
   obtain ⟨j₀, rfl⟩ := Fin.exists_succ_eq_of_ne_zero hchart_ne
-  obtain ⟨t, ht⟩ := IsDiscreteValuationRing.exists_irreducible V.toSubring
+  let t := Stafford38.Geometry.CompletedDVRPowerSeries.chosenUniformizer
+    V.toSubring
+  have ht : Irreducible t :=
+    Stafford38.Geometry.CompletedDVRPowerSeries.chosenUniformizer_irreducible
+      V.toSubring
   have hq0max : q 0 ∈ maximalIdeal V.toSubring := by
     apply (IsLocalRing.mem_maximalIdeal (q 0)).2
     exact mem_nonunits_iff.mpr hq0nonunit
@@ -190,18 +275,89 @@ theorem generalDivisorialVisibleFrameExistence
         (u₀ : V.toSubring) (u₁ : V.toSubring) Q a e j₀
         ht.maximalIdeal_eq ht.ne_zero u₀.isUnit
         (Nat.one_le_iff_ne_zero.mpr ha.ne')
-        (Nat.one_le_iff_ne_zero.mpr he.ne') hq0frame hq1frame hQj₀ halg
-  refine ⟨W, Fin.succ j₀, q, scale, hscale, hchart, hq0, hq, ?_, ?_⟩
-  · apply Subtype.ext
-    have hv := congrArg Subtype.val hratioV
-    change (q (Fin.succ ⟨0, hm⟩) : K) =
-      (q 0 : K) * componentCoordinate P ⟨0, hm⟩ at hv
-    calc
-      (q (Fin.succ ⟨0, hm⟩) : K) =
-          (q 0 : K) * componentCoordinate P ⟨0, hm⟩ := hv
-      _ = (q 0 : K) * (W.place.parameter : K) := by
-        rw [W.parameter_eq_coordinate]
-  · exact ⟨D, hD0, hD1, fun j => by rw [hDQ]⟩
+        (Nat.one_le_iff_ne_zero.mpr he.ne') hq0frame hq1frame hQj₀ halgLane
+  have hretMap :
+      @algebraMap k (ResidueField V) _ _ A_retained =
+        (residue V).comp (retainedComponentCoefficientMap P i W) := by
+    exact RingHom.algebraMap_toAlgebra _
+  let C : GeneralDivisorialVisibleFrameColumn hm P := {
+    W := W
+    chart := Fin.succ j₀
+    q := q
+    scale := scale
+    scale_ne := hscale
+    chart_one := hchart
+    q0_ne := hq0
+    q_commonScale := hq
+    q_parameter := by
+      apply Subtype.ext
+      have hv := congrArg Subtype.val hratioV
+      change (q (Fin.succ ⟨0, hm⟩) : K) =
+        (q 0 : K) * componentCoordinate P ⟨0, hm⟩ at hv
+      calc
+        (q (Fin.succ ⟨0, hm⟩) : K) =
+            (q 0 : K) * componentCoordinate P ⟨0, hm⟩ := hv
+        _ = (q 0 : K) * (W.place.parameter : K) := by
+          rw [W.parameter_eq_coordinate]
+    groundCoeff := Stafford38.Geometry.LaneC.groundHom E V hEV
+    groundCoeff_commutes := hLaneCoeff
+    groundCoeff_eq_retained := hCoeffEq.symm
+    groundTower := by
+      let V' := W.place.valuation.toSubring
+      letI : Algebra k V' :=
+        (Stafford38.Geometry.LaneC.groundHom E V hEV).toAlgebra
+      letI : Algebra V' (ComponentFractionField P) := V'.subtype.toAlgebra
+      exact IsScalarTower.of_algebraMap_eq fun c => by
+        exact (DFunLike.congr_fun hLaneCoeff c).symm
+  }
+  let core : GeneralDivisorialVisibleFrameCore hm P C := {
+    D := D
+    D_Q0 := hD0
+    D_Q1 := hD1
+    D_Q := fun j => by rw [hDQ]
+    D_maximalIdeal := by
+      rw [hDt]
+      exact Stafford38.Geometry.CompletedDVRPowerSeries.maximalIdeal_eq_span_chosenUniformizer
+        V.toSubring
+    D_uniformizer := hDt
+    D_w_unit := by
+      rw [hDw]
+      exact u₁.isUnit
+  }
+  let S : GeneralDivisorialVisibleFrameSourceImage hm P C core :=
+    ⟨hDW⟩
+  let F : GeneralDivisorialVisibleFrameDifferential hm P C :=
+    ⟨core, S⟩
+  exact ⟨{
+    column := C
+    differential := F
+    retainedGroundMap := RingHom.algebraMap_toAlgebra _
+    halg := halg
+  }⟩
+
+/-- The original interface is the projection of the richer Lane-C witness. -/
+theorem generalDivisorialVisibleFrameExistence
+    {k : Type u} [Field k] [CharZero k]
+    {m : ℕ} (hm : 0 < m)
+    (P : PrimeSpectrum (MvPolynomial (Fin m) k))
+    (hunit : ∃ g : MvPolynomial (Fin m) k,
+      MvPolynomial.X ⟨0, hm⟩ * g - 1 ∈ P.asIdeal)
+    (htrans : Transcendental k
+      (componentCoordinate P ⟨0, hm⟩)) :
+    HasNormalizedCompatibleVisibleFrame P hm := by
+  obtain ⟨w⟩ :=
+    generalDivisorialVisibleFrameWithResidueAlgebraicity hm P hunit htrans
+  let C := w.column
+  let F := w.differential.core
+  letI : Algebra (CoordinateZeroLocalRing C.W.coefficientField)
+      (ComponentFractionField P) := C.W.ambientAlgebra
+  let V := C.W.place.valuation.toSubring
+  letI : IsDiscreteValuationRing V := C.W.place.isDiscrete
+  exact ⟨C.W, C.chart, C.q, C.scale, C.scale_ne, C.chart_one, C.q0_ne,
+    C.q_commonScale, C.q_parameter,
+    ⟨F.D, F.D_Q0, F.D_Q1, F.D_Q⟩⟩
+
+#print axioms generalDivisorialVisibleFrameWithResidueAlgebraicity
 
 #print axioms generalDivisorialVisibleFrameExistence
 

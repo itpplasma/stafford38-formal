@@ -1,4 +1,7 @@
-import Stafford38.Geometry.GeneralConormalContainment
+module
+public import Stafford38.Geometry.GeneralConormalContainment
+
+@[expose] public section
 
 /-!
 # Fibre-conical zero sets have homogeneous vanishing ideals

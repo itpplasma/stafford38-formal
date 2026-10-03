@@ -1,9 +1,13 @@
-import Mathlib.RingTheory.Valuation.ValuationSubring
-import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.FieldTheory.IntermediateField.Adjoin.Defs
-import Mathlib.RingTheory.FiniteType
-import Stafford38.Geometry.NormalizationHeightOne
+module
+public import Mathlib.RingTheory.Valuation.ValuationSubring
+public import Mathlib.RingTheory.Valuation.LocalSubring
+public import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.FieldTheory.IntermediateField.Adjoin.Defs
+public import Mathlib.RingTheory.FiniteType
+public import Stafford38.Geometry.NormalizationHeightOne
+
+@[expose] public section
 
 open IsLocalRing
 open scoped nonZeroDivisors

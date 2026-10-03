@@ -1,6 +1,9 @@
-import Mathlib.RingTheory.Etale.Field
-import Mathlib.RingTheory.Smooth.Basic
-import Mathlib.RingTheory.Unramified.Basic
+module
+public import Mathlib.RingTheory.Etale.Field
+public import Mathlib.RingTheory.Smooth.Basic
+public import Mathlib.RingTheory.Unramified.Basic
+
+@[expose] public section
 
 /-!
 # Finite-separable coefficient sections through nilpotent thickenings

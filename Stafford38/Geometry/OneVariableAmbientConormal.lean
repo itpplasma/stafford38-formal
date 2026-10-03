@@ -1,6 +1,10 @@
-import Stafford38.Characteristic.CanonicalBaseVariety
-import Stafford38.Geometry.OneVariablePrimeConormal
-import Mathlib.FieldTheory.Perfect
+module
+public import Mathlib.Tactic.Cases
+public import Stafford38.Characteristic.CanonicalBaseVariety
+public import Stafford38.Geometry.OneVariablePrimeConormal
+public import Mathlib.FieldTheory.Perfect
+
+@[expose] public section
 
 /-!
 # Ambient rank-one conormal production
@@ -36,24 +40,17 @@ noncomputable section
 
 universe u
 
-private def finOnePolynomialEquiv (k : Type u) [Field k] :
+private abbrev finOnePolynomialEquiv (k : Type u) [Field k] :
     MvPolynomial (Fin 1) k ≃ₐ[k] Polynomial k :=
-  (MvPolynomial.renameEquiv k (Equiv.equivPUnit.{1, 1} (Fin 1))).trans
-    (MvPolynomial.pUnitAlgEquiv.{u, 0} k)
+  MvPolynomial.uniqueAlgEquiv k (Fin 1)
 
 private theorem finOnePolynomialEquiv_eval
     {k : Type u} [Field k] (f : MvPolynomial (Fin 1) k) (y : Fin 1 → k) :
     Polynomial.eval (y 0) (finOnePolynomialEquiv k f) =
       MvPolynomial.eval y f := by
-  induction' f using MvPolynomial.induction_on with a p q hp hq p i hp
-  · simp [finOnePolynomialEquiv]
-  · simp [hp, hq]
-  · fin_cases i
-    simp only [map_mul, MvPolynomial.rename_X, AlgEquiv.trans_apply,
-      MvPolynomial.renameEquiv_apply, MvPolynomial.uniqueAlgEquiv_apply,
-      MvPolynomial.eval_mul, Polynomial.eval_mul]
-    rw [hp]
-    simp [finOnePolynomialEquiv]
+  change (finOnePolynomialEquiv k f).eval₂ (RingHom.id k) (y 0) =
+    f.eval₂ (RingHom.id k) y
+  exact MvPolynomial.eval₂_uniqueAlgEquiv
 
 private theorem finOnePolynomialEquiv_pderiv
     {k : Type u} [Field k] (f : MvPolynomial (Fin 1) k) :
@@ -61,13 +58,11 @@ private theorem finOnePolynomialEquiv_pderiv
       (finOnePolynomialEquiv k f).derivative := by
   induction' f using MvPolynomial.induction_on with a p q hp hq p i hp
   · simp [finOnePolynomialEquiv]
-  · simp [hp, hq]
+  · simp only [map_add]
+    rw [hp, hq]
   · fin_cases i
     simp only [MvPolynomial.pderiv_mul, MvPolynomial.pderiv_X,
-      Pi.single_apply, if_pos, one_mul, map_add, map_mul,
-      MvPolynomial.rename_X, AlgEquiv.trans_apply,
-      MvPolynomial.renameEquiv_apply, MvPolynomial.uniqueAlgEquiv_apply,
-      Polynomial.derivative_mul, Polynomial.derivative_X]
+      Pi.single_apply, map_add, map_mul, Polynomial.derivative_mul]
     rw [hp]
     simp [finOnePolynomialEquiv]
 
@@ -134,6 +129,7 @@ theorem exists_ambientEquation_differential_ne_zero
   have hgsep : g.Separable :=
     PerfectField.separable_iff_squarefree.mpr hgsq
   let f : MvPolynomial (Fin 1) k := e.symm g
+  have hef : e f = g := e.apply_symm_apply g
   have hfI : f ∈ I := by
     have : e.symm g ∈ I := by
       obtain ⟨f', hf', hef'⟩ :=
@@ -141,7 +137,7 @@ theorem exists_ambientEquation_differential_ne_zero
       simpa [← hef'] using hf'
     exact this
   have hgeval : Polynomial.eval (y 0) g = 0 := by
-    rw [show g = e f by simp [f, e]]
+    rw [← hef]
     exact (finOnePolynomialEquiv_eval f y).trans (hy f hfI)
   have hgderiv : Polynomial.eval (y 0) g.derivative ≠ 0 :=
     hgsep.eval₂_derivative_ne_zero (RingHom.id k) (by simpa using hgeval)
@@ -149,7 +145,8 @@ theorem exists_ambientEquation_differential_ne_zero
   change MvPolynomial.eval y (MvPolynomial.pderiv 0 f) ≠ 0
   rw [← finOnePolynomialEquiv_eval (MvPolynomial.pderiv 0 f) y,
     finOnePolynomialEquiv_pderiv]
-  simpa [f, e] using hgderiv
+  rw [hef]
+  exact hgderiv
 
 /-- In rank one, one ambient equation with nonzero differential spans the
 entire cotangent line. -/

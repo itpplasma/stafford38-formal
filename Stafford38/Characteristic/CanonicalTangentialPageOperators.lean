@@ -1,6 +1,10 @@
-import Stafford38.Characteristic.CanonicalFilteredGradedBridge
-import Stafford38.Characteristic.FilteredTwoTermTotalActions
-import Stafford38.Weyl.FilteredCommutator
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Characteristic.CanonicalFilteredGradedBridge
+public import Stafford38.Characteristic.FilteredTwoTermTotalActions
+public import Stafford38.Weyl.FilteredCommutator
+
+@[expose] public section
 
 /-!
 # Tangential filtered operators on the canonical quotient

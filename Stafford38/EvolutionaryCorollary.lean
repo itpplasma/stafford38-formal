@@ -1,6 +1,9 @@
-import Stafford38.EvolutionaryCertificate
-import Stafford38.EulerRootSeparation
-import Stafford38.Weyl.IteratedEquivalence
+module
+public import Stafford38.EvolutionaryCertificate
+public import Stafford38.EulerRootSeparation
+public import Stafford38.Weyl.IteratedEquivalence
+
+@[expose] public section
 
 /-!
 # Evolutionary Stafford corollary

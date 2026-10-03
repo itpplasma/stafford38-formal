@@ -1,15 +1,16 @@
-import Stafford38.Geometry.CoisotropicTranslation
+module
+public import Stafford38.Geometry.CoisotropicTranslation
+
+@[expose] public section
 
 /-!
 # Base-relative Poisson closure
 
-The vertical-translation argument needs only brackets whose left entry comes
-from the base-coordinate ring.  This file isolates that exact hypothesis and
-shows that it suffices for the existing Hamiltonian-iteration argument.
-
-No assertion is made here that a radical initial ideal, or the reduced
-characteristic ideal of a Weyl module, satisfies this condition.  Supplying
-that fact is the remaining Gabber input.
+The vertical-translation argument needs brackets whose left entry comes from
+the base-coordinate ring. This file defines that fragment and proves its
+consequences for Hamiltonian iteration and fibre-line translation. It does
+not assert that a particular ideal has the property; the unconditional
+canonical-support proof is assembled in `FoundationClosure`.
 -/
 
 namespace Stafford38.Characteristic.BaseRelativePoisson
@@ -81,7 +82,7 @@ theorem zeroSection_stable_under_differential_translation_of_isBaseRelativePoiss
         MvPolynomial.eval (Sum.elim y (fun i => t * differentialAt y f i)) g := by
     apply MvPolynomial.eval₂_congr
     intro i c hi hc
-    rcases i with i | i <;> rfl
+    rcases i with i | i <;> simp [differentialTranslatePoint, affineFibreTranslatePoint]
   rw [heval, ← eval_fibreLinePolynomial]
   rw [fibreLinePolynomial_eq_zero_of_isBaseRelativePoisson J hJ y hzero f hf g hg]
   exact Polynomial.eval_zero

@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ComponentProjectiveClosureNormalization
-import Stafford38.Geometry.LaurentConormalResidueExtension
-import Stafford38.Geometry.RetainedComponentEquationPackage
+module
+public import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+public import Stafford38.Geometry.LaurentConormalResidueExtension
+public import Stafford38.Geometry.RetainedComponentEquationPackage
+
+@[expose] public section
 
 /-!
 # Ground coefficients in the retained completed chart
@@ -131,7 +134,8 @@ theorem retainedToCompletedPowerSeries_ground
           (algebraMap k W.coefficientField c)).symm
 
 /-- With the residue-induced `Algebra` structure, the explicit retained
-Laurent coefficient map is definitionally the terminal consumer's ground map. -/
+Laurent coefficient map agrees with the canonical ground map through the
+checked coefficient-tower compatibility. -/
 theorem retainedLaurentCoefficientMap_eq_groundLaurentMap
     [CharZero k]
     (P : PrimeSpectrum (MvPolynomial (Fin m) k)) (i : Fin m)
@@ -156,6 +160,7 @@ theorem retainedLaurentCoefficientMap_eq_groundLaurentMap
     retainedResidueGroundAlgebra P i W
   apply RingHom.ext
   intro c
+  rw [← groundLaurentComposite_eq_algebraMap (k := k) (K := ResidueField V)]
   change algebraMap (PowerSeries (ResidueField V))
       (LaurentSeries (ResidueField V))
       (retainedToCompletedPowerSeries W

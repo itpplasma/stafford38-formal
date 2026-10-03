@@ -1,14 +1,18 @@
-import Mathlib.RingTheory.Ideal.MinimalPrime.Basic
-import Stafford38.Characteristic.BaseRelativePoisson
-import Stafford38.Characteristic.PostScalarExtensionPoisson
+module
+public import Mathlib.RingTheory.Ideal.MinimalPrime.Basic
+public import Stafford38.Characteristic.BaseRelativePoisson
+public import Stafford38.Characteristic.PostScalarExtensionPoisson
+
+@[expose] public section
 
 /-!
 # Minimal-prime assembly for base-relative Poisson closure
 
-This file isolates the commutative-algebra end of the remaining Gabber input.
-To prove base-relative Poisson closure of a radical, it is enough to prove the
-required bracket membership in every minimal prime over the original ideal.
-No integrability statement for those minimal primes is asserted here.
+This file gives the commutative-algebra assembly step from bracket membership
+in every minimal prime to base-relative Poisson closure of a radical. It is a
+reusable conditional lemma; the current canonical-support proof obtains its
+involutivity input through `PaperLocalizedInvolutivity` and
+`GabberGlobalAssembly`.
 -/
 
 namespace Stafford38.Characteristic.MinimalPrimePoisson

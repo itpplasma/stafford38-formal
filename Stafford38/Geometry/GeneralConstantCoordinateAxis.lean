@@ -1,6 +1,10 @@
-import Stafford38.Geometry.AffineComponentCoordinateSplit
-import Stafford38.Geometry.ConstantCoordinateConormal
-import Mathlib.RingTheory.Nullstellensatz
+module
+public import Stafford38.Geometry.AffineComponentCoordinateSplit
+public import Stafford38.Geometry.ConstantCoordinateConormal
+public import Mathlib.RingTheory.Nullstellensatz
+public import Stafford38.Geometry.SmoothConormalFibreVanishing
+
+@[expose] public section
 
 namespace Stafford38.Geometry.GeneralConstantCoordinateAxis
 
@@ -36,6 +40,28 @@ theorem exists_constant_coordinate_equation_and_pure_axis
     exact constantCoordinate_phasePoint_mem_equationConormalLocus
       P.asIdeal y hy ⟨0, hm⟩ c hc
   · exact False.elim (htrans halg)
+
+open Stafford38.Geometry.SmoothConormalFibreVanishing
+open Stafford38.Geometry.ProjectiveConormalDirections
+open Stafford38.Geometry.LaurentConormalDirection
+
+/-- A constant-coordinate component contributes the coordinate axis directly
+ to the ground-field smooth conormal fibre closure. No Laurent arc is needed. -/
+theorem coordinate_axis_mem_smooth_fibre_closure_of_coordinate_algebraic
+    {k : Type*} [Field k] [IsAlgClosed k] [CharZero k]
+    {m : ℕ} (hm : 0 < m)
+    (P : PrimeSpectrum (MvPolynomial (Fin m) k))
+    (halg : IsAlgebraic k (componentCoordinate P ⟨0, hm⟩)) :
+    (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0) ∈
+      MvPolynomial.zeroLocus k
+        (MvPolynomial.vanishingIdeal k (smoothConormalFibreProjection P.asIdeal)) := by
+  obtain ⟨c, y, hc, hy, hpoint⟩ :=
+    exists_constant_coordinate_equation_and_pure_axis hm P halg
+  intro f hf
+  have hfull := fibreLift_mem_vanishingIdeal_equationConormal P.asIdeal P.isPrime f hf
+  have hz := hfull (Sum.elim y (fun i => if i = ⟨0, hm⟩ then 1 else 0)) hpoint
+  simpa [fibreLift, MvPolynomial.eval_rename, Function.comp_def] using hz
+
 
 #print axioms exists_constant_coordinate_equation_and_pure_axis
 

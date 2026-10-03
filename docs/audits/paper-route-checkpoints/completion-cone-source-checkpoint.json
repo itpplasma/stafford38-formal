@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "base_commit": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
+  "source_tree": "0af052714dbfafc055f4f529f407e52d050e19a8",
+  "patch_sha256": "623d16f2f393c7fe5e3e53a19fa07d6432dd276af15ecd6d1a2bab12d1649910",
+  "input_manifest_sha256": "511cb4d70c6edd6c36cfd6909fd459fa16396f0a8d3b67c73d809c4f07305078",
+  "files": 647,
+  "verification": "PASS",
+  "build_jobs": 9123,
+  "consumer_axiom_reports": 206,
+  "paper_declarations": 111,
+  "terminal_axiom_reports": 37,
+  "scope": "Integrated source theorem and conditional paper-route infrastructure, including canonical completion and local arc maps; no claim of an unconditional paper-compatible geometric producer or release.",
+  "independent_completion_review_sha256": "b69788b89c2bf3df2a70791f1b5073434c3fdc16c97fb928c77ae5f8977fbe00",
+  "evidence": [
+    "completion-cone-inputs.json.gz",
+    "completion-cone-source.patch.gz",
+    "completion-cone-full-verifier.log.gz"
+  ]
+}

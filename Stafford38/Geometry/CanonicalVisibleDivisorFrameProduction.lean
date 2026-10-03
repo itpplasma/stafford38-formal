@@ -1,30 +1,18 @@
-import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction
-import Stafford38.Geometry.GenericPointKaehlerConormal
-import Stafford38.Geometry.RetainedPlaceConormalTransport
+module
+public import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction
+public import Stafford38.Geometry.GenericPointKaehlerConormal
+public import Stafford38.Geometry.RetainedPlaceConormalTransport
+
+@[expose] public section
 
 /-!
-# Lane C reduced to a visible divisor frame
+# Transfer from a visible divisor frame to a finite-gradient certificate
 
-The finite-gradient interface of lane C asks, on every minimal component
-whose distinguished coordinate is transcendental, for one finite-gradient
-boundary certificate over some field extension.  This file reduces that
-interface to a single geometric statement: the existence of a retained
-boundary place whose normalized homogeneous coordinate column carries a
-*visible divisor frame* in the sense of `DivisorTangentLattice`.
-
-Everything downstream is trust-zero:
-
-* the lattice lemma turns the visible frame into a Kähler relation with
-  coefficients divisible by `t^(a+e-1)`;
-* the generic-point bridge turns that relation into affine conormal
-  membership at the generic point;
-* the retained-place transport carries it to the completed residue field,
-  supplies the projective zeroth entry, and produces the one-row datum;
-* the existing adapter extracts the finite-gradient certificate.
-
-Nothing here constructs the place or the frame.  The producer statement
-`HigherDimensionalCanonicalVisibleDivisorFrameProduction` is the exact
-remaining geometric input of lane C.
+This file proves the implications from a visible divisor frame to a
+finite-gradient certificate and the residue-extension conormal-axis
+interface. It does not construct the frame. The canonical Weyl producer is
+`ExactDivisorialVisibleFrameExistence`; the generic same-witness producer is
+`GeneralDivisorialVisibleFrame`.
 -/
 
 namespace Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction
@@ -73,16 +61,8 @@ variable {F : Type*} [Field F]
 theorem differentialCovector_mul (y : Fin m → F) (p q : MvPolynomial (Fin m) F) :
     differentialCovector y (p * q) =
       MvPolynomial.eval y q • differentialCovector y p +
-        MvPolynomial.eval y p • differentialCovector y q := by
-  apply LinearMap.ext
-  intro v
-  change (∑ i, differentialAt y (p * q) i * v i) =
-    MvPolynomial.eval y q * (∑ i, differentialAt y p i * v i) +
-      MvPolynomial.eval y p * (∑ i, differentialAt y q i * v i)
-  simp only [differentialAt, MvPolynomial.pderiv_mul, map_add, map_mul, Finset.mul_sum,
-    ← Finset.sum_add_distrib]
-  refine Finset.sum_congr rfl fun i _ ↦ ?_
-  ring
+        MvPolynomial.eval y p • differentialCovector y q :=
+  Stafford38.Geometry.AffineConormalSpan.differentialCovector_mul y p q
 
 theorem differentialCovector_add (y : Fin m → F) (p q : MvPolynomial (Fin m) F) :
     differentialCovector y (p + q) = differentialCovector y p + differentialCovector y q := by

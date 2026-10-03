@@ -1,4 +1,7 @@
-import CorollaryChallenge
+module
+public import CorollaryChallenge
+
+@[expose] public section
 
 #check Stafford38CorollaryChallenge.IsRightTorsion
 #print axioms Stafford38CorollaryChallenge.IsRightTorsion

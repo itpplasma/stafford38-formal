@@ -1,0 +1,10 @@
+module
+public import Stafford38.Geometry.PaperRetainedChartWitnessColumns
+public import Stafford38.Geometry.PaperActualDivisorTangent
+public import Stafford38.Geometry.PaperActualWitnessConormalData
+
+@[expose] public section
+set_option autoImplicit false
+#print axioms Stafford38.Geometry.PaperRetainedChartWitnessColumns.columns_of_visible_witness
+#print axioms Stafford38.Geometry.PaperActualDivisorTangent.exists_regularizedOneRowConormalData_of_actual_columns
+#print axioms Stafford38.Geometry.PaperActualWitnessConormalData.exists_regularizedOneRowConormalData_of_actual_witness

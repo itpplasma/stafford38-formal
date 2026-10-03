@@ -1,15 +1,19 @@
-import AlgebraicAnalysis.Ore.Associativity
-import Stafford38.Weyl.IteratedEquivalence
-import Stafford38.Weyl.Universal
-import Stafford38.Weyl.PBW
-import Stafford38.Weyl.Filtration
-import Stafford38.Weyl.LeadingSymbol
-import Stafford38.Weyl.PBWMonicBridge
-import Stafford38.Weyl.EulerResidue
-import Stafford38.Characteristic.InitialIdeal
-import Stafford38.Characteristic.GeometricSupportDescent
-import Stafford38.UniversalAssembly
-import Stafford38.CanonicalSupportVanishingReduction
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import AlgebraicAnalysis.Ore.Associativity
+public import Stafford38.Weyl.IteratedEquivalence
+public import Stafford38.Weyl.Universal
+public import Stafford38.Weyl.PBW
+public import Stafford38.Weyl.Filtration
+public import Stafford38.Weyl.LeadingSymbol
+public import Stafford38.Weyl.PBWMonicBridge
+public import Stafford38.Weyl.EulerResidue
+public import Stafford38.Characteristic.InitialIdeal
+public import Stafford38.Characteristic.GeometricSupportDescent
+public import Stafford38.UniversalAssembly
+public import Stafford38.CanonicalSupportVanishingReduction
+
+@[expose] public section
 
 /-!
 # Coefficient extension for the presented Weyl algebra

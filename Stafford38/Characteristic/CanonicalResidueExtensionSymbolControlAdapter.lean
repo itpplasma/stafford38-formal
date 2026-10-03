@@ -1,7 +1,10 @@
-import Stafford38.Characteristic.CanonicalLaurentSymbolControl
-import Stafford38.Characteristic.GeometricSupportScalarExtension
-import Stafford38.Characteristic.MinimalPrimePoisson
-import Stafford38.Geometry.CanonicalResidueExtensionAssembly
+module
+public import Stafford38.Characteristic.CanonicalLaurentSymbolControl
+public import Stafford38.Characteristic.GeometricSupportScalarExtension
+public import Stafford38.Characteristic.MinimalPrimePoisson
+public import Stafford38.Geometry.CanonicalResidueExtensionAssembly
+
+@[expose] public section
 
 /-!
 # Residue-extension symbol control from base-relative Poisson closure
@@ -10,16 +13,18 @@ The consumer `equationConormalLocus_groundMap_subset_geometricReducedSupport`
 states its scalar extension through `scalarPolynomialMap`, whose coefficient
 map is `algebraMap k (LaurentSeries K)`.  The terminal interface
 `CanonicalResidueExtensionSymbolControl` states its conormal locus through
-`groundPolynomialMap`, whose coefficient map is the explicit composite
-`(algebraMap K (LaurentSeries K)).comp (algebraMap k K)`.
+`groundPolynomialMap`, now an abbreviation of `scalarPolynomialMap` with
+the same canonical coefficient map. The equality to the explicit composite
+`(algebraMap K (LaurentSeries K)).comp (algebraMap k K)` is retained as
+`groundLaurentComposite_eq_algebraMap`.
 
 Diagnosis (`#synth`, `pp.explicit`): both `Algebra k (LaurentSeries K)` and
 `Algebra K (LaurentSeries K)` are the instance
 `HahnSeries.powerSeriesAlgebra ℤ K`, whose structure map is
 `(ofPowerSeries ℤ K).comp (algebraMap _ (PowerSeries K))`, and the power-series
 structure map is `C ∘ algebraMap`.  The two coefficient maps are therefore
-propositionally equal ring homomorphisms (`groundLaurentMap_eq_algebraMap`
-below), even though no `IsScalarTower k K (LaurentSeries K)` instance exists:
+propositionally equal ring homomorphisms; the public canonical-map bridge
+below is now definitional. No `IsScalarTower k K (LaurentSeries K)` instance exists:
 the `Algebra`-derived scalar action on `LaurentSeries K` is multiplication by
 the structure map, not `HahnSeries.instSMul`.  No scalar-tower instance is
 constructed or needed here; the bridge is an equality of ring homomorphisms.
@@ -77,22 +82,18 @@ section CoefficientMaps
 
 variable {k K : Type u} [Field k] [Field K] [Algebra k K]
 
-/-- The explicit composite coefficient map `k → K → LaurentSeries K` is the
-structure map of the `Algebra k (LaurentSeries K)` instance.  Both sides are
-`ofPowerSeries ℤ K ∘ C ∘ algebraMap`, differing only by an identity
-`algebraMap K K`. -/
+/-- Compatibility name for the canonical structure map used by the ground
+coefficient alias.  The equality with the tower composite is proved in
+`groundLaurentComposite_eq_algebraMap`. -/
 theorem groundLaurentMap_eq_algebraMap :
     groundLaurentMap (k := k) (K := K) = algebraMap k (LaurentSeries K) := by
-  refine RingHom.ext fun a => ?_
-  simp only [groundLaurentMap, RingHom.comp_apply, HahnSeries.algebraMap_apply',
-    PowerSeries.algebraMap_apply, Algebra.algebraMap_self_apply]
+  rfl
 
-/-- Consequently the two polynomial coefficient-extension maps agree. -/
+/-- The ground polynomial-map alias is the canonical scalar-extension map. -/
 theorem groundPolynomialMap_eq_scalarPolynomialMap (σ : Type*) :
     groundPolynomialMap (k := k) (K := K) σ =
       scalarPolynomialMap (k := k) (K := LaurentSeries K) σ := by
-  unfold groundPolynomialMap scalarPolynomialMap
-  rw [groundLaurentMap_eq_algebraMap]
+  rfl
 
 /-- The ground equation-conormal locus is the equation-conormal locus of the
 `scalarPolynomialMap` extension. -/
@@ -101,8 +102,7 @@ theorem groundEquationConormalLocus_eq {n : ℕ}
     groundEquationConormalLocus (k := k) (K := K) I =
       equationConormalLocus
         (I.map (scalarPolynomialMap (k := k) (K := LaurentSeries K) (Fin n))) := by
-  unfold groundEquationConormalLocus
-  rw [groundPolynomialMap_eq_scalarPolynomialMap]
+  rfl
 
 end CoefficientMaps
 

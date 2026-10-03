@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.CanonicalMonicSaturation
+module
+public import Stafford38.Characteristic.CanonicalMonicSaturation
+
+@[expose] public section
 
 /-!
 # A unit-only strict coordinate criterion for canonical axis avoidance

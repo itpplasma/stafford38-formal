@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.LocalizedKernelCokernelEquivalences
+module
+public import AlgebraicAnalysis.Module.LocalizedKernelCokernelEquivalences
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

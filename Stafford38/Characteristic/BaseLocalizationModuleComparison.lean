@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.BaseLocalizationModuleComparison
+module
+public import AlgebraicAnalysis.Module.BaseLocalizationModuleComparison
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

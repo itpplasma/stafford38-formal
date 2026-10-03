@@ -1,5 +1,8 @@
-import Stafford38.Geometry.FormalDivisorAxisLift
-import Mathlib.RingTheory.PowerSeries.Inverse
+module
+public import Stafford38.Geometry.FormalDivisorAxisLift
+public import Mathlib.RingTheory.PowerSeries.Inverse
+
+@[expose] public section
 
 /-!
 # The strict projective order gap at a divisor
@@ -16,9 +19,9 @@ The power-series specialization feeds this strict order gap directly into
 `FormalDivisorAxisLift`.  Thus its caller no longer has to supply the
 integers `a,b`, their factorizations, or the inequality `a < b`.
 
-This does not construct the projective closure, its normalization, or the
-prime divisor.  Those global existence statements are not presently
-available in Mathlib's algebraic-geometry library.
+The inputs are the local DVR, its uniformizer, and the three coordinate
+elements. The conclusions supply the factorizations and strict exponent
+inequality used by the completed local argument.
 -/
 
 namespace Stafford38.Geometry.ProjectiveDivisorOrderGap

@@ -1,4 +1,7 @@
-import Stafford38.Weyl.AssociatedGraded
+module
+public import Stafford38.Weyl.AssociatedGraded
+
+@[expose] public section
 
 /-!
 # Filtered commutators and subprincipal symbols

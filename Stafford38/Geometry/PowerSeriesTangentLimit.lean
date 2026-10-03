@@ -1,4 +1,8 @@
-import Stafford38.Geometry.RetractionSpecialization
+module
+public import Stafford38.Geometry.RetractionSpecialization
+public import Mathlib.RingTheory.PowerSeries.NoZeroDivisors
+
+@[expose] public section
 
 /-!
 # A power-series tangent-lattice limit

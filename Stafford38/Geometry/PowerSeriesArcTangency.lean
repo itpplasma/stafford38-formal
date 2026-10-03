@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ContinuousPowerSeriesTangentFrame
-import Stafford38.Geometry.RetractionSpecialization
+module
+public import Stafford38.Geometry.ContinuousPowerSeriesTangentFrame
+public import Stafford38.Geometry.RetractionSpecialization
+
+@[expose] public section
 
 /-!
 # Tangency of the formal-arc velocity
@@ -33,7 +36,7 @@ variable {k : Type u} [Field k]
 
 /-- Chain rule for a derivation of a field-valued polynomial evaluation. -/
 theorem derivation_eval₂
-    {S : Type*} [CommSemiring S] [Algebra k S]
+    {S : Type*} [CommSemiring S] [Algebra k S] [Module k S]
     (D : Derivation k S S)
     {m : ℕ} (f : MvPolynomial (Fin m) k)
     (q : Fin m → S) :
@@ -84,7 +87,7 @@ analogue of the power-series arc theorem below; it is stated for an arbitrary
 field extension and an arbitrary derivation, so no chart or completeness
 hypothesis is hidden in the result. -/
 theorem derivationVector_mem_zariskiTangentSpace_of_eval₂_eq_zero
-    {S : Type*} [Field S] [Algebra k S]
+    {S : Type*} [Field S] [Algebra k S] [Module k S]
     (D : Derivation k S S)
     {m : ℕ} (I : Ideal (MvPolynomial (Fin m) k))
     (q : Fin m → S)
@@ -313,11 +316,11 @@ theorem residueFrameVector_coefficient_mem_zariskiTangentSpace_of_eval₂_eq_zer
 theorem derivative_eval_map
     {m : ℕ} (f : MvPolynomial (Fin m) k)
     (q : Fin m → PowerSeries k) :
-    PowerSeries.derivative k
+    PowerSeries.derivative (R := k)
         (MvPolynomial.eval q (MvPolynomial.map (PowerSeries.C) f)) =
       ∑ i, MvPolynomial.eval q
           (MvPolynomial.map (PowerSeries.C) (MvPolynomial.pderiv i f)) *
-        PowerSeries.derivative k (q i) := by
+        PowerSeries.derivative (R := k) (q i) := by
   induction f using MvPolynomial.induction_on with
   | C a => simp
   | add f g hf hg =>
@@ -333,15 +336,23 @@ theorem derivative_eval_map
 /-! ## Tangency at the closed point -/
 
 /-- The velocity of a power-series arc at its constant term. -/
-def arcVelocity {m : ℕ} (q : Fin m → PowerSeries k) : Fin m → k :=
-  fun i ↦ PowerSeries.constantCoeff (PowerSeries.derivative k (q i))
+abbrev arcVelocity {m : ℕ} (q : Fin m → PowerSeries k) : Fin m → k :=
+  powerSeriesFirstCoefficient q
+
+@[simp] theorem arcVelocity_eq_constantCoeff_derivative
+    {m : ℕ} (q : Fin m → PowerSeries k) :
+    arcVelocity q =
+      fun i ↦ PowerSeries.constantCoeff (PowerSeries.derivative (R := k) (q i)) := by
+  simpa [arcVelocity] using
+    powerSeriesFirstCoefficient_eq_constantCoeff_derivative q
 
 @[simp]
 theorem arcVelocity_eq_residueFrameVector
     {m κ : ℕ} (q : Fin m → PowerSeries k)
     (D : Fin κ → Derivation k k k) :
-    arcVelocity q = residueFrameVector q D none :=
-  rfl
+    arcVelocity q = residueFrameVector q D none := by
+  funext i
+  simp [arcVelocity, powerSeriesFirstCoefficient]
 
 /-- The formal-arc velocity annihilates the differential of every polynomial
 that vanishes identically along the arc. -/
@@ -363,7 +374,7 @@ theorem differentialCovector_arcVelocity_eq_zero_of_eval_eq_zero
               (MvPolynomial.map (PowerSeries.C)
                 (MvPolynomial.pderiv i f))) *
           PowerSeries.constantCoeff
-            (PowerSeries.derivative k (q i)) := by
+            (PowerSeries.derivative (R := k) (q i)) := by
     simpa only [map_zero, map_sum, map_mul] using
       congrArg (PowerSeries.constantCoeff) hderiv
   simp_rw [residue_eval_map] at hconst
@@ -393,9 +404,18 @@ theorem arcVelocity_mem_zariskiTangentSpace_of_eval_eq_zero
         g.1 g.2
   | zero => simp
   | add φ ψ hφ hψ ihφ ihψ =>
-      simpa [ihφ, ihψ]
+      have ihφ' : φ (fun i ↦
+          PowerSeries.constantCoeff (PowerSeries.derivative (R := k) (q i))) = 0 := by
+        simpa only [← arcVelocity_eq_constantCoeff_derivative q] using ihφ
+      have ihψ' : ψ (fun i ↦
+          PowerSeries.constantCoeff (PowerSeries.derivative (R := k) (q i))) = 0 := by
+        simpa only [← arcVelocity_eq_constantCoeff_derivative q] using ihψ
+      simp [ihφ', ihψ']
   | smul a φ hφ ihφ =>
-      simpa [ihφ]
+      have ihφ' : φ (fun i ↦
+          PowerSeries.constantCoeff (PowerSeries.derivative (R := k) (q i))) = 0 := by
+        simpa only [← arcVelocity_eq_constantCoeff_derivative q] using ihφ
+      simp [ihφ']
 
 @[simp]
 theorem residueFrameVector_none_mem_zariskiTangentSpace_of_eval_eq_zero

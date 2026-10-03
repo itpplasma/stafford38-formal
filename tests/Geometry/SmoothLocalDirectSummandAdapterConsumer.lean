@@ -1,0 +1,16 @@
+module
+public import Stafford38.Geometry.GeneralConstantCoordinateAxis
+public import Stafford38.Geometry.SmoothLocalDirectSummandAdapter
+
+@[expose] public section
+
+namespace Stafford38.Geometry.SmoothLocalDirectSummandAdapterConsumer
+
+#check Stafford38.Geometry.SmoothLocalDirectSummandAdapter.directSummandInput_of_tiltedAxisLiftFields
+#check Stafford38.Geometry.SmoothLocalDirectSummandAdapter.exists_directSummandInput_of_tilted_local_axis_lift
+#print axioms Stafford38.Geometry.SmoothLocalDirectSummandAdapter.directSummandInput_of_tiltedAxisLiftFields
+#print axioms Stafford38.Geometry.SmoothLocalDirectSummandAdapter.exists_directSummandInput_of_tilted_local_axis_lift
+
+end Stafford38.Geometry.SmoothLocalDirectSummandAdapterConsumer
+
+#print axioms Stafford38.Geometry.GeneralConstantCoordinateAxis.coordinate_axis_mem_smooth_fibre_closure_of_coordinate_algebraic

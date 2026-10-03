@@ -1,35 +1,20 @@
-import Stafford38.CanonicalSupportVanishingReduction
-import Stafford38.Geometry.ProjectiveDivisorOrderGap
-import Stafford38.Geometry.ProjectiveEquationFormalChart
-import Stafford38.Geometry.ProjectiveTangentInclusion
+module
+public import Stafford38.CanonicalSupportVanishingReduction
+public import Stafford38.Geometry.ProjectiveDivisorOrderGap
+public import Stafford38.Geometry.ProjectiveEquationFormalChart
+public import Stafford38.Geometry.ProjectiveTangentInclusion
+public import Stafford38.Geometry.LaurentConormalResidueExtension
+
+@[expose] public section
 
 /-!
-# The completed-boundary consumer for the Laurent producer
+# Completed-chart conormal consumer
 
-This file isolates the exact local certificate consumed by the asymptotic
-Laurent step.  A certificate contains
-
-* a one-parameter completed projective chart `q`;
-* a finite homogeneous family of projective equations, with their vanishing
-  at `q` and containment of the target affine ideal after dehomogenization;
-* divisor-tangent columns `Z` and the strict projective order-gap data;
-* one fixed derivative-compatible geometric witness `tau`, `C`, `ell`; and
-* the one genuinely geometric comparison still needed by the consumer:
-  the Zariski tangent space is *contained* in the span built from that same
-  fixed transverse column `tau`.
-
-The main theorem below turns this certificate into the exact output required
-by `CanonicalAsymptoticLaurentProducer`.  It does not assume support
-vanishing, a finite affine point on the axis, tangent-space equality, or a
-heuristic derivative limit.  The certificate is therefore a non-circular
-consumer interface, not a disguised proof of its own existence.
-
-What is deliberately not asserted here is the global production theorem that
-constructs such a certificate from normalization and projective closure.  In
-particular, a DVR with residue field `K` naturally completes to `K[[X]]`;
-specializing that chart to `k[[X]]`, constructing homogeneous equations, and
-proving the tangent-span inclusion are separate geometric obligations.
-`CanonicalBoundaryChartProduction` records exactly that remaining obligation.
+The base-field chart is an alias of the shared residue-extension certificate.
+Its homogeneous equations, divisor-tangent columns, order gap, and fixed
+compatible tangent witness give a Laurent conormal covector with axis residue.
+The global adapter uses chart production for the canonical reduced base ideal
+as its input.
 -/
 
 namespace Stafford38.Geometry.CanonicalAsymptoticLaurentProducer
@@ -61,72 +46,15 @@ universe u
 
 /-! ## The exact local certificate -/
 
-/--
-A completed one-parameter projective boundary chart for an affine ideal in
-`m` variables.
-
-The finite equation and tangent-column indices are natural numbers so that
-the certificate is entirely first-order data over the pinned Lean library;
-no hidden finiteness or choice of an equation family is left to an
-elaboration-side typeclass.
-
-The formal tangent data are one fixed geometric witness.  In particular,
-`tangent_inclusion` refers to the stored derivative-compatible transverse
-column `tau`; it does not quantify over alternative, possibly nongeometric,
-split columns.  The inclusion remains intentionally one-sided: it asks for
-the actual Zariski tangent space to lie in the supplied span and never assumes
-equality.
--/
-structure CompletedProjectiveBoundaryChart
+/-- Base-field compatibility name for the shared residue-extension chart.
+The case `K = k` has the same fields and ground coefficient map, so the
+residue-extension record is the sole owner. -/
+abbrev CompletedProjectiveBoundaryChart
     (k : Type u) [Field k] [CharZero k]
     (m : ℕ) (hm : 0 < m)
-    (I : Ideal (MvPolynomial (Fin m) k)) where
-  equationCount : ℕ
-  tangentCount : ℕ
-  equations : Fin equationCount →
-    MvPolynomial (Fin (m + 1)) (LaurentSeries k)
-  degree : Fin equationCount → ℕ
-  homogeneous : ∀ j, (equations j).IsHomogeneous (degree j)
-  q : Fin (m + 1) → PowerSeries k
-  Z : Matrix (Fin (m + 1)) (Fin tangentCount) (PowerSeries k)
-  rows : Fin tangentCount ↪ Fin (m + 1)
-  chart : Fin (m + 1)
-  zero : Fin (m + 1)
-  axis : Fin (m + 1)
-  ratio : PowerSeries k
-  q_chart : q chart = 1
-  Z_chart : ∀ j, Z chart j = 0
-  q_zero_ne : q zero ≠ 0
-  q_origin_ne : q 0 ≠ 0
-  ratio_ne : ratio ≠ 0
-  q_zero_vanish : PowerSeries.constantCoeff (q zero) = 0
-  ratio_vanish : PowerSeries.constantCoeff ratio = 0
-  q_axis : q axis = q zero * ratio
-  Z_zero_dvd : ∀ j, q zero ∣ Z zero j
-  Z_axis_dvd : ∀ j, q axis ∣ Z axis j
-  selected_minor_nonzero :
-    PowerSeries.constantCoeff
-      (selectedMinor Z rows).det ≠ 0
-  equations_vanish :
-    ∀ j, MvPolynomial.eval (laurentColumn q) (equations j) = 0
-  ideal_containment :
-    I.map (scalarPolynomialMap
-      (k := k) (K := LaurentSeries k) (Fin m)) ≤
-      dehomogenizedEquationIdeal equations
-  axis_is_first_fibre : axis = Fin.succ ⟨0, hm⟩
-  tau : Fin (m + 1) → PowerSeries k
-  C : Matrix (FormalTangentColumn (Fin tangentCount))
-    (Fin (m + 1)) (PowerSeries k)
-  ell : Fin (m + 1) → PowerSeries k
-  left_inverse : C * formalTangentMatrix q Z tau = 1
-  annihilation : rowMul ell (formalTangentMatrix q Z tau) = 0
-  residue_axis : residueColumn ell = axisRow (k := k) axis
-  tangent_inclusion :
-    zariskiTangentSpace (dehomogenizedPoint (laurentColumn q))
-        (I.map (scalarPolynomialMap
-          (k := k) (K := LaurentSeries k) (Fin m))) ≤
-      dehomogenizedTangentSpan (laurentColumn q)
-        (laurentNonpositionTangentMatrix Z tau)
+    (I : Ideal (MvPolynomial (Fin m) k)) :=
+  Stafford38.Geometry.LaurentConormalResidueExtension.CompletedProjectiveBoundaryChartOver
+    (k := k) (K := k) m hm I
 
 /-! ## Local consumer theorem -/
 
@@ -153,59 +81,17 @@ theorem exists_conormalAxis_of_completedProjectiveBoundaryChart
             (k := k) (K := LaurentSeries k) (Fin m))) ∧
       residueColumn xi =
         (fun i : Fin m ↦ if i = ⟨0, hm⟩ then 1 else 0) := by
-  classical
-  let Iext := I.map (scalarPolynomialMap
-    (k := k) (K := LaurentSeries k) (Fin m))
-  have hbase : ∀ f ∈ Iext,
-      MvPolynomial.eval (dehomogenizedPoint (laurentColumn W.q)) f = 0 := by
-    intro f hf
-    exact eval_eq_zero_of_mem_dehomogenizedEquationIdeal
-      W.equations W.degree W.homogeneous (laurentColumn W.q)
-      (laurentColumn_ne_zero_of_ne_zero W.q W.q_origin_ne)
-      W.equations_vanish f (W.ideal_containment hf)
-  have htangent :
-      zariskiTangentSpace (dehomogenizedPoint (laurentColumn W.q)) Iext ≤
-        dehomogenizedTangentSpan (laurentColumn W.q)
-          (laurentNonpositionTangentMatrix W.Z W.tau) := by
-    exact W.tangent_inclusion
-  have hphase :=
-    laurentPhasePoint_mem_equationConormalLocus_of_zariski_le_span
-      Iext W.q W.ell W.Z W.tau W.q_origin_ne W.annihilation hbase htangent
-  refine ⟨dehomogenizedPoint (laurentColumn W.q),
-    (fun i : Fin m ↦ W.ell i.succ), ?_, ?_⟩
-  · simpa [Iext, laurentColumn] using hphase
-  · calc
-      residueColumn (fun i : Fin m ↦ W.ell i.succ) =
-          (fun i : Fin m ↦ residueColumn W.ell i.succ) :=
-        residueColumn_tail W.ell
-      _ = (fun i : Fin m ↦ axisRow (k := k) W.axis i.succ) := by
-        rw [W.residue_axis]
-      _ = (fun i : Fin m ↦ if i = ⟨0, hm⟩ then 1 else 0) := by
-        funext i
-        rw [W.axis_is_first_fibre]
-        by_cases hi : i = ⟨0, hm⟩
-        · subst i
-          simp [axisRow]
-        · have hne : i.succ ≠ Fin.succ ⟨0, hm⟩ := by
-            intro h
-            exact hi (Fin.succ_injective m h)
-          change (if i.succ = Fin.succ ⟨0, hm⟩ then 1 else 0) =
-            (if i = ⟨0, hm⟩ then 1 else 0)
-          rw [if_neg hne, if_neg hi]
+  simpa [Stafford38.Geometry.LaurentConormalResidueExtension.groundEquationConormalLocus,
+    Stafford38.Geometry.LaurentConormalResidueExtension.groundPolynomialMap,
+    Stafford38.Geometry.ScalarExtensionPoints.scalarPolynomialMap] using
+    Stafford38.Geometry.LaurentConormalResidueExtension.exists_conormalAxis_of_completedProjectiveBoundaryChartOver
+      (k := k) (K := k) hm I W
 
-/-! ## The remaining global production obligation -/
+/-! ## Global chart-production interface -/
 
-/--
-The exact global theorem still needed to obtain the producer from boundary
-geometry.  It asks normalization/projective-closure arguments to return the
-certificate above for the canonical reduced base ideal, but it does not put
-the desired support-vanishing conclusion among the certificate fields.
-
-This is a definition rather than an axiom.  Consequently a caller must still
-prove the actual completion, homogeneous-equation, and tangent-inclusion
-construction; the adapter theorem above cannot discharge those obligations
-by circular reasoning.
--/
+/-- Global production of a completed chart for the canonical reduced base
+ideal. The chart stores the geometric construction and tangent inclusion;
+it has no support-vanishing conclusion as a field. -/
 def CanonicalBoundaryChartProduction : Prop :=
   ∀ (k : Type u) [Field k] [CharZero k] [IsAlgClosed k]
     (n N : ℕ)

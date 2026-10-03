@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "claim": "Integrated source verifier; full manuscript correspondence remains open",
+  "source": {
+    "base_commit": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
+    "tree": "ee6ddc252e2c265b167dfb78a6dac204c1f16f7b",
+    "patch_sha256": "893e0eb740c57c426ce679f58439c79e62f8f25add53a5d4e7d1f17deea5731e",
+    "files": 741
+  },
+  "configuration": {
+    "lean": "leanprover/lean4:v4.33.0",
+    "mathlib": "db584cd6d46c92f209a44c0f1c829460d327499d",
+    "algebraic_analysis": "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8"
+  },
+  "verification": {
+    "command": "bash scripts/verify.sh",
+    "exit_code": 0,
+    "build_jobs": 9168,
+    "consumer_axiom_reports": 301,
+    "paper_linked_declarations": 111,
+    "terminal_declarations": 37,
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "elapsed": "15:25.07",
+    "max_process_rss_kib": 7456100,
+    "stdout_sha256": "54ebd6ddd32ba199bba25aabfc79a12ddc617cc830484695541229b2c4a5addf"
+  },
+  "scope": "Includes actual same-witness numerator/order and projective-column bindings, finite-parameter tangent comparison, and axis-preserving conditional lattice adapter. Does not certify the unconditional normalized-divisor/closed-point assembly, terminal use of the paper route, current-policy Palomar compatibility, or a release."
+}

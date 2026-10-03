@@ -1,6 +1,8 @@
-import Mathlib
-import Stafford38.Geometry.DivisorTangentLattice
-import Stafford38.Geometry.KaehlerSpanSeparableAdjoin
+module
+public import Stafford38.Geometry.DivisorTangentLattice
+public import Stafford38.Geometry.KaehlerSpanSeparableAdjoin
+
+@[expose] public section
 
 /-!
 # Kähler visibility at a discrete valuation place

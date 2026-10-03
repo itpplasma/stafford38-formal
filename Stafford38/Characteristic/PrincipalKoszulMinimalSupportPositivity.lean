@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Module.PrincipalKoszulMinimalSupportPositivity
-import Stafford38.Characteristic.PrincipalKoszulSupportOverBase
+module
+public import AlgebraicAnalysis.Module.PrincipalKoszulMinimalSupportPositivity
+public import Stafford38.Characteristic.PrincipalKoszulSupportOverBase
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

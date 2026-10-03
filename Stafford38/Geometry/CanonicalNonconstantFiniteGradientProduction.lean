@@ -1,16 +1,19 @@
-import Stafford38.Geometry.AffineComponentCoordinateSplit
-import Stafford38.Geometry.CanonicalConstantCoordinateBranch
-import Stafford38.Geometry.CanonicalResidueExtensionAssembly
-import Stafford38.Geometry.FiniteGradientResidueExtension
+module
+public import Stafford38.Geometry.AffineComponentCoordinateSplit
+public import Stafford38.Geometry.CanonicalConstantCoordinateBranch
+public import Stafford38.Geometry.CanonicalResidueExtensionAssembly
+public import Stafford38.Geometry.FiniteGradientResidueExtension
+
+@[expose] public section
 
 /-!
-# Canonical finite-gradient production
+# Finite-gradient component interface
 
-The terminal residue-extension consumer needs only one finite gradient
-conormal row.  This file records the corresponding weaker nonconstant
-component interface and adapts it to the existing component-split assembly.
-The actual construction of the finite-gradient certificate remains a separate
-geometric problem.
+This file defines the nonconstant-component certificate interface and adapts
+it to the component-split conormal-axis assembly. The canonical Weyl route
+supplies a visible frame through `ExactDivisorialVisibleFrameExistence`; the
+general retained-witness route constructs one-row data in
+`PaperActualWitnessConormalData` and assembles the axis in `GeneralConormalAxis`.
 -/
 
 namespace Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction

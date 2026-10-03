@@ -1,0 +1,40 @@
+{
+  "status": "PASS current integrated source checkpoint",
+  "input_manifest_sha256": "548b13170989bc39b23079736295e73071c83e0f10ea2c29cbd38f215163f93e",
+  "formal_base": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
+  "worktree_patch_sha256": "eced3d34eb8a321793745f337e1df28b5ca76fef03252ffedb862306d7fef119",
+  "build_jobs": 9082,
+  "consumer_and_import_axiom_reports": 111,
+  "paper_named_axiom_reports": 104,
+  "terminal_axiom_reports": 37,
+  "source_audit": "Only intentional placeholders in two Challenge modules; no Solution imports placeholders",
+  "import_closures": {
+    "Challenge": 3512,
+    "CorollaryChallenge": 3512,
+    "Solution": 10816,
+    "FixedSourceChallenge": 3512,
+    "FixedSourceSolution": 10817
+  },
+  "source_unchanged_during_replay": true,
+  "verifier_log_sha256": "d55364dcfb70cd334e331f31bb158f6073e291c9ea655daf0e23d50e14c7e4f8",
+  "scope": "Current source theorem checkpoint. Snapshot named-declaration checks refer to the retained pre-refresh snapshot; full restored manuscript construction and final correspondence/surfaces/release remain pending.",
+  "logs": {
+    "build.log": "ef1b49ce99fcda657df3638b190d76f30043029cf5c2ad2233325236d5ae792b",
+    "independent-consumers.log": "0c3337370ab3aa4692a4a5d628a542c0ed7f5a314e33018f74fbba9ab48e1587",
+    "paper-declarations.log": "2872615d37d337933c83ef4d136a70719b458f44726e36cd3e28be657eb0025a",
+    "pages-oracle.log": "8baf95f793a5529158730b1fabc524feec5f98bf00cabf19943be3aa6537071f",
+    "pbw-oracle.log": "524e0c6b0be4e2535e098b7cf41b1bd828c03f5a58b375936325089f35df6c40"
+  },
+  "palomar": {
+    "main": {
+      "status": "PASS",
+      "log_sha256": "6b8f1d1e74c39ee9efd0072c0e7df31070af66e105756fc62675d2e3d06cfbad",
+      "scope": "Unchanged main or fixed-source Challenge and integrated Solution; not every manuscript construction."
+    },
+    "fixed": {
+      "status": "PASS",
+      "log_sha256": "3f8872bf9d962cea814842d6fcc23d6ebbb842fc55406461ee64858a41b4f4ea",
+      "scope": "Unchanged main or fixed-source Challenge and integrated Solution; not every manuscript construction."
+    }
+  }
+}

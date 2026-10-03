@@ -1,4 +1,8 @@
-import Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff
+module
+public import Mathlib.LinearAlgebra.Matrix.Charpoly.Coeff
+public import Stafford38.Characteristic.ArtinianEquation33TraceProducer
+
+@[expose] public section
 
 /-!
 # The Artinian triangular trace calculation
@@ -41,9 +45,9 @@ variable {n : ℕ}
 
 /-- A square matrix is strictly upper triangular when every entry on or below
 the diagonal is zero. -/
-def IsStrictUpperTriangular
+abbrev IsStrictUpperTriangular
     (M : Matrix (Fin (n + 1)) (Fin (n + 1)) K) : Prop :=
-  ∀ i j, j ≤ i → M i j = 0
+  Stafford38.Characteristic.ArtinianEquation33TraceProducer.IsStrictUpperTriangularOver M
 
 /-- A strictly upper triangular matrix has zero trace. -/
 theorem trace_eq_zero_of_isStrictUpperTriangular

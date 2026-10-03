@@ -1,4 +1,8 @@
-import Mathlib
+module
+public import Mathlib.Algebra.MvPolynomial.PDeriv
+public import Stafford38.ChallengeDefinitions
+
+@[expose] public section
 
 /-!
 # Polynomial phase space for characteristic support
@@ -12,7 +16,7 @@ characteristic-variety theorem.
 namespace Stafford38.Characteristic
 
 /-- Indices for base and cotangent variables. -/
-abbrev PhaseVar (n : ℕ) := Fin n ⊕ Fin n
+abbrev PhaseVar (n : ℕ) := Stafford38Challenge.PhaseVar n
 
 /-- Coordinate ring of affine cotangent space. -/
 abbrev SymbolRing (k : Type*) [CommRing k] (n : ℕ) :=

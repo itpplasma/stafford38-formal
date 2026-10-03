@@ -1,4 +1,7 @@
-import Stafford38.LocalizedDifferentialCorollaries
+module
+public import Stafford38.LocalizedDifferentialCorollaries
+
+@[expose] public section
 
 open Stafford38.DifferentialOperators
 open Stafford38.LocalizedDifferentialCorollaries

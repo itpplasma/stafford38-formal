@@ -1,13 +1,16 @@
-import Stafford38.Characteristic.BaseRelativePoisson
-import Stafford38.Characteristic.InitialIdeal
+module
+public import Stafford38.Characteristic.BaseRelativePoisson
+public import Stafford38.Characteristic.InitialIdeal
+
+@[expose] public section
 
 /-!
 # The reduced order-characteristic ideal
 
-This file isolates the commutative ideal carried by the reduced order
-characteristic support.  It also records its contraction to the base
-polynomial ring.  These definitions make the remaining base-relative Gabber
-statement concrete; no Poisson-closure theorem is asserted here.
+This file defines the radical order-support ideal and its contraction to the
+base polynomial ring, and proves their basic ideal/support identities. It
+does not assert Poisson closure. The canonical support proof supplies its
+involutivity through `GabberGlobalAssembly`.
 -/
 
 namespace Stafford38.Characteristic.ReducedSupportIdeal

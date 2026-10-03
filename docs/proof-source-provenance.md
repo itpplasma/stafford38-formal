@@ -1,22 +1,19 @@
 # Proof-source provenance
 
-## Status
+## Sources and status
 
-This repository is the canonical completed formal proof. Phase I and Phase II are complete; there is no open theorem-formalization task.
+The Lean repository records a verified proof of Stafford's Conjecture 3.8 at source revision f6915782d2281e3d3b51011b97ace866928053b9. Its clean-checkout receipt is preserved in verification-results.json. The receipt certifies that source and its listed configuration.
 
-## Upstream research/manuscript records
+The selected manuscript is human_readable_main.tex, based on paper commit 7d10c6297f8367b3f0061d61bda5ae86f9945c2c and SHA-256 6fcd4afc1008978154762755a0a142ad69a22e03ee3d57223df2618f4f0b3800. The preserved restoration is commit bd913a381b714fd8f909159a33fe845b5373ba0f, recorded as pushed to GitHub paper main and Overleaf main. The visible author proofs remain intact, with local mathematical proposals marked for review.
 
-- Research archive: `itpplasma/stafford38`, whose `PLAN.md` records `proof_status: phase-ii-complete-full-manuscript` and points back to this formal repository as canonical.
-- Manuscript mirror: `itpplasma/stafford38-paper`, paper revision recorded by the research archive as `b3f3edf0741b6a70b6e5011690e16bf58561cffb`.
-- Manuscript proof files: `main.tex`, `proof_map.tex`, with `cyclicity.tex` as the cyclicity supplement.
+The receipt covers the formal theorem at its named source and configuration. The paper-route map records the separate manuscript comparison and the scope of each module-level receipt. No release source or DOI is recorded for that comparison.
 
-## Read order
+## Review responsibilities
 
-For maintenance or provenance work read:
+Max reviews the complete paper proof and both Challenge/Solution comparisons, including statement scope and proof correspondence. Johanna reviews the visible manuscript and its marked local mathematical proposals; those proposals remain pending until she accepts them. Automated checks and AI review do not replace either human review.
 
-1. this repository's `PLAN.md`;
-2. this repository's `docs/proof-graph.yaml` and `docs/verification-results.json`;
-3. `itpplasma/stafford38/PLAN.md` for research chronology/cutover metadata;
-4. `itpplasma/stafford38-paper/main.tex` and `proof_map.tex` only when manuscript correspondence is relevant.
+## Source authority
 
-The private research and paper repositories are provenance records, not build dependencies. Do not reopen completed Phase II merely because a research archive contains historical routes.
+The formal repository owns Lean declarations, proof maps, and verification records. Overleaf is the manuscript editing authority; pinned Git revisions preserve review inputs. The itpplasma/stafford38 research archive records development history and task planning, while the older paper mirror records manuscript provenance. Neither is a formal build dependency. The Palomar entry certifies only its named theorem and source revision.
+
+For maintenance, read PLAN.md, docs/proof-graph.yaml, docs/verification-results.json, and docs/paper-route-alignment.json. Consult the research archive for chronology and the pinned manuscript when checking a paper comparison.

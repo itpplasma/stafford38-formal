@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.Polynomial
+module
+public import Stafford38.Characteristic.Polynomial
+
+@[expose] public section
 
 /-!
 # Poisson closure and vertical translation
@@ -30,22 +33,53 @@ def baseLift : MvPolynomial (Fin n) k →ₐ[k] SymbolRing k n :=
 def differentialAt (y : Fin n → k) (f : MvPolynomial (Fin n) k) (i : Fin n) : k :=
   MvPolynomial.eval y (MvPolynomial.pderiv i f)
 
+/-- The polynomial obtained by evaluating a phase-space polynomial along the
+arbitrary affine fibre line `(y, xi + t v)`. -/
+def affineFibreLinePolynomial
+    (y xi v : Fin n → k) (g : SymbolRing k n) : Polynomial k :=
+  MvPolynomial.aeval
+    (Sum.elim (fun i => Polynomial.C (y i))
+      (fun i => Polynomial.C (xi i) + Polynomial.C (v i) * Polynomial.X)) g
+
+/-- The point on the affine fibre line `(y, xi + t v)`. -/
+def affineFibreTranslatePoint
+    (y xi v : Fin n → k) (t : k) : PhaseVar n → k
+  | Sum.inl i => y i
+  | Sum.inr i => xi i + t * v i
+
+@[simp] theorem affineFibreTranslatePoint_inl
+    (y xi v : Fin n → k) (t : k) (i : Fin n) :
+    affineFibreTranslatePoint y xi v t (Sum.inl i) = y i := rfl
+
+@[simp] theorem affineFibreTranslatePoint_inr
+    (y xi v : Fin n → k) (t : k) (i : Fin n) :
+    affineFibreTranslatePoint y xi v t (Sum.inr i) = xi i + t * v i := rfl
+
 /-- The zero-section point over `y`. -/
 def zeroSectionPoint (y : Fin n → k) : PhaseVar n → k
   | Sum.inl i => y i
   | Sum.inr _ => 0
 
-/-- The point obtained from `(y, 0)` by translating the fibre by `t df_y`. -/
-def differentialTranslatePoint
-    (y : Fin n → k) (f : MvPolynomial (Fin n) k) (t : k) : PhaseVar n → k
-  | Sum.inl i => y i
-  | Sum.inr i => t * differentialAt y f i
+/-- The zero-fibre specialization of `affineFibreTranslatePoint`, translating
+`(y, 0)` by `t df_y`. -/
+abbrev differentialTranslatePoint
+    (y : Fin n → k) (f : MvPolynomial (Fin n) k) (t : k) : PhaseVar n → k :=
+  affineFibreTranslatePoint y (fun _ => 0) (differentialAt y f) t
 
-/-- The polynomial line `t ↦ g(y, t v)` in the fibre over `y`. -/
-def fibreLinePolynomial
+theorem differentialTranslatePoint_eq_affineFibreTranslatePoint_zero
+    (y : Fin n → k) (f : MvPolynomial (Fin n) k) (t : k) :
+    differentialTranslatePoint y f t =
+      affineFibreTranslatePoint y (fun _ => 0) (differentialAt y f) t := rfl
+
+/-- The polynomial line `t ↦ g(y, t v)` in the fibre over `y`, the
+zero-fibre specialization of `affineFibreLinePolynomial`. -/
+abbrev fibreLinePolynomial
     (y v : Fin n → k) (g : SymbolRing k n) : Polynomial k :=
-  MvPolynomial.aeval (Sum.elim (fun i => Polynomial.C (y i))
-    (fun i => Polynomial.C (v i) * Polynomial.X)) g
+  affineFibreLinePolynomial y (fun _ => 0) v g
+
+theorem fibreLinePolynomial_eq_affineFibreLinePolynomial_zero
+    (y v : Fin n → k) (g : SymbolRing k n) :
+    fibreLinePolynomial y v g = affineFibreLinePolynomial y (fun _ => 0) v g := rfl
 
 /-- Directional derivative in the fibre variables. -/
 def verticalDeriv (v : Fin n → k) (g : SymbolRing k n) : SymbolRing k n :=
@@ -85,39 +119,63 @@ theorem verticalDeriv_mul (v : Fin n → k) (g h : SymbolRing k n) :
 @[simp] theorem fibreLinePolynomial_C
     (y v : Fin n → k) (a : k) :
     fibreLinePolynomial y v (MvPolynomial.C a) = Polynomial.C a := by
-  simp [fibreLinePolynomial]
+  simp [fibreLinePolynomial, affineFibreLinePolynomial]
 
 @[simp] theorem fibreLinePolynomial_zero (y v : Fin n → k) :
     fibreLinePolynomial y v 0 = 0 := by
-  simp [fibreLinePolynomial]
+  simp [fibreLinePolynomial, affineFibreLinePolynomial]
 
 @[simp] theorem fibreLinePolynomial_add
     (y v : Fin n → k) (g h : SymbolRing k n) :
     fibreLinePolynomial y v (g + h) =
       fibreLinePolynomial y v g + fibreLinePolynomial y v h := by
-  simp [fibreLinePolynomial]
+  simp [fibreLinePolynomial, affineFibreLinePolynomial]
 
 @[simp] theorem fibreLinePolynomial_mul
     (y v : Fin n → k) (g h : SymbolRing k n) :
     fibreLinePolynomial y v (g * h) =
       fibreLinePolynomial y v g * fibreLinePolynomial y v h := by
-  simp [fibreLinePolynomial]
+  simp [fibreLinePolynomial, affineFibreLinePolynomial]
 
 theorem fibreLinePolynomial_sum {ι : Type*} [Fintype ι]
     (y v : Fin n → k) (g : ι → SymbolRing k n) :
     fibreLinePolynomial y v (∑ i, g i) = ∑ i, fibreLinePolynomial y v (g i) := by
-  simp [fibreLinePolynomial]
+  simp [fibreLinePolynomial, affineFibreLinePolynomial]
 
 @[simp] theorem fibreLinePolynomial_X_base
     (y v : Fin n → k) (i : Fin n) :
     fibreLinePolynomial y v (MvPolynomial.X (Sum.inl i)) = Polynomial.C (y i) := by
-  simp [fibreLinePolynomial]
+  simp [fibreLinePolynomial, affineFibreLinePolynomial]
 
 @[simp] theorem fibreLinePolynomial_X_fibre
     (y v : Fin n → k) (i : Fin n) :
     fibreLinePolynomial y v (MvPolynomial.X (Sum.inr i)) =
       Polynomial.C (v i) * Polynomial.X := by
-  simp [fibreLinePolynomial]
+  simp [fibreLinePolynomial, affineFibreLinePolynomial]
+
+/-- Evaluating the affine fibre-line polynomial at time `t` is evaluation at
+`(y, xi + t v)`. -/
+theorem eval_affineFibreLinePolynomial (y xi v : Fin n → k)
+    (g : SymbolRing k n) (t : k) :
+    Polynomial.eval t (affineFibreLinePolynomial y xi v g) =
+      MvPolynomial.eval (Sum.elim y (fun i => xi i + t * v i)) g := by
+  change Polynomial.aeval t
+      (MvPolynomial.aeval (Sum.elim
+        (fun i => Polynomial.C (y i))
+        (fun i => Polynomial.C (xi i) + Polynomial.C (v i) * Polynomial.X)) g) = _
+  rw [MvPolynomial.comp_aeval_apply]
+  change MvPolynomial.aeval _ g = MvPolynomial.aeval _ g
+  apply DFunLike.congr_fun
+  apply MvPolynomial.algHom_ext
+  intro i
+  rcases i with i | i
+  · rw [MvPolynomial.aeval_X, MvPolynomial.aeval_X]
+    simp
+  · rw [MvPolynomial.aeval_X, MvPolynomial.aeval_X]
+    simp only [Sum.elim_inr, map_add, Polynomial.aeval_C, Polynomial.aeval_mul,
+      Polynomial.aeval_X]
+    simp
+    ring
 
 theorem derivative_fibreLinePolynomial
     (y v : Fin n → k) (g : SymbolRing k n) :
@@ -141,21 +199,11 @@ theorem eval_fibreLinePolynomial (y v : Fin n → k)
     (g : SymbolRing k n) (t : k) :
     Polynomial.eval t (fibreLinePolynomial y v g) =
       MvPolynomial.eval (Sum.elim y (fun i => t * v i)) g := by
-  change Polynomial.aeval t
-      (MvPolynomial.aeval (Sum.elim (fun i => Polynomial.C (y i))
-        (fun i => Polynomial.C (v i) * Polynomial.X)) g) = _
-  rw [MvPolynomial.comp_aeval_apply]
-  change MvPolynomial.aeval _ g = MvPolynomial.aeval _ g
-  apply DFunLike.congr_fun
-  apply MvPolynomial.algHom_ext
-  intro i
-  rcases i with i | i
-  · rw [MvPolynomial.aeval_X, MvPolynomial.aeval_X]
-    simp
-  · rw [MvPolynomial.aeval_X, MvPolynomial.aeval_X]
-    simp only [Sum.elim_inr, map_mul, Polynomial.aeval_C, Polynomial.aeval_X]
-    simp
-    ring
+  rw [fibreLinePolynomial_eq_affineFibreLinePolynomial_zero,
+    eval_affineFibreLinePolynomial]
+  apply MvPolynomial.eval₂_congr
+  intro i c hi hc
+  rcases i with i | i <;> simp
 
 theorem eval_zero_fibreLinePolynomial (y v : Fin n → k)
     (g : SymbolRing k n) :
@@ -291,7 +339,7 @@ theorem zeroSection_stable_under_differential_translation
         MvPolynomial.eval (Sum.elim y (fun i => t * differentialAt y f i)) g := by
     apply MvPolynomial.eval₂_congr
     intro i c hi hc
-    rcases i with i | i <;> rfl
+    rcases i with i | i <;> simp [differentialTranslatePoint, affineFibreTranslatePoint]
   rw [heval, ← eval_fibreLinePolynomial]
   rw [fibreLinePolynomial_eq_zero_of_poisson J hJ y hzero f hf g hg]
   exact Polynomial.eval_zero

@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.InitialIdealHomogeneous
-import Stafford38.Characteristic.ReducedSupportIdeal
+module
+public import Stafford38.Characteristic.InitialIdealHomogeneous
+public import Stafford38.Characteristic.ReducedSupportIdeal
+
+@[expose] public section
 
 /-!
 # Zero-section containment of the reduced order support

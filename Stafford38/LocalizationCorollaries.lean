@@ -1,6 +1,9 @@
-import Stafford38.Statement
-import AlgebraicAnalysis.RingTheory.TwoGeneratorIdentity
-import AlgebraicAnalysis.Ore.RightLocalization
+module
+public import Stafford38.Statement
+public import AlgebraicAnalysis.RingTheory.TwoGeneratorIdentity
+public import AlgebraicAnalysis.Ore.RightLocalization
+
+@[expose] public section
 
 /-! Right Ore localization corollaries for the Stafford 3.8 identity.
 The generic unit-denominator transport proof lives in AlgebraicAnalysis. -/

@@ -1,0 +1,11 @@
+module
+public import Stafford38.Geometry.KaehlerTranscendenceBasis
+
+@[expose] public section
+
+#check Stafford38.Geometry.kaehlerDifferentialBasisOfTranscendenceBasis
+#check Stafford38.Geometry.kaehlerFinrankOfTranscendenceBasis
+#check Stafford38.Geometry.kaehlerFiniteOfTranscendenceBasis
+#print axioms Stafford38.Geometry.kaehlerDifferentialBasisOfTranscendenceBasis
+#print axioms Stafford38.Geometry.kaehlerFinrankOfTranscendenceBasis
+#print axioms Stafford38.Geometry.kaehlerFiniteOfTranscendenceBasis

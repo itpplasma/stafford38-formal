@@ -1,5 +1,15 @@
-import Mathlib
-import Stafford38.EvolutionaryCertificate
+module
+public import Mathlib.Analysis.Complex.Basic
+public import Mathlib.Analysis.Complex.Polynomial.Basic
+public import Mathlib.Algebra.Polynomial.FieldDivision
+public import Mathlib.Tactic.Ring
+public import Mathlib.Tactic.Positivity
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Tactic.LinearCombination
+public import Stafford38.EvolutionaryCertificate
+
+@[expose] public section
 
 /-!
 # The Euler root line and the Bézout hypothesis

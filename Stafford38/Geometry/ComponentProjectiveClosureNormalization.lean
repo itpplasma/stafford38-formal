@@ -1,7 +1,10 @@
-import Stafford38.Geometry.ComponentFunctionFieldBoundary
-import Stafford38.Geometry.ComponentProjectiveClosure
-import Stafford38.Geometry.RetainedProjectiveCompletion
-import Mathlib.RingTheory.LaurentSeries
+module
+public import Stafford38.Geometry.ComponentFunctionFieldBoundary
+public import Stafford38.Geometry.ComponentProjectiveClosure
+public import Stafford38.Geometry.RetainedProjectiveCompletion
+public import Mathlib.RingTheory.LaurentSeries
+
+@[expose] public section
 
 /-!
 # Projective-component equations under retained normalization
@@ -63,7 +66,8 @@ theorem eval₂_eq_zero_of_commonScale_componentProjectivePoint
     rw [hcone] at hformula
     have hone := congrArg (Polynomial.eval 1) hformula
     have hpt : componentProjectivePoint P =
-        Fin.cases 1 fun i ↦ componentCoordinate P i := rfl
+        Fin.cases 1 fun i ↦ componentCoordinate P i := by
+      simp [componentProjectivePoint]
     simpa [hpt] using hone.symm
   apply hι
   rw [map_zero]

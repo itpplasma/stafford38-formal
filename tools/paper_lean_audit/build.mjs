@@ -14,6 +14,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { TexRenderer, escapeHtml, stripComments, readGroup } from './texhtml.mjs';
 import { findDeclaration, extractStatement, highlightLean, namedResultType, definitionNames, declarationContext, bindingNames, declarationTrust } from './lean.mjs';
+import { reviewScopeOptions } from './review-scope.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const argv = process.argv.slice(2);
@@ -219,6 +220,23 @@ function checkStatementCoverage(sourceText) {
   }
 }
 checkStatementCoverage(currentPaperRaw);
+function checkAnnotationIds(source, revision) {
+  const clean = stripComments(source);
+  const seen = new Map();
+  for (const match of clean.matchAll(/\\AIcomment\s*\{/g)) {
+    if (escapedCommand(clean, match.index)) continue;
+    const [rawId] = readGroup(clean, match.index + match[0].length - 1);
+    const id = rawId.trim();
+    if (!id || /#\d/.test(id)) continue;
+    const line = clean.slice(0, match.index).split('\n').length;
+    if (seen.has(id)) {
+      errors.push(`Duplicate AIcomment ID '${id}' in ${revision} manuscript at ${paperFile}:${line}; first at line ${seen.get(id)}`);
+    } else seen.set(id, line);
+  }
+}
+checkAnnotationIds(texRaw, 'pinned');
+checkAnnotationIds(currentPaperRaw, 'current');
+
 for (const it of items) {
   if (it.label) refs[it.label] = { text: it.number ?? it.label, href: `#item-${slug(it.id)}` };
 }
@@ -497,13 +515,29 @@ function md(s) {
 const definitionRefs = map.challenge_definitions ?? [];
 const definitionAnchor = (ref) => `definition-${slug((ref.repo ?? 'formal') + ':' + ref.name)}`;
 function symbolLink(info, token) {
-  const candidates = definitionRefs.filter((ref) => {
-    if (ref.name === token) return true;
-    if (!ref.name.endsWith('.' + token)) return false;
-    return (ref.repo ?? 'formal') === info.repo && (ref.file === info.file ||
-      info.name.startsWith(ref.name.slice(0, ref.name.lastIndexOf('.')) + '.'));
-  });
-  return candidates.length === 1 ? '#' + definitionAnchor(candidates[0]) : null;
+  // The lexer keeps the trailing dot in `name.{u}` as part of the identifier
+  // token. It is universe-application syntax, so match the declaration name
+  // without the dot while keeping the rendered token intact.
+  const lookup = token.replace(/\.$/, '');
+  const exactLink = (refs) => refs.length === 1 ? '#' + definitionAnchor(refs[0]) : null;
+
+  // Lean resolves an unqualified identifier from the innermost namespace
+  // outward before considering a root-level declaration. A short-name match
+  // in some unrelated namespace is not enough evidence for a link.
+  if (!lookup.includes('.')) {
+    const parts = (info.name ?? '').split('.');
+    parts.pop(); // The final component is the declaration being rendered.
+    for (let n = parts.length; n > 0; n--) {
+      const candidate = parts.slice(0, n).concat(lookup).join('.');
+      const local = definitionRefs.filter((ref) => ref.name === candidate);
+      if (local.length) return exactLink(local);
+    }
+  }
+
+  // Explicitly qualified references, and unqualified root names such as
+  // Mathlib's Field, resolve only when exactly one curated owner has that
+  // exact name. Do not guess among namespaced suffix matches.
+  return exactLink(definitionRefs.filter((ref) => ref.name === lookup));
 }
 function leanBlock(info, role) {
   if (!info.url) return `<div class="lean missing">✗ ${escapeHtml(info.name ?? info.file)} — not resolved</div>`;
@@ -750,7 +784,7 @@ const html = `<!doctype html>
 <body>
 <nav class="side">
   <div class="brand">Stafford 3.8<br><span>paper ↔ Lean audit</span></div>
-  <label for="review-scope">Review scope</label><select id="review-scope"><option value="publication">Whole paper correspondence (default)</option><option value="alternative">Optional proof variants</option><option value="all">All reference material</option></select>
+  <label for="review-scope">Review scope</label><select id="review-scope">${reviewScopeOptions(items)}</select>
   <input id="filter" type="search" placeholder="Filter cards…">
   <div class="filters">
     <label><input type="checkbox" id="only-issues"> with issues</label>
@@ -758,7 +792,7 @@ const html = `<!doctype html>
     <label><input type="checkbox" id="clean-text"> hide AI markup</label>
   </div>
   <ol class="toc">
-    <li><a href="#overview">Overview</a></li><li><a href="#graph">Dependency map</a></li>
+    <li><a href="#overview">Overview</a></li><li><a href="#graph">Dependency map</a></li>${challengeDefinitions ? '<li><a href="#challenge-definitions">Challenge definitions</a></li>' : ''}
     ${map.sections.map((sec) => `<li><a href="#sec-${escapeHtml(sec.number)}">${escapeHtml(sec.number)}. ${escapeHtml(sec.title)}</a><ol>${items.filter((it) => it.section === sec.number).map((it) => `<li><a href="#item-${slug(it.id)}" data-toc="${escapeHtml(it.id)}">${escapeHtml(it.short ?? it.id)}</a></li>`).join('')}</ol></li>`).join('')}
     <li><a href="#lean-only">Lean-only steps</a></li><li><a href="#issues">Issue register</a></li>
     <li><a href="#aicomments">AI comments</a></li><li><a href="#lean-index">Lean → paper index</a></li><li><a href="#provenance">Provenance</a></li>

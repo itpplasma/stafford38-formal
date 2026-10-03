@@ -1,20 +1,19 @@
-import Stafford38.Characteristic.AssociatedGradedModule
-import Stafford38.Characteristic.CanonicalAxisAvoidanceConsumer
+module
+public import Stafford38.Characteristic.AssociatedGradedModule
+public import Stafford38.Characteristic.CanonicalAxisAvoidanceConsumer
+public import Stafford38.Weyl.QuotientTransport
+
+@[expose] public section
 
 /-!
-# The exact strictness interface for canonical noncharacteristic cancellation
+# Coordinate-cancellation criteria on the associated graded
 
-For the canonical filtered Weyl quotient, the previously isolated
-`CoordinateCancellation` condition is not an additional mysterious property:
-it is exactly injectivity of the distinguished coordinate on every actual
-order-associated-graded piece.  This file proves that equivalence and gives a
-commutative saturation criterion which is sufficient for it.
-
-The remaining implication is the load-bearing noncharacteristic theorem:
-`IsPBWMonicAt` must force the displayed coordinate action to be injective (or,
-equivalently, force saturation of the canonical order initial ideal by the
-coordinate).  Monicity and unrestricted surjectivity alone do not prove that
-strictness statement; no such implication is assumed here.
+For the canonical filtered Weyl quotient, this file identifies
+`CoordinateCancellation` with injectivity of the distinguished coordinate on
+every actual order-associated-graded piece. It also proves a sufficient
+initial-ideal saturation criterion. The unconditional support exclusion used
+by `FoundationClosure` is proved by
+`CanonicalKoszulContradiction.canonical_support_avoidance`.
 -/
 
 namespace Stafford38.CanonicalNoncharacteristicCancellation
@@ -33,16 +32,13 @@ open Stafford38.WeylIteratedEquivalence
 open Stafford38.WeylLeadingSymbol
 open Stafford38.WeylEulerResidue
 open Stafford38.WeylPBWMonicBridge
+open Stafford38.WeylQuotientTransport
 
 noncomputable section
 
 universe u
 
 variable (k : Type u) [Field k] [Algebra ℚ k]
-
-private abbrev CanonicalIdeal (n N : ℕ)
-    (d : PresentedWeyl k (n + 1)) :=
-  canonicalRightIdeal (presentedCoordinate k n) d N
 
 /-- The distinguished coordinate, regarded as a homogeneous order-zero
 symbol. -/
@@ -57,26 +53,26 @@ def coordinateOrderSymbol (n : ℕ) :
 associated-graded piece of the canonical filtered quotient. -/
 def canonicalGradedCoordinateAction (n N m : ℕ)
     (d : PresentedWeyl k (n + 1)) :
-    QuotientOrderGradedPiece k (CanonicalIdeal k n N d) m →ₗ[k]
-      QuotientOrderGradedPiece k (CanonicalIdeal k n N d) m := by
+    QuotientOrderGradedPiece k (presentedCanonicalRightIdeal (k := k) n N d) m →ₗ[k]
+      QuotientOrderGradedPiece k (presentedCanonicalRightIdeal (k := k) n N d) m := by
   simpa using
     (quotientOrderHomogeneousAction (N := m) (M := 0)
-      k (CanonicalIdeal k n N d) (coordinateOrderSymbol k n))
+      k (presentedCanonicalRightIdeal (k := k) n N d) (coordinateOrderSymbol k n))
 
 @[simp] theorem canonicalGradedCoordinateAction_mk
     (n N m : ℕ) (d : PresentedWeyl k (n + 1))
     (z : orderPiece k (n + 1) m) :
     canonicalGradedCoordinateAction k n N m d
-        (orderPieceToQuotientGraded k (CanonicalIdeal k n N d) m z) =
-      orderPieceToQuotientGraded k (CanonicalIdeal k n N d) m
+        (orderPieceToQuotientGraded k (presentedCanonicalRightIdeal (k := k) n N d) m z) =
+      orderPieceToQuotientGraded k (presentedCanonicalRightIdeal (k := k) n N d) m
         ⟨(z : PresentedWeyl k (n + 1)) * presentedCoordinate k n,
           mul_mem_orderPiece k z.property
             (presentedCoordinate_mem_orderPiece_zero k n)⟩ := by
-  change quotientOrderHomogeneousAction k (CanonicalIdeal k n N d)
+  change quotientOrderHomogeneousAction k (presentedCanonicalRightIdeal (k := k) n N d)
       (coordinateOrderSymbol k n)
-        (orderPieceToQuotientGraded k (CanonicalIdeal k n N d) m z) = _
+        (orderPieceToQuotientGraded k (presentedCanonicalRightIdeal (k := k) n N d) m z) = _
   simpa [coordinateOrderSymbol] using
-    quotientOrderHomogeneousAction_mk_mul k (CanonicalIdeal k n N d) z
+    quotientOrderHomogeneousAction_mk_mul k (presentedCanonicalRightIdeal (k := k) n N d) z
       ⟨presentedCoordinate k n,
         presentedCoordinate_mem_orderPiece_zero k n⟩
 
@@ -90,7 +86,7 @@ theorem coordinateCancellation_iff_forall_graded_injective
     CoordinateCancellation k n N d ↔
       ∀ m, Function.Injective
         (canonicalGradedCoordinateAction k n N m d) := by
-  let I := CanonicalIdeal k n N d
+  let I := presentedCanonicalRightIdeal (k := k) n N d
   let x := presentedCoordinate k n
   constructor
   · intro hcancel m
@@ -124,21 +120,21 @@ theorem coordinateCancellation_iff_forall_graded_injective
   · intro hinjective m z hz hzx
     let zz : orderPiece k (n + 1) m := ⟨z, hz⟩
     have hproductZero :
-        orderPieceToQuotientGraded k (CanonicalIdeal k n N d) m
+        orderPieceToQuotientGraded k (presentedCanonicalRightIdeal (k := k) n N d) m
             ⟨z * presentedCoordinate k n,
               mul_mem_orderPiece k hz
                 (presentedCoordinate_mem_orderPiece_zero k n)⟩ = 0 := by
       rw [← LinearMap.mem_ker, ker_orderPieceToQuotientGraded]
       exact hzx
     have hzero :
-        orderPieceToQuotientGraded k (CanonicalIdeal k n N d) m zz = 0 := by
+        orderPieceToQuotientGraded k (presentedCanonicalRightIdeal (k := k) n N d) m zz = 0 := by
       apply hinjective m
       rw [map_zero, canonicalGradedCoordinateAction_mk]
       exact hproductZero
-    change z ∈ rightIdealKSubmodule k (CanonicalIdeal k n N d) ⊔
+    change z ∈ rightIdealKSubmodule k (presentedCanonicalRightIdeal (k := k) n N d) ⊔
       presentedStrictLowerPiece k orderWeight m
     have hzker : zz ∈ LinearMap.ker
-        (orderPieceToQuotientGraded k (CanonicalIdeal k n N d) m) := by
+        (orderPieceToQuotientGraded k (presentedCanonicalRightIdeal (k := k) n N d) m) := by
       rw [LinearMap.mem_ker]
       exact hzero
     rw [ker_orderPieceToQuotientGraded] at hzker
@@ -151,14 +147,14 @@ to follow from monicity in this file. -/
 theorem coordinateCancellation_of_initialIdeal_coordinate_saturated
     (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (hsaturated :
-      (orderInitialIdeal k (CanonicalIdeal k n N d)).colon
+      (orderInitialIdeal k (presentedCanonicalRightIdeal (k := k) n N d)).colon
           ({MvPolynomial.X (Sum.inl (0 : Fin (n + 1)))} :
             Set (SymbolRing k (n + 1))) =
-        orderInitialIdeal k (CanonicalIdeal k n N d)) :
+        orderInitialIdeal k (presentedCanonicalRightIdeal (k := k) n N d)) :
     CoordinateCancellation k n N d := by
   rw [coordinateCancellation_iff_forall_graded_injective]
   intro m
-  let I := CanonicalIdeal k n N d
+  let I := presentedCanonicalRightIdeal (k := k) n N d
   let X := coordinateOrderSymbol k n
   have hX : (X : SymbolRing k (n + 1)) =
       MvPolynomial.X (.inl (0 : Fin (n + 1))) :=
@@ -205,12 +201,12 @@ theorem canonical_support_disjoint_coordinate_zeroLocus_of_saturated
     (n N : ℕ) {d : PresentedWeyl k (n + 1)}
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
     (hsaturated :
-      (orderInitialIdeal k (CanonicalIdeal k n N d)).colon
+      (orderInitialIdeal k (presentedCanonicalRightIdeal (k := k) n N d)).colon
           ({MvPolynomial.X (Sum.inl (0 : Fin (n + 1)))} :
             Set (SymbolRing k (n + 1))) =
-        orderInitialIdeal k (CanonicalIdeal k n N d)) :
+        orderInitialIdeal k (presentedCanonicalRightIdeal (k := k) n N d)) :
     Disjoint
-      (orderCharacteristicSupport k (CanonicalIdeal k n N d))
+      (orderCharacteristicSupport k (presentedCanonicalRightIdeal (k := k) n N d))
       (PrimeSpectrum.zeroLocus
         ({MvPolynomial.X (.inl (0 : Fin (n + 1)))} :
           Set (SymbolRing k (n + 1)))) := by

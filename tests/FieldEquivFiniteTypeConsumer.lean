@@ -1,0 +1,13 @@
+module
+public import Stafford38.Geometry.FieldEquivFiniteType
+
+@[expose] public section
+
+#print axioms Stafford38.Geometry.FieldEquivFiniteType.fractionField_of_equiv_domain
+#print axioms Stafford38.Geometry.FieldEquivFiniteType.exists_localized_fractionField_map
+#print axioms Stafford38.Geometry.FieldEquivFiniteType.exists_fractionField_map_to_localization
+#print axioms Stafford38.Geometry.FieldEquivFiniteType.exists_finiteType_selected_localization
+#print axioms Stafford38.Geometry.FieldEquivFiniteType.exists_finiteType_domain_fractionField_localization
+#print axioms Stafford38.Geometry.FieldEquivFiniteType.fractionField_map_coherence
+#print axioms Stafford38.Geometry.FieldEquivFiniteType.finiteType_of_equiv_base
+#check Stafford38.Geometry.FieldEquivFiniteType.localized_domain_isDomain

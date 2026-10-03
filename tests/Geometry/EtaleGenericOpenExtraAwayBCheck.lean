@@ -1,0 +1,10 @@
+module
+public import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
+
+@[expose] public section
+
+#check Stafford38.Geometry.EtaleGenericOpenTransport.formallyEtale_genericOpenRing_of_pointLocal
+#check Stafford38.Geometry.EtaleGenericOpenTransport.formallyEtale_genericOpenExtraAway_of_pointLocal
+#print axioms Stafford38.Geometry.EtaleGenericOpenTransport.formallyEtale_genericOpenRing_of_pointLocal
+#print axioms Stafford38.Geometry.EtaleGenericOpenTransport.formallyEtale_genericOpenExtraAway_of_pointLocal
+#print axioms Stafford38.Geometry.EtaleGenericOpenTransport.genericOpenExtraAwayEquiv_pointLocalAwayB

@@ -1,6 +1,10 @@
-import Stafford38.Characteristic.CanonicalTotalGradedBridge
-import Stafford38.Characteristic.CanonicalTangentialTotalAction
-import Stafford38.Characteristic.CanonicalTangentialRingEquivalence
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Characteristic.CanonicalTotalGradedBridge
+public import Stafford38.Characteristic.CanonicalTangentialTotalAction
+public import Stafford38.Characteristic.CanonicalTangentialRingEquivalence
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalTotalGradedActionCompatibility
 

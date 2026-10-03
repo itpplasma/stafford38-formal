@@ -1,4 +1,7 @@
-import FixedSourceChallenge
+module
+public import FixedSourceChallenge
+
+@[expose] public section
 
 #check Stafford38FixedSourceChallenge.UniversalFixedSourceStatement
 #print axioms Stafford38FixedSourceChallenge.UniversalFixedSourceStatement

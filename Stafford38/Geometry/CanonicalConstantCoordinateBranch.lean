@@ -1,8 +1,11 @@
-import Stafford38.Characteristic.CanonicalBaseVariety
-import Stafford38.Geometry.ConstantCoordinateConormal
-import Stafford38.Geometry.LaurentConormalResidueExtension
-import Mathlib.RingTheory.Ideal.MinimalPrime.Basic
-import Mathlib.RingTheory.Nullstellensatz
+module
+public import Stafford38.Characteristic.CanonicalBaseVariety
+public import Stafford38.Geometry.ConstantCoordinateConormal
+public import Stafford38.Geometry.LaurentConormalResidueExtension
+public import Mathlib.RingTheory.Ideal.MinimalPrime.Basic
+public import Mathlib.RingTheory.Nullstellensatz
+
+@[expose] public section
 
 /-!
 # Canonical constant-coordinate branch

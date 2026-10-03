@@ -1,4 +1,8 @@
-import AlgebraicAnalysis.Ore.Associativity
+module
+public import Mathlib.Algebra.Polynomial.Derivative
+public import AlgebraicAnalysis.Ore.Associativity
+
+@[expose] public section
 
 /-!
 # The central-coordinate Ore stage

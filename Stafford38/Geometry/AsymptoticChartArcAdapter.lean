@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ProjectiveBoundaryFrameRank
-import Stafford38.Geometry.ArcFrameConormal
-import Stafford38.Geometry.JacobianConormalComparison
+module
+public import Stafford38.Geometry.ProjectiveBoundaryFrameRank
+public import Stafford38.Geometry.ArcFrameConormal
+public import Stafford38.Geometry.JacobianConormalComparison
+
+@[expose] public section
 
 /-!
 # The exact completed-chart to arc-frame adapter boundary
@@ -59,8 +62,8 @@ def completedChartAffineArc [CharZero k]
   fun i ↦ W.q ((chartAffineCoordinateEquiv W.chart i).1)
 
 /-- The first coefficient of every projective power-series coordinate. -/
-def projectiveFirstJet {ι : Type v} (q : ι → PowerSeries k) : ι → k :=
-  fun i ↦ PowerSeries.coeff 1 (q i)
+abbrev projectiveFirstJet {ι : Type v} (q : ι → PowerSeries k) : ι → k :=
+  powerSeriesFirstCoefficient q
 
 /-- The actual uniformizer residue vector of the affine chart arc is exactly
 the dehomogenized projective first jet. -/
@@ -75,6 +78,9 @@ theorem completedChart_uniformizerResidueFrame_eq_dehomogenizedFirstJet
         (chartAffineCoordinateEquiv W.chart i) := by
   simp [completedChartAffineArc, chartDehomogenizedTangentColumn,
     projectiveFirstJet, residueColumn, W.q_chart]
+  simpa [powerSeriesFirstCoefficient] using
+    congrFun (powerSeriesFirstCoefficient_eq_constantCoeff_derivative W.q)
+      ((chartAffineCoordinateEquiv W.chart i).1)
 
 /-! ## Why the remaining columns are not a self-relative arc frame -/
 

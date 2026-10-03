@@ -1,85 +1,24 @@
-# Paper and Lean audit
+# Paper–Lean audit tool
 
-This generator compares the manuscript with named declarations at immutable
-Git revisions. The curated map records statement scope, proof-route differences,
-dependencies, and issues for review. It validates source correspondence; a
-successful build does not prove that arbitrary LaTeX prose is equivalent to a
-Lean proposition, or supply a human mathematical sign-off.
+This browser tool helps reviewers compare a pinned manuscript with named Lean declarations. Its map records source revisions, statement scope, proof-route differences, dependencies, and review issues. Links and checks aid navigation and comparison; they do not prove arbitrary prose equivalent to Lean or provide human approval.
 
-## Build
+## Build and check
 
-The formal repository includes a pinned manuscript snapshot. Run this copy of
-the generator against that repository and sibling `algebraic-analysis` and
-`global-stafford-formal` checkouts. The research copy may instead use the
-Overleaf-synchronized `stafford38-paper` checkout.
+Run from this directory with Node.js and the locked dependencies:
 
 ```sh
 npm ci
 npm test
-node build.mjs --check --paper ../.. --formal ../..
-CHROMIUM_PATH=/usr/bin/chromium node build.mjs --check --paper ../.. --formal ../.. --pdf
+node build.mjs --check --paper ../../../stafford38-paper --formal ../..
+CHROMIUM_PATH=/usr/bin/chromium node build.mjs --check --paper ../../../stafford38-paper --formal ../.. --pdf
 ```
 
-Use `--paper`, `--formal`, `--library`, `--global`, `--map`, `--reviews`, and
-`--out` to select other locations. Source reads use the commits in the map,
-not uncommitted working-tree edits. Build outputs and installed dependencies
-are excluded from Git.
+The options --paper, --formal, --library, --global, --map, --reviews, and --out select source checkouts, map files, review exports, and output paths. Source reads use the immutable revisions in the map. Build outputs and installed dependencies are excluded from Git.
 
-## Review
+## Review workflow
 
-Follow each card's source links, read the statement and proof route, then
-record each review check under your name. Export the JSON to retain the
-review. An edited statement, proof source, correspondence assessment, or
-relevant pin invalidates inherited checks. Imported reviews are validated;
-missing hashes and unnamed reviews do not count as sign-offs.
+Each card links the mapped statement, supporting declarations, proof steps, and source excerpts. Definitions and pattern-match branches appear where mapped. Unresolved or truncated references are marked. The review digest includes mapped inputs, so changing a relevant source or map entry makes an earlier review stale.
 
-Commit a reviewed export under `docs/paper-lean-audit/reviews/` using the
-repository's signed-commit policy. Browser storage is a convenience, and is
-not a cryptographic signature or evidence of human approval by itself.
+Reviewer notes export as JSON. Browser storage is local convenience, not a cryptographic signature or shared approval. A committed review export records a review against a source snapshot; it does not make an AI comment or correspondence badge a human sign-off. Read the card's statement and proof route before recording a judgment.
 
-## Ownership
-
-The Overleaf-synchronized manuscript remains the source of truth for its
-prose. The formal repository owns mathematical declarations and release
-verification. The research repository retains the discovery history. The
-formal release includes a copy of this audit generator and its pinned map;
-correspondence updates after DOI assignment do not change the released proofs.
-
-
-## What the Lean panel shows
-
-Theorems and lemmas show their full signatures, with proof bodies linked at the
-pinned revision. Definitions include their bodies and pattern-match branches.
-Named result predicates are resolved through enclosing namespaces in mapped
-source files; `expands` can list exact repository/file/name references when a
-predicate is imported under another namespace. Their source excerpts appear
-beside the theorem, and enter its review hash and reverse index. Unresolved
-named results and truncated excerpts are explicitly marked. This source view
-is not a kernel-generated semantic unfolding.
-
-Each card explains whether it displays a theorem, notation/definitions only,
-or no mapped declaration. Supporting and proof-step signatures can be opened
-without leaving the card. Historical issue status is retained; an AI comment
-addressing an issue is linked without treating it as human approval.
-
-
-## Full display review
-
-The panel includes scoped variables, local instance signatures, notation and
-plain open declarations with source links. Named-result expansion respects
-parameter shadowing and plain open scopes; ambiguous duplicate FQNs require
-an explicit file-pinned `expands` entry. Complex open/renaming syntax and
-imported instances remain in the linked full module rather than guessed.
-The review digest includes the generator, review rubric and relation vocabulary.
-Excerpt checks reject split markup; a child excerpt wholly in a replacement
-inherits its addition style and is explicitly marked as proposed.
-
-Standard Mathlib length definitions use `--mathlib DIR` (default: the formal
-repository lake package) and its exact pinned commit in the map. Repository
-and revision labels belong to each declaration, including external libraries.
-
-## Current publication review
-
-Use https://itpplasma.github.io/stafford38-formal/ for the current paper and source pins. The default queue contains all 49 current mathematical correspondence cards, including exact matches, definitions, printed proof steps and appendix results. Six context/history cards remain outside it. Max reviews the whole correspondence; Johanna reviews concrete text proposals. Start with the proved Challenge/Solution endpoints and the 31 curated definitions (including Field, CharZero, the quotient relations and intrinsic Bernstein degree). Click linked identifiers to open definitions and source parents. Direct dependency links reveal only the requested reference; they do not require reviewing every reference card.
-
-The reusable Apache-2.0 generator now lives at https://github.com/itpplasma/paper-lean-audit . This embedded copy keeps existing paper builds reproducible. The frozen companion at https://github.com/itpplasma/stafford38-supplementary keeps manuscript content separate from software. Both new Zenodo integrations must be enabled before publishing their prepared releases; no DOI is claimed until archival succeeds.
+The Stafford map is a curated comparison surface. Consult the formal repository's docs/paper-route-alignment.json for its current scope and status; the map does not replace whole-proof or human review.

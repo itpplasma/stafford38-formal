@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.FilteredQuotientReesExact
+module
+public import Stafford38.Characteristic.FilteredQuotientReesExact
+
+@[expose] public section
 
 /-!
 # Additive special fibre of the filtered quotient direct sum

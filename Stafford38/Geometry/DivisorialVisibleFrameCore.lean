@@ -1,5 +1,12 @@
-import Stafford38.Geometry.NormalizationHeightOne
-import Mathlib
+module
+public import Mathlib.RingTheory.SimpleRing.Principal
+public import Mathlib.RingTheory.RegularLocalRing.Defs
+public import Mathlib.RingTheory.Kaehler.Basic
+public import Mathlib.RingTheory.Valuation.LocalSubring
+public import Mathlib.RingTheory.Valuation.ValuationSubring
+public import Stafford38.Geometry.NormalizationHeightOne
+
+@[expose] public section
 
 /-!
 # Divisorial visible-frame construction core
@@ -224,7 +231,7 @@ theorem isDiscreteValuationRing_of_isLocalization_atPrime
       ⟨IsLocalRing.isField_iff_maximalIdeal_eq.not.mp hnf, inferInstance⟩, ?_⟩
     rintro P ⟨hPb, hPp⟩
     exact IsLocalRing.eq_maximalIdeal (hPp.isMaximal_of_ne_bot hPb)
-  exact ((IsDiscreteValuationRing.TFAE S hnf).out 3 0).mp h3
+  exact ((IsDiscreteValuationRing.TFAE S hnf).out 4 1).mp h3
 
 theorem stage1_exists_valuationSubring_of_transcendental
     {k K : Type*} [Field k] [Field K] [Algebra k K] (x : K)

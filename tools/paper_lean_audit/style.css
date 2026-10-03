@@ -55,7 +55,14 @@ section.card.hidden { display: none; }
 .col.paper { background: var(--paper); border: 1px solid var(--line); } .col.formal { background: var(--lean); border: 1px solid var(--line); }
 .col-title { font: 600 12px system-ui, sans-serif; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 4px; }
 .tex { font-size: 14.5px; overflow-x: auto; } .tex p { margin: 6px 0; }
-.dmath { overflow-x: auto; overflow-y: hidden; }
+.dmath { overflow-x: auto; overflow-y: hidden; scrollbar-color: var(--muted) transparent; scrollbar-width: thin; }
+.dmath-layout { display: flex; align-items: center; gap: .65em; width: 100%; min-width: 0; }
+.dmath-formula { flex: 1 1 0; min-width: 0; overflow-x: auto; overflow-y: hidden; scrollbar-color: var(--muted) transparent; scrollbar-width: thin; }
+.dmath-formula > .katex-display { margin: 0; }
+.dmath-tag { flex: 0 0 auto; white-space: nowrap; }
+.dmath-tag .katex-tag { display: inline-block; vertical-align: middle; }
+.dmath::-webkit-scrollbar, .dmath-formula::-webkit-scrollbar { height: 7px; }
+.dmath::-webkit-scrollbar-thumb, .dmath-formula::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
 .ai-add { color: var(--ai-add); } del.ai-remove { color: var(--ai-rem); }
 body.clean del.ai-remove, body.clean .ai-comment { display: none; } body.clean .ai-add { color: inherit; }
 .ai-comment { border: 1px solid var(--ai-rem); color: var(--ai-rem); border-radius: 6px; padding: 5px 8px; margin: 6px 0; font-size: 13px; background: color-mix(in srgb, var(--ai-rem) 5%, transparent); }

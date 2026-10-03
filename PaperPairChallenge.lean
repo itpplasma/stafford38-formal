@@ -1,5 +1,8 @@
-import Mathlib.LinearAlgebra.Span.Defs
-import Mathlib.Algebra.Module.Opposite
+module
+public import Mathlib.LinearAlgebra.Span.Defs
+public import Mathlib.Algebra.Module.Opposite
+
+@[expose] public section
 
 /-! Supplementary statement of the paper generator step. This is not the
 main Stafford Challenge, introduces no proof hole, and imports only Mathlib. -/

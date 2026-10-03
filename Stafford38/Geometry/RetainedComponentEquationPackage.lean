@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+module
+public import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+
+@[expose] public section
 
 /-!
 # Finite retained component equations
@@ -48,6 +51,8 @@ theorem projectiveDehomogenize_map
     projectiveDehomogenize (n := m)
         (MvPolynomial.map coeff H) =
       MvPolynomial.map coeff (projectiveDehomogenize H) := by
+  simp only [projectiveDehomogenize,
+    Stafford38.Geometry.ProjectiveChartCoordinates.dehomogenizeProjectiveChart_zero]
   change MvPolynomial.bind₁ (Fin.cases 1 fun j ↦ MvPolynomial.X j)
       (MvPolynomial.map coeff H) =
     MvPolynomial.map coeff
@@ -78,7 +83,8 @@ theorem dehomogenizedEquationIdeal_mapped_homogenizations
         (fun j ↦ MvPolynomial.map coeff
           (homogenizeAtZero (generators j))) =
       (Ideal.span (Set.range generators)).map (MvPolynomial.map coeff) := by
-  rw [dehomogenizedEquationIdeal]
+  rw [dehomogenizedEquationIdeal,
+    Stafford38.Geometry.ProjectiveChartCoordinates.dehomogenizedEquationIdeal]
   simp_rw [projectiveDehomogenize_map_homogenizeAtZero coeff]
   rw [Ideal.map_span]
   congr 1

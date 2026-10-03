@@ -1,6 +1,9 @@
-import Stafford38.Quotient.EulerSurjectivity
-import Stafford38.Ore.PairStage
-import proofs.weyl_pure_power
+module
+public import Stafford38.Quotient.EulerSurjectivity
+public import Stafford38.Ore.PairStage
+public import proofs.weyl_pure_power
+
+@[expose] public section
 
 /-!
 # The Euler-nonnegative generated subring

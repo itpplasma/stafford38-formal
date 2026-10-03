@@ -1,4 +1,7 @@
-import Mathlib.RingTheory.Nullstellensatz
+module
+public import Mathlib.RingTheory.Nullstellensatz
+
+@[expose] public section
 
 /-!
 # Polynomial inverses from coordinate avoidance

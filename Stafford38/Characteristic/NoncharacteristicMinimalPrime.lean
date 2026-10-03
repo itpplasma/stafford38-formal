@@ -1,5 +1,9 @@
-import Stafford38.Characteristic.GabberGlobalAssembly
-import Stafford38.Characteristic.CanonicalNormalAxisSupport
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Characteristic.GabberGlobalAssembly
+public import Stafford38.Characteristic.CanonicalNormalAxisSupport
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.NoncharacteristicMinimalPrime
 

@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.LocalizedOrderReesTwoJetSpecializationKernel
-import Stafford38.Characteristic.LocalizedTwoBlockPrincipalKernelDescent
+module
+public import Stafford38.Characteristic.LocalizedOrderReesTwoJetSpecializationKernel
+public import Stafford38.Characteristic.LocalizedTwoBlockPrincipalKernelDescent
+
+@[expose] public section
 
 /-!
 # The concrete localized two-block special fibre

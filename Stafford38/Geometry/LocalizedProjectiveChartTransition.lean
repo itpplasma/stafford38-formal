@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ChartArcAnnihilation
-import Mathlib.RingTheory.Localization.Away.Basic
+module
+public import Stafford38.Geometry.ChartArcAnnihilation
+public import Mathlib.RingTheory.Localization.Away.Basic
+
+@[expose] public section
 
 /-!
 # Localized transition between projective affine charts
@@ -64,7 +67,8 @@ theorem projectiveDehomogenize_homogenizeAtZero {m : ℕ}
         (MvPolynomial.rename Fin.succ (MvPolynomial.homogeneousComponent i f)) =
       MvPolynomial.bind₁ (Fin.cases 1 fun j ↦ MvPolynomial.X j)
         (MvPolynomial.rename Fin.succ
-          (MvPolynomial.homogeneousComponent i f)) by rfl]
+          (MvPolynomial.homogeneousComponent i f)) by
+          simp [projectiveDehomogenize]]
     rw [MvPolynomial.bind₁_rename]
     have hfun :
         ((fun a : Fin (m + 1) ↦
@@ -95,7 +99,8 @@ theorem exists_finite_homogeneous_equations_dehomogenizing_to
     fun j ↦ (generators j).totalDegree, ?_, ?_⟩
   · intro j
     exact homogenizeAtZero_isHomogeneous (generators j)
-  · rw [dehomogenizedEquationIdeal]
+  · rw [dehomogenizedEquationIdeal,
+      Stafford38.Geometry.ProjectiveChartCoordinates.dehomogenizedEquationIdeal]
     simp_rw [projectiveDehomogenize_homogenizeAtZero]
     change Submodule.span _ (Set.range generators) = (I : Submodule _ _)
     exact hgenerators
@@ -230,7 +235,8 @@ theorem chartZeroToChosenOverlap_projectiveDehomogenize {m : ℕ}
               (ChartOverlapRing (K := K) chart)
               (chartProjectiveCoordinate chart a)) p := by
   rw [show projectiveDehomogenize p = MvPolynomial.bind₁
-      (Fin.cases 1 fun i ↦ MvPolynomial.X i) p by rfl]
+      (Fin.cases 1 fun i ↦ MvPolynomial.X i) p by
+        simp [projectiveDehomogenize]]
   rw [MvPolynomial.hom_bind₁]
   have hcoeff :
       (chartZeroToChosenOverlap (K := K) chart).comp MvPolynomial.C =

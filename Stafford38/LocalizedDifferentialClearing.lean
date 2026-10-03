@@ -1,6 +1,9 @@
-import Stafford38.LocalizedWeylAction
-import Stafford38.CoordinateDifferentialGeneration
-import Stafford38.LocalizedPolynomialCommutant
+module
+public import Stafford38.LocalizedWeylAction
+public import Stafford38.CoordinateDifferentialGeneration
+public import Stafford38.LocalizedPolynomialCommutant
+
+@[expose] public section
 
 namespace Stafford38.LocalizedDifferentialClearing
 

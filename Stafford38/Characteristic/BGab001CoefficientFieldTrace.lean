@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.SourceActionCommutatorExpansion
-import Mathlib.RingTheory.Finiteness.NilpotentKer
+module
+public import Stafford38.Characteristic.SourceActionCommutatorExpansion
+public import Mathlib.RingTheory.Finiteness.NilpotentKer
+
+@[expose] public section
 
 /-!
 # Actual traces using coefficient-field corrections

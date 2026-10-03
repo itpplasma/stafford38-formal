@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.CanonicalFilteredGradedBridge
-import Stafford38.Characteristic.AssociatedGradedModule
-import Stafford38.Characteristic.FilteredTwoTermTotalPages
+module
+public import Stafford38.Characteristic.CanonicalFilteredGradedBridge
+public import Stafford38.Characteristic.AssociatedGradedModule
+public import Stafford38.Characteristic.FilteredTwoTermTotalPages
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalTotalGradedBridge
 

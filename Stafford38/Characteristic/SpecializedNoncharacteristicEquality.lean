@@ -1,21 +1,18 @@
-import Stafford38.Characteristic.CanonicalAxisMonicInitialTop
-import Stafford38.Characteristic.CanonicalUnitPreimageFromInitialTop
-import Stafford38.Characteristic.TransposedFilteredModuleSupport
+module
+public import Stafford38.Characteristic.CanonicalAxisMonicInitialTop
+public import Stafford38.Characteristic.CanonicalUnitPreimageFromInitialTop
+public import Stafford38.Characteristic.TransposedFilteredModuleSupport
+
+@[expose] public section
 
 /-!
-# The specialized noncharacteristic boundary for the canonical quotient
+# Transposed noncharacteristic interfaces for the canonical quotient
 
-This file closes all algebraic transport around the coordinate-hyperplane
-noncharacteristic step.  For the canonical quotient it proves that ordinary
-coordinate multiplication is surjective after right-to-left transposition,
-that transposition fixes the coordinate hyperplane in symbol space, and that
-the desired support exclusion is equivalent to surjectivity on the actual
-associated graded module.
-
-The final implication from ordinary surjectivity and the monic normal symbol
-to associated-graded surjectivity is not available in Mathlib: it is the
-specialized strict noncharacteristic inverse-image theorem.  No substitute
-for that theorem is assumed here.
+This file proves coordinate-action and support-transport equivalences for the
+transposed filtered quotient, including ordinary coordinate surjectivity
+from PBW monicity. The stronger graded-surjectivity route is conditional
+here. The unconditional support exclusion consumed by `FoundationClosure` is
+supplied separately by `CanonicalKoszulContradiction.canonical_support_avoidance`.
 -/
 
 namespace Stafford38.SpecializedNoncharacteristicEquality

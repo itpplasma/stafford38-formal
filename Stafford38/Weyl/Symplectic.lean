@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Ore.Associativity
-import proofs.weyl_symplectic
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import proofs.weyl_symplectic
+
+@[expose] public section
 
 /-!
 # General-rank linear symplectic changes of Weyl generators
@@ -23,7 +26,7 @@ universe u
 variable (k : Type u) [Field k]
 
 abbrev standardForm (n : ℕ) : Matrix (Fin n ⊕ Fin n) (Fin n ⊕ Fin n) k :=
-  Matrix.J (Fin n) k
+  Stafford38Challenge.standardForm k n
 
 def standardSymplecticHpres {n : ℕ}
     (M : Matrix (Fin n ⊕ Fin n) (Fin n ⊕ Fin n) k)

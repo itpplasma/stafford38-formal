@@ -1,5 +1,8 @@
-import Stafford38.Statement
-import Stafford38.Weyl.TranspositionFiltration
+module
+public import Stafford38.Statement
+public import Stafford38.Weyl.TranspositionFiltration
+
+@[expose] public section
 
 /-! The left-handed form is the formal-adjoint/opposite-ring image of the
     written-order Stafford identity. -/

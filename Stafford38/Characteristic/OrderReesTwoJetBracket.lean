@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.OrderReesTwoJet
-import Stafford38.Weyl.PBWFirstContraction
+module
+public import Stafford38.Characteristic.OrderReesTwoJet
+public import Stafford38.Weyl.PBWFirstContraction
+
+@[expose] public section
 
 /-!
 # The commutator bracket in the order-Rees two-jet

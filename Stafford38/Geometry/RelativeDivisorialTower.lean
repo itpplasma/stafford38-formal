@@ -1,24 +1,20 @@
-import Stafford38.Geometry.DivisorialBoundaryExtension
-import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
-import Mathlib.RingTheory.AlgebraicIndependent.Transcendental
-import Mathlib.RingTheory.FiniteType
-import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
+module
+public import Stafford38.Geometry.DivisorialBoundaryExtension
+public import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
+public import Mathlib.RingTheory.AlgebraicIndependent.Transcendental
+public import Mathlib.RingTheory.FiniteType
+public import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
+
+@[expose] public section
 
 /-!
-# A relative transcendence tower containing a selected coordinate
+# Relative transcendence tower containing a selected coordinate
 
-This file supplies the field-theoretic reduction immediately upstream of
-`DivisorialBoundaryExtension`.  A selected transcendental element is extended
-to a transcendence basis.  Removing that element gives a relative coefficient
-field `E`; adjoining the element back recovers the full basis field.  For a
-finitely generated ambient field, the extension over the full basis field is
-finite, and in characteristic zero it is separable.
-
-The output is deliberately stated with actual intermediate fields in the
-ambient field.  It does not pretend that the remaining identification
-`Frac(E[X]_(X)) = E(x)` is definitional: that canonical fraction-field
-comparison, together with transport of the finite-dimensional instance, is
-the next formal interface needed by the existing divisorial-extension theorem.
+This file extends a prescribed transcendental coordinate to a transcendence
+basis, removes it to obtain a relative coefficient field, and proves
+finiteness and separability over the full basis field. The concrete fraction
+field comparison for `E[X]_(X)` and retained DVR place are assembled in
+`RelativeRetainedBoundaryPlace.exists_data_of_fg_charZero`.
 -/
 
 namespace Stafford38.Geometry.RelativeDivisorialTower

@@ -1,5 +1,9 @@
-import Stafford38.Characteristic.CanonicalResidueExtensionSymbolControlAdapter
-import Stafford38.Characteristic.RadicalMinimalPrimeInvolutivity
+module
+public import Stafford38.Characteristic.CanonicalResidueExtensionSymbolControlAdapter
+public import Stafford38.Characteristic.PaperLocalizedInvolutivity
+public import Stafford38.Characteristic.RadicalMinimalPrimeInvolutivity
+
+@[expose] public section
 
 /-!
 # Lane B: the residue-extension input reduced to the cited Gabber theorem
@@ -57,6 +61,7 @@ open Stafford38.CanonicalSupportVanishingReduction
 open Stafford38.Characteristic
 open Stafford38.Characteristic.CanonicalResidueExtensionSymbolControlAdapter
 open Stafford38.Characteristic.PostScalarExtensionPoisson
+open Stafford38.Characteristic.PaperLocalizedInvolutivity
 open Stafford38.Characteristic.RadicalMinimalPrimeInvolutivity
 open Stafford38.CharacteristicAssociatedGradedModule
 open Stafford38.CharacteristicInitialIdeal
@@ -124,7 +129,7 @@ theorem rightWeylMinimalPrimeInvolutivity_of_radical
     (h : WeylOrderInitialRadicalInvolutivity.{u}) :
     RightWeylMinimalPrimeInvolutivity.{u} := by
   intro L _ _ m I P hP
-  exact minimalPrimes_isInvolutive_of_radical_isInvolutive
+  exact minimalPrimes_isInvolutive_of_radical_isInvolutive_viaLocalization
     (orderInitialIdeal L I) (h L m I) P hP
 
 /-- The canonical right ideal `dA + x₀^N dA` is one right ideal among all of

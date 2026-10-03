@@ -1,8 +1,11 @@
-import Stafford38.Geometry.DivisorialVisibleFrameStageAssembly
-import Stafford38.Geometry.ExactVisibleDivisorFrameInterface
-import Stafford38.Geometry.KaehlerDVRVisibility
-import Stafford38.Geometry.ProjectiveDivisorOrderGap
-import Stafford38.Geometry.RelativeRetainedBoundaryPlace
+module
+public import Stafford38.Geometry.DivisorialVisibleFrameStageAssembly
+public import Stafford38.Geometry.ExactVisibleDivisorFrameInterface
+public import Stafford38.Geometry.KaehlerDVRVisibility
+public import Stafford38.Geometry.ProjectiveDivisorOrderGap
+public import Stafford38.Geometry.RelativeRetainedBoundaryPlace
+
+@[expose] public section
 
 namespace Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
 
@@ -363,7 +366,9 @@ theorem exactDivisorialVisibleFrameExistence :
     normalizedComponentProjectivePoint_zero_nonunit
       (canonicalRightIdeal (presentedCoordinate k n) d N) i hdisjoint P hBP
       W q scale hq
-  have halg := halgAll scale q hq ⟨chart, hchart⟩ hq0nonunit
+  have halg := halgAll scale q
+    (by simpa only [componentProjectivePoint_eq_finCases] using hq)
+    ⟨chart, hchart⟩ hq0nonunit
   have hchart_ne : chart ≠ 0 := by
     intro hzero
     apply hq0nonunit

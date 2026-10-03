@@ -1,0 +1,10 @@
+module
+public import Stafford38.Geometry.DVRParameterSmoothness
+
+@[expose] public section
+
+#check Stafford38.Geometry.DVRParameterSmoothness.isEtaleAt_of_polynomial_uniformizer
+#check Stafford38.Geometry.DVRParameterSmoothness.formallyEtale_localization_of_polynomial_uniformizer
+#check Stafford38.Geometry.DVRParameterSmoothness.isEtaleAt_of_polynomial_uniformizer_of_maximal
+#check Stafford38.Geometry.DVRParameterSmoothness.isSmoothAt_of_polynomial_uniformizer_of_maximal
+#print axioms Stafford38.Geometry.DVRParameterSmoothness.isEtaleAt_of_polynomial_uniformizer_of_maximal

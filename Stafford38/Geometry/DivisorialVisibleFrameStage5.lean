@@ -1,4 +1,7 @@
-import Stafford38.Geometry.NormalizationHeightOne
+module
+public import Stafford38.Geometry.DivisorialVisibleFrameCore
+
+@[expose] public section
 
 open IsLocalRing
 
@@ -10,10 +13,10 @@ universe u
 
 namespace Stafford38.Geometry.DivisorialVisibleFrameStage5
 
-def coeffHom {k K : Type u} [Field k] [Field K] [Algebra k K]
+abbrev coeffHom {k K : Type u} [Field k] [Field K] [Algebra k K]
     (E : IntermediateField k K) (V : ValuationSubring K)
     (hEV : ∀ z : E, (z : K) ∈ V.toSubring) : E →+* V.toSubring :=
-  RingHom.codRestrict (IntermediateField.val E).toRingHom V.toSubring hEV
+  Stafford38.Geometry.LaneC.coeffHom E V hEV
 
 theorem stage5_exists_coefficientField
     {k K : Type u} [Field k] [Field K] [Algebra k K]

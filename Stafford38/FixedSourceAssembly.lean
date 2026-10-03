@@ -1,4 +1,7 @@
-import Stafford38.FixedSourceStatement
+module
+public import Stafford38.FixedSourceStatement
+
+@[expose] public section
 
 namespace Stafford38.FixedSource
 

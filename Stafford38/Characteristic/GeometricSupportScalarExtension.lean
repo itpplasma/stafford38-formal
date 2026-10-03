@@ -1,5 +1,8 @@
-import Stafford38.Weyl.FilteredScalarLifting
-import Stafford38.Geometry.ScalarExtensionPoints
+module
+public import Stafford38.Weyl.FilteredScalarLifting
+public import Stafford38.Geometry.ScalarExtensionPoints
+
+@[expose] public section
 
 /-!
 # Reduced order support after scalar extension
