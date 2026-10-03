@@ -1,0 +1,66 @@
+{
+  "state": "controller review candidate; no cluster action performed",
+  "purpose": "Fresh immutable-source final replay on an approved Linux Slurm cluster after local PSI guard refusals; preserve the archived mailuefterl contract unchanged.",
+  "host": {
+    "allowed_clusters": [
+      "acluster",
+      "scluster"
+    ],
+    "node_pattern": "node[1-9][0-9]*",
+    "allocation": "one node, one task, two CPUs, 8 GiB guard cap; controller must verify node RAM/PSI/swap/disk before launch",
+    "protected_hosts": "Never use faepop* or faepcr*; this contract does not authorize SSH, scheduling, or launch."
+  },
+  "source": {
+    "argument": "FULL_T70_COMMIT must be the controller-supplied, public, immutable lowercase 40-hex commit; do not guess it.",
+    "origin": "https://github.com/itpplasma/stafford38-formal.git",
+    "checkout": "Fresh shallow Git checkout by exact commit into RUN_ROOT/final-source; checkout HEAD must equal the argument. No patch, dirty tree, or source reuse.",
+    "before_after": "Manifest records Git tree plus every tracked regular file path, Git executable mode, blob ID, and content SHA256. Independently compare lstat executable bits with Git 100755/100644 for every file, regardless of core.filemode. Require clean Git worktree both times. Compare full manifest identity before and after lake update and after all checks; ignored .lake outputs are excluded.",
+    "lock_sha256": "29658324d2c247fb161a35c9869ac7e3c43491614304343a81337c65fae5dcbc"
+  },
+  "pins": {
+    "lean_toolchain": "leanprover/lean4:v4.35.0-rc3",
+    "lean_githash": "470d5ce1400764999581fd26d5d72b00d990b0f4",
+    "package_count": 10,
+    "critical_package_heads": {
+      "mathlib": "c55e6e786f49471c72fbddbec5415808896aec1e",
+      "algebraicAnalysis": "bbbbf3fc358ca8100b158cec4cf47f336ab70163"
+    },
+    "all_package_heads": "Require each manifest package rev to be a lowercase immutable 40-hex SHA and .lake/packages/<name>/HEAD=rev; inputRev may be a symbolic requested branch. Retain complete after-update/final ten-entry receipts."
+  },
+  "runtime": {
+    "prepared_inputs": "Reuse only a completed, controller-selected bootstrap run root with isolated elan/toolchain, xdg-cache, mathlib-cache, and staged curl-runtime. Never overlap a cache writer; do not install packages or edit system files.",
+    "curl": "Run staged curl wrapper --version before network use; require curl and libcurl markers. CURL_CA_BUNDLE points to staged CA bundle.",
+    "environment": "Driver pins ELAN_HOME, ELAN_TOOLCHAIN, XDG_CACHE_HOME, MATHLIB_CACHE_DIR, GIT_CONFIG_GLOBAL=/dev/null, no terminal prompt, and isolated pinned Lean first on PATH. It verifies lean --githash and resolved Lean path.",
+    "timeouts": "Each recorded command has GNU timeout --kill-after=60s 19800s. Outer Linux guard timeout is 21600 seconds; Slurm allocation must accommodate it.",
+    "run_root": "Require exactly two arguments and an existing directory whose strict canonical path is a proper descendant of the strict canonical /home/ert/stafford38-campaign directory; reject missing/file/outside/traversal escapes/symlink escapes before any mkdir."
+  },
+  "ordered_gates": [
+    "staged curl --version runtime probe",
+    "exact isolated Lean executable path and Lean githash",
+    "fetch and detached checkout of the full public source commit",
+    "source manifest and exact lock SHA",
+    "python3 scripts/check-palomar-policy.py",
+    "bash scripts/bootstrap-palomar-tools.sh",
+    "lake update",
+    "exact lock SHA and all ten resolved package HEADs",
+    "lake exe cache get",
+    "bash scripts/verify.sh (authoritative policy, module, import, dependency route, and verifier gates)",
+    "lake build proofs",
+    "bash scripts/verify-palomar.sh comparator.json",
+    "bash scripts/verify-palomar.sh comparator-fixed-source.json",
+    "bash scripts/verify-palomar.sh comparator-alternative.json",
+    "bash scripts/verify-palomar.sh comparator-alternative-fixed-source.json",
+    "final source manifest, lock SHA, and all ten package HEADs"
+  ],
+  "launch": {
+    "owner": "Controller only; this candidate is not self-launching.",
+    "guard": "Controller stages this reviewed driver plus linux-slurm-guard.py and its adjacent linux-guard.py into RUN_ROOT/control, records their SHA256 values, then runs RUN_ROOT/control/linux-slurm-guard.py run --timeout 21600 --log RUN_ROOT/final-outer-guard.log --cwd RUN_ROOT -- bash RUN_ROOT/control/cluster-final-replay-20261003.sh RUN_ROOT FULL_T70_COMMIT inside the reviewed Slurm allocation. Set STAFFORD_STORAGE=/home/ert/stafford38-campaign and STAFFORD_OUTER_GUARD_LOG to that outer log path. The adjacent guard pair must come from the reviewed frozen controller source; no live moving checkout dependency.",
+    "separation": "Outer guard log/summary/progress are siblings at RUN_ROOT/final-outer-guard.*. Driver's atomic terminal.json and per-stage receipts live in the newly created RUN_ROOT/final-receipts/ directory."
+  },
+  "receipts": {
+    "terminal": "final-receipts/terminal.json records exit status, last/failing stage, source commit and pre/post source manifest SHA256, lock hash observations, per-stage argv/status/log SHA256, package HEADs, Lean commit/version, Slurm job/step/node, cgroup, CPU affinity, and separate expected outer-guard paths/status/child-drain requirement.",
+    "success": "Require terminal exit_status=0, failed_or_last_stage=complete, all stages status 0, identical before/after source manifest hashes, exact lock hash, all ten exact package heads, Lean commit exact; independently require outer guard summary exit 0, correct Slurm job/step/cgroup, resource limits honored, and drained child group.",
+    "failure": "Preserve partial terminal receipt and logs. Do not retry or reinterpret guard refusal, timeout, source mismatch, pin mismatch, or incomplete child drain as proof success. Controller owns diagnosis and any later retry."
+  },
+  "preserved_archive": "docs/audits/paused-2026-10-02/palomar/stafford38-linux-execution-contract-20261002.json and its companion driver remain byte-identical and authoritative for the mailuefterl route."
+}

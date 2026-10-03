@@ -70,3 +70,33 @@ The candidate has a sound staged gate order, explicit immutable package-rev
 checks, all four comparator invocations in the requested order, failure
 receipts, and a separate outer-guard result contract. These positives do not
 clear the two containment/integrity findings. This is not approval to launch.
+
+## Repaired candidate re-review (2026-10-03)
+
+Re-reviewed the controller-designated repaired patch
+`15b0bbc9d4a243f5a40bd7cb32cd124c1e2a3cd0c03f03f91adb850b397a3c1c` against
+the original base above, at MAIN HEAD
+`b79f0c98ee3a58211594711547ea8cb733511f95`. The four review inputs matched
+the supplied hashes: driver `b11d6e57e5ea809340e5298c1d51c07b3cbfb8037a1a9259ea2a1f5807917ef9`,
+harness `209aab6fff4a5719bf7e854869cd8f9743677c8184937aa6fc8171f969913167`,
+contract `8ec186faa3598e37895a2d4fe9bf8be75f89c29fd0d79a146b2c058d0e738b8d`,
+and walkthrough `866d75ad6e6d5ca7ba0feb696934e4ed645d546c40e1e2fa43bd5a2aafefaf82`.
+
+The driver now compares each actual filesystem executable bit against the
+Git-tree mode, and resolves the existing run root strictly before requiring a
+proper descendant of the canonical campaign directory. These checks precede
+creation of receipts or source checkout. The fake Git status intentionally
+ignores executable-mode changes; the harness tests adding and removing that
+mode, invalid argument/root cases, traversal and symlink escapes, and confirms
+they fail before writes.
+
+Validation passed: `bash -n`, JSON parsing, and the fake-tool behavioral
+harness. The harness reported passing mode mutation/removal under mode-blind
+Git status, root traversal/symlink rejection, wrong source/Lean pin,
+fail-stage receipts, clean manifest identity, and all four ordered comparator
+invocations. The lock SHA still matches. The archived mailuefterl contract
+and companion driver remain byte-identical to the original base.
+
+**Scoped result: PASS for the repaired driver/contract/harness review.** This
+is not a cluster execution or launch authorization; the controller still owns
+the outer-guard review, resource check, and any replay.

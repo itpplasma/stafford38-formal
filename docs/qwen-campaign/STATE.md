@@ -67,8 +67,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T61 | Paper map of new theorems | doing | 2 | notes/T61-resume-paper-map.md | Luna maps all24 current declarations to selected-paper locators/no-counterpart; formal and human acceptance remain pending |
 | T62 | Unreachable/duplicate report | doing | 1 | | Luna preparing source-graph and duplicate-owner report; final route still required |
 | T70 | Frozen public commit | owner | 0 | | owner gate |
-| T71 | Remote preflight on mailuefterl | todo | 0 | | |
-| T72 | Launch Linux driver | todo | 0 | | |
+| T71 | Final Linux host preflight | todo | 0 | | Approved local/cluster route selected after T70; candidate bootstrap receipts do not replace final preflight |
+| T72 | Launch Linux driver | doing | 1 | notes/cluster-final-replay-independent-review-20261003.md | Cluster driver repaired by Sol and independently reviewed PASS with wrong-pin/failure/mutation/mode/root oracles; final launch awaits T70 and fresh allocation preflight |
 | T73 | Collect Linux result | todo | 0 | | |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | todo | 0 | | |
@@ -162,3 +162,18 @@ to Sol. Historical Pi/Qwen records remain preserved.
 ## Blocked
 
 (Pi: one line per blocked task with the path of its `notes/<id>-blocked.md`)
+
+## Reviewed cluster replay driver (3 October 2026)
+
+The cluster-specific final immutable-source driver and contract are accepted
+as reviewed preparation. Independent review first found mode and run-root
+containment gaps; Sol repaired both and Luna independently confirmed the
+behavioral negative/positive oracles. Actual filesystem modes are compared
+with Git modes even when Git ignores chmod; canonical existing-directory
+containment rejects traversal and symlink escapes before writes.
+
+Driver SHA256 b11d6e57e5ea809340e5298c1d51c07b3cbfb8037a1a9259ea2a1f5807917ef9.
+Its four comparator gates remain ordered and all ten resolved package HEADs
+must match immutable rev pins. The archived mailuefterl driver/contract remain
+byte-identical. No final replay was launched; T70 immutable public source,
+T71 preflight, actual T72 run and T73 collection remain required.
