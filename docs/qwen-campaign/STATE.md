@@ -15,8 +15,8 @@ commit" and owner-gate rows.
 | T11 | Port AwayFactorToAtPrime | done | 1 | docs/qwen-campaign/notes/T11-check.log | ported to Stafford38/Geometry/SameWitness/AwayFactorToAtPrime.lean, namespace Stafford38.Geometry.SameWitness, statements byte-identical; build exit 0 (10 s, 1579 jobs); consumer exit 0, axioms propext/choice/Quot.sound only; reused Mathlib IsLocalization.Away.lift + lift_comp (replaces archived ext/simp), map_units; commit 134f04b; flag: nothing imports the new module yet, so T43/T50 must add it to a root list or check it by name |
 | T12 | Port axis lift from ground point | done | 1 | docs/qwen-campaign/notes/T12-check.log | ported to Stafford38/Geometry/SameWitness/AxisLiftFromGroundPoint.lean, namespace Stafford38.Geometry.SameWitness, docstring+statement byte-identical (diff exit 0), maxHeartbeats 4000000->1600000; build exit 0 (10 s, 3079 jobs, 4.9 s for the module, 0 errors); consumer exit 0 axioms propext/choice/Quot.sound; proof needed no repair - reuses exists_actual_point_axis_lift + T11 pair_factorizations_to_atPrime, no new instances beyond the frozen let-block; commit 8ef595c; flag: still not in any root list, T42/T43/T50 must wire or check by name |
 | T13 | Port chart ground-map lemma | done | 1 | docs/qwen-campaign/notes/T13-check.log | ported repair4 addition (archived lines 280-328) to Stafford38/Geometry/SameWitness/ChartGroundMap.lean, namespace Stafford38.Geometry.SameWitness, theorem signature byte-identical (diff exit 0), maxHeartbeats 2400000->1600000; A0ChartFormalEtale.lean untouched; build exit 0 (10 s, 2927 jobs, module 1.8 s, 0 errors); consumer exit 0 axioms propext/choice/Quot.sound; reuses originalAffineChartToCommonOpen + originalAffineChartOverlapEquiv + selectedChartAwayEquivOfQuotientEquiv + genericOpenBMap_base_eq + Mathlib IsLocalization.Away.map/IsScalarTower.algebraMap_apply; no new def; matches repair3-groundmap-audit PASS on 4.33; commit 0340cf2; flag: frozen statement carries `letI : Algebra Q U := Algebra.compHom U _` (rule 6.2.8 diamond source) - T34/T36 must use the hom equation, not a second Algebra on U; still not in any root list, T43/T50 must wire or check by name |
-| T20 | Instance inventory | doing | 1 | | resumed by controller with Luna; real instance inventory and guarded synth checks in progress |
-| T21 | Minimal tower reproducer | todo | 0 | | |
+| T20 | Instance inventory | done | 2 | docs/qwen-campaign/notes/T20-diagnostics.tar.gz | Sol completed concrete nine-ring and ten-prerequisite inventory after Luna acceptance failed; inherited Q/B,Q/F,Q/U,k/U and staged R/U duplicates; default synthesis timeouts preserved; 264 source hashes and five log hashes checked |
+| T21 | Minimal tower reproducer | doing | 1 | | Luna reproducing the scalar-action mismatch and verifying the abstract hom tower |
 | T22 | Ring-hom form of the endpoint | todo | 0 | | |
 | T30 | Chart and away data | todo | 0 | | |
 | T31 | Coordinate presentation | todo | 0 | | |
@@ -106,6 +106,13 @@ commit" and owner-gate rows.
   `φ.comp (algebraMap k A₀) = algebraMap k U`, and build `φk : A₀ →ₐ[k] U` from it.
 - T22/T36: if Lean rejects a `FormallyEtale` or tower statement for `U`, do not install instances
   on `U`; adapt over an abstract ring (PLAN 6.2 rule 4).
+
+- T20 resumed review: archived import `GroundPointAxisLiftFromOutput` has no WT source
+  but is present in the cloned cache. Diagnostic scratch imports must use the accepted
+  `SameWitness.AxisLiftFromGroundPoint` rename and resolve every project import to source.
+  A green abstract probe assuming scalar actions is conditional evidence, not a concrete
+  witness inventory. Pair each frozen scratch hash with its own real log; record missing
+  synthesis and timeouts as diagnostics instead of adding assumptions or raising budgets.
 
 ## Blocked
 
