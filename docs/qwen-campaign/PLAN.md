@@ -34,7 +34,10 @@ repair is frozen and pushed at 12ae3cc49152672a48a96f13994314b65ae38197.
 Both alternative route checks also passed, and3129931 drained guard0.
 The sole final public-source verifier and four comparator run is scluster3131361,
 launched after an empty-queue/idle-node preflight with exact control hashes.
-It reuses the accepted cache. Preserve all earlier failed receipts.
+It stopped before verification because Git reported the generated cache
+symlink as untracked. Source/tool/pin gates passed and the allocation drained.
+Sol prepares a narrow same-source resume retaining every tracked-byte/mode,
+verifier and comparator gate. No paper/proof pin changes. Preserve all failed receipts.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
 57-card browser walkthrough. The public review site is deployed. All three
