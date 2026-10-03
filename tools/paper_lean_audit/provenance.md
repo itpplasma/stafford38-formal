@@ -13,3 +13,5 @@ license at the repository root. The formal copy owns release correspondence
 checks; the research copy can still support discovery work. The map is copied
 with explicit immutable source pins and may receive documentation updates
 after an archive DOI is assigned.
+
+Guided claim navigation, saved progress and resume controls use the exact `build.mjs`, `review.js` and `style.css` from the public generator revision `40967b6740c2ceaf515a2fb47a5ca9571be6495f`. The retained parsing and statement modules are byte-identical to that revision. The embedded lockfile and project-specific map remain under this repository’s control.

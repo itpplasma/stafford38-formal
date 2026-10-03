@@ -16,7 +16,7 @@
     const parsed = Date.parse(value);
     return Number.isFinite(parsed) ? parsed : -Infinity;
   };
-  const emptyState = () => ({ reviewer: '', updated: '', items: Object.create(null) });
+  const emptyState = () => ({ reviewer: '', updated: '', lastEntry: '', items: Object.create(null) });
 
   function normalizeItem(raw, fallbackReviewer, strict) {
     if (!plainRecord(raw)) {
@@ -69,6 +69,7 @@
     const state = emptyState();
     state.reviewer = cleanReviewer(raw.reviewer);
     state.updated = typeof raw.updated === 'string' ? raw.updated : '';
+    state.lastEntry = typeof raw.lastEntry === 'string' && boxById.has(raw.lastEntry) ? raw.lastEntry : '';
     for (const [id, item] of Object.entries(raw.items)) {
       if (!boxById.has(id)) continue;
       const normalized = normalizeItem(item, state.reviewer, false);
@@ -108,6 +109,7 @@
           currentFound = true;
           state.reviewer = parsed.reviewer;
           state.updated = parsed.updated;
+          state.lastEntry = parsed.lastEntry;
         } else {
           legacyFound = true;
           if (!currentFound) {
@@ -117,6 +119,7 @@
               reviewerSourceTime = sourceTime;
               state.reviewer = parsed.reviewer;
               state.updated = parsed.updated;
+              state.lastEntry = parsed.lastEntry;
             }
           }
         }
@@ -163,9 +166,14 @@
     if (data.reviewer !== undefined && typeof data.reviewer !== 'string') {
       throw new Error('The reviewer name must be text.');
     }
+    if (data.last_entry !== undefined && data.last_entry !== null &&
+        (typeof data.last_entry !== 'string' || !boxById.has(data.last_entry))) {
+      throw new Error('The last reviewed claim is unknown.');
+    }
     if (!plainRecord(data.items)) throw new Error('Review items must be an object.');
     const incoming = emptyState();
     incoming.reviewer = cleanReviewer(data.reviewer);
+    incoming.lastEntry = typeof data.last_entry === 'string' ? data.last_entry : '';
     for (const [id, item] of Object.entries(data.items)) {
       if (!boxById.has(id)) throw new Error('Unknown review item: ' + id + '.');
       incoming.items[id] = normalizeItem(item, incoming.reviewer, true);
@@ -256,8 +264,10 @@
       item.reviewer = activeReviewer;
       item.updated = new Date().toISOString();
       item.hash = box.dataset.hash;
+      state.lastEntry = id;
       save(state);
       paint();
+      updateResumeLink();
     });
   }
 
@@ -285,6 +295,7 @@
       paper_commit: meta.paper,
       formal_commit: meta.formal,
       reviewer: cleanReviewer(state.reviewer),
+      last_entry: state.lastEntry || null,
       exported: new Date().toISOString(),
       items,
     };
@@ -319,6 +330,7 @@
       reviewer.value = state.reviewer;
       save(state);
       paint();
+      updateResumeLink();
       announce('Review imported.');
     } catch (error) {
       announce('Import failed: ' + (error instanceof SyntaxError ? 'invalid JSON.' : error.message));
@@ -350,6 +362,48 @@
     if (reviewScope) document.getElementById('progress').textContent = 'Visible claims signed off: ' + approved + ' / ' + visible;
   }
   [filter, onlyIssues, onlyOpen, reviewScope].filter(Boolean).forEach((el) => el.addEventListener('input', applyFilters));
+
+  const resumeLink = document.getElementById('guided-resume');
+  function updateResumeLink() {
+    if (!resumeLink) return;
+    const box = boxById.get(state.lastEntry);
+    const card = box?.closest('section.card');
+    resumeLink.hidden = !card;
+    if (card) {
+      resumeLink.href = '#' + card.id;
+      const heading = card.querySelector('.card-head h3, h2, h3')?.textContent.trim() || state.lastEntry;
+      resumeLink.textContent = 'Resume at ' + heading;
+    } else {
+      resumeLink.removeAttribute('href');
+      resumeLink.textContent = 'Resume last visited claim';
+    }
+  }
+  function rememberEntry(id) {
+    const box = boxById.get(id);
+    const card = box?.closest('section.card');
+    if (!card) return;
+    // Guided links must remain usable even when a sidebar filter hid a claim.
+    if (card.classList.contains('hidden')) {
+      filter.value = '';
+      onlyIssues.checked = false;
+      onlyOpen.checked = false;
+      if (reviewScope) reviewScope.value = 'all';
+      applyFilters();
+    }
+    state.lastEntry = id;
+    save(state);
+    updateResumeLink();
+  }
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[data-guided-start], a[data-guided-visit], a[data-guided-resume], a[data-toc]');
+    if (!link) return;
+    const first = boxes[0]?.dataset.item;
+    const id = link.hasAttribute('data-guided-start')
+      ? first
+      : link.dataset.guidedVisit || link.dataset.toc || state.lastEntry || first;
+    rememberEntry(id);
+  });
+  updateResumeLink();
   document.getElementById('clean-text').addEventListener('change', (event) => document.body.classList.toggle('clean', event.target.checked));
   paint();
   const freshness = document.getElementById('freshness');

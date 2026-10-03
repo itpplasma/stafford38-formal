@@ -32,6 +32,17 @@ const outDir = path.resolve(opt('--out', path.join(here, 'build')));
 const reviewsDir = path.resolve(opt('--reviews', path.join(here, '../../docs/paper-lean-audit/reviews')));
 const mapPath = path.resolve(opt('--map', path.join(here, 'paper-lean-map.json')));
 const map = JSON.parse(fs.readFileSync(mapPath, 'utf8'));
+// Supply any pinned source repository, not just the legacy source roles.
+for (let i = 0; i < argv.length; i++) {
+  if (argv[i] !== '--source') continue;
+  const entry = argv[++i] ?? '';
+  const match = /^([A-Za-z][A-Za-z0-9_-]*)=(.+)$/.exec(entry);
+  if (!match) throw new Error('--source requires NAME=PATH');
+  dirs[match[1]] = path.resolve(match[2]);
+}
+const outputStem = map.output_stem ?? 'stafford38-paper-lean-audit';
+if (!/^[A-Za-z0-9_-]+$/.test(outputStem)) throw new Error('output_stem must be a safe filename');
+const liveUrl = map.live_url ?? '';
 const errors = [];
 const warnings = [];
 
@@ -176,6 +187,9 @@ const lineOfLabel = {};
 texLines.forEach((line, i) => { for (const m of stripComments(line).matchAll(/\\label\{([^}]*)\}/g)) lineOfLabel[m[1]] = i + 1; });
 
 const items = map.items;
+// The rendered sequence follows the manuscript section order, then the order
+// of entries within each section. Use the same order for guided navigation.
+const guidedItems = map.sections.flatMap((sec) => items.filter((it) => it.section === sec.number));
 const itemById = Object.fromEntries(items.map((it) => [it.id, it]));
 
 // Require every theorem-like environment declared with \newtheorem to be
@@ -541,7 +555,7 @@ function symbolLink(info, token) {
 }
 function leanBlock(info, role) {
   if (!info.url) return `<div class="lean missing">✗ ${escapeHtml(info.name ?? info.file)} — not resolved</div>`;
-  const repoTag = ({ library: 'AlgebraicAnalysis', global: 'GlobalStafford', mathlib: 'Mathlib' })[info.repo] ?? 'stafford38-formal';
+  const repoTag = ({ library: 'AlgebraicAnalysis', global: 'GlobalStafford', mathlib: 'Mathlib' })[info.repo] ?? map.sources[info.repo]?.repo ?? info.repo;
   const anchor = `lean-${slug(leanIndexKey(info))}`;
   const head = info.module_only
     ? `<a class="lean-name" href="${info.url}">${escapeHtml(info.file)}</a> <span class="muted">(module)</span>`
@@ -608,6 +622,9 @@ function reviewBlock(it, hash) {
 }
 
 function card(it) {
+  const guidedIndex = guidedItems.findIndex((entry) => entry.id === it.id);
+  const previous = guidedItems[guidedIndex - 1];
+  const next = guidedItems[guidedIndex + 1];
   const leanInfos = (it.lean ?? []).map((ref) => [resolveLean(ref, it.id), ref.role]);
   const stepInfos = (it.steps ?? []).map((st) => (st.lean ?? []).map((ref) => [resolveLean(ref, it.id), ref.role]));
   const allLeanInfos = [...leanInfos, ...stepInfos.flat()];
@@ -641,6 +658,11 @@ function card(it) {
   const usedBy = items.filter((o) => (o.depends_on ?? []).includes(it.id)).map((o) => `<a href="#item-${slug(o.id)}">${escapeHtml(o.short ?? o.id)}</a>`).join(', ');
   const texLink = it.tex_lines ? `https://github.com/${map.sources.paper.repo}/blob/${map.sources.paper.commit}/${paperFile}#L${it.tex_lines[0]}-L${it.tex_lines[1]}` : null;
   const maxSev = (it.issues ?? []).reduce((acc, iss) => Math.max(acc, SEV[iss.severity]?.rank ?? 0), 0);
+  const guidedNav = `<nav class="guided-claim-nav" aria-label="Paper-order claim navigation">
+    ${previous ? `<a rel="prev" data-guided-visit="${escapeHtml(previous.id)}" href="#item-${slug(previous.id)}">← Previous claim</a>` : '<span class="guided-disabled" aria-disabled="true">First claim</span>'}
+    <span class="guided-position">Paper-order claim ${guidedIndex + 1} of ${guidedItems.length}</span>
+    ${next ? `<a rel="next" data-guided-visit="${escapeHtml(next.id)}" href="#item-${slug(next.id)}">Next claim →</a>` : '<span class="guided-disabled" aria-disabled="true">Last claim</span>'}
+  </nav>`;
   return `<section class="card" id="item-${slug(it.id)}" data-rel="${escapeHtml(it.statement_relation)}" data-route="${escapeHtml(it.route_relation)}" data-sev="${maxSev}" data-review-scope="${escapeHtml(it.review_scope ?? 'publication')}">
   <header class="card-head">
     <h3>${escapeHtml(it.kind ?? '')} ${escapeHtml(it.number ?? '')}${it.title ? ' — ' + mdInline(it.title) : ''}</h3>
@@ -681,6 +703,7 @@ function card(it) {
     it._hash = h;
     return recordedBlock(it.id, h) + reviewBlock(it, h);
   })()}
+  ${guidedNav}
 </section>`;
 }
 
@@ -811,13 +834,14 @@ const html = `<!doctype html>
   <table class="pins">
     <tr><th>Paper</th><td><a href="https://github.com/${src.paper.repo}/blob/${src.paper.commit}/${paperFile}">${escapeHtml(src.paper.repo)}/${escapeHtml(paperFile)}</a> @ <code>${src.paper.commit.slice(0, 12)}</code> ${escapeHtml(src.paper.note ?? '')}</td></tr>
     <tr><th>Lean</th><td><a href="https://github.com/${src.formal.repo}/tree/${src.formal.commit}">${escapeHtml(src.formal.repo)}</a> @ <code>${src.formal.commit.slice(0, 12)}</code> ${escapeHtml(src.formal.note ?? '')}</td></tr>
-    <tr><th>Library</th><td><a href="https://github.com/${src.library.repo}/tree/${src.library.commit}">${escapeHtml(src.library.repo)}</a> @ <code>${src.library.commit.slice(0, 12)}</code> ${escapeHtml(src.library.note ?? '')}</td></tr>
+    ${src.library ? `<tr><th>Library</th><td><a href="https://github.com/${src.library.repo}/tree/${src.library.commit}">${escapeHtml(src.library.repo)}</a> @ <code>${src.library.commit.slice(0, 12)}</code> ${escapeHtml(src.library.note ?? '')}</td></tr>` : ''}
     ${src.global ? `<tr><th>GlobalStafford</th><td><a href="https://github.com/${src.global.repo}/tree/${src.global.commit}">${escapeHtml(src.global.repo)}</a> @ <code>${src.global.commit.slice(0, 12)}</code> ${escapeHtml(src.global.note ?? '')}</td></tr>` : ''}
     ${src.mathlib ? `<tr><th>Mathlib</th><td><a href="https://github.com/${src.mathlib.repo}/tree/${src.mathlib.commit}">${escapeHtml(src.mathlib.repo)}</a> @ <code>${src.mathlib.commit.slice(0, 12)}</code> ${escapeHtml(src.mathlib.note ?? '')}</td></tr>` : ''}
-    <tr><th>Build</th><td>generated ${buildInfo.generated} by <code>tools/paper_lean_audit</code> (stafford38) · mapping checks: ${errors.length ? `<b class="err">${errors.length} errors</b>` : 'all passed'} · ${warnings.length} warnings</td></tr>
+    <tr><th>Build</th><td>generated ${buildInfo.generated} by <code>paper-lean-audit</code> · mapping checks: ${errors.length ? `<b class="err">${errors.length} errors</b>` : 'all passed'} · ${warnings.length} warnings</td></tr>
   </table>
 </header>
 <section id="overview"><p class="publication-target"><b>Max: review the whole current paper–Lean correspondence.</b> Check every mathematical claim, its definitions, hypotheses, sidedness and proof steps, including exact matches. Keep valid paper arguments where checked variants or adapters can support them. Linked readable Lean proofs explain differences; they do not certify a different printed proof. Johanna reviews concrete text proposals. Human acceptance is still required.</p><div id="freshness" class="muted"></div><h2>Overview</h2>
+  ${guidedItems.length ? `<p class="guided-start"><a data-guided-start href="#item-${slug(guidedItems[0].id)}">Start guided review at ${escapeHtml(guidedItems[0].short ?? guidedItems[0].title ?? guidedItems[0].id)}</a> <span class="muted">(${guidedItems.length} claims in paper order)</span> · <a id="guided-resume" data-guided-resume hidden>Resume last visited claim</a></p>` : ''}
   <div class="stats"><div>Statements: ${countBy('statement_relation', REL)}</div><div>Proof routes: ${countBy('route_relation', ROUTE)}</div><div>Issues: ${sevCount}</div><div>Recorded sign-offs (committed, current): ${items.filter((it) => (recorded[it.id] ?? []).some((r) => r.complete && r.hash === it._hash)).length} / ${items.length}</div></div>
   ${md(map.overview)}
   <h3>How to use this document</h3>${md(map.how_to_use)}
@@ -838,12 +862,12 @@ ${sectionHtml}
   ${warnings.length ? `<details><summary>${warnings.length} warnings</summary><ul>${warnings.map((w) => `<li>${escapeHtml(w)}</li>`).join('')}</ul></details>` : ''}
 </section>
 </main>
-<script>window.AUDIT_META = ${JSON.stringify({ version: map.version, paper: src.paper.commit, formal: src.formal.commit, checks: reviewChecks.map((c) => c.id), generator: generatorHash, live: "https://itpplasma.github.io/stafford38-formal/" })};</script>
+<script>window.AUDIT_META = ${JSON.stringify({ version: map.version, paper: src.paper.commit, formal: src.formal.commit, checks: reviewChecks.map((c) => c.id), generator: generatorHash, live: liveUrl })};</script>
 <script>${js}</script>
 </body></html>`;
 
 fs.mkdirSync(outDir, { recursive: true });
-const htmlPath = path.join(outDir, 'stafford38-paper-lean-audit.html');
+const htmlPath = path.join(outDir, outputStem + '.html');
 fs.writeFileSync(htmlPath, html);
 fs.writeFileSync(path.join(outDir, 'version.json'), JSON.stringify({ version: map.version, paper: src.paper.commit, formal: src.formal.commit, generator: generatorHash }) + '\n');
 console.log(`wrote ${htmlPath}`);
@@ -870,7 +894,7 @@ if (flag('--pdf')) {
       if (ratio < 1) el.style.fontSize = `${Math.max(0.6, ratio * 0.97)}em`;
     }
   });
-  const pdfPath = path.join(outDir, 'stafford38-paper-lean-audit.pdf');
+  const pdfPath = path.join(outDir, outputStem + '.pdf');
   // Sanity check: every heading becomes an outline entry, so a complete PDF
   // has at least one /Title per heading; retry otherwise.
   const expected = await page.evaluate(() => document.querySelectorAll('h1, h2, h3').length);
@@ -879,7 +903,7 @@ if (flag('--pdf')) {
     await page.pdf({
       path: pdfPath, format: 'A4', printBackground: true, outline: true, tagged: true,
       margin: { top: '14mm', bottom: '16mm', left: '12mm', right: '12mm' }, displayHeaderFooter: true,
-      headerTemplate: `<div style="font-size:7px;width:100%;text-align:center;color:#666">Stafford 3.8 paper–Lean audit · paper ${src.paper.commit.slice(0, 7)} · Lean ${src.formal.commit.slice(0, 7)}</div>`,
+      headerTemplate: `<div style="font-size:7px;width:100%;text-align:center;color:#666">${escapeHtml(map.title ?? "Paper–Lean review")} · paper ${src.paper.commit.slice(0, 7)} · Lean ${src.formal.commit.slice(0, 7)}</div>`,
       footerTemplate: '<div style="font-size:7px;width:100%;text-align:center;color:#666"><span class="pageNumber"></span> / <span class="totalPages"></span></div>',
     });
     const bytes = fs.readFileSync(pdfPath).toString('latin1');

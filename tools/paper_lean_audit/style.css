@@ -121,4 +121,9 @@ table.reg.fixed { table-layout: fixed; } table.reg td { overflow-wrap: anywhere;
 .publication-target { padding: 8px 12px; border-left: 3px solid var(--accent); background: var(--paper); margin: 8px 0; }
 .publication-focus [data-reference-material]:not([data-on-demand]) { display: none; }
 #review-scope { width: 100%; margin: 4px 0 10px; }
+.guided-start { padding: 8px 12px; border-left: 3px solid var(--teal); background: var(--lean); }
+.guided-claim-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid var(--line); margin-top: 12px; padding-top: 8px; font: 13px system-ui, sans-serif; }
+.guided-position { color: var(--muted); text-align: center; }
+.guided-disabled { color: var(--muted); }
+@media (max-width: 600px) { .guided-claim-nav { flex-wrap: wrap; } .guided-position { order: -1; flex-basis: 100%; } }
 @media print { .publication-focus [data-reference-material] { display: block; } section.card.hidden { display: block !important; } }
