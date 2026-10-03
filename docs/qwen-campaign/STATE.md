@@ -22,7 +22,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T21 | Minimal tower reproducer | done | 1 | .lake/qwen/logs/T21-luna-2.log | Mathlib quotient and abstract hom towers compile; frozen negative probe captures oldTower/compHom action mismatch; guarded final exit0,10s; receipt in notes/T21-repro.md |
 | T22 | Ring-hom form of the endpoint | done | 2 | notes/T22-accepted-checks.tar.gz | Sol removed two redundant rfl tactics; module and trust0 consumer exit0,5s each,peak2009/1860MiB,three allowed axioms; statement unchanged; static audit reanchored PASS; WT commit e2ba158 |
 | T30 | Chart and away data | done | 1 | notes/T30-accepted-checks.tar.gz | Luna module/consumer exit0,7/3s,peak2.1/0.9GiB,three allowed axioms; existing numerator/chart owners retained; WT commit ef715e7; independent Linux check preparing |
-| T31 | Coordinate presentation | doing | 1 | notes/T31-check.md | Two diagnostic builds used stale WT guard; current guard copied to WT at5228a6d, third build granted via absolute MAIN guard; acceptance pending |
+| T31 | Coordinate presentation | retry | 2 | notes/T31-linux-resume.md | Current source failure reproduced on guarded Mac: missing SourceDVR algebra/local-ring instances and row-index universe; Luna assessment returned, Sol repair assigned |
 | T32 | Maximal ideal and common open | doing | 1 | | Luna preparing common-open package with upstream/downstream field contracts; checks queued |
 | T33 | Arc into Laurent series | doing | 1 | | Luna preparing canonical-ground arc transport in parallel; checks queued |
 | T34 | Columns, derivatives, numerator | doing | 1 | | Luna preparing same-witness position/column/numerator derivations; checks queued |
@@ -57,6 +57,11 @@ to Sol. Historical Pi/Qwen records remain preserved.
 
 ## Current execution (resumed 2026-10-03 by owner)
 
+- Linux controller resume: MAIN `3214f5c8f336`, WT restored at `c3dccd4b3f93` on `campaign/paper-route-20261003`; unrelated untracked `cluster-guard.py` preserved. Authoritative documentation remains in MAIN.
+- All 578 candidate Lean/configuration source hashes matched the saved Mac WT before the first check. Manifest SHA-256 `181dc71c535a28f43a1bb7db37de14b6781cc7a1de2512cb76595d05b3285342`; this identifies candidates, not accepted proof evidence.
+- Mac guarded T31 check reproduced the saved failure in 22 seconds, peak 2163 MiB, two threads, 8 GiB cap. The first invocation failed before Lean because SSH lacked Lake in PATH; the corrected invocation supplied the installed rc3 bin path.
+- Local canonical cache is still 4.33 and must not be reused. A fresh Linux rc3 cache and local Linux resource guard are being prepared under the archived mailuefterl execution contract; final frozen replay remains a separate gate.
+- Luna workers assessed disjoint T31–T44 and release inputs. T31 escalated to `gpt-6.1-sol` after its recorded failed task; downstream acceptance waits for checked prerequisites. No release or final email has been sent.
 - The active user instruction resumes the full campaign, authorizes regular commits/pushes and both releases, and requests the final review email after completion.
 - Workers use `gpt-6-luna`; failed bounded tasks escalate to Sol. No Qwen/Pi campaign driver is used in this resumed run.
 - The owner's follow-up explicitly replaces serial task selection with heavy parallelism. Independent workers/subagents prepare disjoint candidates concurrently; actual dependencies govern acceptance. The controller schedules bounded Lean checks across approved hosts.

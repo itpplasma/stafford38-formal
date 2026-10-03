@@ -7,12 +7,17 @@ releases and a final review email. This replaces the former serial Pi/Qwen
 execution model. The historical directory and branch names are retained
 for receipt continuity; no Qwen worker or driver is used.
 
-Campaign folder (absolute): `/Users/ert/proj/stafford38-formal/docs/qwen-campaign`
+The controller resumed on Linux `mailuefterl` on 3 October 2026. Current
+paths are below; historical Mac paths in task commands identify the saved
+remote checkout and must be adapted for local work. The existing Mac proof
+checkout is a guarded check host, with source hashes compared before runs.
+
+Campaign folder (absolute): `/home/ert/proj/stafford38-formal/docs/qwen-campaign`
 
 | Name | Path |
 | --- | --- |
-| `MAIN` | `/Users/ert/proj/stafford38-formal` (controller checkout, branch `main`; do not edit Lean here) |
-| `WT` | `/Users/ert/proj/stafford38-qwen` (campaign worktree, branch `qwen/paper-route`; all Lean edits go here) |
+| `MAIN` | `/home/ert/proj/stafford38-formal` (controller checkout, branch `main`; do not edit Lean here) |
+| `WT` | `/home/ert/proj/stafford38-qwen` (campaign worktree, branch `campaign/paper-route-20261003`, restored from `c3dccd4b3f93`; all Lean edits go here) |
 | `CAMP` | `$MAIN/docs/qwen-campaign` (this plan, `STATE.md`, `guard.sh`, notes) |
 | `ARCH` | `$MAIN/docs/audits/paused-2026-10-02` (archived failed candidates; read-only) |
 | `SCR` | `$WT/.lake/qwen` (scratch files, extracted archives and logs; never committed) |
@@ -142,7 +147,7 @@ with small top-level lemmas over abstract types.
 
 ### 2.3 Machines
 
-- This session's shell is on faepmac1. Local guarded checks and scheduled
+- The original session's shell was on faepmac1. Guarded checks there and scheduled
   jobs on `acluster` and `scluster` are explicitly authorized by the owner.
   Use cluster compute allocations; login nodes are for submission and
   lightweight inspection. Preserve persistent services and foreign jobs.
