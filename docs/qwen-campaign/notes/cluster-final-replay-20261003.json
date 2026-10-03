@@ -28,7 +28,7 @@
     "all_package_heads": "Require each manifest package rev to be a lowercase immutable 40-hex SHA and .lake/packages/<name>/HEAD=rev; inputRev may be a symbolic requested branch. Retain complete after-update/final ten-entry receipts."
   },
   "runtime": {
-    "prepared_inputs": "Reuse only a completed, controller-selected bootstrap run root with isolated elan/toolchain, xdg-cache, mathlib-cache, and staged curl-runtime. Never overlap a cache writer; do not install packages or edit system files.",
+    "prepared_inputs": "Reuse only a completed, controller-selected bootstrap run root with isolated elan/toolchain, xdg-cache, mathlib-cache, and staged curl-runtime. Never overlap a cache writer; do not install packages or edit system files. Copy the completed bootstrap project .lake into the fresh source checkout when present. Reuse generated compiled outputs; Lake source traces and all ten exact package HEADs remain checked. No concurrent cache writer is allowed.",
     "curl": "Run staged curl wrapper --version before network use; require curl and libcurl markers. CURL_CA_BUNDLE points to staged CA bundle.",
     "environment": "Driver pins ELAN_HOME, ELAN_TOOLCHAIN, XDG_CACHE_HOME, MATHLIB_CACHE_DIR, GIT_CONFIG_GLOBAL=/dev/null, no terminal prompt, and isolated pinned Lean first on PATH. It verifies lean --githash and resolved Lean path.",
     "timeouts": "Each recorded command has GNU timeout --kill-after=60s 19800s. Outer Linux guard timeout is 21600 seconds; Slurm allocation must accommodate it.",
@@ -40,6 +40,7 @@
     "exact isolated Lean executable path and Lean githash",
     "fetch and detached checkout of the full public source commit",
     "source manifest and exact lock SHA",
+    "reuse completed bootstrap .lake cache when present; frozen tracked source is unchanged",
     "python3 scripts/check-palomar-policy.py",
     "bash scripts/bootstrap-palomar-tools.sh",
     "lake update",

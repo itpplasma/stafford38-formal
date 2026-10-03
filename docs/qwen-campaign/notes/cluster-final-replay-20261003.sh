@@ -244,6 +244,11 @@ cd "$source_root"
 write_source_manifest "$receipt_root/source-manifest-before.json"
 verify_manifest_hash before-update
 
+# Reuse generated build outputs from the completed isolated bootstrap.
+# Lake validates traces against the frozen source; package HEADs are checked below.
+if [[ -d "$run_root/project/.lake" ]]; then
+  run_stage compiled-cache-reuse cp -a "$run_root/project/.lake" "$source_root/.lake"
+fi
 run_stage source-policy python3 scripts/check-palomar-policy.py
 run_stage tooling bash scripts/bootstrap-palomar-tools.sh
 run_stage dependency-materialization lake update

@@ -30,8 +30,9 @@ Columns468 failed actual compilation in scluster3115702; Sol replaced the
 concrete derivative fields with an abstract derivative certificate and stable
 getters. Columns08db failed the retained Laurent action/tower match in scluster3116538.
 Sol repaired it using the accepted T22 scalar scopes; Columns5405 generic prefix failed3116945 at the scalar action bridge. Sol
-repairs the exact action transport; the full module and Closure59b remain queued
-behind a successful prefix. T36's frozen statement is unchanged.
+stopped repeated dictionary rewriting after82cd failed3117210 and is inspecting
+actual instance terms in one guarded scluster diagnostic3117466. The full module
+and Closure59b remain queued behind a successful prefix. T36's frozen statement is unchanged.
 T35 passed independently on both clusters. The alternative geometry endpoint
 also passed its Linux module at WT71e966a; full solution assembly/comparisons
 remain required. No guard threshold is relaxed. Both isolated cluster
