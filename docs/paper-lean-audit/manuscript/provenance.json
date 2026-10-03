@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
-  "paper_commit": "bb3190f8b962f95a0d6ebe30bac0f80ea3ec1388",
+  "paper_commit": "a5a703f588ef3a2c43e8fc21f89db8bf494af5db",
   "snapshot_scope": "Exact six current manuscript inputs at the named public paper commit. Visible author proof and marked local proposals are preserved; human acceptance remains pending.",
-  "previous_snapshot_commit": "348612f",
+  "previous_snapshot_commit": "9fdeac1f1f432459b97e7f421937a1ee8b7e8d9f",
   "retired_files": [
     "lean_refs.tex",
     "ai_annotations.tex",
@@ -28,7 +28,7 @@
     },
     {
       "path": "ai_review.tex",
-      "sha256": "a026f5fc71d59972638abaaf8cb2d84645087393179637b6076cd23cacf25eae",
+      "sha256": "7b63c12e75b713e2c72506777274502df18ae397408ce0475f3225a7d63a492b",
       "status": "active"
     },
     {
