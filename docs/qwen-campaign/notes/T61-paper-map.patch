@@ -1,0 +1,139 @@
+--- a/docs/paper-route-alignment.json
++++ b/docs/paper-route-alignment.json
+@@ -96,7 +96,135 @@
+       "The point-local, finite-birational, and extra-away localizations are distinct presentations; their denominators are not all asserted to avoid M.",
+       "A conditional tangent-space inclusion or equality does not establish the printed normalized-divisor and smooth-closed-point correspondence by itself.",
+       "The conditional affine conormal endpoint has not been shown to feed the original-prime endpoint used by the terminal proof."
+-    ]
++    ],
++    "declaration_map_draft": {
++      "paper_source_commit": "357b7d9db8e5d363a11500b301f04607654bd809",
++      "paper_source_path": "human_readable_main.tex",
++      "paper_source_sha256": "fd707283bda604800400fd86cb31f9e3ab083f29a3fb8e556c230ccd83aaaa3b",
++      "status": "draft locator map for the current worktree source snapshot; Lean source acceptance is pending",
++      "scope": "Maps theorem statements and construction steps to the closest visible manuscript passages. It does not assert proof correspondence or change the end-to-end closure status.",
++      "rows": [
++        {
++          "lean": "Stafford38.Geometry.SameWitness.factorization_to_atPrime",
++          "file_line": "Stafford38/Geometry/SameWitness/AwayFactorToAtPrime.lean:17",
++          "mathematics": "Carries a unit-factorization from an away localization to the localization at a prime avoiding the denominator.",
++          "paper_location": "No direct paper counterpart; nearest use is the local order-factorization discussion at lines 1164-1166.",
++          "relation": "Technical transport supporting the same-point construction."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.pair_factorizations_to_atPrime",
++          "file_line": "Stafford38/Geometry/SameWitness/AwayFactorToAtPrime.lean:49",
++          "mathematics": "Transports both selected divisor-order factorizations to one localization at the retained point.",
++          "paper_location": "No direct paper counterpart; nearest passage is lines 1214-1217, where the two selected coordinates are written as powers times units.",
++          "relation": "Technical transport; the manuscript writes the factorizations directly."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.exists_axis_lift_of_groundPointChartOutput",
++          "file_line": "Stafford38/Geometry/SameWitness/AxisLiftFromGroundPoint.lean:26",
++          "mathematics": "From a supplied ground-point chart output, obtains a maximal point and one tilted axis lift with the retained order factorizations.",
++          "paper_location": "Lines 1192-1217: choose the tilted formal axis and record the selected coordinate orders.",
++          "relation": "Mathematical analogue under explicit Lean inputs; no proof correspondence is asserted."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.originalAffineChartToCommonOpen_groundMap",
++          "file_line": "Stafford38/Geometry/SameWitness/ChartGroundMap.lean:28",
++          "mathematics": "Shows that the selected original-chart map agrees with the ground-field map on the common open.",
++          "paper_location": "No direct paper counterpart; the manuscript uses affine chart coordinates near lines 1157-1166 without stating this ring-map identity.",
++          "relation": "Formal compatibility lemma."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.nonempty_chartSetup",
++          "file_line": "Stafford38/Geometry/SameWitness/ChartSetup.lean:68",
++          "mathematics": "Packages a smooth principal open, selected chart and away presentation, and nonzero homogenized numerator from one witness.",
++          "paper_location": "Lines 1147-1166: normalization, choice of a nonzero projective chart, and the two order factorizations.",
++          "relation": "Construction-level analogue; the manuscript does not package these data as one structure."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.nonempty_coordinatePresentation",
++          "file_line": "Stafford38/Geometry/SameWitness/CoordinatePresentation.lean:77",
++          "mathematics": "Combines the retained ground-point chart output with a finite coordinate and selected-row presentation.",
++          "paper_location": "Lines 1177-1189 and 1228-1236: choose the closed point, local parameters, and tangential coordinate rows.",
++          "relation": "Construction-level analogue; no declaration-level proof correspondence is asserted."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.exists_selected_chart_coordinate_data",
++          "file_line": "Stafford38/Geometry/SameWitness/CommonOpen.lean:276",
++          "mathematics": "Expresses the retained projective columns in the selected affine chart quotient and records the denominator and generator coordinates.",
++          "paper_location": "Lines 1157-1163: choose a nonzero projective chart and write its affine coordinates and divisor orders.",
++          "relation": "Construction-level coordinate analogue; the manuscript does not state this quotient presentation."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.exists_common_open_map_data",
++          "file_line": "Stafford38/Geometry/SameWitness/CommonOpen.lean:304",
++          "mathematics": "Identifies the selected columns through the common-open and point-local maps and retains the original-chart map.",
++          "paper_location": "No direct paper counterpart for the localization maps; the closest coordinate use is the chart parametrization at lines 1219-1222.",
++          "relation": "Technical bridge preserving the selected coordinates."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.nonempty_commonOpenData",
++          "file_line": "Stafford38/Geometry/SameWitness/CommonOpen.lean:384",
++          "mathematics": "Builds the retained maximal point, local certificate, order data, and selected maps used by the common-open construction.",
++          "paper_location": "Lines 1164-1189 and 1214-1217: local divisor parameter, selected closed point, local coordinates, and unit factors.",
++          "relation": "Analogue only; the manuscript does not define the formal common-open localization package."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.exists_commonOpenArcData",
++          "file_line": "Stafford38/Geometry/SameWitness/CommonOpenArc.lean:70",
++          "mathematics": "Extends the retained point-local arc to the selected common open and records its ground-map and nonvanishing identities.",
++          "paper_location": "Lines 1201-1217: choose the tilt, obtain the formal arc, and retain the selected coordinate orders.",
++          "relation": "Construction-level analogue; the Lean common-open ring has no named manuscript counterpart."
++        },
++        {
++          "lean": "private CommonOpenEtale.originalChartToCommonOpen_groundMap_k",
++          "file_line": "Stafford38/Geometry/SameWitness/CommonOpenEtale.lean:49",
++          "mathematics": "Derives the original-chart k-algebra identity on the common open from the selected chart map and coefficient map.",
++          "paper_location": "No direct paper counterpart; this is a formal ring-map compatibility step.",
++          "relation": "Private implementation lemma."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.nonempty_commonOpenEtaleData",
++          "file_line": "Stafford38/Geometry/SameWitness/CommonOpenEtale.lean:99",
++          "mathematics": "Builds the two common-open k-algebra maps and their formally-etale certificates.",
++          "paper_location": "Lines 1182-1189: identify the completed local ring with a power-series ring and choose formal coordinates.",
++          "relation": "Analogue only; the manuscript does not state these ring maps or formal-etale certificates."
++        },
++        {
++          "lean": "private CommonOpenPositions.commonOpen_position_of_pointColumns",
++          "file_line": "Stafford38/Geometry/SameWitness/CommonOpenPositions.lean:28",
++          "mathematics": "Transfers the retained point-local column positions to their common-open arc images.",
++          "paper_location": "Lines 1219-1225 and 1232-1245: write the projective-coordinate columns and correct the transverse entries along the tilted arc.",
++          "relation": "Private bridge to the visible column calculation."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.commonOpenPositionData_of_arc",
++          "file_line": "Stafford38/Geometry/SameWitness/CommonOpenPositions.lean:97",
++          "mathematics": "Retains the selected columns' tilted positions as power-series data on the common-open arc.",
++          "paper_location": "Lines 1219-1245: projective-coordinate columns and the tilted transverse-row correction.",
++          "relation": "Construction-level analogue; no full proof correspondence is asserted."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.axis_mem_smoothConormalFibreProjection_closure_of_algHoms",
++          "file_line": "Stafford38/Geometry/SameWitness/EndpointOfAlgHoms.lean:27",
++          "mathematics": "Proves the affine smooth-conormal closure endpoint from supplied algebra maps, arc positions, derivative identities, smoothness, and numerator nonvanishing.",
++          "paper_location": "Closest statement is Lemma tangent-limit, lines 1068-1085; its proof's tangent-space conclusion appears at lines 1270-1293.",
++          "relation": "Conditional endpoint only; the manuscript proof and Lean proof have not been shown to correspond."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.axis_mem_smoothConormalFibreProjection_closure_of_groundPointOutput",
++          "file_line": "Stafford38/Geometry/SameWitness/AffineFibreClosure.lean:28",
++          "mathematics": "Assembles the retained chart, ground-point output, common-open arc, and endpoint data to place the coordinate axis in the smooth conormal fibre closure.",
++          "paper_location": "The target matches the conormal-direction limit in Lemma tangent-limit, lines 1068-1085, and the visible construction at lines 1192-1293.",
++          "relation": "Draft module-level map; the end-to-end theorem is not recorded as accepted or frozen."
++        },
++        {
++          "lean": "Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure",
++          "file_line": "Stafford38/Geometry/SameWitness/OriginalPrimeAxis.lean:22",
++          "mathematics": "Derives the original-prime coordinate-axis conclusion by splitting the direct algebraic case from the retained-witness case.",
++          "paper_location": "Statement of Theorem asymptotic-conormal, lines 1133-1144.",
++          "relation": "Statement counterpart only; the manuscript proof route and the Lean proof route remain separately reviewed."
++        }
++      ]
++    }
+   },
+   "canonical_definition_registry": {
+     "path": "docs/definition-owners.md",

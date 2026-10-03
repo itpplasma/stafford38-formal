@@ -1,0 +1,13 @@
+--- a/docs/definition-owners.md
++++ b/docs/definition-owners.md
+@@ -57,6 +57,10 @@
+ | One-tilt axis-lift producer | `Geometry.ActualPointAxisLift.exists_actual_point_axis_lift` | From a supplied formally-etale ground point, selected rows, chart, and divisor/axis orders, it chooses one correction tuple and proves the selected-coordinate axis-lift data. The theorem is conditional on those inputs. |
+ | Same-witness common-open direct-summand adapter | `Geometry.ActualPointCommonOpenAssembly.exists_directSummandInput_of_selected_axis_lift` | This assembles the supplied column, derivative, smoothness, and closure data into the canonical `DirectSummandInput`; it remains conditional on those inputs. |
+ | Same-witness affine conormal endpoint | `Geometry.ActualSameWitnessAffineFibreEndpoint.axis_mem_smoothConormalFibreProjection_closure_of_actual_columns` | The endpoint consumes actual-column identities plus explicit smoothness, numerator, and closure hypotheses. A green conditional endpoint is not itself a proof that the ground-point output supplies those hypotheses. |
++| Same-witness chart setup | `Geometry.SameWitness.ChartSetup` | Bundles the selected chart, smooth affine principal open, away presentation, and homogenized numerator data. Existing owners provide these components but no owner retains their same-witness package. |
++| Same-witness coordinate presentation | `Geometry.SameWitness.CoordinatePresentation` | Bundles the finite option-coordinate map, selected row correspondence, and retained ground-point chart output for one `ChartSetup`; no existing owner packages this combined data. |
++| Same-witness common-open arc data | `Geometry.SameWitness.CommonOpenArcData` | Extends `CommonOpenData` with the selected point-local Laurent arc, canonical-map equalities, and ground-map and restriction equations; existing arc and transport owners define the maps but not this retained package. |
++| Same-witness common-open étale data | `Geometry.SameWitness.CommonOpenEtaleData` | Bundles the original-chart and option-polynomial maps into the common open with their formal-etale certificates; no existing owner retains this pair of maps and certificates together. |
+ | Strict upper-triangular matrix predicate | `ArtinianEquation33TraceProducer.IsStrictUpperTriangularOver` | `ArtinianTriangularTrace.IsStrictUpperTriangular` is an abbreviation at the fixed coefficient field. |
+ | Presented canonical right ideal | `WeylEulerResidue.canonicalRightIdeal` | `WeylQuotientTransport.presentedCanonicalRightIdeal` abbreviates its presented-coordinate specialization. |
+ 

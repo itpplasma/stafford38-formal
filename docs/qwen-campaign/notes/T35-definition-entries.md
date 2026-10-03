@@ -1,0 +1,1 @@
+`Stafford38.Geometry.SameWitness.CommonOpenEtaleData` — `Stafford38/Geometry/SameWitness/CommonOpenEtale.lean` — packages the two actual common-open `k`-algebra maps and their formally-etale certificates for the selected chart and coordinate presentation; no existing owner packages this joint same-witness data.
