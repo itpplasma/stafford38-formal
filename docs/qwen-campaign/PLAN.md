@@ -47,8 +47,14 @@ resume builds the3 existing retained modules explicitly, probes actual receipt
 I/O, runs only the4 comparisons and final identity/pin gates. Do not repeat the
 successful complete verifier. Sole remaining-stage job3136492 was submitted
 at18:43:19Z after empty queue/idle node/exact hash preflight.
-Proof/tool/package pins remain C2 unchanged;
-preserve the full success and subsequent failure receipts.
+The I/O probes and3 explicit retained targets passed in3136492, but its first
+comparison stopped before proof checking: pinned bubblewrap cannot bind onto
+the generated `.lake` symlink. The allocation drained without resource stops,
+swap growth or children;3 later comparisons/final identity did not run.
+The next remaining-stage repair relocates the existing real cache into C2's
+`.lake` directory, without copying or changing source/tool/policy flags, then
+runs the4 comparisons and final identity/pins. No verifier/library repeat.
+Proof/tool/package pins remain C2 unchanged; preserve all success/failure receipts.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
 57-card browser walkthrough. The public review site is deployed. All three

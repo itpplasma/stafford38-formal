@@ -80,7 +80,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T70 | Frozen public commit | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Exact publicC2=12ae3cc49152672a48a96f13994314b65ae38197 pushed before final launch; priorC1 retained |
 | T71 | Final Linux host preflight | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Prior3129931guard0/drained; empty userqueue/node20idle;3controlhashes exact; fresh source/receiptpaths absent |
 | T72 | Launch Linux driver | done | 4 | notes/T73-final-C2-resume2-submission-3136492-20261003.json | SoleS3136492 remaining-stage resume exactC2/approvedcache;3existingmodules+4comparators+finalidentity; no fullverifier repeat |
-| T73 | Collect Linux result | doing | 4 | notes/T73-final-C2-resume2-submission-3136492-20261003.json | FullverifierPASS3131801 retained; reviewedremaining-stageS3136492 active;4actualcomparators/finalidentity/guarddrain pending |
+| T73 | Collect Linux result | doing | 4 | notes/T73-final-C2-resume2-submission-3136492-20261003.json | FullverifierPASS3131801 and3retainedtargets/I/OprobesPASS3136492; comparator1stoppedbeforeproof due generatedcache symlink mount; drained; cachelayout-onlyresume3 preparednext |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
 | T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+C2/P3/S3refreshPASS519refs/0errorswarnings;57unchangedcards inherit actualbrowserwalk; PDFassetgatePASS; humanreviewpending |
@@ -291,3 +291,28 @@ Receipt root is `final-receipts-guard-repaired-resume2`; guard prefix is
 only actual I/O probes,3 retained module targets,4 comparators and final
 source/pin identity remain. Original21600/19800-second and2CPU/8GiB caps remain.
 No other proof job or unchanged verifier rerun is scheduled.
+
+## Retained module pass and sandbox cache-layout failure
+
+Remaining-stage3136492 passed the actual receipt filesystem and bounded ordinary
+stdout/stderr probes at18:43:28Z, then all3 explicit retained modules at18:43:42Z.
+The retained module log SHA-256 is
+`ae4cb0eefad61910d6734ba0df4620d6059d6d1dd791439f818a89b13278dd59`.
+Raw source-before manifest remained2c697217/1095 tracked files; all10 pins matched.
+
+The first comparator stopped before proof checking at18:45:55Z because pinned
+bubblewrap0.12.0 cannot mount onto `final-source-guard-repaired/.lake`, which is a
+generated cache symlink. Pinned rc3 Lake/CLI/Check.lean binds the project's
+`.lake` at that same project path during resolution/build/export. No theorem,
+configuration, proof mechanism or policy exception was implicated. The other3
+comparators and final source-after check were not executed. Guard finished1,
+stop[]/children[]/zero swap, peak3833794560 bytes. The80-file exact packet is
+`notes/T73-retained-build-pass-cache-mount-failure-3136492-20261003.tar.gz`,
+SHA-256 `e1778d9af7eb48b8dae02944a863134183c7197d9c316d9abafedd204d1cbf0e`.
+
+The bounded next repair relocates only the existing actual cache directory into
+C2's `.lake` path, preserving inode/content and old donor access, without copying,
+source/tool/package changes or sandbox flag changes. Remaining scope is only4
+actual comparisons and final source/pin integrity under the same accepted caps.
+The successful whole verifier and retained module build will not be repeated.
+Resume3 is in preparation; no slot is running or duplicated.
