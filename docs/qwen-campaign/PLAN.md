@@ -44,8 +44,13 @@ That abstract transfer passed stage25. Its sole next error is the missing
 certificate identifying stored etale.φk with the canonical original-chart
 map. The existing producer already builds that exact map. Retain its
 reflexive hφAction equality, transport the column identity through it,
-and recheck the latest T35 interface and Closure. Historical T35 receipts
-remain unchanged. Public theorem statements and literal consumers stay
+and recheck the latest T35 interface and Closure. Strengthened T35 source
+3c79d87 passed3126127 module and unchanged trust-zero consumer, with exactly
+the three permitted axioms, and is committed/pushedWT3be4598. A runner-only
+consumer namespace mismatch stopped before Closure; the controller verified
+the actual report and authorized Closure-only3126415. See
+notes/T35-canonical-map-linux-accepted-checks-20261003.md. Historical T35
+receipts remain unchanged. Public theorem statements and literal consumers stay
 unchanged; accepted caches are reused. See notes/T36-actual-closure-checks-20261003.md.
 T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
