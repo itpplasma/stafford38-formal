@@ -988,6 +988,8 @@ Accept: exit 0; statement diff empty.
 
 ### T43 Install the strict dependency guard
 
+Actualproductionfailure3October2026: final3128526 fullbuild passed4475jobs, theninspection lacked private Mathlib bodies because the guard selected the public environment view. Sol repairs only the inspection view and multiline marker parsing, preservingallstrictchecks; boundedactualproductioninspection mustpass before finalreplay. Failurepacket: notes/T73-dependency-guard-failure-3128526-20261003.md.
+
 Owned: the files created by the archived patches:
 `scripts/dependency-guard/*`, `tests/dependency-guard-fixtures/*`, and the
 two hunks of `scripts/verify.sh` from the wiring patch.
@@ -1343,5 +1345,8 @@ for the formal repository, the paper and the supplementary bundle with the
 verified new DOIs. The controller applies them and synchronizes Overleaf as
 authorized by the current campaign request.
 
-When T93 is done, the campaign is complete. Report `RESULT: campaign
-complete` and stop.
+### T94 Final review emails
+
+After both releases, both zero-mismatch Zenodo archive checks and final paper citations are complete, send the authorized short English emails: Johanna at j.moser@tugraz.at reviews the marked manuscript corrections on Overleaf; Max at philipp@student.tugraz.at uses the guided tooling for the complete Lean–paper comparison. Sign each with Chris&AI and record delivery. Human review and online Palomar registration remain owner follow-up actions.
+
+When T93 and T94 are done, the campaign is complete. Report `RESULT: campaign complete` and stop.
