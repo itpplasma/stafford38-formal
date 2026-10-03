@@ -20,7 +20,9 @@ marked proposals. Finish T34–T36 and T40–T51, then deliver matching formal a
 releases. Verify both Zenodo archives and cite them from the paper. This is
 one delivery, with proof and asset checks as its acceptance gates.
 
-Current checkpoint (3 October 2026): all manuscript-route modules, their
+Current delivery update: formal v1.3.1 corrects the owner-reported Palomar provenance finding and is byte-verified at DOI10.5281/zenodo.23127367 (1,172 files). Publish corrected supplementary v0.2.1 from R131/P6/S6, verify its archive, cite it in the paper, refresh matching review assets and send the authorized handovers. The owner resubmits formal R131 `f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff` with comparator.json. Source-scoped proof receipts remain unchanged.
+
+Historical proof checkpoint (3 October 2026): all manuscript-route modules, their
 literal trust-zero consumers, the shared terminal theorem and all four solution
 assemblies passed their bounded Linux checks. Accepted source is integrated and
 pushed in MAIN. The unchanged challenges are shared by the main paper route and

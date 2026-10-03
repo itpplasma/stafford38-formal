@@ -4,17 +4,17 @@
   "review_url": "https://itpplasma.github.io/stafford38-formal/",
   "paper_source": {
     "repo": "itpplasma/stafford38-formal",
-    "commit": "973fa2831cf7520fc42566587e3946b4b7444093",
+    "commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
     "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-    "note": "Frozen final P5 manuscript snapshot S5 after both byte-verified release DOI citations; mathematical review text unchanged since P4.",
+    "note": "Frozen P6/S6 review with formal v1.3.1 DOI citation and source links; mathematical author/proposal text unchanged.",
     "origin_repo": "itpplasma/stafford38-paper",
-    "origin_commit": "75f79630141f2bbeedc4e154288978020c7f2e83",
-    "sha256": "a68b21fc1012da2f431aeb91e17226d657f483eb4a2cf8a152499b2fd427ea6b"
+    "origin_commit": "33138378368fdc9f7bcb50947ccc9889f40cac43",
+    "sha256": "a20a396280b867bfab034338fb8410b799d3f8ea9311864fa377ebce4fe84706"
   },
   "formal_source": {
     "repo": "itpplasma/stafford38-formal",
-    "commit": "54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b",
-    "note": "Signed formal v1.3.0 release; all656 protected source/tool files byte-identical to verified C2. Formal DOI10.5281/zenodo.23126868."
+    "commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
+    "note": "Signed formal v1.3.1 provenance correction;654 protected proof/tool files byte-identical to C2, package version and descriptor metadata exceptions recorded. DOI10.5281/zenodo.23127367."
   },
   "comparison_scope": "Relations classify the current selected review text in human_readable_main.tex, including AIadd/AIreplace proposal text. Historical author-baseline text remains recorded under historical_issues; marked corrections and route replacements remain subject to human author review. This map does not treat a proposed correction as accepted publication text.",
   "card_count": 57,
@@ -144,17 +144,18 @@
   },
   "releases": {
     "formal": {
-      "version": "v1.3.0",
-      "doi": "10.5281/zenodo.23126868",
-      "files": 1163,
-      "archive_status": "byte-verified"
+      "version": "v1.3.1",
+      "doi": "10.5281/zenodo.23127367",
+      "files": 1172,
+      "archive_status": "byte-verified",
+      "release_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
+      "correction": "Historical report routing and completed replay scope; proofs unchanged."
     },
     "supplementary": {
-      "version": "v0.2.0",
-      "doi": "10.5281/zenodo.23127103",
-      "files": 24,
-      "archive_status": "byte-verified",
-      "review_freeze": "P4/S4/R; current P5/S5 updates citations only, and live classification labels distinguish proposed corrections from historical originals."
+      "version": "v0.2.1",
+      "doi": null,
+      "archive_status": "publication and archive comparison pending",
+      "review_freeze": "P6/S6/R131; corrected review scope and current ledger"
     }
   },
   "owner_followups": [
@@ -173,6 +174,25 @@
     "verification_run": "37150915082",
     "mechanical_verification": "passed at2026-10-03T20:55:53Z",
     "automated_review": "pending at2026-10-03T20:57:39Z",
-    "registration": "pending"
+    "registration": "pending",
+    "next_submission": {
+      "formal_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
+      "configuration": "comparator.json",
+      "status": "Owner will resubmit after v1.3.1 provenance fix; no new online acceptance claimed."
+    }
+  },
+  "release_history": {
+    "formal_v1.3.0": {
+      "doi": "10.5281/zenodo.23126868",
+      "files": 1163,
+      "archive_status": "byte-verified"
+    },
+    "supplementary_v0.2.0": {
+      "version": "v0.2.0",
+      "doi": "10.5281/zenodo.23127103",
+      "files": 24,
+      "archive_status": "byte-verified",
+      "review_freeze": "P4/S4/R; current P5/S5 updates citations only, and live classification labels distinguish proposed corrections from historical originals."
+    }
   }
 }

@@ -2,6 +2,8 @@
 
 ## Current review/release snapshot
 
+Formal v1.3.1 is now published at `f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff`, DOI10.5281/zenodo.23127367; all1,172 tagged files match the downloaded archive. It corrects the Palomar-reported historical report pointer and stale replay status. All654 protected proof/tool files match C2; provenance and package-version exceptions are explicit. Current publication work rebases the corrected supplementary v0.2.1 and review assets to P6/S6/R131, then updates its final citation and sends the handovers. The owner will resubmit R131 with comparator.json. Older release/source snapshots below remain historical.
+
 Owner update: formal R was submitted to Palomar at20:15:50Z; verification run37150915082 passed at20:55:53Z and automated review was active at20:57:39Z. Registration remains pending. The private submission capability link is excluded from public evidence. The owner requests supplementary v0.2.1 after the comparison-label correction.
 
 Formal v1.3.0 R `54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b` (DOI `10.5281/zenodo.23126868`) and supplementary v0.2.0 R31 `31aea05344c3fa35fb19a3ff35f7518d723e26ec` (DOI `10.5281/zenodo.23127103`) are published; their archives match all 1,163 and 24 tagged files respectively. The supplementary bundle is frozen at P4/S4. Current review input is P5 `75f79630141f2bbeedc4e154288978020c7f2e83` / public S5 `973fa2831cf7520fc42566587e3946b4b7444093`; P5 changes citations only; all three P5 PDFs compiled without undefined references and the source/PDF asset gate passed. Core C2 verification, all four local Palomar comparisons, 399 declaration checks and release/core byte congruence passed. Johanna and Max reviews remain pending; controller email delivery remains pending. The owner submitted formal R with comparator.json; mechanical verification passed and automated review is pending. Supplementary v0.2.1 will publish the corrected review labels and ledger as requested. Older task rows below are dated execution history; their interim “pending” notes are not current gates.
@@ -87,16 +89,16 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T71 | Final Linux host preflight | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Prior3129931guard0/drained; empty userqueue/node20idle;3controlhashes exact; fresh source/receiptpaths absent |
 | T72 | Launch Linux driver | done | 6 | notes/T73-final-C2-resume4-submission-3137241-20261003.json | SoleS3137241 allocation-localdevice/cachelayout repair+4comps/finalintegrity exactC2; no completedcheck repeat |
 | T73 | Collect Linux result | done | 6 | notes/T73-four-Palomar-comparisons-linux-accepted-3137241-20261003.tar.gz | R1verifier/R2retained/R4all4comparatorsPASS; final1095filemanifest+10pins exact; guard0/no stops/children/swap |
-| T74 | Palomar-ready owner handover | owner | 1 | GitHub verification run37150915082 | Owner submitted R54c4f0c/comparator.json; mechanical verification passed20:55:53Z; automated review pending20:57:39Z (owner report); no registration claimed |
+| T74 | Palomar-ready owner handover | owner | 2 | formalv1.3.1=f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff | v1.3.0 mechanicalverification passed; review flagged metadata routing. Corrected v1.3.1 published; owner resubmits comparator.json; new online acceptance pending |
 | T80 | Re-anchor review map | done | 4 | notes/T80-399-public-names-linux-accepted-3139266-20261003.tar.gz |393+2+2+2 actualnamechecksPASS;3139266guard0/no stops/children/swap; no proofchange |
 | T81 | Build review site | done | 2 | notes/T81-final-comparison-scope-20261003.json | Live P5/S5/R guided review deployed; corrected-text scope labels wrong0/none0/different0;57 cards; humanreviewpending |
 | T82 | Rebuild manuscript PDFs | done | 3 | notes/T82-P5-S5-PDF-build-20261003.tar.gz | All3 P5 PDFs compile0undefined; exact inputs match and source/PDF asset gatePASS |
-| T83 | Supplementary bundle (local) | doing | 2 | stafford38-supplementary v0.2.0 archived; v0.2.1 candidate | Owner requests patch release carrying corrected labels/current ledger; no proof or renderer changes |
+| T83 | Supplementary bundle (local) | doing | 3 | v0.2.1 scratch candidate | Luna version-field regression found during actual integrity check; Sol repairs and rebases to R131/P6/S6; proof unchanged |
 | T84 | Review handover | owner | 1 | docs/paper-lean-audit/review-status.json | Review package ready; Johanna marked proposals and Max all57 full correspondence checks remain pending |
 | T90 | Release drafts | doing | 2 | notes/T90-formal-v1.3.0-release-body.md | Formalv1.3.0 and supplementaryv0.2.0 published; corrected companionv0.2.1 pending |
-| T91 | Signed tag, release, Zenodo | doing | 2 | notes/T92-formal-v1.3.0-Zenodo-bytecheck-20261003.json | FormalR signed/published immutable for Palomar; supplementary patchv0.2.1 requested |
-| T92 | Verify Zenodo archive | doing | 2 | notes/T92-supplementary-v0.2.0-Zenodo-bytecheck-20261003.json | Formal1163 and supplementaryv02024 files allmatch; compare newv021 afterpublication |
-| T93 | Citation drafts | doing | 2 | paperP5=75f79630141f2bbeedc4e154288978020c7f2e83 | Both currentDOIs cited/pushedGitHub+Overleaf; citecorrectedcompanionDOI afterv021 archivecheck |
+| T91 | Signed tag, release, Zenodo | doing | 3 | notes/T92-formal-v1.3.1-Zenodo-bytecheck-20261003.json | Formalv1.3.1 signed/published and byte-verified; corrected supplementaryv0.2.1 pending |
+| T92 | Verify Zenodo archive | doing | 3 | notes/T92-formal-v1.3.1-Zenodo-bytecheck-20261003.json | Formalv1.3.1 all1,172 files match; supplementaryv0.2.1 archive comparison follows publication |
+| T93 | Citation drafts | doing | 3 | paperP6=33138378368fdc9f7bcb50947ccc9889f40cac43 | Verifiedformal131DOI cited; GitHub+Overleaf push0; correctedcompanionDOI pending |
 | T94 | Final review emails | todo | 0 | | Send authorized Johanna/Max handovers only after releases, archive comparisons and citations; record delivery |
 
 ## Earlier execution history (resumed 2026-10-03 by owner)
@@ -405,3 +407,7 @@ Receipt root: `final-receipts-guard-repaired-resume4`; guard prefix:
 - P4 paper4d19a183846beb50f37ad2b4e51e836a76ed8bac cites the actual verified formal DOI and links formalreleaseR; author proof body preserved. GitHub+Overleaf pushes succeeded. Three matching PDFs are rebuilding; companion freeze will use P4 and its public snapshot.
 
 - P4/S4/R matching PDFs and source hashes were accepted; source/PDF asset gate passed. The public-only companion rebuild fetched exact public revisions and rendered all57 cards successfully. Its existing filename handoff was fixed to copy the configured output stem to index.html; generator runtime and proof sources are unchanged. Current16-member package awaits final source/hash metadata and signed supplementary publication.
+
+## T95 Verification provenance correction
+
+The owner supplied the Palomar review finding. The descriptor now links its historical cbb2396 commit/report hash to the exact historical report, with both completed later replay scopes recorded separately. Formalv1.3.1 is published and all1,172 archive files match. See `notes/T95-v1.3.1-verification-provenance-fix-20261003.json` and the v1.3.1 archive/congruence receipts. No mathematical source or proof-verifier program changed.
