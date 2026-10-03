@@ -8,7 +8,10 @@ longer authorized. All campaign Mac checks had already ended at this steering;
 no new Mac action is scheduled. Historical Mac receipts remain unchanged.
 T32’s frozen source passed its Linux module and unchanged trust-zero consumer
 checks. T33 passed its Linux module and literal trust-zero consumer; T35 awaits a stable cluster slot after three local node-pressure stops;
-its generic transport probe passed, but the full module is not accepted. Both cluster preflights and allocation
+its generic transport probe passed, but the full module is not accepted.
+Acluster T35 job21805719 is queued after bootstrap21805718; scluster guard
+fixture job3111465 is queued after bootstrap3109567. Each runs only after its
+bootstrap succeeds, under the same reviewed allocation guard. Both cluster preflights and allocation
 smokes passed; isolated pinned Linux bootstraps are running (acluster21805718,
 scluster3109567) after missing compute-node curl and restart handling were
 repaired in the isolated run trees; historical failed attempts remain recorded.
@@ -44,7 +47,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
 | T34 | Columns, derivatives, numerator | retry | 2 | notes/T34-sol-resume.md | Luna exposed concrete scalar-action duplication; Sol moved transport to abstract maps and retained missing qPre equality; Lean checks pending |
-| T35 | Étale structure as ring homs | doing | 5 | notes/T33-T35-sol-linux-resume.md | Generic action-transport trust0 probe passed; fullmodule4/5 and directsourcecheck stopped on node PSI pressure without proof diagnostics; frozenf30 awaits cluster check, no cap increase |
+| T35 | Étale structure as ring homs | doing | 5 | notes/T33-T35-sol-linux-resume.md | Generic action-transport trust0 probe passed; fullmodule4/5 and directsourcecheck stopped on node PSI pressure without proof diagnostics; frozenf30 queued acluster21805719(afterok21805718), no cap increase |
 | T36 | Same-witness closure theorem | doing | 2 | notes/T36-linux-resume.md | Luna generic retained chart adapter prepared; target byte-identical to PLAN; compile waits for T34/T35 |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
 | T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |

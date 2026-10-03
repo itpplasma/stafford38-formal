@@ -26,3 +26,12 @@ The resume position lives in browser review state separately from each claim's c
 ## Limits and handoff
 
 The browser walk used a two-claim synthetic fixture and the generator build-validation used independent miniature Git repositories. I did not run `scripts/build-review-site.py` against the live Stafford map or claim that the complete Max sequence, paper/source links, full map coverage, or frozen-source inputs have been accepted. T80 mapping, root-owned pins and generated paths remain prerequisites. The controller should integrate these five paths, build the exact pinned map, check generated links and gaps, and walk every claim from the start link before marking T81 accepted. The actual final review site will fingerprint the updated generator under its existing revision checks; stored notes remain available for review/export.
+
+## Controller integration
+
+The controller accepted the bounded generator UI component, preserved upstream
+status commit0bc8004 with a normal merge, and pushed the generator at
+`40967b6740c2ceaf515a2fb47a5ca9571be6495f`. The five tested UI source files
+retain their reviewed bytes; later README/STATUS edits document the controls.
+The final pinned Stafford site and whole-sequence/link walkthrough remain
+unaccepted until T80 inputs and full source checks finish.
