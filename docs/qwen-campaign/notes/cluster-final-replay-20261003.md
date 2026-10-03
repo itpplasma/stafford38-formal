@@ -72,3 +72,12 @@ executes missing/extra/invalid commit arguments and missing, file, root-equal,
 outside, traversal-escape and symlink-escape run roots and confirms no
 receipt or checkout directory was created. These are real disposable filesystem
 and shell executions with fake external tools; no Lean, SSH or scheduler runs.
+
+After the Mathlib cache stage, one `lake build
+Stafford38.Geometry.SameWitness.CommonOpenEtale` stage compiles the heavy
+dependency before the authoritative full verifier. Accepted T35 peaked at
+7406 MiB, leaving 786 MiB below the unchanged 8 GiB cap; the pinned Lake
+audit found no supported job limit. The verifier can reuse this real build
+trace. The full verifier, retained proof library and four comparators remain
+in their existing order. Fake-tool behavioral checks assert the complete
+external gate order and that a failing prebuild prevents every later gate.

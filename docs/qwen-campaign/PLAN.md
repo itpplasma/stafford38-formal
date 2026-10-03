@@ -179,9 +179,9 @@ with small top-level lemmas over abstract types.
   touching it.
 - Workers may edit in `MAIN` only their explicitly assigned `$CAMP/notes/*`.
   The controller owns `PLAN.md`, `STATE.md`, integration and release metadata.
-  Changes to `guard.sh` require a concrete resource-contract reason. The
-  owner's 3 October resource instruction authorizes realistic small-job
-  budgets and concurrent independent checks across approved hosts.
+  The former macOS serial-runner scripts are retired. Use only the Linux guard
+  and reviewed cluster guard named in sections 2.3 and 3; keep host-specific
+  execution receipts in the task notes.
 - Never edit files under `.lake/packages/` (Mathlib, AlgebraicAnalysis).
 
 ### 2.3 Machines

@@ -252,6 +252,7 @@ verify_package_heads after-update
 write_source_manifest "$receipt_root/source-manifest-after-update.json" \
   "$(python3 -c 'import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],"rb").read()).hexdigest())' "$receipt_root/source-manifest-before.json")"
 run_stage mathlib-cache lake exe cache get
+run_stage common-open-etale-prebuild lake build Stafford38.Geometry.SameWitness.CommonOpenEtale
 run_stage full-verifier bash scripts/verify.sh
 run_stage retained-proof-library lake build proofs
 run_stage comparator-main bash scripts/verify-palomar.sh comparator.json

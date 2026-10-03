@@ -1,0 +1,72 @@
+{
+  "proposal": "T46 final package cleanup",
+  "status": "proposal-only; no source, status, or candidate files were changed",
+  "reviewed": {
+    "main_commit": "12d7598fc5efd56317e01e4f3dd2d2b85843faf1",
+    "candidate_worktree_commit": "4c1678e563b8b7e4f32b9c951b823ef9f5f44e53",
+    "candidate_worktree_state": "dirty with concurrent T34-T45 work; not frozen by this audit"
+  },
+  "deletions_proposed": [
+    {
+      "path": "docs/qwen-campaign/drive.sh",
+      "mode": "100755",
+      "sha256": "6f7c24908deea68979214725ca04e213053a436ad34033d778f62761fb017a77",
+      "tracked_text_reference_occurrences": 2,
+      "reference_files": ["self usage comment", "docs/qwen-campaign/STATE.md historical invocation"],
+      "reason": "Retired Mac-path serial Pi scheduler; no active caller."
+    },
+    {
+      "path": "docs/qwen-campaign/run-pi.sh",
+      "mode": "100755",
+      "sha256": "388d57277990c5eefddb12eb505c57043d2b29ef582f714f1b7d245f473113d0",
+      "tracked_text_reference_occurrences": 5,
+      "reference_files": ["self", "docs/qwen-campaign/drive.sh", "docs/qwen-campaign/STATE.md (two historical mentions)", "docs/qwen-campaign/notes/T00-* historical receipt"],
+      "reason": "Retired Mac Pi runner; its only current caller is the retired driver."
+    },
+    {
+      "path": "docs/qwen-campaign/prompt.md",
+      "mode": "100644",
+      "sha256": "ec70f01a3937c816a5984688266c829135d14f2795a52c1271950a7f9d196888",
+      "tracked_text_reference_occurrences": 2,
+      "reference_files": ["docs/qwen-campaign/run-pi.sh", "docs/qwen-campaign/STATE.md historical pointer"],
+      "reason": "Worker instructions exclusively for the retired Mac/Pi route."
+    },
+    {
+      "path": "docs/qwen-campaign/guard.sh",
+      "mode": "100755",
+      "sha256": "b6eebe8c6d0133f6dffccda31dd1ab14594b7b354908babd57705c6e8daa43d4",
+      "tracked_text_reference_occurrences": 19,
+      "reference_files": ["self examples (2)", "docs/qwen-campaign/PLAN.md stale instruction (1)", "docs/qwen-campaign/STATE.md historical/controller text (2)", "docs/qwen-campaign/prompt.md (1)", "T13, T20, T21 (2), T22 (3), T32 (2), resource-guard-behavior (3), resource-guard-review (1) historical receipts"],
+      "reason": "macOS guard for retired runner; no active verifier, policy checker, or comparator invokes it. Historical receipt text is retained."
+    },
+    {
+      "path": "docs/qwen-campaign/.gitignore",
+      "operation": "remove only the runs/ ignore line",
+      "reason": "The directory is absent and only retired wrappers produced it; retain the historical T00 mention."
+    }
+  ],
+  "retain": [
+    "docs/qwen-campaign/linux-guard.py",
+    "docs/qwen-campaign/linux-slurm-guard.py",
+    "docs/qwen-campaign/cluster-guard.py (untracked concurrent file; explicitly out of scope)",
+    "all historical notes, logs, verifier receipts, pins, paper assets, and alternative-route mathematical modules",
+    "all shared Challenge and FixedSourceChallenge modules and all comparator configurations"
+  ],
+  "frontdoor_proposal": {
+    "patch_file": "docs/qwen-campaign/notes/T46-final-cleanup-proposal.patch",
+    "patch_status": "unapplied; git apply --check passed",
+    "main_docs": ["README.md (route/status sentence only after T45 integration)", "PLAN.md (refresh stale active_work checkpoint)", "docs/qwen-campaign/PLAN.md (remove obsolete guard instruction)", "docs/qwen-campaign/STATE.md (mark old Mac/Pi instructions retired)"],
+    "candidate_worktree": "Refresh only PLAN.md active_work after T70 final source freeze; preserve mathematical scope and open correspondence claims.",
+    "paper_route_alignment": "No edit proposed: full paper correspondence remains open and same-witness endpoint incomplete."
+  },
+  "palomar": {
+    "main_configs": ["comparator.json", "comparator-fixed-source.json"],
+    "candidate_worktree_configs": ["comparator.json", "comparator-fixed-source.json", "comparator-alternative.json", "comparator-alternative-fixed-source.json"],
+    "policy": "Retain all variants, share both challenge statements unchanged, keep solution routes distinct, and make no qualification claim before final verifier/comparisons. Online registration is an owner action."
+  },
+  "scope_limits": [
+    "No Lean-module deletions: prior reachability review found no safe mathematical deletion.",
+    "No broad paper-scope rewrite or whole-proof correspondence claim.",
+    "No project source/status edits, deletion, commit, push, Lean, SSH, or release actions."
+  ]
+}

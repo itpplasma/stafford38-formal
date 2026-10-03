@@ -7,7 +7,7 @@ paper_correspondence: open; same-witness assembly into original-prime endpoint r
 current_alignment_checkpoint: docs/audits/paper-route-checkpoints/actual-orders-chart-source-checkpoint.json
 historical_release: v1.2.3 is a release of the unchanged challenge
 new_full_correspondence_release: not recorded
-active_work: Linux-only campaign on mailuefterl/acluster/scluster; T22/T30/T31/T32/T33 checked and pushed; T35 Sol repair active; final acceptance and integration remain open
+active_work: Linux-only completion on mailuefterl/acluster/scluster; T35 is checked; same-witness assembly, final route checks, source freeze, review and release remain open
 handover: not ready
 ```
 

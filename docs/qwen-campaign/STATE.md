@@ -127,18 +127,13 @@ to Sol. Historical Pi/Qwen records remain preserved.
 
 (controller/owner only)
 
-## Controller hints
+## Archived controller hints (historical)
 
-(controller only; Pi reads the hints for its task before starting)
+(These describe the former campaign. Use current task receipts and Linux guards.)
 
-- T02: The controller already replaced `WT/.lake` with a clone of the rc3 build
-  cache of `stafford38-rc3-final-worker` and aligned the package git remotes
-  to the manifest URLs (MAIN's `.lake` is the old 4.33 cache and must not be
-  used). Do not run `lake update`/`cache get`. Just run the T02 build through
-  guard.sh. If lake prints `fetching revision` or starts compiling Mathlib
-  modules (`Building Mathlib.`), kill it via the guard timeout and report
-  `blocked`: that means the cache does not match. Compiling `Stafford38.*`
-  modules is expected.
+- T02 is complete. The Mac cache/runner directions below are historical.
+  Any specifically authorized Linux recheck uses the current `GUARD` route
+  in the work order and does not reuse the old MAIN 4.33 cache.
 
 - T35: `SameWitness/ChartGroundMap.lean` (T13) contains the archived lemma with a local
   `Algebra Q U := Algebra.compHom …` inside its own proof. That is the only place it may live.
@@ -172,8 +167,20 @@ behavioral negative/positive oracles. Actual filesystem modes are compared
 with Git modes even when Git ignores chmod; canonical existing-directory
 containment rejects traversal and symlink escapes before writes.
 
-Driver SHA256 b11d6e57e5ea809340e5298c1d51c07b3cbfb8037a1a9259ea2a1f5807917ef9.
+Driver SHA256 43666f950d7de083a32ff2207c21b730179accf3bf1eaebc5c180e4dfe42db53.
+The exact heavy CommonOpenEtale module prebuild runs after cache loading, before
+the authoritative verifier, to avoid overlapping its observed7406MiB peak with
+a wide build. Independent gate-order/failure review passed; caps are unchanged.
 Its four comparator gates remain ordered and all ten resolved package HEADs
 must match immutable rev pins. The archived mailuefterl driver/contract remain
 byte-identical. No final replay was launched; T70 immutable public source,
 T71 preflight, actual T72 run and T73 collection remain required.
+
+## Package cleanup checkpoint (3 October 2026)
+
+The controller removed the four obsolete Mac/Pi serial runner, guard and
+prompt files and their unused runs ignore file after the reference audit.
+Git preserves their bytes. Historical proof/resource receipts remain intact;
+active Linux guards, all mathematical modules, unchanged challenges and both
+solution routes are retained. This completes the obsolete-runner cleanup
+component; final README/status and Palomar package checks await proof acceptance.

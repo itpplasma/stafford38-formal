@@ -32,7 +32,8 @@
     "curl": "Run staged curl wrapper --version before network use; require curl and libcurl markers. CURL_CA_BUNDLE points to staged CA bundle.",
     "environment": "Driver pins ELAN_HOME, ELAN_TOOLCHAIN, XDG_CACHE_HOME, MATHLIB_CACHE_DIR, GIT_CONFIG_GLOBAL=/dev/null, no terminal prompt, and isolated pinned Lean first on PATH. It verifies lean --githash and resolved Lean path.",
     "timeouts": "Each recorded command has GNU timeout --kill-after=60s 19800s. Outer Linux guard timeout is 21600 seconds; Slurm allocation must accommodate it.",
-    "run_root": "Require exactly two arguments and an existing directory whose strict canonical path is a proper descendant of the strict canonical /home/ert/stafford38-campaign directory; reject missing/file/outside/traversal escapes/symlink escapes before any mkdir."
+    "run_root": "Require exactly two arguments and an existing directory whose strict canonical path is a proper descendant of the strict canonical /home/ert/stafford38-campaign directory; reject missing/file/outside/traversal escapes/symlink escapes before any mkdir.",
+    "prebuild_reason": "Observed accepted T35 peak RSS 7406 MiB leaves only 786 MiB below the unchanged 8 GiB cap. Pinned Lake audit found no supported job limit and the verifier builds multiple roots. Prebuild the heavy dependency alone after cache loading so the authoritative verifier reuses its actual build trace; do not remove or reorder remaining gates."
   },
   "ordered_gates": [
     "staged curl --version runtime probe",
@@ -44,6 +45,7 @@
     "lake update",
     "exact lock SHA and all ten resolved package HEADs",
     "lake exe cache get",
+    "lake build Stafford38.Geometry.SameWitness.CommonOpenEtale (single heavy-dependency prebuild)",
     "bash scripts/verify.sh (authoritative policy, module, import, dependency route, and verifier gates)",
     "lake build proofs",
     "bash scripts/verify-palomar.sh comparator.json",

@@ -100,3 +100,24 @@ and companion driver remain byte-identical to the original base.
 **Scoped result: PASS for the repaired driver/contract/harness review.** This
 is not a cluster execution or launch authorization; the controller still owns
 the outer-guard review, resource check, and any replay.
+
+## Single-dependency prebuild re-review (2026-10-03)
+
+Compared the replay-stage delta against `322ad06`. The driver adds exactly one
+stage, `lake build Stafford38.Geometry.SameWitness.CommonOpenEtale`, after
+Mathlib cache loading and before `bash scripts/verify.sh`. The authoritative
+verifier, retained proof-library build, and four comparators keep their prior
+relative order. Existing caps, immutable pins, root checks, fail-closed
+receipts, and terminal verification are unchanged. The 7406 MiB T35 peak
+leaves 786 MiB under the existing 8 GiB cap; the recorded Lake audit found no
+supported job limit, so prebuilding this dependency lets the verifier reuse its
+actual trace.
+
+The updated fake-tool harness passed and asserts both the full gate order and
+that a failed CommonOpenEtale prebuild stops before every downstream gate.
+`bash -n` passed; the replay contract parses as JSON. Driver SHA-256 is
+`43666f950d7de083a32ff2207c21b730179accf3bf1eaebc5c180e4dfe42db53` and
+harness SHA-256 is
+`8cebc5ff3e1111500e75ca03b3fff0a64ceb642c98f0b53f4d0ac13b33af43c0`.
+**Scoped result: PASS for the added prebuild stage.** No Lean, network, SSH,
+scheduler, or cluster action was run.

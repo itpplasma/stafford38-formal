@@ -1,0 +1,66 @@
+--- a/README.md
++++ b/README.md
+@@ -22,6 +22,13 @@
+ 
+ The main and fixed-source Challenge/Solution comparisons passed Palomar at an earlier post-coordinate checkpoint; a new-release comparison remains required. The Palomar entry certifies its named theorem and source only.
+ 
++The current completion campaign is Linux-only on `mailuefterl` and approved
++`acluster`/`scluster` allocations; see `PLAN.md` for its active gates. The
++delivery keeps both Challenge statements shared and unchanged, with a
++paper-conforming main solution and a separately named generic/Laurent
++alternative. Full paper correspondence and new-release qualification remain
++open. Online Palomar submission is the owner's responsibility.
++
+ ## Source roles
+ 
+ The formal repository owns Lean declarations and verification records. Overleaf is the manuscript editing authority; pinned paper revisions provide review provenance. The archive retains development history. The Palomar entry [PALOMAR-2026-09-05-000007, version 2](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=2) certifies its named theorem and source only.
+--- a/PLAN.md
++++ b/PLAN.md
+@@ -7,7 +7,7 @@
+ current_alignment_checkpoint: docs/audits/paper-route-checkpoints/actual-orders-chart-source-checkpoint.json
+ historical_release: v1.2.3 is a release of the unchanged challenge
+ new_full_correspondence_release: not recorded
+-active_work: Linux-only campaign on mailuefterl/acluster/scluster; T22/T30/T31/T32/T33 checked and pushed; T35 Sol repair active; final acceptance and integration remain open
++active_work: Linux-only completion on mailuefterl/acluster/scluster; T35 is checked; same-witness assembly, final route checks, source freeze, review and release remain open
+ handover: not ready
+ ```
+ 
+--- a/docs/qwen-campaign/.gitignore
++++ b/docs/qwen-campaign/.gitignore
+@@ -1 +0,0 @@
+-runs/
+--- a/docs/qwen-campaign/PLAN.md
++++ b/docs/qwen-campaign/PLAN.md
+@@ -179,9 +179,9 @@
+   touching it.
+ - Workers may edit in `MAIN` only their explicitly assigned `$CAMP/notes/*`.
+   The controller owns `PLAN.md`, `STATE.md`, integration and release metadata.
+-  Changes to `guard.sh` require a concrete resource-contract reason. The
+-  owner's 3 October resource instruction authorizes realistic small-job
+-  budgets and concurrent independent checks across approved hosts.
++  The former macOS serial-runner scripts are retired. Use only the Linux guard
++  and reviewed cluster guard named in sections 2.3 and 3; keep host-specific
++  execution receipts in the task notes.
+ - Never edit files under `.lake/packages/` (Mathlib, AlgebraicAnalysis).
+ 
+ ### 2.3 Machines
+--- a/docs/qwen-campaign/STATE.md
++++ b/docs/qwen-campaign/STATE.md
+@@ -131,14 +131,9 @@
+ 
+ (controller only; Pi reads the hints for its task before starting)
+ 
+-- T02: The controller already replaced `WT/.lake` with a clone of the rc3 build
+-  cache of `stafford38-rc3-final-worker` and aligned the package git remotes
+-  to the manifest URLs (MAIN's `.lake` is the old 4.33 cache and must not be
+-  used). Do not run `lake update`/`cache get`. Just run the T02 build through
+-  guard.sh. If lake prints `fetching revision` or starts compiling Mathlib
+-  modules (`Building Mathlib.`), kill it via the guard timeout and report
+-  `blocked`: that means the cache does not match. Compiling `Stafford38.*`
+-  modules is expected.
++- T02 is complete. The Mac cache/runner directions below are historical.
++  Any specifically authorized Linux recheck uses the current `GUARD` route
++  in the work order and does not reuse the old MAIN 4.33 cache.
+ 
+ - T35: `SameWitness/ChartGroundMap.lean` (T13) contains the archived lemma with a local
+   `Algebra Q U := Algebra.compHom …` inside its own proof. That is the only place it may live.

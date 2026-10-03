@@ -52,9 +52,9 @@ def main() -> None:
         (project / "scripts/check-palomar-policy.py").write_text("pass\n")
         (project / "scripts/bootstrap-palomar-tools.sh").write_text("#!/bin/sh\nexit 0\n")
         verify = project / "scripts/verify.sh"
-        verify.write_text("#!/bin/sh\nif [ \"${MUTATE_AFTER_VERIFY:-0}\" = 1 ]; then echo changed >> Challenge.lean; fi\nif [ \"${MUTATE_MODE:-0}\" = 1 ]; then chmod +x Challenge.lean; fi\nif [ \"${REMOVE_MODE:-0}\" = 1 ]; then chmod -x scripts/verify.sh; fi\n")
+        verify.write_text("#!/bin/sh\nprintf 'full-verifier\\n' >> \"$GATE_LOG\"\nif [ \"${MUTATE_AFTER_VERIFY:-0}\" = 1 ]; then echo changed >> Challenge.lean; fi\nif [ \"${MUTATE_MODE:-0}\" = 1 ]; then chmod +x Challenge.lean; fi\nif [ \"${REMOVE_MODE:-0}\" = 1 ]; then chmod -x scripts/verify.sh; fi\n")
         comparator = project / "scripts/verify-palomar.sh"
-        comparator.write_text("#!/bin/sh\nprintf '%s\\n' \"$1\" >> \"$COMPARATOR_LOG\"\n")
+        comparator.write_text("#!/bin/sh\nprintf '%s\\n' \"$1\" >> \"$GATE_LOG\"\nprintf '%s\\n' \"$1\" >> \"$COMPARATOR_LOG\"\n")
         for p in (project / "scripts/bootstrap-palomar-tools.sh", verify, comparator):
             p.chmod(0o755)
 
@@ -99,6 +99,7 @@ sys.exit(4)
         fake_lake = r'''import json,os,sys
 from pathlib import Path
 a=sys.argv[1:]
+with Path(os.environ["GATE_LOG"]).open("a") as log: log.write("lake " + " ".join(a) + "\n")
 if a[:1]==["update"]:
     pins=json.loads(os.environ["FAKE_PINS"])
     for name in pins: (Path(".lake/packages")/name/".git").mkdir(parents=True,exist_ok=True)
@@ -160,6 +161,7 @@ sys.exit(0)
                 "MUTATE_MODE": "1" if mutate_mode else "0",
                 "REMOVE_MODE": "1" if remove_mode else "0",
                 "COMPARATOR_LOG": str(case_root / "comparators.txt"),
+                "GATE_LOG": str(case_root / "gates.txt"),
                 "STAFFORD_OUTER_GUARD_LOG": str(case_root / "outer.log"),
                 "SLURM_CLUSTER_NAME": "acluster", "SLURMD_NODENAME": "node1",
                 "SLURM_CPUS_PER_TASK": "2", "SLURM_NTASKS": "1", "SLURM_JOB_NUM_NODES": "1",
@@ -177,6 +179,12 @@ sys.exit(0)
         assert p.returncode != 0 and rec["failed_or_last_stage"]=="lean-githash" and rec["exit_status"]==1, (p.stderr,rec)
         p,rec,_=run_case("lake-failure",fail_lake="exe cache get")
         assert p.returncode==41 and rec["failed_or_last_stage"]=="mathlib-cache" and rec["exit_status"]==41, (p.stderr,rec)
+        p,rec,case=run_case("prebuild-failure",fail_lake="build Stafford38.Geometry.SameWitness.CommonOpenEtale")
+        assert p.returncode == 41 and rec["failed_or_last_stage"] == "common-open-etale-prebuild" and rec["exit_status"] == 41, (p.stderr,rec)
+        assert (case/"gates.txt").read_text().splitlines() == [
+            "lake update", "lake exe cache get",
+            "lake build Stafford38.Geometry.SameWitness.CommonOpenEtale"]
+        assert not (case/"comparators.txt").exists()
         p,rec,_=run_case("source-mutated",mutate=True)
         assert p.returncode != 0 and rec["failed_or_last_stage"]=="final-source-integrity" and rec["exit_status"]==1, (p.stderr,rec)
         p,rec,_=run_case("mode-mutated",mutate_mode=True)
@@ -196,6 +204,10 @@ sys.exit(0)
         assert all({'mode','blob','sha256','path'} <= set(entry) for entry in before_manifest['files'])
         expected=["comparator.json","comparator-fixed-source.json","comparator-alternative.json","comparator-alternative-fixed-source.json"]
         assert (case/"comparators.txt").read_text().splitlines()==expected
+        assert (case/"gates.txt").read_text().splitlines() == [
+            "lake update", "lake exe cache get",
+            "lake build Stafford38.Geometry.SameWitness.CommonOpenEtale",
+            "full-verifier", "lake build proofs", *expected]
         assert len(rec["package_heads"]["package-heads-final"])==10
         print("fake driver behavioral oracles passed: invalid arguments, missing/file/root-equal/outside/traversal/symlink roots before writes; mode mutation with Git status ignoring executable bits; wrong source commit, wrong Lean pin, failing cache stage, post-verify tracked-content and mode mutations, clean tree/file/mode identity, four ordered comparators")
 
