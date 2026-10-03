@@ -24,8 +24,10 @@ class ReviewAssetGateTests(unittest.TestCase):
         self.snapshot = self.audit / 'manuscript'
         self.snapshot.mkdir(parents=True)
         self.git('init', '-q')
+        self.git('remote', 'add', 'origin', 'https://github.com/example/formal.git')
         (self.root / 'Formal.lean').write_text('theorem checked : True := by trivial\n')
-        self.git('add', 'Formal.lean')
+        (self.root / 'lean-toolchain').write_text('leanprover/lean4:test\n')
+        self.git('add', 'Formal.lean', 'lean-toolchain')
         self.git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
                  '-c', 'commit.gpgsign=false', 'commit', '-qm', 'Frozen formal source F')
         self.formal_commit = self.git('rev-parse', 'HEAD').strip()
@@ -82,10 +84,54 @@ class ReviewAssetGateTests(unittest.TestCase):
     def write_receipt(self):
         (self.audit / 'review-pdfs.json').write_text(json.dumps(self.receipt))
 
+    def use_separate_paper_repository(self, remote='https://github.com/example/paper.git'):
+        self.paper_root = self.root / 'separate-paper'
+        self.paper_root.mkdir()
+        subprocess.run(['git', '-C', str(self.paper_root), 'init', '-q'], check=True)
+        subprocess.run(['git', '-C', str(self.paper_root), 'remote', 'add', 'origin', remote], check=True)
+        for filename, text in self.files.items():
+            (self.paper_root / filename).write_text(text)
+        subprocess.run(['git', '-C', str(self.paper_root), 'add', '.'], check=True)
+        subprocess.run(['git', '-C', str(self.paper_root), '-c', 'user.name=Fixture',
+                        '-c', 'user.email=fixture@example.invalid', '-c', 'commit.gpgsign=false',
+                        'commit', '-qm', 'Frozen separate paper A'], check=True)
+        commit = subprocess.check_output(
+            ['git', '-C', str(self.paper_root), 'rev-parse', 'HEAD'], text=True).strip()
+        self.paper = {'repo': 'example/paper', 'commit': commit,
+                      'file': 'human_readable_main.tex', 'origin_commit': 'a' * 40}
+        self.mapping['sources']['paper'] = self.paper
+        self.receipt['paper_commit'] = self.paper['origin_commit']
+        self.receipt['paper_source'] = {
+            'repo': self.paper['repo'], 'commit': commit, 'file': self.paper['file'],
+            'sha256': self.sha(self.files['human_readable_main.tex'].encode()),
+        }
+        self.write_receipt()
+
     def test_accepts_one_frozen_source_and_exact_pdf_exports(self):
         # Later checkout edits cannot alter the source objects chosen by pins.
         (self.snapshot / 'human_readable_main.tex').write_text('Uncommitted draft C.\n')
         review_site.check_review_assets(self.root, self.mapping)
+
+    def test_accepts_explicit_separate_paper_checkout_at_its_pinned_commit(self):
+        self.use_separate_paper_repository()
+        # The working manuscript can move after the pin; only committed bytes count.
+        (self.paper_root / 'human_readable_main.tex').write_text('Uncommitted paper draft B.\n')
+        review_site.check_review_assets(self.root, self.mapping, paper_root=self.paper_root)
+
+    def test_separate_paper_checkout_is_required_and_must_match_repository_pin(self):
+        self.use_separate_paper_repository()
+        with self.assertRaisesRegex(ValueError, 'requires --paper PATH'):
+            review_site.check_review_assets(self.root, self.mapping)
+        subprocess.run(['git', '-C', str(self.paper_root), 'remote', 'set-url', 'origin',
+                        'https://github.com/example/other-paper.git'], check=True)
+        with self.assertRaisesRegex(ValueError, 'do not identify example/paper'):
+            review_site.check_review_assets(self.root, self.mapping, paper_root=self.paper_root)
+
+    def test_rejects_paper_commit_missing_from_explicit_repository(self):
+        self.use_separate_paper_repository()
+        self.mapping['sources']['paper']['commit'] = 'b' * 40
+        with self.assertRaisesRegex(ValueError, 'Paper source cannot read'):
+            review_site.check_review_assets(self.root, self.mapping, paper_root=self.paper_root)
 
     def test_rejects_pdfs_attested_to_a_different_manuscript(self):
         (self.snapshot / 'human_readable_main.tex').write_text('Author proof B: every integer is odd.\n')
