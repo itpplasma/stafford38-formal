@@ -48,6 +48,16 @@ theorem canonicalSupportVanishingViaGeneralCoisotropic :
     (Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic
       hunit)
 
+theorem canonicalSupportVanishingViaGenericLaurent :
+    UniversalAssembly.CanonicalSupportVanishing.{u} := by
+  let hunit : CanonicalSupportVanishingReduction.CanonicalStrictUnitCoordinatePreimage.{u} := by
+    intro k _ _ _ n N d hN hd
+    exact SpecializedNoncharacteristicEquality.strictUnitCoordinatePreimage_of_transposedSupport_disjoint_axis
+      k n N d (canonicalNoncharacteristicSupportAvoidance k n N d hN hd)
+  exact Stafford38.PaperQuotientDescent.canonicalSupportDescent_via_quotient
+    (Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_genericLaurent
+      hunit)
+
 end Stafford38.FoundationClosure
 
 namespace Stafford38
@@ -66,3 +76,22 @@ theorem universalFixedSourceStatement : FixedSource.UniversalFixedSourceStatemen
 #print axioms universalFixedSourceStatement
 
 end Stafford38
+
+namespace Stafford38.GenericLaurentVariant
+
+universe u
+
+/-- Challenge theorem assembled through the historical generic/Laurent route. -/
+theorem universalStatement : UniversalStatement.{u} :=
+  UniversalAssembly.universalStatement_of_canonicalSupportVanishing
+    FoundationClosure.canonicalSupportVanishingViaGenericLaurent
+
+/-- Fixed-source strengthening assembled through the same historical route. -/
+theorem universalFixedSourceStatement : FixedSource.UniversalFixedSourceStatement.{u} :=
+  FixedSource.universalFixedSourceStatement_of_canonicalSupportVanishing
+    FoundationClosure.canonicalSupportVanishingViaGenericLaurent
+
+#print axioms universalStatement
+#print axioms universalFixedSourceStatement
+
+end Stafford38.GenericLaurentVariant

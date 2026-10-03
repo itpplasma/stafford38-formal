@@ -1,4 +1,6 @@
-import Stafford38.Geometry.SameWitness.CoordinatePresentation
+module
+
+public import Stafford38.Geometry.SameWitness.CoordinatePresentation
 
 set_option autoImplicit false
 set_option maxHeartbeats 1600000

@@ -1,5 +1,6 @@
 module
 public import Stafford38.Geometry.GeneralAsymptoticConormal
+public import Stafford38.Geometry.AlternativeAsymptoticConormal
 public import Stafford38.Geometry.GeneralComponentConormalContainment
 
 @[expose] public section
@@ -29,8 +30,18 @@ noncomputable section
 
 universe u
 
-theorem exists_zero_base_coordinate
+abbrev CoordinateAxisClosureInput
+    {k : Type u} [Field k] [IsAlgClosed k] [CharZero k] :=
+  ∀ {m : ℕ} (hm : 0 < m) (I : PrimeSpectrum (MvPolynomial (Fin m) k)),
+    (∀ y ∈ MvPolynomial.zeroLocus k I.asIdeal, y ⟨0, hm⟩ ≠ 0) →
+    (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0) ∈
+      MvPolynomial.zeroLocus k
+        (MvPolynomial.vanishingIdeal k
+          (smoothConormalFibreProjection I.asIdeal))
+
+theorem exists_zero_base_coordinate_using
     {k : Type u} [Field k] [IsAlgClosed k] [CharZero k]
+    (axisClosure : CoordinateAxisClosureInput (k := k))
     {m : ℕ} (hm : 0 < m)
     (J : Ideal (SymbolRing k m)) (hproper : J ≠ ⊤)
     (hrad : J.IsRadical)
@@ -55,7 +66,7 @@ theorem exists_zero_base_coordinate
     have hzero : zeroSectionPoint y ∈ MvPolynomial.zeroLocus k J :=
       zeroSection_commonZero_of_isHomogeneous J hhom y hyB
     exact hnone (zeroSectionPoint y) hzero
-  have hclosure := coordinate_axis_mem_smooth_fibre_closure hm qprime havoid
+  have hclosure := axisClosure hm qprime havoid
   apply haxis
   apply hclosure P
   intro ξ hξ
@@ -69,6 +80,36 @@ theorem exists_zero_base_coordinate
     J hrad hhom hpoisson Q hQ hpoint
   have hzero := hJpoint (fibreLift P) hP
   simpa [fibreLift, MvPolynomial.eval_rename, Function.comp_def] using hzero
+
+theorem exists_zero_base_coordinate
+    {k : Type u} [Field k] [IsAlgClosed k] [CharZero k]
+    {m : ℕ} (hm : 0 < m)
+    (J : Ideal (SymbolRing k m)) (hproper : J ≠ ⊤)
+    (hrad : J.IsRadical)
+    (hhom : J.IsHomogeneous (orderDecomposition (k := k) (n := m)))
+    (hpoisson : IsBaseRelativePoisson J)
+    (P : MvPolynomial (Fin m) k) (hP : fibreLift P ∈ J)
+    (haxis : MvPolynomial.eval
+      (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0) P ≠ 0) :
+    ∃ q ∈ MvPolynomial.zeroLocus k J, q (.inl ⟨0, hm⟩) = 0 := by
+  exact exists_zero_base_coordinate_using
+    Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure
+    hm J hproper hrad hhom hpoisson P hP haxis
+
+theorem exists_zero_base_coordinate_genericLaurent
+    {k : Type u} [Field k] [IsAlgClosed k] [CharZero k]
+    {m : ℕ} (hm : 0 < m)
+    (J : Ideal (SymbolRing k m)) (hproper : J ≠ ⊤)
+    (hrad : J.IsRadical)
+    (hhom : J.IsHomogeneous (orderDecomposition (k := k) (n := m)))
+    (hpoisson : IsBaseRelativePoisson J)
+    (P : MvPolynomial (Fin m) k) (hP : fibreLift P ∈ J)
+    (haxis : MvPolynomial.eval
+      (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0) P ≠ 0) :
+    ∃ q ∈ MvPolynomial.zeroLocus k J, q (.inl ⟨0, hm⟩) = 0 := by
+  exact exists_zero_base_coordinate_using
+    Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure
+    hm J hproper hrad hhom hpoisson P hP haxis
 
 #print axioms exists_zero_base_coordinate
 

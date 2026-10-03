@@ -108,7 +108,9 @@ Gabber's involutivity of the radical associated graded annihilator; its
 base-relative fragment is obtained by restricting the first bracket entry to
 the base polynomial subring. -/
 
-theorem algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic
+theorem algebraicallyClosedCanonicalSupportVanishing_using
+    (axisClosure : ∀ {k : Type u} [Field k] [IsAlgClosed k] [CharZero k],
+      CoordinateAxisClosureInput (k := k))
     (hunit : CanonicalStrictUnitCoordinatePreimage.{u}) :
     AlgebraicallyClosedCanonicalSupportVanishing.{u} := by
   intro k _ _ _ n N d hN hd
@@ -190,7 +192,7 @@ theorem algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic
     simpa only [← MvPolynomial.aeval_def, MvPolynomial.aeval_eq_eval] using
       heval.symm.trans hcanonical
   obtain ⟨q, hq, hqcoord⟩ :=
-    exists_zero_base_coordinate_of_isFibreConical
+    exists_zero_base_coordinate_of_isFibreConical_using axisClosure
       (k := k) (m := n + 1) (Nat.zero_lt_succ n)
       (MvPolynomial.zeroLocus k J) hnonemptyW ⟨J, rfl⟩ hW hpoissonW P
       (by
@@ -216,6 +218,22 @@ theorem algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic
       Set.mem_singleton_iff.mp hf]
     simpa using hqcoord
   exact Set.disjoint_left.mp hdisjoint hqSupport hqCoordinate
+
+theorem algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic
+    (hunit : CanonicalStrictUnitCoordinatePreimage.{u}) :
+    AlgebraicallyClosedCanonicalSupportVanishing.{u} := by
+  exact algebraicallyClosedCanonicalSupportVanishing_using
+    (fun {k} _ _ _ =>
+      Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure)
+    hunit
+
+theorem algebraicallyClosedCanonicalSupportVanishing_genericLaurent
+    (hunit : CanonicalStrictUnitCoordinatePreimage.{u}) :
+    AlgebraicallyClosedCanonicalSupportVanishing.{u} := by
+  exact algebraicallyClosedCanonicalSupportVanishing_using
+    (fun {k} _ _ _ =>
+      Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure)
+    hunit
 
 end
 end Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter

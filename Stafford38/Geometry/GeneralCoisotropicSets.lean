@@ -23,10 +23,20 @@ open Stafford38.Geometry.GeneralComponentConormalContainment
 open Stafford38.Geometry.GeneralCoisotropicExclusion
 open Stafford38.Geometry.LaurentConormalDirection
 open Stafford38.Geometry.SmoothAffineConormal
+open Stafford38.Geometry.ProjectiveConormalDirections
 
 noncomputable section
 
 variable {k : Type*} [Field k] [IsAlgClosed k] [CharZero k] {n : ℕ}
+
+abbrev CoordinateAxisClosureInput {k : Type*} [Field k] [IsAlgClosed k]
+    [CharZero k] :=
+  ∀ {m : ℕ} (hm : 0 < m) (I : PrimeSpectrum (MvPolynomial (Fin m) k)),
+    (∀ y ∈ MvPolynomial.zeroLocus k I.asIdeal, y ⟨0, hm⟩ ≠ 0) →
+    (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0) ∈
+      MvPolynomial.zeroLocus k
+        (MvPolynomial.vanishingIdeal k
+          (smoothConormalFibreProjection I.asIdeal))
 
 theorem vanishingIdeal_isRadical (W : Set (PhaseVar n → k)) :
     (MvPolynomial.vanishingIdeal k W).IsRadical := by
@@ -108,8 +118,9 @@ transverse to the distinguished axis.
 The ideal used by the argument is the actual vanishing ideal of `W`; its
 radicality is automatic, fibre homogeneity is derived from `hW`, and
 coisotropy means the exact self-involutivity condition `{I(W), I(W)} ⊆ I(W)`. -/
-theorem exists_zero_base_coordinate_of_isFibreConical
+theorem exists_zero_base_coordinate_of_isFibreConical_using
     {k : Type*} [Field k] [IsAlgClosed k] [CharZero k]
+    (axisClosure : CoordinateAxisClosureInput (k := k))
     {m : ℕ} (hm : 0 < m)
     (W : Set (PhaseVar m → k))
     (hnonempty : W.Nonempty)
@@ -140,11 +151,51 @@ theorem exists_zero_base_coordinate_of_isFibreConical
   have hbasePoisson : IsBaseRelativePoisson J := by
     intro f hf g hg
     exact hpoisson (baseLift f) hf g hg
-  obtain ⟨q, hq, hqcoord⟩ := exists_zero_base_coordinate hm J hproper hrad hhom
-    hbasePoisson P hP haxis
+  obtain ⟨q, hq, hqcoord⟩ := exists_zero_base_coordinate_using axisClosure
+    hm J hproper hrad hhom hbasePoisson P hP haxis
   refine ⟨q, ?_, hqcoord⟩
   rw [← zeroLocus_vanishingIdeal_of_algebraic_closed W hclosed]
   exact hq
+
+theorem exists_zero_base_coordinate_of_isFibreConical
+    {k : Type*} [Field k] [IsAlgClosed k] [CharZero k]
+    {m : ℕ} (hm : 0 < m)
+    (W : Set (PhaseVar m → k))
+    (hnonempty : W.Nonempty)
+    (hclosed : ∃ L : Ideal (SymbolRing k m),
+      W = MvPolynomial.zeroLocus k L)
+    (hW : FibreConicalVanishingIdeal.IsFibreConical W)
+    (hpoisson : ∀ f ∈ MvPolynomial.vanishingIdeal k W,
+      ∀ g ∈ MvPolynomial.vanishingIdeal k W,
+        poissonBracket f g ∈ MvPolynomial.vanishingIdeal k W)
+    (P : MvPolynomial (Fin m) k)
+    (hP : fibreLift P ∈ MvPolynomial.vanishingIdeal k W)
+    (haxis : MvPolynomial.eval
+      (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0) P ≠ 0) :
+    ∃ q ∈ W, q (.inl ⟨0, hm⟩) = 0 := by
+  exact exists_zero_base_coordinate_of_isFibreConical_using
+    Stafford38.Geometry.GeneralAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure
+    hm W hnonempty hclosed hW hpoisson P hP haxis
+
+theorem exists_zero_base_coordinate_of_isFibreConical_genericLaurent
+    {k : Type*} [Field k] [IsAlgClosed k] [CharZero k]
+    {m : ℕ} (hm : 0 < m)
+    (W : Set (PhaseVar m → k))
+    (hnonempty : W.Nonempty)
+    (hclosed : ∃ L : Ideal (SymbolRing k m),
+      W = MvPolynomial.zeroLocus k L)
+    (hW : FibreConicalVanishingIdeal.IsFibreConical W)
+    (hpoisson : ∀ f ∈ MvPolynomial.vanishingIdeal k W,
+      ∀ g ∈ MvPolynomial.vanishingIdeal k W,
+        poissonBracket f g ∈ MvPolynomial.vanishingIdeal k W)
+    (P : MvPolynomial (Fin m) k)
+    (hP : fibreLift P ∈ MvPolynomial.vanishingIdeal k W)
+    (haxis : MvPolynomial.eval
+      (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0) P ≠ 0) :
+    ∃ q ∈ W, q (.inl ⟨0, hm⟩) = 0 := by
+  exact exists_zero_base_coordinate_of_isFibreConical_using
+    Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure
+    hm W hnonempty hclosed hW hpoisson P hP haxis
 
 #print axioms vanishingIdeal_isRadical
 #print axioms zeroLocus_vanishingIdeal_of_algebraic_closed

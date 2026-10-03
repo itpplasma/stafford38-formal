@@ -12,6 +12,8 @@ python3 scripts/check-layout.py >"$log_dir/layout.log" 2>&1
 
 python3 tests/palomar-source-requirements-behavior.py >"$log_dir/source-policy-behavior.log" 2>&1
 python3 tests/palomar-policy-pin-behavior.py >"$log_dir/policy-pin-behavior.log" 2>&1
+python3 tests/dependency-guard-fixtures/test_toolchain_resolution.py \
+  >"$log_dir/dependency-guard-toolchain-resolution.log" 2>&1
 python3 scripts/check-palomar-policy.py
 bash scripts/bootstrap-palomar-tools.sh
 bash tests/palomar-comparator-behavior.sh >"$log_dir/palomar-behavior.log" 2>&1
@@ -40,11 +42,26 @@ lake build "${retained_modules[@]}" \
   Stafford38.Geometry.GeneralAsymptoticConormal \
   Stafford38.Geometry.GeneralCoisotropicSets \
   Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter \
-  Solution FixedSourceSolution CorollaryChallenge PaperPairChallenge \
+  Solution FixedSourceSolution AlternativeSolution AlternativeFixedSourceSolution \
+  CorollaryChallenge PaperPairChallenge \
   >"$log_dir/build.log" 2>&1
 
 python3 scripts/dependency-guard/run_guard.py \
   >"$log_dir/terminal-dependency-guard.log" 2>&1
+
+python3 scripts/dependency-guard/run_guard.py \
+  --base-module Solution \
+  --base-module FixedSourceSolution \
+  --route Stafford38Challenge.universalStatement Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38FixedSourceChallenge.universalFixedSourceStatement Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure \
+  >"$log_dir/main-solution-dependency-routes.log" 2>&1
+
+python3 scripts/dependency-guard/run_guard.py \
+  --base-module AlternativeSolution \
+  --base-module AlternativeFixedSourceSolution \
+  --route Stafford38Challenge.universalStatement Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38FixedSourceChallenge.universalFixedSourceStatement Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  >"$log_dir/alternative-solution-dependency-routes.log" 2>&1
 
 lake env lean --trust=0 tests/PaperAdaptersConsumer.lean >"$log_dir/paper-adapters.log" 2>&1
 lake env lean --trust=0 tests/PaperPairConsumer.lean >"$log_dir/paper-pair.log" 2>&1
@@ -178,7 +195,8 @@ for label, code in (("Challenge.lean", challenge_code),
 # Neither Solution may import either Challenge, at source level; the loaded
 # environment audit below repeats this for the transitive closure.
 challenge_roots = {"Challenge", "FixedSourceChallenge"}
-for solution_name in ("Solution.lean", "FixedSourceSolution.lean"):
+for solution_name in ("Solution.lean", "FixedSourceSolution.lean",
+                      "AlternativeSolution.lean", "AlternativeFixedSourceSolution.lean"):
     solution = Path(solution_name)
     if not solution.is_file():
         raise SystemExit(f"{solution_name} is missing")
@@ -325,9 +343,13 @@ bash scripts/check-import-closure.sh CorollaryChallenge
 bash scripts/check-import-closure.sh Solution
 bash scripts/check-import-closure.sh FixedSourceChallenge
 bash scripts/check-import-closure.sh FixedSourceSolution
+bash scripts/check-import-closure.sh AlternativeSolution
+bash scripts/check-import-closure.sh AlternativeFixedSourceSolution
 
 lake env lean --trust=0 Solution.lean >"$log_dir/solution.log" 2>&1
 lake env lean --trust=0 FixedSourceSolution.lean >>"$log_dir/solution.log" 2>&1
+lake env lean --trust=0 AlternativeSolution.lean >>"$log_dir/solution.log" 2>&1
+lake env lean --trust=0 AlternativeFixedSourceSolution.lean >>"$log_dir/solution.log" 2>&1
 
 if grep -Eq "sorryAx|admitAx|Lean\.ofReduceBool|declaration uses 'sorry'|(^|:) error(\([^)]*\))?:" \
     "$log_dir/build.log" "$log_dir/axioms.log" "$log_dir/solution.log"; then

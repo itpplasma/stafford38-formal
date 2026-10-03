@@ -64,6 +64,18 @@ def check_config(path: Path) -> None:
             "theorem_names": ["Stafford38FixedSourceChallenge.universalFixedSourceStatement"],
             "permitted_axioms": AXIOMS,
         },
+        "comparator-alternative.json": {
+            "challenge_module": "Challenge",
+            "solution_module": "AlternativeSolution",
+            "theorem_names": ["Stafford38Challenge.universalStatement"],
+            "permitted_axioms": AXIOMS,
+        },
+        "comparator-alternative-fixed-source.json": {
+            "challenge_module": "FixedSourceChallenge",
+            "solution_module": "AlternativeFixedSourceSolution",
+            "theorem_names": ["Stafford38FixedSourceChallenge.universalFixedSourceStatement"],
+            "permitted_axioms": AXIOMS,
+        },
     }
     if path.name not in expected:
         raise SystemExit(f"unsupported Palomar config: {path}")
@@ -142,6 +154,8 @@ def main() -> int:
     check_project()
     check_config(Path("comparator.json"))
     check_config(Path("comparator-fixed-source.json"))
+    check_config(Path("comparator-alternative.json"))
+    check_config(Path("comparator-alternative-fixed-source.json"))
     print(
         f"pins: Lean {LEAN_TOOLCHAIN} ({LEAN_COMMIT}), Mathlib {MATHLIB_COMMIT}, "
         f"AlgebraicAnalysis {AA_COMMIT}; both Palomar configs passed"
