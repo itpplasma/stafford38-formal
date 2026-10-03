@@ -19,6 +19,7 @@ private structure Issue where
 private structure Report where
   root : Name
   visited : Nat
+  requiredReached : Array Name
   forbidden : Array Issue
   incomplete : Array Issue
   deriving Inhabited, Repr
@@ -48,17 +49,20 @@ private meta def isStructural (ci : ConstantInfo) : Bool :=
 private meta def inspectRoot
     (env : Environment)
     (root : Name)
-    (bannedOwners bannedNames allowedAxioms : Array Name) : Report := Id.run do
+    (bannedOwners bannedNames requiredNames allowedAxioms : Array Name) : Report := Id.run do
   let mut todo : Array Name := #[root]
   let mut seen : Std.HashSet Name := {}
   let mut parent : Std.HashMap Name Name := {}
   let mut forbidden : Array Issue := #[]
   let mut incomplete : Array Issue := #[]
+  let mut requiredReached : Array Name := #[]
   while !todo.isEmpty do
     let n := todo.back!
     todo := todo.pop
     if !seen.contains n then
       seen := seen.insert n
+      if requiredNames.contains n then
+        requiredReached := requiredReached.push n
       let owner? := moduleOf? env n
       if bannedNames.contains n then
         forbidden := forbidden.push ⟨n, owner?, "forbidden", "named forbidden producer", dependencyPath root parent n⟩
@@ -92,12 +96,14 @@ private meta def inspectRoot
             if parent[d]?.isNone then
               parent := parent.insert d n
             todo := todo.push d
-  return ⟨root, seen.size, forbidden, incomplete⟩
+  return ⟨root, seen.size, requiredReached, forbidden, incomplete⟩
 
 private meta def standardAxioms : Array Name := #[`propext, `Quot.sound, `Classical.choice]
 
 private meta def emitReport (report : Report) : CommandElabM Unit := do
   logInfo m!"root: {report.root}; declarations reached: {report.visited}; forbidden hits: {report.forbidden.size}; unavailable dependencies: {report.incomplete.size}"
+  if !report.requiredReached.isEmpty then
+    logInfo m!"required declarations reached: {report.requiredReached}"
   for issue in report.forbidden do
     logInfo m!"forbidden dependency path (terminal to producer): {issue.path}; declaration={issue.name}; {issue.detail}"
   for issue in report.incomplete do
@@ -108,10 +114,24 @@ syntax (name := auditFixtureDeps) "#auditDependencyClosure " ident " forbidden "
 
 elab_rules : command
   | `(#auditDependencyClosure $root:ident forbidden $producer:ident) => do
-    let report := inspectRoot (← getEnv) root.getId #[] #[producer.getId] standardAxioms
+    let report := inspectRoot (← getEnv) root.getId #[] #[producer.getId] #[] standardAxioms
     emitReport report
     unless report.forbidden.isEmpty && report.incomplete.isEmpty do
       throwError m!"fixture dependency closure rejected for {root.getId}"
+
+syntax (name := auditDependencyRoute) "#auditDependencyRoute " ident " required " ident " forbidden " ident : command
+
+elab_rules : command
+  | `(#auditDependencyRoute $root:ident required $requiredDecl:ident forbidden $producer:ident) => do
+    let report := inspectRoot (← getEnv) root.getId #[] #[producer.getId] #[requiredDecl.getId] standardAxioms
+    emitReport report
+    unless report.incomplete.isEmpty do
+      throwError m!"route dependency inspection was incomplete for {root.getId}"
+    unless report.forbidden.isEmpty do
+      throwError m!"route dependency inspection reached forbidden endpoint {producer.getId}"
+    unless report.requiredReached.contains requiredDecl.getId do
+      throwError m!"route dependency inspection did not reach required endpoint {requiredDecl.getId}"
+    logInfo m!"dependency route passed: {root.getId} reaches {requiredDecl.getId} and excludes {producer.getId}"
 
 syntax (name := auditStaffordTerminalDeps) "#auditStaffordTerminalDeps" : command
 
@@ -134,7 +154,7 @@ elab_rules : command
     let mut strictFailures : Array String := #[]
     let mut incompleteFailures : Array String := #[]
     for root in targets do
-      let report := inspectRoot env root #[oldOwner] bannedNames standardAxioms
+      let report := inspectRoot env root #[oldOwner] bannedNames #[] standardAxioms
       emitReport report
       if !report.incomplete.isEmpty then
         incompleteFailures := incompleteFailures.push s!"{root}: {report.incomplete.size} unavailable dependencies"
