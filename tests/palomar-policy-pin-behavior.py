@@ -22,7 +22,11 @@ with tempfile.TemporaryDirectory(prefix="palomar-pin-check-") as temp:
     (project / "scripts").mkdir()
     for name in ("check-palomar-policy.py", "source_requirements.py", "verification_errors.py", "palomar-policy-LICENSE"):
         shutil.copy2(SOURCE_ROOT / "scripts" / name, project / "scripts" / name)
-    for name in ("comparator.json", "comparator-fixed-source.json"):
+    configs = (
+        "comparator.json", "comparator-fixed-source.json",
+        "comparator-alternative.json", "comparator-alternative-fixed-source.json",
+    )
+    for name in configs:
         shutil.copy2(SOURCE_ROOT / name, project / name)
     (project / "lean-toolchain").write_text(LEAN + "\n", encoding="utf-8")
     (project / "lakefile.toml").write_text(
@@ -42,6 +46,27 @@ with tempfile.TemporaryDirectory(prefix="palomar-pin-check-") as temp:
     assert good.returncode == 0, good.stdout + good.stderr
     assert "2 Lean files satisfy" in good.stdout
     assert AA in good.stdout
+
+    for name in configs:
+        accepted = subprocess.run(
+            [*command, "--config-only", name], cwd=project,
+            text=True, capture_output=True, check=False,
+        )
+        assert accepted.returncode == 0, accepted.stdout + accepted.stderr
+        assert "exact theorem/axiom contract passed" in accepted.stdout
+
+    alt_config = project / "comparator-alternative.json"
+    original_alt_config = alt_config.read_text(encoding="utf-8")
+    alt_config.write_text(
+        original_alt_config.replace("AlternativeSolution", "Solution"), encoding="utf-8"
+    )
+    mismatched_variant = subprocess.run(
+        [*command, "--config-only", "comparator-alternative.json"], cwd=project,
+        text=True, capture_output=True, check=False,
+    )
+    assert mismatched_variant.returncode != 0
+    assert "exact theorem/axiom contract" in mismatched_variant.stderr
+    alt_config.write_text(original_alt_config, encoding="utf-8")
 
     manifest = json.loads((project / "lake-manifest.json").read_text(encoding="utf-8"))
     manifest["packages"][1]["inputRev"] = "1" * 40
@@ -66,4 +91,4 @@ with tempfile.TemporaryDirectory(prefix="palomar-pin-check-") as temp:
     assert tampered_license.returncode != 0
     assert "vendored Palomar policy license changed" in tampered_license.stderr
 
-print("PASS: exact release pins accepted; altered dependency lock and modified vendored policy source/license rejected before any build")
+print("PASS: exact release pins and all four main/alternative comparator contracts accepted; variant mixing, altered dependency lock, and modified vendored policy source/license rejected before any build")

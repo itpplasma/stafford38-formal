@@ -44,12 +44,27 @@ nodes:
     depends_on: [visible_frame, finite_gradient]
   - id: laurent_axis
     module: Stafford38.Geometry.GeneralAsymptoticLaurentAxis
-    source_role: project construction
+    source_role: preserved generic/Laurent route support; alternative to the primary same-witness endpoint
     references: []
     depends_on: [conormal_axis]
+  - id: same_witness_closure
+    module: Stafford38.Geometry.SameWitness.AffineFibreClosure
+    source_role: paper-conforming same-witness closure construction
+    references: []
+    depends_on: [visible_frame, finite_gradient]
+  - id: same_witness_original_prime
+    module: Stafford38.Geometry.SameWitness.OriginalPrimeAxis
+    source_role: paper-conforming original-prime terminal input
+    references: []
+    depends_on: [same_witness_closure, conormal_axis]
   - id: asymptotic_conormal
     module: Stafford38.Geometry.GeneralAsymptoticConormal
-    source_role: project construction
+    source_role: primary paper-conforming terminal asymptotic-conormal wrapper
+    references: []
+    depends_on: [same_witness_original_prime]
+  - id: alternative_asymptotic_conormal
+    module: Stafford38.Geometry.AlternativeAsymptoticConormal
+    source_role: preserved generic/Laurent solution variant
     references: []
     depends_on: [laurent_axis]
   - id: coisotropic_exclusion

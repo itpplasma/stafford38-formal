@@ -9,6 +9,8 @@ config=${1:-comparator.json}
 case "$config" in
   comparator.json) challenge=Challenge; solution=Solution; suffix= ;;
   comparator-fixed-source.json) challenge=FixedSourceChallenge; solution=FixedSourceSolution; suffix=-fixed-source ;;
+  comparator-alternative.json) challenge=Challenge; solution=AlternativeSolution; suffix=-alternative ;;
+  comparator-alternative-fixed-source.json) challenge=FixedSourceChallenge; solution=AlternativeFixedSourceSolution; suffix=-alternative-fixed-source ;;
   *) echo "unsupported Palomar configuration: $config" >&2; exit 2 ;;
 esac
 

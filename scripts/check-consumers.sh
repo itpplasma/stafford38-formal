@@ -14,6 +14,8 @@ for source in \
   tests/ActualPointAxisLiftCheck.lean \
   tests/ActualSelectedNormalizationDivisorEtaleCheck.lean \
   tests/ActualSameWitnessGroundPointCompletionConsumer.lean \
+  tests/ActualSameWitnessAffineFibreClosureConsumer.lean \
+  tests/ActualSameWitnessOriginalPrimeConsumer.lean \
   tests/Geometry/CommonOpenArcCompatibilityConsumer.lean \
   tests/ActualPointCommonOpenAssemblyCheck.lean \
   tests/DirectSummandInputAxisConsumer.lean \
@@ -428,6 +430,11 @@ expected = {
     'Stafford38.Geometry.ActualWitnessSelectedChartIndex.exists_succ_chart_index',
     'Stafford38.Geometry.ActualSameWitnessDivisorNumerator.exists_actual_parameter_with_retained_orders',
     'Stafford38.Geometry.ActualSameWitnessGroundPointCompletion.exists_actual_same_witness_groundpoint_chart',
+    'Stafford38.Geometry.SameWitness.AffineFibreClosureConsumer.axis_in_original_affine_conormal_fibre_closure',
+    'Stafford38.Geometry.SameWitness.axis_mem_smoothConormalFibreProjection_closure_of_groundPointOutput',
+    'Stafford38IndependentOriginalPrimeConsumer.original_prime_coordinate_avoidance_affine_endpoint',
+    'Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure',
+    'Stafford38IndependentOriginalPrimeConsumer.original_prime_coordinate_avoidance_projective_endpoint',
     'Stafford38.Geometry.EtaleCotangentBasis.coordinateDerivation_algebraMap',
     'Stafford38.Geometry.ActualCommonOpenArcCompatibility.genericArcToExtraAway_comp_commonOpenMap',
     'Stafford38.Geometry.ActualCommonOpenArcCompatibility.pointArc_factors_ne_zero_of_tiltedProduct',

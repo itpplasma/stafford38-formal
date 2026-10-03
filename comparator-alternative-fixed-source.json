@@ -1,0 +1,6 @@
+{
+  "challenge_module": "FixedSourceChallenge",
+  "solution_module": "AlternativeFixedSourceSolution",
+  "theorem_names": ["Stafford38FixedSourceChallenge.universalFixedSourceStatement"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

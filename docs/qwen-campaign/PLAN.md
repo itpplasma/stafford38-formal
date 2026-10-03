@@ -966,7 +966,7 @@ allowed axioms.
 
 ### T42 Rewire the terminal geometric theorem
 
-Active3October2026: sharedassembly3127001 reached the adapter and failed its missing explicit field argument atExclusion44:19. Sol repairs that source and rechecks the assembly only, reusing the passed wrapper cache. Final single verifier and four comparators remain required.
+Completed3October2026: all four solution assemblies and terminal geometry passed3127814 after two small adapter elaboration repairs. T41 checks were reused. Exact19-source acceptance packet: notes/T42-four-assemblies-linux-accepted-20261003.md. Final single verifier and four comparators remain required.
 
 Owned: `$WT/Stafford38/Geometry/GeneralAsymptoticConormal.lean` (**proof
 body of `coordinate_axis_mem_smooth_fibre_closure` and the import list
@@ -1080,6 +1080,8 @@ correspondence" paragraph of `$WT/STATUS.md`, citing the T51 receipt. Mark
 nothing as released. The controller applies and reviews it.
 
 ### T53 OWNER GATE: integrate into main
+
+Completed3October2026: controller integrated55 explicit accepted proof/tooling paths, registry owners and current source-scoped metadata. Challenges, pins and historical receipts remain preserved.
 
 The controller reviews the branch (full diff, frozen evidence and statement
 diffs), then performs the already authorized integration and push. Workers

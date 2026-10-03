@@ -15,7 +15,8 @@ import tempfile
 
 TOOLCHAIN = "leanprover/lean4:v4.35.0-rc3"
 VERSION_PREFIX = "Lean (version 4.35.0-rc3,"
-LEAN = Path.home() / ".elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/lean"
+LEAN_COMMIT = "470d5ce1400764999581fd26d5d72b00d990b0f4"
+ELAN_TOOLCHAIN_PATH = Path("toolchains/leanprover--lean4---v4.35.0-rc3/bin/lean")
 ROOT_MODULES = (
     "Solution",
     "FixedSourceSolution",
@@ -34,12 +35,22 @@ def display_output(output: str) -> str:
     return "\n".join(shown) + "\n"
 
 
+def lean_binary() -> Path:
+    elan_home = os.environ.get("ELAN_HOME") or str(Path.home() / ".elan")
+    return Path(elan_home) / ELAN_TOOLCHAIN_PATH
+
+
 def check_lean() -> str:
-    if not LEAN.is_file():
-        raise SystemExit(f"explicit RC3 Lean binary is missing: {LEAN}")
-    result = subprocess.run([str(LEAN), "--version"], text=True, capture_output=True)
-    if result.returncode or not result.stdout.startswith(VERSION_PREFIX):
-        raise SystemExit(f"wrong Lean binary: {result.stdout.strip()} {result.stderr.strip()}")
+    lean = lean_binary()
+    if not lean.is_file():
+        raise SystemExit(f"explicit pinned RC3 Lean binary is missing: {lean}")
+    result = subprocess.run([str(lean), "--version"], text=True, capture_output=True)
+    commit_present = re.search(rf"\bcommit {LEAN_COMMIT}\b", result.stdout)
+    if result.returncode or not result.stdout.startswith(VERSION_PREFIX) or not commit_present:
+        raise SystemExit(
+            f"wrong Lean binary; expected {TOOLCHAIN} commit {LEAN_COMMIT}: "
+            f"{result.stdout.strip()} {result.stderr.strip()}"
+        )
     return result.stdout.strip()
 
 
@@ -53,7 +64,7 @@ def project_search_path(root: Path) -> list[Path]:
         else:
             package_root = root / ".lake/packages" / package["name"]
         paths.append(package_root / ".lake/build/lib/lean")
-    paths.append(LEAN.parent.parent / "lib/lean")
+    paths.append(lean_binary().parent.parent / "lib/lean")
     return [p.resolve() for p in paths if p.is_dir()]
 
 
@@ -66,7 +77,8 @@ def find_project_root() -> Path:
 
 
 def make_header(base_modules: list[str], extra_modules: list[str], *, fixture: bool, root_name: str | None,
-                forbidden_name: str | None, production_fixture: bool) -> str:
+                forbidden_name: str | None, production_fixture: bool,
+                route_checks: list[tuple[str, str, str]] | None = None) -> str:
     lines = ["module", "public import DependencyClosureCore", "import all DependencyClosureCore"]
     for module in base_modules:
         lines.extend((f"public import {module}", f"import all {module}"))
@@ -75,6 +87,9 @@ def make_header(base_modules: list[str], extra_modules: list[str], *, fixture: b
     lines.append("")
     if production_fixture:
         lines.append("#auditStaffordTerminalDeps")
+    elif route_checks:
+        for route_root, required_name, forbidden_name in route_checks:
+            lines.append(f"#auditDependencyRoute {route_root} required {required_name} forbidden {forbidden_name}")
     elif fixture:
         assert root_name is not None and forbidden_name is not None
         lines.append(f"#auditDependencyClosure {root_name} forbidden {forbidden_name}")
@@ -91,7 +106,7 @@ def run_checker(env: dict[str, str], cwd: Path, checker: Path,
         paths.append(local_env["LEAN_PATH"])
     local_env["LEAN_PATH"] = os.pathsep.join(paths)
     proc = subprocess.run(
-        [str(LEAN), "--trust=0", "-j", "1", str(checker)],
+        [str(lean_binary()), "--trust=0", "-j", "1", str(checker)],
         cwd=cwd, env=local_env, text=True, capture_output=True,
         timeout=timeout_seconds,
     )
@@ -107,8 +122,12 @@ def main() -> int:
     parser.add_argument("--timeout-seconds", type=int, default=300)
     parser.add_argument("--fixture", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("--fixture-production", action="store_true", help=argparse.SUPPRESS)
+    parser.add_argument("--fixture-route", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("--fixture-root-name", help=argparse.SUPPRESS)
     parser.add_argument("--forbidden-name", help=argparse.SUPPRESS)
+    parser.add_argument("--required-name", help=argparse.SUPPRESS)
+    parser.add_argument("--route", action="append", nargs=3, metavar=("ROOT", "REQUIRED", "FORBIDDEN"),
+                        help="check that ROOT reaches REQUIRED and excludes FORBIDDEN")
     parser.add_argument("--base-module", action="append", default=[], help=argparse.SUPPRESS)
     parser.add_argument("--extra-lean-path", action="append", default=[], type=Path, help=argparse.SUPPRESS)
     args = parser.parse_args()
@@ -116,18 +135,25 @@ def main() -> int:
         parser.error("timeout must be positive and max-expansions must be nonnegative")
     version = check_lean()
 
-    if args.fixture or args.fixture_production:
-        if args.fixture == args.fixture_production:
+    fixture_modes = (args.fixture, args.fixture_production, args.fixture_route)
+    if any(fixture_modes):
+        if sum(fixture_modes) != 1:
             parser.error("choose exactly one fixture mode")
-        if args.fixture and (not args.fixture_root_name or not args.forbidden_name):
+        if (args.fixture or args.fixture_route) and (not args.fixture_root_name or not args.forbidden_name):
             parser.error("generic fixture mode requires a root name and forbidden name")
+        if args.fixture_route and not args.required_name:
+            parser.error("route fixture mode requires a required name")
+        if args.route:
+            parser.error("--route cannot be combined with a fixture mode")
         if not args.base_module:
             parser.error("fixture mode requires at least one base module")
         root = Path.cwd().resolve()
         search = [p.resolve(strict=True) for p in args.extra_lean_path]
-        search.append(LEAN.parent.parent / "lib/lean")
+        search.append(lean_binary().parent.parent / "lib/lean")
         fixture_mode = True
         production_fixture = args.fixture_production
+        route_checks = ([(args.fixture_root_name, args.required_name, args.forbidden_name)]
+                        if args.fixture_route else [])
         base_modules = list(dict.fromkeys(args.base_module))
     else:
         root = (args.root if args.root is not None else find_project_root()).resolve(strict=True)
@@ -137,7 +163,10 @@ def main() -> int:
         search = project_search_path(root)
         fixture_mode = False
         production_fixture = False
-        base_modules = list(ROOT_MODULES)
+        if args.route and not args.base_module:
+            parser.error("production route checks require at least one --base-module")
+        route_checks = [tuple(route) for route in (args.route or [])]
+        base_modules = list(dict.fromkeys(args.base_module or ROOT_MODULES))
 
     candidate = Path(__file__).resolve().parent
     core_source = candidate / "DependencyClosureCore.lean"
@@ -152,8 +181,10 @@ def main() -> int:
     else:
         env.pop("LEAN_PATH", None)
 
-    print(f"lean={LEAN}; {version}")
-    print(f"scope={'fixture behavior test' if fixture_mode else f'RC3 source tree {root}'}")
+    print(f"lean={lean_binary()}; {version}")
+    scope = ("fixture route behavior test" if args.fixture_route else
+             "fixture behavior test" if fixture_mode else f"RC3 source tree {root}")
+    print(f"scope={scope}")
     print(f"mode={'old-route diagnostic only' if args.allow_old_route else 'strict'}")
 
     with tempfile.TemporaryDirectory(prefix="stafford-dependency-guard-") as temporary:
@@ -162,7 +193,7 @@ def main() -> int:
         core_out.mkdir()
         try:
             core_build = subprocess.run(
-                [str(LEAN), "--trust=0", "-j", "1", "--root", str(candidate),
+                [str(lean_binary()), "--trust=0", "-j", "1", "--root", str(candidate),
                  "-o", str(core_out / "DependencyClosureCore.olean"), str(core_source)],
                 cwd=root, env=env, text=True, capture_output=True,
                 timeout=min(args.timeout_seconds, 120),
@@ -182,7 +213,8 @@ def main() -> int:
                 make_header(base_modules, [m for m in loaded if m not in base_modules], fixture=fixture_mode,
                             root_name=args.fixture_root_name,
                             forbidden_name=args.forbidden_name,
-                            production_fixture=production_fixture),
+                            production_fixture=production_fixture,
+                            route_checks=route_checks),
                 encoding="utf-8",
             )
             try:

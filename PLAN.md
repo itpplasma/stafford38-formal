@@ -2,26 +2,26 @@
 
 ```yaml
 terminal_claim: Stafford Conjecture 3.8 and fixed-source strengthening
-terminal_proof: complete at named verified source checkpoints
-paper_correspondence: open; same-witness assembly into original-prime endpoint remains unverified
+terminal_proof: verified at named historical checkpoints; candidate source requires final replay
+paper_correspondence: selected same-witness route assembled in candidate; full correspondence and human review pending
 current_alignment_checkpoint: docs/audits/paper-route-checkpoints/actual-orders-chart-source-checkpoint.json
-historical_release: v1.2.3 is a release of the unchanged challenge
-new_full_correspondence_release: not recorded
-active_work: Linux-only completion on mailuefterl/acluster/scluster; T35 is checked; same-witness assembly, final route checks, source freeze, review and release remain open
-handover: not ready
+historical_release: v1.2.3 remains attached to its recorded source
+candidate_releases: formal v1.3.0; supplementary v0.2.0; no new release published
+active_work: T34/T35/T36/T41 modules and literal consumers accepted; four shared solution assemblies passed on Linux; final verifier and four Palomar comparisons pending
+handover: pending final checks and human reviews
 ```
 
 A proved terminal theorem does not establish correspondence of every intermediate manuscript argument. The preserved author proof remains visible; local mathematical proposals remain marked for review. New formal bridges must derive their geometric inputs from the retained witness rather than assume them in a terminal wrapper.
 
 The README and `docs/paper-route-alignment.json` summarize the proof route and the current scoped evidence. Historical release and audit receipts remain tied to their named sources and configurations.
 
-The [2 October checkpoint archive](docs/audits/paused-2026-10-02/README.md) collects the completed rc3 baseline, consumer receipts, migration patches and review-tool preparation, together with the failed closure repairs and interrupted combined candidate. The retained baseline passed 425 targets and all 116 consumers with 312 axiom reports. These receipts do not cover the unfinished same-witness assembly or final Linux package. No work resumes automatically.
+The [2 October checkpoint archive](docs/audits/paused-2026-10-02/README.md) preserves earlier baseline receipts, migration patches, review-tool preparation, and failed closure repairs. The current candidate has accepted T34/T35/T36/T41 modules and literal consumers with only the three permitted axioms. The four shared solution assemblies passed on Linux; the final repository verifier and four Palomar comparisons remain pending.
 
 ## Remaining completion gates
 
-1. Prove the same-witness affine-fibre closure and its original-prime wrapper. Supply the smooth-open input from the existing generic-smooth-open theorem and use the direct constant-coordinate branch. Independently check the terminal dependency closure after rewiring.
-2. Replay the complete assembled source on Lean 4.35.0-rc3 with the saved exact published Mathlib and AlgebraicAnalysis pins. The retained baseline and independent consumers passed; combined geometry, terminal wiring and final package checks remain pending.
-3. Keep both challenges unchanged and share them between the main paper route and the preserved generic/Laurent solution variants. Run actual source-policy checks, isolated kernel comparisons and declaration-route checks on the final Linux package. Deliver a tidy Palomar-ready package; the owner submits online.
+1. Finish the four shared main and alternative solution assemblies. The T34/T35/T36/T41 modules and literal consumers already passed with only the three permitted axioms.
+2. Run the final repository verifier on the frozen candidate with Lean 4.35.0-rc3 and the pinned Mathlib and AlgebraicAnalysis revisions.
+3. Run all four Palomar comparisons on that frozen source: `comparator.json`, `comparator-fixed-source.json`, `comparator-alternative.json`, and `comparator-alternative-fixed-source.json`. Keep both challenges unchanged and preserve the generic/Laurent route as an alternative. Deliver the Palomar-ready package; the owner submits online.
 4. Freeze exact paper, formal, library and generator inputs. Re-anchor every review card; rebuild matching manuscript PDFs and the complete Max correspondence package. Preserve Johanna's visible proof and local annotated proposals.
 5. Remove obsolete unused review front doors and scaffolding after reference checks. Synchronize the final manuscript to Overleaf and its GitHub mirror; publish matching signed formal and supplementary releases, verify both Zenodo archives and cite the verified records from the paper. Record the main and alternative routes in release notes; send the requested review email after delivery.
 

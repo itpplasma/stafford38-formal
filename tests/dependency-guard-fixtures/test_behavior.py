@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import importlib.util
 import os
 from pathlib import Path
 import subprocess
@@ -12,7 +13,11 @@ import tempfile
 HERE = Path(__file__).resolve().parent
 FIXTURE_SOURCES = HERE / "sources"
 RUNNER = HERE.parents[1] / "scripts/dependency-guard/run_guard.py"
-LEAN = Path.home() / ".elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/lean"
+_runner_spec = importlib.util.spec_from_file_location("dependency_guard_runner", RUNNER)
+assert _runner_spec is not None and _runner_spec.loader is not None
+_guard_runner = importlib.util.module_from_spec(_runner_spec)
+_runner_spec.loader.exec_module(_guard_runner)
+LEAN = _guard_runner.lean_binary()
 LEAN_LIB = LEAN.parent.parent / "lib/lean"
 
 
@@ -51,6 +56,16 @@ def run_production_fixture(out: Path) -> subprocess.CompletedProcess[str]:
     )
 
 
+def run_route_fixture(out: Path, root: str, required: str, forbidden: str,
+                      module: str = "GuardFixtureRoute") -> subprocess.CompletedProcess[str]:
+    return run(
+        ["python3", str(RUNNER), "--fixture-route", "--fixture-root-name", root,
+         "--required-name", required, "--forbidden-name", forbidden,
+         "--base-module", module, "--extra-lean-path", str(out)],
+        cwd=HERE, env=os.environ.copy(),
+    )
+
+
 def run_challenge_placeholder(out: Path, root: str, module: str) -> subprocess.CompletedProcess[str]:
     return run(
         ["python3", str(RUNNER), "--fixture", "--fixture-root-name", root,
@@ -61,6 +76,8 @@ def run_challenge_placeholder(out: Path, root: str, module: str) -> subprocess.C
 
 
 def main() -> int:
+    # Validate the exact pinned version and commit before compiling any fixture.
+    _guard_runner.check_lean()
     with tempfile.TemporaryDirectory(prefix="stafford-guard-fixtures-") as temporary:
         out = Path(temporary).resolve()
         fixture_root = out / "sources"
@@ -85,7 +102,8 @@ def main() -> int:
             raise RuntimeError(f"core compile failed:\n{core_build.stdout}{core_build.stderr}")
 
         for name in ("GuardFixtureSafe", "GuardFixtureMissingBody", "GuardFixtureBad",
-                     "GuardFixtureBannedOwner", "GuardFixtureRelay", "GuardFixtureBadRoot"):
+                     "GuardFixtureBannedOwner", "GuardFixtureRelay", "GuardFixtureBadRoot",
+                     "GuardFixtureRoute"):
             compile_module(name, fixture_root / f"{name}.lean", fixture_root, build, env)
         production_modules = (
             "Stafford38.Geometry.GeneralAsymptoticLaurentAxis",
@@ -114,6 +132,46 @@ def main() -> int:
             raise RuntimeError(f"transitive forbidden producer escaped:\n{negative_output}")
         if "body_load_round=1" not in negative_output or "GuardFixtureRelay" not in negative_output:
             raise RuntimeError(f"runner did not expand missing opaque-body owner:\n{negative_output}")
+
+        routed = run_route_fixture(
+            build, "GuardFixtureRoute.goodRoot", "GuardFixtureRoute.requiredToken",
+            "GuardFixtureRoute.forbiddenToken",
+        )
+        routed_output = routed.stdout + routed.stderr
+        if routed.returncode != 0 or "dependency route passed" not in routed_output:
+            raise RuntimeError(f"valid required/excluded dependency route failed:\n{routed_output}")
+
+        opaque_route = run_route_fixture(
+            build, "GuardFixtureRoute.opaqueRoot", "GuardFixtureRoute.opaqueToken",
+            "GuardFixtureRoute.forbiddenToken",
+        )
+        opaque_output = opaque_route.stdout + opaque_route.stderr
+        if opaque_route.returncode != 0 or "dependency route passed" not in opaque_output:
+            raise RuntimeError(f"complete opaque-body route failed:\n{opaque_output}")
+
+        missing_required = run_route_fixture(
+            build, "GuardFixtureRoute.noRequiredRoot", "GuardFixtureRoute.requiredToken",
+            "GuardFixtureRoute.forbiddenToken",
+        )
+        missing_output = missing_required.stdout + missing_required.stderr
+        if missing_required.returncode == 0 or "did not reach required endpoint" not in missing_output:
+            raise RuntimeError(f"route checker accepted a missing required endpoint:\n{missing_output}")
+
+        reached_forbidden = run_route_fixture(
+            build, "GuardFixtureRoute.badRoot", "GuardFixtureRoute.requiredToken",
+            "GuardFixtureRoute.forbiddenToken",
+        )
+        forbidden_output = reached_forbidden.stdout + reached_forbidden.stderr
+        if reached_forbidden.returncode == 0 or "reached forbidden endpoint" not in forbidden_output:
+            raise RuntimeError(f"route checker accepted a reached forbidden endpoint:\n{forbidden_output}")
+
+        incomplete_route = run_route_fixture(
+            build, "GuardFixtureMissing.terminal", "GuardFixtureMissing.terminal",
+            "GuardFixtureMissing.unavailableProducer", "GuardFixtureMissingBody",
+        )
+        incomplete_output = incomplete_route.stdout + incomplete_route.stderr
+        if incomplete_route.returncode == 0 or "was incomplete" not in incomplete_output:
+            raise RuntimeError(f"route checker accepted unavailable dependency bodies:\n{incomplete_output}")
 
         unavailable = run_fixture(
             build, "GuardFixtureMissing.terminal", "GuardFixture.forbiddenProducer",
@@ -156,7 +214,7 @@ def main() -> int:
             if placeholder.returncode == 0 or "sorryAx" not in placeholder_output:
                 raise RuntimeError(f"challenge placeholder escaped the sorryAx check ({module}):\n{placeholder_output}")
 
-    print("PASS: safe closure accepted; transitive opaque/private producer rejected after owner expansion; unapproved axiom fails closed; Solution roots reject the exact banned route; Challenge placeholder roots reject sorryAx")
+    print("PASS: safe closure accepted; transitive opaque/private producer rejected after owner expansion; required route accepted; missing required, reached forbidden, and incomplete route closures rejected; unapproved axiom fails closed; Solution roots reject the exact banned route; Challenge placeholder roots reject sorryAx")
     return 0
 
 

@@ -22,8 +22,7 @@ Full Closure4307877 and its unchanged unconditional literal trust-zero
 consumer passed3126415, with only three permitted axioms and guard0/drained,
 and are committed/pushedWT5607e3e. The strengthened canonical-map Etale
 interface passed3126127 and is committed/pushedWT3be4598. Both acceptance
-packets and earlier scoped failures remain in notes. Original-prime and
-all four solution assemblies are the next bounded Linux check. T35 also passed independently on acluster21805719. Both cluster
+packets and earlier scoped failures remain in notes. Original-prime module/consumer and all four solution assemblies passed their bounded Linux checks; final public verifier/comparators are next. T35 also passed independently on acluster21805719. Both cluster
 bootstraps passed exact pins and T32. Alternative geometry endpoint passed
 scluster3114679, committedWT71e966a; full alternative assembly/comparators
 remain required. Actual guard fixtures passed3112916. No guard or proof
@@ -66,15 +65,15 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T36 | Same-witness closure theorem | done | 10 | notes/T36-closure-linux-accepted-checks-20261003.md | Full4307877 module+unchangedunconditionaltrust0consumerPASS3126415,3axioms,guard0/drained; committed/pushedWT5607e3e |
 | T40 | Import-cycle check | done | 2 | notes/T40-imports.md | Both current roots exist;272modules/582edges, no forbidden or missing sources. Rerun if imports change; proof acceptance separate |
 | T41 | Original-prime wrapper | done | 3 | notes/T41-original-prime-linux-accepted-checks-20261003.md | Actual8af module+unchangedconsumerPASS3127001,3axioms; drained; committed/pushedWT7d645f2. Subsequentassemblyfailed separately |
-| T42 | Rewire terminal geometric theorem | doing | 3 | /tmp/stafford-T41-frozen-inputs.json | Literalstatement retained; sharedassembly3127001 failedExclusion44:19 fieldinference; Solsmallrepair/recheckactive, passedT41cache reused |
+| T42 | Rewire terminal geometric theorem | done | 5 | notes/T42-four-assemblies-linux-accepted-20261003.md | Sharedterminal+4solutionsPASS3127814,3allowedaxioms,guard0/drained; WTe380306 pushed. Earlier2adapter failures retained |
 | T43 | Strict dependency guard | doing | 6 | notes/T43-linux-fixtures-accepted-20261003.md | Actual Linux compiled positive/negative route/body/axiom fixtures PASS, job3112916,371.62s,peak749MiB,zero PSI/swap/children; WT17d138a pushed; production strict traversal awaits final modules |
 | T44 | Literal route consumers | doing | 1 | | Luna preparing archived literal consumers/current names; checks await route modules |
-| T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry module83f PASS after namespace repair, WT71e966a; shared assembly static audit PASS; full compiler/route/comparator gates remain required |
+| T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry83f and all4assembliesPASS3127814; sharedchallenges unchanged; finalroute/comparator gates pending |
 | T46 | Tidy final package | doing | 2 | notes/T46-final-cleanup-proposal.md | Obsolete four Mac/Pi wrappers and unused ignore file removed after reference audit; historical receipts/useful math preserved; final public status/Palomar package checks await route acceptance |
 | T50 | Full library build | todo | 0 | | Included in single final Linux verifier T51/T73; no separate repeated full build |
 | T51 | Repository verifier | todo | 0 | | Single frozen Linux run shared withT73 plus4 actualPalomar comparisons; no duplicated cluster verification |
 | T52 | Status drafts | todo | 0 | | |
-| T53 | Integrate into main | todo | 0 | | Authorized controller integration after bounded component acceptance |
+| T53 | Integrate into main | done | 1 | notes/T42-four-assemblies-linux-accepted-20261003.md | Controllerintegrated55explicitproof/toolpaths afterboundedacceptance; authoritative docs and unrelateduntracked preserved |
 | T60 | Definition owners patch | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol prepared14 retainedcontractowners, helpersexcluded; registry/compiler acceptance awaitsfinalsource |
 | T61 | Paper map of new theorems | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol repaired57cards/403resolvedrefs/100SameWitnessdeclarations; Nodeaudit+browserwalkpass; finalpins/compiler/humanreviewpending |
 | T62 | Unreachable/duplicate report | doing | 1 | | Luna preparing source-graph and duplicate-owner report; final route still required |
@@ -198,3 +197,5 @@ solution routes are retained. This completes the obsolete-runner cleanup
 component; final README/status and Palomar package checks await proof acceptance.
 
 - T41 accepted after3127001 drained: actual module and unchanged literal trust-zero consumer passed. Shared assembly failed its first actual adapter elaboration atExclusion44:19; Sol repairs that explicit field inference and rechecks only assembly. No completed wrapper/consumer rerun or duplicate cluster job. See notes/T41-original-prime-linux-accepted-checks-20261003.md.
+
+- All four main/alternative solution assemblies passed3127814 with the unchangedguard and no survivors. Controller integrated55 explicit proof/tooling paths, sameunchangedchallenges, registry owners and current release metadata. The one final public-source verifier and four actual comparators remain next; no duplicate whole-library check.

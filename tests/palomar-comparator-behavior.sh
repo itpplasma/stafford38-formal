@@ -20,7 +20,7 @@ EOF
 cat >"$tmp_root/lakefile.toml" <<'EOF'
 name = "palomarComparatorBehavior"
 version = "0.1.0"
-defaultTargets = ["Challenge", "Solution", "FixedSourceChallenge", "FixedSourceSolution"]
+defaultTargets = ["Challenge", "Solution", "FixedSourceChallenge", "FixedSourceSolution", "AlternativeSolution", "AlternativeFixedSourceSolution"]
 
 [[lean_lib]]
 name = "Challenge"
@@ -33,6 +33,12 @@ name = "FixedSourceChallenge"
 
 [[lean_lib]]
 name = "FixedSourceSolution"
+
+[[lean_lib]]
+name = "AlternativeSolution"
+
+[[lean_lib]]
+name = "AlternativeFixedSourceSolution"
 EOF
 cat >"$tmp_root/Challenge.lean" <<'EOF'
 module
@@ -82,6 +88,8 @@ theorem universalFixedSourceStatement : True := by
 
 end Stafford38FixedSourceChallenge
 EOF
+cp "$tmp_root/Solution.lean" "$tmp_root/AlternativeSolution.lean"
+cp "$tmp_root/FixedSourceSolution.lean" "$tmp_root/AlternativeFixedSourceSolution.lean"
 cat >"$tmp_root/comparator.json" <<'EOF'
 {
   "challenge_module": "Challenge",
@@ -98,12 +106,28 @@ cat >"$tmp_root/comparator-fixed-source.json" <<'EOF'
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
 }
 EOF
+cat >"$tmp_root/comparator-alternative.json" <<'EOF'
+{
+  "challenge_module": "Challenge",
+  "solution_module": "AlternativeSolution",
+  "theorem_names": ["Stafford38Challenge.universalStatement"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}
+EOF
+cat >"$tmp_root/comparator-alternative-fixed-source.json" <<'EOF'
+{
+  "challenge_module": "FixedSourceChallenge",
+  "solution_module": "AlternativeFixedSourceSolution",
+  "theorem_names": ["Stafford38FixedSourceChallenge.universalFixedSourceStatement"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}
+EOF
 
 (
   cd "$tmp_root"
   ELAN_TOOLCHAIN=leanprover/lean4:v4.35.0-rc3 lake update >setup.log 2>&1
   bash scripts/bootstrap-palomar-tools.sh >bootstrap.log 2>&1
-  ELAN_TOOLCHAIN=leanprover/lean4:v4.35.0-rc3 lake build Challenge Solution FixedSourceChallenge FixedSourceSolution >>setup.log 2>&1
+  ELAN_TOOLCHAIN=leanprover/lean4:v4.35.0-rc3 lake build Challenge Solution FixedSourceChallenge FixedSourceSolution AlternativeSolution AlternativeFixedSourceSolution >>setup.log 2>&1
   bash scripts/run-palomar-comparator.sh comparator.json .lake/verification/correct.log >correct-run.log 2>&1
   grep -Fq 'con-ron kernel accepts the solution' .lake/verification/correct.log
   grep -Fq 'nanoda kernel accepts the solution' .lake/verification/correct.log
@@ -152,6 +176,11 @@ EOF
   grep -Fq 'nanoda kernel accepts the solution' .lake/verification/fixed-correct.log
   grep -Fq 'Lean default kernel accepts the solution' .lake/verification/fixed-correct.log
   grep -Fq 'Your solution is okay!' .lake/verification/fixed-correct.log
+
+  bash scripts/run-palomar-comparator.sh comparator-alternative.json .lake/verification/alternative-correct.log >alternative-correct-run.log 2>&1
+  grep -Fq 'Your solution is okay!' .lake/verification/alternative-correct.log
+  bash scripts/run-palomar-comparator.sh comparator-alternative-fixed-source.json .lake/verification/alternative-fixed-correct.log >alternative-fixed-correct-run.log 2>&1
+  grep -Fq 'Your solution is okay!' .lake/verification/alternative-fixed-correct.log
 
   cat >FixedSourceSolution.lean <<'EOF'
 module
@@ -209,4 +238,4 @@ mkdir -p "$receipt_dir"
 cp "$tmp_root/.lake/verification/"*.log "$receipt_dir/"
 cp "$tmp_root/.lake/palomar-tools/revisions.txt" "$receipt_dir/tools.txt"
 cp "$tmp_root/pin-guard/policy.log" "$receipt_dir/pin-rejection.log"
-printf 'Palomar behavior oracle passed: main and fixed-source statements accepted when matching, mismatches and an unpermitted proof axiom rejected, and an unfrozen AA pin fails closed.\n'
+printf 'Palomar behavior oracle passed: main, fixed-source, and both alternative pairings accepted when matching, mismatches and an unpermitted proof axiom rejected, and an unfrozen AA pin fails closed.\n'

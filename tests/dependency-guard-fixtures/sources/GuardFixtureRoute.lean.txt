@@ -1,0 +1,17 @@
+module
+public import Lean
+
+@[expose] public section
+
+namespace GuardFixtureRoute
+
+def requiredToken : Nat := 5
+def forbiddenToken : Nat := 7
+opaque opaqueToken : Nat := 11
+
+theorem goodRoot : requiredToken = 5 := rfl
+theorem badRoot : forbiddenToken = 7 := rfl
+theorem noRequiredRoot : True := True.intro
+opaque opaqueRoot : Nat := opaqueToken
+
+end GuardFixtureRoute

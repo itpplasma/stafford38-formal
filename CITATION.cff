@@ -10,13 +10,12 @@ authors:
     given-names: Christopher
     orcid: "https://orcid.org/0000-0003-4773-416X"
     affiliation: "Graz University of Technology"
-version: v1.2.3
-doi: 10.5281/zenodo.23080671
-date-released: "2026-10-01"
+version: v1.3.0
+date-released: "2026-10-03"
 identifiers:
   - type: doi
     value: 10.5281/zenodo.23080671
-    description: Version DOI of release v1.2.3
+    description: Historical version DOI of release v1.2.3
   - type: doi
     value: 10.5281/zenodo.23079259
     description: Version DOI of release v1.2.2
@@ -26,6 +25,9 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.22669443
     description: Historical release v1.1.1
+  - type: doi
+    value: 10.5281/zenodo.23104842
+    description: AlgebraicAnalysis 0.3.3 dependency
   - type: url
     value: "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=2"
     description: Palomar theorem record, version 2; independently scoped from this archive
