@@ -36,14 +36,17 @@ The sole final public-source verifier and four comparator run is scluster3131361
 launched after an empty-queue/idle-node preflight with exact control hashes.
 It stopped before verification because Git reported the generated cache
 symlink as untracked. Source/tool/pin gates passed and the allocation drained.
-The independently reviewed same-source resume is scluster3131801, launched
-with exact failure/drain/cache gates and all tracked-byte/mode, verifier and
-comparator checks intact. Fresh C2 fixtures,4475job fullbuild and strict4terminalroot inspection passed.
-Both fresh main required/excluded route checks also passed at17:03:45Z.
-Both fresh alternative required/excluded route checks also passed.
-All116 literal consumer files completed;317 required reports passed their
-import/axiom audit. Paper-name and endpoint audits plus four actual comparisons remain required.
-No paper/proof pin changes. Preserve all failed receipts.
+The independently reviewed same-source resume scluster3131801 passed the complete
+repository verifier at18:28:39Z: fresh4475-job build, strict4terminal/root-route
+inspection,116consumerfiles/317 required reports,111 paper-linked names and37
+endpoint axiom reports. It then failed at a runner target: `lake build proofs`
+requested nonexistent `proofs.lean`, with a trailing Remote I/O write error.
+No comparator or final source-after gate ran. The allocation drained with no
+resource stops, swap growth or surviving children. The reviewed remaining-stage
+resume builds the3 existing retained modules explicitly, probes actual receipt
+I/O, runs only the4 comparisons and final identity/pin gates. Do not repeat the
+successful complete verifier. Proof/tool/package pins remain C2 unchanged;
+preserve the full success and subsequent failure receipts.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
 57-card browser walkthrough. The public review site is deployed. All three

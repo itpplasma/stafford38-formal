@@ -71,7 +71,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry83f and all4assembliesPASS3127814; sharedchallenges unchanged; finalroute/comparator gates pending |
 | T46 | Tidy final package | doing | 2 | notes/T46-final-cleanup-proposal.md | Obsolete four Mac/Pi wrappers and unused ignore file removed after reference audit; historical receipts/useful math preserved; final public status/Palomar package checks await route acceptance |
 | T50 | Full library build | done | 2 | finalC2-resume3131801 | Fresh exactC2 fullbuildPASS4475jobs (mtime16:41:29Z afterverifierstart16:32:53Z); historicalC1build retained; completeverifier acceptance separate |
-| T51 | Repository verifier | doing | 3 | notes/T73-final-C2-resume1-submission-3131801-20261003.json | C1fullbuildPASS/strictguardfailed; minimal repair+allboundedrouteguardsPASS; 3131361 setupfailed beforeverifier; reviewed sameC2 resume3131801 active |
+| T51 | Repository verifier | done | 3 | notes/T73-full-verifier-pass-retained-target-failure-3131801-20261003.tar.gz | ExactC2 fullverifierPASS3131801 at18:28:39Z;4475build/317consumer/111names/37axioms/allroutes. Laterdriver125 and remainingcomparisons/source-after gates are T73 |
 | T52 | Status drafts | doing | 1 | README.md; STATUS.md | Current source and scoped acceptance documented; final verifier/release receipts still required |
 | T53 | Integrate into main | done | 1 | notes/T42-four-assemblies-linux-accepted-20261003.md | Controllerintegrated55explicitproof/toolpaths afterboundedacceptance; authoritative docs and unrelateduntracked preserved |
 | T60 | Definition owners patch | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol prepared14 retainedcontractowners, helpersexcluded; registry/compiler acceptance awaitsfinalsource |
@@ -80,7 +80,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T70 | Frozen public commit | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Exact publicC2=12ae3cc49152672a48a96f13994314b65ae38197 pushed before final launch; priorC1 retained |
 | T71 | Final Linux host preflight | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Prior3129931guard0/drained; empty userqueue/node20idle;3controlhashes exact; fresh source/receiptpaths absent |
 | T72 | Launch Linux driver | done | 3 | notes/T73-final-C2-submission-3131361-20261003.json | SoleS3131361 exactC2 fresh public clone; reviewed2CPU8GiB cache-reuse driver; fullverifier+4comparators |
-| T73 | Collect Linux result | doing | 3 | notes/T73-final-C2-resume1-submission-3131801-20261003.json | 3131361setupfailure retained; reviewed sameC2 resume3131801 active, fullverifier+4comparators required |
+| T73 | Collect Linux result | doing | 3 | notes/T73-full-verifier-pass-retained-target-failure-3131801-20261003.tar.gz | FullverifierPASS; laterinvalidproofsroot/RemoteIOfailed125, drained/nochildren; reviewedremaining-stage resume2 prepared;4actualcomparators/finalidentity pending |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
 | T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+C2/P3/S3refreshPASS519refs/0errorswarnings;57unchangedcards inherit actualbrowserwalk; PDFassetgatePASS; humanreviewpending |
@@ -245,3 +245,37 @@ controller separately parsed all5 new closure/original-prime full names, each
 with exactly propext, Classical.choice and Quot.sound. This completes T44.
 The paper-name/endpoint audits, complete verifier exit, retained proof-library
 build, four comparisons and final guard/source-identity receipt remain required.
+
+## Complete verifier pass and retained-target runner repair
+
+Exact publicC2 `12ae3cc49152672a48a96f13994314b65ae38197` passed the
+complete repository verifier in3131801 at18:28:39Z. The log SHA-256 is
+`acfe9dcd8e48105289ebd6555fe90a6c85043ad963409cab66bbe082d13fcea6`.
+Counts:4475 build jobs,116 consumer files/317 required reports,111 paper-linked
+names,37 endpoint reports, all3 permitted axioms only; strict terminal and both
+route-direction inspections passed forbidden0/unavailable0.
+
+The later `lake build proofs` runner step requested absent `proofs.lean`,
+then reported a trailing timeout Remote I/O write error and exited125.
+The3 existing retained modules already occur in ordinary project imports;
+the repair names them explicitly and changes no tracked proof/configuration.
+Comparators and source-after integrity were not executed. Guard finished125,
+stop[]/children[]/zero swap growth, peak4336214016 bytes, within original caps.
+The88-file exact evidence packet is archived at
+`notes/T73-full-verifier-pass-retained-target-failure-3131801-20261003.tar.gz`,
+SHA-256 `8e5970c2e66db658e1f985d394185fdb11b22b028abc063aa672394b3ff38a01`.
+
+Reviewed remaining-stage driver:
+`notes/cluster-final-retained-library-resume2-20261003.sh`, SHA-256
+`e462d482bacf03dd908435e804e72c3e48e81ec02d02e7555b35159d3ba9b8b4`.
+It binds the actual failure, successful verifier log, drained guard and exact
+C2/cache/raw-byte/mode/pin evidence, uses fresh receipt paths, probes actual
+receipt write/flush/fsync/read and bounded ordinary stdout/stderr capture,
+builds the3 explicit retained modules, then runs all4 actual comparators and
+final source/pin gates. No whole-verifier repeat or cap/source change.
+Independent review2 PASS and preserved review1/scope clarification are in
+`notes/T73-retained-target-resume-review-20261003.tar.gz`, SHA-256
+`b8b22d458f0ba20800fdf1940a536940dc4580d5111f97b0c095f00fd2339864`.
+Read-only home filesystem check reported39% used; quota unavailable. Actual
+allocation I/O probe acceptance remains required. Resume is prepared, not yet
+submitted. No release, new DOI or final review email has been sent.
