@@ -185,8 +185,14 @@ with small top-level lemmas over abstract types.
   execution or source synchronization. Cluster login nodes are for submission
   and lightweight inspection. Preserve foreign jobs and persistent services.
 - Never connect to, run on, or schedule anything on `faepop*` or `faepcr*`.
-- `mailuefterl` remains the Phase 7 replay host under its archived contract.
-  Additional cluster diagnostics do not replace that final replay receipt.
+- Phase 7 requires a fresh immutable Linux replay. Use `mailuefterl` when
+  its guard remains clear; the owner's approved `acluster`/`scluster` allocations
+  are the fallback when repeated node-pressure stops prevent completion.
+  Preserve the archived mailuefterl contract and receipts unchanged. For a
+  cluster replay, record a separately reviewed host-specific driver/contract
+  with the same source-freeze, exact pins, ordered verifier and kernel checks,
+  extended to both solution variants, under the accepted allocation guard.
+  Candidate cluster diagnostics alone never replace this final receipt.
 
 ### 2.4 Git
 
@@ -1093,7 +1099,7 @@ After integration and checks, the controller pushes the authorized source
 and records its exact commit in `STATE.md` under "Frozen commit". Workers
 use that immutable public source for all release and replay inputs.
 
-### T71 Remote preflight on mailuefterl
+### T71 Preflight the selected Linux replay host
 
 Owned: `STATE.md`.
 
@@ -1101,13 +1107,25 @@ Owned: `STATE.md`.
 ssh mailuefterl 'hostname; nproc; free -g | head -2; df -h /mnt/storage | tail -1; pgrep -a lean | head; pgrep -a lake | head'
 ```
 
-Accept: `hostname` is mailuefterl, at least 100 GiB free on `/mnt/storage`,
-at least 64 GiB available RAM, no `lean`/`lake` running. Otherwise stop and
-report. Never use any other host (2.3).
+For local replay, accept `hostname` mailuefterl, at least 100 GiB free on
+`/mnt/storage`, at least 64 GiB available RAM and no foreign Lean/Lake.
+If node-pressure guards repeatedly stop otherwise bounded checks, select
+an approved acluster/scluster node allocation instead. Require the reviewed
+two-CPU/8GiB guard, verified job/step placement, node RAM/PSI/swap/disk
+safeguards and a fresh source directory. Record the chosen host and reason.
 
-### T72 Launch the archived Linux driver
+### T72 Launch the frozen Linux driver
 
-Owned: remote directory created by the snapshot script; `STATE.md`.
+Owned: fresh snapshot directory; host-specific replay contract; `STATE.md`.
+
+The archived mailuefterl contract below remains the local replay recipe.
+For a cluster fallback, prepare and independently review a separate driver
+and contract before launch. It must archive only the T70 immutable public
+commit, verify source and manifest hashes before/after, check every dependency
+pin and all four challenge/solution comparisons, and preserve the ordered
+repository verifier and terminal receipts. Run it inside the accepted srun
+allocation guard. Record its script hashes and scheduler handle; do not edit
+the archived contract to imply that it covered a different host or source.
 
 Read `$ARCH/palomar/stafford38-linux-execution-contract-20261002.json`
 completely in two parts (`python3 -m json.tool … | sed -n 1,120p`, then
@@ -1132,7 +1150,8 @@ Accept: driver running, recorded. Set T72 `done`; T73 becomes the next task.
 
 Owned: `STATE.md`, `$CAMP/notes/T73-linux-receipt.md`.
 
-Poll the exact recorded process handle:
+Poll the exact recorded process handle (or recorded Slurm job/step for a
+cluster fallback):
 `ssh mailuefterl 'ps -p <pid> -o pid,etime,cmd; tail -5 <log>'`.
 While it runs, leave T73 `doing` and continue independent bundle work.
 An observation timeout is not termination; revalidate the same handle and
