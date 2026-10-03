@@ -1,0 +1,22 @@
+# T60 resume: definition-owner preparation
+
+This is a provisional registry draft only. The T32–T35 proof changes are still under review, including the active T32 Linux check; no definition owner is accepted here and this draft must not be promoted until the final proof source is selected.
+
+Candidate freeze for the source review: worktree `/home/ert/proj/stafford38-qwen`, base `fcd866f9dcf736d624b96a8fd5ea086ca910f9ad`, binary worktree diff SHA-256 `292251e35ed4b83bcf6a4780ed932c828c7f1247c8c50df46d5e9cfef1bb0924`. The four changed source files have these SHA-256 values:
+
+- `Stafford38/Geometry/SameWitness/CommonOpen.lean`: `2fc6d54524c7db6906ef2a3a9a7e9a3ae270039d2ced3b7307a94fd60658e299` (the frozen T32 source hash).
+- `Stafford38/Geometry/SameWitness/CommonOpenColumns.lean`: `e0f73029a8465f774e64ce4006ccf2364b015234c2ccbe5bfa9563f9532ef80d`.
+- `Stafford38/Geometry/SameWitness/CommonOpenEtale.lean`: `604f82d5da0e13f9eb86b4a316911f92941e94d57b309abbe0c12b8a6ff336a9`.
+- `Stafford38/Geometry/SameWitness/CommonOpenPositions.lean`: `d470f322c3cb123eb269034efdfdcb2dd761bd4d799af82c7cd729aa78d88307`.
+
+The candidate diff changes four modules. Newly added top-level declarations are `CommonOpenArcFactors`, `CommonOpenPointData`, `CommonOpenChartData`, `CommonOpenMapData`, `CommonOpenArcCompatibility`, and `CommonOpenData` in `CommonOpen.lean`; `pointLocalPowerSeriesChart` and `CommonOpenPositionData` in `CommonOpenPositions.lean`; and `CommonOpenColumnsData` in `CommonOpenColumns.lean`. The `CommonOpenData.M`/`hM`/`eM`/`hEtM` and other accessors are projection abbreviations. `Cq` and `U` changed from `def` to `abbrev`; they do not introduce new localization owners. `CommonOpenData.g`, `qU`, `qT`, and `φ` are retained definitions rather than newly added declarations in this candidate diff. `CommonOpenEtaleData` was not newly added in this diff.
+
+Existing-owner searches used exact names and nearby concepts across the repository's Stafford38 sources, pinned Mathlib, pinned AlgebraicAnalysis, and `docs/definition-owners.md`. No exact existing declaration for the newly added same-witness record/predicate names was found. The relevant owners already in the registry remain authoritative for the component mathematics: `genericOpenRing` and related localization stages; `localToFinSuccPowerSeries`; the derivative and numerator operations; and the selected same-witness chart/point source records. The current T60 patch `notes/T60-definition-owners.patch` already proposes `ChartSetup`, `CoordinatePresentation`, `CommonOpenArcData`, and `CommonOpenEtaleData`; this resume patch intentionally does not duplicate those rows.
+
+The draft groups the `CommonOpenData` projections by their source fields instead of proposing independent owners for each accessor. Its `point`, `chart`, and `maps` fields retain distinct data; its `arc` field is a compatibility certificate conditional on the point and chart. `CommonOpenArcData` then extends that bundle with a transported Laurent arc. This distinction prevents the T32 `CommonOpenArcCompatibility` certificate from colliding by name or ownership with T33's `CommonOpenArcData`.
+
+The record fields copy certificates and maps for downstream elaboration and consumers, but do not define new localization rings, coefficient maps, derivative operators, or numerator functions. `pointLocalPowerSeriesChart` delegates to `PrescribedGroundPointUnitPowerChart.localToFinSuccPowerSeries`; it only supplies the structures needed to present that map. `CommonOpenPositionData` retains positions and their images, and `CommonOpenColumnsData` retains derivative/numerator identities over those positions. Their proposed owner rows describe these retained packages, not duplicate underlying operations.
+
+The separate prior draft rows for `ChartSetup`, `CoordinatePresentation`, `CommonOpenArcData`, and `CommonOpenEtaleData` need joint review with these rows because the latter packages depend on them. In particular, `CommonOpenData` contains an arc compatibility certificate, while `CommonOpenArcData` adds the actual arc and its transport equations. The final registry should be assembled from only the declarations surviving proof review.
+
+No Lean or Lake command was run. No proof, plan, registry, or campaign state file was edited. The owner patch was checked for applicable context only; that check does not certify proof behavior or acceptance.

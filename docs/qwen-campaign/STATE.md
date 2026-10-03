@@ -37,8 +37,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T51 | Repository verifier | todo | 0 | | |
 | T52 | Status drafts | todo | 0 | | |
 | T53 | Integrate into main | owner | 0 | | owner gate |
-| T60 | Definition owners patch | doing | 1 | | Luna preparing registry draft against proposed declarations; final acceptance awaits proof checks |
-| T61 | Paper map of new theorems | doing | 1 | | Luna preparing manuscript map draft with separate human-review status |
+| T60 | Definition owners patch | doing | 2 | notes/T60-resume-definition-report.md | Luna refreshed bounded-record registry proposal; final acceptance awaits checked source names |
+| T61 | Paper map of new theorems | doing | 2 | notes/T61-resume-paper-map.md | Luna maps all24 current declarations to selected-paper locators/no-counterpart; formal and human acceptance remain pending |
 | T62 | Unreachable/duplicate report | doing | 1 | | Luna preparing source-graph and duplicate-owner report; final route still required |
 | T70 | Frozen public commit | owner | 0 | | owner gate |
 | T71 | Remote preflight on mailuefterl | todo | 0 | | |
@@ -47,7 +47,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T74 | Official Palomar dispatch | owner | 0 | | owner gate |
 | T80 | Re-anchor review map | todo | 0 | | |
 | T81 | Build review site | todo | 0 | | |
-| T82 | Rebuild manuscript PDFs | done | 1 | notes/T82-pdf-receipt.md | All three builds exit0, 34/11/34 pages, zero undefined references; frozen source hashes unchanged at paper357b7d9; final source changes require revalidation |
+| T82 | Rebuild manuscript PDFs | done | 2 | notes/T82-pdf-resume-20261003.md | Current paper53882beb replay: three builds exit0,34/11/34pages,zero undefined references/citations; all tracked TeX/bib hashes unchanged; citation changes require revalidation |
 | T83 | Supplementary bundle (local) | todo | 0 | | |
 | T84 | Review handover | owner | 0 | | owner gate |
 | T90 | Release drafts | todo | 0 | | |

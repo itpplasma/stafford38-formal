@@ -1,9 +1,8 @@
 # T33/T35 source assessment (Linux checks pending)
 
 WT source base: `c3dccd4b3f931d15df623229771126f6500fb6ea` (`qwen/paper-route`).
-The candidate source and consumer files are committed at that base; no Lean
-command has been run by this worker. Their current SHA-256 values match the
-previous source notes.
+The controller is validating T32 separately. This bounded resume updates only
+the T33/T35 source files and this note; no Lean command was run by this worker.
 
 ## T33: common-open Laurent arc
 
@@ -21,7 +20,7 @@ Reused declarations: `commonOpen_factors_ne_zero_of_tiltedProduct`,
 
 | File | SHA-256 |
 | --- | --- |
-| `Stafford38/Geometry/SameWitness/CommonOpenArc.lean` | `2533f9acaef04f978fc73b2f542f31b24b86d4bbb7d2db591c790ae33dcad98e` |
+| `Stafford38/Geometry/SameWitness/CommonOpenArc.lean` | `87042257afed67f0fab1fbd83c3fd5db2ba61e04d523e2b6b7ae1d82adf51690` |
 | `tests/SameWitness/CommonOpenArcConsumer.lean` | `6a9bfc90f6ee3e971502659b6a522023659039eb37e6705e93ab93949479d9a7` |
 
 ## T35: common-open formally-etale maps
@@ -30,8 +29,9 @@ Reused declarations: `commonOpen_factors_ne_zero_of_tiltedProduct`,
 maps, alongside the T22-shaped formal-etale facts. `φk` uses the T13 ground-map
 identity; `ψU` is the selected coordinate map followed by the common-open map.
 The explicit `hψAction` equality records the canonical scalar action used by
-the formal-etale theorem and the downstream coordinate derivations. Source
-inspection finds no local `letI`, `haveI`, or `compHom` in this module.
+the formal-etale theorem and the downstream coordinate derivations. The only
+local `letI` supplies the proposition-valued maximality fact needed to infer
+primality; no concrete ring action is installed and there is no `compHom`.
 
 Reused declarations: `originalAffineChartToCommonOpen_groundMap`,
 `formallyEtale_originalAffineChartToCommonOpen`,
@@ -41,7 +41,7 @@ uses; the T31 owner reports no planned signature changes.
 
 | File | SHA-256 |
 | --- | --- |
-| `Stafford38/Geometry/SameWitness/CommonOpenEtale.lean` | `604f82d5da0e13f9eb86b4a316911f92941e94d57b309abbe0c12b8a6ff336a9` |
+| `Stafford38/Geometry/SameWitness/CommonOpenEtale.lean` | `ef59f9e5439d64948cdec1b4202d4a48a0180eb8bddf565a67dd82ae692da93f` |
 | `tests/SameWitness/CommonOpenEtaleConsumer.lean` | `04cf7171123196848753417fdffa3cdb3eb894fa2f2ca7b4ee8b584eae89131d` |
 
 ## Bounded T35 repair
@@ -54,8 +54,14 @@ those fields under `arc.common`; the repair updates those projections and uses
 `arc.hbaseMap` for the k-to-U identity. The public endpoint and consumer
 statements are unchanged. The consumer remains byte-identical.
 
-Updated T35 source SHA-256: `604f82d5da0e13f9eb86b4a316911f92941e94d57b309abbe0c12b8a6ff336a9`.
-Static projection and forbidden-instance scans pass; Lean evidence is pending.
+Updated T35 source SHA-256: `ef59f9e5439d64948cdec1b4202d4a48a0180eb8bddf565a67dd82ae692da93f`.
+The resumed T33 source supplies the required `coords` parameter to
+`pointLocalArc_unit_of_not_mem` and unfolds `CommonOpenArcFactors` before
+destructuring its stored factor and ground-map certificates. The resumed T35
+source supplies the maximal-ideal proposition instance before requesting
+`IsPrime`; retained coordinate action and étale context stay field-scoped.
+The consumers remain byte-identical. Static projection and forbidden-heavy-
+instance scans pass; Lean evidence is pending.
 
 ## Pending guarded evidence
 
