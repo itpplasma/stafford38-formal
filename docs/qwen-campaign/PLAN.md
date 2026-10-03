@@ -40,7 +40,11 @@ partial application3124499 passed all seven groups, including the complete
 call, in38.61s with2051276800-byte peak and no survivors. This establishes
 successful elaboration, not proof acceptance: kernel validation of the
 concrete declaration remains the isolated boundary. Sol now investigates
-the exact conversion there; no unchanged resubmission or cap increase.
+the supplied dependent application: diagnostic3124794 failed even with an
+explicit generic result, while its separate concrete-result bridge passed
+with only the standard three axioms. Ordinary kernel-checked partial
+applications now locate the first costly group. No unchanged resubmission
+or cap increase.
 No budget, mathematical field or terminal statement is changed.
 T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
