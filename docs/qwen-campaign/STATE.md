@@ -18,26 +18,26 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T13 | Port chart ground-map lemma | done | 1 | docs/qwen-campaign/notes/T13-check.log | ported repair4 addition (archived lines 280-328) to Stafford38/Geometry/SameWitness/ChartGroundMap.lean, namespace Stafford38.Geometry.SameWitness, theorem signature byte-identical (diff exit 0), maxHeartbeats 2400000->1600000; A0ChartFormalEtale.lean untouched; build exit 0 (10 s, 2927 jobs, module 1.8 s, 0 errors); consumer exit 0 axioms propext/choice/Quot.sound; reuses originalAffineChartToCommonOpen + originalAffineChartOverlapEquiv + selectedChartAwayEquivOfQuotientEquiv + genericOpenBMap_base_eq + Mathlib IsLocalization.Away.map/IsScalarTower.algebraMap_apply; no new def; matches repair3-groundmap-audit PASS on 4.33; commit 0340cf2; flag: frozen statement carries `letI : Algebra Q U := Algebra.compHom U _` (rule 6.2.8 diamond source) - T34/T36 must use the hom equation, not a second Algebra on U; still not in any root list, T43/T50 must wire or check by name |
 | T20 | Instance inventory | done | 2 | docs/qwen-campaign/notes/T20-diagnostics.tar.gz | Sol completed concrete nine-ring and ten-prerequisite inventory after Luna acceptance failed; inherited Q/B,Q/F,Q/U,k/U and staged R/U duplicates; default synthesis timeouts preserved; 264 source hashes and five log hashes checked |
 | T21 | Minimal tower reproducer | done | 1 | .lake/qwen/logs/T21-luna-2.log | Mathlib quotient and abstract hom towers compile; frozen negative probe captures oldTower/compHom action mismatch; guarded final exit0,10s; receipt in notes/T21-repro.md |
-| T22 | Ring-hom form of the endpoint | doing | 1 | | Luna implementing generic endpoint and literal consumer; guarded Lean slot assigned |
+| T22 | Ring-hom form of the endpoint | doing | 2 | .lake/qwen/logs/T22-luna-build-3.log | Three Luna builds failed; last errors are redundant solved-goal tactics; Sol repair/check assigned; guarded peak1883MiB,75%CPU; static audit PASS is separate |
 | T30 | Chart and away data | doing | 1 | | Luna preparing chart setup in parallel; checks queued with controller |
-| T31 | Coordinate presentation | todo | 0 | | |
-| T32 | Maximal ideal and common open | todo | 0 | | |
-| T33 | Arc into Laurent series | todo | 0 | | |
-| T34 | Columns, derivatives, numerator | todo | 0 | | |
-| T35 | Étale structure as ring homs | todo | 0 | | |
-| T36 | Same-witness closure theorem | todo | 0 | | |
-| T40 | Import-cycle check | todo | 0 | | |
-| T41 | Original-prime wrapper | todo | 0 | | |
-| T42 | Rewire terminal geometric theorem | todo | 0 | | |
-| T43 | Strict dependency guard | todo | 0 | | |
-| T44 | Literal route consumers | todo | 0 | | |
+| T31 | Coordinate presentation | doing | 1 | | Luna preparing retained-coordinate package against T30 interface; checks queued |
+| T32 | Maximal ideal and common open | doing | 1 | | Luna preparing common-open package with upstream/downstream field contracts; checks queued |
+| T33 | Arc into Laurent series | doing | 1 | | Luna preparing canonical-ground arc transport in parallel; checks queued |
+| T34 | Columns, derivatives, numerator | doing | 1 | | Luna preparing same-witness position/column/numerator derivations; checks queued |
+| T35 | Étale structure as ring homs | doing | 1 | | Luna preparing explicit étale map transport in parallel; checks queued |
+| T36 | Same-witness closure theorem | doing | 1 | notes/T36-check.md | Luna prepared exact target and assembly; checks await accepted upstream declarations |
+| T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
+| T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |
+| T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |
+| T43 | Strict dependency guard | doing | 1 | | Existing 18 guard payloads match archive byte-for-byte; Luna resumes with verifier wiring and queued fixture checks; production waits for T42 |
+| T44 | Literal route consumers | doing | 1 | | Luna preparing archived literal consumers/current names; checks await route modules |
 | T50 | Full library build | todo | 0 | | |
 | T51 | Repository verifier | todo | 0 | | |
 | T52 | Status drafts | todo | 0 | | |
 | T53 | Integrate into main | owner | 0 | | owner gate |
-| T60 | Definition owners patch | todo | 0 | | |
-| T61 | Paper map of new theorems | todo | 0 | | |
-| T62 | Unreachable/duplicate report | todo | 0 | | |
+| T60 | Definition owners patch | doing | 1 | | Luna preparing registry draft against proposed declarations; final acceptance awaits proof checks |
+| T61 | Paper map of new theorems | doing | 1 | | Luna preparing manuscript map draft with separate human-review status |
+| T62 | Unreachable/duplicate report | doing | 1 | | Luna preparing source-graph and duplicate-owner report; final route still required |
 | T70 | Frozen public commit | owner | 0 | | owner gate |
 | T71 | Remote preflight on mailuefterl | todo | 0 | | |
 | T72 | Launch Linux driver | todo | 0 | | |
@@ -45,7 +45,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T74 | Official Palomar dispatch | owner | 0 | | owner gate |
 | T80 | Re-anchor review map | todo | 0 | | |
 | T81 | Build review site | todo | 0 | | |
-| T82 | Rebuild manuscript PDFs | todo | 0 | | |
+| T82 | Rebuild manuscript PDFs | done | 1 | notes/T82-pdf-receipt.md | All three builds exit0, 34/11/34 pages, zero undefined references; frozen source hashes unchanged at paper357b7d9; final source changes require revalidation |
 | T83 | Supplementary bundle (local) | todo | 0 | | |
 | T84 | Review handover | owner | 0 | | owner gate |
 | T90 | Release drafts | todo | 0 | | |
@@ -57,9 +57,9 @@ to Sol. Historical Pi/Qwen records remain preserved.
 
 - The active user instruction resumes the full campaign, authorizes regular commits/pushes and both releases, and requests the final review email after completion.
 - Workers use `gpt-6-luna`; failed bounded tasks escalate to Sol. No Qwen/Pi campaign driver is used in this resumed run.
-- The owner's follow-up explicitly replaces serial task selection with heavy parallelism. Independent workers/subagents prepare disjoint candidates concurrently; actual dependencies govern acceptance. The controller schedules the shared guarded Lean queue.
+- The owner's follow-up explicitly replaces serial task selection with heavy parallelism. Independent workers/subagents prepare disjoint candidates concurrently; actual dependencies govern acceptance. The controller schedules bounded Lean checks across approved hosts.
 - The controller owns authoritative state, integration, commits, pushes and promotion. Workers return evidence without committing or changing the ledger.
-- Lean execution remains serial through `guard.sh`; pins, archived receipts, mathematical statements and protected-host restrictions remain in force.
+- The owner's further instruction authorizes local guarded Lean and concurrent acluster/scluster allocations. Small jobs use 8 GiB RAM and two actual threads. Mac guard starts at 12 GiB free RAM and stops below 4 GiB; cluster CPU reservations must cover RAM when enforcement cannot be verified. Pins, archived receipts, mathematical statements and protected-host restrictions remain in force.
 - Resume preflight: MAIN `ecedcf5`, WT `0340cf2`, both clean; guard OK, 104 GiB free RAM, 553 GiB free disk, no lake/lean processes.
 
 ## Previous resume instructions (historical)
@@ -84,6 +84,9 @@ to Sol. Historical Pi/Qwen records remain preserved.
 - T13 port build / consumer (wall time, guard reason): build exit 0, 10 s wall, peak_rss 0 GiB, 2927 jobs, module itself 1.8 s, 0 errors (`.lake/qwen/logs/T12`-style cached warnings only; `.lake/qwen/logs/T13-2.log`); consumer attempt 1 exit 1 (`Unknown identifier` for `exact` after stripping `:= by` from the frozen statement), attempt 2 `lake env lean --trust=0 -M 32000 tests/SameWitness/ChartGroundMapConsumer.lean` exit 0, 10 s wall (`.lake/qwen/logs/T13-consumer-2.log`), axioms `[propext, Classical.choice, Quot.sound]`; guard never refused, no `fetching revision`, no `Building Mathlib`
 - T50 full build (wall time, peak RSS):
 - T51 verifier (wall time):
+
+- Revised resource guard: 12 GiB start, 4 GiB free floor, 8 GiB aggregate RSS, two Lean/native threads; behavior checks passed including surviving-child lock, aggregate RSS, timeout and signal cleanup (notes/resource-guard-behavior.md). Mac CPU-average watchdog is separate from kernel CPU quotas.
+- Cluster resource preflights: acluster/scluster each permit an initial two-CPU, 8 GiB job; RAM cgroup enforcement unverified, so CPU reservation covers RAM using 10% headroom. Pinned Linux preparation jobs are being prepared from immutable snapshots.
 
 ## Frozen commit
 
@@ -115,6 +118,11 @@ to Sol. Historical Pi/Qwen records remain preserved.
   A green abstract probe assuming scalar actions is conditional evidence, not a concrete
   witness inventory. Pair each frozen scratch hash with its own real log; record missing
   synthesis and timeouts as diagnostics instead of adding assumptions or raising budgets.
+
+- T43: all 18 dependency-guard integration payloads are already tracked at WT
+  `0340cf2` and match the archived new-file bytes. Reuse them; apply only the
+  verifier wiring after its successful `--check`. Fixture behavior and strict
+  production checks are still required; source identity is not a behavior test.
 
 ## Blocked
 

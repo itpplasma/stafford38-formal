@@ -30,10 +30,11 @@ Campaign folder (absolute): `/Users/ert/proj/stafford38-formal/docs/qwen-campaig
    paths; tell the controller their ownership and dependencies. Never use Qwen.
 4. Share proposed interfaces early with dependent workers. Import actual data
    dependencies; do not add imports solely to preserve former task order.
-5. Send Lean check requests to the controller. It grants one exclusive
-   execution slot at a time; every Lean command uses `GUARD`. Editing,
-   source analysis, review, documentation and artifact preparation run in
-   parallel while checks are queued. Release the slot after the reported run.
+5. Send Lean check requests to the controller. It assigns independent checks
+   to guarded local slots or bounded Slurm jobs on acluster/scluster. Each
+   host or allocation has an explicit RAM and CPU budget; checks on different
+   hosts may run concurrently. Editing, source analysis, review and artifact
+   preparation continue in parallel. Return the exact job handle and receipt.
 6. Return candidates, frozen source hashes, commands, logs and acceptance
    evidence. Workers never edit the authoritative ledger or promote results.
    The controller reviews, updates `STATE.md`, stages explicit paths, commits
@@ -134,15 +135,20 @@ with small top-level lemmas over abstract types.
   touching it.
 - Workers may edit in `MAIN` only their explicitly assigned `$CAMP/notes/*`.
   The controller owns `PLAN.md`, `STATE.md`, integration and release metadata.
-  Changes to `guard.sh` require a concrete resource-contract reason; task
-  parallelism alone does not remove its shared Lean execution limit.
+  Changes to `guard.sh` require a concrete resource-contract reason. The
+  owner's 3 October resource instruction authorizes realistic small-job
+  budgets and concurrent independent checks across approved hosts.
 - Never edit files under `.lake/packages/` (Mathlib, AlgebraicAnalysis).
 
 ### 2.3 Machines
 
-- Run everything on this machine (faepmac1) unless a task names another host.
+- This session's shell is on faepmac1. Local guarded checks and scheduled
+  jobs on `acluster` and `scluster` are explicitly authorized by the owner.
+  Use cluster compute allocations; login nodes are for submission and
+  lightweight inspection. Preserve persistent services and foreign jobs.
 - Never connect to, run on, or schedule anything on `faepop*` or `faepcr*`.
-- `mailuefterl` is used only in Phase 7, only by the tasks that name it.
+- `mailuefterl` remains the Phase 7 replay host under its archived contract.
+  Additional cluster diagnostics do not replace that final replay receipt.
 
 ### 2.4 Git
 
@@ -189,37 +195,58 @@ Before you define anything or prove a helper lemma:
 
 ## 3. Resources: RAM, disk, time
 
-This machine (faepmac1: 256 GiB RAM, 28 cores, approximately 550 GiB free on
-the data volume at campaign setup) also hosts persistent model services.
-Those services hold a large share of RAM. Preserve the shared Lean budget
-of **64 GiB resident at most**, with 8 Lean threads, while parallel workers
-perform source and review work. Therefore:
+The owner requested realistic budgets and parallel checks on the local Mac,
+acluster and scluster on 3 October 2026. The shell currently reports
+faepmac1, 256 GiB RAM and 28 logical CPUs; it also runs persistent model
+services. Recent campaign checks used at most approximately 3 GiB resident.
+A small check therefore starts with **8 GiB RAM and 2 actual Lean threads**.
+The old 60 GiB free-memory threshold and 64 GiB job cap are superseded.
 
-- **Serial Lean execution, parallel agent work.** At most one guarded Lean
-  job at any time. Never
-  start a command in the background, never use `&`, `nohup`, `screen` or
-  `tmux`. `GUARD` refuses to start when another `lake`/`lean` is alive.
-- **Every** `lake build`, `lake env lean`, `scripts/verify.sh` or other
-  Lean-invoking command runs through `GUARD`:
+- The controller grants one local guarded slot per host and separate bounded
+  cluster allocations. Independent allocations may run concurrently against
+  immutable input snapshots; never share writable build trees or mix Darwin
+  and Linux build artifacts. Record the source base, complete patch digest,
+  package/toolchain pins, host, job ID, resource limits and result hashes.
+- Every local Lean-invoking command uses `GUARD`:
 
   ```sh
-  $GUARD check          # prints memory/disk/swap; exit 0 means OK to build
+  $GUARD check
   $GUARD run --timeout <seconds> --log $SCR/logs/<task-id>-<n>.log -- <command>
   ```
 
-  `GUARD` refuses to start unless at least 60 GiB RAM is truly free, the
-  kernel memory-pressure level is normal, swap use is below 12 GiB and at
-  least 100 GiB of disk is free. It sets `LEAN_NUM_THREADS=8` and kills the
-  whole process group when the build's resident memory exceeds 64 GiB, the
-  kernel reports memory pressure (warn or critical), truly free RAM falls
-  below 8 GiB, swap use reaches 12 GiB, free disk falls below 50 GiB or the
-  timeout expires. It appends a summary line `GUARD exit=… reason=…
-  wall_s=… peak_rss_gb=…` to the log. Set your shell tool's own timeout to
-  the guard timeout plus 120 seconds.
+  The default Mac guard requires 12 GiB truly free RAM, normal kernel memory
+  pressure, swap below 12 GiB and 100 GiB free disk. Its atomic host lock
+  prevents overlapping guarded jobs. It sets `LEAN_NUM_THREADS=2`, samples
+  aggregate process-group RSS each second, and terminates the job above
+  8 GiB RSS, below 4 GiB free RAM, at warning/critical memory pressure,
+  12 GiB swap, 50 GiB free disk, or the wall timeout. It also terminates
+  three consecutive macOS CPU-average samples above the two-CPU budget.
+  This is a delayed watchdog,
+  not a macOS kernel CPU quota; brief bursts can occur before it reacts.
+  Lean's two-thread setting is per process; Lake can launch multiple
+  processes, which the aggregate watchdog supervises.
+  Logs include peak RSS in MiB and aggregate CPU percentage. Never stop
+  unrelated services or foreign jobs to obtain capacity.
+- Cluster jobs request one task with an explicit memory limit, CPU allocation
+  and time limit. Set Lean and native-library thread counts to the intended
+  actual CPU count. Check whether memory cgroups enforce the request. If RAM
+  enforcement cannot be verified, reserve ghost CPUs according to
+  `max(actual_threads, ceil(job_memory / usable_memory_per_CPU))`, using the
+  least favorable eligible node and leaving node memory headroom. Lean still
+  uses only the actual thread budget. Ghost CPUs reserve the job's share of
+  node RAM; they do not create a hard memory limit. Retain an aggregate RSS
+  watchdog and refuse placement whose reservation cannot cover the budget.
+  Current preflights show approximately 14.76 GiB/CPU on acluster and
+  11.82 GiB/CPU on scluster; with 10% headroom, two reserved CPUs cover
+  an 8 GiB job on either cluster. Recheck these ratios before submission.
+- Initial module/consumer jobs use 8 GiB and two threads. Full verification
+  receives a separately recorded budget based on measured dependencies and
+  scheduler capacity. A larger allocation needs a concrete resource reason;
+  a proof elaboration timeout is repaired by splitting the proof.
 - Standard timeouts: scratch file 900 s; one module `lake build` 2700 s;
   full library build 14400 s; `scripts/verify.sh` 21600 s.
 - Single-file checks add a Lean memory cap:
-  `lake env lean -M 32000 <file>` (the value is in MB).
+  `lake env lean -M 8000 <file>` (the value is in MB).
 - Exit codes and responses:
 
   | Code | Meaning | Action |
@@ -228,6 +255,7 @@ perform source and review work. Therefore:
   | 91 / 94 | memory or swap kill (`reason=rss-cap`, `memory-pressure`, `memory` or `swap`) | Do not retry the same command. Split the file or the proof (section 6.3) and report. Two memory kills in one task: `blocked`. |
   | 92 | disk kill | Stop immediately, report `blocked: disk`. Never delete anything to make room. |
   | 93 | timeout | Look at the log for the last file compiled. Usually a proof is too heavy: split it. Do not raise the timeout yourself. |
+  | 95 | sustained CPU oversubscription | Reduce concurrent compilation or thread use. Do not raise the CPU cap without a separately allocated resource budget. |
 
 - **Disk hygiene.** The only new worktree in the whole campaign is `WT`
   (task T01). Its `.lake` is an APFS clone of `MAIN/.lake` and costs almost
@@ -657,7 +685,9 @@ Common rules for T30–T35:
   grep -nE "compHom" <new file>
   ```
 
-  Both must print nothing, except inside the abstract adapter of T22.
+  Both must print nothing in concrete constructions. Abstract-ring adapters
+  following the T22 pattern may install the required instances locally;
+  identify their generic ring variables and scalar-map equations in the report.
 - Build each new module alone:
   `$GUARD run --timeout 2700 --log $SCR/logs/<task>.log -- lake build Stafford38.Geometry.SameWitness.<File>`.
   If one declaration takes more than 300 s (see `set_option profiler true`),
@@ -872,6 +902,10 @@ two hunks of `scripts/verify.sh` from the wiring patch.
 1. `cd $WT && git apply --check $SCR/archive/dependency-guard-integration.patch`, then apply it.
    Same for `$SCR/archive/palomar-verifier-guard-wiring.patch`. If `--check`
    fails, stop and report the failing hunk. Do not hand-edit around it.
+   At resumed WT `0340cf2`, the controller verified all 18 integration
+   new-file payloads are already tracked and byte-identical to the archive.
+   Reuse those files and apply only the still-applicable verifier wiring;
+   retain this source-match evidence separately from fixture behavior tests.
 2. Fixture behaviour test (independent oracle for the guard itself):
    `$GUARD run --timeout 3600 --log $SCR/logs/T43-fixtures.log -- python3 tests/dependency-guard-fixtures/test_behavior.py`.
    Its last line must start with `PASS:`.
