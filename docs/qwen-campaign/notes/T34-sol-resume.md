@@ -60,3 +60,21 @@ whereas hpsi states equality of the explicit composite ring-hom actions.
 If the actions do not reduce definitionally in the guarded check, normalize
 the legacy action over abstract B/Q before transporting it; never install
 another concrete action or raise limits.
+
+## Actual Linux repairs (3 October 2026)
+
+Positions jobs3112555/3112894 failed with real compiler diagnostics.
+The generic bodies now install only their abstract coefficient actions and
+reduce statement let scopes; retained maximality supplies localization types.
+Existing owner namespaces are opened. Type-valued producer and consumer use
+noncomputable def with the same names and types. The generic chart identity
+wrapper, explicit selected qT equality and dependent canonical rhoU transport
+are repaired in source102983348a569bca588f13d7afb03f3567db4447c20f0bc614034d5b4bbf93a2.
+Consumer20d586839334f2552e67bdba86630691f95d3fcaecb35424d4bbc3262b039a97
+preserves its complete literal type. Retry3 is scluster3113094.
+
+Columns received the analogous bounded repairs before compilation:
+source57d852c37e2494c0ad3be1ce951055c8004284444b8e562c598ee5be0e19d2e3,
+consumer818a355d4916a04925f998cb51a5fa74767eaca96fde671b82bccfc2921941a7.
+The derivative-action transport remains an untested bridge pending T35.
+No mathematical hypothesis or challenge statement changed; no cap increased.

@@ -29,3 +29,8 @@ consumer hashes at this freeze:
 No Lean command was run for this change because Sol owns the exclusive Linux
 slot. `git diff --check` passes. Module and consumer compilation, including the
 consumer's `#print axioms`, remain pending.
+
+Current source59b8e4501d850b92347c27473fa99f1c5c98d618c43445a8d7b54dab6a88c95a
+removes the stale extra etale argument from the positions producer call.
+Full target remains byte-identical to PLAN, consumer unchanged. Static audit
+and git diff cleanliness are preparatory; actual compilation still required.

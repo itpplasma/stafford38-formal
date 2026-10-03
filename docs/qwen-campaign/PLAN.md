@@ -28,9 +28,11 @@ T35 awaits stable cluster validation after local node-pressure stops;
 T34–T44 remain unaccepted. No guard threshold is relaxed. Scluster bootstrap
 3109567 passed its exact pins and T32 module/consumer; acluster21805718 is
 finishing prerequisites before T35 job21805719. T34 positions job3112555
-runs on scluster. Guard fixture jobs3111465/3112549 exposed isolated-toolchain
-path and quotation syntax defects; Sol prepared bounded repairs, with the
-actual retry still required. See notes/scluster-bootstrap-fixture-20261003.md.
+runs after the accepted Linux guard fixture check. Guard fixtures passed
+on scluster3112916 after Sol repaired three compiler/runtime defects; see
+notes/T43-linux-fixtures-accepted-20261003.md. Production strict traversal
+still awaits the completed proof. T34 positions retry3 is job3113094,
+followed by the unchanged T35 candidate on scluster3113113.
 T45 has a frozen implementation and independent static audit, with compilation
 and route comparisons pending. The public guided-review generator is committed
 at 40967b6740c2ceaf515a2fb47a5ca9571be6495f; the complete final map/site walkthrough
