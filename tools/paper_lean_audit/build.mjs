@@ -571,7 +571,7 @@ function issueBlock(iss, ownerId) {
 
 const reviewChecks = map.review_checks;
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex').slice(0, 16);
-const generatorHash = sha(['build.mjs', 'lean.mjs', 'texhtml.mjs', 'review.js', 'style.css', 'package.json', 'package-lock.json']
+const generatorHash = sha(['build.mjs', 'lean.mjs', 'texhtml.mjs', 'review.js', 'review-scope.mjs', 'style.css', 'package.json', 'package-lock.json']
   .map((file) => fs.readFileSync(path.join(here, file), 'utf8')).join('\0'));
 
 // Committed review records (exported from the HTML, one file per reviewer and pass).

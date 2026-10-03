@@ -1,14 +1,14 @@
 {
  "schema": 1,
- "version": "2026-10-01.13",
+ "version": "2026-10-02-candidate",
  "title": "Stafford 3.8: paper \u2194 Lean correspondence audit",
- "subtitle": "Current annotated manuscript mapped to the signed formal release and pinned dependencies.",
+ "subtitle": "Candidate correspondence reanchored to the current annotated manuscript; final formal source pins and full proof verification are pending.",
  "sources": {
   "paper": {
    "repo": "itpplasma/stafford38-formal",
    "commit": "bce92ec2d8ac53993b3edc568561a814ce5db518",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-   "note": "Selected complete paper proof; marked mathematical proposals await author acceptance. Historical alternatives are outside the current review assignment.",
+   "note": "Historical public snapshot from origin commit 093527797b85f4547e7a5be03556fa9725b6077c; the current candidate manuscript is separately recorded under candidate metadata. The historical selected-proof correspondence has not been refreshed to final formal source pins.",
    "origin_repo": "itpplasma/stafford38-paper",
    "origin_commit": "093527797b85f4547e7a5be03556fa9725b6077c"
   },
@@ -324,8 +324,8 @@
    "title": "Stafford 3.8 with fixed source $F=\\ell^{\\deg_B d}$",
    "pdf_page": 2,
    "tex_lines": [
-    100,
-    118
+    68,
+    114
    ],
    "label": "thm:main",
    "statement_relation": "lean-stronger",
@@ -435,8 +435,8 @@
    "title": "Palomar record and Global Stafford extension",
    "pdf_page": 2,
    "tex_lines": [
-    120,
-    127
+    115,
+    123
    ],
    "statement_relation": "exact",
    "route_relation": "n/a",
@@ -492,8 +492,8 @@
    "title": "Proof sketch: quotient-vanishing architecture",
    "pdf_page": 2,
    "tex_lines": [
-    129,
-    143
+    124,
+    139
    ],
    "statement_relation": "n/a",
    "route_relation": "different",
@@ -519,8 +519,8 @@
    "title": "Citations for generator theory and algorithms",
    "pdf_page": 2,
    "tex_lines": [
-    145,
-    164
+    140,
+    160
    ],
    "statement_relation": "n/a",
    "route_relation": "n/a",
@@ -546,8 +546,8 @@
    "title": "\u201cEvery statement of this paper is formalized\u201d",
    "pdf_page": 3,
    "tex_lines": [
-    166,
-    207
+    161,
+    205
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
@@ -607,8 +607,8 @@
    "title": "Distinguished Weyl pair and Ore presentation",
    "pdf_page": 4,
    "tex_lines": [
-    220,
-    231
+    215,
+    223
    ],
    "label": "conv:pair",
    "statement_relation": "equivalent",
@@ -695,8 +695,8 @@
    "title": "Hyperplane H and cotangent bundle",
    "pdf_page": 4,
    "tex_lines": [
-    233,
-    245
+    228,
+    240
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
@@ -758,8 +758,8 @@
    "title": "Cotangent bundle, symbol ring, and symplectic form",
    "pdf_page": 4,
    "tex_lines": [
-    246,
-    272
+    241,
+    267
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
@@ -793,8 +793,8 @@
    "title": "Filtrations; Bernstein and order filtrations",
    "pdf_page": 5,
    "tex_lines": [
-    273,
-    297
+    268,
+    275
    ],
    "statement_relation": "equivalent",
    "route_relation": "n/a",
@@ -890,8 +890,8 @@
    "title": "Good filtrations",
    "pdf_page": 5,
    "tex_lines": [
-    298,
-    307
+    293,
+    298
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
@@ -951,8 +951,8 @@
    "title": "Characteristic variety",
    "pdf_page": 5,
    "tex_lines": [
-    308,
-    328
+    303,
+    317
    ],
    "statement_relation": "partial",
    "route_relation": "n/a",
@@ -1027,8 +1027,8 @@
    "title": "Symplectic form and Poisson bracket",
    "pdf_page": 6,
    "tex_lines": [
-    329,
-    352
+    324,
+    343
    ],
    "label": "def:symplectic-poisson",
    "statement_relation": "equivalent",
@@ -1094,8 +1094,8 @@
    "title": "Involutive subsets",
    "pdf_page": 6,
    "tex_lines": [
-    353,
-    370
+    348,
+    364
    ],
    "statement_relation": "exact",
    "route_relation": "n/a",
@@ -1192,8 +1192,8 @@
    "title": "Gabber\u2019s involutivity theorem",
    "pdf_page": 6,
    "tex_lines": [
-    371,
-    398
+    366,
+    393
    ],
    "label": "ithm:gabber",
    "statement_relation": "exact",
@@ -1375,8 +1375,8 @@
    "title": "Componentwise involutivity",
    "pdf_page": 7,
    "tex_lines": [
-    399,
-    454
+    394,
+    417
    ],
    "label": "lem:componentwise-involutive",
    "statement_relation": "lean-stronger",
@@ -1488,8 +1488,8 @@
    "title": "Scalar case N = 0",
    "pdf_page": 8,
    "tex_lines": [
-    456,
-    461
+    421,
+    424
    ],
    "statement_relation": "exact",
    "route_relation": "same",
@@ -1554,8 +1554,8 @@
    "title": "Symplectic automorphisms \u03a6_g and their symbols",
    "pdf_page": 8,
    "tex_lines": [
-    462,
-    503
+    425,
+    466
    ],
    "statement_relation": "equivalent",
    "route_relation": "similar",
@@ -1661,8 +1661,8 @@
    "title": "Symplectic completion",
    "pdf_page": 9,
    "tex_lines": [
-    504,
-    568
+    467,
+    509
    ],
    "label": "lem:sympcompl",
    "statement_relation": "partial",
@@ -1729,14 +1729,14 @@
    "title": "Monic normal form in p",
    "pdf_page": 9,
    "tex_lines": [
-    572,
-    637
+    510,
+    544
    ],
    "label": "prop:monic",
    "statement_relation": "equivalent",
-   "route_relation": "same",
-   "correspondence": "Selected left-coefficient PBW normalization and transpose symbol substitution follow the checked chart construction.",
-   "route": "Selected left-coefficient PBW normalization and transpose symbol substitution follow the checked chart construction.",
+   "route_relation": "similar",
+   "correspondence": "The manuscript writes right coefficients in the form $p^N+\\sum_j p^j a_j$. The historical map wording about left coefficients is stale. Refresh the exact coefficient-sidedness, symbol, and transport comparison against the final formal pins; no exact match is asserted here.",
+   "route": "The paper uses a right-coefficient PBW normal form. Formal chart normalization, symbol action, and transport correspondence remain pending exact comparison at the final source pins.",
    "lean": [
     {
      "file": "Stafford38/Weyl/MonicNormalization.lean",
@@ -1839,8 +1839,8 @@
    "title": "Field handling: work over k, then over its algebraic closure",
    "pdf_page": 10,
    "tex_lines": [
-    638,
-    651
+    548,
+    558
    ],
    "statement_relation": "n/a",
    "route_relation": "different",
@@ -1933,8 +1933,8 @@
    "title": "Transport back along \u03a6_g",
    "pdf_page": 10,
    "tex_lines": [
-    652,
-    663
+    559,
+    567
    ],
    "label": "rem:transport",
    "statement_relation": "n/a",
@@ -2003,8 +2003,8 @@
    "title": "Monic of degree N in \u03be\u2081",
    "pdf_page": 11,
    "tex_lines": [
-    670,
-    677
+    577,
+    582
    ],
    "statement_relation": "exact",
    "route_relation": "n/a",
@@ -2044,14 +2044,14 @@
    "title": "Order symbol P(\u03be), monic in \u03be\u2081",
    "pdf_page": 11,
    "tex_lines": [
-    678,
-    731
+    585,
+    614
    ],
    "label": "lem:order-symbol",
    "statement_relation": "exact",
-   "route_relation": "same",
-   "correspondence": "Left coefficient PBW expansion and Bernstein bound give the pure momentum symbol and coefficient one.",
-   "route": "Left coefficient PBW expansion and Bernstein bound give the pure momentum symbol and coefficient one.",
+   "route_relation": "similar",
+   "correspondence": "The current paper uses a right-coefficient PBW expansion; together with the Bernstein bound it identifies the pure momentum symbol and coefficient one. Formal coefficient-sidedness and declaration correspondence remain pending final source pins.",
+   "route": "The right-coefficient paper expansion is identified. Refresh the formal sidedness and exact declaration comparison at the final source pins.",
    "lean": [
     {
      "file": "Stafford38/Characteristic/InitialIdeal.lean",
@@ -2125,8 +2125,8 @@
    "title": "Canonical right ideal and quotient",
    "pdf_page": 11,
    "tex_lines": [
-    734,
-    738
+    623,
+    625
    ],
    "label": "eq:I-Q",
    "statement_relation": "exact",
@@ -2189,8 +2189,8 @@
    "title": "Transverse\u2013Euler subring and one-sided normality",
    "pdf_page": 11,
    "tex_lines": [
-    740,
-    764
+    629,
+    648
    ],
    "label": "eq:nonnegative-pbw",
    "statement_relation": "exact",
@@ -2286,8 +2286,8 @@
    "title": "Euler products",
    "pdf_page": 12,
    "tex_lines": [
-    765,
-    794
+    649,
+    678
    ],
    "label": "lem:euler",
    "statement_relation": "paper-wrong",
@@ -2344,8 +2344,8 @@
    "title": "Euler residue 1 + U x\u2081 \u2208 I",
    "pdf_page": 12,
    "tex_lines": [
-    795,
-    867
+    683,
+    710
    ],
    "label": "lem:euler-residue",
    "statement_relation": "equivalent",
@@ -2487,8 +2487,8 @@
    "title": "Right multiplication by x\u2081 on Q is surjective",
    "pdf_page": 13,
    "tex_lines": [
-    868,
-    915
+    711,
+    736
    ],
    "label": "prop:x-surjective",
    "statement_relation": "exact",
@@ -2584,8 +2584,8 @@
    "title": "M = gr Q, T, V, U",
    "pdf_page": 14,
    "tex_lines": [
-    917,
-    934
+    737,
+    755
    ],
    "statement_relation": "exact",
    "route_relation": "n/a",
@@ -2659,8 +2659,8 @@
    "title": "Length",
    "pdf_page": 14,
    "tex_lines": [
-    935,
-    942
+    756,
+    760
    ],
    "statement_relation": "equivalent",
    "route_relation": "n/a",
@@ -2713,8 +2713,8 @@
    "title": "Tangential finiteness",
    "pdf_page": 14,
    "tex_lines": [
-    943,
-    969
+    764,
+    790
    ],
    "label": "lem:tangential-finiteness",
    "statement_relation": "exact",
@@ -2827,8 +2827,8 @@
    "title": "Filtered-page inequality \u2113(U_q) \u2264 \u2113(V_q)",
    "pdf_page": 15,
    "tex_lines": [
-    970,
-    1140
+    791,
+    911
    ],
    "label": "lem:page-inequality",
    "statement_relation": "exact",
@@ -2976,8 +2976,8 @@
    "title": "Strict inequality \u2113(U_q) > \u2113(V_q)",
    "pdf_page": 16,
    "tex_lines": [
-    1141,
-    1222
+    912,
+    993
    ],
    "label": "lem:strict-support-inequality",
    "statement_relation": "exact",
@@ -3151,8 +3151,8 @@
    "title": "U = M / x\u2081M = 0",
    "pdf_page": 18,
    "tex_lines": [
-    1223,
-    1237
+    994,
+    1009
    ],
    "label": "lem:Uzero",
    "statement_relation": "exact",
@@ -3219,8 +3219,8 @@
    "title": "Char(Q) \u2286 V(P)",
    "pdf_page": 18,
    "tex_lines": [
-    1239,
-    1256
+    1010,
+    1025
    ],
    "label": "cor:charP",
    "statement_relation": "exact",
@@ -3288,8 +3288,8 @@
    "title": "Char(Q) \u2229 \u03c0\u207b\u00b9(H) = \u2205",
    "pdf_page": 18,
    "tex_lines": [
-    1257,
-    1278
+    1028,
+    1052
    ],
    "label": "prop:char-avoids",
    "statement_relation": "equivalent",
@@ -3398,8 +3398,8 @@
    "title": "Projective conormal directions Dir(Y)",
    "pdf_page": 19,
    "tex_lines": [
-    1282,
-    1307
+    1053,
+    1067
    ],
    "statement_relation": "equivalent",
    "route_relation": "n/a",
@@ -3482,14 +3482,14 @@
    "title": "Tangent-limit criterion",
    "pdf_page": 19,
    "tex_lines": [
-    1308,
-    1376
+    1068,
+    1132
    ],
    "label": "lem:tangent-limit",
    "statement_relation": "lean-stronger",
    "route_relation": "similar",
-   "correspondence": "The paper passage uses Zariski tangent spaces, while the exported formal wrapper still carries a generic_smooth field in DirectSummandInput. That assumption must not be described as absent from this wrapper; its redundancy under ambient assumptions is a separate argument.",
-   "route": "similar: left inverse of a split matrix presentation lifts the annihilator (retraction correction); dehomogenization gives an equation-conormal Laurent point; membership in Dir(Y) comes from scalar-extension vanishing + evaluation at t=0, not a valuative criterion. Auxiliary: NOT on the terminal route (docs/proof-graph.yaml:25-29)",
+   "correspondence": "Candidate manuscript statement at the reanchored lines. The current formal closure assembly now uses DirectSummandInputOfActualChart.directSummandInput_of_actual_chart_columns followed by GeneralTangentLimitCriterion.tangent_limit_affine_fibre_closure_of_directSummand. Refresh the exact wrapper statement and compare its hypotheses, including generic smoothness, against this paper lemma at the final pins.",
+   "route": "Current closure assembly: DirectSummandInputOfActualChart.directSummandInput_of_actual_chart_columns, then GeneralTangentLimitCriterion.tangent_limit_affine_fibre_closure_of_directSummand. Exact final declaration pins and comparison with the paper hypotheses remain pending.",
    "lean": [
     {
      "file": "Stafford38/Geometry/GeneralTangentLimitCriterion.lean",
@@ -3608,14 +3608,14 @@
    "title": "Asymptotic conormal direction [dx\u2081] \u2208 Dir(Y)",
    "pdf_page": 20,
    "tex_lines": [
-    1377,
-    1383
+    1133,
+    1136
    ],
    "label": "thm:asymptotic-conormal",
    "statement_relation": "lean-stronger",
    "route_relation": "similar",
-   "correspondence": "The selected divisorial/Laurent proof proves the same projective conormal direction claim. The tangent criterion is separately checked and auxiliary.",
-   "route": "The selected divisorial/Laurent proof proves the same projective conormal direction claim. The tangent criterion is separately checked and auxiliary.",
+   "correspondence": "Candidate statement at the reanchored manuscript lines. The formal statement and route changed after the historical formal pin; refresh the exact hypotheses, conclusion, and route against the final source pins before recording a finalized comparison.",
+   "route": "Pending final-source-pin refresh. The route recorded in the historical formal snapshot is not asserted as the current route; compare the current endpoint and hypotheses after final pins arrive.",
    "lean": [
     {
      "file": "Stafford38/Geometry/GeneralAsymptoticConormal.lean",
@@ -3675,13 +3675,13 @@
    "title": "Proof of Theorem 8.2",
    "pdf_page": 20,
    "tex_lines": [
-    1533,
-    1662
+    1141,
+    1316
    ],
    "statement_relation": "n/a",
-   "route_relation": "same",
-   "correspondence": "Selected full checked route: valuation chart, finite integral closure, divisorial DVR, order gap, residue differential visibility, Nakayama, Laurent conormal point, scalar-extension vanishing and evaluation at the axis. The historical tangent-lattice construction is not selected.",
-   "route": "Selected full checked route: valuation chart, finite integral closure, divisorial DVR, order gap, residue differential visibility, Nakayama, Laurent conormal point, scalar-extension vanishing and evaluation at the axis. The historical tangent-lattice construction is not selected.",
+   "route_relation": "similar",
+   "correspondence": "Current manuscript excerpt: printed geometric proof at the reanchored lines. The checked theorem proof route changed after the historical formal pin; its exact correspondence with the printed steps remains pending final source pins and comparison. This candidate does not claim whole-paper correspondence.",
+   "route": "Manuscript excerpt is the printed geometric proof. Formal proof route and step correspondence are pending final-source-pin refresh.",
    "lean": [
     {
      "file": "Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean",
@@ -3914,8 +3914,8 @@
    "title": "Fibre-conical sets",
    "pdf_page": 23,
    "tex_lines": [
-    1664,
-    1667
+    1318,
+    1320
    ],
    "label": "def:fibre-can",
    "statement_relation": "exact",
@@ -3955,8 +3955,8 @@
    "title": "Involutive exclusion",
    "pdf_page": 23,
    "tex_lines": [
-    1668,
-    1809
+    1322,
+    1419
    ],
    "label": "thm:coisotropic-exclusion",
    "statement_relation": "lean-stronger",
@@ -4176,12 +4176,12 @@
    "title": "Proof of Theorem 1.1: Gabber, exclusion, descent, transport",
    "pdf_page": 24,
    "tex_lines": [
-    1810,
-    1947
+    1420,
+    1469
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "same",
-   "correspondence": "Selected six-step assembly uses the canonical ideal over k, geometry over its algebraic closure, canonical initial-ideal equality and reflection, a certificate, and inverse coordinate transport. Rank zero is handled separately by the universal endpoint.",
+   "correspondence": "Current manuscript assembly excerpt at the reanchored lines. Its exact step-by-step correspondence with the final formal proof source remains pending; the current map retains the historical formal endpoint for orientation only.",
    "route": "Selected six-step assembly uses the canonical ideal over k, geometry over its algebraic closure, canonical initial-ideal equality and reflection, a certificate, and inverse coordinate transport. Rank zero is handled separately by the universal endpoint.",
    "lean": [
     {
@@ -4483,8 +4483,8 @@
    "title": "Base change of the order initial ideal",
    "pdf_page": 25,
    "tex_lines": [
-    1914,
-    1945
+    1470,
+    1503
    ],
    "statement_relation": "exact",
    "route_relation": "similar",
@@ -4543,8 +4543,8 @@
    "title": "Finitely generated torsion modules are cyclic",
    "pdf_page": 26,
    "tex_lines": [
-    1949,
-    2005
+    1505,
+    1540
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "same",
@@ -4716,8 +4716,8 @@
    "title": "Outlook",
    "pdf_page": 26,
    "tex_lines": [
-    2006,
-    2017
+    1541,
+    1552
    ],
    "statement_relation": "none",
    "route_relation": "n/a",
@@ -4763,8 +4763,8 @@
    "title": "AI-assisted research, formalization and verification provenance",
    "pdf_page": 28,
    "tex_lines": [
-    2056,
-    2109
+    1591,
+    1644
    ],
    "statement_relation": "n/a",
    "route_relation": "n/a",
@@ -4807,8 +4807,8 @@
    "title": "Further work and corollaries",
    "pdf_page": 29,
    "tex_lines": [
-    2110,
-    2144
+    1645,
+    1656
    ],
    "statement_relation": "none",
    "route_relation": "n/a",
@@ -4914,8 +4914,8 @@
    "title": "Identity in every right Ore localization",
    "pdf_page": 29,
    "tex_lines": [
-    2115,
-    2116
+    1648,
+    1649
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "same",
@@ -4948,8 +4948,8 @@
    "title": "Left-handed identity via formal adjoint",
    "pdf_page": 29,
    "tex_lines": [
-    2117,
-    2118
+    1650,
+    1651
    ],
    "statement_relation": "exact",
    "route_relation": "same",
@@ -4982,8 +4982,8 @@
    "title": "Differential operators over polynomial localizations",
    "pdf_page": 29,
    "tex_lines": [
-    2119,
-    2120
+    1652,
+    1653
    ],
    "statement_relation": "lean-stronger",
    "route_relation": "same",
@@ -5016,8 +5016,8 @@
    "title": "Evolutionary version with coefficients commuting with a Weyl pair",
    "pdf_page": 29,
    "tex_lines": [
-    2121,
-    2122
+    1654,
+    1656
    ],
    "statement_relation": "exact",
    "route_relation": "same",
@@ -5050,8 +5050,8 @@
    "title": "Noncharacteristic",
    "pdf_page": 30,
    "tex_lines": [
-    2145,
-    2155
+    1678,
+    1685
    ],
    "label": "def:noncar",
    "statement_relation": "partial",
@@ -5104,8 +5104,8 @@
    "title": "H = {x = 0} is noncharacteristic for Q",
    "pdf_page": 30,
    "tex_lines": [
-    2156,
-    2183
+    1689,
+    1709
    ],
    "label": "prop:noncar",
    "statement_relation": "exact",
@@ -5464,213 +5464,243 @@
  ],
  "aicomments": [
   {
-   "id": "AUDIT-01",
-   "line": 65,
-   "verdict": "Information",
-   "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
-  },
-  {
    "id": "INTRO-01",
-   "line": 94,
+   "line": 89,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "WF-01",
-   "line": 181,
+   "line": 176,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "DUP-01",
-   "line": 243,
+   "line": 238,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "ALG-01",
-   "line": 364,
+   "line": 359,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "LIT-01",
-   "line": 390,
+   "line": 385,
    "verdict": "Information",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "COMP-01",
-   "line": 453,
+   "line": 416,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "ALG-07",
-   "line": 459,
+   "line": 422,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "ALG-08",
-   "line": 493,
+   "line": 456,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "COMP-02",
-   "line": 568,
+   "line": 506,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "COMP-03",
-   "line": 637,
+   "line": 544,
    "verdict": "Information",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "FIELD-01",
-   "line": 647,
+   "line": 554,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "ALG-02",
-   "line": 758,
+   "line": 642,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "COMP-04",
-   "line": 866,
+   "line": 709,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
+   "id": "ALG-03",
+   "line": 727,
+   "verdict": "Author proposal",
+   "note": "Current manuscript annotation; author acceptance is separate from machine verification."
+  },
+  {
    "id": "COMP-05",
-   "line": 914,
+   "line": 735,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "NOTATION-01",
-   "line": 921,
+   "line": 742,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "ALG-04",
-   "line": 969,
+   "line": 790,
    "verdict": "Information",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "ALG-09",
-   "line": 1134,
+   "line": 899,
    "verdict": "Information",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "COMP-06",
-   "line": 1137,
+   "line": 905,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "EDIT-02",
-   "line": 1158,
+   "line": 929,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "COMP-07",
-   "line": 1221,
+   "line": 992,
    "verdict": "Information",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "COMP-08",
-   "line": 1277,
+   "line": 1048,
    "verdict": "Information",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "GEO-04",
-   "line": 1326,
+   "line": 1086,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "COMP-10",
-   "line": 1375,
+   "line": 1131,
    "verdict": "Information",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "ROUTE-01",
-   "line": 1385,
+   "line": 1141,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
+   "id": "GEO-01",
+   "line": 1172,
+   "verdict": "Author proposal",
+   "note": "Current manuscript annotation; author acceptance is separate from machine verification."
+  },
+  {
+   "id": "GEO-06",
+   "line": 1246,
+   "verdict": "Author proposal",
+   "note": "Current manuscript annotation; author acceptance is separate from machine verification."
+  },
+  {
+   "id": "GEO-02",
+   "line": 1294,
+   "verdict": "Author proposal",
+   "note": "Current manuscript annotation; author acceptance is separate from machine verification."
+  },
+  {
    "id": "COMP-11",
-   "line": 1656,
+   "line": 1306,
    "verdict": "Information",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
+   "id": "GEO-03",
+   "line": 1396,
+   "verdict": "Author proposal",
+   "note": "Current manuscript annotation; author acceptance is separate from machine verification."
+  },
+  {
    "id": "COMP-13",
-   "line": 1792,
+   "line": 1402,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "GEO-05",
-   "line": 1798,
+   "line": 1408,
    "verdict": "Information",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
+   "id": "ALG-05",
+   "line": 1421,
+   "verdict": "Author proposal",
+   "note": "Current manuscript annotation; author acceptance is separate from machine verification."
+  },
+  {
    "id": "COMP-15",
-   "line": 1946,
+   "line": 1502,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "ALG-06",
-   "line": 1952,
+   "line": 1508,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "COMP-16",
-   "line": 1998,
+   "line": 1534,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "EDIT-01",
-   "line": 2014,
+   "line": 1549,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "REF-01",
-   "line": 2111,
+   "line": 1646,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   },
   {
    "id": "SCOPE-01",
-   "line": 2123,
+   "line": 1656,
    "verdict": "Author proposal",
    "note": "Current selected manuscript annotation; author acceptance is separate from machine verification."
   }
  ],
- "overview": "Max reviews the whole selected paper against its checked Lean proof, including exact matches, definitions and intermediate steps. Begin with Challenge: meaning and soundness. Johanna reviews only the marked mathematical prose and corrections in the paper. Historical alternatives are preserved in source history and are outside the selected publication proof.",
- "how_to_use": "Max: inspect the independent Challenge/Solution pairs and definitions, then every mathematical card in the publication queue. Check all hypotheses, conclusions and selected proof steps. Readable notes are optional aids. Johanna: review red mathematical proposals and resolve their boxes after accepting or editing them; no Lean reading is required. Both use one frozen revision. Export notes before switching devices; outdated copies block sign-off while preserving notes.",
- "provenance": "Selected mathematical proof and checked formal source are pinned below. Historical findings are retained in the map as history, not current obligations. No human acceptance is inferred. The main Challenge is unchanged; the pair certificate is a supplementary statement.",
+ "overview": "Candidate correspondence map with line anchors refreshed to the current annotated manuscript. The historical public paper snapshot and formal release remain recorded under sources; final formal source pins and complete whole-paper proof correspondence are pending. Card comparisons retain unresolved author proposals and route differences.",
+ "how_to_use": "Review the cards as a candidate correspondence map anchored to the manuscript snapshot recorded above. Check exact statements, hypotheses, proof routes and publication endpoints against the final formal source pins when supplied. Author proposals remain pending; this candidate is not whole-paper sign-off.",
+ "provenance": "Candidate manuscript input is itpplasma/stafford38-paper at 9baed6d8a1d53e92cccd705d0ea583b2d6a8c735 (sha256 c0910a5bdc168b8d3a0a5d862334443de8cfb1e2c1b7cb0a0397d3594bf609fb). Historical source pins remain recorded below. Final proof-source pins, complete proof comparison, and human acceptance are pending; no whole-paper correspondence is asserted.",
  "challenge_definitions": [
   {
    "repo": "formal",
@@ -5917,5 +5947,15 @@
    "status": "resolved at pinned paper/formal commits"
   }
  ],
- "global_issues": []
+ "global_issues": [],
+ "candidate": {
+  "status": "pending-final-source-pins",
+  "manuscript": {
+   "repo": "itpplasma/stafford38-paper",
+   "commit": "9baed6d8a1d53e92cccd705d0ea583b2d6a8c735",
+   "file": "human_readable_main.tex",
+   "sha256": "c0910a5bdc168b8d3a0a5d862334443de8cfb1e2c1b7cb0a0397d3594bf609fb"
+  },
+  "note": "Line anchors refer to the manuscript bytes above. Historical paper and formal pins remain listed under sources; final proof-source pins and complete paper-to-Lean correspondence are pending. This map is a candidate, not a completed whole-paper audit."
+ }
 }
