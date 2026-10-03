@@ -1,4 +1,7 @@
-import Stafford38.Geometry.DivisorialVisibleFrameCore
+module
+public import Stafford38.Geometry.DivisorialVisibleFrameCore
+
+@[expose] public section
 
 open IsLocalRing
 

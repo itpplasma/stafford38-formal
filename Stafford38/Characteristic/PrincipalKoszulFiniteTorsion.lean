@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Module.PrincipalKoszulFiniteTorsion
-import Stafford38.Characteristic.PrincipalKoszulPositivity
+module
+public import AlgebraicAnalysis.Module.PrincipalKoszulFiniteTorsion
+public import Stafford38.Characteristic.PrincipalKoszulPositivity
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

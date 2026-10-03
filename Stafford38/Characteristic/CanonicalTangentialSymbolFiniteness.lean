@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.CanonicalNormalSymbolFiniteness
+module
+public import Stafford38.Characteristic.CanonicalNormalSymbolFiniteness
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalTangentialSymbolFiniteness
 

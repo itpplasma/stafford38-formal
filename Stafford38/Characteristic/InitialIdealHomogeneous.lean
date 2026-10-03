@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.FilteredQuotientGraded
+module
+public import Stafford38.Characteristic.FilteredQuotientGraded
+
+@[expose] public section
 
 /-!
 # Homogeneous pieces of the order initial ideal
@@ -30,10 +33,10 @@ universe u
 variable (k : Type u) [Field k]
 variable {n : ℕ}
 
-private abbrev OrderHomogeneous (N : ℕ) :=
+abbrev OrderHomogeneous (N : ℕ) :=
   MvPolynomial.weightedHomogeneousSubmodule k (@orderWeight n) N
 
-private abbrev orderDecomposition :=
+abbrev orderDecomposition :=
   MvPolynomial.weightedHomogeneousSubmodule k (@orderWeight n)
 
 local instance orderGradedAlgebraInstance :
@@ -72,7 +75,7 @@ private theorem decompose_mul_mem_orderSymbolRelation
     DirectSum.sum_support_decompose (orderDecomposition (n := n) k) x
   rw [← hxsum, Finset.mul_sum,
     DirectSum.decompose_sum]
-  rw [DFinsupp.finset_sum_apply]
+  rw [DFinsupp.finsetSum_apply]
   apply Submodule.sum_mem
   intro M hM
   by_cases hMN : M ≤ N

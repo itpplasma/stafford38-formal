@@ -1,10 +1,13 @@
-import Stafford38.Geometry.HomogenizedAffineEvaluation
-import Stafford38.Geometry.GenericSmoothOpen
-import Stafford38.Geometry.SmoothAffinePointScalarExtension
-import Stafford38.Geometry.SmoothAffineConormal
-import Stafford38.Geometry.ScalarExtensionPoints
-import Stafford38.Geometry.ProjectiveConormalDehomogenization
-import Stafford38.Geometry.ProjectiveEquationFormalChart
+module
+public import Stafford38.Geometry.HomogenizedAffineEvaluation
+public import Stafford38.Geometry.GenericSmoothOpen
+public import Stafford38.Geometry.SmoothAffinePointScalarExtension
+public import Stafford38.Geometry.SmoothAffineConormal
+public import Stafford38.Geometry.ScalarExtensionPoints
+public import Stafford38.Geometry.ProjectiveConormalDehomogenization
+public import Stafford38.Geometry.ProjectiveEquationFormalChart
+
+@[expose] public section
 set_option autoImplicit false
 set_option maxHeartbeats 3000000
 

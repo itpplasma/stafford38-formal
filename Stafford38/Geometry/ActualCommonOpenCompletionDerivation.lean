@@ -1,9 +1,12 @@
-import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
-import Stafford38.Geometry.EtaleCotangentBasis
-import Stafford38.Geometry.PrescribedCompletionDerivationCommutation
-import Stafford38.Geometry.PrescribedGroundPointUnitPowerChart
-import Stafford38.Geometry.SmoothLocalTiltedArcAxisLift
-import Mathlib.RingTheory.LaurentSeries
+module
+public import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
+public import Stafford38.Geometry.EtaleCotangentBasis
+public import Stafford38.Geometry.PrescribedCompletionDerivationCommutation
+public import Stafford38.Geometry.PrescribedGroundPointUnitPowerChart
+public import Stafford38.Geometry.SmoothLocalTiltedArcAxisLift
+public import Mathlib.RingTheory.LaurentSeries
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000
@@ -40,7 +43,7 @@ variable {A : Type v} [CommRing A] [Algebra k A]
   [Algebra.EssFiniteType (MvPolynomial (Option (Fin d)) k) A]
 variable {Q : Type w} [CommRing Q] [Algebra Q A]
 
-private theorem scalarTower_k_R_pointLocal
+theorem scalarTower_k_R_pointLocal
     (M : Ideal A) [M.IsPrime]
     [Algebra.FormallyEtale R (Localization.AtPrime M)] :
     IsScalarTower k R (Localization.AtPrime M) := by
@@ -157,7 +160,7 @@ theorem pointLocalToCommonOpen_parameter_map
         (algebraMap R A (MvPolynomial.X j)) = algebraMap R U (MvPolynomial.X j)
       simpa only [RingHom.comp_apply] using hX
 
-private theorem pointLocalToCommonOpen_comp_polynomialMap
+theorem pointLocalToCommonOpen_comp_polynomialMap
     (M : Ideal A) [M.IsPrime] (f : Q)
     (e : Localization.Away f ≃ₐ[Q]
       Localization.Away (algebraMap Q A f)) (g : Q) :
@@ -414,7 +417,7 @@ private theorem groundMap_powerSeries_to_laurent (c : k) :
       algebraMap (PowerSeries k) (LaurentSeries k)
         (algebraMap k (PowerSeries k) c) := by rfl
 
-private theorem groundTower_powerSeries_to_laurent :
+theorem groundTower_powerSeries_to_laurent :
     letI : Module k (LaurentSeries k) := Algebra.toModule
     letI : SMul k (LaurentSeries k) :=
       (Algebra.toModule : Module k (LaurentSeries k)).toSMul

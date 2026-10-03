@@ -1,4 +1,7 @@
-import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
+module
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
+
+@[expose] public section
 
 set_option autoImplicit false
 

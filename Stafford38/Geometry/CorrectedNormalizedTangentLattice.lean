@@ -1,5 +1,8 @@
-import Stafford38.Geometry.PaperDivisorTangent
-import Stafford38.Geometry.CorrectedVelocitySpan
+module
+public import Stafford38.Geometry.PaperDivisorTangent
+public import Stafford38.Geometry.CorrectedVelocitySpan
+
+@[expose] public section
 
 namespace Stafford38.Geometry.CorrectedNormalizedTangentLattice
 
@@ -22,7 +25,7 @@ theorem mapped_formalTangentColumns_span_eq_of_corrected_derivative
     (tau : Fin (n + 1) → PowerSeries k)
     (lambda : κ → PowerSeries k) (c : ℕ)
     (hfactor : ∀ i,
-      PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+      PowerSeries.derivative (R := k) (q i) - Z.mulVec lambda i =
         (PowerSeries.X : PowerSeries k) ^ c * tau i) :
     Submodule.span (LaurentSeries k)
         (Set.range (fun j : FormalTangentColumn κ =>
@@ -31,7 +34,7 @@ theorem mapped_formalTangentColumns_span_eq_of_corrected_derivative
       Submodule.span (LaurentSeries k)
         (Set.range (fun j : FormalTangentColumn κ =>
           fun i => algebraMap (PowerSeries k) (LaurentSeries k)
-            (formalTangentMatrix q Z (fun i => PowerSeries.derivative k (q i)) i j))) := by
+            (formalTangentMatrix q Z (fun i => PowerSeries.derivative (R := k) (q i)) i j))) := by
   classical
   let A := algebraMap (PowerSeries k) (LaurentSeries k)
   let fixed : Option κ → (Fin (n + 1) → LaurentSeries k) := fun a =>
@@ -44,7 +47,7 @@ theorem mapped_formalTangentColumns_span_eq_of_corrected_derivative
     | some j => A (lambda j)
   let corrected : Fin (n + 1) → LaurentSeries k := fun i => A (tau i)
   let raw : Fin (n + 1) → LaurentSeries k :=
-    fun i => A (PowerSeries.derivative k (q i))
+    fun i => A (PowerSeries.derivative (R := k) (q i))
   have hx : A (PowerSeries.X : PowerSeries k) ≠ 0 := by
     simpa [A] using
       (IsFractionRing.injective (PowerSeries k) (LaurentSeries k)).ne
@@ -56,7 +59,7 @@ theorem mapped_formalTangentColumns_span_eq_of_corrected_derivative
       A ((PowerSeries.X : PowerSeries k) ^ c) • corrected := by
     funext i
     simp only [Pi.sub_apply, Pi.smul_apply, smul_eq_mul, Finset.sum_apply]
-    change A (PowerSeries.derivative k (q i)) -
+    change A (PowerSeries.derivative (R := k) (q i)) -
         (∑ a, coeff a * fixed a i) =
       A ((PowerSeries.X : PowerSeries k) ^ c) * A (tau i)
     have hi := congrArg A (hfactor i)
@@ -89,7 +92,7 @@ theorem mapped_formalTangentColumns_span_eq_of_corrected_derivative
   have hcolsRaw :
       Set.range (fun j : FormalTangentColumn κ =>
         fun i => A (formalTangentMatrix q Z
-          (fun i => PowerSeries.derivative k (q i)) i j)) =
+          (fun i => PowerSeries.derivative (R := k) (q i)) i j)) =
         Set.range fixed ∪ {raw} := by
     ext v
     constructor
@@ -120,7 +123,7 @@ theorem genericFibre_normalizedTangentLattice_eq_span_derivative
     (tau : Fin (n + 1) → PowerSeries k)
     (lambda : κ → PowerSeries k) (c : ℕ)
     (hfactor : ∀ i,
-      PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+      PowerSeries.derivative (R := k) (q i) - Z.mulVec lambda i =
         (PowerSeries.X : PowerSeries k) ^ c * tau i) :
     Stafford38.Geometry.GeneralTangentLimitCriterion.genericFibre
         (K := LaurentSeries k)
@@ -129,7 +132,7 @@ theorem genericFibre_normalizedTangentLattice_eq_span_derivative
         (Set.range (fun j : FormalTangentColumn κ =>
           fun i => algebraMap (PowerSeries k) (LaurentSeries k)
             (formalTangentMatrix q Z
-              (fun i => PowerSeries.derivative k (q i)) i j))) := by
+              (fun i => PowerSeries.derivative (R := k) (q i)) i j))) := by
   let B := formalTangentMatrix q Z tau
   have hsourceSpan :
       Submodule.span (PowerSeries k)

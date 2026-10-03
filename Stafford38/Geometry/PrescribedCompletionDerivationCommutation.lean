@@ -1,7 +1,10 @@
-import Stafford38.Geometry.EtaleLocalChartFinitePartialDerivation
-import Stafford38.Geometry.PrescribedGroundPointPowerSeriesMap
-import Stafford38.Geometry.PrescribedGroundPointUnitPowerChart
-import Mathlib.RingTheory.LaurentSeries
+module
+public import Stafford38.Geometry.EtaleLocalChartFinitePartialDerivation
+public import Stafford38.Geometry.PrescribedGroundPointPowerSeriesMap
+public import Stafford38.Geometry.PrescribedGroundPointUnitPowerChart
+public import Mathlib.RingTheory.LaurentSeries
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000
@@ -30,7 +33,7 @@ variable [Algebra (MvPolynomial (Fin (d + 1)) k) A] [Algebra k A]
   [IsScalarTower k (MvPolynomial (Fin (d + 1)) k) A]
   [Algebra.EssFiniteType (MvPolynomial (Fin (d + 1)) k) A]
 
-local notation "R" => MvPolynomial (Fin (d + 1)) k
+local notation "ChartBase" => MvPolynomial (Fin (d + 1)) k
 local notation "C" => MvPowerSeries (Fin (d + 1)) k
 
 /-- For the actual prescribed completion chart, every polynomial-parameter
@@ -38,9 +41,9 @@ derivation commutes with completion.  Thus this is an identity of derivations
 on the whole local ring, not only a formula on selected coordinates. -/
 theorem localToPowerSeries_commutes_parameterDerivation
     (M : Ideal A) [M.IsMaximal] (eM : (A ⧸ M) ≃ₐ[k] k)
-    [Algebra.FormallyEtale R (Localization.AtPrime M)]
+    [Algebra.FormallyEtale ChartBase (Localization.AtPrime M)]
     (i : Fin (d + 1)) (b : Localization.AtPrime M) :
-    MvPowerSeries.pderiv k i
+    MvPowerSeries.pderiv i
         (PrescribedGroundPointPowerSeriesMap.localToPowerSeries
           (σ := Fin (d + 1)) M eM b) =
       PrescribedGroundPointPowerSeriesMap.localToPowerSeries
@@ -56,20 +59,20 @@ theorem localToPowerSeries_commutes_parameterDerivation
     change algebraMap k C c = Φ (algebraMap k T c)
     exact (Φ.commutes c).symm)
   have hΦ (j : Fin (d + 1)) :
-      Φ (algebraMap R T (MvPolynomial.X j)) =
+      Φ (algebraMap ChartBase T (MvPolynomial.X j)) =
         MvPowerSeries.C (residueCoordinates (σ := Fin (d + 1)) M eM j) +
           MvPowerSeries.X j := by
     calc
-      Φ (algebraMap R T (MvPolynomial.X j)) =
-          Φ (algebraMap A T (algebraMap R A (MvPolynomial.X j))) := by
-        exact congrArg Φ (IsScalarTower.algebraMap_apply R A T _)
+      Φ (algebraMap ChartBase T (MvPolynomial.X j)) =
+          Φ (algebraMap A T (algebraMap ChartBase A (MvPolynomial.X j))) := by
+        exact congrArg Φ (IsScalarTower.algebraMap_apply ChartBase A T _)
       _ = originalAlgebraToPowerSeries (σ := Fin (d + 1)) M eM
-          (algebraMap R A (MvPolynomial.X j)) := rfl
+          (algebraMap ChartBase A (MvPolynomial.X j)) := rfl
       _ = MvPowerSeries.C (residueCoordinates (σ := Fin (d + 1)) M eM j) +
           MvPowerSeries.X j :=
         originalAlgebraToPowerSeries_coordinate (σ := Fin (d + 1)) M eM j
   let Dleft : Derivation k T C :=
-    (MvPowerSeries.pderiv k i).compAlgebraMap T
+    (MvPowerSeries.pderiv i).compAlgebraMap T
   let Φlin : T →ₗ[T] C :=
     { toFun := Φ
       map_add' := Φ.map_add
@@ -78,35 +81,35 @@ theorem localToPowerSeries_commutes_parameterDerivation
         exact Φ.map_mul r x }
   let Dright : Derivation k T C :=
     Φlin.compDer (parameterDerivation (k := k) (d := d) (B := T) i)
-  have hleft : ∀ j, Dleft (algebraMap R T (MvPolynomial.X j)) =
+  have hleft : ∀ j, Dleft (algebraMap ChartBase T (MvPolynomial.X j)) =
       if j = i then (1 : C) else 0 := by
     intro j
-    change MvPowerSeries.pderiv k i
-      (Φ (algebraMap R T (MvPolynomial.X j))) = _
+    change MvPowerSeries.pderiv i
+      (Φ (algebraMap ChartBase T (MvPolynomial.X j))) = _
     rw [hΦ j]
     simp [MvPowerSeries.pderiv_X, Pi.single_apply, eq_comm]
-  have hright : ∀ j, Dright (algebraMap R T (MvPolynomial.X j)) =
+  have hright : ∀ j, Dright (algebraMap ChartBase T (MvPolynomial.X j)) =
       if j = i then (1 : C) else 0 := by
     intro j
     change Φ (parameterDerivation (k := k) (d := d) (B := T) i
-      (algebraMap R T (MvPolynomial.X j))) = _
+      (algebraMap ChartBase T (MvPolynomial.X j))) = _
     rw [parameterDerivation_apply_parameter]
     simp
   have hderiv : Dleft = Dright := by
     calc
       Dleft = EtaleCotangentBasis.derivationFromValues
           (k := k) (σ := Fin (d + 1)) (B := T) (L := C)
-          (fun j => Dleft (algebraMap R T (MvPolynomial.X j))) :=
+          (fun j => Dleft (algebraMap ChartBase T (MvPolynomial.X j))) :=
         (EtaleCotangentBasis.derivation_eq_from_parameter_values Dleft).symm
       _ = EtaleCotangentBasis.derivationFromValues
           (k := k) (σ := Fin (d + 1)) (B := T) (L := C)
-          (fun j => Dright (algebraMap R T (MvPolynomial.X j))) := by
+          (fun j => Dright (algebraMap ChartBase T (MvPolynomial.X j))) := by
         congr 1
         funext j
         rw [hleft j, hright j]
       _ = Dright :=
         EtaleCotangentBasis.derivation_eq_from_parameter_values Dright
-  change MvPowerSeries.pderiv k i (Φ b) =
+  change MvPowerSeries.pderiv i (Φ b) =
     Φ (parameterDerivation (k := k) (d := d) (B := T) i b)
   exact congrArg (fun D : Derivation k T C => D b) hderiv
 
@@ -123,7 +126,7 @@ theorem localToFinSuccPowerSeries_commutes_coordinateDerivation
     [Algebra.FormallyEtale (MvPolynomial (Option (Fin d)) k)
       (Localization.AtPrime M)]
     (i : Fin (d + 1)) (b : Localization.AtPrime M) :
-    MvPowerSeries.pderiv k i
+    MvPowerSeries.pderiv i
         (Stafford38.Geometry.PrescribedGroundPointUnitPowerChart.localToFinSuccPowerSeries
           (k := k) (B := Aₒ) (d := d) M eM b) =
       Stafford38.Geometry.PrescribedGroundPointUnitPowerChart.localToFinSuccPowerSeries
@@ -176,7 +179,7 @@ theorem localToFinSuccPowerSeries_commutes_coordinateDerivation
         change Ψ (r * x) = Ψ r * Ψ x
         exact Ψ.map_mul r x }
   let Dleft : Derivation k T (MvPowerSeries (Fin (d + 1)) k) :=
-    (MvPowerSeries.pderiv k i).compAlgebraMap T
+    (MvPowerSeries.pderiv i).compAlgebraMap T
   let Dright : Derivation k T (MvPowerSeries (Fin (d + 1)) k) :=
     Ψlin.compDer (EtaleCotangentBasis.coordinateDerivation
       (k := k) (σ := Option (Fin d)) (B := T)
@@ -185,7 +188,7 @@ theorem localToFinSuccPowerSeries_commutes_coordinateDerivation
       Dleft (algebraMap Rₒ T (MvPolynomial.X j)) =
         if j = (_root_.finSuccEquiv d) i then (1 : MvPowerSeries (Fin (d + 1)) k) else 0 := by
     intro j
-    change MvPowerSeries.pderiv k i (Ψ (algebraMap Rₒ T (MvPolynomial.X j))) = _
+    change MvPowerSeries.pderiv i (Ψ (algebraMap Rₒ T (MvPolynomial.X j))) = _
     rw [hcoord j]
     by_cases h : i = (_root_.finSuccEquiv d).symm j
     · subst i
@@ -223,7 +226,7 @@ theorem localToFinSuccPowerSeries_commutes_coordinateDerivation
       _ = Dright :=
         EtaleCotangentBasis.derivation_eq_from_parameter_values Dright
   calc
-    MvPowerSeries.pderiv k i (Ψ b) = Dleft b := rfl
+    MvPowerSeries.pderiv i (Ψ b) = Dleft b := rfl
     _ = Dright b := congrArg (fun D : Derivation k T
       (MvPowerSeries (Fin (d + 1)) k) => D b) hderiv
     _ = Ψ (EtaleCotangentBasis.coordinateDerivation
@@ -240,9 +243,9 @@ This follows from the same Kähler-basis uniqueness theorem, using the actual
 coordinate values of the prescribed arc. -/
 theorem localToPowerSeriesArc_derivative_eq_parameter_sum
     (M : Ideal A) [M.IsMaximal] (eM : (A ⧸ M) ≃ₐ[k] k)
-    [Algebra.FormallyEtale R (Localization.AtPrime M)]
+    [Algebra.FormallyEtale ChartBase (Localization.AtPrime M)]
     (α : Fin d → k) (b : Localization.AtPrime M) :
-    PowerSeries.derivative k
+    PowerSeries.derivative (R := k)
         (PrescribedGroundPointPowerSeriesMap.localToPowerSeriesArc
           (M := M) (B := A) α eM b) =
       PrescribedGroundPointPowerSeriesMap.localToPowerSeriesArc
@@ -264,16 +267,16 @@ theorem localToPowerSeriesArc_derivative_eq_parameter_sum
       change algebraMap k (PowerSeries k) c = Ψ (algebraMap k T c)
       exact (Ψ.commutes c).symm)
   have hΨ (j : Fin (d + 1)) :
-      Ψ (algebraMap R T (MvPolynomial.X j)) =
+      Ψ (algebraMap ChartBase T (MvPolynomial.X j)) =
         PowerSeries.C (residueCoordinates (σ := Fin (d + 1)) M eM j) +
           PowerSeries.C ((Fin.cons 1 α : Fin (d + 1) → k) j) *
             PowerSeries.X := by
     calc
-      Ψ (algebraMap R T (MvPolynomial.X j)) =
-          Ψ (algebraMap A T (algebraMap R A (MvPolynomial.X j))) := by
-        exact congrArg Ψ (IsScalarTower.algebraMap_apply R A T _)
+      Ψ (algebraMap ChartBase T (MvPolynomial.X j)) =
+          Ψ (algebraMap A T (algebraMap ChartBase A (MvPolynomial.X j))) := by
+        exact congrArg Ψ (IsScalarTower.algebraMap_apply ChartBase A T _)
       _ = originalAlgebraToPowerSeriesArc (M := M) (B := A) α eM
-          (algebraMap R A (MvPolynomial.X j)) := rfl
+          (algebraMap ChartBase A (MvPolynomial.X j)) := rfl
       _ = _ := originalAlgebraToPowerSeriesArc_coordinate
         (M := M) (B := A) α eM j
   let Ψlin : T →ₗ[T] PowerSeries k :=
@@ -283,34 +286,34 @@ theorem localToPowerSeriesArc_derivative_eq_parameter_sum
         change Ψ (r * x) = Ψ r * Ψ x
         exact Ψ.map_mul r x }
   let Dleft : Derivation k T (PowerSeries k) :=
-    (PowerSeries.derivative k).compAlgebraMap T
+    (PowerSeries.derivative (R := k)).compAlgebraMap T
   let Dright : Derivation k T (PowerSeries k) :=
     (Ψlin.compDer (parameterDerivation (k := k) (d := d) (B := T) 0)) +
       ∑ j : Fin d, PowerSeries.C (α j) •
         (Ψlin.compDer (parameterDerivation (k := k) (d := d)
           (B := T) j.succ))
-  have hleft : ∀ j, Dleft (algebraMap R T (MvPolynomial.X j)) =
+  have hleft : ∀ j, Dleft (algebraMap ChartBase T (MvPolynomial.X j)) =
       PowerSeries.C ((Fin.cons 1 α : Fin (d + 1) → k) j) := by
     intro j
-    change PowerSeries.derivative k
-      (Ψ (algebraMap R T (MvPolynomial.X j))) = _
+    change PowerSeries.derivative (R := k)
+      (Ψ (algebraMap ChartBase T (MvPolynomial.X j))) = _
     rw [hΨ j]
     simp [Derivation.map_add, Derivation.leibniz]
   have hparam (i j : Fin (d + 1)) :
       Ψ (parameterDerivation (k := k) (d := d) (B := T) i
-        (algebraMap R T (MvPolynomial.X j))) = if j = i then (1 : PowerSeries k) else 0 := by
+        (algebraMap ChartBase T (MvPolynomial.X j))) = if j = i then (1 : PowerSeries k) else 0 := by
     change Ψ (parameterDerivation (k := k) (d := d) (B := T) i
-      (algebraMap R T (MvPolynomial.X j)) ) = _
+      (algebraMap ChartBase T (MvPolynomial.X j)) ) = _
     rw [parameterDerivation_apply_parameter]
     simp
-  have hright : ∀ j, Dright (algebraMap R T (MvPolynomial.X j)) =
+  have hright : ∀ j, Dright (algebraMap ChartBase T (MvPolynomial.X j)) =
       PowerSeries.C ((Fin.cons 1 α : Fin (d + 1) → k) j) := by
     intro j
     change (Derivation.coeFnAddMonoidHom
       ((Ψlin.compDer (parameterDerivation (k := k) (d := d) (B := T) 0)) +
         ∑ l : Fin d, PowerSeries.C (α l) •
           (Ψlin.compDer (parameterDerivation (k := k) (d := d) (B := T) l.succ))))
-      (algebraMap R T (MvPolynomial.X j)) = _
+      (algebraMap ChartBase T (MvPolynomial.X j)) = _
     rw [map_add, map_sum]
     simp [Derivation.smul_apply, hparam, Ψlin, eq_comm]
     cases j using Fin.cases with
@@ -330,18 +333,18 @@ theorem localToPowerSeriesArc_derivative_eq_parameter_sum
     calc
       Dleft = EtaleCotangentBasis.derivationFromValues
           (k := k) (σ := Fin (d + 1)) (B := T) (L := PowerSeries k)
-          (fun j => Dleft (algebraMap R T (MvPolynomial.X j))) :=
+          (fun j => Dleft (algebraMap ChartBase T (MvPolynomial.X j))) :=
         (EtaleCotangentBasis.derivation_eq_from_parameter_values Dleft).symm
       _ = EtaleCotangentBasis.derivationFromValues
           (k := k) (σ := Fin (d + 1)) (B := T) (L := PowerSeries k)
-          (fun j => Dright (algebraMap R T (MvPolynomial.X j))) := by
+          (fun j => Dright (algebraMap ChartBase T (MvPolynomial.X j))) := by
         congr 1
         funext j
         rw [hleft j, hright j]
       _ = Dright :=
         EtaleCotangentBasis.derivation_eq_from_parameter_values Dright
   calc
-    PowerSeries.derivative k (Ψ b) = Dleft b := rfl
+    PowerSeries.derivative (R := k) (Ψ b) = Dleft b := rfl
     _ = Dright b := congrArg (fun D : Derivation k T (PowerSeries k) => D b) hderiv
     _ = Ψ (parameterDerivation (k := k) (d := d) (B := T) 0 b) +
         ∑ j : Fin d, PowerSeries.C (α j) *
@@ -357,10 +360,10 @@ theorem localToPowerSeriesArc_derivative_eq_parameter_sum
 one-variable power-series ring into its fraction field. -/
 theorem localToArcFractionField_derivative_eq_parameter_sum
     (M : Ideal A) [M.IsMaximal] (eM : (A ⧸ M) ≃ₐ[k] k)
-    [Algebra.FormallyEtale R (Localization.AtPrime M)]
+    [Algebra.FormallyEtale ChartBase (Localization.AtPrime M)]
     (α : Fin d → k) (b : Localization.AtPrime M) :
     algebraMap (PowerSeries k) (FractionRing (PowerSeries k))
-        (PowerSeries.derivative k
+        (PowerSeries.derivative (R := k)
           (PrescribedGroundPointPowerSeriesMap.localToPowerSeriesArc
             (M := M) (B := A) α eM b)) =
       algebraMap (PowerSeries k) (FractionRing (PowerSeries k))
@@ -380,10 +383,10 @@ theorem localToArcFractionField_derivative_eq_parameter_sum
 by the conormal and tangent-limit consumers. -/
 theorem localToArcLaurentSeries_derivative_eq_parameter_sum
     (M : Ideal A) [M.IsMaximal] (eM : (A ⧸ M) ≃ₐ[k] k)
-    [Algebra.FormallyEtale R (Localization.AtPrime M)]
+    [Algebra.FormallyEtale ChartBase (Localization.AtPrime M)]
     (α : Fin d → k) (b : Localization.AtPrime M) :
     algebraMap (PowerSeries k) (LaurentSeries k)
-        (PowerSeries.derivative k
+        (PowerSeries.derivative (R := k)
           (PrescribedGroundPointPowerSeriesMap.localToPowerSeriesArc
             (M := M) (B := A) α eM b)) =
       algebraMap (PowerSeries k) (LaurentSeries k)

@@ -1,6 +1,9 @@
-import Stafford38.Geometry.GeneralCoordinateAvoidance
-import Stafford38.Geometry.GeneralDivisorialVisibleFrame
-import Stafford38.Geometry.GeneralConstantCoordinateAxis
+module
+public import Stafford38.Geometry.GeneralCoordinateAvoidance
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrame
+public import Stafford38.Geometry.GeneralConstantCoordinateAxis
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

@@ -1,4 +1,7 @@
-import Mathlib.Algebra.MvPolynomial.Eval
+module
+public import Mathlib.Algebra.MvPolynomial.Eval
+
+@[expose] public section
 
 set_option autoImplicit false
 

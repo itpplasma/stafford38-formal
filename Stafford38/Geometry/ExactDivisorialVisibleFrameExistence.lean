@@ -1,8 +1,11 @@
-import Stafford38.Geometry.DivisorialVisibleFrameStageAssembly
-import Stafford38.Geometry.ExactVisibleDivisorFrameInterface
-import Stafford38.Geometry.KaehlerDVRVisibility
-import Stafford38.Geometry.ProjectiveDivisorOrderGap
-import Stafford38.Geometry.RelativeRetainedBoundaryPlace
+module
+public import Stafford38.Geometry.DivisorialVisibleFrameStageAssembly
+public import Stafford38.Geometry.ExactVisibleDivisorFrameInterface
+public import Stafford38.Geometry.KaehlerDVRVisibility
+public import Stafford38.Geometry.ProjectiveDivisorOrderGap
+public import Stafford38.Geometry.RelativeRetainedBoundaryPlace
+
+@[expose] public section
 
 namespace Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
 
@@ -166,15 +169,14 @@ theorem coordinateZeroLocalFactor_isLocal
     (hxm : (⟨x, hxV⟩ : V.toSubring) ∈ maximalIdeal V.toSubring) :
     IsLocalHom (coordinateZeroLocalFactor E V hEV x hxV hxm) := by
   let f := coordinateZeroLocalFactor E V hEV x hxV hxm
-  apply (IsLocalRing.local_hom_TFAE f).out 3 0 |>.mp
+  apply (IsLocalRing.local_hom_TFAE f).out 3 1 |>.mp
   intro z hz
-  rw [coordinateZeroLocal_maximalIdeal_eq_span,
+  rw [coordinateZeroLocal_maximalIdeal_eq_span, Ideal.map_span, Set.image_singleton,
     Ideal.mem_span_singleton] at hz
   obtain ⟨a, rfl⟩ := hz
-  change f
-      (algebraMap (Polynomial E) (CoordinateZeroLocalRing E) Polynomial.X * a) ∈
+  change f (algebraMap (Polynomial E) (CoordinateZeroLocalRing E) Polynomial.X) * a ∈
     maximalIdeal V.toSubring
-  rw [map_mul, coordinateZeroLocalFactor_map_X E]
+  rw [coordinateZeroLocalFactor_map_X E]
   exact Ideal.mul_mem_right _ _ hxm
 
 theorem coordinateZeroLocalFactor_residue_finite

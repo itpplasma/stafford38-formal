@@ -1,5 +1,8 @@
-import Mathlib.RingTheory.AlgebraicIndependent.Defs
-import Mathlib.RingTheory.LocalRing.ResidueField.Basic
+module
+public import Mathlib.RingTheory.AlgebraicIndependent.Defs
+public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

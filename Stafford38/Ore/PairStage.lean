@@ -1,7 +1,10 @@
-import AlgebraicAnalysis.Ore.Associativity
-import AlgebraicAnalysis.Ore.RightPBW
-import Mathlib.LinearAlgebra.Basis.Basic
-import Stafford38.Ore.ScalarAlgebra
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import AlgebraicAnalysis.Ore.RightPBW
+public import Mathlib.LinearAlgebra.Basis.Basic
+public import Stafford38.Ore.ScalarAlgebra
+
+@[expose] public section
 
 /-!
 # A coordinate-momentum pair over a coefficient ring
@@ -27,9 +30,9 @@ abbrev PairStage :=
   NormalOre (coordinateDerivation :
     OreDivisionDerivation (CoordinateStage (B := B)))
 
-private abbrev innerD : OreDivisionDerivation B := zeroDerivation
+abbrev innerD : OreDivisionDerivation B := zeroDerivation
 
-private abbrev outerD : OreDivisionDerivation (CoordinateStage (B := B)) :=
+abbrev outerD : OreDivisionDerivation (CoordinateStage (B := B)) :=
   coordinateDerivation
 
 /-- Embed the old coefficient ring through both Ore stages. -/

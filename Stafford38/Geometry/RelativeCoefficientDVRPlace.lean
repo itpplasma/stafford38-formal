@@ -1,5 +1,8 @@
-import Stafford38.Geometry.RetainedDVRPlace
-import Mathlib.FieldTheory.Separable
+module
+public import Stafford38.Geometry.RetainedDVRPlace
+public import Mathlib.FieldTheory.Separable
+
+@[expose] public section
 
 /-!
 # Relative coefficients in a retained DVR place
@@ -25,7 +28,7 @@ set_option synthInstance.maxHeartbeats 100000
 
 universe u v
 
-private abbrev SourceDVR (E : Type u) [Field E] :=
+abbrev SourceDVR (E : Type u) [Field E] :=
   CoordinateZeroLocalRing E
 
 /-- Evaluation at zero on the source coordinate DVR. -/

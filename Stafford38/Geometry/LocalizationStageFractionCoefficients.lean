@@ -1,6 +1,9 @@
-import Stafford38.Geometry.LocalizationInStagesAtPrime
-import Mathlib.Algebra.Polynomial.AlgebraMap
-import Mathlib.RingTheory.Localization.FractionRing
+module
+public import Stafford38.Geometry.LocalizationInStagesAtPrime
+public import Mathlib.Algebra.Polynomial.AlgebraMap
+public import Mathlib.RingTheory.Localization.FractionRing
+
+@[expose] public section
 
 set_option autoImplicit false
 

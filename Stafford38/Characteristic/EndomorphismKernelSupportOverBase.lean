@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Module.EndomorphismKernelSupportOverBase
-import Stafford38.Characteristic.EndomorphismKernelSupport
+module
+public import AlgebraicAnalysis.Module.EndomorphismKernelSupportOverBase
+public import Stafford38.Characteristic.EndomorphismKernelSupport
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

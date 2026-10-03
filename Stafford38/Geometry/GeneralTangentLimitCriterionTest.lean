@@ -1,4 +1,7 @@
-import Stafford38.Geometry.GeneralTangentLimitCriterion
+module
+public import Stafford38.Geometry.GeneralTangentLimitCriterion
+
+@[expose] public section
 
 /-!
 # Independent consumer for the paper-level tangent-limit criterion

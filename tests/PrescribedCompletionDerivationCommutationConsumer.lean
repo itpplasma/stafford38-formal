@@ -1,5 +1,8 @@
-import Stafford38.Geometry.PrescribedCompletionDerivationCommutation
-import Stafford38.Geometry.EtaleCotangentBasis
+module
+public import Stafford38.Geometry.PrescribedCompletionDerivationCommutation
+public import Stafford38.Geometry.EtaleCotangentBasis
+
+@[expose] public section
 
 open Stafford38.Geometry.PrescribedGroundPointPowerSeriesMap
 open Stafford38.Geometry.EtaleLocalChartFinitePartialDerivation

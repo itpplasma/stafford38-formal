@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ResidueBasisLocalization
+module
+public import Stafford38.Geometry.ResidueBasisLocalization
+
+@[expose] public section
 
 noncomputable section
 set_option autoImplicit false

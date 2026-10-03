@@ -1,6 +1,9 @@
-import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Stafford38.Geometry.AsymptoticChartArcAdapter
+module
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Stafford38.Geometry.AsymptoticChartArcAdapter
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2400000

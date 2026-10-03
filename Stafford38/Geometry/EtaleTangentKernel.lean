@@ -1,7 +1,10 @@
-import Stafford38.Geometry.AffineConormalSpan
-import Stafford38.Geometry.GenericPointKaehlerConormal
-import Mathlib.Algebra.MvPolynomial.Derivation
-import Mathlib.Algebra.MvPolynomial.PDeriv
+module
+public import Stafford38.Geometry.AffineConormalSpan
+public import Stafford38.Geometry.GenericPointKaehlerConormal
+public import Mathlib.Algebra.MvPolynomial.Derivation
+public import Mathlib.Algebra.MvPolynomial.PDeriv
+
+@[expose] public section
 
 set_option autoImplicit false
 

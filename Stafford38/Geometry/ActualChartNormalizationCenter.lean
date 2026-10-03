@@ -1,22 +1,25 @@
-import Mathlib.RingTheory.SimpleRing.Principal
-import Stafford38.Geometry.ActualChartRelativeDegree
-import Stafford38.Geometry.ActualSelectedResidueBasis
-import Stafford38.Geometry.ActualChartCenterNonzero
-import Stafford38.Geometry.ActualChartCenterContraction
-import Stafford38.Geometry.ActualChartCenterHeight
-import Stafford38.Geometry.ActualResidueCenterHeight
-import Stafford38.Geometry.ActualChartResidueMapCoherence
-import Stafford38.Geometry.ActualNormalizationCenterResidueKernel
-import Stafford38.Geometry.ProjectiveChartNormalizationCenter
-import Stafford38.Geometry.ProjectiveChartNormalizationFinite
-import Stafford38.Geometry.IntegralClosureCenterDVR
-import Stafford38.Geometry.FiniteTypeCurveHeight
-import Stafford38.Geometry.SelectedResidueNormalizationLocalization
-import Stafford38.Geometry.FieldEquivFiniteType
-import Stafford38.Geometry.MvPolynomialFractionFieldTranscendenceBasis
-import Stafford38.Geometry.DVRUniformizerNumerator
-import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
-import Mathlib.RingTheory.Localization.FractionRing
+module
+public import Mathlib.RingTheory.SimpleRing.Principal
+public import Stafford38.Geometry.ActualChartRelativeDegree
+public import Stafford38.Geometry.ActualSelectedResidueBasis
+public import Stafford38.Geometry.ActualChartCenterNonzero
+public import Stafford38.Geometry.ActualChartCenterContraction
+public import Stafford38.Geometry.ActualChartCenterHeight
+public import Stafford38.Geometry.ActualResidueCenterHeight
+public import Stafford38.Geometry.ActualChartResidueMapCoherence
+public import Stafford38.Geometry.ActualNormalizationCenterResidueKernel
+public import Stafford38.Geometry.ProjectiveChartNormalizationCenter
+public import Stafford38.Geometry.ProjectiveChartNormalizationFinite
+public import Stafford38.Geometry.IntegralClosureCenterDVR
+public import Stafford38.Geometry.FiniteTypeCurveHeight
+public import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+public import Stafford38.Geometry.FieldEquivFiniteType
+public import Stafford38.Geometry.MvPolynomialFractionFieldTranscendenceBasis
+public import Stafford38.Geometry.DVRUniformizerNumerator
+public import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
+public import Mathlib.RingTheory.Localization.FractionRing
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

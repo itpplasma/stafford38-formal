@@ -1,9 +1,12 @@
-import Mathlib.RingTheory.Valuation.Basic
-import Mathlib.RingTheory.Valuation.ValuationSubring
-import Mathlib.RingTheory.LocalRing.ResidueField.Basic
-import Mathlib.RingTheory.Algebraic.Basic
-import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
-import Mathlib.FieldTheory.IntermediateField.Adjoin.Defs
+module
+public import Mathlib.RingTheory.Valuation.Basic
+public import Mathlib.RingTheory.Valuation.ValuationSubring
+public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
+public import Mathlib.RingTheory.Algebraic.Basic
+public import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
+public import Mathlib.FieldTheory.IntermediateField.Adjoin.Defs
+
+@[expose] public section
 
 open IsLocalRing
 noncomputable section
@@ -101,7 +104,7 @@ theorem stage4_residueField_isAlgebraic_of_isIntegral
     have haK : IsIntegral C (a : K) := by simpa [C] using hint a
     have haV : IsIntegral C av := by
       apply (isIntegral_algebraMap_iff (R := C) (A := V.toSubring)
-        (B := K) (fun x y h => Subtype.ext h)).mp
+        (B := K)).mp
       change IsIntegral C (a : K)
       exact haK
     let f : V.toSubring →ₐ[C] ResidueField V.toSubring :=

@@ -1,4 +1,7 @@
-import Stafford38.Geometry.SmoothLocalTiltedArcAxisLift
+module
+public import Stafford38.Geometry.SmoothLocalTiltedArcAxisLift
+
+@[expose] public section
 
 open Stafford38.GeometrySplitTangentMatrix
 open Stafford38.GeometryFormalDivisorTangent

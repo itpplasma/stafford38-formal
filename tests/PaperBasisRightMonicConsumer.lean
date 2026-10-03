@@ -1,8 +1,11 @@
-import Stafford38.Characteristic.PaperSymplecticBasis
-import Stafford38.Characteristic.SymplecticCompletion
-import Stafford38.Weyl.PaperRightMonic
-import Mathlib.LinearAlgebra.Matrix.BilinearForm
-import Mathlib.LinearAlgebra.Basis.Basic
+module
+public import Stafford38.Characteristic.PaperSymplecticBasis
+public import Stafford38.Characteristic.SymplecticCompletion
+public import Stafford38.Weyl.PaperRightMonic
+public import Mathlib.LinearAlgebra.Matrix.BilinearForm
+public import Mathlib.LinearAlgebra.Basis.Basic
+
+@[expose] public section
 
 open LinearMap (BilinForm)
 open Stafford

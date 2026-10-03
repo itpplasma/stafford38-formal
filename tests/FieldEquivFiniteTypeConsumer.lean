@@ -1,4 +1,7 @@
-import Stafford38.Geometry.FieldEquivFiniteType
+module
+public import Stafford38.Geometry.FieldEquivFiniteType
+
+@[expose] public section
 
 #print axioms Stafford38.Geometry.FieldEquivFiniteType.fractionField_of_equiv_domain
 #print axioms Stafford38.Geometry.FieldEquivFiniteType.exists_localized_fractionField_map

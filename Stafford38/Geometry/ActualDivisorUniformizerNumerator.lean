@@ -1,4 +1,7 @@
-import Stafford38.Geometry.DVRUniformizerNumerator
+module
+public import Stafford38.Geometry.DVRUniformizerNumerator
+
+@[expose] public section
 
 set_option autoImplicit false
 

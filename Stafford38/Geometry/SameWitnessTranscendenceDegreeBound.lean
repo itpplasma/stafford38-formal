@@ -1,10 +1,13 @@
-import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
-import Stafford38.Geometry.PaperSameWitnessComponentFieldRank
-import Stafford38.Geometry.ChartGenericPointFractionRing
-import Stafford38.Geometry.AsymptoticChartArcAdapter
-import Stafford38.Geometry.KaehlerTranscendenceBasis
-import Stafford38.Geometry.RelativeDivisorialTower
-import Stafford38.Geometry.RetainedGroundMapIdentification
+module
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
+public import Stafford38.Geometry.PaperSameWitnessComponentFieldRank
+public import Stafford38.Geometry.ChartGenericPointFractionRing
+public import Stafford38.Geometry.AsymptoticChartArcAdapter
+public import Stafford38.Geometry.KaehlerTranscendenceBasis
+public import Stafford38.Geometry.RelativeDivisorialTower
+public import Stafford38.Geometry.RetainedGroundMapIdentification
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

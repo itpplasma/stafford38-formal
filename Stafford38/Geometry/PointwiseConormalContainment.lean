@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.BaseRelativePoisson
-import Stafford38.Characteristic.ZeroSectionContainment
+module
+public import Stafford38.Characteristic.BaseRelativePoisson
+public import Stafford38.Characteristic.ZeroSectionContainment
+
+@[expose] public section
 
 /-!
 # Pointwise conormal containment

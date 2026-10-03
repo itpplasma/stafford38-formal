@@ -1,7 +1,10 @@
-import Stafford38.Geometry.FiniteSeparableDVRChartFoundation
-import Stafford38.Geometry.RelativeCoefficientDVRPlace
-import Mathlib.RingTheory.AdicCompletion.Algebra
-import Mathlib.RingTheory.Ideal.Quotient.Nilpotent
+module
+public import Stafford38.Geometry.FiniteSeparableDVRChartFoundation
+public import Stafford38.Geometry.RelativeCoefficientDVRPlace
+public import Mathlib.RingTheory.AdicCompletion.Algebra
+public import Mathlib.RingTheory.Ideal.Quotient.Nilpotent
+
+@[expose] public section
 
 /-!
 # A residue-field section in the adic completion of the retained DVR
@@ -38,8 +41,8 @@ section LocalAlgebra
 variable (E V : Type u)
 variable [Field E] [CommRing V] [IsLocalRing V] [Algebra E V]
 
-private abbrev K := ResidueField V
-private abbrev m : Ideal V := maximalIdeal V
+abbrev K := ResidueField V
+abbrev m : Ideal V := maximalIdeal V
 
 /-- The positive `n`-th nilpotent quotient of the local ring. -/
 abbrev AdicJet (n : ℕ) := V ⧸ ((m V) ^ (n + 1))
@@ -126,7 +129,7 @@ theorem adicJetCoefficientSection_compatible
 
 /-- Convert the usual quotient by `m^n` to the coordinate quotient used in
 the definition of `AdicCompletion`. -/
-private def exactQuotientToCompletionCoordinate (n : ℕ) :
+def exactQuotientToCompletionCoordinate (n : ℕ) :
     (V ⧸ ((m V) ^ n)) ≃ₐ[E]
       V ⧸ ((m V) ^ n • ⊤ : Ideal V) := by
   have h : ((m V) ^ n • ⊤ : Ideal V) = (m V) ^ n := by
@@ -136,7 +139,7 @@ private def exactQuotientToCompletionCoordinate (n : ℕ) :
 
 /-- The zeroth completion coordinate is the zero quotient, so it has a unique
 `E`-algebra map from the residue field. -/
-private def zeroCompletionCoordinateSection :
+def zeroCompletionCoordinateSection :
     K V →ₐ[E] V ⧸ ((m V) ^ 0 • ⊤ : Ideal V) := by
   have htop : ((m V) ^ 0 • ⊤ : Ideal V) = ⊤ := by simp
   letI : Subsingleton (V ⧸ ((m V) ^ 0 • ⊤ : Ideal V)) := by
@@ -163,7 +166,7 @@ def completionCoordinateSection
 
 /-- Transition on exact power quotients agrees with transition on the raw
 coordinates occurring in `AdicCompletion`. -/
-private theorem transition_exactQuotientToCompletionCoordinate
+theorem transition_exactQuotientToCompletionCoordinate
     {a b : ℕ} (hab : a ≤ b) (x : V ⧸ ((m V) ^ b)) :
     AdicCompletion.transitionMap (m V) V hab
         (exactQuotientToCompletionCoordinate E V b x) =
@@ -276,9 +279,6 @@ theorem completedResidue_comp_completedCoefficientSection
 end LocalAlgebra
 
 section RetainedDVR
-
-private abbrev SourceDVR (E : Type u) [Field E] :=
-  CoordinateZeroLocalRing E
 
 /-- The actual residue-field coefficient section in the maximal-ideal adic
 completion of a retained DVR place. -/

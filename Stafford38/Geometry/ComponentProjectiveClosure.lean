@@ -1,5 +1,8 @@
-import Stafford38.Geometry.AffineComponentCoordinateSplit
-import Stafford38.Geometry.LocalizedProjectiveChartTransition
+module
+public import Stafford38.Geometry.AffineComponentCoordinateSplit
+public import Stafford38.Geometry.LocalizedProjectiveChartTransition
+
+@[expose] public section
 
 /-!
 # The projective cone of an affine component

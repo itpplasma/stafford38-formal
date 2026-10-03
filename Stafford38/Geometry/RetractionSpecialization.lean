@@ -1,6 +1,9 @@
-import Mathlib.Data.Matrix.Basic
-import Mathlib.RingTheory.PowerSeries.Basic
-import Mathlib.Algebra.MvPolynomial.Eval
+module
+public import Mathlib.Data.Matrix.Basic
+public import Mathlib.RingTheory.PowerSeries.Basic
+public import Mathlib.Algebra.MvPolynomial.Eval
+
+@[expose] public section
 
 /-!
 # Retraction correction and power-series specialization

@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.FilteredQuotient
+module
+public import Stafford38.Characteristic.FilteredQuotient
+
+@[expose] public section
 
 /-!
 # Vanishing reflected by an exhaustive filtered quotient

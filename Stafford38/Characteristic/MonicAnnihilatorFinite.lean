@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.MonicAnnihilatorFinite
+module
+public import AlgebraicAnalysis.Module.MonicAnnihilatorFinite
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

@@ -1,5 +1,8 @@
-import Stafford38.Geometry.GeneralAsymptoticConormal
-import Stafford38.Geometry.GeneralComponentConormalContainment
+module
+public import Stafford38.Geometry.GeneralAsymptoticConormal
+public import Stafford38.Geometry.GeneralComponentConormalContainment
+
+@[expose] public section
 
 /-!
 # Coisotropic exclusion for arbitrary homogeneous radical ideals

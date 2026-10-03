@@ -1,7 +1,10 @@
-import Stafford38.LocalizedPolynomialDerivations
-import Stafford38.DifferentialOperators
-import Stafford38.Weyl.Universal
-import Stafford38.Weyl.IteratedEquivalence
+module
+public import Stafford38.LocalizedPolynomialDerivations
+public import Stafford38.DifferentialOperators
+public import Stafford38.Weyl.Universal
+public import Stafford38.Weyl.IteratedEquivalence
+
+@[expose] public section
 
 /-!
 # The Weyl action on a polynomial localization

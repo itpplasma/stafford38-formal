@@ -1,5 +1,8 @@
-import Stafford38.Geometry.SeparableResidueDerivationExtension
-import Stafford38.Geometry.KaehlerVisibleDerivationFrame
+module
+public import Stafford38.Geometry.SeparableResidueDerivationExtension
+public import Stafford38.Geometry.KaehlerVisibleDerivationFrame
+
+@[expose] public section
 
 /-!
 # Kähler span after a separable residue-field extension

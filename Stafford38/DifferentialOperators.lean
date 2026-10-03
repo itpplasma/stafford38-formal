@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.DifferentialOperators.Basic
+module
+public import AlgebraicAnalysis.DifferentialOperators.Basic
+
+@[expose] public section
 
 /-! Compatibility aliases for the neutral AlgebraicAnalysis differential
 operator API. -/

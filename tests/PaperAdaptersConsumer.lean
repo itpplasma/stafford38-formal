@@ -1,5 +1,8 @@
-import Stafford38.TorsionCyclicity
-import Stafford38.Weyl.FilteredScalarLifting
+module
+public import Stafford38.TorsionCyclicity
+public import Stafford38.Weyl.FilteredScalarLifting
+
+@[expose] public section
 
 /- Independent paper-facing consumers spell out the expected conclusions. -/
 set_option autoImplicit false

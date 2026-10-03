@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ActualSmoothOpenChartNumerator
+module
+public import Stafford38.Geometry.ActualSmoothOpenChartNumerator
+
+@[expose] public section
 
 set_option autoImplicit false
 

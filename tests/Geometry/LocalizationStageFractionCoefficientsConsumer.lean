@@ -1,5 +1,8 @@
-import Stafford38.Geometry.LocalizationStageFractionCoefficients
-import Mathlib.RingTheory.Ideal.Prime
+module
+public import Stafford38.Geometry.LocalizationStageFractionCoefficients
+public import Mathlib.RingTheory.Ideal.Prime
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ProjectiveChartNormalizationCenter
+module
+public import Stafford38.Geometry.ProjectiveChartNormalizationCenter
+
+@[expose] public section
 
 set_option autoImplicit false
 

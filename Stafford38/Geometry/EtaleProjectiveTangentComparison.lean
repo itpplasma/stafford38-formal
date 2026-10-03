@@ -1,5 +1,8 @@
-import Stafford38.Geometry.EtaleTangentChartSpan
-import Stafford38.Geometry.PaperDivisorTangent
+module
+public import Stafford38.Geometry.EtaleTangentChartSpan
+public import Stafford38.Geometry.PaperDivisorTangent
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2000000

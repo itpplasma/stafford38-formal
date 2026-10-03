@@ -1,5 +1,8 @@
-import Mathlib.Algebra.MvPolynomial.Monad
-import Stafford38.Characteristic.ZeroSectionContainment
+module
+public import Mathlib.Algebra.MvPolynomial.Monad
+public import Stafford38.Characteristic.ZeroSectionContainment
+
+@[expose] public section
 
 /-!
 # Zero-section containment over the contracted base zero locus

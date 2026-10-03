@@ -1,7 +1,10 @@
-import Mathlib.LinearAlgebra.Quotient.Defs
-import Mathlib.Algebra.Module.Submodule.Basic
-import Mathlib.Algebra.Ring.Subring.Basic
-import Mathlib.Tactic.NoncommRing
+module
+public import Mathlib.LinearAlgebra.Quotient.Defs
+public import Mathlib.Algebra.Module.Submodule.Basic
+public import Mathlib.Algebra.Ring.Subring.Basic
+public import Mathlib.Tactic.NoncommRing
+
+@[expose] public section
 
 /-!
 # Euler-normality surjectivity on a right quotient

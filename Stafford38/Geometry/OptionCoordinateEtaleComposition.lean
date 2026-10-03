@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ProjectiveCoefficientLocalization
-import Stafford38.Geometry.DVRParameterSmoothness
+module
+public import Stafford38.Geometry.ProjectiveCoefficientLocalization
+public import Stafford38.Geometry.DVRParameterSmoothness
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

@@ -1,6 +1,9 @@
-import Mathlib.Algebra.Algebra.Opposite
-import Mathlib.Algebra.Module.RingHom
-import Stafford38.Weyl.IteratedEquivalence
+module
+public import Mathlib.Algebra.Algebra.Opposite
+public import Mathlib.Algebra.Module.RingHom
+public import Stafford38.Weyl.IteratedEquivalence
+
+@[expose] public section
 
 /-!
 # Transposition of the presented Weyl algebra

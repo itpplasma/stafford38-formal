@@ -1,5 +1,8 @@
-import Stafford38.Geometry.GeneralConstantCoordinateAxis
-import Stafford38.Geometry.SmoothLocalDirectSummandAdapter
+module
+public import Stafford38.Geometry.GeneralConstantCoordinateAxis
+public import Stafford38.Geometry.SmoothLocalDirectSummandAdapter
+
+@[expose] public section
 
 namespace Stafford38.Geometry.SmoothLocalDirectSummandAdapterConsumer
 

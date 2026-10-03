@@ -1,13 +1,16 @@
-import Stafford38.Geometry.A0NormalizedProjectiveCoordinates
-import Stafford38.Geometry.AffineComponentCoordinateSplit
-import Stafford38.Geometry.AsymptoticDivisorExistence
-import Stafford38.Geometry.ActualChartValuationImage
-import Stafford38.Geometry.ComponentProjectiveChartFactorization
-import Stafford38.Geometry.ComponentProjectiveChartKernel
-import Stafford38.Geometry.ComponentProjectiveClosure
-import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
-import Stafford38.Geometry.EtaleGenericOpenTransport
-import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
+module
+public import Stafford38.Geometry.A0NormalizedProjectiveCoordinates
+public import Stafford38.Geometry.AffineComponentCoordinateSplit
+public import Stafford38.Geometry.AsymptoticDivisorExistence
+public import Stafford38.Geometry.ActualChartValuationImage
+public import Stafford38.Geometry.ComponentProjectiveChartFactorization
+public import Stafford38.Geometry.ComponentProjectiveChartKernel
+public import Stafford38.Geometry.ComponentProjectiveClosure
+public import Stafford38.Geometry.EtaleGenericOpenExtraAwayB
+public import Stafford38.Geometry.EtaleGenericOpenTransport
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2400000

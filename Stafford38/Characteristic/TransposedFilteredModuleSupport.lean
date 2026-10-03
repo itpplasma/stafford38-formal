@@ -1,5 +1,9 @@
-import Stafford38.Characteristic.AssociatedGradedModule
-import Stafford38.Weyl.TranspositionFiltration
+module
+public import Mathlib.RingTheory.Spectrum.Prime.RingHom
+public import Stafford38.Characteristic.AssociatedGradedModule
+public import Stafford38.Weyl.TranspositionFiltration
+
+@[expose] public section
 
 /-!
 # Transposition of the filtered right quotient and its support

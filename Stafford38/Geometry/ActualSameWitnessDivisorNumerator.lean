@@ -1,11 +1,14 @@
-import Stafford38.Geometry.CenterNumeratorFromHeight
-import Stafford38.Geometry.ActualOptionColumnBinding
-import Stafford38.Geometry.ActualChartNormalizationCenter
-import Stafford38.Geometry.LocalNormalizationCenterEquivalence
-import Stafford38.Geometry.IntegralClosureCenterDVR
-import Stafford38.Geometry.ProjectiveChartNormalizationFinite
-import Stafford38.Geometry.ActualSelectedResidueBasis
-import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
+module
+public import Stafford38.Geometry.CenterNumeratorFromHeight
+public import Stafford38.Geometry.ActualOptionColumnBinding
+public import Stafford38.Geometry.ActualChartNormalizationCenter
+public import Stafford38.Geometry.LocalNormalizationCenterEquivalence
+public import Stafford38.Geometry.IntegralClosureCenterDVR
+public import Stafford38.Geometry.ProjectiveChartNormalizationFinite
+public import Stafford38.Geometry.ActualSelectedResidueBasis
+public import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

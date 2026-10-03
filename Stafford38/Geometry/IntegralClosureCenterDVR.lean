@@ -1,9 +1,12 @@
-import Stafford38.Geometry.ProjectiveChartNormalizationCenter
-import Stafford38.Geometry.NormalizationHeightOne
-import Stafford38.Geometry.ProjectiveDVRCenter
-import Mathlib.RingTheory.Localization.LocalizationLocalization
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.DiscreteValuationRing.Basic
+module
+public import Stafford38.Geometry.ProjectiveChartNormalizationCenter
+public import Stafford38.Geometry.NormalizationHeightOne
+public import Stafford38.Geometry.ProjectiveDVRCenter
+public import Mathlib.RingTheory.Localization.LocalizationLocalization
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.DiscreteValuationRing.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option linter.style.haveILetI false

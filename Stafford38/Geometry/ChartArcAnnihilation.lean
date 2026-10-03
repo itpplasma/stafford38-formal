@@ -1,4 +1,7 @@
-import Stafford38.Geometry.AsymptoticChartArcAdapter
+module
+public import Stafford38.Geometry.AsymptoticChartArcAdapter
+
+@[expose] public section
 
 /-!
 # Annihilation by the completed chart arc

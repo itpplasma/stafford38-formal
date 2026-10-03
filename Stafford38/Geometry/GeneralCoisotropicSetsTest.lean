@@ -1,5 +1,9 @@
-import Stafford38.Geometry.GeneralCoisotropicSets
-import Stafford38.Characteristic.PostScalarExtensionPoisson
+module
+public import Stafford38.Geometry.GeneralCoisotropicSets
+public import Stafford38.Characteristic.PostScalarExtensionPoisson
+public import Mathlib.Analysis.Complex.Polynomial.Basic
+
+@[expose] public section
 
 /-!
 # Independent consumer for the set-level coisotropic exclusion

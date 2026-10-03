@@ -1,4 +1,7 @@
-import Mathlib.RingTheory.Localization.Basic
+module
+public import Mathlib.RingTheory.Localization.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

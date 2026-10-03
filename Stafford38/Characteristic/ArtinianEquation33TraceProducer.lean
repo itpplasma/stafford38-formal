@@ -1,5 +1,8 @@
-import Mathlib.LinearAlgebra.Matrix.Trace
-import Mathlib.RingTheory.Ideal.Maps
+module
+public import Mathlib.LinearAlgebra.Matrix.Trace
+public import Mathlib.RingTheory.Ideal.Maps
+
+@[expose] public section
 
 /-!
 # Matrix trace reductions for equation (3.3)

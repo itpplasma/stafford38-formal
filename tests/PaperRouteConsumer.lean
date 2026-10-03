@@ -1,7 +1,10 @@
-import Stafford38.PaperCyclicity
-import Stafford38.TorsionCyclicity
-import Stafford38.Weyl.PaperQuotientDescent
-import Stafford38.FoundationClosure
+module
+public import Stafford38.PaperCyclicity
+public import Stafford38.TorsionCyclicity
+public import Stafford38.Weyl.PaperQuotientDescent
+public import Stafford38.FoundationClosure
+
+@[expose] public section
 
 /-! Independent paper-facing consumers for the matrix reduction and field
 descent interfaces.  They spell out the quantifiers at the public boundary. -/

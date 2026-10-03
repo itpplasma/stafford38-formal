@@ -1,6 +1,9 @@
-import AlgebraicAnalysis.Module.FilteredTwoTermBoundaryNaturality
-import Stafford38.Characteristic.FilteredTwoTermTotalActions
-import Stafford38.Characteristic.FilteredTwoTermBoundaryExhaustion
+module
+public import AlgebraicAnalysis.Module.FilteredTwoTermBoundaryNaturality
+public import Stafford38.Characteristic.FilteredTwoTermTotalActions
+public import Stafford38.Characteristic.FilteredTwoTermBoundaryExhaustion
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

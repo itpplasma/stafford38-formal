@@ -1,7 +1,10 @@
-import Stafford38.Geometry.NormalizedLatticeProjectiveConeAdapter
-import Mathlib.RingTheory.Ideal.Quotient.Operations
-import Mathlib.RingTheory.Etale.Basic
-import Mathlib.Algebra.MvPolynomial.Rename
+module
+public import Stafford38.Geometry.NormalizedLatticeProjectiveConeAdapter
+public import Mathlib.RingTheory.Ideal.Quotient.Operations
+public import Mathlib.RingTheory.Etale.Basic
+public import Mathlib.Algebra.MvPolynomial.Rename
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 3000000

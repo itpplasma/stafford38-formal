@@ -1,5 +1,8 @@
-import Stafford38.FoundationClosure
-import Stafford38.FixedSourceChallengeTransport
+module
+public import Stafford38.FoundationClosure
+public import Stafford38.FixedSourceChallengeTransport
+
+@[expose] public section
 
 /-!
 # Solution for the exact-source challenge

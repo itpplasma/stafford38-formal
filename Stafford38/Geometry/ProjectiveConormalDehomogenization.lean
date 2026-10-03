@@ -1,7 +1,11 @@
-import Mathlib.RingTheory.Derivation.Basic
-import Stafford38.Geometry.JacobianConormalComparison
-import Stafford38.Geometry.ProjectiveChartCoordinates
-import Stafford38.Geometry.RetractionSpecialization
+module
+public import Mathlib.RingTheory.Derivation.Basic
+public import Mathlib.Algebra.BigOperators.Field
+public import Stafford38.Geometry.JacobianConormalComparison
+public import Stafford38.Geometry.ProjectiveChartCoordinates
+public import Stafford38.Geometry.RetractionSpecialization
+
+@[expose] public section
 
 /-!
 # Dehomogenizing projective conormal data

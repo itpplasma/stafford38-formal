@@ -1,5 +1,8 @@
-import Stafford38.Geometry.CanonicalFiniteGradientProjectiveCoordinates
-import Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction
+module
+public import Stafford38.Geometry.CanonicalFiniteGradientProjectiveCoordinates
+public import Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction
+
+@[expose] public section
 
 /-!
 # Interfaces for compatible visible divisor frames

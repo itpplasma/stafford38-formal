@@ -1,6 +1,9 @@
-import Mathlib.RingTheory.Unramified.LocalStructure
-import Mathlib.RingTheory.Etale.Locus
-import Stafford38.Geometry.ClosedPointOnDivisor
+module
+public import Mathlib.RingTheory.Unramified.LocalStructure
+public import Mathlib.RingTheory.Etale.Locus
+public import Stafford38.Geometry.ClosedPointOnDivisor
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,14 +1,17 @@
-import Mathlib.RingTheory.Smooth.Fiber
-import Mathlib.RingTheory.Flat.TorsionFree
-import Mathlib.RingTheory.Polynomial.Ideal
-import Mathlib.RingTheory.Unramified.LocalRing
-import Mathlib.FieldTheory.Minpoly.Field
-import Mathlib.FieldTheory.Perfect
-import Mathlib.RingTheory.Jacobson.Ring
-import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
-import Mathlib.RingTheory.AlgebraicIndependent.Transcendental
-import Stafford38.Geometry.AsymptoticDivisorExistence
-import Stafford38.Geometry.RelativeCoefficientDVRPlace
+module
+public import Mathlib.RingTheory.Smooth.Fiber
+public import Mathlib.RingTheory.Flat.TorsionFree
+public import Mathlib.RingTheory.Polynomial.Ideal
+public import Mathlib.RingTheory.Unramified.LocalRing
+public import Mathlib.FieldTheory.Minpoly.Field
+public import Mathlib.FieldTheory.Perfect
+public import Mathlib.RingTheory.Jacobson.Ring
+public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
+public import Mathlib.RingTheory.AlgebraicIndependent.Transcendental
+public import Stafford38.Geometry.AsymptoticDivisorExistence
+public import Stafford38.Geometry.RelativeCoefficientDVRPlace
+
+@[expose] public section
 
 set_option autoImplicit false
 

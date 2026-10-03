@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.Module.TwoTermPageLength
+module
+public import AlgebraicAnalysis.Module.TwoTermPageLength
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

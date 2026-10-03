@@ -1,7 +1,10 @@
-import Stafford38.Geometry.ActualChartValuationImage
-import Stafford38.Geometry.ProjectiveChartNormalizationCenter
-import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
-import Stafford38.Geometry.RelativeCoefficientDVRPlace
+module
+public import Stafford38.Geometry.ActualChartValuationImage
+public import Stafford38.Geometry.ProjectiveChartNormalizationCenter
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
+public import Stafford38.Geometry.RelativeCoefficientDVRPlace
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

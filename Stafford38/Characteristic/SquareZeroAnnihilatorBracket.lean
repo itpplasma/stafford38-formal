@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.SquareZeroTraceData
+module
+public import Stafford38.Characteristic.SquareZeroTraceData
+
+@[expose] public section
 
 /-!
 # Annihilator closure from a square-zero deformation

@@ -1,9 +1,12 @@
-import Mathlib.Algebra.MvPolynomial.Derivation
-import Mathlib.Algebra.MvPolynomial.PDeriv
-import Mathlib.RingTheory.Etale.Kaehler
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.Localization.Module
-import Stafford38.Geometry.AffineConormalSpan
+module
+public import Mathlib.Algebra.MvPolynomial.Derivation
+public import Mathlib.Algebra.MvPolynomial.PDeriv
+public import Mathlib.RingTheory.Etale.Kaehler
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.Localization.Module
+public import Stafford38.Geometry.AffineConormalSpan
+
+@[expose] public section
 
 /-!
 # Kähler relations at the generic point are affine conormal covectors

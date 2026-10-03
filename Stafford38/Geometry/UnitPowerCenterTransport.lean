@@ -1,10 +1,13 @@
-import Mathlib.RingTheory.Localization.AtPrime.Basic
+module
+public import Mathlib.RingTheory.Localization.AtPrime.Basic
+
+@[expose] public section
 
 open IsLocalRing
 
 universe u
 
-private def castAtPrimeLocalization
+def castAtPrimeLocalization
     {R : Type u} [CommRing R] {P Q : Ideal R} [P.IsPrime] [Q.IsPrime]
     (hPQ : P = Q) (x : Localization.AtPrime Q) : Localization.AtPrime P := by
   cases hPQ

@@ -1,8 +1,11 @@
-import Stafford38.CanonicalSupportVanishingReduction
-import Stafford38.Geometry.ProjectiveDivisorOrderGap
-import Stafford38.Geometry.ProjectiveEquationFormalChart
-import Stafford38.Geometry.ProjectiveTangentInclusion
-import Stafford38.Geometry.LaurentConormalResidueExtension
+module
+public import Stafford38.CanonicalSupportVanishingReduction
+public import Stafford38.Geometry.ProjectiveDivisorOrderGap
+public import Stafford38.Geometry.ProjectiveEquationFormalChart
+public import Stafford38.Geometry.ProjectiveTangentInclusion
+public import Stafford38.Geometry.LaurentConormalResidueExtension
+
+@[expose] public section
 
 /-!
 # Completed-chart conormal consumer

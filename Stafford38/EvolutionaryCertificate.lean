@@ -1,8 +1,11 @@
-import Mathlib.Algebra.Polynomial.Eval.Defs
-import Mathlib.Algebra.Polynomial.AlgebraMap
-import Mathlib.Algebra.Module.NatInt
-import Mathlib.Tactic.NoncommRing
-import Mathlib.Tactic.Push
+module
+public import Mathlib.Algebra.Polynomial.Eval.Defs
+public import Mathlib.Algebra.Polynomial.AlgebraMap
+public import Mathlib.Algebra.Module.NatInt
+public import Mathlib.Tactic.NoncommRing
+public import Mathlib.Tactic.Push
+
+@[expose] public section
 
 /-!
 # The evolutionary Stafford certificate

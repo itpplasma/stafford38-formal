@@ -1,4 +1,7 @@
-import Stafford38.Ore.PairStage
+module
+public import Stafford38.Ore.PairStage
+
+@[expose] public section
 
 /-!
 # Iterated coordinate-momentum pair stages
@@ -18,14 +21,14 @@ noncomputable section
 universe u
 
 /-- A type together with the ring structure used at the next Ore stage. -/
-private structure RingStage where
+structure RingStage where
   carrier : Type u
   ring : Ring carrier
 
 variable (B : Type u) [Ring B]
 
 /-- The recursively constructed ring data after adjoining `n` Weyl pairs. -/
-private def iteratedPairData : Nat → RingStage
+def iteratedPairData : Nat → RingStage
   | 0 => ⟨B, inferInstance⟩
   | n + 1 =>
       let previous := iteratedPairData n
@@ -37,35 +40,35 @@ coordinate-momentum pairs. -/
 def IteratedPairStage (n : Nat) : Type u :=
   (iteratedPairData B n).carrier
 
-instance iteratedPairStageRing (n : Nat) : Ring (IteratedPairStage B n) :=
+instance iteratedPairStageRing (n : Nat) : Ring (IteratedPairStage (B := B) n) :=
   (iteratedPairData B n).ring
 
 /-- The zeroth stage is the original coefficient type. -/
-theorem iteratedPairStage_zero : IteratedPairStage B 0 = B := rfl
+theorem iteratedPairStage_zero : IteratedPairStage (B := B) 0 = B := rfl
 
 /-- Every successor is definitionally the checked `PairStage` construction
 over its predecessor. -/
 theorem iteratedPairStage_succ (n : Nat) :
-    IteratedPairStage B (n + 1) =
-      PairStage (B := IteratedPairStage B n) := rfl
+    IteratedPairStage (B := B) (n + 1) =
+      PairStage (B := IteratedPairStage (B := B) n) := rfl
 
 /-- The canonical embedding from stage `n` into stage `n + 1`. -/
 def stageEmbedding (n : Nat) :
-    IteratedPairStage B n →+* IteratedPairStage B (n + 1) :=
-  pairCoefficient (B := IteratedPairStage B n)
+    IteratedPairStage (B := B) n →+* IteratedPairStage (B := B) (n + 1) :=
+  pairCoefficient (B := IteratedPairStage (B := B) n)
 
 /-- The coordinate introduced at the successor of stage `n`. -/
-def stageCoordinate (n : Nat) : IteratedPairStage B (n + 1) :=
-  pairCoordinate (B := IteratedPairStage B n)
+def stageCoordinate (n : Nat) : IteratedPairStage (B := B) (n + 1) :=
+  pairCoordinate (B := IteratedPairStage (B := B) n)
 
 /-- The momentum introduced at the successor of stage `n`. -/
-def stageMomentum (n : Nat) : IteratedPairStage B (n + 1) :=
-  pairMomentum (B := IteratedPairStage B n)
+def stageMomentum (n : Nat) : IteratedPairStage (B := B) (n + 1) :=
+  pairMomentum (B := IteratedPairStage (B := B) n)
 
 /-- The coordinate introduced at stage `n + 1` commutes with the embedded
 predecessor ring. -/
 theorem stageCoordinate_mul_embedding (n : Nat)
-    (b : IteratedPairStage B n) :
+    (b : IteratedPairStage (B := B) n) :
     stageCoordinate B n * stageEmbedding B n b =
       stageEmbedding B n b * stageCoordinate B n :=
   pairCoordinate_mul_coefficient b
@@ -73,7 +76,7 @@ theorem stageCoordinate_mul_embedding (n : Nat)
 /-- The momentum introduced at stage `n + 1` commutes with the embedded
 predecessor ring. -/
 theorem stageMomentum_mul_embedding (n : Nat)
-    (b : IteratedPairStage B n) :
+    (b : IteratedPairStage (B := B) n) :
     stageMomentum B n * stageEmbedding B n b =
       stageEmbedding B n b * stageMomentum B n :=
   pairMomentum_mul_coefficient b
