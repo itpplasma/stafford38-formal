@@ -7,10 +7,11 @@ on `acluster`/`scluster`. Mac execution and candidate synchronization are no
 longer authorized. All campaign Mac checks had already ended at this steering;
 no new Mac action is scheduled. Historical Mac receipts remain unchanged.
 T32’s frozen source passed its Linux module and unchanged trust-zero consumer
-checks. T33 passed its Linux module and literal trust-zero consumer; T35 now has
-the exclusive local Linux slot. Both cluster preflights and allocation
-smokes passed; isolated pinned Linux bootstraps are running (acluster21805716,
-scluster3108325).
+checks. T33 passed its Linux module and literal trust-zero consumer; T35 awaits a stable cluster slot after three local node-pressure stops;
+its generic transport probe passed, but the full module is not accepted. Both cluster preflights and allocation
+smokes passed; isolated pinned Linux bootstraps are running (acluster21805718,
+scluster3109567) after missing compute-node curl and restart handling were
+repaired in the isolated run trees; historical failed attempts remain recorded.
 One delivery: finish the faithful proof, cut matching formal/supplementary
 releases, verify both Zenodo archives, and cite them from the paper. Challenge
 statements stay unchanged; main solution follows the paper, with the older
@@ -43,8 +44,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
 | T34 | Columns, derivatives, numerator | retry | 2 | notes/T34-sol-resume.md | Luna exposed concrete scalar-action duplication; Sol moved transport to abstract maps and retained missing qPre equality; Lean checks pending |
-| T35 | Étale structure as ring homs | doing | 1 | notes/T33-T35-linux-resume.md | Frozen Luna candidate passed to Sol for retained-action repair and guarded checks after T33 |
-| T36 | Same-witness closure theorem | doing | 1 | notes/T36-check.md | Luna prepared exact target and assembly; checks await accepted upstream declarations |
+| T35 | Étale structure as ring homs | doing | 5 | notes/T33-T35-sol-linux-resume.md | Generic action-transport trust0 probe passed; fullmodule4/5 and directsourcecheck stopped on node PSI pressure without proof diagnostics; frozenf30 awaits cluster check, no cap increase |
+| T36 | Same-witness closure theorem | doing | 2 | notes/T36-linux-resume.md | Luna generic retained chart adapter prepared; target byte-identical to PLAN; compile waits for T34/T35 |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
 | T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |
 | T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |
@@ -65,7 +66,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T73 | Collect Linux result | todo | 0 | | |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | todo | 0 | | |
-| T81 | Build review site | todo | 0 | | |
+| T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Guided generator navigation/resume browser oracle passed64tests; public integration and complete frozen-map walkthrough pending |
 | T82 | Rebuild manuscript PDFs | done | 2 | notes/T82-pdf-resume-20261003.md | Current paper53882beb replay: three builds exit0,34/11/34pages,zero undefined references/citations; all tracked TeX/bib hashes unchanged; citation changes require revalidation |
 | T83 | Supplementary bundle (local) | todo | 0 | | |
 | T84 | Review handover | owner | 0 | | owner gate |

@@ -24,9 +24,10 @@ Current checkpoint (3 October 2026): T22, T30, T31, T32 and T33 passed Linux
 module and literal trust-zero consumer checks. T32 is committed and pushed at
 `da00639e7d2fd3cbb188f137d228c99d5cfcdbcd`; see its acceptance packet in
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
-T35 is with Sol; T34–T44 remain unaccepted. Both cluster
+T35 is with Sol and awaits stable cluster validation after local node-pressure
+stops; T34–T44 remain unaccepted. No guard threshold is relaxed. Both cluster
 allocation smokes passed; pinned isolated Linux bootstraps are running
-(acluster21805716 and scluster3108325). T45 has
+(acluster21805718 and scluster3109567 after isolated runtime/restart repairs). T45 has
 a frozen implementation and independent static audit, with compilation and
 route comparisons still pending. Update this checkpoint and the task ledger
 as each acceptance gate finishes; preparation alone does not close a task.
