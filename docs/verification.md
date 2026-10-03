@@ -197,3 +197,7 @@ statement mapping. Automated and scoped agent reviews do not establish
 independent human expert approval, journal acceptance, novelty, or priority.
 Those statuses require their own human review records. Palomar registration
 and all public release actions require separate authorization.
+
+## v1.3.1 provenance correction
+
+The descriptor’s historical cbb2396 commit/hash now points to [its exact report](verification/history/cbb2396d-verification-results.json). The completed f6915782 isolated-checkout replay and C2 Linux replay remain separate source-scoped results, as recorded above. Package version and provenance metadata changed; mathematical source, statements, dependency pins and verifier programs did not. This correction does not imply a new proof replay.

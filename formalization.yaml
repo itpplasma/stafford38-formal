@@ -46,8 +46,8 @@ sources:
     note: >-
       The formal development proves the manuscript's Stafford 3.8 statement.
       Full correspondence with the manuscript's geometric proof route remains
-      under review; docs/paper-route-alignment.json records the remaining
-      bridges and their evidence. The registered theorem is
+      under review; docs/paper-route-alignment.json records the selected route,
+      formal evidence and pending human reviews. The registered theorem is
       PALOMAR-2026-09-05-000007, version 2; later declarations and toolchain
       changes require separate verification.
     license: "CC-BY-4.0"
@@ -81,10 +81,11 @@ sources:
 
 related_formalizations: []
 
+# Historical controller-host checkpoint; later completed replays are described below.
 verification:
   commit: "cbb2396dc21c789365af6ee56b41320d9246f8f7"
   report: "100afbd3b7653ef3f2f4a5338ba9bf9cdd9990f74d0be1b20ca116dfb8a12556"
-  machine_readable_report: "docs/verification-results.json"
+  machine_readable_report: "docs/verification/history/cbb2396d-verification-results.json"
   statement_correspondence: "docs/paper-lean-specification.md"
   source_commit: "8cc7802cd4355d819d2df4f680ba26d4a339f80e"
   manuscript_commit: "b3f3edf0741b6a70b6e5011690e16bf58561cffb"
@@ -93,11 +94,21 @@ verification:
 status:
   scope: >-
     Universal Stafford identity in every rank and exact Bernstein-degree source
-    in positive rank. The controller-host build, 20 endpoint reports, 14 consumer
-    reports, import audits, and both Comparator configurations passed, including
-    NanoDa and Lean kernel acceptance. A separate isolated-clone replay is pending.
-    Each of the two Challenge templates has one deliberate compared placeholder;
-    these are excluded from the proved-declaration count below.
+    in positive rank. The verification block above identifies the historical
+    cbb2396 controller-host checkpoint and its preserved report, not the later
+    replay. The isolated clean-checkout replay completed at source
+    f6915782d2281e3d3b51011b97ace866928053b9; its report is
+    docs/verification/f6915782/verification-results.json. The later pinned
+    Linux replay completed at source 12ae3cc49152672a48a96f13994314b65ae38197:
+    a fresh 4,475-job build, strict four-root dependency inspection, the full
+    repository verifier, retained proof targets and all four main/fixed-source/
+    alternative Comparator configurations passed, with NanoDa and Lean kernel
+    acceptance. Its report is docs/verification/12ae3cc4/verification-results.json,
+    SHA-256 1ccb4a3b422041b3f894ea8709d60dcce782b13e1b33e01c7a396e3951a71ca5;
+    docs/verification-results.json is the same current report. Each receipt
+    applies only to its named source and configuration. The two Challenge
+    templates retain their deliberate compared placeholders, excluded from
+    the proved-declaration count. Human manuscript/correspondence review remains open.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:

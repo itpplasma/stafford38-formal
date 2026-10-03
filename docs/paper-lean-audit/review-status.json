@@ -170,7 +170,7 @@
     "formal_commit": "54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b",
     "configuration": "comparator.json",
     "submitted": "2026-10-03T20:15:50Z",
-    "verification_run": "https://github.com/itpplasma/stafford38-formal/actions/runs/37150915082",
+    "verification_run": "37150915082",
     "mechanical_verification": "passed at2026-10-03T20:55:53Z",
     "automated_review": "pending at2026-10-03T20:57:39Z",
     "registration": "pending"

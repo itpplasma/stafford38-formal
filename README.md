@@ -45,6 +45,8 @@ Use the source revision and toolchain named in the verification receipt. From th
 
 Historical terminal receipts used Lean `leanprover/lean4:v4.33.0`, Mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`, and AlgebraicAnalysis `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`. The v1.3.0 proof source pins Lean 4.35.0-rc3, Mathlib `c55e6e786f49471c72fbddbec5415808896aec1e`, and AlgebraicAnalysis `bbbbf3fc358ca8100b158cec4cf47f336ab70163`. The final candidate receipt bundle is recorded in [verification.md](docs/verification.md); each result applies only to its recorded source and configuration.
 
+Formal v1.3.1 corrects verification provenance: the historical cbb2396 fields now link to the matching archived report, and the later completed replays have separate source scope. The proof, statements and dependency pins are unchanged; see [release notes](docs/releases/v1.3.1.md). The owner will rerun Palomar on this release.
+
 ## Ownership and licenses
 
 Christopher Albert is the recorded human author and maintainer. AI systems assisted research, formalization, counterexamples, and review under human direction. The formal code and documentation use Apache-2.0; the manuscript and supplements use CC BY 4.0. See `LICENSE`, `NOTICE`, and `CITATION.cff`. Historical release records remain attached to their original sources.

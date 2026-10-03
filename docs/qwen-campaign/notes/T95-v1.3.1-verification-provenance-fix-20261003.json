@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "problem": "Historical cbb commit/hash linked to current C2 report; completed isolated replay described as pending.",
+  "historical_commit": "cbb2396dc21c789365af6ee56b41320d9246f8f7",
+  "historical_report": "docs/verification/history/cbb2396d-verification-results.json",
+  "historical_report_sha256": "100afbd3b7653ef3f2f4a5338ba9bf9cdd9990f74d0be1b20ca116dfb8a12556",
+  "completed_isolated_replay": "f6915782d2281e3d3b51011b97ace866928053b9",
+  "completed_isolated_report": "docs/verification/f6915782/verification-results.json",
+  "completed_isolated_report_sha256": "a1cca54a8c46df89797b85dfa24359e3e0b640caa414bcac29c4fd3cc7a81f9d",
+  "completed_linux_source": "12ae3cc49152672a48a96f13994314b65ae38197",
+  "completed_linux_report": "docs/verification/12ae3cc4/verification-results.json",
+  "completed_linux_report_sha256": "1ccb4a3b422041b3f894ea8709d60dcce782b13e1b33e01c7a396e3951a71ca5",
+  "correction": "Historical structured fields route to the exact historical report. Status explicitly distinguishes both later completed replay scopes. Current primary report remains C2.",
+  "unchanged": [
+    "All mathematical Lean source",
+    "Main and fixed-source Challenge statements",
+    "All four Solution assemblies",
+    "Dependency pins and lake-manifest.json",
+    "Verifier and comparator programs",
+    "All historical verification receipts"
+  ],
+  "package_change": "lakefile.toml version only:1.3.0->1.3.1",
+  "formalization_sha256": "6cc1f87edfa219ff29cd7ce70fdbc42cf8fc760d800cad55ec01402872315466",
+  "new_proof_replay_claimed": false,
+  "human_reviews": "pending"
+}
