@@ -28,8 +28,10 @@ T35 passed on scluster3113113 and is committed/pushed; see
 notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd.
 Columns468 failed actual compilation in scluster3115702; Sol replaced the
 concrete derivative fields with an abstract derivative certificate and stable
-getters. Frozen Columns08db and unchanged consumer now run as scluster3116538,
-followed by Closure59b only if columns pass. T36's frozen statement is unchanged.
+getters. Columns08db failed the retained Laurent action/tower match in scluster3116538.
+Sol repaired it using the accepted T22 scalar scopes; Columns5405 generic prefix failed3116945 at the scalar action bridge. Sol
+repairs the exact action transport; the full module and Closure59b remain queued
+behind a successful prefix. T36's frozen statement is unchanged.
 T35 passed independently on both clusters. The alternative geometry endpoint
 also passed its Linux module at WT71e966a; full solution assembly/comparisons
 remain required. No guard threshold is relaxed. Both isolated cluster
@@ -42,6 +44,16 @@ and route comparisons pending. The public guided-review generator is committed
 at 40967b6740c2ceaf515a2fb47a5ca9571be6495f; the complete final map/site walkthrough
 remains a gate. Update this checkpoint and ledger as each acceptance finishes;
 preparation alone does not close a task.
+
+Efficiency update (owner steering, 3 October 2026): assign each proof check
+to one Linux slot. Use acluster and scluster for distinct tasks, never duplicate
+the same candidate for extra validation. Reuse the accepted tools and receipts;
+add no new infrastructure or optional checks. The release gate is one complete
+pinned Linux repository verifier and all four actual Palomar comparisons.
+T50/T51 and T73 share that final run; do not run the full verifier once on the
+candidate and again on a fresh release clone. Bounded module/consumer checks
+resolve proof errors before source freeze. Publish both releases after this
+gate, then verify their Zenodo archives, cite them, and send the review emails.
 
 Campaign folder (absolute): `/home/ert/proj/stafford38-formal/docs/qwen-campaign`
 
@@ -1017,29 +1029,23 @@ owner for this delivery; Git history preserves removed development material.
 
 ### T50 Full library build
 
-Owned: `STATE.md`.
-`$GUARD run --timeout 14400 --log $SCR/logs/T50.log -- lake build`
-then the explicit list from `scripts/verify.sh` lines 22–42 (the retained
-module list is generated there; run the same Python snippet). Record wall
-time and `peak_rss_gb`.
-
-Accept: exit 0, no `sorry` warning: `grep -c "declaration uses 'sorry'" $SCR/logs/T50.log`
-must be `0`.
+The retained full build is the build stage of the single final Linux verifier
+(T51/T73). Record its exit, wall time and peak RSS there. Do not add a separate
+whole-library build before or after that run. Required bounded module/consumer
+checks remain the way to repair individual proof failures before source freeze.
 
 ### T51 Repository verifier
 
-Owned: `STATE.md`.
-`$GUARD run --timeout 21600 --log $SCR/logs/T51.log -- bash scripts/verify.sh`.
-This task may let `scripts/bootstrap-palomar-tools.sh` install the pinned
-Palomar tools if missing (it checks Lean commit `470d5ce…`). The pinned
-Linux Lean/dependency bootstrap for a new cluster allocation is separately
-authorized in section 3; package revisions and budgets remain unchanged.
+Run `bash scripts/verify.sh` once on the frozen public source in the selected
+Linux slot, together with the four actual `scripts/verify-palomar.sh` comparisons
+in T72/T73. Reuse the already reviewed Linux driver. Its pinned tool bootstrap
+and exact dependency checks remain mandatory; no optional second cluster replay
+or duplicate verification run is required.
 
-Accept: exit 0. Then list `.lake/verification/*.log` with sizes and record
-the last line of each in `$CAMP/notes/T51-receipt.md`, with
-`git -C $WT rev-parse HEAD` and `git -C $WT diff --stat main | tail -1`.
-
-Stop if: any check fails twice. Report the first failing log.
+Accept: verifier and all four comparisons exit 0. Record the verification logs,
+source commit, source hashes, exact pins, axiom/route checks and resource receipt
+in the final Linux receipt. T50, T51 and T73 refer to this same accepted run.
+If a command fails, repair that concrete failure and retain the failed receipt.
 
 ### T52 Status drafts (no authoritative edits)
 
@@ -1106,7 +1112,8 @@ the useful alternative route and all still-used proof/review interfaces.
 
 ### T70 OWNER GATE: frozen public commit
 
-After integration and checks, the controller pushes the authorized source
+After bounded proof module/consumer acceptance and integration, the controller
+pushes the candidate source for the single final Linux/Palomar verification
 and records its exact commit in `STATE.md` under "Frozen commit". Workers
 use that immutable public source for all release and replay inputs.
 
@@ -1244,9 +1251,10 @@ latexmk -pdf human_readable_main.tex && latexmk -pdf lean_proof_details.tex && l
 grep -c "undefined" human_readable_main.log lean_proof_details.log main.log
 ```
 
-Accept: three PDFs, zero undefined references. Never edit `.tex` files: the
-manuscript preserves Johanna's proof, and Overleaf is its editing authority.
-If a reference to a Lean name breaks, report it for the controller.
+Accept: three PDFs, zero undefined references. Workers do not edit `.tex`
+files. The controller may repair source locators and apply the requested final
+citations after fetching the Overleaf authority. Preserve Johanna's visible
+proof and keep mathematical proposals explicitly pending her review.
 
 ### T83 Supplementary bundle (local only)
 
@@ -1284,7 +1292,7 @@ Owner and controller only, using `$ARCH/release-preparation/future-commands.sh.t
 
 ### T92 Verify the Zenodo archive
 
-After the owner records the Zenodo record id in `STATE.md`: download the
+After the controller records each published Zenodo record id in `STATE.md`, download the
 archive as described in the template, compare every file byte for byte
 with the tag (`git -C $WT archive <tag> | tar -t` against the unpacked
 archive, then `shasum -a 256` per file), and write
@@ -1295,7 +1303,8 @@ Accept: zero mismatches.
 
 Owned: `$CAMP/notes/release/citations.md`. Draft the updated citations
 for the formal repository, the paper and the supplementary bundle with the
-new DOI. The controller applies them; Overleaf sync is the owner's.
+verified new DOIs. The controller applies them and synchronizes Overleaf as
+authorized by the current campaign request.
 
 When T93 is done, the campaign is complete. Report `RESULT: campaign
 complete` and stop.

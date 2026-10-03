@@ -13,8 +13,9 @@ pressure/swap growth and no survivors; committed at WT4c1678e. T34 positions pas
 WT1a3fcfd. The controller validated the exact private test-name report after
 a wrapper-name mismatch. Corrected wrapper3115702 confirmed positions again,
 then Columns468 failed actual compilation. Sol's abstract derivative
-certificate repair08db is checking in scluster3116538, with unchanged literal
-consumer and Closure59b queued only after success. T35 also passed independently on acluster21805719. Both cluster
+certificate08db failed the Laurent action/tower match in scluster3116538.
+The repair5405 reuses the accepted T22 scalar scopes; generic prefix failed3116945 at the inherited/explicit action bridge. Sol is
+repairing that exact bridge before module/consumer and Closure59b checks. T35 also passed independently on acluster21805719. Both cluster
 bootstraps passed exact pins and T32. Alternative geometry endpoint passed
 scluster3114679, committedWT71e966a; full alternative assembly/comparators
 remain required. Actual guard fixtures passed3112916. No guard or proof
@@ -52,7 +53,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
-| T34 | Columns, derivatives, numerator | doing | 10 | notes/T34-T36-scluster-frozen-inputs-columns-20261003.json | Positions9417 acceptedWT1a3fcfd; Columns468 failed3115702; Sol derivative certificate08db + unchanged consumer checking3116538, then closure59b |
+| T34 | Columns, derivatives, numerator | doing | 11 | notes/T34-T36-scluster-frozen-inputs-columns4-20261003.json | Positions9417 acceptedWT1a3fcfd; Columns08db failed3116538 Laurent scalar scopes; Sol5405 prefix failed3116945 atSMul/action transport; exact bridge repair active; module/consumer+closure59b remain pending |
 | T35 | Étale structure as ring homs | done | 6 | notes/T35-linux-accepted-checks.md | Scluster3113113 fullmodule+unchangedtrust0consumerPASS329.04s,peak7406MiB,three permitted axioms,zero PSI/swap/children; frozenf30 WT4c1678e committed/pushed; fullroute pending |
 | T36 | Same-witness closure theorem | doing | 3 | notes/T36-linux-resume.md | Generic retained chart candidate; stale positions call corrected, source59b8e450; frozen target unchanged; actual compile follows successful T34 in3116538; T35 accepted; Luna audits retained-position interface in parallel |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
@@ -62,8 +63,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T44 | Literal route consumers | doing | 1 | | Luna preparing archived literal consumers/current names; checks await route modules |
 | T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry module83f PASS after namespace repair, WT71e966a; shared assembly static audit PASS; full compiler/route/comparator gates remain required |
 | T46 | Tidy final package | doing | 2 | notes/T46-final-cleanup-proposal.md | Obsolete four Mac/Pi wrappers and unused ignore file removed after reference audit; historical receipts/useful math preserved; final public status/Palomar package checks await route acceptance |
-| T50 | Full library build | todo | 0 | | |
-| T51 | Repository verifier | todo | 0 | | |
+| T50 | Full library build | todo | 0 | | Included in single final Linux verifier T51/T73; no separate repeated full build |
+| T51 | Repository verifier | todo | 0 | | Single frozen Linux run shared withT73 plus4 actualPalomar comparisons; no duplicated cluster verification |
 | T52 | Status drafts | todo | 0 | | |
 | T53 | Integrate into main | owner | 0 | | owner gate |
 | T60 | Definition owners patch | doing | 2 | notes/T60-resume-definition-report.md | Luna refreshed bounded-record registry proposal; final acceptance awaits checked source names |
