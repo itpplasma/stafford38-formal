@@ -26,13 +26,15 @@ module and literal trust-zero consumer checks. T32 is committed and pushed at
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
 T35 passed on scluster3113113 and is committed/pushed; see
 notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd.
-Columns remains the active blocker. The direct full-source diagnostic3121593
-compiled the concrete Data/getters, generic helpers and numerator at914f1f62.
-Only commonOpenColumnsData_of_arc failed kernel memory validation under the
-unchanged -M8000 limit. Sol moves its canonical-unit and column transports
-into an abstract-ring helper, leaving a thin concrete call. The next single
-scluster chain checks module, literal consumer and Closure59b, without
-repeating the passing generic prefix.
+Columns remains the active blocker. Direct diagnostic3121593 compiled the
+concrete record, accessors, generic helpers and numerator, then rejected the
+concrete producer at the existing kernel memory limit. Its thin-helper repair
+also exceeded the unchanged 8 GiB full-module guard in3122526. Sol split the
+generic derivative declarations unchanged into CommonOpenColumnDerivatives.
+Generic module4cfa695d passed scluster3123290. Concrete Columns still exceeded
+the8GiB cap; its proof-only certificate is now Prop, with a theorem producer
+and unchanged fields/arguments/consumer. Single chain3123682 checks Columns
+d7d1c20d, consumer and Closure59b, reusing the accepted generic module.
 T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
 unchanged. No full Columns or Closure acceptance is claimed.

@@ -14,13 +14,15 @@ WT1a3fcfd. The controller validated the exact private test-name report after
 a wrapper-name mismatch. Corrected wrapper3115702 confirmed positions again,
 then Columns468 failed actual compilation. Sol's abstract derivative
 certificate08db failed the Laurent action/tower match in scluster3116538.
-The direct full-source diagnostic3121593 compiled the concrete Data/getters,
-generic helpers and numerator. Only commonOpenColumnsData_of_arc failed
-kernel memory validation under -M8000; the guard itself recorded no stop cause
-and drained all children. Sol is moving that producer's canonical-unit and
-column transports into an abstract-ring helper, leaving a thin concrete call.
-The next single scluster chain checks module, literal consumer and Closure59b;
-it does not repeat the passing generic prefix. T35 also passed independently on acluster21805719. Both cluster
+Direct diagnostic3121593 compiled the concrete record/accessors, generic
+helpers and numerator, then rejected the concrete producer at the existing
+kernel memory limit. The thin-helper repair3122526 also exceeded the unchanged
+8 GiB full-module guard. Sol split the generic derivative declarations unchanged
+into CommonOpenColumnDerivatives (61a24d93); concrete Columns is a74e78eb.
+Generic module4cfa695d passed scluster3123290. Concrete Columns still exceeded
+the8GiB cap; its proof-only certificate is now Prop, with a theorem producer
+and unchanged fields/arguments/consumer. Single chain3123682 checks Columns
+d7d1c20d, consumer and Closure59b, reusing the accepted generic module. T35 also passed independently on acluster21805719. Both cluster
 bootstraps passed exact pins and T32. Alternative geometry endpoint passed
 scluster3114679, committedWT71e966a; full alternative assembly/comparators
 remain required. Actual guard fixtures passed3112916. No guard or proof
@@ -58,7 +60,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
-| T34 | Columns, derivatives, numerator | doing | 21 | notes/T34-T36-scluster-frozen-inputs-columns4-20261003.json | Direct source3121593 compiles Data/getters/helpers/numerator; only concrete producer fails kernel memory limit; Sol makes it a thin abstract-helper call; next check omits repeated prefix |
+| T34 | Columns, derivatives, numerator | doing | 25 | notes/T34-T36-scluster-frozen-inputs-columns4-20261003.json | Generic4cfa passed; proof-only Columns certificate is Prop with theorem producer d7d1c20d; chain3123682 checks module/consumer/Closure under unchanged8GiB |
 | T35 | Étale structure as ring homs | done | 6 | notes/T35-linux-accepted-checks.md | Scluster3113113 fullmodule+unchangedtrust0consumerPASS329.04s,peak7406MiB,three permitted axioms,zero PSI/swap/children; frozenf30 WT4c1678e committed/pushed; fullroute pending |
 | T36 | Same-witness closure theorem | doing | 4 | notes/T36-chart-linux-accepted-checks-20261003.md | Verbatimgenericcharthelper trust0PASSacluster21805723,3axioms/noresourcefailure; fullclosure59b+unconditionalliteralconsumer queued afterT34 |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
