@@ -25,8 +25,11 @@ module and literal trust-zero consumer checks. T32 is committed and pushed at
 `da00639e7d2fd3cbb188f137d228c99d5cfcdbcd`; see its acceptance packet in
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
 T35 passed on scluster3113113 and is committed/pushed; see
-notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd; columns and closure now
-run sequentially as scluster3115702. T36's frozen statement is unchanged.
+notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd.
+Columns468 failed actual compilation in scluster3115702; Sol replaced the
+concrete derivative fields with an abstract derivative certificate and stable
+getters. Frozen Columns08db and unchanged consumer now run as scluster3116538,
+followed by Closure59b only if columns pass. T36's frozen statement is unchanged.
 T35 passed independently on both clusters. The alternative geometry endpoint
 also passed its Linux module at WT71e966a; full solution assembly/comparisons
 remain required. No guard threshold is relaxed. Both isolated cluster
