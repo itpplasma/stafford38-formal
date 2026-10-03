@@ -88,9 +88,9 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T83 | Supplementary bundle (local) | todo | 0 | | |
 | T84 | Review handover | owner | 0 | | owner gate |
 | T90 | Release drafts | doing | 1 | notes/T90-formal-v1.3.0-release-body.md | Formalnotes filledfrom actualreceipts; companionnotes awaitactualformalDOI/P4 |
-| T91 | Signed tag, release, Zenodo | doing | 1 | notes/T91-release-code-congruence-20261003.json | AllformalreleasegatesPASS;656protectedfiles exactC2; controller authorizedsignedv1.3.0 publication now |
-| T92 | Verify Zenodo archive | todo | 0 | | |
-| T93 | Citation drafts | todo | 0 | | Apply only verified final archive DOIs; synchronize paper GitHub and Overleaf |
+| T91 | Signed tag, release, Zenodo | doing | 1 | notes/T92-formal-v1.3.0-Zenodo-bytecheck-20261003.json | Formalv1.3.0 signed/published54c4f0c/DOI23126868; supplementaryv0.2.0 next |
+| T92 | Verify Zenodo archive | doing | 1 | notes/T92-formal-v1.3.0-Zenodo-bytecheck-20261003.json | Formal1,163files zero missing/extras/mismatches; supplementaryarchive pending |
+| T93 | Citation drafts | doing | 1 | paperP4=4d19a183 | ActualverifiedformalDOI cited; GitHub+Overleaf push0; companionDOI awaitsverifiedarchive |
 | T94 | Final review emails | todo | 0 | | Send authorized Johanna/Max handovers only after releases, archive comparisons and citations; record delivery |
 
 ## Current execution (resumed 2026-10-03 by owner)
@@ -395,3 +395,5 @@ Receipt root: `final-receipts-guard-repaired-resume4`; guard prefix:
 - Bounded T80 job3138990 failed before checking declarations on an unavailable `tests` import; other groups did not run and guard drained1 cleanly. Sol repairs only the name-check arrangement. No full-verifier, retained-module or comparator repeat is authorized or needed.
 - Controller reviewed and launched sole bounded name-check resume3139266 after exact hashes, prior clean drain and empty-queue/idle-node preflight. Common393 checks are391 imported names plus2 exact C2 standalone consumer sources with qualified queries; remaining3 isolated groups have2 checks each. No formal source or declaration changed.
 - Final compiler-name acceptance3139266 passed399 checks in4 isolated groups, guard0/no stops/children/swap. Results SHA256 `c735cdd29b3f463c505761ef5c2011dbd1b0bb5a168b23bae663f68258a8250d`; guard SHA256 `df241036fec3bf3d3ef5bd21bf169222d3be2d4920f9c3142b08b350ac092cd6`; root checked every completed count and part exit. Formal release qualification complete.
+- Formal release v1.3.0 published20:12:31Z at54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b; signed tag595eef30a0285f892a0ef4189d79de7302101137 verified. Zenodo23126868/DOI10.5281/zenodo.23126868 downloaded16,282,434bytes, SHA256 `b6ec84e622ee2905e00148ad43401e7ca72b4fb236b3a2607ebcf9839d1247b3`; all1,163 taggedfiles byte-identical, no missing/extras/mismatches.
+- P4 paper4d19a183846beb50f37ad2b4e51e836a76ed8bac cites the actual verified formal DOI and links formalreleaseR; author proof body preserved. GitHub+Overleaf pushes succeeded. Three matching PDFs are rebuilding; companion freeze will use P4 and its public snapshot.

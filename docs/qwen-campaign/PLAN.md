@@ -42,16 +42,16 @@ library or comparison check will be repeated.
 The bounded compiler-name acceptance passed all399 public owner/name checks
 in3139266, with4 isolated groups and guard0/drained. The earlier standalone
 import error is archived; only its check arrangement changed. Release
-qualification is complete. Publish the signed formal v1.3.0 release now,
-verify its Zenodo archive byte for byte, then use the actual DOI in the paper
-and matching supplementary v0.2.0 bundle. Human reviews remain pending.
+qualification is complete. Formal signed v1.3.0 was published at20:12:31Z; all1,163 files match its
+Zenodo archive, DOI10.5281/zenodo.23126868. The P4 citation/source-link update
+is pushed to GitHub and Overleaf. Finish matching supplementary v0.2.0. Human reviews remain pending.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
 57-card browser walkthrough. The public review site is deployed. All three
 manuscript PDFs compile with zero undefined references at paper a5a703f5, with snapshot 22b44d56 and formal links to 12ae3cc.
 The refreshed map/PDF asset gate passed. Refresh their citations after
-verified archive publication. Human review remains pending. No new release,
-DOI or final email has been claimed or sent.
+verified archive publication. Human review remains pending. Formal v1.3.0 and its byte-verified DOI are published; supplementary
+v0.2.0, final citations and final emails remain to finish.
 
 Efficiency update (owner steering, 3 October 2026): assign each proof check
 to one Linux slot. Use acluster and scluster for distinct tasks, never duplicate

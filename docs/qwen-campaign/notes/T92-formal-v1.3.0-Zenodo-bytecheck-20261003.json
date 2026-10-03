@@ -1,0 +1,22 @@
+{
+  "tag": "v1.3.0",
+  "release_commit": "54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b",
+  "archive_sha256": "b6ec84e622ee2905e00148ad43401e7ca72b4fb236b3a2607ebcf9839d1247b3",
+  "archive_prefix": "itpplasma-stafford38-formal-595eef3/",
+  "expected_files": 1163,
+  "archived_files": 1163,
+  "missing": [],
+  "extras": [],
+  "mismatches": [],
+  "result": "passed",
+  "comparison": "Every archived non-directory member compared byte for byte with the exact tagged Git blob; no extraction.",
+  "doi": "10.5281/zenodo.23126868",
+  "zenodo_record": 23126868,
+  "github_release": "https://github.com/itpplasma/stafford38-formal/releases/tag/v1.3.0",
+  "published_utc": "2026-10-03T20:12:31Z",
+  "tag_object": "595eef30a0285f892a0ef4189d79de7302101137",
+  "signature": "Good git signature for albert@tugraz.at; ED25519 SHA256:ARNu2jnP8I1sJSIRgpYCbp5/cwEB8FqKnMf0gYdIy5U",
+  "verified_utc": "2026-10-03T20:14:58.084911+00:00",
+  "proof_receipt_source": "12ae3cc49152672a48a96f13994314b65ae38197",
+  "protected_code_manifest_sha256": "0b3d27e473d06dc22da27fd1287eea1d316559b8bd5ca95b5ea637061fe16cb6"
+}

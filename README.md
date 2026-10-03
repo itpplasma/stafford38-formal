@@ -20,6 +20,8 @@ Verification receipts apply to the exact source revisions and configurations the
 
 The v1.3.0 proof source at source commit `12ae3cc49152672a48a96f13994314b65ae38197` passed the complete pinned Linux verifier and all four Palomar comparator configurations. The run included a 4,475-job Lake build and strict dependency inspection of all four terminal roots with zero forbidden or unavailable dependencies. The T34, T35, T36, and T41 modules, literal trust-zero consumers, and shared main and alternative solution assemblies also passed with only the three permitted axioms. Receipts apply only to this source and its pinned configuration; they do not establish whole-paper proof correspondence.
 
+Formal release [v1.3.0](https://github.com/itpplasma/stafford38-formal/releases/tag/v1.3.0) is archived at [10.5281/zenodo.23126868](https://doi.org/10.5281/zenodo.23126868). Every one of its1,163 tagged files matched the downloaded Zenodo archive byte for byte; the [archive receipt](docs/qwen-campaign/notes/T92-formal-v1.3.0-Zenodo-bytecheck-20261003.json) records the immutable release and verified source scope.
+
 The selected comparison surface is `human_readable_main.tex`. The paper-conforming main roots are `Solution` and `FixedSourceSolution`; the older generic/Laurent roots `AlternativeSolution` and `AlternativeFixedSourceSolution` are retained as alternatives, while Johanna’s visible author proof remains the selected manuscript surface. Johanna’s manuscript review and Max’s complete proof-correspondence review remain pending. The existing Palomar entry certifies its named theorem and source only.
 
 ## Source roles

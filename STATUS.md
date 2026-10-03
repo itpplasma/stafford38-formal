@@ -1,6 +1,6 @@
 # Current status
 
-Updated 3 October 2026. The v1.3.0 source `12ae3cc49152672a48a96f13994314b65ae38197` passed the complete pinned Linux verifier and all four Palomar comparator configurations. The fresh C2 run passed a 4,475-job Lake build and strict dependency inspection of all four terminal roots with zero forbidden or unavailable dependencies. T34, T35, T36, and T41 modules, literal trust-zero consumers, and all four main and alternative solution assemblies passed with only propext, Classical.choice, and Quot.sound. The paper-correspondence reviews and release handover remain separate and pending; no release DOI is assigned.
+Updated 3 October 2026. The v1.3.0 source `12ae3cc49152672a48a96f13994314b65ae38197` passed the complete pinned Linux verifier and all four Palomar comparator configurations. The fresh C2 run passed a 4,475-job Lake build and strict dependency inspection of all four terminal roots with zero forbidden or unavailable dependencies. T34, T35, T36, and T41 modules, literal trust-zero consumers, and all four main and alternative solution assemblies passed with only propext, Classical.choice, and Quot.sound. Formal v1.3.0 is published and its1,163-file Zenodo archive is byte-verified (DOI10.5281/zenodo.23126868). Paper-correspondence reviews and the final handover remain pending.
 
 ## Proof and correspondence
 
@@ -32,6 +32,6 @@ The generator's approval digest now includes its review-scope module, and run-in
 
 ## Remaining completion gates
 
-Publish formal v1.3.0 and supplementary v0.2.0, verify each downloaded archive against its release tree, and complete the authorized review handovers. Human reviews remain pending. No new release, tag, or DOI has yet been published.
+Formal v1.3.0 is published with a verified archive. Finish the P4 paper/source/PDF bundle, publish supplementary v0.2.0 and verify its archive, then add both citations and send the authorized review handovers. Human reviews remain pending.
 
 The controller owns integration and promotion. Worker worktrees remain available; [the branch map](PLAN.md#branches-for-resuming-saved-work) identifies each pushed candidate and its recovery command. See [the route map](docs/paper-route-alignment.json), [definition owners](docs/definition-owners.md) and [proof-source provenance](docs/proof-source-provenance.md). The earlier [stopped-state archive](docs/audits/stopped-2026-10-02/README.md) retains its source packets and the incoming cleanup provenance annotations. No new mathematical verification is claimed by synchronization.
