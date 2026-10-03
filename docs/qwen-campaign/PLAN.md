@@ -38,7 +38,9 @@ It stopped before verification because Git reported the generated cache
 symlink as untracked. Source/tool/pin gates passed and the allocation drained.
 The independently reviewed same-source resume is scluster3131801, launched
 with exact failure/drain/cache gates and all tracked-byte/mode, verifier and
-comparator checks intact. No paper/proof pin changes. Preserve all failed receipts.
+comparator checks intact. Fresh C2 fixtures,4475job fullbuild and strict4terminalroot inspection passed.
+Remaining route/consumer checks and four actual comparisons are still required.
+No paper/proof pin changes. Preserve all failed receipts.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
 57-card browser walkthrough. The public review site is deployed. All three
