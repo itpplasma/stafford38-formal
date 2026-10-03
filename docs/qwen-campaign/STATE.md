@@ -80,7 +80,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T70 | Frozen public commit | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Exact publicC2=12ae3cc49152672a48a96f13994314b65ae38197 pushed before final launch; priorC1 retained |
 | T71 | Final Linux host preflight | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Prior3129931guard0/drained; empty userqueue/node20idle;3controlhashes exact; fresh source/receiptpaths absent |
 | T72 | Launch Linux driver | done | 6 | notes/T73-final-C2-resume4-submission-3137241-20261003.json | SoleS3137241 allocation-localdevice/cachelayout repair+4comps/finalintegrity exactC2; no completedcheck repeat |
-| T73 | Collect Linux result | doing | 6 | notes/T73-final-C2-resume4-submission-3137241-20261003.json | FullverifierR1/retainedmodulesR2PASS inherited; R4main+fixedsourcecomparatorsPASS all3kernels/statement at19:22:38/19:39:44Z; alternativeactive, altfixed/finalidentitypending; no repeat |
+| T73 | Collect Linux result | doing | 6 | notes/T73-final-C2-resume4-submission-3137241-20261003.json | FullverifierR1/retainedmodulesR2PASS inherited; R4main+fixed+alternativecomparatorsPASS at19:22:38/19:39:44/19:47:11Z; altfixedactive/finalidentitypending; no repeat |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
 | T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+C2/P3/S3refreshPASS519refs/0errorswarnings;57unchangedcards inherit actualbrowserwalk; PDFassetgatePASS; humanreviewpending |
@@ -388,3 +388,5 @@ Receipt root: `final-receipts-guard-repaired-resume4`; guard prefix:
 - R4 actual comparison checkpoint: main `comparator.json` exited0 at 2026-10-03 19:22:38Z, with fresh con-ron (53,716 declarations, `--verified`), nanoda, Lean default kernel and statement-comparison acceptance. Fixed-source began at that timestamp. The other three comparisons and final integrity/drain are still required; the complete verifier and retained modules are not repeated.
 
 - R4 fixed-source comparison exited0 at 2026-10-03 19:39:44Z with all three kernels and statement comparison accepted. Both main-route configurations are complete. The generic/Laurent alternative started then; both alternatives and final integrity/drain remain required.
+
+- R4 generic/Laurent alternative comparison exited0 at 2026-10-03 19:47:11Z with con-ron (46,598 declarations, `--verified`), nanoda, Lean default kernel and statement-comparison acceptance. The alternative fixed-source comparison started then and is the last comparison. Final source integrity and guard drain remain pending.
