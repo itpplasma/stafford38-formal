@@ -33,8 +33,11 @@ Sol repaired it using the accepted T22 scalar scopes; Columns5405 generic prefix
 stopped repeated dictionary rewriting after82cd failed3117210 and is inspecting
 actual instance terms. Action equality passed, but imported-term rewriting
 failed; Sol revised the boundary to transport known certificate field goals.
-Frozenb3ce now checks as scluster3118467: prefix, module, literal consumer, then
-Closure59b after success. T36's frozen statement is unchanged.
+The raw action/ground/étale bridges now pass, but4c21 failed the dependent
+tower rewrite in3119212. Sol85773 replaces it with a generic cases-based
+transport; one scluster chain checks prefix/module/literalconsumer before
+Closure59b. T36's verbatim chart helper passed separately on acluster21805723
+using the copied accepted Positions cache, not a second Positions build. T36's frozen statement is unchanged.
 T35 passed independently on both clusters. The alternative geometry endpoint
 also passed its Linux module at WT71e966a; full solution assembly/comparisons
 remain required. No guard threshold is relaxed. Both isolated cluster
