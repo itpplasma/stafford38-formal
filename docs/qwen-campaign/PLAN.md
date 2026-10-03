@@ -26,12 +26,13 @@ module and literal trust-zero consumer checks. T32 is committed and pushed at
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
 T35 passed on scluster3113113 and is committed/pushed; see
 notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd.
-Columns remains the active blocker. Stage13 (scluster3121032, source914f1f62)
-passed the generic prefix, including raw derivatives and abstract certificate
-assembly. The full module exceeded the unchanged 8 GiB aggregate RSS cap
-before a Lean diagnostic; all prerequisites were replayed from cache. One
-direct full-source diagnostic (3121593) uses progress markers to identify the
-remaining declaration cost. Consumer and Closure59b checks remain pending.
+Columns remains the active blocker. The direct full-source diagnostic3121593
+compiled the concrete Data/getters, generic helpers and numerator at914f1f62.
+Only commonOpenColumnsData_of_arc failed kernel memory validation under the
+unchanged -M8000 limit. Sol moves its canonical-unit and column transports
+into an abstract-ring helper, leaving a thin concrete call. The next single
+scluster chain checks module, literal consumer and Closure59b, without
+repeating the passing generic prefix.
 T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
 unchanged. No full Columns or Closure acceptance is claimed.
