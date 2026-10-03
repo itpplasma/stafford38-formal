@@ -35,7 +35,7 @@ structure CoordinatePresentation
     (P : PrimeSpectrum (MvPolynomial (Fin m) k))
     (w : GeneralDivisorialVisibleFrameWitness hm P)
     (setup : ChartSetup hm P w) where
-  t : Type
+  t : Type u
   htFinite : Fintype t
   coeff : k →+* actualSelectedNormalization P w
   hcoeff : coeff = actualSelectedNormalizationCoefficients P w
@@ -65,7 +65,12 @@ structure CoordinatePresentation
       (Fin.succ (⟨0, hm⟩ : Fin m)) =
     actualNormalizedProjectiveColumnInIntegralClosure hm P w
       (Fin.succ (⟨0, hm⟩ : Fin m))
-  hOutput : letI : IsLocalRing w.column.W.place.valuation.toSubring :=
+  hOutput :
+    letI : Algebra (Stafford38.Geometry.AsymptoticDivisorExistence.CoordinateZeroLocalRing
+      w.column.W.coefficientField)
+      (Stafford38.Geometry.ComponentProjectiveClosure.ComponentFractionField P) :=
+        w.column.W.ambientAlgebra
+    letI : IsLocalRing w.column.W.place.valuation.toSubring :=
       w.column.W.place.isDiscrete.toIsLocalRing
     @GroundPointChartOutput k (actualSelectedNormalization P w) t
       inferInstance inferInstance inferInstance coeff.toAlgebra inferInstance
@@ -79,6 +84,32 @@ structure CoordinatePresentation
       qRow τ w.differential.core.D.a
       (w.differential.core.D.a + w.differential.core.D.e)
 
+/-- Distinct retained rows remain distinct in the selected affine chart. -/
+theorem chart_rows_injective
+    {m d : ℕ} (j : Fin (m + 1)) {t : Type u}
+    (index : t → Fin m) (hindex : Function.Injective index)
+    (τ : Fin d ≃ t) :
+    Function.Injective (fun i => (chartAffineCoordinateEquiv j (index (τ i))).1) := by
+  intro i i' hii
+  have hcoord : chartAffineCoordinateEquiv j (index (τ i)) =
+      chartAffineCoordinateEquiv j (index (τ i')) := Subtype.ext hii
+  exact τ.injective (hindex ((chartAffineCoordinateEquiv j).injective hcoord))
+
+/-- Retained normalization rows agree with the selected chart's coordinates. -/
+theorem selected_rows_chart_eq
+    {k : Type u} [Field k] [CharZero k] [IsAlgClosed k]
+    {m : ℕ} (hm : 0 < m)
+    (P : PrimeSpectrum (MvPolynomial (Fin m) k))
+    (w : GeneralDivisorialVisibleFrameWitness hm P)
+    (setup : ChartSetup hm P w) {t : Type u} (index : t → Fin m) (z : t) :
+    actualSelectedNormalizationRows P w index z =
+      actualNormalizedProjectiveColumnInIntegralClosure hm P w
+        (chartAffineCoordinateEquiv (Fin.succ setup.j) (index z)).1 := by
+  change actualNormalizedProjectiveColumnInIntegralClosure hm P w
+      (chartAffineCoordinateEquiv w.column.chart (index z)).1 = _
+  congr 1
+  exact congrArg (fun c => (chartAffineCoordinateEquiv c (index z)).1) setup.hchart
+
 /-- A same-witness chart setup and its retained ground-point output determine
 the corresponding finite coordinate presentation. -/
 theorem nonempty_coordinatePresentation
@@ -91,7 +122,18 @@ theorem nonempty_coordinatePresentation
     Nonempty (CoordinatePresentation hm P w setup) := by
   classical
   let B := actualSelectedNormalization P w
-  letI : IsLocalRing w.column.W.place.valuation.toSubring :=
+  letI : IsLocalRing (
+    letI : Algebra
+      (Stafford38.Geometry.AsymptoticDivisorExistence.CoordinateZeroLocalRing
+        w.column.W.coefficientField)
+      (Stafford38.Geometry.ComponentProjectiveClosure.ComponentFractionField P) :=
+        w.column.W.ambientAlgebra;
+    w.column.W.place.valuation.toSubring) :=
+    letI : Algebra
+      (Stafford38.Geometry.AsymptoticDivisorExistence.CoordinateZeroLocalRing
+        w.column.W.coefficientField)
+      (Stafford38.Geometry.ComponentProjectiveClosure.ComponentFractionField P) :=
+        w.column.W.ambientAlgebra
     w.column.W.place.isDiscrete.toIsLocalRing
   unfold actualSameWitnessGroundPointOutput at hpoint
   dsimp only at hpoint
@@ -102,47 +144,19 @@ theorem nonempty_coordinatePresentation
   let τ : Fin (Fintype.card t) ≃ t := (Fintype.equivFin t).symm
   let rows : Fin (Fintype.card t) ↪ Fin (m + 1) :=
     ⟨fun i => (chartAffineCoordinateEquiv (Fin.succ setup.j)
-      (index (τ i))).1, by
-      intro i i' hii
-      change (chartAffineCoordinateEquiv (Fin.succ setup.j)
-          (index (τ i))).1 = (chartAffineCoordinateEquiv (Fin.succ setup.j)
-            (index (τ i'))).1 at hii
-      have hcoord : chartAffineCoordinateEquiv (Fin.succ setup.j)
-          (index (τ i)) = chartAffineCoordinateEquiv (Fin.succ setup.j)
-            (index (τ i')) := Subtype.ext hii
-      apply τ.injective
-      exact hindex ((chartAffineCoordinateEquiv (Fin.succ setup.j)).injective hcoord)⟩
+      (index (τ i))).1, chart_rows_injective (Fin.succ setup.j) index hindex τ⟩
   let qRow : t → B := actualSelectedNormalizationRows P w index
   let coeff := actualSelectedNormalizationCoefficients P w
   let fOption : @AlgHom k (MvPolynomial (Option t) k) B _ _ _ _ coeff.toAlgebra :=
     @actualOptionMap k _ t B _ coeff.toAlgebra s qRow
-  have hnone : fOption (MvPolynomial.X (R := k) none) = s :=
-    @actualOptionMap_none k _ t B _ coeff.toAlgebra s qRow
-  have hsome : ∀ z, fOption (MvPolynomial.X (R := k) (some z)) = qRow z := by
-    intro z
-    exact @actualOptionMap_some k _ t B _ coeff.toAlgebra s qRow z
   let fFin : @AlgHom k (MvPolynomial (Option (Fin (Fintype.card t))) k)
       B _ _ _ _ coeff.toAlgebra :=
-    fOption.comp (MvPolynomial.renameEquiv k τ.optionCongr).toAlgHom
+    @AlgHom.comp k (MvPolynomial (Option (Fin (Fintype.card t))) k)
+      (MvPolynomial (Option t) k) B _ _ _ _ _ _ coeff.toAlgebra
+      fOption (MvPolynomial.renameEquiv k τ.optionCongr).toAlgHom
   have hrows : ∀ i : Fin (Fintype.card t), qRow (τ i) =
-      actualNormalizedProjectiveColumnInIntegralClosure hm P w (rows i) := by
-    intro i
-    change actualNormalizedProjectiveColumnInIntegralClosure hm P w
-        ((chartAffineCoordinateEquiv w.column.chart (index (τ i))).1) =
-      actualNormalizedProjectiveColumnInIntegralClosure hm P w (rows i)
-    congr 1
-    exact congrArg (fun c =>
-      (chartAffineCoordinateEquiv c (index (τ i))).1) setup.hchart
-  have hqchartB : actualNormalizedProjectiveColumnInIntegralClosure hm P w
-      w.column.chart = 1 := by
-    obtain ⟨h, _, _⟩ := actualNormalizedProjectiveColumnInIntegralClosure_spec hm P w
-    exact h
-  have hzero : actualNormalizedProjectiveColumnInIntegralClosure hm P w 0 =
-      actualNormalizedProjectiveColumnInIntegralClosure hm P w 0 := rfl
-  have haxis : actualNormalizedProjectiveColumnInIntegralClosure hm P w
-      (Fin.succ (⟨0, hm⟩ : Fin m)) =
-    actualNormalizedProjectiveColumnInIntegralClosure hm P w
-      (Fin.succ (⟨0, hm⟩ : Fin m)) := rfl
+      actualNormalizedProjectiveColumnInIntegralClosure hm P w (rows i) :=
+    fun i => selected_rows_chart_eq hm P w setup index (τ i)
   rcases hGroundPoint with ⟨cert, hGroundPoint⟩
   have hOutput : @GroundPointChartOutput k B t inferInstance inferInstance
       inferInstance coeff.toAlgebra inferInstance hBfinite htFinite.fintype
@@ -153,42 +167,18 @@ theorem nonempty_coordinatePresentation
       (actualNormalizedProjectiveColumnInIntegralClosure hm P w
         (Fin.succ (⟨0, hm⟩ : Fin m)))
       qRow τ w.differential.core.D.a
-      (w.differential.core.D.a + w.differential.core.D.e) := by
-    change @GroundPointChartOutput k B t inferInstance inferInstance
-      inferInstance coeff.toAlgebra inferInstance hBfinite htFinite.fintype
-      (actualSelectedNormalizationCenterPrime P w
-        (chartGenericPointSubalgebra_le_valuationSubring hm P w)) hPB'
-      (@actualOptionMap k _ t B _ coeff.toAlgebra s
-        (actualSelectedNormalizationRows P w index)) s
-      (actualNormalizedProjectiveColumnInIntegralClosure hm P w 0)
-      (actualNormalizedProjectiveColumnInIntegralClosure hm P w
-        (Fin.succ (⟨0, hm⟩ : Fin m)))
-      (actualSelectedNormalizationRows P w index) ((Fintype.equivFin t).symm)
-      w.differential.core.D.a
-      (w.differential.core.D.a + w.differential.core.D.e)
-    exact hGroundPoint
+      (w.differential.core.D.a + w.differential.core.D.e) := hGroundPoint
   exact ⟨{
-    t := t
-    htFinite := htFinite.fintype
-    coeff := coeff
-    hcoeff := rfl
-    hBfinite := hBfinite
-    hPB := hPB'
-    τ := τ
-    rows := rows
-    qRow := qRow
-    fOption := fOption
-    s := s
-    hsPB := hsPB
-    hnone := hnone
-    hsome := hsome
+    t := t, htFinite := htFinite.fintype
+    coeff := coeff, hcoeff := rfl, hBfinite := hBfinite
+    hPB := hPB', τ := τ, rows := rows, qRow := qRow
+    fOption := fOption, s := s, hsPB := hsPB
+    hnone := @actualOptionMap_none k _ t B _ coeff.toAlgebra s qRow
+    hsome := @actualOptionMap_some k _ t B _ coeff.toAlgebra s qRow
     fFin := fFin
     hrows := hrows
-    hqchartB := hqchartB
-    hzero := hzero
-    haxis := haxis
-    hOutput := hOutput
-  }⟩
+    hqchartB := (actualNormalizedProjectiveColumnInIntegralClosure_spec hm P w).1
+    hzero := rfl, haxis := rfl, hOutput := hOutput }⟩
 
 end Stafford38.Geometry.SameWitness
 
