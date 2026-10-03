@@ -19,8 +19,10 @@ and are committed/pushedWT1fedc6e, with only three permitted axioms. The
 allocation drained normally; see notes/T34-columns-linux-accepted-checks-20261003.md.
 Earlier conversion diagnostics are preserved in notes/T34-memory-block-20261003.md.
 The first full Closure build failed only missing namespace and canonical
-valuation local-ring scope. Sol2145331 repairs those scopes; its Closure-only
-module and unconditional literal consumer are the active check. T35 also passed independently on acluster21805719. Both cluster
+valuation local-ring scope. The first scope repair2145331 exposed the retained ambient action needed
+to type that local-ring proof. Candidate1b2ec5e copies the exact accepted
+CoordinatePresentation proof adapter, scoping that action only within its
+type and value; Closure-only3125610 is active with its unchanged consumer. T35 also passed independently on acluster21805719. Both cluster
 bootstraps passed exact pins and T32. Alternative geometry endpoint passed
 scluster3114679, committedWT71e966a; full alternative assembly/comparators
 remain required. Actual guard fixtures passed3112916. No guard or proof
@@ -60,7 +62,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
 | T34 | Columns, derivatives, numerator | done | 29 | notes/T34-columns-linux-accepted-checks-20261003.md | Actualmodules+unchangedtrust0consumer PASS3125101,3axioms,drained; committed/pushedWT1fedc6e. Positions9417 accepted earlier |
 | T35 | Étale structure as ring homs | done | 6 | notes/T35-linux-accepted-checks.md | Scluster3113113 fullmodule+unchangedtrust0consumerPASS329.04s,peak7406MiB,three permitted axioms,zero PSI/swap/children; frozenf30 WT4c1678e committed/pushed; fullroute pending |
-| T36 | Same-witness closure theorem | doing | 5 | notes/T36-chart-linux-accepted-checks-20261003.md | CharthelperPASS; first full build3125101 found missing namespace/retained IsLocalRing. Sol2145331 fixes scopes; Closure-only module+literalconsumer next |
+| T36 | Same-witness closure theorem | doing | 6 | notes/T36-chart-linux-accepted-checks-20261003.md | CharthelperPASS; first scope repair exposed retained ambient action. Exact accepted local-ring adapter1b2ec5e checks Closure-only3125610; consumer unchanged |
 | T40 | Import-cycle check | done | 2 | notes/T40-imports.md | Both current roots exist;272modules/582edges, no forbidden or missing sources. Rerun if imports change; proof acceptance separate |
 | T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |
 | T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |

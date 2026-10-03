@@ -20,7 +20,7 @@ marked proposals. Finish T34–T36 and T40–T51, then deliver matching formal a
 releases. Verify both Zenodo archives and cite them from the paper. This is
 one delivery, with proof and asset checks as its acceptance gates.
 
-Current checkpoint (3 October 2026): T22, T30, T31, T32, T33 and T35 passed Linux
+Current checkpoint (3 October 2026): T22, T30, T31, T32, T33, T34 and T35 passed Linux
 module and literal trust-zero consumer checks. T32 is committed and pushed at
 `da00639e7d2fd3cbb188f137d228c99d5cfcdbcd`; see its acceptance packet in
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
@@ -33,11 +33,14 @@ notes/T34-columns-linux-accepted-checks-20261003.md. Earlier memory diagnostics
 and the kernel-checked inferred-helper repair remain in
 notes/T34-memory-block-20261003.md. The first full Closure build found only
 a missing ground-point owner namespace and retained valuation local-ring
-instance. Sol candidate2145331 repairs those scopes without changing the
-statement or consumer; a Closure-only check follows using accepted caches.
+instance. The first scope repair2145331 exposed the retained ambient action
+needed to type that proof. Candidate1b2ec5e reuses the exact accepted
+CoordinatePresentation adapter, scoping that action within the local-ring
+proof type/value. Closure-only3125610 uses accepted caches and the unchanged
+statement and literal consumer.
 T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
-unchanged. No full Columns or Closure acceptance is claimed.
+unchanged. Full Closure acceptance remains pending.
 T35 passed independently on both clusters. The alternative geometry endpoint
 also passed its Linux module at WT71e966a; full solution assembly/comparisons
 remain required. No guard threshold is relaxed. Both isolated cluster
