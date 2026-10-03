@@ -16,6 +16,9 @@ python3 scripts/check-palomar-policy.py
 bash scripts/bootstrap-palomar-tools.sh
 bash tests/palomar-comparator-behavior.sh >"$log_dir/palomar-behavior.log" 2>&1
 
+python3 tests/dependency-guard-fixtures/test_behavior.py \
+  >"$log_dir/dependency-guard-behavior.log" 2>&1
+
 python3 tests/noncharacteristic_pages_oracle.py >"$log_dir/pages-oracle.log" 2>&1
 python3 tests/operator_projection_oracle.py >"$log_dir/pbw-oracle.log" 2>&1
 
@@ -39,6 +42,9 @@ lake build "${retained_modules[@]}" \
   Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter \
   Solution FixedSourceSolution CorollaryChallenge PaperPairChallenge \
   >"$log_dir/build.log" 2>&1
+
+python3 scripts/dependency-guard/run_guard.py \
+  >"$log_dir/terminal-dependency-guard.log" 2>&1
 
 lake env lean --trust=0 tests/PaperAdaptersConsumer.lean >"$log_dir/paper-adapters.log" 2>&1
 lake env lean --trust=0 tests/PaperPairConsumer.lean >"$log_dir/paper-pair.log" 2>&1
