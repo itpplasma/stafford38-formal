@@ -40,11 +40,13 @@ partial application3124499 passed all seven groups, including the complete
 call, in38.61s with2051276800-byte peak and no survivors. This establishes
 successful elaboration, not proof acceptance: kernel validation of the
 concrete declaration remains the isolated boundary. Sol now investigates
-the supplied dependent application: diagnostic3124794 failed even with an
-explicit generic result, while its separate concrete-result bridge passed
-with only the standard three axioms. Ordinary kernel-checked partial
-applications now locate the first costly group. No unchanged resubmission
-or cap increase.
+the explicit-result application check: diagnostic3124794 failed with an
+explicit generic result, while its separate concrete-result bridge passed.
+All seven inferred-type kernel declarations then passed3124922, including
+the complete application, with only the standard three axioms and a
+4938256384-byte peak. Sol prepares a private inferred-result helper and
+unchanged typed public theorem, followed by actual module/consumer checks.
+No unchanged resubmission or cap increase.
 No budget, mathematical field or terminal statement is changed.
 T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
