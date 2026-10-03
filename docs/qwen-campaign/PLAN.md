@@ -923,6 +923,8 @@ decides where the wrapper lives.
 
 ### T41 Original-prime wrapper
 
+Completed3October2026: actual8af wrapper module and unchanged literal trust-zero consumer passed3127001; WT7d645f2 committed/pushed. The drained allocation subsequently failed the shared adapter assembly, recorded separately. See notes/T41-original-prime-linux-accepted-checks-20261003.md.
+
 Owned: `SameWitness/OriginalPrimeAxis.lean`, `tests/SameWitness/OriginalPrimeAxisConsumer.lean`.
 
 Statement (freeze per 6.4; it is the statement of the existing terminal
@@ -963,6 +965,8 @@ Accept: builds; consumer with the literal statement prints only the three
 allowed axioms.
 
 ### T42 Rewire the terminal geometric theorem
+
+Active3October2026: sharedassembly3127001 reached the adapter and failed its missing explicit field argument atExclusion44:19. Sol repairs that source and rechecks the assembly only, reusing the passed wrapper cache. Final single verifier and four comparators remain required.
 
 Owned: `$WT/Stafford38/Geometry/GeneralAsymptoticConormal.lean` (**proof
 body of `coordinate_axis_mem_smooth_fibre_closure` and the import list
