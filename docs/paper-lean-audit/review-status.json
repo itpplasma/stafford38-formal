@@ -4,12 +4,12 @@
   "review_url": "https://itpplasma.github.io/stafford38-formal/",
   "paper_source": {
     "repo": "itpplasma/stafford38-formal",
-    "commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+    "commit": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
     "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-    "note": "Frozen P6/S6 review with formal v1.3.1 DOI citation and source links; mathematical author/proposal text unchanged.",
+    "note": "Final P7/S7 review cites both verified releases. Mathematical text and formal-source links unchanged since corrected companion P6/S6/R131.",
     "origin_repo": "itpplasma/stafford38-paper",
-    "origin_commit": "33138378368fdc9f7bcb50947ccc9889f40cac43",
-    "sha256": "a20a396280b867bfab034338fb8410b799d3f8ea9311864fa377ebce4fe84706"
+    "origin_commit": "760c68d2d79a8fd2c4b58f35f32dd90969591300",
+    "sha256": "f5699fde5961488d41fd631f67c55a4442b55001e2ba8776ebbf12bd568f5bb6"
   },
   "formal_source": {
     "repo": "itpplasma/stafford38-formal",
@@ -153,9 +153,11 @@
     },
     "supplementary": {
       "version": "v0.2.1",
-      "doi": null,
-      "archive_status": "publication and archive comparison pending",
-      "review_freeze": "P6/S6/R131; corrected review scope and current ledger"
+      "doi": "10.5281/zenodo.23127468",
+      "files": 29,
+      "archive_status": "byte-verified",
+      "release_commit": "6517aa94ac04dfc2cae3b8b89636d631da1cded6",
+      "review_freeze": "P6/S6/R131. Final live P7/S7 adds the verified companion citation only. Corrected statement/route classifications are unchanged."
     }
   },
   "owner_followups": [
@@ -173,7 +175,7 @@
     "submitted": "2026-10-03T20:15:50Z",
     "verification_run": "37150915082",
     "mechanical_verification": "passed at2026-10-03T20:55:53Z",
-    "automated_review": "pending at2026-10-03T20:57:39Z",
+    "automated_review": "Owner-reported review identified historical-report routing and stale replay status; v1.3.1 fixes both.",
     "registration": "pending",
     "next_submission": {
       "formal_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
@@ -194,5 +196,6 @@
       "archive_status": "byte-verified",
       "review_freeze": "P4/S4/R; current P5/S5 updates citations only, and live classification labels distinguish proposed corrections from historical originals."
     }
-  }
+  },
+  "frozen_supplementary_ledger": "docs/current-review.json at signed supplementaryv0.2.1; final handover/deposition receipt is external to the immutable18-member ESM bundle."
 }

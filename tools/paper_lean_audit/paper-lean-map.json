@@ -1,17 +1,17 @@
 {
  "schema": 1,
- "version": "2026-10-03-formal-v1.3.1-review",
+ "version": "2026-10-03-v1.3.1-v0.2.1-final-review",
  "title": "Stafford 3.8: paper ↔ Lean correspondence audit",
  "subtitle": "57 review cards in manuscript order. Formal v1.3.0 verification and all four local Palomar comparisons passed; Johanna’s and Max’s reviews remain pending.",
  "sources": {
   "paper": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+   "commit": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-   "note": "Frozen P6/S6 review with formal v1.3.1 DOI citation and source links; mathematical author/proposal text unchanged.",
+   "note": "Final P7/S7 review cites both verified releases. Mathematical text and formal-source links unchanged since corrected companion P6/S6/R131.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "33138378368fdc9f7bcb50947ccc9889f40cac43",
-   "sha256": "a20a396280b867bfab034338fb8410b799d3f8ea9311864fa377ebce4fe84706"
+   "origin_commit": "760c68d2d79a8fd2c4b58f35f32dd90969591300",
+   "sha256": "f5699fde5961488d41fd631f67c55a4442b55001e2ba8776ebbf12bd568f5bb6"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
@@ -6626,7 +6626,7 @@
  ],
  "overview": "Compare the complete preserved manuscript proof with the formal proof, including definitions, hypotheses and supporting lemmas. The main solution follows the manuscript construction; the earlier generic/Laurent argument is labeled as an alternative. Marked manuscript corrections remain proposals for Johanna’s review, and Max’s full correspondence review remains pending. Statement and route labels compare the proposed corrected review text; struck original errors stay in historical findings. Johanna has not yet accepted those corrections. “Similar” means the same mathematical idea with explicit formal steps; “proved in Lean only” identifies a cited theorem whose proof is supplied by Lean.",
  "how_to_use": "Start the guided review and follow all57 cards in paper order. Compare each paper claim with its Lean statement, definitions, hypotheses and supporting proof, including both shared challenges and solution variants. Record discrepancies in the review notes and export the findings JSON when finished.",
- "provenance": "Frozen P6/S6 review and signed formal v1.3.1, with pinned AlgebraicAnalysis0.3.3. All mathematical sources, challenges, solutions, dependency pins and proof verification programs match C2; descriptor provenance and package version changed. Complete C2 verifier, four Palomar comparisons and399 public owner/name checks passed at their recorded source. Both human reviews remain pending.",
+ "provenance": "Final P7/S7 review, signed formal v1.3.1 and corrected supplementary v0.2.1. Formal archive1172 files and companion archive29 files match signed tags. The companion freezes P6/S6/R131; P7 changes its citation only. All mathematical sources, challenges, solutions, dependency pins and verification programs match C2; descriptor provenance and package version changes are recorded separately. Complete C2 verifier, four comparisons and399 public-name checks passed. Johanna and Max human reviews remain pending.",
  "challenge_definitions": [
   {
    "repo": "formal",
@@ -6925,15 +6925,15 @@
  ],
  "global_issues": [],
  "candidate": {
-  "status": "Frozen P6/S6 and signed formal v1.3.1 sources; proof verification and all four comparisons passed on C2; human reviews pending",
+  "status": "Final P7/S7 and signed formal v1.3.1; both archives byte-verified; formal C2 checks passed; both human reviews pending",
   "manuscript": {
    "repo": "itpplasma/stafford38-formal",
-   "commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+   "commit": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
    "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-   "note": "Frozen P6/S6 review with formal v1.3.1 DOI citation and source links; mathematical author/proposal text unchanged.",
+   "note": "Final P7/S7 review cites both verified releases. Mathematical text and formal-source links unchanged since corrected companion P6/S6/R131.",
    "origin_repo": "itpplasma/stafford38-paper",
-   "origin_commit": "33138378368fdc9f7bcb50947ccc9889f40cac43",
-   "sha256": "a20a396280b867bfab034338fb8410b799d3f8ea9311864fa377ebce4fe84706"
+   "origin_commit": "760c68d2d79a8fd2c4b58f35f32dd90969591300",
+   "sha256": "f5699fde5961488d41fd631f67c55a4442b55001e2ba8776ebbf12bd568f5bb6"
   },
   "formal": {
    "repo": "itpplasma/stafford38-formal",
@@ -6944,11 +6944,11 @@
    "verified_proof_source": "12ae3cc49152672a48a96f13994314b65ae38197",
    "observed_source_manifest_scope": "654 protected proof/tool files; excludes documentation, citation/release metadata, review map, formalization.yaml provenance metadata and lakefile.toml package version"
   },
-  "note": "Formal v1.3.1 archive DOI10.5281/zenodo.23127367 is byte-verified (1172 files). Its historical receipt routing and later completed replay scopes are corrected. Prepare corrected supplementary v0.2.1 from these review inputs; no mathematical proof change or new proof replay claimed."
+  "note": "Formal v1.3.1 DOI10.5281/zenodo.23127367 and supplementary v0.2.1 DOI10.5281/zenodo.23127468 are byte-verified (1172 and29 files). The companion is immutable at P6/S6/R131 with corrected label scope and current ledger; final P7/S7 adds its verified citation only. Both human reviews remain pending."
  },
  "same_witness_declaration_map_candidate": {
   "status": "All public mapped owner/name queries passed in the399-check compiler receipt; private helpers remain source-only. Human proof-correspondence review pending.",
-  "paper_lines_observed_against": "a20a396280b867bfab034338fb8410b799d3f8ea9311864fa377ebce4fe84706",
+  "paper_lines_observed_against": "f5699fde5961488d41fd631f67c55a4442b55001e2ba8776ebbf12bd568f5bb6",
   "rows": [
    {
     "lean": "Stafford38.Geometry.SameWitness.retainedClosureChartData",

@@ -13,61 +13,15 @@ compute allocations on `acluster` and `scluster`. Do not run checks, sync
 candidates, bootstrap caches, or schedule campaign work on any Mac. Saved
 Mac branches and receipts remain historical provenance only.
 
-Immediate priority: finish the same-witness proof faithful to Johanna’s
-original manuscript argument, with necessary explicit corrections. Derive
-each input from the retained witness; preserve the visible author proof and
-marked proposals. Finish T34–T36 and T40–T51, then deliver matching formal and supplementary
-releases. Verify both Zenodo archives and cite them from the paper. This is
-one delivery, with proof and asset checks as its acceptance gates.
+Delivery checkpoint,3October2026: the faithful same-witness proof and all four solution assemblies are complete. The unchanged main/fixed-source challenges support the paper route and labeled generic/Laurent alternatives. Complete pinned Linux verification passed at C2 `12ae3cc49152672a48a96f13994314b65ae38197`: 4,475-job build, strict four-root dependency inspections,116 consumers with317 required reports,111 paper-linked names,37 endpoint reports, retained proof modules and all four local Palomar comparisons. The 399 public-name check passed separately. These completed checks are not repeated.
 
-Current delivery update: formal v1.3.1 corrects the owner-reported Palomar provenance finding and is byte-verified at DOI10.5281/zenodo.23127367 (1,172 files). Publish corrected supplementary v0.2.1 from R131/P6/S6, verify its archive, cite it in the paper, refresh matching review assets and send the authorized handovers. The owner resubmits formal R131 `f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff` with comparator.json. Source-scoped proof receipts remain unchanged.
+Formal v1.3.1 `f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff`, DOI 10.5281/zenodo.23127367, corrects historical report routing and the stale isolated-replay status. All 1,172 archived files match its signed tag. All 654 protected proof/tool files match C2; the descriptor and package-version metadata exceptions are explicit. The owner resubmits R131 with comparator.json; no new online registration is claimed.
 
-Historical proof checkpoint (3 October 2026): all manuscript-route modules, their
-literal trust-zero consumers, the shared terminal theorem and all four solution
-assemblies passed their bounded Linux checks. Accepted source is integrated and
-pushed in MAIN. The unchanged challenges are shared by the main paper route and
-the separately labeled generic/Laurent solution variant.
+Corrected supplementary v0.2.1 `6517aa94ac04dfc2cae3b8b89636d631da1cded6`, DOI 10.5281/zenodo.23127468, is published and all 29 archive files match. It includes the current review ledger, corrected statement/route labels, matching P6/S6/R131 PDFs and an18-member ESM archive. Its public rebuild passed, and its script now preserves the release version after rendering. Historical releases and receipts remain unchanged.
 
-The complete pinned Linux repository verifier passed at frozen public source
-`12ae3cc49152672a48a96f13994314b65ae38197` in scluster3131801: fresh
-4475-job build, strict four-root/main/alternative dependency inspections,
-116 consumer files with317 required reports,111 paper-linked names and37
-endpoint axiom reports. The3 retained proof modules passed in3136492.
-All four actual Palomar comparisons passed in3137241: main19:22:38Z,
-fixed-source19:39:44Z, alternative19:47:11Z and alternative fixed-source
-19:54:35Z. Final tracked-source manifests and all10 package pins match;
-the allocation drained guard0 with no resource stop, swap growth or children.
-The primary receipt is docs/verification-results.json; historical receipts
-and earlier scoped runner failures remain preserved. No successful verifier,
-library or comparison check will be repeated.
+Final paper P7 `760c68d2d79a8fd2c4b58f35f32dd90969591300` / public S7 `9f6ca3241edcf88da42a3a000f25514d105e2f30` cites both verified archives and is pushed to GitHub and Overleaf. P7 changes the companion citation only relative to its immutable P6/S6 freeze. The three matching P7 PDFs compiled with zero undefined diagnostics; exact input hashes matched. The 57-card live review compares proposed corrected text while preserving the original findings. Johanna reviews all marked proposals; Max reviews the entire proof correspondence, including definitions, hypotheses, supporting lemmas and both shared challenges/solution variants. Both human reviews remain pending.
 
-The bounded compiler-name acceptance passed all399 public owner/name checks
-in3139266 with guard0 and no surviving children. Formal signed v1.3.0 at
-`54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b` is published and its1,163 files
-match Zenodo DOI10.5281/zenodo.23126868. Supplementary v0.2.0 at
-`31aea05344c3fa35fb19a3ff35f7518d723e26ec` likewise matches all24 archive
-files, DOI10.5281/zenodo.23127103. Signed tags remain unchanged.
-
-Current review inputs are P5 `75f79630141f2bbeedc4e154288978020c7f2e83`
-and public S5 `973fa2831cf7520fc42566587e3946b4b7444093`. All three PDFs
-compiled with zero undefined diagnostics; the matching asset gate passed.
-The live review compares the proposed corrected text and preserves original
-findings for Johanna. Its labels have zero paper-wrong, unformalized-statement
-and different-route cards; genuine scope differences and human review remain
-visible in the current ledger. Publish requested supplementary v0.2.1 carrying
-these corrections, compare its archive, cite it and send the final emails.
-
-The owner submitted formal R to Palomar with comparator.json. Mechanical
-verification passed; automated review is pending. Keep formal R fixed.
-
-Efficiency update (owner steering, 3 October 2026): assign each proof check
-to one Linux slot. Use acluster and scluster for distinct tasks, never duplicate
-the same candidate for extra validation. Reuse the accepted tools and receipts;
-add no new infrastructure or optional checks. The release gate is one complete
-pinned Linux repository verifier and all four actual Palomar comparisons.
-T50/T51 and T73 share that final run; do not run the full verifier once on the
-candidate and again on a fresh release clone. Bounded module/consumer checks
-resolve proof errors before source freeze. Both releases, archive comparisons and P5/S5 citations are complete. The P5 PDF receipt and asset gate passed; the current ledger and review inputs are ready. Send the authorized review emails after final live-site confirmation. The owner's Palomar online submission remains separate.
+Remaining controller work: confirm final live-site inputs, send the two authorized short review emails and record delivery. Keep the plan and state current, commit explicit paths and push the final handover. Each proof check has one Linux owner; acluster and scluster handled distinct tasks. No duplicate full verifier, comparator, compiler-name, unchanged renderer test or57-card browser run is scheduled.
 
 Campaign folder (absolute): `/home/ert/proj/stafford38-formal/docs/qwen-campaign`
 
@@ -1278,25 +1232,26 @@ search in the T81 receipt; resolve these before accepting the interface.
 Max must be able to follow the complete correspondence without manually
 hunting across repositories, while retaining access to every supporting detail.
 
-### T82 Manuscript PDFs — current P5 complete
+### T82–T93 Review assets and releases — complete
 
-All three P5 PDFs compiled with zero undefined citations, references or control
-sequences. Exact compile-input hashes matched and the P5/S5 source/PDF asset
-gate passed. See `docs/paper-lean-audit/review-pdfs.json` and
-`notes/T82-P5-S5-PDF-build-20261003.tar.gz`. A subsequent citation update uses
-one matching PDF refresh; successful proof/comparator checks are not repeated.
+The three final P7 PDFs compiled successfully with zero undefined diagnostics;
+exact compile-input hashes matched. The current source/PDF receipt is
+`docs/paper-lean-audit/review-pdfs.json`; build packet
+`notes/T82-P7-S7-PDF-build-20261003.tar.gz`. The corrected companion freezes
+P6/S6/R131 with18 ZIP members,17 checksum entries and the current ledger.
+Its single public-pinned rebuild and release-version regression passed.
 
-### T83 Supplementary bundle — complete
+Formalv1.3.1 and supplementaryv0.2.1 are signed, published and byte-verified
+at DOIs10.5281/zenodo.23127367 and10.5281/zenodo.23127468. Final P7/S7
+cites both and is synchronized to GitHub and Overleaf. Exact archive receipts
+are `notes/T92-formal-v1.3.1-Zenodo-bytecheck-20261003.json` and
+`notes/T92-supplementary-v0.2.1-Zenodo-bytecheck-20261003.json`.
 
-Supplementary v0.2.0 was published at commit `31aea05344c3fa35fb19a3ff35f7518d723e26ec`, DOI `10.5281/zenodo.23127103`, frozen at paper P4/S4 and formal v1.3.0 R. Its 24 tagged files byte-match the downloaded Zenodo archive; see `docs/qwen-campaign/notes/T92-supplementary-v0.2.0-Zenodo-bytecheck-20261003.json`. Do not rebuild or alter this immutable release for P5; P5 is the current citation-updated human-review surface.
-
-### T84 OWNER GATE: current review handover
-
-The controller hands over P5 `75f79630141f2bbeedc4e154288978020c7f2e83` / public S5 `973fa2831cf7520fc42566587e3946b4b7444093` with the accepted P5 PDF receipt. Johanna reviews the visible author proof and marked proposals; Max reviews every current mathematical claim and printed proof, statement scope, definitions/hypotheses/supporting lemmas, and all four main/fixed-source/alternative Challenge–Solution comparisons using the guided review map. The package links the full verifier, comparator, declaration-audit and source/archive receipts. Formal R and supplementary R31 are published and byte-verified; the latter is frozen at P4/S4. Keep both human reviews pending until actual responses are recorded. The controller sends the already-authorized short English review emails and records delivery. The owner’s Palomar online registration remains pending.
-
-### T90–T93 Releases, archive checks and citations — complete
-
-Formal v1.3.0 R and supplementary v0.2.0 R31 are published. Their Zenodo archives were checked byte-for-byte against the signed tags: 1,163/1,163 formal files and 24/24 supplementary files, with no extras or mismatches. Verified DOIs are `10.5281/zenodo.23126868` and `10.5281/zenodo.23127103`; paper P5/S5 contains the final formal and supplementary citations. Receipts: `notes/T92-formal-v1.3.0-Zenodo-bytecheck-20261003.json` and `notes/T92-supplementary-v0.2.0-Zenodo-bytecheck-20261003.json`. The supplementary release remains immutable at P4/S4.
+T84 human review remains pending: Johanna accepts/revises marked manuscript
+proposals on Overleaf; Max uses the guided review and exports findings JSON.
+T74 online Palomar remains the owner’s action: resubmit formal R131 with
+comparator.json after the provenance fix. Existing online acceptance applies
+only to its named older source; none is claimed for R131 yet.
 
 ### T94 Final review emails — controller action pending
 

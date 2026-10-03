@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "paper_commit": "33138378368fdc9f7bcb50947ccc9889f40cac43",
+  "paper_commit": "760c68d2d79a8fd2c4b58f35f32dd90969591300",
   "editing_authority": "Overleaf / itpplasma/stafford38-paper",
   "paper_source": {
     "repo": "itpplasma/stafford38-formal",
-    "commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+    "commit": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
     "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
-    "sha256": "a20a396280b867bfab034338fb8410b799d3f8ea9311864fa377ebce4fe84706"
+    "sha256": "f5699fde5961488d41fd631f67c55a4442b55001e2ba8776ebbf12bd568f5bb6"
   },
   "formal_source": {
     "repo": "itpplasma/stafford38-formal",
@@ -25,20 +25,20 @@
     "LICENSE.txt"
   ],
   "source_hashes": {
-    "human_readable_main.tex": "a20a396280b867bfab034338fb8410b799d3f8ea9311864fa377ebce4fe84706",
+    "human_readable_main.tex": "f5699fde5961488d41fd631f67c55a4442b55001e2ba8776ebbf12bd568f5bb6",
     "main.tex": "b55ef1f254b7611b37b4bdf7633991400cdb4512bd03e0532d1f90f561cf7cbe",
     "ai_review.tex": "fb502582c8e0f88544098d1aba063ea68e0674545dfe723778dcdbbede891edd",
     "lean_proof_details.tex": "fb8b61d1570ade614cdb451f1a93544c09f1d2abeac6ba7a254b8d7bf5cc982a",
-    "references.bib": "15907b94c6b3ba3fbd5534ccea1a47fd2de24c6d2f7bf7acbbbf51440a8af843",
+    "references.bib": "af3b852968871849e19d936eb044ab6aa4136e6b536017a0ea3763e791565c5a",
     "LICENSE.txt": "98b6fde2693d4044dce4a071640e90bd8d250dd789d9033dbd5b77c79f389de4"
   },
   "pdfs": {
-    "human_readable_main.pdf": "5e009b6ead72e38feb6e5edeb3138a5a2454c1376eb4f11114e4b0c02b971860",
-    "lean_proof_details.pdf": "e853ba7a37ee3fa5d13acb606c3562c187d71786ba272c5cd2bde6097fbc2c2d"
+    "human_readable_main.pdf": "7f3b5f3b2c498a1452a19cc2f4877638a48598a07f482daf9a166b44e764a32c",
+    "lean_proof_details.pdf": "a043efcace06d6fee04f2cbc205a93a53f0999c01cb9e45e4399a435215bd8de"
   },
-  "main_pdf_sha256": "91cc2a9906f4ab9268e7e2dd6a23f14cc5c8c58d41f131ef62eb22ffe5b55d72",
-  "human_acceptance": "pending; the visible author proof is preserved. P6 changes only the formal v1.3.1 citation, its bibliography entry, and the Lean repository pin in the AI-review file; mathematical review text is unchanged from P5. Proposed corrections remain review material for Johanna, and Max’s whole-paper correspondence review remains pending.",
-  "verification": "All three actual P6 latexmk compilations exited 0 with zero undefined citations, references, or control sequences; exact five TeX/Bib compilation inputs match before and after. The README build-instructions hash is separate, and LICENSE.txt is source-packet licensing material copied after compilation. The selected formal source is signed release R v1.3.1; this receipt records PDF build evidence.",
+  "main_pdf_sha256": "2bb24de576146c12967c8a2ad482fd454b6823bc30bebb62e5fa762bb61eee92",
+  "human_acceptance": "pending; visible author proof and mathematical review text are preserved. P7 changes only the v0.2.1 supplementary DOI citation at line 204 and its bibliography entry compared with P6. Proposed corrections remain subject to Johanna review, and Max’s whole-paper correspondence review remains pending.",
+  "verification": "All three actual P7 latexmk compilations exited 0 with zero undefined citations, references, or control sequences; exact five TeX/Bib compilation inputs match before and after. The README build-instructions hash is separate, and LICENSE.txt is source-packet licensing material copied after compilation. The paper cites signed formal release R v1.3.1 and supplementary v0.2.1; the latter remains frozen at P6/S6/R131, not P7.",
   "build_results": {
     "human_readable_main": {
       "exit": 0,
@@ -46,10 +46,10 @@
       "undefined_citations": 0,
       "undefined_references": 0,
       "undefined_control_sequences": 0,
-      "bytes": 833502,
-      "pdf_sha256": "5e009b6ead72e38feb6e5edeb3138a5a2454c1376eb4f11114e4b0c02b971860",
-      "tex_log_sha256": "3b9f20e38e28fcca93673096042fab4b772554d459325e2f35fb6899ba13ff2b",
-      "build_log_sha256": "ad250baee620589d51bce8e0c4ea2137fd993545cf766e41ecef52efeed91050"
+      "bytes": 833508,
+      "pdf_sha256": "7f3b5f3b2c498a1452a19cc2f4877638a48598a07f482daf9a166b44e764a32c",
+      "tex_log_sha256": "7b80a336d97728901e45467900d3ebdf4b88d99db14a9beef26bd1ef49a48b6e",
+      "build_log_sha256": "9c31c7527de966538328e03946c3f4af7fa41d684540d4609d21e5a0e082d546"
     },
     "lean_proof_details": {
       "exit": 0,
@@ -58,8 +58,8 @@
       "undefined_references": 0,
       "undefined_control_sequences": 0,
       "bytes": 406579,
-      "pdf_sha256": "e853ba7a37ee3fa5d13acb606c3562c187d71786ba272c5cd2bde6097fbc2c2d",
-      "tex_log_sha256": "3c85db040ff9e5a3c021f9330636de690f4e6a3ce0eec903d5e7bad21f412d16",
+      "pdf_sha256": "a043efcace06d6fee04f2cbc205a93a53f0999c01cb9e45e4399a435215bd8de",
+      "tex_log_sha256": "b20b8f35ff288638cf4178295c837e338588824b22dbe30c95582ce2d6e19c43",
       "build_log_sha256": "833d8b673236c2ce71081667f53bb0a76553bbcfe73dd49450748b148996cc2a"
     },
     "main": {
@@ -68,13 +68,13 @@
       "undefined_citations": 0,
       "undefined_references": 0,
       "undefined_control_sequences": 0,
-      "bytes": 833502,
-      "pdf_sha256": "91cc2a9906f4ab9268e7e2dd6a23f14cc5c8c58d41f131ef62eb22ffe5b55d72",
-      "tex_log_sha256": "143c43f6be6de425a9ea3a1d1c150c1ab0a6be0d3b702066788d0dab8c695000",
-      "build_log_sha256": "14f6c72dccd62990feed74fe23524f3e828451308043f22e733104cf69525ff5"
+      "bytes": 833508,
+      "pdf_sha256": "2bb24de576146c12967c8a2ad482fd454b6823bc30bebb62e5fa762bb61eee92",
+      "tex_log_sha256": "93b40a91058916c84fec13e2bb16475fd4734217e59ee0dc259e8ca32a09b22b",
+      "build_log_sha256": "12c067fb17207f3068d974829ed1897ef08fde483ccc837844fab7241aa91f6a"
     }
   },
-  "historical_receipt": "T82-P5-S5-PDF-build-20261003.tar.gz",
+  "historical_receipt": "T82-P6-S6-PDF-build-20261003.tar.gz",
   "compilation_inputs": [
     "human_readable_main.tex",
     "main.tex",
@@ -85,16 +85,24 @@
   "licensing_file_note": "LICENSE.txt is source-packet licensing material copied after compilation; it is not a TeX compilation input.",
   "build_instructions": {
     "repo": "itpplasma/stafford38-paper",
-    "commit": "33138378368fdc9f7bcb50947ccc9889f40cac43",
+    "commit": "760c68d2d79a8fd2c4b58f35f32dd90969591300",
     "file": "README.md",
-    "sha256": "56aab392318eb38eec6dc5de98d2eeda28c2e03c8a6efc5c2590e7311ac4cb58"
+    "sha256": "315dfc841e67aad1327433b7dd2fe8c98331e2c4f1d0a4c7b8dccd12486de5eb"
   },
-  "build_packet": "T82-P6-S6-PDF-build-20261003.tar.gz",
+  "build_packet": "T82-P7-S7-PDF-build-20261003.tar.gz",
   "formal_release": {
     "version": "v1.3.1",
     "doi": "10.5281/zenodo.23127367",
     "source_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
     "archive_file_count": 1172,
     "archive_mismatches": 0
+  },
+  "supplementary_release": {
+    "version": "v0.2.1",
+    "doi": "10.5281/zenodo.23127468",
+    "source_commit": "6517aa94ac04dfc2cae3b8b89636d631da1cded6",
+    "archive_file_count": 29,
+    "archive_mismatches": 0,
+    "freeze": "P6/S6/R131; P7 updates the citation to the published supplement and does not change the supplementary bundle."
   }
 }
