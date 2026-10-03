@@ -1,5 +1,8 @@
-import Stafford38.ChallengeDefinitions
-import proofs.stafford38_reduction
+module
+public import Stafford38.ChallengeDefinitions
+public import proofs.stafford38_reduction
+
+@[expose] public section
 
 universe u
 

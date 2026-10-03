@@ -1,4 +1,7 @@
-import CorollaryChallenge
+module
+public import CorollaryChallenge
+
+@[expose] public section
 
 namespace Stafford38CorollaryChallengeOwnerConsumer
 

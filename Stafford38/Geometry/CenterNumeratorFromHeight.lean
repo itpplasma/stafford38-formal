@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ActualCenterParameterTransport
-import Stafford38.Geometry.ActualDivisorUniformizerNumerator
-import Mathlib.RingTheory.LocalRing.RingHom.Basic
+module
+public import Stafford38.Geometry.ActualCenterParameterTransport
+public import Stafford38.Geometry.ActualDivisorUniformizerNumerator
+public import Mathlib.RingTheory.LocalRing.RingHom.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

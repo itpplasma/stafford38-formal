@@ -1,7 +1,10 @@
-import Stafford38.Geometry.LocalizationInStagesAtPrime
-import Mathlib.RingTheory.Localization.FractionRing
-import Mathlib.RingTheory.Ideal.Prime
-import Mathlib.RingTheory.Polynomial.Basic
+module
+public import Stafford38.Geometry.LocalizationInStagesAtPrime
+public import Mathlib.RingTheory.Localization.FractionRing
+public import Mathlib.RingTheory.Ideal.Prime
+public import Mathlib.RingTheory.Polynomial.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,8 +1,11 @@
-import Mathlib.RingTheory.Unramified.LocalRing
-import Mathlib.RingTheory.Localization.AtPrime.Basic
-import Mathlib.RingTheory.Ideal.Quotient.Operations
-import Stafford38.Geometry.FormallyEtaleCompletion
-import Stafford38.Geometry.FormallyEtaleCompletionEquivalence
+module
+public import Mathlib.RingTheory.Unramified.LocalRing
+public import Mathlib.RingTheory.Localization.AtPrime.Basic
+public import Mathlib.RingTheory.Ideal.Quotient.Operations
+public import Stafford38.Geometry.FormallyEtaleCompletion
+public import Stafford38.Geometry.FormallyEtaleCompletionEquivalence
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1000000
@@ -75,7 +78,7 @@ noncomputable def quotientAtPrimeAlgEquiv
       (H := by rw [hUnder]) hMaxUnder
   exact AlgEquiv.ofBijective g ⟨hinj, hsurj⟩
 
-private theorem quotientAtPrimeAlgEquiv_mk
+theorem quotientAtPrimeAlgEquiv_mk
     {R B : Type*} [CommRing R] [CommRing B] [Algebra R B]
     (p : Ideal B) [p.IsMaximal] (b : B) :
     quotientAtPrimeAlgEquiv (R := R) (B := B) p (Ideal.Quotient.mk p b) =
@@ -92,7 +95,7 @@ private theorem quotientAtPrimeAlgEquiv_mk
     Ideal.Quotient.mkₐ R J (f b)
   exact Ideal.quotient_map_mkₐ J f hle
 
-private theorem reverseStage_apply_mk
+theorem reverseStage_apply_mk
     {R T : Type*} [CommRing R] [CommRing T] [Algebra R T]
     (I : Ideal R) (J : Ideal T) (hJ : J = I.map (algebraMap R T))
     (ψ : T →ₐ[R] AdicCompletion I R) (b : T) :

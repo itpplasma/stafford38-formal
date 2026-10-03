@@ -1,7 +1,10 @@
-import Stafford38.Characteristic.CanonicalAxisAvoidanceConsumer
-import Stafford38.Characteristic.BaseZeroSection
-import Stafford38.Characteristic.ReducedSupportIdeal
-import Mathlib.RingTheory.Nullstellensatz
+module
+public import Stafford38.Characteristic.CanonicalAxisAvoidanceConsumer
+public import Stafford38.Characteristic.BaseZeroSection
+public import Stafford38.Characteristic.ReducedSupportIdeal
+public import Mathlib.RingTheory.Nullstellensatz
+
+@[expose] public section
 
 /-!
 # Affine base points for the visible-frame producer

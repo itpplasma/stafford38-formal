@@ -1,6 +1,9 @@
-import AlgebraicAnalysis.Polynomial.DistinguishedVariable
-import Stafford38.Characteristic.TransposedFilteredModuleSupport
-import Stafford38.Geometry.ConormalAxisContradiction
+module
+public import AlgebraicAnalysis.Polynomial.DistinguishedVariable
+public import Stafford38.Characteristic.TransposedFilteredModuleSupport
+public import Stafford38.Geometry.ConormalAxisContradiction
+
+@[expose] public section
 
 /-!
 # Scheme-theoretic exclusion of the punctured normal fibre axis

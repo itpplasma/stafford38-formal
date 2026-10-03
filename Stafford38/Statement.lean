@@ -1,6 +1,9 @@
-import proofs.stafford38_reduction
-import proofs.weyl_symplectic
-import Stafford38.ChallengeDefinitions
+module
+public import proofs.stafford38_reduction
+public import proofs.weyl_symplectic
+public import Stafford38.ChallengeDefinitions
+
+@[expose] public section
 
 /-!
 # The universal Stafford 3.8 target

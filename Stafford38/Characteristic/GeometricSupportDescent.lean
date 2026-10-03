@@ -1,5 +1,10 @@
-import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
-import Stafford38.Geometry.ScalarExtensionPoints
+module
+public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
+public import Mathlib.RingTheory.MvPolynomial
+public import Mathlib.RingTheory.Spectrum.Prime.RingHom
+public import Stafford38.Geometry.ScalarExtensionPoints
+
+@[expose] public section
 
 /-!
 # Geometric points and support after algebraic closure

@@ -1,6 +1,10 @@
-import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction
-import Stafford38.Geometry.GenericPointKaehlerConormal
-import Stafford38.Geometry.RetainedPlaceConormalTransport
+module
+public import Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian
+public import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction
+public import Stafford38.Geometry.GenericPointKaehlerConormal
+public import Stafford38.Geometry.RetainedPlaceConormalTransport
+
+@[expose] public section
 
 /-!
 # Transfer from a visible divisor frame to a finite-gradient certificate

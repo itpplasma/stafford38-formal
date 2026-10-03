@@ -1,5 +1,8 @@
-import Stafford38.NoncharacteristicHyperplane
-import Stafford38.Characteristic.CanonicalTangentialRingEquivalence
+module
+public import Stafford38.NoncharacteristicHyperplane
+public import Stafford38.Characteristic.CanonicalTangentialRingEquivalence
+
+@[expose] public section
 
 /-!
 # Finiteness of the principal-symbol hypersurface on the hyperplane

@@ -1,4 +1,7 @@
-import Stafford38.Geometry.PrescribedGroundPointPowerSeriesMap
+module
+public import Stafford38.Geometry.PrescribedGroundPointPowerSeriesMap
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1000000

@@ -1,5 +1,8 @@
-import Mathlib.Algebra.MvPolynomial.PDeriv
-import Stafford38.ChallengeDefinitions
+module
+public import Mathlib.Algebra.MvPolynomial.PDeriv
+public import Stafford38.ChallengeDefinitions
+
+@[expose] public section
 
 /-!
 # Polynomial phase space for characteristic support

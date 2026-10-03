@@ -1,8 +1,11 @@
-import Stafford38.Characteristic.SpecializedNoncharacteristicEquality
-import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction
-import Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction
-import Stafford38.Weyl.FilteredScalarLifting
-import Stafford38.FixedSourceAssembly
+module
+public import Stafford38.Characteristic.SpecializedNoncharacteristicEquality
+public import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProduction
+public import Stafford38.Geometry.CanonicalVisibleDivisorFrameProduction
+public import Stafford38.Weyl.FilteredScalarLifting
+public import Stafford38.FixedSourceAssembly
+
+@[expose] public section
 
 /-!
 # Typed assembly interfaces for the paper proof

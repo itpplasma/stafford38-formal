@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.DifferentialOperators.LocalizedPolynomialCommutant
+module
+public import AlgebraicAnalysis.DifferentialOperators.LocalizedPolynomialCommutant
+
+@[expose] public section
 
 /-! Compatibility export for the reusable localized polynomial commutant. -/
 namespace Stafford38.LocalizedPolynomialCommutant

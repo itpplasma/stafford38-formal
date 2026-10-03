@@ -1,4 +1,7 @@
-import AlgebraicAnalysis.DifferentialOperators.LocalizedPolynomialDerivations
+module
+public import AlgebraicAnalysis.DifferentialOperators.LocalizedPolynomialDerivations
+
+@[expose] public section
 
 /-! Compatibility exports for reusable localized polynomial derivations. -/
 namespace Stafford38.LocalizedPolynomialDerivations

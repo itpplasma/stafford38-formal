@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.ConcreteEquation33SourceMatrices
-import Stafford38.Characteristic.LocalizedTwoBlockModuleExactness
-import Stafford38.Characteristic.LocalizedSpecializationActionCompatibility
+module
+public import Stafford38.Characteristic.ConcreteEquation33SourceMatrices
+public import Stafford38.Characteristic.LocalizedTwoBlockModuleExactness
+public import Stafford38.Characteristic.LocalizedSpecializationActionCompatibility
+
+@[expose] public section
 
 /-!
 # Concrete lifted source-basis action equations

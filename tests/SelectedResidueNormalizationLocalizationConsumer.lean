@@ -1,4 +1,7 @@
-import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+module
+public import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+
+@[expose] public section
 #print axioms Stafford38.Geometry.SelectedResidueCoefficientLocalization.exists_localization_map_of_residue_injective
 #print axioms Stafford38.Geometry.SelectedResidueCoefficientLocalization.exists_chart_normalization_localization_map
 #check Stafford38.Geometry.SelectedResidueCoefficientLocalization.exists_chart_normalization_localization_map

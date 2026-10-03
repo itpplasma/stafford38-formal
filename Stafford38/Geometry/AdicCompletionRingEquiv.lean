@@ -1,7 +1,10 @@
-import Mathlib.RingTheory.AdicCompletion.Algebra
-import Mathlib.RingTheory.AdicCompletion.Completeness
-import Mathlib.RingTheory.Ideal.Quotient.Operations
-import Stafford38.Geometry.AdicCompletionMap
+module
+public import Mathlib.RingTheory.AdicCompletion.Algebra
+public import Mathlib.RingTheory.AdicCompletion.Completeness
+public import Mathlib.RingTheory.Ideal.Quotient.Operations
+public import Stafford38.Geometry.AdicCompletionMap
+
+@[expose] public section
 
 set_option autoImplicit false
 

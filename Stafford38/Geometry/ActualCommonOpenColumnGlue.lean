@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ActualCommonOpenCompletionDerivation
-import Stafford38.Geometry.A0ChartGeneratorCoordinates
-import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+module
+public import Stafford38.Geometry.ActualCommonOpenCompletionDerivation
+public import Stafford38.Geometry.A0ChartGeneratorCoordinates
+public import Stafford38.Geometry.SelectedResidueNormalizationLocalization
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

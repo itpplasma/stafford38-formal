@@ -1,4 +1,7 @@
-import Mathlib.RingTheory.Ideal.Over
+module
+public import Mathlib.RingTheory.Ideal.Over
+
+@[expose] public section
 
 set_option autoImplicit false
 

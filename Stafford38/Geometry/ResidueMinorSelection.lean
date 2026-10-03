@@ -1,6 +1,9 @@
-import Stafford38.Geometry.SplitTangentMatrix
-import Mathlib.LinearAlgebra.Matrix.Rank
-import Mathlib.LinearAlgebra.Basis.VectorSpace
+module
+public import Stafford38.Geometry.SplitTangentMatrix
+public import Mathlib.LinearAlgebra.Matrix.Rank
+public import Mathlib.LinearAlgebra.Basis.VectorSpace
+
+@[expose] public section
 
 /-!
 # Selecting a nonsingular residue minor

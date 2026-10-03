@@ -1,9 +1,12 @@
-import Stafford38.Characteristic.CanonicalKoszulContradiction
-import Stafford38.Characteristic.CanonicalGabberInvolutivityInterface
-import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
-import Stafford38.PaperInputs
-import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
-import Stafford38.Weyl.PaperQuotientDescent
+module
+public import Stafford38.Characteristic.CanonicalKoszulContradiction
+public import Stafford38.Characteristic.CanonicalGabberInvolutivityInterface
+public import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
+public import Stafford38.PaperInputs
+public import Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter
+public import Stafford38.Weyl.PaperQuotientDescent
+
+@[expose] public section
 
 /-! The paper's three assembly interfaces and both universal statements are
 proved from Lean and Mathlib without project or literature axioms. The final

@@ -1,5 +1,8 @@
-import Stafford38.Geometry.PrescribedAffineResidueCompletion
-import Stafford38.Geometry.SmoothLocalParameterCompletion
+module
+public import Stafford38.Geometry.PrescribedAffineResidueCompletion
+public import Stafford38.Geometry.SmoothLocalParameterCompletion
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1000000

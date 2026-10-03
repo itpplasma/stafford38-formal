@@ -1,8 +1,11 @@
-import Stafford38.Characteristic.AssociatedGradedFinite
-import Stafford38.Characteristic.CanonicalUnitPreimageFromInitialTop
-import Stafford38.Characteristic.FilteredQuotientReesAction
-import Stafford38.Characteristic.HyperplaneRestriction
-import Stafford38.Weyl.QuotientTransport
+module
+public import Stafford38.Characteristic.AssociatedGradedFinite
+public import Stafford38.Characteristic.CanonicalUnitPreimageFromInitialTop
+public import Stafford38.Characteristic.FilteredQuotientReesAction
+public import Stafford38.Characteristic.HyperplaneRestriction
+public import Stafford38.Weyl.QuotientTransport
+
+@[expose] public section
 
 /-!
 # Rees--Koszul criteria for canonical axis cancellation
@@ -37,12 +40,12 @@ universe u
 
 variable (k : Type u) [Field k] [Algebra ℚ k]
 
-private abbrev CanonicalIdeal (n N : ℕ)
+abbrev CanonicalIdeal (n N : ℕ)
     (d : PresentedWeyl k (n + 1)) :=
   canonicalRightIdeal (presentedCoordinate k n) d N
 
 /-- The distinguished base-coordinate symbol. -/
-private abbrev AxisCoordinate (n : ℕ) : SymbolRing k (n + 1) :=
+abbrev AxisCoordinate (n : ℕ) : SymbolRing k (n + 1) :=
   MvPolynomial.X (.inl (0 : Fin (n + 1)))
 
 /-- Zeroth Koszul homology of the distinguished coordinate on the actual

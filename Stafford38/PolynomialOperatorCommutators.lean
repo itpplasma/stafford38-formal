@@ -1,4 +1,7 @@
-import Stafford38.PolynomialDifferentialOperators
+module
+public import Stafford38.PolynomialDifferentialOperators
+
+@[expose] public section
 
 /-! Coordinate commutators on the intrinsic polynomial endomorphism ring. -/
 

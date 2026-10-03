@@ -1,9 +1,12 @@
-import Stafford38.Geometry.KaehlerDVRVisibility
-import Stafford38.Geometry.DivisorTangentLattice
-import Stafford38.Geometry.KaehlerSpanSeparableAdjoin
-import Stafford38.Geometry.GenericPointKaehlerConormal
-import Mathlib.LinearAlgebra.Basis.VectorSpace
-import Mathlib.LinearAlgebra.LinearIndependent.BaseChange
+module
+public import Stafford38.Geometry.KaehlerDVRVisibility
+public import Stafford38.Geometry.DivisorTangentLattice
+public import Stafford38.Geometry.KaehlerSpanSeparableAdjoin
+public import Stafford38.Geometry.GenericPointKaehlerConormal
+public import Mathlib.LinearAlgebra.Basis.VectorSpace
+public import Mathlib.LinearAlgebra.LinearIndependent.BaseChange
+
+@[expose] public section
 
 /-!
 # Generic Kähler rank at a retained divisorial place

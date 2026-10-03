@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ActualSameWitnessDivisorNumerator
+module
+public import Stafford38.Geometry.ActualSameWitnessDivisorNumerator
+
+@[expose] public section
 
 #check Stafford38.Geometry.ActualSameWitnessDivisorNumerator.actualParameterOutput
 #check Stafford38.Geometry.ActualSameWitnessDivisorNumerator.exists_actual_parameter_with_retained_orders

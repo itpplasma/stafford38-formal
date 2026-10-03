@@ -1,7 +1,10 @@
-import Stafford38.Geometry.LaurentConormalDirection
-import Stafford38.Geometry.ProjectiveDivisorOrderGap
-import Stafford38.Geometry.ProjectiveEquationFormalChart
-import Stafford38.Geometry.ProjectiveTangentInclusion
+module
+public import Stafford38.Geometry.LaurentConormalDirection
+public import Stafford38.Geometry.ProjectiveDivisorOrderGap
+public import Stafford38.Geometry.ProjectiveEquationFormalChart
+public import Stafford38.Geometry.ProjectiveTangentInclusion
+
+@[expose] public section
 
 /-!
 # Laurent conormal specialization over a residue-field extension

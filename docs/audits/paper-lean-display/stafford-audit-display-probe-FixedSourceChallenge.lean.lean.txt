@@ -1,0 +1,6 @@
+import FixedSourceChallenge
+
+#check Stafford38FixedSourceChallenge.UniversalFixedSourceStatement
+#print axioms Stafford38FixedSourceChallenge.UniversalFixedSourceStatement
+#check Stafford38FixedSourceChallenge.bernsteinDegree
+#print axioms Stafford38FixedSourceChallenge.bernsteinDegree

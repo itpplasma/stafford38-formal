@@ -1,3 +1,6 @@
-import Stafford38.Geometry.A0ChartFormalEtale
+module
+public import Stafford38.Geometry.A0ChartFormalEtale
+
+@[expose] public section
 #print axioms Stafford38.Geometry.A0ChartFormalEtale.formallyEtale_originalAffineChartToCommonOpen
 #check Stafford38.Geometry.A0ChartFormalEtale.originalAffineChartToCommonOpen

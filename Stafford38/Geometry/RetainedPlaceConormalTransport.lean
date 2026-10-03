@@ -1,6 +1,9 @@
-import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof
-import Stafford38.Geometry.DivisorTangentLattice
-import Stafford38.Geometry.RetainedGroundMapIdentification
+module
+public import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof
+public import Stafford38.Geometry.DivisorTangentLattice
+public import Stafford38.Geometry.RetainedGroundMapIdentification
+
+@[expose] public section
 
 /-!
 # Transport of a divisor-tangent conormal row to the completed chart

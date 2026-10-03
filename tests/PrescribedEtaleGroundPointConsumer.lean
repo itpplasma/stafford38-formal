@@ -1,4 +1,7 @@
-import Stafford38.Geometry.PrescribedEtaleGroundPoint
+module
+public import Stafford38.Geometry.PrescribedEtaleGroundPoint
+
+@[expose] public section
 
 set_option autoImplicit false
 

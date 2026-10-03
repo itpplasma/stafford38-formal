@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.CanonicalOldTangentialFiniteness
-import Stafford38.Characteristic.CanonicalNormalAxisSupport
+module
+public import Stafford38.Characteristic.CanonicalOldTangentialFiniteness
+public import Stafford38.Characteristic.CanonicalNormalAxisSupport
+
+@[expose] public section
 
 /-!
 # The distinguished coordinate hyperplane is noncharacteristic

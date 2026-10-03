@@ -1,9 +1,12 @@
-import AlgebraicAnalysis.Module.BaseLocalizedKoszulPositivity
-import Stafford38.Characteristic.BaseLocalizationModuleComparison
-import Stafford38.Characteristic.LocalizedKernelCokernelEquivalences
-import Stafford38.Characteristic.MinimalSupportKernelCokernelLengths
-import Stafford38.Characteristic.LocalizedMinimalSupportAvoidance
-import Stafford38.Characteristic.PrincipalKoszulMinimalSupportPositivity
+module
+public import AlgebraicAnalysis.Module.BaseLocalizedKoszulPositivity
+public import Stafford38.Characteristic.BaseLocalizationModuleComparison
+public import Stafford38.Characteristic.LocalizedKernelCokernelEquivalences
+public import Stafford38.Characteristic.MinimalSupportKernelCokernelLengths
+public import Stafford38.Characteristic.LocalizedMinimalSupportAvoidance
+public import Stafford38.Characteristic.PrincipalKoszulMinimalSupportPositivity
+
+@[expose] public section
 
 /- Compatibility exports for the neutral AlgebraicAnalysis API. -/
 

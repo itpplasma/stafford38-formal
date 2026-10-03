@@ -1,5 +1,8 @@
-import Mathlib.RingTheory.Nullstellensatz
-import Stafford38.Geometry.ScalarExtensionPoints
+module
+public import Mathlib.RingTheory.Nullstellensatz
+public import Stafford38.Geometry.ScalarExtensionPoints
+
+@[expose] public section
 
 /-!
 # Scalar extension of equation-conormal vanishing

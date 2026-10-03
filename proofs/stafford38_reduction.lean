@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Commutator
-import Stafford38.ChallengeDefinitions
+module
+public import AlgebraicAnalysis.Commutator
+public import Stafford38.ChallengeDefinitions
+
+@[expose] public section
 
 /-!
 # Transport of Stafford certificates

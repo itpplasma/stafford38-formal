@@ -1,7 +1,10 @@
-import Stafford38.Quotient.EulerSurjectivity
-import Stafford38.Weyl.EulerRemainder
-import Stafford38.Weyl.IteratedEquivalence
-import Stafford38.Weyl.PaperEulerGrading
+module
+public import Stafford38.Quotient.EulerSurjectivity
+public import Stafford38.Weyl.EulerRemainder
+public import Stafford38.Weyl.IteratedEquivalence
+public import Stafford38.Weyl.PaperEulerGrading
+
+@[expose] public section
 
 /-!
 # Transport of the canonical right quotient

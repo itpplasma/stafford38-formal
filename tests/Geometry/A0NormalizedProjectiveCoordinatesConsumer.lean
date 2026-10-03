@@ -1,4 +1,7 @@
-import Stafford38.Geometry.A0NormalizedProjectiveCoordinates
+module
+public import Stafford38.Geometry.A0NormalizedProjectiveCoordinates
+
+@[expose] public section
 
 set_option autoImplicit false
 

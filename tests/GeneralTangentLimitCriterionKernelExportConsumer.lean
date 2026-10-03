@@ -1,4 +1,7 @@
-import Stafford38.Geometry.GeneralTangentLimitCriterion
+module
+public import Stafford38.Geometry.GeneralTangentLimitCriterion
+
+@[expose] public section
 
 #print axioms Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction_with_fibre_closure
 #print axioms Stafford38.Geometry.GeneralTangentLimitCriterion.exists_axis_laurent_smooth_conormal_direction

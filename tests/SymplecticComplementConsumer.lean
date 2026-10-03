@@ -1,4 +1,7 @@
-import Stafford38.LinearAlgebra.SymplecticComplement
+module
+public import Stafford38.LinearAlgebra.SymplecticComplement
+
+@[expose] public section
 
 open LinearMap (BilinForm)
 open Module

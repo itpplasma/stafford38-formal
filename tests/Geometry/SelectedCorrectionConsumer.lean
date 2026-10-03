@@ -1,5 +1,8 @@
-import Stafford38.Geometry.FormalDivisorAxisLift
-import Mathlib.Tactic.NormNum
+module
+public import Stafford38.Geometry.FormalDivisorAxisLift
+public import Mathlib.Tactic.NormNum
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -12,7 +15,7 @@ open Stafford38.GeometryResidueMinorSelection
 
 noncomputable section
 
-private abbrev S := PowerSeries ℚ
+abbrev S := PowerSeries ℚ
 private def q : Fin 4 → S := ![PowerSeries.X ^ 2, PowerSeries.X ^ 3,
   PowerSeries.C 1 + PowerSeries.C 2 * PowerSeries.X, 1]
 private def Z : Matrix (Fin 4) (Fin 1) S := ![![0], ![0], ![1], ![0]]
@@ -29,10 +32,10 @@ theorem constant_correction_preserves_explicit_orders :
       PowerSeries.X ^ c * tau 1 = 3 * PowerSeries.X ^ 2 ∧
       tau 2 = 0 ∧ PowerSeries.constantCoeff (tau 1) = 0 ∧
       ∃ i, PowerSeries.constantCoeff (tau i) ≠ 0 := by
-  have hselected : ∀ j, PowerSeries.derivative ℚ (q (rows j)) =
+  have hselected : ∀ j, PowerSeries.derivative (q (rows j)) =
       Z.mulVec lambda (rows j) := by
     intro j
-    change PowerSeries.derivative ℚ (q 2) = Z.mulVec lambda 2
+    change PowerSeries.derivative (q 2) = Z.mulVec lambda 2
     simp [q, Z, lambda, Matrix.mulVec, dotProduct]
   have hminor : PowerSeries.constantCoeff (selectedMinor Z rows).det ≠ 0 := by
     have hmatrix : selectedMinor Z rows = 1 := by

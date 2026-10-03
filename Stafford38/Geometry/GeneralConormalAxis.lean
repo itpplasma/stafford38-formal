@@ -1,9 +1,12 @@
-import Stafford38.Geometry.GeneralDivisorialVisibleFrame
-import Stafford38.Geometry.FiniteGradientResidueExtension
-import Stafford38.Geometry.PaperActualWitnessConormalData
-import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof
-import Stafford38.Geometry.RetainedPlaceConormalTransport
-import Stafford38.Geometry.RetainedProjectiveCompletion
+module
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrame
+public import Stafford38.Geometry.FiniteGradientResidueExtension
+public import Stafford38.Geometry.PaperActualWitnessConormalData
+public import Stafford38.Geometry.CanonicalNonconstantFiniteGradientProductionProof
+public import Stafford38.Geometry.RetainedPlaceConormalTransport
+public import Stafford38.Geometry.RetainedProjectiveCompletion
+
+@[expose] public section
 
 /-!
 # Laurent conormal axes for arbitrary affine components

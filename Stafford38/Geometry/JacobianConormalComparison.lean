@@ -1,4 +1,7 @@
-import Stafford38.Geometry.AffineConormalClosure
+module
+public import Stafford38.Geometry.AffineConormalClosure
+
+@[expose] public section
 
 /-!
 # Comparing Jacobian and equation-defined affine conormals

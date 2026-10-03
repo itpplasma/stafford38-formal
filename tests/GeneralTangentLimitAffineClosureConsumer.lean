@@ -1,4 +1,7 @@
-import Stafford38.Geometry.GeneralTangentLimitCriterion
+module
+public import Stafford38.Geometry.GeneralTangentLimitCriterion
+
+@[expose] public section
 
 /-!
 An independent consumer turns the affine zero-locus conclusion into the

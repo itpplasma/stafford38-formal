@@ -1,6 +1,9 @@
-import Stafford38.Geometry.LaurentConormalResidueExtension
-import Stafford38.Geometry.CoisotropicTranslation
-import Stafford38.Geometry.RetractionSpecialization
+module
+public import Stafford38.Geometry.LaurentConormalResidueExtension
+public import Stafford38.Geometry.CoisotropicTranslation
+public import Stafford38.Geometry.RetractionSpecialization
+
+@[expose] public section
 
 /-!
 # Shared finite-gradient boundary certificate

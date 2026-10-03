@@ -1,5 +1,8 @@
-import Mathlib.RingTheory.Nullstellensatz
-import Stafford38.Geometry.AffineConormalSpan
+module
+public import Mathlib.RingTheory.Nullstellensatz
+public import Stafford38.Geometry.AffineConormalSpan
+
+@[expose] public section
 
 /-!
 # Algebraic closure of the equation-defined affine conormal locus

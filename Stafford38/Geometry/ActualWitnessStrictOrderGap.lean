@@ -1,5 +1,8 @@
-import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
-import Stafford38.Geometry.ProjectiveDivisorOrderGap
+module
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameResidueSupport
+public import Stafford38.Geometry.ProjectiveDivisorOrderGap
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 4000000

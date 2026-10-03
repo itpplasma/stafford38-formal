@@ -1,4 +1,7 @@
-import Stafford38.Geometry.GeneralDivisorialVisibleFrameCoreData
+module
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameCoreData
+
+@[expose] public section
 
 set_option autoImplicit false
 

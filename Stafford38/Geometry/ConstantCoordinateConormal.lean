@@ -1,6 +1,9 @@
-import Stafford38.Geometry.AffineConormalClosure
-import Stafford38.Geometry.LaurentConormalDirection
-import Stafford38.Geometry.ScalarExtensionPoints
+module
+public import Stafford38.Geometry.AffineConormalClosure
+public import Stafford38.Geometry.LaurentConormalDirection
+public import Stafford38.Geometry.ScalarExtensionPoints
+
+@[expose] public section
 
 /-!
 # Constant-coordinate conormal directions

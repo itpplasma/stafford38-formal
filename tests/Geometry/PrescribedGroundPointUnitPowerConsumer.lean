@@ -1,5 +1,8 @@
-import Stafford38.Geometry.PrescribedGroundPointUnitPowerChart
-import Mathlib.RingTheory.MvPowerSeries.NoZeroDivisors
+module
+public import Stafford38.Geometry.PrescribedGroundPointUnitPowerChart
+public import Mathlib.RingTheory.MvPowerSeries.NoZeroDivisors
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 2000000

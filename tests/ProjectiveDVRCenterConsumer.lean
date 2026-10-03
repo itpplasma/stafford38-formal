@@ -1,4 +1,7 @@
-import Stafford38.Geometry.ProjectiveDVRCenter
+module
+public import Stafford38.Geometry.ProjectiveDVRCenter
+
+@[expose] public section
 
 /-!
 # Consumer for the center-to-DVR uniqueness lemma

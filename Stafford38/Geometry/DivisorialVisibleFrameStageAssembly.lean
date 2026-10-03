@@ -1,7 +1,10 @@
-import Stafford38.Geometry.DivisorialVisibleFrameCore
-import Stafford38.Geometry.DivisorialVisibleFrameStage2
-import Stafford38.Geometry.DivisorialVisibleFrameStage4
-import Stafford38.Geometry.DivisorialVisibleFrameStage5
+module
+public import Stafford38.Geometry.DivisorialVisibleFrameCore
+public import Stafford38.Geometry.DivisorialVisibleFrameStage2
+public import Stafford38.Geometry.DivisorialVisibleFrameStage4
+public import Stafford38.Geometry.DivisorialVisibleFrameStage5
+
+@[expose] public section
 
 open IsLocalRing Polynomial
 open Stafford38.Geometry.NormalizationHeightOne

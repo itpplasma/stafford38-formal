@@ -1,9 +1,12 @@
-import Mathlib.RingTheory.Derivation.Basic
-import Mathlib.RingTheory.LaurentSeries
-import Stafford38.LocalizedPolynomialDerivations
-import Stafford38.Geometry.FormalDivisorLaurentConormal
-import Stafford38.Geometry.PowerSeriesArcTangency
-import Stafford38.Geometry.ContinuousPowerSeriesTangentFrame
+module
+public import Mathlib.RingTheory.Derivation.Basic
+public import Mathlib.RingTheory.LaurentSeries
+public import Stafford38.LocalizedPolynomialDerivations
+public import Stafford38.Geometry.FormalDivisorLaurentConormal
+public import Stafford38.Geometry.PowerSeriesArcTangency
+public import Stafford38.Geometry.ContinuousPowerSeriesTangentFrame
+
+@[expose] public section
 
 /-!
 # Derivation tangencies in the affine chart of a retained Laurent arc
@@ -38,7 +41,7 @@ private theorem algebraMap_ground_to_laurent (c : k) :
   rw [HahnSeries.algebraMap_apply' (Γ := ℤ) (R := κ) (S := k) c]
   rfl
 
-private theorem algebraModule_powerSeriesLaurentTower :
+theorem algebraModule_powerSeriesLaurentTower :
     letI : Module k (LaurentSeries κ) := Algebra.toModule
     letI : SMul k (LaurentSeries κ) :=
       (Algebra.toModule : Module k (LaurentSeries κ)).toSMul

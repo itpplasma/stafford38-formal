@@ -1,5 +1,8 @@
-import Stafford38.Geometry.AffinePointCompletion
-import Stafford38.Geometry.EtalePointCompletion
+module
+public import Stafford38.Geometry.AffinePointCompletion
+public import Stafford38.Geometry.EtalePointCompletion
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1000000
@@ -144,6 +147,10 @@ noncomputable def powerSeriesCompletionAtGroundPoint
     rw [← Ideal.Quotient.mk_algebraMap R M a, eM.commutes]
     change eM (Ideal.Quotient.mk M (algebraMap R B a)) = ρ a
     rfl)
+  letI : SMul k (R ⧸ q) :=
+    @Algebra.toSMul k (R ⧸ q) _ _ (inferInstance : Algebra k (R ⧸ q))
+  letI : SMul R (R ⧸ q) :=
+    @Algebra.toSMul R (R ⧸ q) _ _ (inferInstance : Algebra R (R ⧸ q))
   letI : IsScalarTower R k (R ⧸ q) := IsScalarTower.of_algebraMap_eq (fun a => by
     apply eQ.injective
     calc

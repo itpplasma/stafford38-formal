@@ -1,5 +1,8 @@
-import Stafford38.Geometry.EtaleTangentChartSpan
-import Mathlib.RingTheory.Ideal.Quotient.Operations
+module
+public import Stafford38.Geometry.EtaleTangentChartSpan
+public import Mathlib.RingTheory.Ideal.Quotient.Operations
+
+@[expose] public section
 
 open Stafford38.Geometry.EtaleTangentChartSpan
 open Stafford38.Geometry.EtaleCotangentBasis

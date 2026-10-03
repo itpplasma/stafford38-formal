@@ -1,7 +1,10 @@
-import Stafford38.Geometry.RelativeDivisorialTower
-import Stafford38.Geometry.DivisorialBoundaryExtension
-import Mathlib.RingTheory.AlgebraicIndependent.Adjoin
-import Mathlib.RingTheory.Localization.LocalizationLocalization
+module
+public import Stafford38.Geometry.RelativeDivisorialTower
+public import Stafford38.Geometry.DivisorialBoundaryExtension
+public import Mathlib.RingTheory.AlgebraicIndependent.Adjoin
+public import Mathlib.RingTheory.Localization.LocalizationLocalization
+
+@[expose] public section
 
 /-!
 # Transport from a relative rational function field to the coordinate DVR

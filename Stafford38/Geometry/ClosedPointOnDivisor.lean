@@ -1,5 +1,8 @@
-import Mathlib.RingTheory.Jacobson.Ring
-import Mathlib.FieldTheory.IsAlgClosed.Basic
+module
+public import Mathlib.RingTheory.Jacobson.Ring
+public import Mathlib.FieldTheory.IsAlgClosed.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

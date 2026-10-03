@@ -1,7 +1,10 @@
-import Stafford38.Geometry.GeneralDivisorialVisibleFrame
-import Stafford38.Geometry.PaperRetainedChartAssembly
-import Stafford38.Geometry.FormalDivisorLaurentConormal
-import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+module
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrame
+public import Stafford38.Geometry.PaperRetainedChartAssembly
+public import Stafford38.Geometry.FormalDivisorLaurentConormal
+public import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+
+@[expose] public section
 
 /-!
 # Coefficient columns from the actual retained divisorial witness

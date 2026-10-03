@@ -1,13 +1,16 @@
-import Mathlib.RingTheory.SimpleRing.Principal
-import Stafford38.Geometry.AsymptoticDivisorExistence
-import Stafford38.Geometry.AffineComponentCoordinateSplit
-import Stafford38.Geometry.ComponentFunctionFieldBoundary
-import Stafford38.Geometry.ComponentProjectiveClosure
-import Stafford38.Geometry.ComponentProjectiveClosureNormalization
-import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
-import Stafford38.Geometry.DivisorTangentLattice
-import Stafford38.Geometry.RelativeRetainedBoundaryPlace
-import Stafford38.Geometry.RetainedGroundMapIdentification
+module
+public import Mathlib.RingTheory.SimpleRing.Principal
+public import Stafford38.Geometry.AsymptoticDivisorExistence
+public import Stafford38.Geometry.AffineComponentCoordinateSplit
+public import Stafford38.Geometry.ComponentFunctionFieldBoundary
+public import Stafford38.Geometry.ComponentProjectiveClosure
+public import Stafford38.Geometry.ComponentProjectiveClosureNormalization
+public import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
+public import Stafford38.Geometry.DivisorTangentLattice
+public import Stafford38.Geometry.RelativeRetainedBoundaryPlace
+public import Stafford38.Geometry.RetainedGroundMapIdentification
+
+@[expose] public section
 
 set_option autoImplicit false
 

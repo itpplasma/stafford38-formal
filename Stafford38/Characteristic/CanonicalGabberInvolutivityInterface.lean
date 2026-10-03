@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.CanonicalResidueExtensionSymbolControlAdapter
-import Stafford38.Characteristic.PaperLocalizedInvolutivity
-import Stafford38.Characteristic.RadicalMinimalPrimeInvolutivity
+module
+public import Stafford38.Characteristic.CanonicalResidueExtensionSymbolControlAdapter
+public import Stafford38.Characteristic.PaperLocalizedInvolutivity
+public import Stafford38.Characteristic.RadicalMinimalPrimeInvolutivity
+
+@[expose] public section
 
 /-!
 # Lane B: the residue-extension input reduced to the cited Gabber theorem

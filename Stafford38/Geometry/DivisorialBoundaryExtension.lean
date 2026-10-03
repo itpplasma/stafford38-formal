@@ -1,9 +1,12 @@
-import Stafford38.Geometry.AsymptoticDivisorExistence
-import Mathlib.RingTheory.DedekindDomain.IntegralClosure
-import Mathlib.RingTheory.DedekindDomain.Dvr
-import Mathlib.RingTheory.DedekindDomain.Instances
-import Mathlib.RingTheory.Ideal.Over
-import Mathlib.RingTheory.Localization.AsSubring
+module
+public import Stafford38.Geometry.AsymptoticDivisorExistence
+public import Mathlib.RingTheory.DedekindDomain.IntegralClosure
+public import Mathlib.RingTheory.DedekindDomain.Dvr
+public import Mathlib.RingTheory.DedekindDomain.Instances
+public import Mathlib.RingTheory.Ideal.Over
+public import Mathlib.RingTheory.Localization.AsSubring
+
+@[expose] public section
 
 /-!
 # Discrete boundary places in finite extensions
@@ -113,6 +116,7 @@ theorem exists_discreteValuationSubring_over_maximalIdeal
   let aC : C := algebraMap A C a
   have haC_mem : aC ∈ Q := by
     have ha : a ∈ Q.comap (algebraMap A C) := by
+      change a ∈ Q.under A
       rw [hQcomap, mem_maximalIdeal]
       exact ha_nonunit
     simpa only [Ideal.mem_comap, aC] using ha

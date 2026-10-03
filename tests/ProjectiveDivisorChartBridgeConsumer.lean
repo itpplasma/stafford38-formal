@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ComponentProjectiveChartKernel
-import Stafford38.Geometry.IntegralPolynomialExtensionDimension
+module
+public import Stafford38.Geometry.ComponentProjectiveChartKernel
+public import Stafford38.Geometry.IntegralPolynomialExtensionDimension
+
+@[expose] public section
 
 /-! Independent API consumer for the affine chart-kernel and local height bridges. -/
 

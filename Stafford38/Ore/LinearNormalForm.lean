@@ -1,8 +1,11 @@
-import AlgebraicAnalysis.Ore.Associativity
-import Stafford38.Ore.ScalarAlgebra
-import Stafford38.Ore.PairStage
-import Mathlib.Algebra.MvPolynomial.Equiv
-import Mathlib.Algebra.Polynomial.AlgebraMap
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import Stafford38.Ore.ScalarAlgebra
+public import Stafford38.Ore.PairStage
+public import Mathlib.Algebra.MvPolynomial.Equiv
+public import Mathlib.Algebra.Polynomial.AlgebraMap
+
+@[expose] public section
 
 /-!
 # Scalar-linear Ore normal forms

@@ -1,7 +1,10 @@
-import Stafford38.Statement
-import Stafford38.Characteristic.CanonicalCertificate
-import Stafford38.Weyl.MonicNormalization
-import Stafford38.Weyl.PBWMonicBridge
+module
+public import Stafford38.Statement
+public import Stafford38.Characteristic.CanonicalCertificate
+public import Stafford38.Weyl.MonicNormalization
+public import Stafford38.Weyl.PBWMonicBridge
+
+@[expose] public section
 
 /-!
 # Universal theorem assembly

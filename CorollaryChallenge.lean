@@ -1,4 +1,7 @@
-import Stafford38.ChallengeDefinitions
+module
+public import Stafford38.ChallengeDefinitions
+
+@[expose] public section
 
 /-!
 # Mathlib-only statement of the torsion-cyclicity corollary

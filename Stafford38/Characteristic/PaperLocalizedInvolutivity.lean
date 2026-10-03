@@ -1,6 +1,9 @@
-import Stafford38.Characteristic.PostScalarExtensionPoisson
-import Stafford38.Characteristic.LocalizedPartialDerivation
-import Mathlib.RingTheory.Ideal.MinimalPrime.Localization
+module
+public import Stafford38.Characteristic.PostScalarExtensionPoisson
+public import Stafford38.Characteristic.LocalizedPartialDerivation
+public import Mathlib.RingTheory.Ideal.MinimalPrime.Localization
+
+@[expose] public section
 
 /-!
 # Localization proof of componentwise involutivity

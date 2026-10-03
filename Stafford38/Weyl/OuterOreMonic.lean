@@ -1,5 +1,8 @@
-import AlgebraicAnalysis.Ore.Associativity
-import Stafford38.Weyl.PBWMonicBridge
+module
+public import AlgebraicAnalysis.Ore.Associativity
+public import Stafford38.Weyl.PBWMonicBridge
+
+@[expose] public section
 
 /-!
 # PBW monicity as concrete outer-Ore monicity
@@ -114,14 +117,20 @@ def pairExponent (n a p : ℕ) (m : PhaseVar n →₀ ℕ) :
 
 theorem coeff_flattenPairSymbols_monomial (n a p a' p' : ℕ)
     (m : PhaseVar n →₀ ℕ) (r : SymbolRing k n) :
-    MvPolynomial.coeff (pairExponent n a p m)
+    AddMonoidAlgebra.coeff
         (flattenPairSymbols k n
-          (Polynomial.monomial p' (Polynomial.monomial a' r))) =
-      if p' = p ∧ a' = a then MvPolynomial.coeff m r else 0 := by
+          (Polynomial.monomial p' (Polynomial.monomial a' r)))
+        (pairExponent n a p m) =
+      if p' = p ∧ a' = a then AddMonoidAlgebra.coeff r m else 0 := by
   rw [flattenPairSymbols_monomial]
   rw [MvPolynomial.X_pow_eq_monomial, MvPolynomial.X_pow_eq_monomial,
     MvPolynomial.monomial_mul, mul_one]
-  rw [MvPolynomial.coeff_monomial_mul']
+  have hcoeff := MvPolynomial.coeff_monomial_mul'
+    (pairExponent n a p m)
+    (Finsupp.single (.inr (0 : Fin (n + 1))) p' +
+      Finsupp.single (.inl (0 : Fin (n + 1))) a')
+    (1 : k) (MvPolynomial.rename oldIndex r)
+  rw [hcoeff]
   classical
   by_cases hp : p' = p
   · subst p'
@@ -152,16 +161,25 @@ theorem coeff_flattenPairSymbols_monomial (n a p a' p' : ℕ)
         have haa : a' ≤ a := by
           simpa [pairExponent, Finsupp.single_apply] using
             hle (.inl (0 : Fin (n + 1)))
-        have hz : MvPolynomial.coeff
+        have hz : (MvPolynomial.rename oldIndex r).coeff
           ((pairExponent n a p m) -
               (Finsupp.single (.inr (0 : Fin (n + 1))) p +
-                Finsupp.single (.inl (0 : Fin (n + 1))) a'))
-              (MvPolynomial.rename oldIndex r) = 0 := by
+                Finsupp.single (.inl (0 : Fin (n + 1))) a')) = 0 := by
           apply MvPolynomial.coeff_rename_eq_zero
           intro u hu
           have hnew := DFunLike.congr_fun hu (.inl (0 : Fin (n + 1)))
           simp [pairExponent] at hnew
           omega
+        change MvPolynomial.coeff
+          (pairExponent n a p m -
+            (Finsupp.single (.inr (0 : Fin (n + 1))) p +
+              Finsupp.single (.inl (0 : Fin (n + 1))) a'))
+          (MvPolynomial.rename oldIndex r) = 0 at hz
+        change 1 * MvPolynomial.coeff
+          (pairExponent n a p m -
+            (Finsupp.single (.inr (0 : Fin (n + 1))) p +
+              Finsupp.single (.inl (0 : Fin (n + 1))) a'))
+          (MvPolynomial.rename oldIndex r) = _
         rw [hz]
         simp [ha]
       · rw [if_neg hle]
@@ -174,16 +192,25 @@ theorem coeff_flattenPairSymbols_monomial (n a p a' p' : ℕ)
       have hpp : p' ≤ p := by
         simpa [pairExponent, Finsupp.single_apply] using
           hle (.inr (0 : Fin (n + 1)))
-      have hz : MvPolynomial.coeff
+      have hz : (MvPolynomial.rename oldIndex r).coeff
           ((pairExponent n a p m) -
             (Finsupp.single (.inr (0 : Fin (n + 1))) p' +
-              Finsupp.single (.inl (0 : Fin (n + 1))) a'))
-            (MvPolynomial.rename oldIndex r) = 0 := by
+              Finsupp.single (.inl (0 : Fin (n + 1))) a')) = 0 := by
         apply MvPolynomial.coeff_rename_eq_zero
         intro u hu
         have hnew := DFunLike.congr_fun hu (.inr (0 : Fin (n + 1)))
         simp [pairExponent] at hnew
         omega
+      change MvPolynomial.coeff
+        (pairExponent n a p m -
+          (Finsupp.single (.inr (0 : Fin (n + 1))) p' +
+            Finsupp.single (.inl (0 : Fin (n + 1))) a'))
+        (MvPolynomial.rename oldIndex r) = 0 at hz
+      change 1 * MvPolynomial.coeff
+        (pairExponent n a p m -
+          (Finsupp.single (.inr (0 : Fin (n + 1))) p' +
+            Finsupp.single (.inl (0 : Fin (n + 1))) a'))
+        (MvPolynomial.rename oldIndex r) = _
       rw [hz]
       simp [hp]
     · rw [if_neg hle]
@@ -192,17 +219,48 @@ theorem coeff_flattenPairSymbols_monomial (n a p a' p' : ℕ)
 theorem coeff_flattenPairSymbols (n a p : ℕ)
     (m : PhaseVar n →₀ ℕ)
     (q : Polynomial (Polynomial (SymbolRing k n))) :
-    MvPolynomial.coeff (pairExponent n a p m)
-        (flattenPairSymbols k n q) =
-      MvPolynomial.coeff m ((q.coeff p).coeff a) := by
+    AddMonoidAlgebra.coeff (flattenPairSymbols k n q)
+        (pairExponent n a p m) =
+      AddMonoidAlgebra.coeff ((q.coeff p).coeff a) m := by
   induction q using Polynomial.induction_on' with
-  | add q₁ q₂ h₁ h₂ => simp [map_add, h₁, h₂]
+  | add q₁ q₂ h₁ h₂ =>
+      change AddMonoidAlgebra.coeff (flattenPairSymbols k n q₁)
+          (pairExponent n a p m) =
+        AddMonoidAlgebra.coeff ((q₁.coeff p).coeff a) m at h₁
+      change AddMonoidAlgebra.coeff (flattenPairSymbols k n q₂)
+          (pairExponent n a p m) =
+        AddMonoidAlgebra.coeff ((q₂.coeff p).coeff a) m at h₂
+      calc
+        AddMonoidAlgebra.coeff (flattenPairSymbols k n (q₁ + q₂))
+            (pairExponent n a p m) =
+            AddMonoidAlgebra.coeff (flattenPairSymbols k n q₁)
+                (pairExponent n a p m) +
+              AddMonoidAlgebra.coeff (flattenPairSymbols k n q₂)
+                (pairExponent n a p m) := by
+                  rw [map_add, AddMonoidAlgebra.coeff_add, Finsupp.add_apply]
+        _ = AddMonoidAlgebra.coeff ((q₁.coeff p).coeff a) m +
+              AddMonoidAlgebra.coeff ((q₂.coeff p).coeff a) m := by rw [h₁, h₂]
+        _ = AddMonoidAlgebra.coeff (((q₁ + q₂).coeff p).coeff a) m := by
+              rw [Polynomial.coeff_add, Polynomial.coeff_add]
+              exact (Finsupp.add_apply
+                (AddMonoidAlgebra.coeff ((q₁.coeff p).coeff a))
+                (AddMonoidAlgebra.coeff ((q₂.coeff p).coeff a)) m).symm
   | monomial p' r =>
       induction r using Polynomial.induction_on' with
       | add r₁ r₂ h₁ h₂ =>
+          change AddMonoidAlgebra.coeff
+              (flattenPairSymbols k n (Polynomial.monomial p' r₁))
+              (pairExponent n a p m) =
+            AddMonoidAlgebra.coeff
+              (((Polynomial.monomial p' r₁).coeff p).coeff a) m at h₁
+          change AddMonoidAlgebra.coeff
+              (flattenPairSymbols k n (Polynomial.monomial p' r₂))
+              (pairExponent n a p m) =
+            AddMonoidAlgebra.coeff
+              (((Polynomial.monomial p' r₂).coeff p).coeff a) m at h₂
           rw [map_add (Polynomial.monomial p') r₁ r₂]
-          simp only [map_add, MvPolynomial.coeff_add,
-            Polynomial.coeff_monomial, Polynomial.coeff_add]
+          simp only [map_add, AddMonoidAlgebra.coeff_add,
+            Finsupp.add_apply, Polynomial.coeff_monomial, Polynomial.coeff_add]
           by_cases hp : p' = p
           · subst p'
             simp [h₁, h₂]
@@ -247,7 +305,9 @@ theorem nested_coeff_eq_zero_of_outer_exponent_gt (n N : ℕ)
     {p : ℕ} (hp : N < p) :
     (presentedNestedNormalForm k n d).coeff p = 0 := by
   ext a m
-  simp only [Polynomial.coeff_zero, MvPolynomial.coeff_zero]
+  simp only [Polynomial.coeff_zero]
+  change AddMonoidAlgebra.coeff
+    (((presentedNestedNormalForm k n d).coeff p).coeff a) m = 0
   rw [← coeff_flattenPairSymbols k n a p m]
   rw [flatten_presentedNestedNormalForm]
   exact coeff_normalForm_eq_zero_of_exponent_gt k
@@ -259,6 +319,9 @@ theorem nested_coeff_eq_one_at_bound (n N : ℕ)
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
     (presentedNestedNormalForm k n d).coeff N = 1 := by
   ext a m
+  change AddMonoidAlgebra.coeff
+    (((presentedNestedNormalForm k n d).coeff N).coeff a) m =
+      AddMonoidAlgebra.coeff ((1 : Polynomial (SymbolRing k n)).coeff a) m
   rw [← coeff_flattenPairSymbols k n a N m]
   rw [flatten_presentedNestedNormalForm]
   by_cases ha : a = 0
@@ -274,8 +337,8 @@ theorem nested_coeff_eq_one_at_bound (n N : ℕ)
           exact Nat.pos_of_ne_zero
             ((Finsupp.degree_eq_zero_iff _).not.mpr hmap)
         omega
-      have hz : MvPolynomial.coeff (pairExponent n 0 N m)
-          (presentedNormalFormLinearEquiv k (n + 1) d) = 0 := by
+      have hz : (presentedNormalFormLinearEquiv k (n + 1) d).coeff
+          (pairExponent n 0 N m) = 0 := by
         by_contra hc
         have hle := (mem_presentedWeightPiece k (@bernsteinWeight (n + 1)) N d).mp
           hd.1 (pairExponent n 0 N m) hc
@@ -283,13 +346,15 @@ theorem nested_coeff_eq_one_at_bound (n N : ℕ)
           change (pairExponent n 0 N m).sum (fun _ e => e) ≤ N
           simpa [monomialWeight, bernsteinWeight] using hle
         omega
+      change MvPolynomial.coeff (pairExponent n 0 N m)
+        (presentedNormalFormLinearEquiv k (n + 1) d) = _
       rw [hz]
       simp [Polynomial.coeff_one, MvPolynomial.coeff_one, Ne.symm hm]
   · have hdegree : N < (pairExponent n a N m).degree := by
       rw [degree_pairExponent]
       omega
-    have hz : MvPolynomial.coeff (pairExponent n a N m)
-        (presentedNormalFormLinearEquiv k (n + 1) d) = 0 := by
+    have hz : (presentedNormalFormLinearEquiv k (n + 1) d).coeff
+        (pairExponent n a N m) = 0 := by
       by_contra hc
       have hle := (mem_presentedWeightPiece k (@bernsteinWeight (n + 1)) N d).mp
         hd.1 (pairExponent n a N m) hc
@@ -297,6 +362,8 @@ theorem nested_coeff_eq_one_at_bound (n N : ℕ)
         change (pairExponent n a N m).sum (fun _ e => e) ≤ N
         simpa [monomialWeight, bernsteinWeight] using hle
       omega
+    change MvPolynomial.coeff (pairExponent n a N m)
+      (presentedNormalFormLinearEquiv k (n + 1) d) = _
     rw [hz]
     simp [Polynomial.coeff_one, ha]
 

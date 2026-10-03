@@ -1,6 +1,9 @@
-import Mathlib.RingTheory.AlgebraicIndependent.Transcendental
-import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
-import Stafford38.Geometry.DVRParameterSmoothness
+module
+public import Mathlib.RingTheory.AlgebraicIndependent.Transcendental
+public import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
+public import Stafford38.Geometry.DVRParameterSmoothness
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,4 +1,7 @@
-import Stafford38.Characteristic.EmptySupportVanishing
+module
+public import Stafford38.Characteristic.EmptySupportVanishing
+
+@[expose] public section
 
 /-!
 # Certificate extraction from empty canonical characteristic support

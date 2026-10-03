@@ -1,5 +1,9 @@
-import Stafford38.Weyl.Filtration
-import Mathlib.RingTheory.MvPolynomial.WeightedHomogeneous
+module
+public import Stafford38.MathlibCompat.MvPolynomialCoeff
+public import Stafford38.Weyl.Filtration
+public import Mathlib.RingTheory.MvPolynomial.WeightedHomogeneous
+
+@[expose] public section
 
 /-!
 # Principal components and leading-symbol multiplication
@@ -39,12 +43,12 @@ def presentedPrincipalComponent {n : ℕ} (w : PhaseVar n → ℕ) (N : ℕ) :
 theorem coeff_presentedPrincipalComponent {n : ℕ}
     (w : PhaseVar n → ℕ) (N : ℕ) (z : PresentedWeyl k n)
     (m : PhaseVar n →₀ ℕ) :
-    MvPolynomial.coeff m (presentedPrincipalComponent k w N z) =
+    AddMonoidAlgebra.coeff (presentedPrincipalComponent k w N z) m =
       if monomialWeight w m = N then
-        MvPolynomial.coeff m (presentedNormalFormLinearEquiv k n z)
+        AddMonoidAlgebra.coeff (presentedNormalFormLinearEquiv k n z) m
       else 0 := by
-  rw [presentedPrincipalComponent, LinearMap.comp_apply,
-    MvPolynomial.coeff_weightedHomogeneousComponent,
+  rw [presentedPrincipalComponent, LinearMap.comp_apply]
+  rw [MvPolynomial.coeff_weightedHomogeneousComponent,
     finsupp_weight_eq_monomialWeight]
   rfl
 
@@ -53,6 +57,7 @@ theorem presentedPrincipalComponent_eq_zero_of_mem_of_lt {n L T : ℕ}
     (hz : z ∈ presentedWeightPiece k w L) (hLT : L < T) :
     presentedPrincipalComponent k w T z = 0 := by
   ext m
+  change AddMonoidAlgebra.coeff (presentedPrincipalComponent k w T z) m = 0
   rw [coeff_presentedPrincipalComponent]
   by_cases hm : monomialWeight w m = T
   · rw [if_pos hm]
@@ -61,8 +66,9 @@ theorem presentedPrincipalComponent_eq_zero_of_mem_of_lt {n L T : ℕ}
       by_contra hne
       have hle := (mem_presentedWeightPiece k w L z).mp hz m hne
       omega
-    rw [hcoeff, MvPolynomial.coeff_zero]
-  · rw [if_neg hm, MvPolynomial.coeff_zero]
+    change AddMonoidAlgebra.coeff (presentedNormalFormLinearEquiv k n z) m = 0 at hcoeff
+    rw [hcoeff]
+  · rw [if_neg hm]
 
 theorem presentedPrincipalComponent_basis {n : ℕ}
     (w : PhaseVar n → ℕ) (N : ℕ) (m : PhaseVar n →₀ ℕ) :
@@ -70,6 +76,8 @@ theorem presentedPrincipalComponent_basis {n : ℕ}
       if monomialWeight w m = N then MvPolynomial.monomial m 1 else 0 := by
   classical
   ext q
+  change AddMonoidAlgebra.coeff
+    (presentedPrincipalComponent k w N (presentedPBWBasis k n m)) q = _
   rw [coeff_presentedPrincipalComponent,
     presentedNormalFormLinearEquiv_basis]
   by_cases hm : monomialWeight w m = N

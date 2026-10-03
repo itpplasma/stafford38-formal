@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ComponentProjectiveChartFactorization
-import Stafford38.Geometry.LocalizedProjectiveChartTransition
-import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Basic
+module
+public import Stafford38.Geometry.ComponentProjectiveChartFactorization
+public import Stafford38.Geometry.LocalizedProjectiveChartTransition
+public import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Basic
+
+@[expose] public section
 
 /-!
 # Standard projective charts for component equations

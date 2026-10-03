@@ -1,8 +1,11 @@
-import Stafford38.Geometry.EtaleCotangentBasis
-import Stafford38.Geometry.EtaleTangentKernel
-import Stafford38.Geometry.EtaleDerivationExtension
-import Stafford38.Geometry.GenericPointKaehlerConormal
-import Mathlib.Algebra.MvPolynomial.Derivation
+module
+public import Stafford38.Geometry.EtaleCotangentBasis
+public import Stafford38.Geometry.EtaleTangentKernel
+public import Stafford38.Geometry.EtaleDerivationExtension
+public import Stafford38.Geometry.GenericPointKaehlerConormal
+public import Mathlib.Algebra.MvPolynomial.Derivation
+
+@[expose] public section
 
 set_option autoImplicit false
 open scoped TensorProduct

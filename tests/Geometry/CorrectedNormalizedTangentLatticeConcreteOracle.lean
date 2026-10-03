@@ -1,4 +1,7 @@
-import Stafford38.Geometry.CorrectedNormalizedTangentLattice
+module
+public import Stafford38.Geometry.CorrectedNormalizedTangentLattice
+
+@[expose] public section
 
 namespace Stafford38.Geometry.CorrectedNormalizedTangentLattice.ConcreteOracle
 
@@ -34,7 +37,7 @@ def zL : Fin 4 → L := fun i => A (Z i ())
 
 def tauL : Fin 4 → L := fun i => A (tau i)
 
-def rawL : Fin 4 → L := fun i => A (PowerSeries.derivative ℚ (q i))
+def rawL : Fin 4 → L := fun i => A (PowerSeries.derivative (q i))
 
 def fixed : Option Unit → (Fin 4 → L)
   | none => fun i => A (q i)
@@ -45,7 +48,7 @@ theorem powerSeriesX_not_unit : ¬ IsUnit (PowerSeries.X : PS) := by
   simp
 
 theorem hfactor : ∀ i,
-    PowerSeries.derivative ℚ (q i) - Z.mulVec lambda i =
+    PowerSeries.derivative (q i) - Z.mulVec lambda i =
       (PowerSeries.X : PS) ^ 1 * tau i := by
   have hC2 : PowerSeries.C (2 : ℚ) = (2 : PS) := by
     rw [PowerSeries.C_eq_algebraMap]
@@ -53,7 +56,7 @@ theorem hfactor : ∀ i,
   have hC3 : PowerSeries.C (3 : ℚ) = (3 : PS) := by
     rw [PowerSeries.C_eq_algebraMap]
     exact map_ofNat (algebraMap ℚ PS) 3
-  have hD2 : PowerSeries.derivative ℚ (q 2) = PowerSeries.C (2 : ℚ) := by
+  have hD2 : PowerSeries.derivative (q 2) = PowerSeries.C (2 : ℚ) := by
     simp [q, Derivation.map_add, Derivation.leibniz]
   have hZ2 : Z.mulVec lambda 2 = PowerSeries.C (2 : ℚ) := by
     simp [Z, lambda, Matrix.mulVec, dotProduct]
@@ -63,7 +66,7 @@ theorem hfactor : ∀ i,
       PowerSeries.derivative_pow, PowerSeries.derivative_X] <;> ring
   · simp [q, tau, Z, lambda, hC3, Matrix.mulVec, dotProduct,
       PowerSeries.derivative_pow, PowerSeries.derivative_X] <;> ring
-  · change PowerSeries.derivative ℚ (q 2) - Z.mulVec lambda 2 =
+  · change PowerSeries.derivative (q 2) - Z.mulVec lambda 2 =
       (PowerSeries.X : PS) ^ 1 * tau 2
     rw [hD2, hZ2]
     simp [tau]
@@ -131,7 +134,7 @@ theorem example_generic_fibre_identity :
         (Stafford38.Geometry.PaperDivisorTangent.normalizedTangentLattice q Z tau) =
       Submodule.span L (Set.range (fun j : FormalTangentColumn Unit =>
         fun i => A (formalTangentMatrix q Z
-          (fun i => PowerSeries.derivative ℚ (q i)) i j))) := by
+          (fun i => PowerSeries.derivative (q i)) i j))) := by
   simpa [A] using
     Stafford38.Geometry.CorrectedNormalizedTangentLattice.genericFibre_normalizedTangentLattice_eq_span_derivative
       (k := ℚ) (n := 3) (κ := Unit) q Z tau lambda 1 hfactor

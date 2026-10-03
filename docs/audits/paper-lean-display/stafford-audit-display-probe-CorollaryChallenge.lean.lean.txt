@@ -1,0 +1,6 @@
+import CorollaryChallenge
+
+#check Stafford38CorollaryChallenge.IsRightTorsion
+#print axioms Stafford38CorollaryChallenge.IsRightTorsion
+#check Stafford38CorollaryChallenge.torsionCyclicStatement
+#print axioms Stafford38CorollaryChallenge.torsionCyclicStatement

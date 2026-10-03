@@ -1,7 +1,10 @@
-import Stafford38.FoundationClosure
-import Stafford38.Weyl.Domain
-import Stafford38.TorsionModule
-import Stafford38.LinearAlgebra.PairReplacement
+module
+public import Stafford38.FoundationClosure
+public import Stafford38.Weyl.Domain
+public import Stafford38.TorsionModule
+public import Stafford38.LinearAlgebra.PairReplacement
+
+@[expose] public section
 
 /-!
 # Paper-facing torsion-module cyclicity lemmas

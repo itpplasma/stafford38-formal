@@ -1,4 +1,7 @@
-import Stafford38.Geometry.PaperHamiltonianFlow
+module
+public import Stafford38.Geometry.PaperHamiltonianFlow
+
+@[expose] public section
 
 open Stafford38.Characteristic
 open Stafford38.Characteristic.BaseRelativePoisson

@@ -1,4 +1,7 @@
-import Stafford38.Geometry.PaperSameWitnessTangentDimension
+module
+public import Stafford38.Geometry.PaperSameWitnessTangentDimension
+
+@[expose] public section
 
 set_option autoImplicit false
 

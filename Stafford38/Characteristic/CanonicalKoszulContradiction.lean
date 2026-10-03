@@ -1,9 +1,12 @@
-import Stafford38.Characteristic.CanonicalGradedTangentialEquivalences
-import Stafford38.Characteristic.CanonicalPageEulerInequality
-import Stafford38.Characteristic.BaseLocalizedKoszulPositivity
-import Stafford38.Characteristic.NoncharacteristicMinimalPrime
-import Stafford38.Characteristic.CanonicalSupportAvoidanceFromCokernel
-import Stafford38.Characteristic.MinimalSupportExistence
+module
+public import Stafford38.Characteristic.CanonicalGradedTangentialEquivalences
+public import Stafford38.Characteristic.CanonicalPageEulerInequality
+public import Stafford38.Characteristic.BaseLocalizedKoszulPositivity
+public import Stafford38.Characteristic.NoncharacteristicMinimalPrime
+public import Stafford38.Characteristic.CanonicalSupportAvoidanceFromCokernel
+public import Stafford38.Characteristic.MinimalSupportExistence
+
+@[expose] public section
 
 namespace Stafford38.Characteristic.CanonicalKoszulContradiction
 

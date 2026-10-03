@@ -1,6 +1,9 @@
-import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
-import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
-import Stafford38.Geometry.GeneralDivisorialVisibleFrameData
+module
+public import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
+public import Stafford38.Geometry.CompletedDVRPowerSeriesEquiv
+public import Stafford38.Geometry.GeneralDivisorialVisibleFrameData
+
+@[expose] public section
 
 set_option autoImplicit false
 

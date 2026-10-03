@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ConstantCoordinateConormal
-import Mathlib.RingTheory.PrincipalIdealDomain
+module
+public import Stafford38.Geometry.ConstantCoordinateConormal
+public import Mathlib.RingTheory.PrincipalIdealDomain
+
+@[expose] public section
 
 /-!
 # One-variable prime components and the conormal axis

@@ -1,6 +1,9 @@
-import Stafford38.Geometry.NormalizedLatticeProjectiveConeAdapter
-import Stafford38.Geometry.GeneralTangentLimitCriterion
-import Stafford38.Geometry.FormalDivisorLaurentConormal
+module
+public import Stafford38.Geometry.NormalizedLatticeProjectiveConeAdapter
+public import Stafford38.Geometry.GeneralTangentLimitCriterion
+public import Stafford38.Geometry.FormalDivisorLaurentConormal
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 3000000
@@ -59,7 +62,7 @@ theorem directSummandInput_of_actual_chart_columns
     (Z : Matrix (Fin (n + 1)) (Fin d) (PowerSeries k))
     (tau : Fin (n + 1) → PowerSeries k)
     (alpha : Fin d → PowerSeries k) (c : ℕ)
-    (hcorrection : ∀ i, PowerSeries.derivative k (q i) - Z.mulVec alpha i =
+    (hcorrection : ∀ i, PowerSeries.derivative (R := k) (q i) - Z.mulVec alpha i =
       (PowerSeries.X : PowerSeries k) ^ c * tau i)
     (hposition : ∀ i, rho (qC i) =
       algebraMap (PowerSeries k) (LaurentSeries k) (q i))
@@ -68,7 +71,7 @@ theorem directSummandInput_of_actual_chart_columns
         (L := LaurentSeries k) (some j) (qC i) =
         algebraMap (PowerSeries k) (LaurentSeries k) (Z i j))
     (hraw : ∀ i, algebraMap (PowerSeries k) (LaurentSeries k)
-        (PowerSeries.derivative k (q i)) =
+        (PowerSeries.derivative (R := k) (q i)) =
       coordinateDerivation (k := k) (σ := Option (Fin d)) (B := E)
         (L := LaurentSeries k) none (qC i) +
         ∑ j : Fin d, algebraMap (PowerSeries k) (LaurentSeries k) (alpha j) *

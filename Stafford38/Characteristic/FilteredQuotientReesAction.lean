@@ -1,7 +1,10 @@
-import Stafford38.Weyl.OrderRees
-import Stafford38.Characteristic.FilteredQuotientRees
-import Mathlib.Algebra.Module.GradedModule
-import Mathlib.Algebra.Module.Equiv.Opposite
+module
+public import Stafford38.Weyl.OrderRees
+public import Stafford38.Characteristic.FilteredQuotientRees
+public import Mathlib.Algebra.Module.GradedModule
+public import Mathlib.Algebra.Module.Equiv.Opposite
+
+@[expose] public section
 
 /-!
 # The right order-Rees action on the filtered quotient
@@ -239,7 +242,7 @@ def orderPieceOpToReesOp (N : ℕ) :
     apply Subtype.ext
     simp [orderReesMonomial]
 
-private theorem orderPieceOpToReesOp_one :
+theorem orderPieceOpToReesOp_one :
     orderPieceOpToReesOp (n := n) k 0
         (@GradedMonoid.GOne.one ℕ
           (fun N => orderPieceOp (n := n) k N) _ _) = 1 := by
@@ -247,7 +250,7 @@ private theorem orderPieceOpToReesOp_one :
   apply Subtype.ext
   simp [orderPieceOpToReesOp, orderReesMonomial]
 
-private theorem orderPieceOpToReesOp_mul
+theorem orderPieceOpToReesOp_mul
     {N M : ℕ} (y : orderPieceOp (n := n) k N)
     (z : orderPieceOp (n := n) k M) :
     orderPieceOpToReesOp (n := n) k (N + M)

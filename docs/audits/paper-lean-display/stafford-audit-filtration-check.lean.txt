@@ -1,0 +1,3 @@
+import Stafford38.Characteristic.FilteredQuotient
+#check Stafford38.CharacteristicFilteredQuotient.quotientOrderPiece
+#print axioms Stafford38.CharacteristicFilteredQuotient.quotientOrderPiece

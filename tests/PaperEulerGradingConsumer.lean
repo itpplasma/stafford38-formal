@@ -1,5 +1,8 @@
-import Stafford38.Weyl.QuotientTransport
-import Stafford38.Weyl.PaperEulerGrading
+module
+public import Stafford38.Weyl.QuotientTransport
+public import Stafford38.Weyl.PaperEulerGrading
+
+@[expose] public section
 
 /-! A separate client pins the intended public statements of the paper Euler
 grading bridge and confirms the official quotient path retains the same

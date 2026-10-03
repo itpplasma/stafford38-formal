@@ -1,5 +1,8 @@
-import Stafford38.Geometry.ChartArcAnnihilation
-import Mathlib.RingTheory.Localization.Away.Basic
+module
+public import Stafford38.Geometry.ChartArcAnnihilation
+public import Mathlib.RingTheory.Localization.Away.Basic
+
+@[expose] public section
 
 /-!
 # Localized transition between projective affine charts

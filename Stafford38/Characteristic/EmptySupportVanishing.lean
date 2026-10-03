@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.FilteredQuotientSupport
-import Stafford38.Characteristic.FilteredVanishing
+module
+public import Stafford38.Characteristic.FilteredQuotientSupport
+public import Stafford38.Characteristic.FilteredVanishing
+
+@[expose] public section
 
 /-!
 # Empty order-characteristic support forces quotient vanishing

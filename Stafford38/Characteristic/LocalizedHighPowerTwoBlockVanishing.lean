@@ -1,5 +1,8 @@
-import Stafford38.Characteristic.LocalizedSpecializationActionCompatibility
-import Stafford38.Characteristic.RightReesArtinianAdapter
+module
+public import Stafford38.Characteristic.LocalizedSpecializationActionCompatibility
+public import Stafford38.Characteristic.RightReesArtinianAdapter
+
+@[expose] public section
 
 /-!
 # Localized high-power two-block vanishing

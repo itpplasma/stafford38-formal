@@ -1,5 +1,8 @@
-import Stafford38.Geometry.CanonicalAsymptoticLaurentProducer
-import Stafford38.Geometry.ProjectiveChartCoordinates
+module
+public import Stafford38.Geometry.CanonicalAsymptoticLaurentProducer
+public import Stafford38.Geometry.ProjectiveChartCoordinates
+
+@[expose] public section
 
 /-!
 # Projective residue frames and the generic tangent rank bound
