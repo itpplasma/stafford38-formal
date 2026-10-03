@@ -2,11 +2,13 @@
 
 ## Sources and status
 
-The Lean repository records a verified proof of Stafford's Conjecture 3.8 at source revision f6915782d2281e3d3b51011b97ace866928053b9. Its clean-checkout receipt is preserved in verification-results.json. The receipt certifies that source and its listed configuration.
+The Lean repository records a verified proof of Stafford's Conjecture 3.8 at source revision f6915782d2281e3d3b51011b97ace866928053b9. Its clean-checkout receipt is preserved at [the historical verification record](verification/f6915782/verification-results.json). That receipt certifies only the named source and configuration.
 
 The selected manuscript is human_readable_main.tex, based on paper commit 7d10c6297f8367b3f0061d61bda5ae86f9945c2c and SHA-256 6fcd4afc1008978154762755a0a142ad69a22e03ee3d57223df2618f4f0b3800. The preserved restoration is commit bd913a381b714fd8f909159a33fe845b5373ba0f, recorded as pushed to GitHub paper main and Overleaf main. The visible author proofs remain intact, with local mathematical proposals marked for review.
 
-The historical receipt covers the formal theorem at its named source and configuration. The v1.3.0 candidate has accepted T34, T35, T36, and T41 modules and literal trust-zero consumers, with only the three permitted axioms. The shared solution assemblies passed; the final repository verifier and four Palomar comparisons remain pending, so no v1.3.0 source or DOI is recorded here. The paper-route map records manuscript correspondence as a separate claim; Max’s full comparison review and Johanna’s review of the visible manuscript and marked proposals remain pending.
+The current annotated review is paper commit `a5a703f588ef3a2c43e8fc21f89db8bf494af5db`, human-readable source SHA-256 `48f6b8132426f0378d2d1b7f79598cc87a693ab00f1daae8a16760d3b39dc2c4`, with public snapshot `22b44d56af302bbf8dd3542316d8b15a2b0c5315`. It preserves the author baseline named above and marked correction proposals.
+
+The historical receipt covers the formal theorem at its named source and configuration. The v1.3.0 source `12ae3cc49152672a48a96f13994314b65ae38197` separately passed the complete pinned Linux verifier and all four Palomar comparator configurations, including a 4,475-job build and strict four-root dependency inspection with zero forbidden or unavailable dependencies. The candidate uses Lean 4.35.0-rc3, Mathlib `c55e6e786f49471c72fbddbec5415808896aec1e`, and AlgebraicAnalysis `bbbbf3fc358ca8100b158cec4cf47f336ab70163`. The receipt does not establish full manuscript correspondence: the paper-route map records that claim separately, while Max’s full comparison review and Johanna’s review of the visible manuscript and marked proposals remain pending.
 
 ## Review responsibilities
 

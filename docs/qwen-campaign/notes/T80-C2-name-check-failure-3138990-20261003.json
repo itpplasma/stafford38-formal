@@ -1,0 +1,13 @@
+{
+  "job_id": "3138990",
+  "recorded_utc": "2026-10-03T19:59:57.795915+00:00",
+  "source_commit": "12ae3cc49152672a48a96f13994314b65ae38197",
+  "slurm_script_sha256": "36f82d314593bc3740c35075ded79f6b7edc155d682df36c8a6916e4a233ebc8",
+  "preflight": "R4 terminal/guard0, no stops/children/swap; empty queue/node20 idle; staged script and guard hashes exact",
+  "result": "failed_before_declaration_checks",
+  "reason": "standalone tests files incorrectly imported as library modules",
+  "first_group_exit": 1,
+  "other_groups": "not run",
+  "guard": "finished with command/guard1; no stop cause, children or swap growth; peak RSS1449271296bytes",
+  "proof_and_comparator_acceptance": "unaffected; no successful proof check repeated"
+}

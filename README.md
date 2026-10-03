@@ -18,7 +18,7 @@ The terminal proof first changes symplectic coordinates so that `d` is monic in 
 
 Verification receipts apply to the exact source revisions and configurations they name. The prior terminal-proof checkpoint is linked from the [route record](docs/paper-route-alignment.json); it is not a verification claim about every later source edit, and its job counts are omitted here.
 
-The v1.3.0 candidate adds the same-witness closure assembly and original-prime endpoint. The T34, T35, T36, and T41 modules and their literal trust-zero consumers have passed with only the three permitted axioms. The shared main and alternative solution assemblies passed on Linux. The final repository verifier and four Palomar comparisons are pending; the candidate is not yet release-qualified.
+The v1.3.0 candidate at source commit `12ae3cc49152672a48a96f13994314b65ae38197` passed the complete pinned Linux verifier and all four Palomar comparator configurations. The run included a 4,475-job Lake build and strict dependency inspection of all four terminal roots with zero forbidden or unavailable dependencies. The T34, T35, T36, and T41 modules, literal trust-zero consumers, and shared main and alternative solution assemblies also passed with only the three permitted axioms. Receipts apply only to this source and its pinned configuration; they do not establish whole-paper proof correspondence.
 
 The selected comparison surface is `human_readable_main.tex`. The paper-conforming main roots are `Solution` and `FixedSourceSolution`; the older generic/Laurent roots `AlternativeSolution` and `AlternativeFixedSourceSolution` are retained as alternatives, while Johanna’s visible author proof remains the selected manuscript surface. Johanna’s manuscript review and Max’s complete proof-correspondence review remain pending. The existing Palomar entry certifies its named theorem and source only.
 
@@ -41,7 +41,7 @@ Use the source revision and toolchain named in the verification receipt. From th
     scripts/verify-palomar.sh comparator-alternative.json
     scripts/verify-palomar.sh comparator-alternative-fixed-source.json
 
-Historical terminal receipts used Lean `leanprover/lean4:v4.33.0`, Mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`, and AlgebraicAnalysis `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`. The v1.3.0 candidate pins Lean 4.35.0-rc3, Mathlib `c55e6e786f49471c72fbddbec5415808896aec1e`, and AlgebraicAnalysis `bbbbf3fc358ca8100b158cec4cf47f336ab70163`. Its accepted module and literal consumer receipts are described in [STATUS.md](STATUS.md); the final verifier and four Palomar comparisons remain pending. Each receipt applies only to its recorded source.
+Historical terminal receipts used Lean `leanprover/lean4:v4.33.0`, Mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`, and AlgebraicAnalysis `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`. The v1.3.0 candidate pins Lean 4.35.0-rc3, Mathlib `c55e6e786f49471c72fbddbec5415808896aec1e`, and AlgebraicAnalysis `bbbbf3fc358ca8100b158cec4cf47f336ab70163`. The final candidate receipt bundle is recorded in [verification.md](docs/verification.md); each result applies only to its recorded source and configuration.
 
 ## Ownership and licenses
 

@@ -26,45 +26,24 @@ assemblies passed their bounded Linux checks. Accepted source is integrated and
 pushed in MAIN. The unchanged challenges are shared by the main paper route and
 the separately labeled generic/Laurent solution variant.
 
-The final public checkout at 45037fbc passed the full 4475-job Linux build in
-scluster3128526. Its verifier then failed strict inspection of private Mathlib
-dependencies; the four actual Palomar comparators have not run. The strict repaired production guard and independent fixtures passed on
-scluster3129931; both main required/excluded route checks also passed. The
-repair is frozen and pushed at 12ae3cc49152672a48a96f13994314b65ae38197.
-Both alternative route checks also passed, and3129931 drained guard0.
-The sole final public-source verifier and four comparator run is scluster3131361,
-launched after an empty-queue/idle-node preflight with exact control hashes.
-It stopped before verification because Git reported the generated cache
-symlink as untracked. Source/tool/pin gates passed and the allocation drained.
-The independently reviewed same-source resume scluster3131801 passed the complete
-repository verifier at18:28:39Z: fresh4475-job build, strict4terminal/root-route
-inspection,116consumerfiles/317 required reports,111 paper-linked names and37
-endpoint axiom reports. It then failed at a runner target: `lake build proofs`
-requested nonexistent `proofs.lean`, with a trailing Remote I/O write error.
-No comparator or final source-after gate ran. The allocation drained with no
-resource stops, swap growth or surviving children. The reviewed remaining-stage
-resume builds the3 existing retained modules explicitly, probes actual receipt
-I/O, runs only the4 comparisons and final identity/pin gates. Do not repeat the
-successful complete verifier. Sole remaining-stage job3136492 was submitted
-at18:43:19Z after empty queue/idle node/exact hash preflight.
-The I/O probes and3 explicit retained targets passed in3136492, but its first
-comparison stopped before proof checking: pinned bubblewrap cannot bind onto
-the generated `.lake` symlink. The allocation drained without resource stops,
-swap growth or children;3 later comparisons/final identity did not run.
-The next remaining-stage repair relocates the existing real cache into C2's
-`.lake` directory, without copying or changing source/tool/policy flags, then
-runs the4 comparisons and final identity/pins. No verifier/library repeat. Sole cache-layout/comparator resume3136992
-was submitted at18:58:07Z after exact preflight and reviewed-driver push.
-The3136992 preflight stopped before mutation because login/compute hosts use
-different device numbers for the same inode. Corrected solejob3137241 started
-at19:05:23Z; allocation-local device/inode-preserving relocation passed with
-source/pins unchanged. The main Palomar comparison passed all three kernels
-and statement comparison with exit0 at19:22:38Z. The fixed-source comparison
-also passed all three kernels and statement comparison with exit0 at19:39:44Z.
-The generic/Laurent alternative also passed all three kernels and statement
-comparison with exit0 at19:47:11Z. Its fixed-source counterpart started then;
-that final comparison and source integrity remain pending.
-Proof/tool/package pins remain C2 unchanged; preserve all success/failure receipts.
+The complete pinned Linux repository verifier passed at frozen public source
+`12ae3cc49152672a48a96f13994314b65ae38197` in scluster3131801: fresh
+4475-job build, strict four-root/main/alternative dependency inspections,
+116 consumer files with317 required reports,111 paper-linked names and37
+endpoint axiom reports. The3 retained proof modules passed in3136492.
+All four actual Palomar comparisons passed in3137241: main19:22:38Z,
+fixed-source19:39:44Z, alternative19:47:11Z and alternative fixed-source
+19:54:35Z. Final tracked-source manifests and all10 package pins match;
+the allocation drained guard0 with no resource stop, swap growth or children.
+The primary receipt is docs/verification-results.json; historical receipts
+and earlier scoped runner failures remain preserved. No successful verifier,
+library or comparison check will be repeated.
+
+The bounded final name check3138990 stopped before declaration checks because
+its generated input imported standalone test files as library modules.
+Its guard drained; Sol is repairing only this check arrangement. Final
+compiler-name acceptance, both archive releases, citations and handovers
+remain to finish. Proof and Palomar acceptance are complete.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
 57-card browser walkthrough. The public review site is deployed. All three

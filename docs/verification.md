@@ -8,14 +8,34 @@ only ordinary foundations. Both NanoDa and Lean accepted both compared
 solutions. The audit tool passed 34 tests without skips and its complete
 snapshot rendering check passed without warnings.
 
-The [receipt](verification-results.json), SHA-256 `a1cca54a8c46df89797b85dfa24359e3e0b640caa414bcac29c4fd3cc7a81f9d`, records exact
+The [historical receipt](verification/f6915782/verification-results.json), SHA-256 `a1cca54a8c46df89797b85dfa24359e3e0b640caa414bcac29c4fd3cc7a81f9d`, records exact
 commands, source pins, counts and [compressed logs](verification/f6915782/).
 Historical reports remain under `verification/history/`. That receipt records
-its own source, dependencies, configurations and verifier scripts. The current
-rc3 package requires a new complete receipt after integration; fixture results
+its own source, dependencies, configurations and verifier scripts. The later rc3 v1.3.0 candidate has its own source-specific receipt section below; fixture results
 do not qualify the Stafford proofs. Independent AI reviews
 are retained in [the review index](audits/manuscript-corollaries.md); human
 mathematical review remains open.
+
+## v1.3.0 candidate verification
+
+The complete pinned Linux run passed at frozen public source
+`12ae3cc49152672a48a96f13994314b65ae38197`, using Lean
+`leanprover/lean4:v4.35.0-rc3`, Mathlib
+`c55e6e786f49471c72fbddbec5415808896aec1e`, and AlgebraicAnalysis
+`bbbbf3fc358ca8100b158cec4cf47f336ab70163` (v0.3.3). It included a fresh
+4,475-job Lake build, strict dependency inspection of all four terminal roots
+with zero forbidden or unavailable dependencies, the complete repository
+verifier, retained proof-library build, and all four Palomar comparator
+configurations: main, fixed-source, alternative, and alternative fixed-source.
+The full verifier passed in allocation3131801, the retained modules in3136492, and the four comparisons plus final integrity in3137241. All used the same frozen source and dependency pins. Completed checks were reused, with their original receipts preserved.
+
+The current primary machine-readable report is [verification-results.json](verification-results.json). The exact C2 run files and logs are retained under [verification/12ae3cc4/](verification/12ae3cc4/).
+
+These checks establish the formal theorem and compared Challenge/Solution
+statements only at the named source and configuration. They do not establish
+whole-paper proof correspondence. Max’s and Johanna’s human reviews remain
+pending; the visible author proof and marked proposals retain their separate
+review status.
 
 ## Logical scope
 
@@ -47,8 +67,10 @@ lake exe cache get
 lake build
 scripts/verify.sh
 scripts/bootstrap-palomar-tools.sh
-scripts/verify-palomar.sh
+scripts/verify-palomar.sh comparator.json
 scripts/verify-palomar.sh comparator-fixed-source.json
+scripts/verify-palomar.sh comparator-alternative.json
+scripts/verify-palomar.sh comparator-alternative-fixed-source.json
 ```
 
 | Component | Pin |
