@@ -60,7 +60,9 @@ different device numbers for the same inode. Corrected solejob3137241 started
 at19:05:23Z; allocation-local device/inode-preserving relocation passed with
 source/pins unchanged. The main Palomar comparison passed all three kernels
 and statement comparison with exit0 at19:22:38Z. The fixed-source comparison
-started then; both alternatives and final integrity remain pending.
+also passed all three kernels and statement comparison with exit0 at19:39:44Z.
+The generic/Laurent alternative started then; both alternatives and final
+integrity remain pending.
 Proof/tool/package pins remain C2 unchanged; preserve all success/failure receipts.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
