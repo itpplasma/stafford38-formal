@@ -80,7 +80,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T70 | Frozen public commit | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Exact publicC2=12ae3cc49152672a48a96f13994314b65ae38197 pushed before final launch; priorC1 retained |
 | T71 | Final Linux host preflight | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Prior3129931guard0/drained; empty userqueue/node20idle;3controlhashes exact; fresh source/receiptpaths absent |
 | T72 | Launch Linux driver | done | 5 | notes/T73-final-C2-resume3-submission-3136992-20261003.json | SoleS3136992 cachelayout-only repair+4comparators/finalintegrity, exactC2; no successfulverifier/module repeat |
-| T73 | Collect Linux result | doing | 5 | notes/T73-final-C2-resume3-submission-3136992-20261003.json | FullverifierPASS3131801 and3retainedtargets/I/OprobesPASS3136492 preserved; reviewedcache-layout/4comparisonresume3136992 active |
+| T73 | Collect Linux result | doing | 5 | notes/T73-final-C2-resume3-submission-3136992-20261003.json | FullverifierPASS3131801 and3retainedtargets/I/OprobesPASS3136492 preserved; 3136992earlysetupstoppedbeforemutation on cross-hostdevicepin; targetedinode/runtime-dev repair reviewed,4comparators stillpending |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
 | T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+C2/P3/S3refreshPASS519refs/0errorswarnings;57unchangedcards inherit actualbrowserwalk; PDFassetgatePASS; humanreviewpending |
@@ -349,3 +349,25 @@ Receipt root is `final-receipts-guard-repaired-resume3`; guard prefix is
 and retained module/probe3136492 receipts are inherited; no repeat or duplicate
 proof slot. Remaining4 comparator results, final identity/pins and guarddrain
 are pending. T80 will run once on the same accepted cache after these complete.
+
+## Allocation-local device check repair
+
+3136992 stopped before receipt creation, cache relocation or comparison because
+login host reports st_dev46 and node20 reports st_dev45 for the SAME frozen
+cache inode10611031912501232925. Guard finished1 with stop[]/children[]/zero
+swap; cache/source untouched. Exact failure is archived at
+`notes/T73-cross-host-device-setup-failure-3136992-20261003.tar.gz`, SHA-256
+`794aea9bd1070bbee007d8b82b3f6757af6250a5278443334a5124bc4b6d941c`.
+
+The corrected driver `notes/cluster-final-cache-layout-resume4-20261003.sh`,
+SHA-256 `f88e8e0daf0996638d3fdc687c44b36a2680750c866b1f2b114e49f8a50e6e95`,
+changes only the2 host-local-device assertions to the frozen inode, retains
+allocation-local same-device and full runtime identity after rename, and adds
+exact3136992failure/drain/log plus absent-receipt gates with fresh resume4 paths.
+All source/cache/pin, inherited verifier/module,4 comparator and final integrity
+checks/caps remain. Independent targeted review PASS SHA-256
+`86d4e65c22a52f50af4e440158bbb4e7a4b3d46303bd72b38024877ee540a4ea`.
+Review/driver/submission packet:
+`notes/T73-runtime-device-resume-review-20261003.tar.gz`, SHA-256
+`3dfa80a790ed03cc6953d0725cd9296e46a51c47478f2ea2784e4d1ebc748e91`.
+Prepared for controller submission; no full verifier/library repeat.
