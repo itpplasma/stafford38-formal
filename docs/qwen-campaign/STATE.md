@@ -316,3 +316,24 @@ source/tool/package changes or sandbox flag changes. Remaining scope is only4
 actual comparisons and final source/pin integrity under the same accepted caps.
 The successful whole verifier and retained module build will not be repeated.
 Resume3 is in preparation; no slot is running or duplicated.
+
+## Cache-layout-only comparator resume reviewed
+
+Remaining-stage driver `notes/cluster-final-cache-layout-resume3-20261003.sh`
+is frozen at SHA-256
+`6fa1ae519128afcbae5253ae3666ae498876ec3f406cb82751b68c383644b85d`.
+It binds exact3136492failure1/drained/retainedmodule0 and inherited3131801
+verifier0, plus all source/cache/pin evidence. It journals the exact existing
+donor dev46/inode10611031912501232925, removes only the validated C2 `.lake`
+symlink, atomically renames the existing real cache into that destination and
+preserves donor access through a backlink. No copying or tracked source,
+configuration, package, tool or policy flag changes. Inode/containment/pins
+and tracked raw-byte/mode manifest are checked after relocation and at end.
+Only4 comparisons remain; no successful verifier/module/probe repeats.
+Independent review PASS SHA-256
+`79e7168ebd30490c8e9c839c604d4b11ece43442ea3f5d59c6abd5c8ccfe5350`;
+real-filesystem oracle preserved inode/content/donor access and rejected a wrong
+donor before mutation. Evidence is
+`notes/T73-cache-layout-resume-review-20261003.tar.gz`, SHA-256
+`d3f2b2831e4ebd486d333f61b9c7009a6c5606b6adc5761eacdeaedbaf047a9e`.
+Original caps remain; prepared for controller submission after fresh preflight.
