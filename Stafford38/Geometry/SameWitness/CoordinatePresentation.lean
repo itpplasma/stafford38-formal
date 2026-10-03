@@ -53,8 +53,6 @@ structure CoordinatePresentation
     (chartGenericPointSubalgebra_le_valuationSubring hm P w)
   hnone : fOption (MvPolynomial.X (R := k) none) = s
   hsome : ∀ z, fOption (MvPolynomial.X (R := k) (some z)) = qRow z
-  fFin : @AlgHom k (MvPolynomial (Option (Fin (@Fintype.card t htFinite))) k)
-    (actualSelectedNormalization P w) _ _ _ _ coeff.toAlgebra
   hrows : ∀ i, qRow (τ i) =
     actualNormalizedProjectiveColumnInIntegralClosure hm P w (rows i)
   hqchartB : actualNormalizedProjectiveColumnInIntegralClosure hm P w
@@ -83,6 +81,23 @@ structure CoordinatePresentation
         (Fin.succ (⟨0, hm⟩ : Fin m)))
       qRow τ w.differential.core.D.a
       (w.differential.core.D.a + w.differential.core.D.e)
+
+/-- Reindex the retained coordinate presentation along its chosen finite
+index equivalence (paper proof, étale-coordinate step). -/
+noncomputable abbrev CoordinatePresentation.fFin
+    {k : Type u} [Field k] [CharZero k] [IsAlgClosed k]
+    {m : ℕ} {hm : 0 < m}
+    {P : PrimeSpectrum (MvPolynomial (Fin m) k)}
+    {w : GeneralDivisorialVisibleFrameWitness hm P}
+    {setup : ChartSetup hm P w}
+    (coords : CoordinatePresentation hm P w setup) :
+    @AlgHom k (MvPolynomial (Option (Fin (@Fintype.card coords.t coords.htFinite))) k)
+      (actualSelectedNormalization P w) _ _ _ _ coords.coeff.toAlgebra :=
+  @AlgHom.comp k
+    (MvPolynomial (Option (Fin (@Fintype.card coords.t coords.htFinite))) k)
+    (MvPolynomial (Option coords.t) k) (actualSelectedNormalization P w)
+    _ _ _ _ _ _ coords.coeff.toAlgebra coords.fOption
+    (MvPolynomial.renameEquiv k coords.τ.optionCongr).toAlgHom
 
 /-- Distinct retained rows remain distinct in the selected affine chart. -/
 theorem chart_rows_injective
@@ -149,11 +164,6 @@ theorem nonempty_coordinatePresentation
   let coeff := actualSelectedNormalizationCoefficients P w
   let fOption : @AlgHom k (MvPolynomial (Option t) k) B _ _ _ _ coeff.toAlgebra :=
     @actualOptionMap k _ t B _ coeff.toAlgebra s qRow
-  let fFin : @AlgHom k (MvPolynomial (Option (Fin (Fintype.card t))) k)
-      B _ _ _ _ coeff.toAlgebra :=
-    @AlgHom.comp k (MvPolynomial (Option (Fin (Fintype.card t))) k)
-      (MvPolynomial (Option t) k) B _ _ _ _ _ _ coeff.toAlgebra
-      fOption (MvPolynomial.renameEquiv k τ.optionCongr).toAlgHom
   have hrows : ∀ i : Fin (Fintype.card t), qRow (τ i) =
       actualNormalizedProjectiveColumnInIntegralClosure hm P w (rows i) :=
     fun i => selected_rows_chart_eq hm P w setup index (τ i)
@@ -175,7 +185,6 @@ theorem nonempty_coordinatePresentation
     fOption := fOption, s := s, hsPB := hsPB
     hnone := @actualOptionMap_none k _ t B _ coeff.toAlgebra s qRow
     hsome := @actualOptionMap_some k _ t B _ coeff.toAlgebra s qRow
-    fFin := fFin
     hrows := hrows
     hqchartB := (actualNormalizedProjectiveColumnInIntegralClosure_spec hm P w).1
     hzero := rfl, haxis := rfl, hOutput := hOutput }⟩
