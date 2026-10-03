@@ -1,0 +1,7 @@
+T35 candidate evidence (Lean checks pending controller slot)
+
+- Reused source: T13 `SameWitness.originalAffineChartToCommonOpen_groundMap` and `A0ChartFormalEtale.formallyEtale_originalAffineChartToCommonOpen`; T22's exact h-field shapes; `CoordinatePresentation.fFin` and its ground-point output; `CommonOpenData.hbaseMap` through Q and the arc's canonical k/U `hbaseMap`; and `formallyEtale_genericOpenExtraAway_of_pointLocal`.
+- `CommonOpenEtaleData` exposes `φk`, `ψU`, both formal-etale certificates, and `hψAction`, the explicit algebra-structure equality T34 needs to match the common-open coordinate-derivation action. The two map constructions use actual same-witness producers.
+- Static hygiene: no `letI`, `haveI`, or `compHom` in the candidate module; no trailing whitespace; final newlines present. The maps and h-field types match T22's intended algebra hom interface by source inspection.
+- Frozen candidate hashes at this snapshot: `CommonOpenEtale.lean` `92cd5a40d072fad48a65ae53dd0825dfbaee0c1cac368a30e3c1b6c9727cedd0`; `CommonOpenEtaleConsumer.lean` `04cf7171123196848753417fdffa3cdb3eb894fa2f2ca7b4ee8b584eae89131d`. Recompute if the T32/T33 interface changes require a T35 edit.
+- No Lean/build command has been run: the controller assigned the exclusive Lean slot to T22. Pending checks: module build; literal consumer with `--trust=0 -M 32000`; guarded summaries and allowed axiom output.

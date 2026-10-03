@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "checkpoint_date": "2026-10-03",
+  "recorded_utc": "2026-10-03T05:50:51.282557+00:00",
+  "scope": "Nine canonical Stafford repositories; all nonignored source/evidence WIP from ten Mac formal checkouts and one local research checkout. Historical clean clones remain historical.",
+  "hosts": {
+    "local": "mailuefterl",
+    "remote": "faepmac1"
+  },
+  "validation_scope": "Synchronization and content preservation only; no new proof acceptance, full verifier, release or publication. Original worker HEADs and staged candidates remain preserved.",
+  "canonical_repositories": [
+    {
+      "repository": "itpplasma/global-stafford",
+      "branch": "main",
+      "source_before_status_update": "d559ad489c1895db1ddbfa232570680ce08eaf16"
+    },
+    {
+      "repository": "itpplasma/global-stafford-formal",
+      "branch": "main",
+      "source_before_status_update": "4f63a7ad72b5764290357604379af57bbcd3fb9d"
+    },
+    {
+      "repository": "itpplasma/stafford",
+      "branch": "main",
+      "source_before_status_update": "f7d54f722e27899a4a58bd4bef8dbcb185afec04"
+    },
+    {
+      "repository": "itpplasma/stafford38",
+      "branch": "main",
+      "source_before_status_update": "f170068f80034dd2e3e6bde2577c4ec5bb9a7093"
+    },
+    {
+      "repository": "itpplasma/stafford38-formal",
+      "branch": "main",
+      "source_before_status_update": "cf6bda67526ac68b18bfad7d185fb0b103121fd4"
+    },
+    {
+      "repository": "itpplasma/stafford38-paper",
+      "branch": "main",
+      "source_before_status_update": "357b7d9db8e5d363a11500b301f04607654bd809"
+    },
+    {
+      "repository": "itpplasma/stafford38-supplementary",
+      "branch": "main",
+      "source_before_status_update": "d467697a0849847b7b7cfa408ca0e742088f95f7"
+    },
+    {
+      "repository": "itpplasma/symplectic-stafford",
+      "branch": "main",
+      "source_before_status_update": "225cc8ab6b2bcb92e4a1911c6cf356c34b1db4bd"
+    },
+    {
+      "repository": "itpplasma/symplectic-stafford-formal",
+      "branch": "main",
+      "source_before_status_update": "950e49a31eb76c4d936394fd251e3af24a9863ef"
+    }
+  ],
+  "snapshots": [
+    {
+      "repo_path": "/home/ert/proj/symplectic-stafford",
+      "branch": "wip/sync-20261003/local/symplectic-stafford",
+      "base": "225cc8ab6b2bcb92e4a1911c6cf356c34b1db4bd",
+      "commit": "636f3479c45813ba4a4ea94168e56378ac9568f1",
+      "patch_sha256": "6b975c3d0007d38e0c3d9ab1707ce99a66cfa790f2e55b57ca24e671d87599ce",
+      "repository": "itpplasma/symplectic-stafford",
+      "changed_paths": 4,
+      "excluded_cache_paths": [
+        "research/__pycache__/check_actual_support_removal.cpython-314.pyc",
+        "research/__pycache__/check_paper_extensions.cpython-314.pyc",
+        "research/__pycache__/check_weyl_higher_rank.cpython-314.pyc",
+        "research/__pycache__/hypersurface_source_checklib.cpython-314.pyc"
+      ]
+    },
+    {
+      "repo_path": "/Users/ert/proj/stafford38-assembly-audit",
+      "branch": "wip/sync-20261003/faepmac1/stafford38-assembly-audit",
+      "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+      "commit": "5336b805deef9cf1c7df17d0b1af3012326298fa",
+      "patch_sha256": "fc0f2be8029410c2fe295b29f129f685b4a2f270b7c79f9b32e5c760232e9943",
+      "repository": "itpplasma/stafford38-formal",
+      "changed_paths": 3,
+      "excluded_cache_paths": []
+    },
+    {
+      "repo_path": "/Users/ert/proj/stafford38-closure-repair",
+      "branch": "wip/sync-20261003/faepmac1/stafford38-closure-repair",
+      "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+      "commit": "570455456326043e902069efeb7ab9eee5dbfd46",
+      "patch_sha256": "365001a7c8ef183b64e582ca256dd39fff9b0de3b3e122e678ae01ae1e3bf1d9",
+      "repository": "itpplasma/stafford38-formal",
+      "changed_paths": 5,
+      "excluded_cache_paths": []
+    },
+    {
+      "repo_path": "/Users/ert/proj/stafford38-formal-palomar-gates",
+      "branch": "wip/sync-20261003/faepmac1/stafford38-formal-palomar-gates",
+      "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+      "commit": "b1f33471467bf56d86a8e58fb4ce4969e25d1dcb",
+      "patch_sha256": "407ede45c4f0ca41dc3d16067bc41728d254e943990a79bbcebbbe1f6cee4c25",
+      "repository": "itpplasma/stafford38-formal",
+      "changed_paths": 20,
+      "excluded_cache_paths": []
+    },
+    {
+      "repo_path": "/Users/ert/proj/stafford38-formal",
+      "branch": "wip/sync-20261003/faepmac1/stafford38-formal",
+      "base": "cf6bda67526ac68b18bfad7d185fb0b103121fd4",
+      "commit": "4fed8b73c00886fb03335253ead69bd879b1280b",
+      "patch_sha256": "765ac8cedd13d8e6088b9701207b5f1188eb91688e06f4e532c623807c6e7a99",
+      "repository": "itpplasma/stafford38-formal",
+      "changed_paths": 34,
+      "excluded_cache_paths": []
+    },
+    {
+      "repo_path": "/Users/ert/proj/stafford38-qwen",
+      "branch": "wip/sync-20261003/faepmac1/stafford38-qwen",
+      "base": "5228a6d3f372552e887190b86ff2eafdf7fc8a80",
+      "commit": "c3dccd4b3f931d15df623229771126f6500fb6ea",
+      "patch_sha256": "be79a9a0f6ec006dad1626b230bd2155fc31ec23acbaf5481f20070d5476fddf",
+      "repository": "itpplasma/stafford38-formal",
+      "changed_paths": 21,
+      "excluded_cache_paths": []
+    },
+    {
+      "repo_path": "/Users/ert/proj/stafford38-rc3-final-worker",
+      "branch": "wip/sync-20261003/faepmac1/stafford38-rc3-final-worker",
+      "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+      "commit": "feb87b498b139a662a838b16b7d0bdbd4c94ad6c",
+      "patch_sha256": "b0b35b34cfcd9b836069763e6cfc36f591abda550318fa751dd81ae71a0d934b",
+      "repository": "itpplasma/stafford38-formal",
+      "changed_paths": 562,
+      "index_branch": "wip/sync-20261003/faepmac1/stafford38-rc3-final-worker-index",
+      "index_commit": "97079ce21fcb7eff5b176f83494ca265423ce682",
+      "excluded_cache_paths": []
+    },
+    {
+      "repo_path": "/Users/ert/proj/stafford38-rc3-minimal",
+      "branch": "wip/sync-20261003/faepmac1/stafford38-rc3-minimal",
+      "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+      "commit": "040acabc2429716272eb25c21edd2b46166194f2",
+      "patch_sha256": "5aef50503518e30a8df00a0c9d4deb8ac9ff89d1916b388128908d858e76f7df",
+      "repository": "itpplasma/stafford38-formal",
+      "changed_paths": 83,
+      "excluded_cache_paths": []
+    },
+    {
+      "repo_path": "/Users/ert/proj/stafford38-rc3-saved",
+      "branch": "wip/sync-20261003/faepmac1/stafford38-rc3-saved",
+      "base": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
+      "commit": "55768c0ec9a455a22091749a5e7bd0bb685c4b80",
+      "patch_sha256": "65504a59ad20d55c556daae191fad338d17c8183b81501c0f45285871e5ead07",
+      "repository": "itpplasma/stafford38-formal",
+      "changed_paths": 605,
+      "excluded_cache_paths": []
+    },
+    {
+      "repo_path": "/Users/ert/proj/stafford38-rc3-worker",
+      "branch": "wip/sync-20261003/faepmac1/stafford38-rc3-worker",
+      "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+      "commit": "78ca1edbea4021f64d4ca0442c134f8dd6a4b4f6",
+      "patch_sha256": "c699126ea660c93690c93f6dc41e466a2942f2b1d9585d23ea853c43b5b7d5f4",
+      "repository": "itpplasma/stafford38-formal",
+      "changed_paths": 556,
+      "index_branch": "wip/sync-20261003/faepmac1/stafford38-rc3-worker-index",
+      "index_commit": "49526feb9d97b196729b1a20184fd57b03d6fa51",
+      "excluded_cache_paths": []
+    },
+    {
+      "repo_path": "/Users/ert/proj/stafford38-review-bundle-candidate",
+      "branch": "wip/sync-20261003/faepmac1/stafford38-review-bundle-candidate",
+      "base": "eed5291e072d7af8f9a48a242e498325d9c5e2c1",
+      "commit": "3bd3b2926464c440acba0daaca63532c326bda2a",
+      "patch_sha256": "bb5e90ae2919c5b44bd83059cea530c4f89380cf480f63951f6b4f481ed43f8e",
+      "repository": "itpplasma/stafford38-formal",
+      "changed_paths": 8,
+      "excluded_cache_paths": []
+    }
+  ],
+  "previously_unpublished_branches_now_pushed": [
+    {
+      "repo": "stafford",
+      "branch": "audit/cubic-weyl-bridge-20260827",
+      "head": "86b8d488d55eabd2bd0d33b644e0ea3a2b1e7682",
+      "unpublished_commits": 1,
+      "commits_not_on_main": 2
+    },
+    {
+      "repo": "stafford38",
+      "branch": "phase2-a-strictness",
+      "head": "cd387cc1e56934abd36653d6e0e25297bc28ff2f",
+      "unpublished_commits": 1,
+      "commits_not_on_main": 1
+    },
+    {
+      "repo": "stafford38",
+      "branch": "phase2-b2-actual-maps-sol",
+      "head": "332bedb278ea9d41cba7e8d87a5819bb6d960b71",
+      "unpublished_commits": 2,
+      "commits_not_on_main": 2
+    }
+  ],
+  "process_observation": {
+    "host": "faepmac1",
+    "observed_utc": "2026-10-03T05:40:28.831281+00:00",
+    "codex_app_server_daemons": 2,
+    "stafford_local_execution_workers_observed": 0
+  },
+  "inspect_snapshot": "git diff --name-status <base> <commit>",
+  "resume_snapshot": "git fetch origin; git worktree add --detach <new-path> origin/<branch>"
+}

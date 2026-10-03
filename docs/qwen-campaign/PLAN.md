@@ -239,6 +239,19 @@ The old 60 GiB free-memory threshold and 64 GiB job cap are superseded.
   Current preflights show approximately 14.76 GiB/CPU on acluster and
   11.82 GiB/CPU on scluster; with 10% headroom, two reserved CPUs cover
   an 8 GiB job on either cluster. Recheck these ratios before submission.
+- Every cluster allocation also runs our node safeguard. It requires
+  available node RAM above the job cap plus a reserve of
+  `max(8 GiB, 5% of node RAM)` before starting. During the job it polls
+  aggregate RSS and node available RAM every 250 ms; it stops only our
+  process group below that reserve, at serious memory pressure, or after
+  1 GiB of additional node swap use. Serious pressure means Linux memory
+  PSI `full avg10 >= 1%` or `some avg10 >= 10%` when PSI is available.
+  Missing PSI is recorded as unknown; the RAM reserve remains enforced.
+  Atomic live telemetry every two seconds records current/peak job RSS,
+  node RAM, pressure, swap and timestamp. Terminal receipts record the
+  minimum available RAM and exact stop cause. The controller and assigned
+  host worker monitor the job handle and telemetry; cancel only our jobs
+  if resource telemetry stops or Slurm reports memory trouble.
 - Initial module/consumer jobs use 8 GiB and two threads. Full verification
   receives a separately recorded budget based on measured dependencies and
   scheduler capacity. A larger allocation needs a concrete resource reason;

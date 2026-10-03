@@ -1,5 +1,7 @@
 # Qwen campaign state
 
+Synchronization checkpoint, 3 October 2026: incoming campaign documents and notes were preserved at `origin/wip/sync-20261003/faepmac1/stafford38-formal` (`4fed8b73c008`). The latest proof files are separately preserved at `origin/wip/sync-20261003/faepmac1/stafford38-qwen` (`c3dccd4b3f93`). See [the controller branch map](../../PLAN.md#branches-for-resuming-saved-work) and [exact snapshot manifest](../synchronization-2026-10-03.json). Rows marked `doing` remain preparation awaiting acceptance; synchronization does not resume jobs or certify candidates. No local Stafford executor was observed on faepmac1 at 05:40 UTC.
+
 Plan: `PLAN.md` in this folder. The controller updates task rows,
 measurements, hints, frozen commits and promotion gates. Parallel Luna
 workers and subagents return candidates and evidence; failed tasks escalate
@@ -18,9 +20,9 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T13 | Port chart ground-map lemma | done | 1 | docs/qwen-campaign/notes/T13-check.log | ported repair4 addition (archived lines 280-328) to Stafford38/Geometry/SameWitness/ChartGroundMap.lean, namespace Stafford38.Geometry.SameWitness, theorem signature byte-identical (diff exit 0), maxHeartbeats 2400000->1600000; A0ChartFormalEtale.lean untouched; build exit 0 (10 s, 2927 jobs, module 1.8 s, 0 errors); consumer exit 0 axioms propext/choice/Quot.sound; reuses originalAffineChartToCommonOpen + originalAffineChartOverlapEquiv + selectedChartAwayEquivOfQuotientEquiv + genericOpenBMap_base_eq + Mathlib IsLocalization.Away.map/IsScalarTower.algebraMap_apply; no new def; matches repair3-groundmap-audit PASS on 4.33; commit 0340cf2; flag: frozen statement carries `letI : Algebra Q U := Algebra.compHom U _` (rule 6.2.8 diamond source) - T34/T36 must use the hom equation, not a second Algebra on U; still not in any root list, T43/T50 must wire or check by name |
 | T20 | Instance inventory | done | 2 | docs/qwen-campaign/notes/T20-diagnostics.tar.gz | Sol completed concrete nine-ring and ten-prerequisite inventory after Luna acceptance failed; inherited Q/B,Q/F,Q/U,k/U and staged R/U duplicates; default synthesis timeouts preserved; 264 source hashes and five log hashes checked |
 | T21 | Minimal tower reproducer | done | 1 | .lake/qwen/logs/T21-luna-2.log | Mathlib quotient and abstract hom towers compile; frozen negative probe captures oldTower/compHom action mismatch; guarded final exit0,10s; receipt in notes/T21-repro.md |
-| T22 | Ring-hom form of the endpoint | doing | 2 | .lake/qwen/logs/T22-luna-build-3.log | Three Luna builds failed; last errors are redundant solved-goal tactics; Sol repair/check assigned; guarded peak1883MiB,75%CPU; static audit PASS is separate |
-| T30 | Chart and away data | doing | 1 | | Luna preparing chart setup in parallel; checks queued with controller |
-| T31 | Coordinate presentation | doing | 1 | | Luna preparing retained-coordinate package against T30 interface; checks queued |
+| T22 | Ring-hom form of the endpoint | done | 2 | notes/T22-accepted-checks.tar.gz | Sol removed two redundant rfl tactics; module and trust0 consumer exit0,5s each,peak2009/1860MiB,three allowed axioms; statement unchanged; static audit reanchored PASS; WT commit e2ba158 |
+| T30 | Chart and away data | done | 1 | notes/T30-accepted-checks.tar.gz | Luna module/consumer exit0,7/3s,peak2.1/0.9GiB,three allowed axioms; existing numerator/chart owners retained; WT commit ef715e7; independent Linux check preparing |
+| T31 | Coordinate presentation | doing | 1 | notes/T31-check.md | Two diagnostic builds used stale WT guard; current guard copied to WT at5228a6d, third build granted via absolute MAIN guard; acceptance pending |
 | T32 | Maximal ideal and common open | doing | 1 | | Luna preparing common-open package with upstream/downstream field contracts; checks queued |
 | T33 | Arc into Laurent series | doing | 1 | | Luna preparing canonical-ground arc transport in parallel; checks queued |
 | T34 | Columns, derivatives, numerator | doing | 1 | | Luna preparing same-witness position/column/numerator derivations; checks queued |
@@ -86,7 +88,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 - T51 verifier (wall time):
 
 - Revised resource guard: 12 GiB start, 4 GiB free floor, 8 GiB aggregate RSS, two Lean/native threads; behavior checks passed including surviving-child lock, aggregate RSS, timeout and signal cleanup (notes/resource-guard-behavior.md). Mac CPU-average watchdog is separate from kernel CPU quotas.
-- Cluster resource preflights: acluster/scluster each permit an initial two-CPU, 8 GiB job; RAM cgroup enforcement unverified, so CPU reservation covers RAM using 10% headroom. Pinned Linux preparation jobs are being prepared from immutable snapshots.
+- Cluster resource preflights: acluster/scluster each permit an initial two-CPU, 8 GiB job; RAM cgroup enforcement unverified, so CPU reservation covers RAM using 10% headroom. Scluster job3090343 refused before installation/Lean because the step affinity had only one CPU; explicit srun -c2 repairs the step request. The owner subsequently required node RAM/pressure safeguards and live monitoring; enhanced guard preparation and independent review are active, acluster submission is held for that concrete safeguard.
+- The WT guard copy was stale despite MAIN being authoritative. Controller copied the validated guard to WT and pushed5228a6d; future check grants require the absolute MAIN guard path and expected8GiB/2CPU summary. Old T31 runs remain diagnostic evidence.
 
 ## Frozen commit
 

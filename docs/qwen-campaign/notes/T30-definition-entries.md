@@ -1,0 +1,1 @@
+`Stafford38.Geometry.SameWitness.ChartSetup` — `Stafford38/Geometry/SameWitness/ChartSetup.lean` — packages the actual selected chart, its chosen away presentation, and the smooth-open numerator data needed downstream; no existing owner packages this task's retained choices.

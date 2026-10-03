@@ -1,6 +1,6 @@
 # Current status
 
-Updated 2 October 2026. Work is paused at the owner's request. All owned workers and compiler jobs are stopped. Completed migration and review-tool changes are saved; unverified geometry candidates, failed diagnostics and interrupted work are preserved in [the checkpoint archive](docs/audits/paused-2026-10-02/README.md). The final paper-aligned release and review handover remain open.
+Updated 3 October 2026. The campaign resumed on faepmac1 earlier today. The two-host synchronization preserves its latest preparation and the older worker candidates on pushed branches listed in [PLAN.md](PLAN.md#branches-for-resuming-saved-work). No local Stafford execution worker was observed on the Mac at 05:40 UTC; historical session goal state alone does not establish live execution. The final paper-aligned release and review handover remain open.
 
 ## Proof and correspondence
 
@@ -8,7 +8,7 @@ The repository has a verified proof of the unchanged main Stafford 3.8 challenge
 
 The paper-compatible route has checked components for the selected normalization chart, same-witness ground point and étale coordinates, common-open arc compatibility, coordinate-column transport, corrected tangent columns, tangent rank and tangent-limit endpoint. Conditional adapters establish their conclusions under their stated inputs; unconditional assembly remains open.
 
-The current mathematical blocker is scalar-action and ground-field tower coherence in the same-witness affine-fibre closure. Repair3 failed during scalar-action inference; repair4, the original-prime wrapper and their literal consumers remain unverified. The combined rc3 candidate was deliberately interrupted, exit 143. A bounded scalar-tower diagnostic also failed; its errorful axiom output is not proof evidence. These candidates remain archived outside the active Lean source surface.
+The current mathematical blocker is unconditional same-witness affine-fibre closure, including scalar-action and ground-field tower coherence. The resumed [campaign ledger](docs/qwen-campaign/STATE.md) records accepted helpers and endpoint/chart checks through T22 and T30; T31–T44 candidates still require acceptance, completed closure and terminal integration. Earlier failed repairs and the interrupted combined rc3 candidate remain preserved in their dated archive and synchronization branches.
 
 On resumption, finish the construction for one actual witness, derive the affine conormal-closure conclusion from the original prime-variety hypotheses, and make that route carry the terminal theorem. Then run a fresh dependency audit. The strict guard and its fixtures are prepared; wiring that depends on the unverified closure and wrapper is archived for resumption. Full Linux verification, current Palomar qualification and final review packaging are further pending gates and may expose additional issues.
 
@@ -34,4 +34,4 @@ The generator's approval digest now includes its review-scope module, and run-in
 
 Finish the unconditional paper route and terminal wiring; replay the combined source on rc3; qualify the actual Linux package with the current Palomar tools; regenerate the complete source-linked review bundle; update version citations; and publish a new signed release with a verified Zenodo archive. No new formal or supplementary release, tag or DOI was created by this checkpoint.
 
-The controller owns integration and promotion. Worker worktrees remain available for resumption with no live jobs. See [the route map](docs/paper-route-alignment.json), [definition owners](docs/definition-owners.md) and [proof-source provenance](docs/proof-source-provenance.md). The earlier [stopped-state archive](docs/audits/stopped-2026-10-02/README.md) retains its source packets and the incoming cleanup provenance annotations. The new archive records the later completed and interrupted results.
+The controller owns integration and promotion. Worker worktrees remain available; [the branch map](PLAN.md#branches-for-resuming-saved-work) identifies each pushed candidate and its recovery command. See [the route map](docs/paper-route-alignment.json), [definition owners](docs/definition-owners.md) and [proof-source provenance](docs/proof-source-provenance.md). The earlier [stopped-state archive](docs/audits/stopped-2026-10-02/README.md) retains its source packets and the incoming cleanup provenance annotations. No new mathematical verification is claimed by synchronization.
