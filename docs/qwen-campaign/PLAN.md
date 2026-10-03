@@ -1156,10 +1156,42 @@ the script exits 0 and every map entry's Lean declaration exists:
 `lake env lean` on a generated scratch file with one `#check <name>` per
 entry (through `GUARD`, 900 s) shows no `unknown identifier`.
 
+Each mathematical claim must have a stable review entry in paper order,
+covering the complete proof and both Challenge/Solution comparisons. Record
+the paper passage, exact Lean statement, relevant definitions and hypotheses,
+supporting lemma statements, and links to their sources at the frozen commits.
+Label manuscript corrections, correspondence gaps, and alternative solution
+variants explicitly. Keep the paper-conforming main route distinct from the
+alternative route and preserve the unchanged challenge statements.
+
 ### T81 Build the review site
 
 `cd $WT && $GUARD run --timeout 3600 --log $SCR/logs/T81.log -- python3 scripts/build-review-site.py`
-(read its `--help` first). Accept: exit 0; record output paths.
+(read its `--help` first). Record output paths. The interface must make Max's
+complete review easy to follow with low mental load:
+
+- Provide one starting link and a guided sequence in paper order, with one
+  mathematical claim per review entry and previous/next navigation.
+- Show the paper passage and corresponding Lean statement together, with
+  plain-language explanations of the definitions and hypotheses that matter.
+- Link directly to exact paper locations, Lean declarations, and supporting
+  definitions and lemma statements at the frozen commits. Make custom
+  dependency interfaces accessible without searching through subpackages.
+- Keep technical boilerplate collapsed by default, with access to supporting
+  proof details. Keep mathematical assumptions and known gaps visible.
+- Mark proposed paper corrections, incomplete correspondence, and the
+  alternative solution route. Show verification evidence separately from
+  mathematical correspondence and human review status.
+- Provide a checklist keyed to stable review entries, with a way to record
+  findings and resume from the last reviewed claim. Reading the bundle must
+  require no Lean installation or private repository access.
+
+Accept: build exits 0 and a browser walkthrough follows the complete claim
+sequence from the starting link. Check every generated paper/source link and
+record broken links, missing claims, or places requiring a manual repository
+search in the T81 receipt; resolve these before accepting the interface.
+Max must be able to follow the complete correspondence without manually
+hunting across repositories, while retaining access to every supporting detail.
 
 ### T82 Rebuild the manuscript PDFs (no text edits)
 
@@ -1185,7 +1217,13 @@ Record every check in `$CAMP/notes/T83-supplementary-receipt.md`.
 
 Johanna reviews the mathematical prose and marked proposals; Max reviews the
 complete paper/Lean correspondence. Prepare their concrete review package
-here, keeping both human reviews pending. The controller sends the owner's
+here, including the T81 starting link, pinned input revisions, review checklist,
+and instructions for recording findings. Explain Max's review scope through
+definitions, hypotheses, and supporting lemma statements; link the build,
+kernel-comparison, and transitive axiom-audit evidence for formal verification.
+Keep both human reviews pending and identify Johanna's marked proposals on
+the selected manuscript, with Overleaf as the editing authority.
+The controller sends the owner's
 requested short email after both releases, archive checks and citations.
 
 ### T90 Release drafts
