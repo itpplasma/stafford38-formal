@@ -70,7 +70,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T34 | Columns, derivatives, numerator | doing | 28 | notes/T34-memory-block-20261003.md | Generic4cfa passed; concrete eec70 kernel validation exceeds8GiB. Complete application #check3124499 passes; exact conversion repair active, downstream pending |
 | T35 | Étale structure as ring homs | done | 6 | notes/T35-linux-accepted-checks.md | Scluster3113113 fullmodule+unchangedtrust0consumerPASS329.04s,peak7406MiB,three permitted axioms,zero PSI/swap/children; frozenf30 WT4c1678e committed/pushed; fullroute pending |
 | T36 | Same-witness closure theorem | doing | 4 | notes/T36-chart-linux-accepted-checks-20261003.md | Verbatimgenericcharthelper trust0PASSacluster21805723,3axioms/noresourcefailure; fullclosure59b+unconditionalliteralconsumer queued afterT34 |
-| T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
+| T40 | Import-cycle check | done | 2 | notes/T40-imports.md | Both current roots exist;272modules/582edges, no forbidden or missing sources. Rerun if imports change; proof acceptance separate |
 | T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |
 | T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |
 | T43 | Strict dependency guard | doing | 6 | notes/T43-linux-fixtures-accepted-20261003.md | Actual Linux compiled positive/negative route/body/axiom fixtures PASS, job3112916,371.62s,peak749MiB,zero PSI/swap/children; WT17d138a pushed; production strict traversal awaits final modules |
