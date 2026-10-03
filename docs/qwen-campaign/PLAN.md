@@ -26,28 +26,15 @@ module and literal trust-zero consumer checks. T32 is committed and pushed at
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
 T35 passed on scluster3113113 and is committed/pushed; see
 notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd.
-Columns remains the active blocker. Direct diagnostic3121593 compiled the
-concrete record, accessors, generic helpers and numerator, then rejected the
-concrete producer at the existing kernel memory limit. Its thin-helper repair
-also exceeded the unchanged 8 GiB full-module guard in3122526. Sol split the
-generic derivative declarations unchanged into CommonOpenColumnDerivatives.
-Generic module4cfa695d passed scluster3123290. The isolated concrete derivative
-application fdd51016 exceeded8GiB in3124137 independently of numerator/Data.
-Read-only comparison found its scalar actions aligned with accepted Positions
-and Etale. Explicit k/B/Q/d/n candidate eec70c0c also exceeded8GiB in3124330;
-Columns, its consumer and Closure did not run. Scratch-only progressive
-partial application3124499 passed all seven groups, including the complete
-call, in38.61s with2051276800-byte peak and no survivors. This establishes
-successful elaboration, not proof acceptance: kernel validation of the
-concrete declaration remains the isolated boundary. Sol now investigates
-the explicit-result application check: diagnostic3124794 failed with an
-explicit generic result, while its separate concrete-result bridge passed.
-All seven inferred-type kernel declarations then passed3124922, including
-the complete application, with only the standard three axioms and a
-4938256384-byte peak. Sol prepares a private inferred-result helper and
-unchanged typed public theorem, followed by actual module/consumer checks.
-No unchanged resubmission or cap increase.
-No budget, mathematical field or terminal statement is changed.
+T34 Columns actual modules and unchanged literal trust-zero consumer passed
+scluster3125101 and are committed/pushed at WT1fedc6e, with only the three
+permitted axioms. The allocation drained normally; see
+notes/T34-columns-linux-accepted-checks-20261003.md. Earlier memory diagnostics
+and the kernel-checked inferred-helper repair remain in
+notes/T34-memory-block-20261003.md. The first full Closure build found only
+a missing ground-point owner namespace and retained valuation local-ring
+instance. Sol candidate2145331 repairs those scopes without changing the
+statement or consumer; a Closure-only check follows using accepted caches.
 T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
 unchanged. No full Columns or Closure acceptance is claimed.

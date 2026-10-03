@@ -14,28 +14,13 @@ WT1a3fcfd. The controller validated the exact private test-name report after
 a wrapper-name mismatch. Corrected wrapper3115702 confirmed positions again,
 then Columns468 failed actual compilation. Sol's abstract derivative
 certificate08db failed the Laurent action/tower match in scluster3116538.
-Direct diagnostic3121593 compiled the concrete record/accessors, generic
-helpers and numerator, then rejected the concrete producer at the existing
-kernel memory limit. The thin-helper repair3122526 also exceeded the unchanged
-8 GiB full-module guard. Sol split the generic derivative declarations unchanged
-into CommonOpenColumnDerivatives (61a24d93); concrete Columns is a74e78eb.
-Generic module4cfa695d passed scluster3123290. The isolated concrete derivative
-application fdd51016 exceeded8GiB in3124137 independently of numerator/Data.
-Read-only comparison found its scalar actions aligned with accepted Positions
-and Etale. Explicit k/B/Q/d/n candidate eec70c0c also exceeded8GiB in3124330;
-Columns, its consumer and Closure did not run. Scratch-only progressive
-partial application3124499 passed all seven groups, including the complete
-call, in38.61s with2051276800-byte peak and no survivors. This establishes
-successful elaboration, not proof acceptance: kernel validation of the
-concrete declaration remains the isolated boundary. Sol now investigates
-the explicit-result application check: diagnostic3124794 failed with an
-explicit generic result, while its separate concrete-result bridge passed.
-All seven inferred-type kernel declarations then passed3124922, including
-the complete application, with only the standard three axioms and a
-4938256384-byte peak. Sol prepares a private inferred-result helper and
-unchanged typed public theorem, followed by actual module/consumer checks.
-No unchanged resubmission or cap increase.
-No budget, mathematical field or terminal statement is changed. T35 also passed independently on acluster21805719. Both cluster
+T34 Columns actual modules and unchanged literal consumer passed3125101
+and are committed/pushedWT1fedc6e, with only three permitted axioms. The
+allocation drained normally; see notes/T34-columns-linux-accepted-checks-20261003.md.
+Earlier conversion diagnostics are preserved in notes/T34-memory-block-20261003.md.
+The first full Closure build failed only missing namespace and canonical
+valuation local-ring scope. Sol2145331 repairs those scopes; its Closure-only
+module and unconditional literal consumer are the active check. T35 also passed independently on acluster21805719. Both cluster
 bootstraps passed exact pins and T32. Alternative geometry endpoint passed
 scluster3114679, committedWT71e966a; full alternative assembly/comparators
 remain required. Actual guard fixtures passed3112916. No guard or proof
@@ -73,9 +58,9 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
-| T34 | Columns, derivatives, numerator | doing | 28 | notes/T34-memory-block-20261003.md | Generic4cfa passed; concrete eec70 kernel validation exceeds8GiB. Complete application #check3124499 passes; exact conversion repair active, downstream pending |
+| T34 | Columns, derivatives, numerator | done | 29 | notes/T34-columns-linux-accepted-checks-20261003.md | Actualmodules+unchangedtrust0consumer PASS3125101,3axioms,drained; committed/pushedWT1fedc6e. Positions9417 accepted earlier |
 | T35 | Étale structure as ring homs | done | 6 | notes/T35-linux-accepted-checks.md | Scluster3113113 fullmodule+unchangedtrust0consumerPASS329.04s,peak7406MiB,three permitted axioms,zero PSI/swap/children; frozenf30 WT4c1678e committed/pushed; fullroute pending |
-| T36 | Same-witness closure theorem | doing | 4 | notes/T36-chart-linux-accepted-checks-20261003.md | Verbatimgenericcharthelper trust0PASSacluster21805723,3axioms/noresourcefailure; fullclosure59b+unconditionalliteralconsumer queued afterT34 |
+| T36 | Same-witness closure theorem | doing | 5 | notes/T36-chart-linux-accepted-checks-20261003.md | CharthelperPASS; first full build3125101 found missing namespace/retained IsLocalRing. Sol2145331 fixes scopes; Closure-only module+literalconsumer next |
 | T40 | Import-cycle check | done | 2 | notes/T40-imports.md | Both current roots exist;272modules/582edges, no forbidden or missing sources. Rerun if imports change; proof acceptance separate |
 | T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |
 | T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |
