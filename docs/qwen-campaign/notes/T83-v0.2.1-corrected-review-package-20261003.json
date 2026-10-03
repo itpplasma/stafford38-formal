@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "supplementary_version": "v0.2.1",
+  "paper_origin": "33138378368fdc9f7bcb50947ccc9889f40cac43",
+  "paper_snapshot": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+  "formal_release": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
+  "map_sha256": "f9c257d1882e474e2b1db3461a73d497c2a15d32755b5711fa150a18248c1cdf",
+  "ESM_1_sha256": "c74a5dc0bd1ccbb3ef6b8632381152a0aa1cb69cbd8b2c3093537beadc6ad0d4",
+  "archive_members": 18,
+  "sha256sum_entries": 17,
+  "zip_crc": "passed",
+  "zip_member_bytes": "passed",
+  "manifest_hashes": "passed",
+  "PDF_receipt": "matches actual P6/S6/R131 receipt",
+  "statement_relations": {
+    "partial": 8,
+    "lean-stronger": 9,
+    "equivalent": 11,
+    "exact": 21,
+    "n/a": 8
+  },
+  "route_relations": {
+    "n/a": 25,
+    "same": 18,
+    "similar": 13,
+    "lean-only": 1
+  },
+  "public_rebuild": "passed once at exact public P6/S6/R131 pins",
+  "proof_changes": "none",
+  "human_reviews": "pending",
+  "version_regeneration_fix": "scripts/rebuild.py restores release_version from manifest after generator output. Regression against saved actual output passed; source fields preserved.",
+  "release_commit": "6517aa94ac04dfc2cae3b8b89636d631da1cded6"
+}
