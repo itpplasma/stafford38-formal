@@ -73,7 +73,7 @@ theorem axis_mem_smoothConormalFibreProjection_closure_of_actual_columns
           (tiltedTransverseDerivativeMatrix alpha qPre i j))
     (hraw : ∀ i,
       algebraMap (PowerSeries k) (LaurentSeries k)
-        (PowerSeries.derivative k (tiltedArc alpha (qPre i))) =
+        (PowerSeries.derivative (R := k) (tiltedArc alpha (qPre i))) =
       coordinateDerivation (k := k) (σ := Option (Fin d)) (B := E)
         (L := LaurentSeries k) none (qC i) +
         ∑ j, algebraMap (PowerSeries k) (LaurentSeries k)

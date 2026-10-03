@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import AlgebraicAnalysis.Ore.Associativity
 import Stafford38.Weyl.Symplectic
 import Stafford38.Weyl.LeadingSymbol
@@ -39,7 +40,8 @@ theorem normalForm_linearCombination {n : ℕ}
   calc
     _ = presentedNormalFormLinearEquiv k n
         (∑ j, (M i j) • freeWeylGenerator (standardForm k n) j) := by
-      congr 1
+      simp [freeWeylLinearCombination, Stafford.linearCombination,
+        Algebra.smul_def]
     _ = ∑ j, (M i j) • MvPolynomial.X j := by
       rw [map_sum]
       apply Finset.sum_congr rfl

@@ -52,10 +52,10 @@ lemma normalized_axis_constantCoeff_eq_zero
     (hq : q axis = (PowerSeries.X : PowerSeries k) ^ b * u)
     (hZ : ∀ j, ∃ w : PowerSeries k,
       Z axis j = (PowerSeries.X : PowerSeries k) ^ b * w)
-    (hfactor : ∀ i, PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+    (hfactor : ∀ i, PowerSeries.derivative (R := k) (q i) - Z.mulVec lambda i =
       (PowerSeries.X : PowerSeries k) ^ c * tau i) :
     PowerSeries.constantCoeff (tau axis) = 0 := by
-  have hd : PowerSeries.coeff c (PowerSeries.derivative k (q axis)) = 0 := by
+  have hd : PowerSeries.coeff c (PowerSeries.derivative (R := k) (q axis)) = 0 := by
     rw [PowerSeries.coeff_derivative, hq, PowerSeries.coeff_X_pow_mul']
     simp [Nat.not_le_of_gt hbc]
   have hz : PowerSeries.coeff c (Z.mulVec lambda axis) = 0 := by
@@ -94,7 +94,7 @@ theorem exists_normalized_split_axis_matrix
       (tau : Fin (n + 1) → PowerSeries k)
       (C : Matrix (FormalTangentColumn κ) (Fin (n + 1)) (PowerSeries k)),
       c ≤ a - 1 ∧
-      (∀ i, PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+      (∀ i, PowerSeries.derivative (R := k) (q i) - Z.mulVec lambda i =
         (PowerSeries.X : PowerSeries k) ^ c * tau i) ∧
       C * formalTangentMatrix q Z tau = 1 ∧
       (∀ j, PowerSeries.constantCoeff (formalTangentMatrix q Z tau axis.succ j) = 0) := by

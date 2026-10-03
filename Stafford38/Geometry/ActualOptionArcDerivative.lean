@@ -47,7 +47,7 @@ theorem arc_derivative_eq_option_coordinate_sum
         PowerSeries.C (β j) +
           PowerSeries.C (j.elim 1 α) * PowerSeries.X)
     (b : T) :
-    PowerSeries.derivative k (φ b) =
+    PowerSeries.derivative (R := k) (φ b) =
       φ (EtaleCotangentBasis.coordinateDerivation
         (k := k) (σ := Option (Fin d)) (B := T) (L := T) none b) +
         ∑ j : Fin d, PowerSeries.C (α j) *
@@ -65,7 +65,7 @@ theorem arc_derivative_eq_option_coordinate_sum
         change φ (r * x) = φ r * φ x
         exact φ.map_mul r x }
   let Dleft : Derivation k T (PowerSeries k) :=
-    (PowerSeries.derivative k).compAlgebraMap T
+    (PowerSeries.derivative (R := k)).compAlgebraMap T
   let Dright : Derivation k T (PowerSeries k) :=
     (φlin.compDer (EtaleCotangentBasis.coordinateDerivation
       (k := k) (σ := Option (Fin d)) (B := T) (L := T) none)) +
@@ -74,7 +74,7 @@ theorem arc_derivative_eq_option_coordinate_sum
           (k := k) (σ := Option (Fin d)) (B := T) (L := T) (some j)))
   have hleft (j : Option (Fin d)) :
       Dleft (algebraMap R T (MvPolynomial.X j)) = PowerSeries.C (j.elim 1 α) := by
-    change PowerSeries.derivative k
+    change PowerSeries.derivative (R := k)
       (φ (algebraMap R T (MvPolynomial.X j))) = _
     rw [hcoord j]
     cases j <;> simp [Derivation.map_add, Derivation.leibniz]
@@ -107,7 +107,7 @@ theorem arc_derivative_eq_option_coordinate_sum
         rw [hleft j, hright j]
       _ = Dright := EtaleCotangentBasis.derivation_eq_from_parameter_values Dright
   calc
-    PowerSeries.derivative k (φ b) = Dleft b := rfl
+    PowerSeries.derivative (R := k) (φ b) = Dleft b := rfl
     _ = Dright b := congrArg (fun D : Derivation k T (PowerSeries k) => D b) hderiv
     _ = φ (EtaleCotangentBasis.coordinateDerivation
           (k := k) (σ := Option (Fin d)) (B := T) (L := T) none b) +
@@ -130,7 +130,7 @@ theorem localToFinSuccArc_derivative_eq_option_coordinate_sum
     (M : Ideal A) [M.IsMaximal] (eM : (A ⧸ M) ≃ₐ[k] k)
     [Algebra.FormallyEtale R (Localization.AtPrime M)]
     (α : Fin d → k) (b : Localization.AtPrime M) :
-    PowerSeries.derivative k
+    PowerSeries.derivative (R := k)
       (tiltedArc (k := k) α
         (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM b)) =
       tiltedArc (k := k) α

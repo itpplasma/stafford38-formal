@@ -319,6 +319,14 @@ theorem exists_coefficients (hinj : Function.Injective (algebraMap V F)) :
     simp only [scaledDifferential, ← algebraMap_smul (R := V) (A := F) (M := Ω), smul_smul,
       map_mul, map_pow]
     ring_nf
+  let c := algebraMap V F D.t ^ (D.a + 1) * algebraMap V F D.u ^ 2
+  letI : Module.IsTorsionFree F Ω :=
+    Module.IsTorsionFree.of_smul_eq_zero (fun r z hz ↦ by
+      by_cases hr : r = 0
+      · exact Or.inl hr
+      · right
+        have hcancel := congrArg (fun z : Ω => r⁻¹ • z) hz
+        simpa [smul_smul, inv_mul_cancel₀ hr] using hcancel)
   exact smul_right_injective Ω hscale hleft
 
 theorem exists_maximalIdeal_coefficients (hinj : Function.Injective (algebraMap V F)) :

@@ -54,7 +54,7 @@ private noncomputable def natDirectSumToNonpositive
   DirectSum.toModule k ℕ (DirectSum ℤ A) (fun m =>
     (DirectSum.lof k ℤ A (negIndex m)).comp (e m).symm.toLinearMap)
 
-@[simp] private theorem natDirectSumToNonpositive_lof
+@[simp] theorem natDirectSumToNonpositive_lof
     (e : ∀ m : ℕ, A (negIndex m) ≃ₗ[k] B m) (m : ℕ) (x : B m) :
     natDirectSumToNonpositive k e (DirectSum.lof k ℕ B m x) =
       DirectSum.lof k ℤ A (negIndex m) ((e m).symm x) := by

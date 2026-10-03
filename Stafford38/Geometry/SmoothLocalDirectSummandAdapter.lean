@@ -175,7 +175,7 @@ theorem exists_directSummandInput_of_tilted_local_axis_lift
         (tau : Fin (n + 1) → PowerSeries k)
         (C : Matrix (FormalTangentColumn (Fin d))
           (Fin (n + 1)) (PowerSeries k)),
-      (∀ i, PowerSeries.derivative k (tiltedArc (k := k) α (q i)) -
+      (∀ i, PowerSeries.derivative (R := k) (tiltedArc (k := k) α (q i)) -
           (tiltedTransverseDerivativeMatrix (k := k) α q).mulVec lambda i =
         (PowerSeries.X : PowerSeries k) ^ c * tau i) →
       C * formalTangentMatrix

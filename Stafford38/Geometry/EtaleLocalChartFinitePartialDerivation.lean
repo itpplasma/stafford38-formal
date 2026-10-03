@@ -29,7 +29,7 @@ variable [Algebra (MvPolynomial (Fin (d + 1)) k) B] [Algebra k B]
   [IsScalarTower k (MvPolynomial (Fin (d + 1)) k) B]
   [Algebra.FormallyEtale (MvPolynomial (Fin (d + 1)) k) B]
 
-local notation "R" => MvPolynomial (Fin (d + 1)) k
+local notation "ChartBase" => MvPolynomial (Fin (d + 1)) k
 
 /-- The `B`-valued partial derivation dual to a parameter of an existing
 formally-etale polynomial chart. -/
@@ -39,7 +39,7 @@ noncomputable def parameterDerivation (i : Fin (d + 1)) : Derivation k B B :=
 
 theorem parameterDerivation_apply_parameter (i j : Fin (d + 1)) :
     parameterDerivation (k := k) (d := d) (B := B) i
-      (algebraMap R B (MvPolynomial.X j)) = if j = i then (1 : B) else 0 := by
+      (algebraMap ChartBase B (MvPolynomial.X j)) = if j = i then (1 : B) else 0 := by
   exact Stafford38.Geometry.EtaleCotangentBasis.coordinateDerivation_apply_parameter
     (k := k) (σ := Fin (d + 1)) (B := B) (L := B) i j
 
@@ -56,19 +56,19 @@ theorem parameterDerivation_scalarExtension_eq_coordinate
         (k := k) (σ := Fin (d + 1)) (B := B) (L := L) i := by
   let D : Derivation k B L := (Algebra.linearMap B L).compDer
     (parameterDerivation (k := k) (d := d) (B := B) i)
-  have hD : ∀ j, D (algebraMap R B (MvPolynomial.X j)) =
+  have hD : ∀ j, D (algebraMap ChartBase B (MvPolynomial.X j)) =
       if j = i then (1 : L) else 0 := by
     intro j
     change algebraMap B L
       (parameterDerivation (k := k) (d := d) (B := B) i
-        (algebraMap R B (MvPolynomial.X j))) = _
+        (algebraMap ChartBase B (MvPolynomial.X j))) = _
     rw [parameterDerivation_apply_parameter]
     simp
   change D = _
   calc
     D = Stafford38.Geometry.EtaleCotangentBasis.derivationFromValues
         (k := k) (σ := Fin (d + 1)) (B := B) (L := L)
-        (fun j => D (algebraMap R B (MvPolynomial.X j))) :=
+        (fun j => D (algebraMap ChartBase B (MvPolynomial.X j))) :=
       (Stafford38.Geometry.EtaleCotangentBasis.derivation_eq_from_parameter_values D).symm
     _ = Stafford38.Geometry.EtaleCotangentBasis.derivationFromValues
         (k := k) (σ := Fin (d + 1)) (B := B) (L := L)
@@ -87,7 +87,7 @@ theorem selectedRow_parameterDerivatives {n : ℕ}
     (q : Fin (n + 1) → B) (rows : Fin d ↪ Fin (n + 1))
     (β : Fin d → k)
     (hq : ∀ j, q (rows j) = algebraMap k B (β j) +
-      algebraMap R B (MvPolynomial.X j.succ)) :
+      algebraMap ChartBase B (MvPolynomial.X j.succ)) :
     (∀ i j, parameterDerivation (k := k) (d := d) (B := B) i.succ
         (q (rows j)) = if i = j then (1 : B) else 0) ∧
       (∀ j, parameterDerivation (k := k) (d := d) (B := B) 0
@@ -106,9 +106,9 @@ theorem selectedRow_completedPartials {n : ℕ}
     (rows : Fin d ↪ Fin (n + 1)) (β : Fin d → k)
     (hq : ∀ j, q (rows j) = MvPowerSeries.C (β j) +
       MvPowerSeries.X j.succ) :
-    (∀ i j, MvPowerSeries.pderiv k i.succ (q (rows j)) =
+    (∀ i j, MvPowerSeries.pderiv i.succ (q (rows j)) =
         if i = j then 1 else 0) ∧
-      (∀ j, MvPowerSeries.pderiv k 0 (q (rows j)) = 0) := by
+      (∀ j, MvPowerSeries.pderiv 0 (q (rows j)) = 0) := by
   constructor
   · intro i j
     rw [hq j]
@@ -138,7 +138,7 @@ theorem tiltedArc_X_succ (α : Fin d → k) (j : Fin d) :
   rfl
 
 theorem tiltedArc_derivative_parameter (α : Fin d → k) (i : Fin (d + 1)) :
-    PowerSeries.derivative k (tiltedArc (k := k) α (MvPowerSeries.X i)) =
+    PowerSeries.derivative (R := k) (tiltedArc (k := k) α (MvPowerSeries.X i)) =
       PowerSeries.C (tiltedArcCoefficients (k := k) α i) := by
   cases i using Fin.cases with
   | zero =>
@@ -155,7 +155,7 @@ theorem selectedRow_tiltedArc_derivative {n : ℕ}
     (rows : Fin d ↪ Fin (n + 1)) (β α : Fin d → k)
     (hq : ∀ j, q (rows j) = MvPowerSeries.C (β j) +
       MvPowerSeries.X j.succ) :
-    ∀ j, PowerSeries.derivative k
+    ∀ j, PowerSeries.derivative (R := k)
       (tiltedArc (k := k) α (q (rows j))) = PowerSeries.C (α j) := by
   intro j
   rw [hq j]
@@ -172,11 +172,11 @@ theorem selectedRow_tiltedArc_derivative {n : ℕ}
       (MvPowerSeries.C (β j)) = _
     rw [MvPowerSeries.rename_C]
     rfl
-  change PowerSeries.derivative k
+  change PowerSeries.derivative (R := k)
     (tiltedArcMap (k := k) α
       (MvPowerSeries.C (β j) + MvPowerSeries.X j.succ)) = _
   rw [(tiltedArcMap (k := k) α).map_add]
-  change PowerSeries.derivative k
+  change PowerSeries.derivative (R := k)
     (tiltedArc (k := k) α (MvPowerSeries.C (β j)) +
       tiltedArc (k := k) α (MvPowerSeries.X j.succ)) = _
   rw [hC, hx]

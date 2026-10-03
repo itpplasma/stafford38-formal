@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Mathlib.RingTheory.MvPowerSeries.Order
 import Mathlib.RingTheory.MvPowerSeries.Trunc
 import Mathlib.RingTheory.MvPowerSeries.Substitution
@@ -209,15 +210,23 @@ theorem exists_tilt_subst_ne_zero {n : ℕ}
   have hp : p.IsHomogeneous r := MvPolynomial.homogeneousComponent_isHomogeneous r q
   have hqcoeff : q.coeff d ≠ 0 := by
     dsimp [q]
-    rw [MvPowerSeries.coeff_truncTotal (p := h) (by rw [hdegreeR]; omega)]
+    have hd : d.degree < r + 1 := by rw [hdegreeR]; omega
+    have htrunc : MvPolynomial.coeff d (MvPowerSeries.truncTotal (r + 1) h) =
+        MvPowerSeries.coeff d h := by
+      simpa [MvPolynomial.coeff] using
+        (MvPowerSeries.coeff_truncTotal (p := h) hd)
+    rw [htrunc]
     simpa [h, MvPowerSeries.coeff_homogeneousComponent, hdegreeR] using hcoeff
   have hp0 : p ≠ 0 := by
     intro hzero
     have hz := congrArg (fun z : MvPolynomial (Fin (n + 1)) k => z.coeff d) hzero
     apply hqcoeff
     dsimp [p] at hz
-    rw [MvPolynomial.coeff_homogeneousComponent, if_pos hdegreeR] at hz
-    exact hz
+    have hz' : AddMonoidAlgebra.coeff (MvPolynomial.homogeneousComponent r q) d = 0 := by
+      simpa [MvPolynomial.coeff] using hz
+    rw [MvPolynomial.coeff_homogeneousComponent r q d, ite_eq_left hdegreeR] at hz'
+    change MvPolynomial.coeff d q = 0 at hz'
+    exact hz'
   have hpseries : h = (p : MvPowerSeries (Fin (n + 1)) k) := by
     ext e
     by_cases he : e.degree = r
@@ -257,7 +266,8 @@ theorem exists_tilt_subst_ne_zero {n : ℕ}
   let e : PUnit →₀ ℕ := Finsupp.single PUnit.unit r
   have hedegree : e.degree = r := by simp [e, Finsupp.degree_single]
   have hebelow : e.degree < r + 1 := by omega
-  have hcoefTrunc := congrArg (fun z : MvPolynomial PUnit k => z.coeff e) htrunc
+  have hcoefTrunc := congrArg
+    (fun z : MvPolynomial PUnit k => AddMonoidAlgebra.coeff z e) htrunc
   rw [MvPowerSeries.coeff_truncTotal (p := f.subst a) hebelow,
     MvPowerSeries.coeff_truncTotal (p := (f.homogeneousComponent r).subst a) hebelow]
     at hcoefTrunc

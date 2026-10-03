@@ -42,9 +42,7 @@ variable [OreLocalization.OreSet
   (OppositeDenominators (filteredQuotientTwoJetTraceData k I) S)]
 variable [IsLocalRing (Localization S)]
 
-private abbrev concreteData := filteredQuotientTwoJetTraceData k I
-
-local notation "D" => concreteData k I
+local notation "D" => filteredQuotientTwoJetTraceData k I
 local notation "Cₗ" =>
   OreLocalization (OppositeDenominators D S)
     ((OrderReesTwoJet (n := n) k)ᵐᵒᵖ)

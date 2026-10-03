@@ -50,13 +50,13 @@ theorem constantCoeff_normalizedTransverse_axis_eq_zero
     (hZaxis : ∀ j, ∃ w : PowerSeries k,
       Z axis j = (PowerSeries.X : PowerSeries k) ^ b * w)
     (hfactor :
-      PowerSeries.derivative k (q axis) - Z.mulVec lambda axis =
+      PowerSeries.derivative (R := k) (q axis) - Z.mulVec lambda axis =
         (PowerSeries.X : PowerSeries k) ^ c * tau axis) :
     PowerSeries.constantCoeff (tau axis) = 0 := by
   have hcb : c < b := by omega
   have hcsuccb : c + 1 < b := by omega
   have hderivative :
-      PowerSeries.coeff c (PowerSeries.derivative k (q axis)) = 0 := by
+      PowerSeries.coeff c (PowerSeries.derivative (R := k) (q axis)) = 0 := by
     rw [PowerSeries.coeff_derivative, hqaxis]
     rw [PowerSeries.coeff_X_pow_mul']
     simp [Nat.not_le_of_gt hcsuccb]
@@ -72,7 +72,7 @@ theorem constantCoeff_normalizedTransverse_axis_eq_zero
     simp [Nat.not_le_of_gt hcb]
   have hcorrected :
       PowerSeries.coeff c
-        (PowerSeries.derivative k (q axis) - Z.mulVec lambda axis) = 0 := by
+        (PowerSeries.derivative (R := k) (q axis) - Z.mulVec lambda axis) = 0 := by
     rw [map_sub, hderivative, hcombination, sub_zero]
   have hnormalized :
       PowerSeries.coeff c
@@ -153,7 +153,7 @@ theorem exists_formalDivisorAxisLift_of_selected_correction
     (hqaxis : q axis = (PowerSeries.X : PowerSeries k) ^ b * u₁)
     (hZaxis : ∀ j, ∃ w : PowerSeries k,
       Z axis j = (PowerSeries.X : PowerSeries k) ^ b * w)
-    (hselected : ∀ j, PowerSeries.derivative k (q (rows j)) =
+    (hselected : ∀ j, PowerSeries.derivative (R := k) (q (rows j)) =
       Z.mulVec lambda (rows j))
     (hminor :
       PowerSeries.constantCoeff (selectedMinor Z rows).det ≠ 0) :
@@ -164,7 +164,7 @@ theorem exists_formalDivisorAxisLift_of_selected_correction
       (∀ j, tau (rows j) = 0) ∧
       c ≤ a - 1 ∧
       (∀ i,
-        PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+        PowerSeries.derivative (R := k) (q i) - Z.mulVec lambda i =
           (PowerSeries.X : PowerSeries k) ^ c * tau i) ∧
       (∃ i, PowerSeries.constantCoeff (tau i) ≠ 0) ∧
       PowerSeries.constantCoeff (tau axis) = 0 ∧
@@ -247,15 +247,15 @@ theorem exists_formalDivisorAxisLift
       (C : Matrix (FormalTangentColumn κ) ι (PowerSeries k))
       (ell : ι → PowerSeries k),
       lambda = correctionCoefficients Z rows
-        (fun i => PowerSeries.derivative k (q i)) ∧
+        (fun i => PowerSeries.derivative (R := k) (q i)) ∧
       (∀ j,
-        PowerSeries.derivative k (q (rows j)) =
+        PowerSeries.derivative (R := k) (q (rows j)) =
           Z.mulVec lambda (rows j)) ∧
       tau chart = 0 ∧
       (∀ j, tau (rows j) = 0) ∧
       c ≤ a - 1 ∧
       (∀ i,
-        PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+        PowerSeries.derivative (R := k) (q i) - Z.mulVec lambda i =
           (PowerSeries.X : PowerSeries k) ^ c * tau i) ∧
       (∃ i, PowerSeries.constantCoeff (tau i) ≠ 0) ∧
       PowerSeries.constantCoeff (tau axis) = 0 ∧
@@ -265,7 +265,7 @@ theorem exists_formalDivisorAxisLift
       C * formalTangentMatrix q Z tau = 1 ∧
       rowMul ell (formalTangentMatrix q Z tau) = 0 ∧
       residueColumn ell = axisRow (k := k) axis := by
-  let v : ι → PowerSeries k := fun i => PowerSeries.derivative k (q i)
+  let v : ι → PowerSeries k := fun i => PowerSeries.derivative (R := k) (q i)
   let lambda : κ → PowerSeries k := correctionCoefficients Z rows v
   have hselected : ∀ j, v (rows j) = Z.mulVec lambda (rows j) := by
     intro j

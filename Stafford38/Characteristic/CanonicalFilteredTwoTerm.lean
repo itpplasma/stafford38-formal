@@ -1,6 +1,7 @@
 import Stafford38.Characteristic.FilteredTwoTermPages
 import Stafford38.Characteristic.CanonicalAxisAvoidanceConsumer
 import Stafford38.Characteristic.AssociatedGradedModule
+import Stafford38.Weyl.QuotientTransport
 
 /-!
 # The canonical filtered two-term complex
@@ -28,11 +29,8 @@ universe u
 
 variable (k : Type u) [Field k] [Algebra ℚ k]
 
-private abbrev CanonicalIdeal (n N : ℕ) (d : PresentedWeyl k (n + 1)) :=
-  presentedCanonicalRightIdeal (k := k) n N d
-
 abbrev CanonicalQuotient (n N : ℕ) (d : PresentedWeyl k (n + 1)) :=
-  FilteredRightQuotient k (CanonicalIdeal k n N d)
+  FilteredRightQuotient k (presentedCanonicalRightIdeal (k := k) n N d)
 
 def rightMulLinearMap (I : RightIdeal (PresentedWeyl k (n + 1)))
     (a : PresentedWeyl k (n + 1)) :
@@ -112,9 +110,9 @@ def canonicalFilteredTwoTerm (n N : ℕ)
     (d : PresentedWeyl k (n + 1))
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
     FilteredTwoTerm k (CanonicalQuotient k n N d) where
-  G := canonicalOrderFiltration k (CanonicalIdeal k n N d)
+  G := canonicalOrderFiltration k (presentedCanonicalRightIdeal (k := k) n N d)
   antitone := canonicalOrderFiltration_antitone k _
-  f := rightMulLinearMap k (CanonicalIdeal k n N d) (presentedCoordinate k n)
+  f := rightMulLinearMap k (presentedCanonicalRightIdeal (k := k) n N d) (presentedCoordinate k n)
   map_le := by
     intro p
     by_cases hp : p ≤ 0
@@ -133,15 +131,15 @@ theorem canonicalFilteredTwoTerm_f_surjective
       (canonicalFilteredTwoTerm k n N d hd).f := by
   intro q
   obtain ⟨z, rfl⟩ := Submodule.Quotient.mk_surjective
-    (rightIdealKSubmodule k (CanonicalIdeal k n N d)) q
+    (rightIdealKSubmodule k (presentedCanonicalRightIdeal (k := k) n N d)) q
   obtain ⟨y, hy⟩ :=
     presentedCanonicalRightQuotient_rightMul_coordinate_surjective
-      (k := k) n N hd (qmk (CanonicalIdeal k n N d) z)
+      (k := k) n N hd (qmk (presentedCanonicalRightIdeal (k := k) n N d) z)
   obtain ⟨y', hy'⟩ := Submodule.Quotient.mk_surjective
-    (rightIdealKSubmodule k (CanonicalIdeal k n N d)) y
+    (rightIdealKSubmodule k (presentedCanonicalRightIdeal (k := k) n N d)) y
   rw [← hy'] at hy
   refine ⟨Submodule.Quotient.mk y', ?_⟩
-  change rightMulLinearMap k (CanonicalIdeal k n N d)
+  change rightMulLinearMap k (presentedCanonicalRightIdeal (k := k) n N d)
       (presentedCoordinate k n) (Submodule.Quotient.mk y') =
     Submodule.Quotient.mk z
   rw [rightMulLinearMap_mk]

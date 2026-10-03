@@ -37,7 +37,7 @@ theorem localRing_at_contracted_maximalIdeal_le_valuationSubring
   let g : B →+* W.toSubring := IsLocalization.lift
     (M := p.primeCompl) (S := B) (g := i) hunit
   have hglocal : IsLocalHom g := by
-    apply (IsLocalRing.local_hom_TFAE g).out 1 0 |>.mp
+    apply (IsLocalRing.local_hom_TFAE g).out 2 1 |>.mp
     rintro _ ⟨x, hx, rfl⟩
     obtain ⟨a, s, rfl⟩ := IsLocalization.exists_mk'_eq p.primeCompl x
     have haB : algebraMap A B a ∈ IsLocalRing.maximalIdeal B :=

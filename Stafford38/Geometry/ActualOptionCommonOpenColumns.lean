@@ -98,12 +98,12 @@ theorem actual_option_columns
             (L := genericOpenExtraAwayB M f e g) (some j) (qU i)) =
         algebraMap (PowerSeries k) (LaurentSeries k)
           (tiltedArc (k := k) α
-            (MvPowerSeries.pderiv k j.succ
+            (MvPowerSeries.pderiv j.succ
               (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                 (qT i))))) ∧
     (∀ i,
       algebraMap (PowerSeries k) (LaurentSeries k)
-          (PowerSeries.derivative k
+          (PowerSeries.derivative (R := k)
             (tiltedArc (k := k) α
               (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                 (qT i)))) =
@@ -189,7 +189,7 @@ theorem actual_option_columns
           (B := U) (L := U) j (qU i)) =
         algebraMap (PowerSeries k) (LaurentSeries k)
           (tiltedArc (k := k) α
-            (MvPowerSeries.pderiv k (j.elim 0 Fin.succ)
+            (MvPowerSeries.pderiv (j.elim 0 Fin.succ)
               (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                 (qT i)))) := by
     have hqderiv :
@@ -220,7 +220,7 @@ theorem actual_option_columns
         | none =>
             have hc := localToFinSuccPowerSeries_commutes_coordinateDerivation
               (k := k) (d := d) (Aₒ := A) M eM 0 (qT i)
-            have hc' : MvPowerSeries.pderiv k 0
+            have hc' : MvPowerSeries.pderiv 0
                 (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM (qT i)) =
                 localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                   (coordinateDerivation (k := k) (σ := Option (Fin d))
@@ -233,7 +233,7 @@ theorem actual_option_columns
                     (B := T) (L := T) none (qT i)))) =
               algebraMap (PowerSeries k) (LaurentSeries k)
                 (tiltedArc (k := k) α
-                  (MvPowerSeries.pderiv k 0
+                  (MvPowerSeries.pderiv 0
                     (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM (qT i))))
             exact congrArg
               (fun z : MvPowerSeries (Fin (d + 1)) k =>
@@ -242,7 +242,7 @@ theorem actual_option_columns
         | some j =>
             have hc := localToFinSuccPowerSeries_commutes_coordinateDerivation
               (k := k) (d := d) (Aₒ := A) M eM j.succ (qT i)
-            have hc' : MvPowerSeries.pderiv k j.succ
+            have hc' : MvPowerSeries.pderiv j.succ
                 (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM (qT i)) =
                 localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                   (coordinateDerivation (k := k) (σ := Option (Fin d))
@@ -255,7 +255,7 @@ theorem actual_option_columns
                     (B := T) (L := T) (some j) (qT i)))) =
               algebraMap (PowerSeries k) (LaurentSeries k)
                 (tiltedArc (k := k) α
-                  (MvPowerSeries.pderiv k j.succ
+                  (MvPowerSeries.pderiv j.succ
                     (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM (qT i))))
             exact congrArg
               (fun z : MvPowerSeries (Fin (d + 1)) k =>
@@ -263,7 +263,7 @@ theorem actual_option_columns
               hc'.symm
   have hraw (i : Fin (n + 1)) :
       algebraMap (PowerSeries k) (LaurentSeries k)
-          (PowerSeries.derivative k
+          (PowerSeries.derivative (R := k)
             (tiltedArc (k := k) α
               (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                 (qT i)))) =
@@ -284,14 +284,14 @@ theorem actual_option_columns
                   (B := T) (L := T) j (qT i)))) =
           algebraMap (PowerSeries k) (LaurentSeries k)
             (tiltedArc (k := k) α
-              (MvPowerSeries.pderiv k (j.elim 0 Fin.succ)
+              (MvPowerSeries.pderiv (j.elim 0 Fin.succ)
                 (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                   (qT i)))) := by
       cases j with
       | none =>
           have hc := localToFinSuccPowerSeries_commutes_coordinateDerivation
             (k := k) (d := d) (Aₒ := A) M eM 0 (qT i)
-          have hc' : MvPowerSeries.pderiv k 0
+          have hc' : MvPowerSeries.pderiv 0
               (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM (qT i)) =
               localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                 (coordinateDerivation (k := k) (σ := Option (Fin d))
@@ -304,7 +304,7 @@ theorem actual_option_columns
       | some j =>
           have hc := localToFinSuccPowerSeries_commutes_coordinateDerivation
             (k := k) (d := d) (Aₒ := A) M eM j.succ (qT i)
-          have hc' : MvPowerSeries.pderiv k j.succ
+          have hc' : MvPowerSeries.pderiv j.succ
               (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM (qT i)) =
               localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                 (coordinateDerivation (k := k) (σ := Option (Fin d))
@@ -316,7 +316,7 @@ theorem actual_option_columns
             hc'.symm
     calc
       algebraMap (PowerSeries k) (LaurentSeries k)
-          (PowerSeries.derivative k
+          (PowerSeries.derivative (R := k)
             (tiltedArc (k := k) α
               (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                 (qT i)))) =
@@ -348,13 +348,13 @@ theorem actual_option_columns
                         (B := T) (L := T) (some j) (qT i)))) =
             algebraMap (PowerSeries k) (LaurentSeries k)
                 (tiltedArc (k := k) α
-                  (MvPowerSeries.pderiv k 0
+                  (MvPowerSeries.pderiv 0
                     (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM (qT i)))) +
             ∑ j : Fin d,
               algebraMap (PowerSeries k) (LaurentSeries k) (PowerSeries.C (α j)) *
                 algebraMap (PowerSeries k) (LaurentSeries k)
                   (tiltedArc (k := k) α
-                    (MvPowerSeries.pderiv k j.succ
+                    (MvPowerSeries.pderiv j.succ
                       (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM (qT i)))) := by
               rw [hcomm none]
               congr 1
@@ -372,7 +372,7 @@ theorem actual_option_columns
                   (σ := Option (Fin d)) (B := U) (L := U) none (qU i)) =
                   algebraMap (PowerSeries k) (LaurentSeries k)
                     (tiltedArc (k := k) α
-                      (MvPowerSeries.pderiv k 0
+                      (MvPowerSeries.pderiv 0
                         (localToFinSuccPowerSeries (k := k) (B := A) (d := d)
                           M eM (qT i)))) := by
                 simpa using hderiv none i
@@ -384,7 +384,7 @@ theorem actual_option_columns
                   (σ := Option (Fin d)) (B := U) (L := U) (some j) (qU i)) =
                   algebraMap (PowerSeries k) (LaurentSeries k)
                     (tiltedArc (k := k) α
-                      (MvPowerSeries.pderiv k j.succ
+                      (MvPowerSeries.pderiv j.succ
                         (localToFinSuccPowerSeries (k := k) (B := A) (d := d)
                           M eM (qT i)))) := by
                 simpa using hderiv (some j) i
@@ -424,12 +424,12 @@ theorem actual_option_columns_to_laurent
         (B := U) (L := U) (some j) (qU i)) =
         powerSeriesMap
           (tiltedArc (k := k) α
-            (MvPowerSeries.pderiv k j.succ
+            (MvPowerSeries.pderiv j.succ
               (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                 (qT i)))))
     (hrawU : ∀ i,
       powerSeriesMap
-          (PowerSeries.derivative k
+          (PowerSeries.derivative (R := k)
             (tiltedArc (k := k) α
               (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
                 (qT i)))) =
@@ -456,12 +456,12 @@ theorem actual_option_columns_to_laurent
         (B := U) (L := L) (some j) (qU i) =
       powerSeriesMap
         (tiltedArc (k := k) α
-          (MvPowerSeries.pderiv k j.succ
+          (MvPowerSeries.pderiv j.succ
             (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
               (qT i))))) ∧
     (∀ i,
       powerSeriesMap
-        (PowerSeries.derivative k
+        (PowerSeries.derivative (R := k)
           (tiltedArc (k := k) α
             (localToFinSuccPowerSeries (k := k) (B := A) (d := d) M eM
               (qT i)))) =

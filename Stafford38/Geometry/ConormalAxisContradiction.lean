@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Characteristic.HomogeneousChart
 import Stafford38.Geometry.AffineConormalClosure
 
@@ -75,7 +76,8 @@ theorem eval_axis_eq_one_of_pureCoefficient_one
   classical
   rw [MvPolynomial.eval_eq]
   rw [Finset.sum_eq_single (Finsupp.single t N)]
-  · rw [hpure, one_mul]
+  · change AddMonoidAlgebra.coeff P (Finsupp.single t N) = 1 at hpure
+    rw [hpure, one_mul]
     by_cases hN : N = 0
     · subst N
       simp

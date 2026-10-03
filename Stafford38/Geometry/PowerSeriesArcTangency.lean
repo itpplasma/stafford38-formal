@@ -313,11 +313,11 @@ theorem residueFrameVector_coefficient_mem_zariskiTangentSpace_of_eval₂_eq_zer
 theorem derivative_eval_map
     {m : ℕ} (f : MvPolynomial (Fin m) k)
     (q : Fin m → PowerSeries k) :
-    PowerSeries.derivative k
+    PowerSeries.derivative (R := k)
         (MvPolynomial.eval q (MvPolynomial.map (PowerSeries.C) f)) =
       ∑ i, MvPolynomial.eval q
           (MvPolynomial.map (PowerSeries.C) (MvPolynomial.pderiv i f)) *
-        PowerSeries.derivative k (q i) := by
+        PowerSeries.derivative (R := k) (q i) := by
   induction f using MvPolynomial.induction_on with
   | C a => simp
   | add f g hf hg =>
@@ -339,7 +339,7 @@ abbrev arcVelocity {m : ℕ} (q : Fin m → PowerSeries k) : Fin m → k :=
 @[simp] theorem arcVelocity_eq_constantCoeff_derivative
     {m : ℕ} (q : Fin m → PowerSeries k) :
     arcVelocity q =
-      fun i ↦ PowerSeries.constantCoeff (PowerSeries.derivative k (q i)) := by
+      fun i ↦ PowerSeries.constantCoeff (PowerSeries.derivative (R := k) (q i)) := by
   simpa [arcVelocity] using
     powerSeriesFirstCoefficient_eq_constantCoeff_derivative q
 
@@ -371,7 +371,7 @@ theorem differentialCovector_arcVelocity_eq_zero_of_eval_eq_zero
               (MvPolynomial.map (PowerSeries.C)
                 (MvPolynomial.pderiv i f))) *
           PowerSeries.constantCoeff
-            (PowerSeries.derivative k (q i)) := by
+            (PowerSeries.derivative (R := k) (q i)) := by
     simpa only [map_zero, map_sum, map_mul] using
       congrArg (PowerSeries.constantCoeff) hderiv
   simp_rw [residue_eval_map] at hconst
@@ -402,15 +402,15 @@ theorem arcVelocity_mem_zariskiTangentSpace_of_eval_eq_zero
   | zero => simp
   | add φ ψ hφ hψ ihφ ihψ =>
       have ihφ' : φ (fun i ↦
-          PowerSeries.constantCoeff (PowerSeries.derivative k (q i))) = 0 := by
+          PowerSeries.constantCoeff (PowerSeries.derivative (R := k) (q i))) = 0 := by
         simpa only [← arcVelocity_eq_constantCoeff_derivative q] using ihφ
       have ihψ' : ψ (fun i ↦
-          PowerSeries.constantCoeff (PowerSeries.derivative k (q i))) = 0 := by
+          PowerSeries.constantCoeff (PowerSeries.derivative (R := k) (q i))) = 0 := by
         simpa only [← arcVelocity_eq_constantCoeff_derivative q] using ihψ
       simp [ihφ', ihψ']
   | smul a φ hφ ihφ =>
       have ihφ' : φ (fun i ↦
-          PowerSeries.constantCoeff (PowerSeries.derivative k (q i))) = 0 := by
+          PowerSeries.constantCoeff (PowerSeries.derivative (R := k) (q i))) = 0 := by
         simpa only [← arcVelocity_eq_constantCoeff_derivative q] using ihφ
       simp [ihφ']
 

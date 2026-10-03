@@ -1,4 +1,5 @@
 import Mathlib.RingTheory.Derivation.Basic
+import Mathlib.Algebra.BigOperators.Field
 import Stafford38.Geometry.JacobianConormalComparison
 import Stafford38.Geometry.ProjectiveChartCoordinates
 import Stafford38.Geometry.RetractionSpecialization

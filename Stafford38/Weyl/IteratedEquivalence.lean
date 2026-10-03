@@ -294,29 +294,26 @@ abbrev oldIndex {n : Nat} :
 def oldGenerator (n : Nat) (i : Fin n ⊕ Fin n) : PresentedWeyl k (n + 1) :=
   freeWeylGenerator (Matrix.J (Fin (n + 1)) k) (oldIndex i)
 
+private theorem oldIndex_preserves_symplecticForm (n : Nat)
+    (i j : Fin n ⊕ Fin n) :
+    Matrix.J (Fin (n + 1)) k (oldIndex i) (oldIndex j) =
+      Matrix.J (Fin n) k i j := by
+  cases i with
+  | inl i => cases j with
+    | inl j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J]
+    | inr j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J,
+        Matrix.one_apply]
+  | inr i => cases j with
+    | inl j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J,
+        Matrix.one_apply]
+    | inr j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J]
+
 theorem oldGenerator_commutator (n : Nat) (i j : Fin n ⊕ Fin n) :
     commutator (oldGenerator k n i) (oldGenerator k n j) =
       algebraMap k (PresentedWeyl k (n + 1)) (Matrix.J (Fin n) k i j) := by
   rw [oldGenerator, oldGenerator, freeWeylGenerator_commutator]
-  cases i with
-  | inl i =>
-      cases j with
-      | inl j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J] <;> rfl
-      | inr j =>
-          by_cases h : i = j
-          · subst j
-            simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J]
-            calc
-              _ = -algebraMap k (PresentedWeyl k (n + 1)) 1 :=
-                map_neg (algebraMap k (PresentedWeyl k (n + 1))) 1
-              _ = -1 := by rw [map_one]
-          · simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J, h] <;> rfl
-  | inr i =>
-      cases j with
-      | inl j =>
-          by_cases h : i = j <;>
-            simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J, h] <;> rfl
-      | inr j => simp [oldIndex, Stafford38FixedSourceChallenge.oldIndex, Matrix.J] <;> rfl
+  exact congrArg (algebraMap k (PresentedWeyl k (n + 1)))
+    (oldIndex_preserves_symplecticForm k n i j)
 
 /-- The canonical rank-shift embedding preserving the old generators. -/
 def previousWeylEmbedding (n : Nat) :

@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Weyl.MonicNormalization
 
 /-!
@@ -72,14 +73,22 @@ theorem coeff_axisPolynomial {n : ℕ} (t : PhaseVar n)
         rw [hz, mul_zero]
         simp [MvPolynomial.coeff_monomial, hmne]
   | add p q hp hq =>
+      change AddMonoidAlgebra.coeff (axisPolynomial k t (p + q))
+        (Finsupp.single () N) =
+        AddMonoidAlgebra.coeff (p + q) (Finsupp.single t N)
       simp [map_add, hp, hq]
 
 theorem coeff_principal_pure_eq_normalForm {n N : ℕ}
     (t : PhaseVar n) (d : PresentedWeyl k n) :
     MvPolynomial.coeff (Finsupp.single t N)
         (presentedPrincipalComponent k (@bernsteinWeight n) N d) =
-      MvPolynomial.coeff (Finsupp.single t N)
+    MvPolynomial.coeff (Finsupp.single t N)
         (presentedNormalFormLinearEquiv k n d) := by
+  change AddMonoidAlgebra.coeff
+      (presentedPrincipalComponent k (@bernsteinWeight n) N d)
+      (Finsupp.single t N) =
+    AddMonoidAlgebra.coeff (presentedNormalFormLinearEquiv k n d)
+      (Finsupp.single t N)
   rw [coeff_presentedPrincipalComponent]
   simp [monomialWeight, bernsteinWeight]
 

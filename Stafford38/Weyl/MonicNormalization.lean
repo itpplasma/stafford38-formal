@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Characteristic.SymplecticCompletion
 import Stafford38.Weyl.SymbolCompatibility
 
@@ -39,7 +40,10 @@ theorem weightedHomogeneousComponent_weightedTotalDegree_ne_zero
   rcases Finset.exists_mem_eq_sup f.support hs (Finsupp.weight w) with
     ⟨m, hm, hmax⟩
   intro hzero
-  have hc := congrArg (MvPolynomial.coeff m) hzero
+  have hc := congrArg (fun p : MvPolynomial σ k => AddMonoidAlgebra.coeff p m) hzero
+  change AddMonoidAlgebra.coeff
+    (MvPolynomial.weightedHomogeneousComponent w
+      (MvPolynomial.weightedTotalDegree w f) f) m = 0 at hc
   rw [MvPolynomial.coeff_weightedHomogeneousComponent] at hc
   have hw : Finsupp.weight w m = MvPolynomial.weightedTotalDegree w f := by
     simpa [MvPolynomial.weightedTotalDegree] using hmax.symm
@@ -84,13 +88,13 @@ theorem eq_algebraMap_of_mem_bernsteinPiece_zero {n : ℕ}
     {d : PresentedWeyl k n} (hd : d ∈ bernsteinPiece k n 0) :
     ∃ c : k, d = algebraMap k (PresentedWeyl k n) c := by
   let f := presentedNormalFormLinearEquiv k n d
-  let c := MvPolynomial.coeff 0 f
+  let c := f.coeff 0
   have hf : f = MvPolynomial.C c := by
     ext m
     by_cases hm : m = 0
     · subst m
       simp [c]
-    · have hcoeff : MvPolynomial.coeff m f = 0 := by
+    · have hcoeff : AddMonoidAlgebra.coeff f m = 0 := by
         by_contra hne
         have hle := (mem_presentedWeightPiece k (@bernsteinWeight n) 0 d).mp hd m hne
         have hdeg : m.degree = 0 := by
@@ -99,6 +103,7 @@ theorem eq_algebraMap_of_mem_bernsteinPiece_zero {n : ℕ}
           simpa [f, monomialWeight, bernsteinWeight,
             Finsupp.weight_apply, smul_eq_mul] using hle
         exact hm ((Finsupp.degree_eq_zero_iff m).mp hdeg)
+      change AddMonoidAlgebra.coeff f m = AddMonoidAlgebra.coeff (MvPolynomial.C c) m
       rw [hcoeff]
       simp [Ne.symm hm]
   refine ⟨c, ?_⟩

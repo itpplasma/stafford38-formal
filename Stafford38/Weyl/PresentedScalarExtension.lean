@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import AlgebraicAnalysis.Ore.Associativity
 import Stafford38.Weyl.IteratedEquivalence
 import Stafford38.Weyl.Universal

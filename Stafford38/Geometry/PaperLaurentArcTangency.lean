@@ -1,4 +1,5 @@
 import Stafford38.Geometry.PowerSeriesArcTangency
+import Mathlib.RingTheory.LaurentSeries
 import Stafford38.Geometry.ScalarExtensionPoints
 
 /-!

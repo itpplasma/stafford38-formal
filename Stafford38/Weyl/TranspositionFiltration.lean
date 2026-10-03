@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Weyl.Transposition
 import Stafford38.Weyl.GradedAlgebra
 import Stafford38.Weyl.SymbolCompatibility

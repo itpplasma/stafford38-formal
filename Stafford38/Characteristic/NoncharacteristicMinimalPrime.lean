@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Characteristic.GabberGlobalAssembly
 import Stafford38.Characteristic.CanonicalNormalAxisSupport
 

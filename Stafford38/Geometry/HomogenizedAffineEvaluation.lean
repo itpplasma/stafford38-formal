@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Geometry.ProjectiveEquationFormalChart
 import Stafford38.Geometry.LocalizedProjectiveChartTransition
 import Stafford38.Geometry.FormalDivisorLaurentConormal

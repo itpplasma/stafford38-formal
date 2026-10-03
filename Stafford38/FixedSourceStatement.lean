@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.UniversalAssembly
 import Stafford38.ChallengeDefinitions
 
@@ -47,12 +48,16 @@ theorem bernsteinDegree_eq_of_piece_of_principal_ne_zero
   have hm : MvPolynomial.coeff m
       (presentedPrincipalComponent k (@bernsteinWeight n) N d) ≠ 0 :=
     MvPolynomial.mem_support_iff.mp hm
+  change AddMonoidAlgebra.coeff
+    (presentedPrincipalComponent k (@bernsteinWeight n) N d) m ≠ 0 at hm
   have hcoeff := hm
+  change AddMonoidAlgebra.coeff
+    (presentedPrincipalComponent k (@bernsteinWeight n) N d) m ≠ 0 at hcoeff
   rw [coeff_presentedPrincipalComponent] at hcoeff
   have hweight : monomialWeight (@bernsteinWeight n) m = N := by
     by_contra hne
-    have hz : MvPolynomial.coeff m
-        (presentedPrincipalComponent k (@bernsteinWeight n) N d) = 0 := by
+    have hz : AddMonoidAlgebra.coeff
+        (presentedPrincipalComponent k (@bernsteinWeight n) N d) m = 0 := by
       rw [coeff_presentedPrincipalComponent]
       simp [hne]
     exact hm hz

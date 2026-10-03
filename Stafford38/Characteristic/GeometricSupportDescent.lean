@@ -1,4 +1,6 @@
 import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
+import Mathlib.RingTheory.MvPolynomial
+import Mathlib.RingTheory.Spectrum.Prime.RingHom
 import Stafford38.Geometry.ScalarExtensionPoints
 
 /-!

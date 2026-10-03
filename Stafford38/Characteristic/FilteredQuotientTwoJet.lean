@@ -223,7 +223,7 @@ def quotientOrderReesSourceAction
     FilteredQuotientTwoJet k I →ₗ[k] FilteredQuotientTwoJet k I :=
   (quotientOrderReesTwoJetSubmodule k I).mapQ
     (quotientOrderReesTwoJetSubmodule k I)
-    (DistribMulAction.toLinearMap k (QuotientOrderReesModule k I) r)
+    (DistribSMul.toLinearMap k (QuotientOrderReesModule k I) r)
     (by
       intro x hx
       exact op_smul_mem_quotientOrderReesTwoJetSubmodule k I r hx)

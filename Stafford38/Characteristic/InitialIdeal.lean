@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Weyl.EulerRemainder
 import Mathlib.RingTheory.Support
 
@@ -301,6 +302,9 @@ theorem canonical_orderPrincipalComponent_pureMomentumCoefficient
     MvPolynomial.coeff
         (Finsupp.single (.inr (0 : Fin (n + 1))) N)
         (presentedPrincipalComponent k orderWeight N d) = 1 := by
+  change AddMonoidAlgebra.coeff
+      (presentedPrincipalComponent k orderWeight N d)
+      (Finsupp.single (.inr (0 : Fin (n + 1))) N) = 1
   rw [coeff_presentedPrincipalComponent]
   have hweight : monomialWeight (@orderWeight (n + 1))
       (Finsupp.single (.inr (0 : Fin (n + 1))) N) = N := by
@@ -315,6 +319,8 @@ theorem canonical_orderPrincipalComponent_isFibreOnly
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
     IsFibreOnly k (presentedPrincipalComponent k orderWeight N d) := by
   intro m hm i
+  change AddMonoidAlgebra.coeff
+      (presentedPrincipalComponent k orderWeight N d) m ≠ 0 at hm
   rw [coeff_presentedPrincipalComponent] at hm
   by_cases horder : monomialWeight (@orderWeight (n + 1)) m = N
   · rw [if_pos horder] at hm

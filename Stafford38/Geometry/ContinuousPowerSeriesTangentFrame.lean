@@ -42,7 +42,7 @@ def powerSeriesFirstCoefficient {R : Type*} [CommSemiring R]
 @[simp] theorem powerSeriesFirstCoefficient_eq_constantCoeff_derivative
     {R : Type*} [CommSemiring R] {ι : Type*} (q : ι → PowerSeries R) :
     powerSeriesFirstCoefficient q =
-      fun i ↦ PowerSeries.constantCoeff (PowerSeries.derivative R (q i)) := by
+      fun i ↦ PowerSeries.constantCoeff (PowerSeries.derivative (R := R) (q i)) := by
   funext i
   rw [powerSeriesFirstCoefficient, ← PowerSeries.coeff_zero_eq_constantCoeff,
     PowerSeries.coeff_derivative]
@@ -127,7 +127,7 @@ theorem continuous_coefficientwiseDerivation
 along `k → K → K[[t]]`. -/
 noncomputable def uniformizerDerivation :
     Derivation k (PowerSeries K) (PowerSeries K) :=
-  (PowerSeries.derivative K).restrictScalars k
+  (PowerSeries.derivative (R := K)).restrictScalars k
 
 @[simp]
 theorem uniformizerDerivation_C (a : K) :

@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Mathlib.Algebra.MvPolynomial.Eval
 import Mathlib.RingTheory.MvPolynomial.Ideal
 import Mathlib.RingTheory.MvPowerSeries.Equiv

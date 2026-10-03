@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Geometry.PrescribedAffineResidueCompletionConsumer
 import Stafford38.Geometry.PrescribedCompletionNonzero
 

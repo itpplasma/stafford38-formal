@@ -1,3 +1,4 @@
+import Mathlib.Algebra.CharP.Algebra
 import Stafford38.Characteristic.AssociatedGradedFinite
 import Stafford38.Characteristic.ConcreteSquareZeroTraceData
 import Stafford38.Characteristic.SquareZeroHighPowerReduction

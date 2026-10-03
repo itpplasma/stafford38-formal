@@ -129,7 +129,7 @@ theorem exists_formalDivisorAxisLift_with_derivative_relation
       (C : Matrix (FormalTangentColumn δ) ι (PowerSeries κ))
       (ell : ι → PowerSeries κ),
       c ≤ a - 1 ∧
-      (∀ i, PowerSeries.derivative κ (q i) - Z.mulVec lambda i =
+      (∀ i, PowerSeries.derivative (R := κ) (q i) - Z.mulVec lambda i =
         (PowerSeries.X : PowerSeries κ) ^ c * tau i) ∧
       (∃ i, PowerSeries.constantCoeff (tau i) ≠ 0) ∧
       C * formalTangentMatrix q Z tau = 1 ∧
@@ -228,7 +228,7 @@ theorem tangentSpace_eq_dehomogenizedTangentSpan_of_actual_columns
     (hZ : Z = coefficientwiseTangentMatrix q D)
     (lambda : Fin d → PowerSeries κ) (c : ℕ)
     (hfactor : ∀ i,
-      PowerSeries.derivative κ (q i) - Z.mulVec lambda i =
+      PowerSeries.derivative (R := κ) (q i) - Z.mulVec lambda i =
         (PowerSeries.X : PowerSeries κ) ^ c * tau i)
     (hbound : Module.finrank (LaurentSeries κ)
       (zariskiTangentSpace (dehomogenizedPoint (laurentColumn q))
@@ -259,7 +259,7 @@ theorem tangentSpace_eq_dehomogenizedTangentSpan_of_actual_columns
     exact hj
   have hUtan :
       dehomogenizedTangentColumn qL
-        (laurentColumn fun i ↦ PowerSeries.derivative κ (q i)) ∈ T := by
+        (laurentColumn fun i ↦ PowerSeries.derivative (R := κ) (q i)) ∈ T := by
     have h := uniformizer_chartVector_mem_zariskiTangentSpace
       (k := k) I q hq0 hbase
     exact h
@@ -276,7 +276,7 @@ theorem tangentSpace_eq_dehomogenizedTangentSpan_of_actual_columns
       simp [dehomogenizedTangentColumn, Pi.smul_apply, smul_eq_mul]
       ring }
   let qDeriv : Fin (m + 1) → L :=
-    fun i ↦ algebraMap (PowerSeries κ) L (PowerSeries.derivative κ (q i))
+    fun i ↦ algebraMap (PowerSeries κ) L (PowerSeries.derivative (R := κ) (q i))
   let tauL : Fin (m + 1) → L :=
     fun i ↦ algebraMap (PowerSeries κ) L (tau i)
   let lambdaL : Fin d → L :=
@@ -296,12 +296,12 @@ theorem tangentSpace_eq_dehomogenizedTangentSpan_of_actual_columns
     have hi := congrArg (algebraMap (PowerSeries κ) L) (hfactor i)
     calc
       qDeriv i - (∑ j, lambdaL j • zcol j i) =
-          algebraMap (PowerSeries κ) L (PowerSeries.derivative κ (q i)) -
+          algebraMap (PowerSeries κ) L (PowerSeries.derivative (R := κ) (q i)) -
             algebraMap (PowerSeries κ) L (Z.mulVec lambda i) := by
         simp only [qDeriv, Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
         rw [hmul]
       _ = algebraMap (PowerSeries κ) L
-          (PowerSeries.derivative κ (q i) - Z.mulVec lambda i) := by
+          (PowerSeries.derivative (R := κ) (q i) - Z.mulVec lambda i) := by
         rw [map_sub]
       _ = Xc * tauL i := by
         rw [hfactor i, map_mul]
@@ -317,7 +317,7 @@ theorem tangentSpace_eq_dehomogenizedTangentSpan_of_actual_columns
   have hXtau : Xc • phi tauL ∈ T := by
     have hUtan' : phi qDeriv ∈ T := by
       change dehomogenizedTangentColumn (laurentColumn q)
-        (laurentColumn (fun i ↦ PowerSeries.derivative κ (q i))) ∈ T
+        (laurentColumn (fun i ↦ PowerSeries.derivative (R := κ) (q i))) ∈ T
       exact hUtan
     have hdiff := T.sub_mem hUtan' hsumtan
     have hdiff' : phi (qDeriv - ∑ j, lambdaL j • zcol j) ∈ T := by

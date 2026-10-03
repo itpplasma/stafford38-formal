@@ -53,7 +53,7 @@ theorem genericFibre_normalizedTangentLattice_eq_actualProjectiveTangentCone
       (Z : Matrix (Fin (n + 1)) (Fin d) (PowerSeries k))
       (tau : Fin (n + 1) → PowerSeries k)
       (alpha : Fin d → PowerSeries k) (c : ℕ),
-      (∀ i, PowerSeries.derivative k (q i) - Z.mulVec alpha i =
+      (∀ i, PowerSeries.derivative (R := k) (q i) - Z.mulVec alpha i =
         (PowerSeries.X : PowerSeries k) ^ c * tau i) →
       ∀ (qC : Fin (n + 1) → C),
       (∀ i, rho (qC i) = algebraMap (PowerSeries k) (LaurentSeries k) (q i)) →
@@ -61,7 +61,7 @@ theorem genericFibre_normalizedTangentLattice_eq_actualProjectiveTangentCone
           (k := k) (σ := Option (Fin d)) (B := C) (L := LaurentSeries k)
           (some j) (qC i) = algebraMap (PowerSeries k) (LaurentSeries k) (Z i j)) →
       (∀ i, algebraMap (PowerSeries k) (LaurentSeries k)
-          (PowerSeries.derivative k (q i)) =
+          (PowerSeries.derivative (R := k) (q i)) =
         Stafford38.Geometry.EtaleCotangentBasis.coordinateDerivation
           (k := k) (σ := Option (Fin d)) (B := C) (L := LaurentSeries k)
           (none : Option (Fin d)) (qC i) +
@@ -191,7 +191,7 @@ theorem genericFibre_normalizedTangentLattice_eq_actualProjectiveTangentCone
   let qL : Fin (n + 1) → LaurentSeries k := fun i => A (q i)
   let zL : Fin d → (Fin (n + 1) → LaurentSeries k) := fun j i => A (Z i j)
   let rawL : Fin (n + 1) → LaurentSeries k := fun i =>
-    A (PowerSeries.derivative k (q i))
+    A (PowerSeries.derivative (R := k) (q i))
   let dzero : Fin (n + 1) → LaurentSeries k := fun i =>
     Stafford38.Geometry.EtaleCotangentBasis.coordinateDerivation
       (k := k) (σ := Option (Fin d)) (B := C) (L := LaurentSeries k)
@@ -209,7 +209,7 @@ theorem genericFibre_normalizedTangentLattice_eq_actualProjectiveTangentCone
   let sourceColumns : FormalTangentColumn (Fin d) →
       (Fin (n + 1) → LaurentSeries k) :=
     fun j i => A (formalTangentMatrix q Z
-      (fun i => PowerSeries.derivative k (q i)) i j)
+      (fun i => PowerSeries.derivative (R := k) (q i)) i j)
   let chartColumns : Option (Option (Fin d)) →
       (Fin (n + 1) → LaurentSeries k)
     | none => fun i => rho (qC i)
@@ -277,9 +277,9 @@ theorem genericFibre_normalizedTangentLattice_eq_actualProjectiveTangentCone
     funext i
     simp only [Pi.sub_apply, Pi.smul_apply, smul_eq_mul, Finset.sum_apply, one_mul]
     dsimp only [rawL]
-    change A (PowerSeries.derivative k (q i)) -
+    change A (PowerSeries.derivative (R := k) (q i)) -
         ∑ a : Option (Fin d), coeff a * fixed a i = dzero i
-    have hraw' : A (PowerSeries.derivative k (q i)) =
+    have hraw' : A (PowerSeries.derivative (R := k) (q i)) =
         dzero i + ∑ j : Fin d, A (alpha j) * dz j i := by
       simpa [A, dz, dzero] using hraw i
     rw [hsum, hraw']

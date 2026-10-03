@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Characteristic.CanonicalFilteredGradedBridge
 import Stafford38.Characteristic.FilteredTwoTermTotalActions
 import Stafford38.Weyl.FilteredCommutator

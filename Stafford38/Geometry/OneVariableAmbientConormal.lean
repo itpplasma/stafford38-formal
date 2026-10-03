@@ -1,3 +1,4 @@
+import Mathlib.Tactic.Cases
 import Stafford38.Characteristic.CanonicalBaseVariety
 import Stafford38.Geometry.OneVariablePrimeConormal
 import Mathlib.FieldTheory.Perfect

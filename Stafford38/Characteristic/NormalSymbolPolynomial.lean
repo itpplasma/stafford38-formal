@@ -1,3 +1,4 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Characteristic.CanonicalNormalAxisSupport
 import Stafford38.Weyl.PBWMonicBridge
 import Mathlib.RingTheory.MvPolynomial.Homogeneous
@@ -77,7 +78,10 @@ theorem optionEquivLeft_monic_of_isHomogeneous
           exact hzero
         have hcoeff' : MvPolynomial.coeff m
             ((MvPolynomial.optionEquivLeft k S P).coeff N) ≠ 0 := by
-          rwa [MvPolynomial.optionEquivLeft_coeff_coeff]
+          change AddMonoidAlgebra.coeff
+            ((MvPolynomial.optionEquivLeft k S P).coeff N) m ≠ 0
+          rw [MvPolynomial.optionEquivLeft_coeff_coeff]
+          exact hcoeff
         have hdegree := hcoeffHomogeneous hcoeff'
         rw [Finsupp.weight_apply] at hdegree
         apply hm
@@ -86,8 +90,13 @@ theorem optionEquivLeft_monic_of_isHomogeneous
         · simpa using (Finset.sum_eq_zero_iff_of_nonneg
               (fun _ _ ↦ Nat.zero_le _)).mp hdegree x hx
         · exact Finsupp.notMem_support_iff.mp hx
-      rw [hzero]
-      rw [MvPolynomial.coeff_one, if_neg (Ne.symm hm)]
+      have hzero' : AddMonoidAlgebra.coeff P (m.optionElim N) = 0 := by
+        change MvPolynomial.coeff (m.optionElim N) P = 0
+        exact hzero
+      change AddMonoidAlgebra.coeff P (m.optionElim N) =
+        AddMonoidAlgebra.coeff (1 : MvPolynomial S k) m
+      rw [hzero', MvPolynomial.coeff_one]
+      simp [Ne.symm hm]
 
 theorem canonicalNormalPolynomial_monic {n N : ℕ}
     {d : PresentedWeyl k (n + 1)}
@@ -95,15 +104,23 @@ theorem canonicalNormalPolynomial_monic {n N : ℕ}
     (canonicalNormalPolynomial (k := k) (n := n) (N := N) d).Monic := by
   apply optionEquivLeft_monic_of_isHomogeneous
   · exact (canonical_orderPrincipalComponent_isHomogeneous n N hd).rename_isHomogeneous
-  · change MvPolynomial.coeff (Finsupp.single none N)
+  · change AddMonoidAlgebra.coeff
         (MvPolynomial.rename (normalVariableEquiv n).symm
-          (presentedPrincipalComponent k orderWeight N d)) = 1
+          (presentedPrincipalComponent k orderWeight N d))
+        (Finsupp.single none N) = 1
     have hsingle : (Finsupp.single (.inr (0 : Fin (n + 1))) N).mapDomain
         (normalVariableEquiv n).symm = Finsupp.single none N := by
       simp [normalVariableEquiv]
     rw [← hsingle, MvPolynomial.coeff_rename_mapDomain
       (normalVariableEquiv n).symm (normalVariableEquiv n).symm.injective]
-    exact canonical_orderPrincipalComponent_pureMomentumCoefficient k n N hd
+    have hlead : AddMonoidAlgebra.coeff
+        (presentedPrincipalComponent k orderWeight N d)
+        (Finsupp.single (.inr (0 : Fin (n + 1))) N) = 1 := by
+      change MvPolynomial.coeff
+        (Finsupp.single (.inr (0 : Fin (n + 1))) N)
+        (presentedPrincipalComponent k orderWeight N d) = 1
+      exact canonical_orderPrincipalComponent_pureMomentumCoefficient k n N hd
+    exact hlead
 
 #print axioms normalSymbolAlgEquiv_normalVariable
 #print axioms normalSymbolAlgEquiv_otherVariable

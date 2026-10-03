@@ -1,6 +1,8 @@
+import Stafford38.MathlibCompat.MvPolynomialCoeff
 import Stafford38.Characteristic.CanonicalNoncharacteristicCancellation
 import Stafford38.Weyl.CoordinateCommutatorSymbol
 import Stafford38.Weyl.FilteredCommutator
+import Stafford38.Weyl.QuotientTransport
 
 /-!
 # A concrete filtered criterion for canonical monic saturation
@@ -48,10 +50,6 @@ universe u
 
 variable (k : Type u) [Field k] [Algebra ℚ k]
 
-private abbrev CanonicalIdeal (n N : ℕ)
-    (d : PresentedWeyl k (n + 1)) :=
-  canonicalRightIdeal (presentedCoordinate k n) d N
-
 /-- The concrete filtered estimate missing from unrestricted Euler
 surjectivity: every class represented below order `m` has a coordinate
 predecessor represented below the same order.  This is stated in the ambient
@@ -62,9 +60,9 @@ def StrictLowerCoordinatePreimages (n N : ℕ)
     l ∈ presentedStrictLowerPiece k orderWeight m →
     ∃ y : PresentedWeyl k (n + 1),
       y ∈ presentedStrictLowerPiece k orderWeight m ∧
-      qmk (CanonicalIdeal k n N d)
+      qmk (presentedCanonicalRightIdeal (k := k) n N d)
           (y * presentedCoordinate k n) =
-        qmk (CanonicalIdeal k n N d) l
+        qmk (presentedCanonicalRightIdeal (k := k) n N d) l
 
 /-- A genuinely general filtered reduction.  Ordinary cancellation on the
 canonical quotient and strict-order coordinate division together imply the
@@ -72,27 +70,27 @@ load-bearing cancellation theorem on every filtration degree. -/
 theorem coordinateCancellation_of_quotient_injective_of_strict_preimages
     (n N : ℕ) (d : PresentedWeyl k (n + 1))
     (hinjective : Function.Injective
-      (rightMul (CanonicalIdeal k n N d) (presentedCoordinate k n)))
+      (rightMul (presentedCanonicalRightIdeal (k := k) n N d) (presentedCoordinate k n)))
     (hstrict : StrictLowerCoordinatePreimages k n N d) :
     CoordinateCancellation k n N d := by
   intro m z hz hzx
   obtain ⟨i, hi, l, hl, hil⟩ := Submodule.mem_sup.mp hzx
   obtain ⟨y, hy, hyx⟩ := hstrict m l hl
-  have hzxl : qmk (CanonicalIdeal k n N d)
+  have hzxl : qmk (presentedCanonicalRightIdeal (k := k) n N d)
         (z * presentedCoordinate k n) =
-      qmk (CanonicalIdeal k n N d) l := by
-    apply (Submodule.Quotient.eq (CanonicalIdeal k n N d)).2
+      qmk (presentedCanonicalRightIdeal (k := k) n N d) l := by
+    apply (Submodule.Quotient.eq (presentedCanonicalRightIdeal (k := k) n N d)).2
     rw [← hil]
     simpa using hi
-  have hxy : rightMul (CanonicalIdeal k n N d)
-        (presentedCoordinate k n) (qmk (CanonicalIdeal k n N d) z) =
-      rightMul (CanonicalIdeal k n N d)
-        (presentedCoordinate k n) (qmk (CanonicalIdeal k n N d) y) := by
+  have hxy : rightMul (presentedCanonicalRightIdeal (k := k) n N d)
+        (presentedCoordinate k n) (qmk (presentedCanonicalRightIdeal (k := k) n N d) z) =
+      rightMul (presentedCanonicalRightIdeal (k := k) n N d)
+        (presentedCoordinate k n) (qmk (presentedCanonicalRightIdeal (k := k) n N d) y) := by
     rw [← qmk_right_mul, ← qmk_right_mul, hzxl, hyx]
-  have hzy : qmk (CanonicalIdeal k n N d) z =
-      qmk (CanonicalIdeal k n N d) y := hinjective hxy
-  have hdiff : z - y ∈ CanonicalIdeal k n N d :=
-    (Submodule.Quotient.eq (CanonicalIdeal k n N d)).mp hzy
+  have hzy : qmk (presentedCanonicalRightIdeal (k := k) n N d) z =
+      qmk (presentedCanonicalRightIdeal (k := k) n N d) y := hinjective hxy
+  have hdiff : z - y ∈ presentedCanonicalRightIdeal (k := k) n N d :=
+    (Submodule.Quotient.eq (presentedCanonicalRightIdeal (k := k) n N d)).mp hzy
   rw [show z = (z - y) + y by abel]
   exact Submodule.add_mem _
     (Submodule.mem_sup_left hdiff)
@@ -102,7 +100,7 @@ theorem coordinateCancellation_of_quotient_injective_of_strict_preimages
 theorem canonical_graded_coordinateAction_injective_of_quotient_injective_of_strict_preimages
     (n N m : ℕ) (d : PresentedWeyl k (n + 1))
     (hinjective : Function.Injective
-      (rightMul (CanonicalIdeal k n N d) (presentedCoordinate k n)))
+      (rightMul (presentedCanonicalRightIdeal (k := k) n N d) (presentedCoordinate k n)))
     (hstrict : StrictLowerCoordinatePreimages k n N d) :
     Function.Injective (canonicalGradedCoordinateAction k n N m d) := by
   exact (coordinateCancellation_iff_forall_graded_injective k n N d).mp
@@ -118,15 +116,15 @@ theorem canonical_unrestricted_coordinate_preimages_of_monic
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
     (z : PresentedWeyl k (n + 1)) :
     ∃ y : PresentedWeyl k (n + 1),
-      qmk (CanonicalIdeal k n N d)
+      qmk (presentedCanonicalRightIdeal (k := k) n N d)
           (y * presentedCoordinate k n) =
-        qmk (CanonicalIdeal k n N d) z := by
+        qmk (presentedCanonicalRightIdeal (k := k) n N d) z := by
   have hsurjective :=
     presentedCanonicalRightQuotient_rightMul_coordinate_surjective
       (k := k) n N hd
-  obtain ⟨q, hq⟩ := hsurjective (qmk (CanonicalIdeal k n N d) z)
+  obtain ⟨q, hq⟩ := hsurjective (qmk (presentedCanonicalRightIdeal (k := k) n N d) z)
   obtain ⟨y, rfl⟩ := Submodule.Quotient.mk_surjective
-    (CanonicalIdeal k n N d) q
+    (presentedCanonicalRightIdeal (k := k) n N d) q
   refine ⟨y, ?_⟩
   rw [qmk_right_mul]
   exact hq
@@ -175,46 +173,85 @@ private theorem exponent_eq_selected_of_order_one_of_selected_ne_zero
     (Finsupp.degree_eq_zero_iff _).mp heraseDegree
   rw [← hdecomp, hmt1, herase, add_zero]
 
+/-- The coefficient of every monomial involving the selected momentum variable
+vanishes after removing its linear coefficient from a fibre-only order-one
+symbol.  Isolating this coefficient calculation keeps the support argument
+below independent of polynomial representation reductions. -/
+private theorem coeff_sub_X_eq_zero_of_order_one_fibreOnly
+    {n : ℕ} (t : Fin n) (P : SymbolRing k n)
+    (hhom : MvPolynomial.IsWeightedHomogeneous (@orderWeight n) P 1)
+    (hfibre : IsFibreOnly k P)
+    (hcoeff : P.coeff (Finsupp.single (.inr t) 1) = 1)
+    (m : PhaseVar n →₀ ℕ) (hmt : m (.inr t) ≠ 0) :
+    MvPolynomial.coeff m (P - MvPolynomial.X (.inr t)) = 0 := by
+  classical
+  by_cases hm : m = Finsupp.single (.inr t) 1
+  · subst m
+    have hcoeff' : AddMonoidAlgebra.coeff P
+        (Finsupp.single (.inr t) 1) = 1 := by
+      change MvPolynomial.coeff (Finsupp.single (.inr t) 1) P = 1
+      exact hcoeff
+    have hX' : AddMonoidAlgebra.coeff
+        (MvPolynomial.X (.inr t : PhaseVar n) : SymbolRing k n)
+        (Finsupp.single (.inr t) 1) = 1 := by
+      simp [MvPolynomial.X]
+    change AddMonoidAlgebra.coeff
+      (P - MvPolynomial.X (.inr t : PhaseVar n))
+      (Finsupp.single (.inr t) 1) = 0
+    rw [AddMonoidAlgebra.coeff_sub]
+    change AddMonoidAlgebra.coeff P (Finsupp.single (.inr t) 1) -
+      AddMonoidAlgebra.coeff (MvPolynomial.X (.inr t) : SymbolRing k n)
+        (Finsupp.single (.inr t) 1) = 0
+    rw [hcoeff', hX', sub_self]
+  · have hPzero : MvPolynomial.coeff m P = 0 := by
+      by_contra hP
+      exact hm (exponent_eq_selected_of_order_one_of_selected_ne_zero
+        k t hP hhom hfibre hmt)
+    have hXzero : AddMonoidAlgebra.coeff
+        (MvPolynomial.X (.inr t : PhaseVar n) : SymbolRing k n) m = 0 := by
+      simp [MvPolynomial.X, Ne.symm hm]
+    have hPzero' : AddMonoidAlgebra.coeff P m = 0 := by
+      change MvPolynomial.coeff m P = 0
+      exact hPzero
+    have hXzero' : AddMonoidAlgebra.coeff
+        (MvPolynomial.X (.inr t : PhaseVar n) : SymbolRing k n) m = 0 := by
+      change MvPolynomial.coeff m (MvPolynomial.X (.inr t)) = 0
+      exact hXzero
+    change AddMonoidAlgebra.coeff
+      (P - MvPolynomial.X (.inr t : PhaseVar n)) m = 0
+    rw [AddMonoidAlgebra.coeff_sub]
+    change AddMonoidAlgebra.coeff P m -
+      AddMonoidAlgebra.coeff (MvPolynomial.X (.inr t) : SymbolRing k n) m = 0
+    rw [hPzero', hXzero', sub_self]
+
 /-- A fibre-only order-homogeneous linear symbol whose selected momentum
 coefficient is one has selected partial derivative one. -/
 theorem pderiv_eq_one_of_order_one_fibreOnly
     {n : ℕ} (t : Fin n) (P : SymbolRing k n)
     (hhom : MvPolynomial.IsWeightedHomogeneous (@orderWeight n) P 1)
     (hfibre : IsFibreOnly k P)
-    (hcoeff : MvPolynomial.coeff (Finsupp.single (.inr t) 1) P = 1) :
+    (hcoeff : P.coeff (Finsupp.single (.inr t) 1) = 1) :
     MvPolynomial.pderiv (.inr t) P = 1 := by
   classical
-  let Q := P - MvPolynomial.X (.inr t)
-  have hQt : (.inr t : PhaseVar n) ∉ Q.vars := by
+  have hQt : (.inr t : PhaseVar n) ∉
+      (P - MvPolynomial.X (.inr t : PhaseVar n)).vars := by
     intro ht
-    rw [MvPolynomial.mem_vars] at ht
+    rw [MvPolynomial.mem_vars_iff_mem_support] at ht
     obtain ⟨m, hmQ, htm⟩ := ht
-    have hmQne : MvPolynomial.coeff m Q ≠ 0 :=
+    have hmQne : (P - MvPolynomial.X (.inr t : PhaseVar n)).coeff m ≠ 0 :=
       MvPolynomial.mem_support_iff.mp hmQ
     have hmt : m (.inr t) ≠ 0 := Finsupp.mem_support_iff.mp htm
-    by_cases hm : m = Finsupp.single (.inr t) 1
-    · subst m
-      dsimp [Q] at hmQne
-      rw [MvPolynomial.coeff_sub, hcoeff, MvPolynomial.coeff_X] at hmQne
-      simp at hmQne
-    · have hPzero : MvPolynomial.coeff m P = 0 := by
-        by_contra hP
-        exact hm
-          (exponent_eq_selected_of_order_one_of_selected_ne_zero
-            k t hP hhom hfibre hmt)
-      have hXzero : MvPolynomial.coeff m
-          (MvPolynomial.X (.inr t) : SymbolRing k n) = 0 := by
-        rw [MvPolynomial.coeff_X]
-        simp [Ne.symm hm]
-      dsimp [Q] at hmQne
-      rw [MvPolynomial.coeff_sub, hPzero, hXzero, sub_zero] at hmQne
-      exact hmQne rfl
-  have hQderiv : MvPolynomial.pderiv (.inr t : PhaseVar n) Q = 0 :=
+    have hQcoeff : MvPolynomial.coeff m
+        (P - MvPolynomial.X (.inr t : PhaseVar n)) = 0 :=
+      coeff_sub_X_eq_zero_of_order_one_fibreOnly k t P hhom hfibre hcoeff m hmt
+    exact hmQne hQcoeff
+  have hQderiv : MvPolynomial.pderiv (.inr t : PhaseVar n)
+      (P - MvPolynomial.X (.inr t : PhaseVar n)) = 0 :=
     MvPolynomial.pderiv_eq_zero_of_notMem_vars hQt
-  have hdecomp : P = Q + MvPolynomial.X (.inr t) := by
-    dsimp [Q]
-    abel
+  have hdecomp : P = (P - MvPolynomial.X (.inr t : PhaseVar n)) +
+      MvPolynomial.X (.inr t : PhaseVar n) := by abel
   rw [hdecomp, map_add, hQderiv, MvPolynomial.pderiv_X_self, zero_add]
+set_option maxHeartbeats 200000
 
 /-- In canonical Bernstein degree one, the selected coordinate commutator is
 the scalar `-1`.  This is the strict low-order replacement for the missing
@@ -283,21 +320,21 @@ ideal.  Both terms in the commutator are literal right-ideal elements. -/
 theorem canonicalRightIdeal_eq_top_degree_one
     (n : ℕ) {d : PresentedWeyl k (n + 1)}
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) 1 d) :
-    CanonicalIdeal k n 1 d = ⊤ := by
+    presentedCanonicalRightIdeal (k := k) n 1 d = ⊤ := by
   apply top_unique
   intro z hz
-  have hxd : presentedCoordinate k n * d ∈ CanonicalIdeal k n 1 d := by
+  have hxd : presentedCoordinate k n * d ∈ presentedCanonicalRightIdeal (k := k) n 1 d := by
     simpa using secondGenerator_mem (presentedCoordinate k n) d 1
-  have hdx : d * presentedCoordinate k n ∈ CanonicalIdeal k n 1 d := by
-    exact (CanonicalIdeal k n 1 d).smul_mem
+  have hdx : d * presentedCoordinate k n ∈ presentedCanonicalRightIdeal (k := k) n 1 d := by
+    exact (presentedCanonicalRightIdeal (k := k) n 1 d).smul_mem
       (MulOpposite.op (presentedCoordinate k n))
       (firstGenerator_mem (presentedCoordinate k n) d 1)
-  have hneg : (-1 : PresentedWeyl k (n + 1)) ∈ CanonicalIdeal k n 1 d := by
+  have hneg : (-1 : PresentedWeyl k (n + 1)) ∈ presentedCanonicalRightIdeal (k := k) n 1 d := by
     rw [← coordinate_commutator_eq_neg_one_degree_one k n hd]
-    exact (CanonicalIdeal k n 1 d).sub_mem hxd hdx
-  have hone : (1 : PresentedWeyl k (n + 1)) ∈ CanonicalIdeal k n 1 d := by
-    simpa using (CanonicalIdeal k n 1 d).neg_mem hneg
-  simpa using (CanonicalIdeal k n 1 d).smul_mem (MulOpposite.op z) hone
+    exact (presentedCanonicalRightIdeal (k := k) n 1 d).sub_mem hxd hdx
+  have hone : (1 : PresentedWeyl k (n + 1)) ∈ presentedCanonicalRightIdeal (k := k) n 1 d := by
+    simpa using (presentedCanonicalRightIdeal (k := k) n 1 d).neg_mem hneg
+  simpa using (presentedCanonicalRightIdeal (k := k) n 1 d).smul_mem (MulOpposite.op z) hone
 
 /-- The ordinary coordinate action on the degree-one canonical quotient is
 injective.  This is the first half of the general filtered interface. -/
@@ -305,13 +342,13 @@ theorem canonical_quotient_coordinate_injective_degree_one
     (n : ℕ) {d : PresentedWeyl k (n + 1)}
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) 1 d) :
     Function.Injective
-      (rightMul (CanonicalIdeal k n 1 d) (presentedCoordinate k n)) := by
+      (rightMul (presentedCanonicalRightIdeal (k := k) n 1 d) (presentedCoordinate k n)) := by
   intro q₁ q₂ hq
   obtain ⟨z₁, rfl⟩ := Submodule.Quotient.mk_surjective
-    (CanonicalIdeal k n 1 d) q₁
+    (presentedCanonicalRightIdeal (k := k) n 1 d) q₁
   obtain ⟨z₂, rfl⟩ := Submodule.Quotient.mk_surjective
-    (CanonicalIdeal k n 1 d) q₂
-  apply (Submodule.Quotient.eq (CanonicalIdeal k n 1 d)).2
+    (presentedCanonicalRightIdeal (k := k) n 1 d) q₂
+  apply (Submodule.Quotient.eq (presentedCanonicalRightIdeal (k := k) n 1 d)).2
   rw [canonicalRightIdeal_eq_top_degree_one k n hd]
   exact Submodule.mem_top
 
@@ -325,7 +362,7 @@ theorem canonical_strictLowerCoordinatePreimages_degree_one
     StrictLowerCoordinatePreimages k n 1 d := by
   intro m l hl
   refine ⟨0, Submodule.zero_mem _, ?_⟩
-  apply (Submodule.Quotient.eq (CanonicalIdeal k n 1 d)).2
+  apply (Submodule.Quotient.eq (presentedCanonicalRightIdeal (k := k) n 1 d)).2
   rw [canonicalRightIdeal_eq_top_degree_one k n hd]
   exact Submodule.mem_top
 
@@ -333,13 +370,13 @@ theorem canonical_strictLowerCoordinatePreimages_degree_one
 theorem canonical_orderInitialIdeal_eq_top_degree_one
     (n : ℕ) {d : PresentedWeyl k (n + 1)}
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) 1 d) :
-    orderInitialIdeal k (CanonicalIdeal k n 1 d) = ⊤ := by
+    orderInitialIdeal k (presentedCanonicalRightIdeal (k := k) n 1 d) = ⊤ := by
   apply (Ideal.eq_top_iff_one _).2
-  have honeI : (1 : PresentedWeyl k (n + 1)) ∈ CanonicalIdeal k n 1 d := by
+  have honeI : (1 : PresentedWeyl k (n + 1)) ∈ presentedCanonicalRightIdeal (k := k) n 1 d := by
     rw [canonicalRightIdeal_eq_top_degree_one k n hd]
     exact Submodule.mem_top
   have hone := orderPrincipalComponent_mem_initialIdeal k
-    (CanonicalIdeal k n 1 d) (1 : PresentedWeyl k (n + 1))
+    (presentedCanonicalRightIdeal (k := k) n 1 d) (1 : PresentedWeyl k (n + 1))
     (Stafford38.CharacteristicAssociatedGradedModule.orderPieceOne
       (n := n + 1) k).property honeI
   have honepc : presentedPrincipalComponent k orderWeight 0
@@ -355,10 +392,10 @@ coordinate symbol. -/
 theorem canonical_orderInitialIdeal_coordinate_saturated_degree_one
     (n : ℕ) {d : PresentedWeyl k (n + 1)}
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) 1 d) :
-    (orderInitialIdeal k (CanonicalIdeal k n 1 d)).colon
+    (orderInitialIdeal k (presentedCanonicalRightIdeal (k := k) n 1 d)).colon
         ({MvPolynomial.X (Sum.inl (0 : Fin (n + 1)))} :
           Set (SymbolRing k (n + 1))) =
-      orderInitialIdeal k (CanonicalIdeal k n 1 d) := by
+      orderInitialIdeal k (presentedCanonicalRightIdeal (k := k) n 1 d) := by
   rw [canonical_orderInitialIdeal_eq_top_degree_one k n hd]
   apply le_antisymm le_top
   intro r hr
@@ -371,9 +408,9 @@ theorem canonical_orderCharacteristicSupport_eq_empty_degree_one
     (n : ℕ) {d : PresentedWeyl k (n + 1)}
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) 1 d) :
     orderCharacteristicSupport k
-        (CanonicalIdeal k n 1 d) = ∅ := by
+        (presentedCanonicalRightIdeal (k := k) n 1 d) = ∅ := by
   apply (orderCharacteristicSupport_eq_empty_iff k
-    (CanonicalIdeal k n 1 d)).2
+    (presentedCanonicalRightIdeal (k := k) n 1 d)).2
   exact canonical_orderInitialIdeal_eq_top_degree_one k n hd
 
 /-- The degree-one case yields the literal fixed-source Stafford certificate. -/
@@ -383,10 +420,10 @@ theorem exists_fixedSource_certificate_degree_one
     ∃ R S : PresentedWeyl k (n + 1),
       (1 : PresentedWeyl k (n + 1)) =
         d * R + presentedCoordinate k n * d * S := by
-  let I := CanonicalIdeal k n 1 d
+  let I := presentedCanonicalRightIdeal (k := k) n 1 d
   have hone : (1 : PresentedWeyl k (n + 1)) ∈ I := by
     change (1 : PresentedWeyl k (n + 1)) ∈
-      CanonicalIdeal k n 1 d
+      presentedCanonicalRightIdeal (k := k) n 1 d
     rw [canonicalRightIdeal_eq_top_degree_one k n hd]
     exact Submodule.mem_top
   change (1 : PresentedWeyl k (n + 1)) ∈

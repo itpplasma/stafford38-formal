@@ -36,7 +36,7 @@ coefficient in degree `a`. -/
 theorem coeff_derivative_X_pow_succ_mul
     [CharZero k] (u : PowerSeries k) (a : ℕ) :
     PowerSeries.coeff a
-        (PowerSeries.derivative k
+        (PowerSeries.derivative (R := k)
           ((PowerSeries.X : PowerSeries k) ^ (a + 1) * u)) =
       PowerSeries.constantCoeff u * ((a + 1 : ℕ) : k) := by
   rw [PowerSeries.coeff_derivative]
@@ -51,7 +51,7 @@ theorem coeff_derivative_X_pow_succ_mul_ne_zero
     [CharZero k] (u : PowerSeries k) (a : ℕ)
     (hu : PowerSeries.constantCoeff u ≠ 0) :
     PowerSeries.coeff a
-        (PowerSeries.derivative k
+        (PowerSeries.derivative (R := k)
           ((PowerSeries.X : PowerSeries k) ^ (a + 1) * u)) ≠ 0 := by
   rw [coeff_derivative_X_pow_succ_mul]
   exact mul_ne_zero hu (Nat.cast_ne_zero.mpr (Nat.succ_ne_zero a))
@@ -64,7 +64,7 @@ theorem coeff_derivative_X_pow_mul_ne_zero
     (ha : 0 < a)
     (hq : q = (PowerSeries.X : PowerSeries k) ^ a * u)
     (hu : PowerSeries.constantCoeff u ≠ 0) :
-    PowerSeries.coeff (a - 1) (PowerSeries.derivative k q) ≠ 0 := by
+    PowerSeries.coeff (a - 1) (PowerSeries.derivative (R := k) q) ≠ 0 := by
   obtain ⟨b, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt ha)
   simpa [hq] using coeff_derivative_X_pow_succ_mul_ne_zero u b hu
 
@@ -270,15 +270,15 @@ theorem exists_primitive_formalDivisorTangent_of_selected_correction
     (hu₀ : PowerSeries.constantCoeff u₀ ≠ 0)
     (hZzero : ∀ j, ∃ w : PowerSeries k,
       Z zero j = (PowerSeries.X : PowerSeries k) ^ a * w)
-    (hselected : ∀ j, PowerSeries.derivative k (q (rows j)) =
+    (hselected : ∀ j, PowerSeries.derivative (R := k) (q (rows j)) =
       Z.mulVec lambda (rows j)) :
     ∃ (c : ℕ) (tau : ι → PowerSeries k),
       (∀ j, tau (rows j) = 0) ∧
       c ≤ a - 1 ∧
-      (∀ i, PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+      (∀ i, PowerSeries.derivative (R := k) (q i) - Z.mulVec lambda i =
         (PowerSeries.X : PowerSeries k) ^ c * tau i) ∧
       ∃ i, PowerSeries.constantCoeff (tau i) ≠ 0 := by
-  let v : ι → PowerSeries k := fun i => PowerSeries.derivative k (q i)
+  let v : ι → PowerSeries k := fun i => PowerSeries.derivative (R := k) (q i)
   let T : ι → PowerSeries k := fun i => v i - Z.mulVec lambda i
   have hselectedZero : ∀ j, T (rows j) = 0 := by
     intro j
@@ -335,17 +335,17 @@ theorem exists_corrected_primitive_formalDivisorTangent
     ∃ (lambda : κ → PowerSeries k) (c : ℕ)
       (tau : ι → PowerSeries k),
       lambda = correctionCoefficients Z rows
-        (fun i => PowerSeries.derivative k (q i)) ∧
+        (fun i => PowerSeries.derivative (R := k) (q i)) ∧
       (∀ j,
-        PowerSeries.derivative k (q (rows j)) =
+        PowerSeries.derivative (R := k) (q (rows j)) =
           Z.mulVec lambda (rows j)) ∧
       (∀ j, tau (rows j) = 0) ∧
       c ≤ a - 1 ∧
       (∀ i,
-        PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+        PowerSeries.derivative (R := k) (q i) - Z.mulVec lambda i =
           (PowerSeries.X : PowerSeries k) ^ c * tau i) ∧
       ∃ i, PowerSeries.constantCoeff (tau i) ≠ 0 := by
-  let v : ι → PowerSeries k := fun i => PowerSeries.derivative k (q i)
+  let v : ι → PowerSeries k := fun i => PowerSeries.derivative (R := k) (q i)
   let lambda : κ → PowerSeries k := correctionCoefficients Z rows v
   have hselected : ∀ j, v (rows j) = Z.mulVec lambda (rows j) := by
     intro j
@@ -371,7 +371,7 @@ theorem exists_formalDivisorTangent_residue_injective_of_selected_correction
     (hu₀ : PowerSeries.constantCoeff u₀ ≠ 0)
     (hZzero : ∀ j, ∃ w : PowerSeries k,
       Z zero j = (PowerSeries.X : PowerSeries k) ^ a * w)
-    (hselected : ∀ j, PowerSeries.derivative k (q (rows j)) =
+    (hselected : ∀ j, PowerSeries.derivative (R := k) (q (rows j)) =
       Z.mulVec lambda (rows j))
     (hminor :
       PowerSeries.constantCoeff (selectedMinor Z rows).det ≠ 0) :
@@ -380,7 +380,7 @@ theorem exists_formalDivisorTangent_residue_injective_of_selected_correction
       (∀ j, tau (rows j) = 0) ∧
       c ≤ a - 1 ∧
       (∀ i,
-        PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+        PowerSeries.derivative (R := k) (q i) - Z.mulVec lambda i =
           (PowerSeries.X : PowerSeries k) ^ c * tau i) ∧
       (∃ i, PowerSeries.constantCoeff (tau i) ≠ 0) ∧
       Function.Injective
@@ -388,7 +388,7 @@ theorem exists_formalDivisorTangent_residue_injective_of_selected_correction
   obtain ⟨c, tau, htauselected, hc, hfactor, hprimitive⟩ :=
     exists_primitive_formalDivisorTangent_of_selected_correction
       q Z rows zero a u₀ lambda ha hqzero hu₀ hZzero hselected
-  have hderivative_chart : PowerSeries.derivative k (q chart) = 0 := by
+  have hderivative_chart : PowerSeries.derivative (R := k) (q chart) = 0 := by
     simp [hqchart]
   have hcombination_chart : Z.mulVec lambda chart = 0 := by
     simp [Matrix.mulVec, dotProduct, hZchart]
@@ -430,20 +430,20 @@ theorem exists_formalDivisorTangent_residue_injective
     ∃ (lambda : κ → PowerSeries k) (c : ℕ)
       (tau : ι → PowerSeries k),
       lambda = correctionCoefficients Z rows
-        (fun i => PowerSeries.derivative k (q i)) ∧
+        (fun i => PowerSeries.derivative (R := k) (q i)) ∧
       (∀ j,
-        PowerSeries.derivative k (q (rows j)) =
+        PowerSeries.derivative (R := k) (q (rows j)) =
           Z.mulVec lambda (rows j)) ∧
       tau chart = 0 ∧
       (∀ j, tau (rows j) = 0) ∧
       c ≤ a - 1 ∧
       (∀ i,
-        PowerSeries.derivative k (q i) - Z.mulVec lambda i =
+        PowerSeries.derivative (R := k) (q i) - Z.mulVec lambda i =
           (PowerSeries.X : PowerSeries k) ^ c * tau i) ∧
       (∃ i, PowerSeries.constantCoeff (tau i) ≠ 0) ∧
       Function.Injective
         (residueMatrix (formalTangentMatrix q Z tau)).mulVec := by
-  let v : ι → PowerSeries k := fun i => PowerSeries.derivative k (q i)
+  let v : ι → PowerSeries k := fun i => PowerSeries.derivative (R := k) (q i)
   let lambda : κ → PowerSeries k := correctionCoefficients Z rows v
   have hselected : ∀ j, v (rows j) = Z.mulVec lambda (rows j) := by
     intro j

@@ -277,9 +277,6 @@ end LocalAlgebra
 
 section RetainedDVR
 
-private abbrev SourceDVR (E : Type u) [Field E] :=
-  CoordinateZeroLocalRing E
-
 /-- The actual residue-field coefficient section in the maximal-ideal adic
 completion of a retained DVR place. -/
 def retainedCompletedCoefficientSection

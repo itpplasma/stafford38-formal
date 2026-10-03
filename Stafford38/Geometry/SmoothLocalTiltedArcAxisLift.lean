@@ -172,7 +172,7 @@ private theorem tiltedArc_ne_zero_of_avoidance {d : ℕ}
 noncomputable def localTransverseDerivativeMatrix {d : ℕ} {ι : Type v}
     (q : ι → MvPowerSeries (Fin (d + 1)) k) :
     Matrix ι (Fin d) (MvPowerSeries (Fin (d + 1)) k) :=
-  fun i j => MvPowerSeries.pderiv k (Fin.succ j) (q i)
+  fun i j => MvPowerSeries.pderiv (Fin.succ j) (q i)
 
 /-- The transverse derivative matrix restricted to the chosen tilted arc. -/
 noncomputable def tiltedTransverseDerivativeMatrix {d : ℕ} {ι : Type v}
@@ -183,17 +183,17 @@ noncomputable def tiltedTransverseDerivativeMatrix {d : ℕ} {ι : Type v}
 
 private theorem pderiv_t_factor {d : ℕ} (j : Fin d) (r : ℕ)
     (u : MvPowerSeries (Fin (d + 1)) k) :
-    MvPowerSeries.pderiv k (Fin.succ j)
+    MvPowerSeries.pderiv (Fin.succ j)
         ((MvPowerSeries.X 0 : MvPowerSeries (Fin (d + 1)) k) ^ r * u) =
-      (MvPowerSeries.X 0) ^ r * MvPowerSeries.pderiv k (Fin.succ j) u := by
-  have hdt : MvPowerSeries.pderiv k (Fin.succ j)
+      (MvPowerSeries.X 0) ^ r * MvPowerSeries.pderiv (Fin.succ j) u := by
+  have hdt : MvPowerSeries.pderiv (Fin.succ j)
       (MvPowerSeries.X 0 : MvPowerSeries (Fin (d + 1)) k) = 0 := by
     exact MvPowerSeries.pderiv_X_of_ne (Fin.succ_ne_zero j).symm
-  have hdtr : MvPowerSeries.pderiv k (Fin.succ j)
+  have hdtr : MvPowerSeries.pderiv (Fin.succ j)
       ((MvPowerSeries.X 0 : MvPowerSeries (Fin (d + 1)) k) ^ r) = 0 := by
     rw [MvPowerSeries.pderiv_pow]
     simp [hdt]
-  rw [(MvPowerSeries.pderiv k (Fin.succ j)).leibniz]
+  rw [(MvPowerSeries.pderiv (Fin.succ j)).leibniz]
   simpa [hdtr, smul_eq_mul]
 
 /-- Substitution preserves the constant coefficient of every selected minor.
@@ -250,8 +250,8 @@ private theorem tiltedArc_divisorData_of_alpha
   have hZchartₐ : ∀ j,
       tiltedTransverseDerivativeMatrix (k := k) α q chart j = 0 := by
     intro j
-    have hderiv := congrArg (MvPowerSeries.pderiv k (Fin.succ j)) hqchart
-    have hzero : MvPowerSeries.pderiv k (Fin.succ j) (q chart) = 0 := by
+    have hderiv := congrArg (MvPowerSeries.pderiv (Fin.succ j)) hqchart
+    have hzero : MvPowerSeries.pderiv (Fin.succ j) (q chart) = 0 := by
       simpa using hderiv
     have h := congrArg (tiltedArcMap (k := k) α) hzero
     simpa [tiltedTransverseDerivativeMatrix, localTransverseDerivativeMatrix,
@@ -283,33 +283,33 @@ private theorem tiltedArc_divisorData_of_alpha
         (PowerSeries.X : PowerSeries k) ^ a * w := by
     intro j
     refine ⟨tiltedArc (k := k) α
-      (MvPowerSeries.pderiv k (Fin.succ j) u₀), ?_⟩
+      (MvPowerSeries.pderiv (Fin.succ j) u₀), ?_⟩
     have hderiv := pderiv_t_factor (k := k) j a u₀
-    have hqderiv := congrArg (MvPowerSeries.pderiv k (Fin.succ j)) hqzero
+    have hqderiv := congrArg (MvPowerSeries.pderiv (Fin.succ j)) hqzero
     have hmap := congrArg (tiltedArcMap (k := k) α) (by simpa [hderiv] using hqderiv)
     change tiltedArcMap (k := k) α
-        (MvPowerSeries.pderiv k (Fin.succ j) (q zero)) = _
+        (MvPowerSeries.pderiv (Fin.succ j) (q zero)) = _
     calc
       _ = tiltedArc (k := k) α
-          ((MvPowerSeries.X 0) ^ a * MvPowerSeries.pderiv k (Fin.succ j) u₀) := hmap
+          ((MvPowerSeries.X 0) ^ a * MvPowerSeries.pderiv (Fin.succ j) u₀) := hmap
       _ = (PowerSeries.X : PowerSeries k) ^ a * tiltedArc (k := k) α
-          (MvPowerSeries.pderiv k (Fin.succ j) u₀) := tiltedArc_t_power_mul α a _
+          (MvPowerSeries.pderiv (Fin.succ j) u₀) := tiltedArc_t_power_mul α a _
   have hZaxisₐ : ∀ j, ∃ w : PowerSeries k,
       tiltedTransverseDerivativeMatrix (k := k) α q axis j =
         (PowerSeries.X : PowerSeries k) ^ b * w := by
     intro j
     refine ⟨tiltedArc (k := k) α
-      (MvPowerSeries.pderiv k (Fin.succ j) u₁), ?_⟩
+      (MvPowerSeries.pderiv (Fin.succ j) u₁), ?_⟩
     have hderiv := pderiv_t_factor (k := k) j b u₁
-    have hqderiv := congrArg (MvPowerSeries.pderiv k (Fin.succ j)) hqaxis
+    have hqderiv := congrArg (MvPowerSeries.pderiv (Fin.succ j)) hqaxis
     have hmap := congrArg (tiltedArcMap (k := k) α) (by simpa [hderiv] using hqderiv)
     change tiltedArcMap (k := k) α
-        (MvPowerSeries.pderiv k (Fin.succ j) (q axis)) = _
+        (MvPowerSeries.pderiv (Fin.succ j) (q axis)) = _
     calc
       _ = tiltedArc (k := k) α
-          ((MvPowerSeries.X 0) ^ b * MvPowerSeries.pderiv k (Fin.succ j) u₁) := hmap
+          ((MvPowerSeries.X 0) ^ b * MvPowerSeries.pderiv (Fin.succ j) u₁) := hmap
       _ = (PowerSeries.X : PowerSeries k) ^ b * tiltedArc (k := k) α
-          (MvPowerSeries.pderiv k (Fin.succ j) u₁) := tiltedArc_t_power_mul α b _
+          (MvPowerSeries.pderiv (Fin.succ j) u₁) := tiltedArc_t_power_mul α b _
   have hminorₐ : PowerSeries.constantCoeff
       (selectedMinor (tiltedTransverseDerivativeMatrix (k := k) α q) rows).det ≠ 0 := by
     change PowerSeries.constantCoeff
@@ -400,15 +400,15 @@ theorem exists_tilted_local_axis_lift
         (C : Matrix (FormalTangentColumn (Fin d)) ι (PowerSeries k))
         (ell : ι → PowerSeries k),
         lambda = correctionCoefficients (tiltedTransverseDerivativeMatrix (k := k) α q) rows
-          (fun i => PowerSeries.derivative k (tiltedArc (k := k) α (q i))) ∧
+          (fun i => PowerSeries.derivative (R := k) (tiltedArc (k := k) α (q i))) ∧
         (∀ j,
-          PowerSeries.derivative k (tiltedArc (k := k) α (q (rows j))) =
+          PowerSeries.derivative (R := k) (tiltedArc (k := k) α (q (rows j))) =
             (tiltedTransverseDerivativeMatrix (k := k) α q).mulVec lambda (rows j)) ∧
         tau chart = 0 ∧
         (∀ j, tau (rows j) = 0) ∧
         c ≤ a - 1 ∧
         (∀ i,
-          PowerSeries.derivative k (tiltedArc (k := k) α (q i)) -
+          PowerSeries.derivative (R := k) (tiltedArc (k := k) α (q i)) -
               (tiltedTransverseDerivativeMatrix (k := k) α q).mulVec lambda i =
             (PowerSeries.X : PowerSeries k) ^ c * tau i) ∧
         (∃ i, PowerSeries.constantCoeff (tau i) ≠ 0) ∧
@@ -474,7 +474,7 @@ theorem selected_coordinate_rows_on_tilted_arc
       PowerSeries.C (β j) + PowerSeries.C (α j) * PowerSeries.X) ∧
     (∀ j l, tiltedTransverseDerivativeMatrix (k := k) α q (rows j) l =
       if j = l then 1 else 0) ∧
-    (∀ j, PowerSeries.derivative k
+    (∀ j, PowerSeries.derivative (R := k)
       (tiltedArc (k := k) α (q (rows j))) = PowerSeries.C (α j)) := by
   have hC (b : k) : (tiltedArcMap (k := k) α) (MvPowerSeries.C b) =
       PowerSeries.C b := tiltedArc_C (k := k) α b
@@ -490,7 +490,7 @@ theorem selected_coordinate_rows_on_tilted_arc
     rw [map_add, hC, hX] at h
     exact h
   have hderiv (j l : Fin d) :
-      MvPowerSeries.pderiv k (Fin.succ l) (q (rows j)) =
+      MvPowerSeries.pderiv (Fin.succ l) (q (rows j)) =
         if j = l then (1 : MvPowerSeries (Fin (d + 1)) k) else 0 := by
     rw [hrows j]
     by_cases hjl : j = l
@@ -505,12 +505,12 @@ theorem selected_coordinate_rows_on_tilted_arc
   constructor
   · intro j l
     change tiltedArc (k := k) α
-      (MvPowerSeries.pderiv k (Fin.succ l) (q (rows j))) = _
+      (MvPowerSeries.pderiv (Fin.succ l) (q (rows j))) = _
     rw [hderiv j l]
     by_cases hjl : j = l <;> simp [tiltedArc, hjl]
   · intro j
     rw [hrowArc j]
-    rw [map_add, (PowerSeries.derivative k).leibniz]
+    rw [map_add, (PowerSeries.derivative (R := k)).leibniz]
     simp
 
 /-- The selected-coordinate output for one fixed tilted arc. This is only an
@@ -536,11 +536,11 @@ abbrev SelectedCoordinateAxisLiftData
       (C : Matrix (FormalTangentColumn (Fin d)) ι (PowerSeries k))
       (ell : ι → PowerSeries k),
       c ≤ a - 1 ∧
-      (∀ j, PowerSeries.derivative k
+      (∀ j, PowerSeries.derivative (R := k)
         (tiltedArc (k := k) α (q (rows j))) = PowerSeries.C (α j)) ∧
       tau chart = 0 ∧
       (∀ j, tau (rows j) = 0) ∧
-      (∀ i, PowerSeries.derivative k (tiltedArc (k := k) α (q i)) -
+      (∀ i, PowerSeries.derivative (R := k) (tiltedArc (k := k) α (q i)) -
         (tiltedTransverseDerivativeMatrix (k := k) α q).mulVec
           (fun j => PowerSeries.C (α j)) i =
         (PowerSeries.X : PowerSeries k) ^ c * tau i) ∧
@@ -579,7 +579,7 @@ theorem tilted_local_axis_lift_of_selected_coordinate_rows_on_arc
       localTransverseDerivativeMatrix (k := k) q (rows j) l =
         if j = l then 1 else 0 := by
     intro j l
-    change MvPowerSeries.pderiv k (Fin.succ l) (q (rows j)) = _
+    change MvPowerSeries.pderiv (Fin.succ l) (q (rows j)) = _
     rw [hrows j]
     by_cases hjl : j = l
     · subst l
@@ -619,7 +619,7 @@ theorem tilted_local_axis_lift_of_selected_coordinate_rows_on_arc
     rw [hminorMatrix]
     simp
   let lambda : Fin d → PowerSeries k := fun j => PowerSeries.C (α j)
-  have hselected : ∀ j, PowerSeries.derivative k (qₐ (rows j)) =
+  have hselected : ∀ j, PowerSeries.derivative (R := k) (qₐ (rows j)) =
       Zₐ.mulVec lambda (rows j) := by
     have hmul : (selectedMinor Zₐ rows).mulVec lambda = lambda := by
       rw [hminorMatrix]

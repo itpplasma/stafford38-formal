@@ -1,14 +1,12 @@
-module
 
-public import Mathlib.RingTheory.Kaehler.Polynomial
-public import Mathlib.RingTheory.Etale.Kaehler
-public import Mathlib.RingTheory.Etale.Field
-public import Mathlib.RingTheory.Localization.FractionRing
-public import Mathlib.RingTheory.AlgebraicIndependent.Adjoin
-public import Mathlib.LinearAlgebra.TensorProduct.Basis
-public import Mathlib.LinearAlgebra.Basis.Basic
+import Mathlib.RingTheory.Kaehler.Polynomial
+import Mathlib.RingTheory.Etale.Kaehler
+import Mathlib.RingTheory.Etale.Field
+import Mathlib.RingTheory.Localization.FractionRing
+import Mathlib.RingTheory.AlgebraicIndependent.Adjoin
+import Mathlib.LinearAlgebra.TensorProduct.Basis
+import Mathlib.LinearAlgebra.Basis.Basic
 
-public section
 set_option autoImplicit false
 
 open scoped TensorProduct
