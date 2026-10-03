@@ -4,7 +4,7 @@ A release records one immutable, verified source tree. The controller selects th
 
 ## Verify the source
 
-Start from a clean clone of the selected commit. Preserve Lean, Mathlib, AlgebraicAnalysis, both Comparator configurations, and verifier scripts at the exact revisions named by the source manifest. Run the full repository verifier, both Palomar comparator checks, endpoint and consumer axiom reports, paper-linked declaration audit, and import checks. Record commands, exit statuses, source hashes, log hashes, and whether compiled caches were reused. Keep historic receipts in docs/verification/history/ with their original source revisions.
+Start from a clean clone of the selected commit. Preserve Lean, Mathlib, AlgebraicAnalysis, all four Comparator configurations, and verifier scripts at the exact revisions named by the source manifest. Run one full Linux repository verifier and all four Palomar comparisons, covering the main and alternative solutions for the two unchanged challenges. The verifier includes the endpoint and consumer axiom reports, paper-linked declaration audit, and import checks. Reuse accepted caches; do not duplicate the full run on another cluster. Record commands, exit statuses, source hashes, log hashes, and whether compiled caches were reused. Keep historic receipts in docs/verification/history/ with their original source revisions.
 
 A successful replay establishes only its listed declarations and configuration. Human review of the mathematics and manuscript correspondence is separate. The existing Palomar record certifies its named theorem and source; local verification does not create a new registry version.
 

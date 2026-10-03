@@ -26,12 +26,11 @@ module and literal trust-zero consumer checks. T32 is committed and pushed at
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
 T35 passed on scluster3113113 and is committed/pushed; see
 notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd.
-Columns remains the active blocker. Stage10 (scluster3120026, source
-6a62c97f) eliminated the chart and scalar-action type errors; its generic
-producer reached the existing deterministic heartbeat limit. Sol is splitting
-that producer into separately typed proof stages under the unchanged limit.
-One scluster chain checks its prefix, module and literal consumer, followed
-by Closure59b. T36's verbatim chart helper passed separately on
+Columns remains the active blocker. Stage12 (scluster3120780) compiled the
+raw Laurent-derivative helper; only concrete certificate assembly reached the
+existing heartbeat limit. Sol914f1f62 moved that assembly into an abstract-ring
+helper. One scluster chain (3121032) checks its prefix, module and literal
+consumer, followed by Closure59b. T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
 unchanged. No full Columns or Closure acceptance is claimed.
 T35 passed independently on both clusters. The alternative geometry endpoint
@@ -1205,9 +1204,15 @@ cd $WT && python3 scripts/reanchor-review-map.py --paper /home/ert/proj/stafford
 ```
 
 Then add rows for the new SameWitness theorems from the T61 table. Accept:
-the script exits 0 and every map entry's Lean declaration exists:
-`lake env lean` on a generated scratch file with one `#check <name>` per
-entry (through `GUARD`, 900 s) shows no `unknown identifier`.
+the script exits 0 and mapped declarations resolve at the frozen sources.
+After the accepted build, use guarded `lake env lean --trust=0` with scratch
+`#check` files, without another full build. Keep four import groups separate:
+main/shared declarations, Challenge alone, FixedSourceChallenge alone, and
+both alternative solutions. Root challenges and proof modules deliberately
+reuse names and cannot be imported together. The two archived Global Stafford
+references are source-only provenance outside this package's build dependencies;
+check their exact archived source locations separately. These name checks do
+not certify the challenge placeholders or whole-proof correspondence.
 
 Each mathematical claim must have a stable review entry in paper order,
 covering the complete proof and both Challenge/Solution comparisons. Record
