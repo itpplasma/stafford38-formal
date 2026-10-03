@@ -76,7 +76,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T53 | Integrate into main | done | 1 | notes/T42-four-assemblies-linux-accepted-20261003.md | Controllerintegrated55explicitproof/toolpaths afterboundedacceptance; authoritative docs and unrelateduntracked preserved |
 | T60 | Definition owners patch | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol prepared14 retainedcontractowners, helpersexcluded; registry/compiler acceptance awaitsfinalsource |
 | T61 | Paper map of new theorems | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol repaired57cards/403resolvedrefs/100SameWitnessdeclarations; Nodeaudit+browserwalkpass; finalpins/compiler/humanreviewpending |
-| T62 | Unreachable/duplicate report | doing | 1 | | Luna preparing source-graph and duplicate-owner report; final route still required |
+| T62 | Unreachable/duplicate report | done | 2 | notes/T62-current-reachability-20261003.md | Frozen580sources/138roots:572reachable,244/246geometry;2useful unimportedmodules retained and full-build covered; no deletion proposed |
 | T70 | Frozen public commit | done | 1 | final3128039 | Exactpublic45037fbc16329df7a208eb3de91aca31d720f03c pushedbeforelaunch |
 | T71 | Final Linux host preflight | done | 1 | final3128039 | Snode20idle, nootheruserjobs; stageddriver/guardhashesmatched, exactfrozenclone/Lean passed; actualguardactive |
 | T72 | Launch Linux driver | done | 2 | final3128039 | Revieweddriver launchedexactpublic45037fb onSnode20,2CPU8GiB; solefinalfullverifier and4comparators |
