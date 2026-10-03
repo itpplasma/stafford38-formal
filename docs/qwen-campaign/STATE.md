@@ -79,8 +79,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T62 | Unreachable/duplicate report | done | 2 | notes/T62-current-reachability-20261003.md | Frozen580sources/138roots:572reachable,244/246geometry;2useful unimportedmodules retained and full-build covered; no deletion proposed |
 | T70 | Frozen public commit | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Exact publicC2=12ae3cc49152672a48a96f13994314b65ae38197 pushed before final launch; priorC1 retained |
 | T71 | Final Linux host preflight | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Prior3129931guard0/drained; empty userqueue/node20idle;3controlhashes exact; fresh source/receiptpaths absent |
-| T72 | Launch Linux driver | done | 4 | notes/T73-final-C2-resume2-submission-3136492-20261003.json | SoleS3136492 remaining-stage resume exactC2/approvedcache;3existingmodules+4comparators+finalidentity; no fullverifier repeat |
-| T73 | Collect Linux result | doing | 4 | notes/T73-final-C2-resume2-submission-3136492-20261003.json | FullverifierPASS3131801 and3retainedtargets/I/OprobesPASS3136492; comparator1stoppedbeforeproof due generatedcache symlink mount; drained; cachelayout-onlyresume3 preparednext |
+| T72 | Launch Linux driver | done | 5 | notes/T73-final-C2-resume3-submission-3136992-20261003.json | SoleS3136992 cachelayout-only repair+4comparators/finalintegrity, exactC2; no successfulverifier/module repeat |
+| T73 | Collect Linux result | doing | 5 | notes/T73-final-C2-resume3-submission-3136992-20261003.json | FullverifierPASS3131801 and3retainedtargets/I/OprobesPASS3136492 preserved; reviewedcache-layout/4comparisonresume3136992 active |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
 | T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+C2/P3/S3refreshPASS519refs/0errorswarnings;57unchangedcards inherit actualbrowserwalk; PDFassetgatePASS; humanreviewpending |
@@ -337,3 +337,15 @@ donor before mutation. Evidence is
 `notes/T73-cache-layout-resume-review-20261003.tar.gz`, SHA-256
 `d3f2b2831e4ebd486d333f61b9c7009a6c5606b6adc5761eacdeaedbaf047a9e`.
 Original caps remain; prepared for controller submission after fresh preflight.
+
+## Cache-layout comparator resume submitted
+
+Controller submitted sole scluster3136992 at18:58:07.033096Z after review and
+commit/push39f2106. Driver6fa1ae51, submit ee35a9c1 and accepted guard ca59b4b7
+full hashes matched remotely. User queue empty, node20 idle, fresh receipt/guard/
+slurm paths absent and exact original donor dev/inode verified before launch.
+Receipt root is `final-receipts-guard-repaired-resume3`; guard prefix is
+`final-C2-resume3-outer-guard`. Source remains publicC2. Completed verifier3131801
+and retained module/probe3136492 receipts are inherited; no repeat or duplicate
+proof slot. Remaining4 comparator results, final identity/pins and guarddrain
+are pending. T80 will run once on the same accepted cache after these complete.

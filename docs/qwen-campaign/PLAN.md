@@ -53,7 +53,8 @@ the generated `.lake` symlink. The allocation drained without resource stops,
 swap growth or children;3 later comparisons/final identity did not run.
 The next remaining-stage repair relocates the existing real cache into C2's
 `.lake` directory, without copying or changing source/tool/policy flags, then
-runs the4 comparisons and final identity/pins. No verifier/library repeat.
+runs the4 comparisons and final identity/pins. No verifier/library repeat. Sole cache-layout/comparator resume3136992
+was submitted at18:58:07Z after exact preflight and reviewed-driver push.
 Proof/tool/package pins remain C2 unchanged; preserve all success/failure receipts.
 
 The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
