@@ -28,9 +28,10 @@ theorem coordinate_axis_mem_smooth_fibre_closure
       MvPolynomial.zeroLocus k
         (MvPolynomial.vanishingIdeal k (smoothConormalFibreProjection I.asIdeal)) := by
   rcases Stafford38.Geometry.OriginalPrimeCoordinateAvoidanceWitness.coordinate_axis_or_visible_frame_of_avoidance
-      hm I havoid with h | ⟨w⟩
+      hm I havoid with h | hw
   · exact h
-  · exact axis_mem_smoothConormalFibreProjection_closure_of_groundPointOutput hm I w
+  · obtain ⟨w⟩ := hw
+    exact axis_mem_smoothConormalFibreProjection_closure_of_groundPointOutput hm I w
       (Stafford38.Geometry.ActualSameWitnessGroundPointCompletion.exists_actual_same_witness_groundpoint_chart hm I w)
       (Stafford38.Geometry.exists_nonzero_smooth_away_quotient I.asIdeal)
 
