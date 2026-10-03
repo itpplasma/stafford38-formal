@@ -83,8 +83,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T73 | Collect Linux result | doing | 1 | final3128039 | 3128526 finalverifierrunning since14:57UTC; precedingtool/source/pins/cache/EtalestagesPASS;4comparatorspending |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
-| T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Guided generator navigation/resume browser oracle passed64tests; public commit40967b6 pushed; complete frozen-map walkthrough pending |
-| T82 | Rebuild manuscript PDFs | doing | 2 | notes/T82-locator-pdf-receipt-20261003.json | All3PDFs compile0undefined afterlocator-onlydaf4304; finalcitations/sourcepins remain pending |
+| T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+finalP2/S2mapcheckPASS,57/57actualbrowsercards,0errors; deployedassetbuildPASS; humanreviewpending |
+| T82 | Rebuild manuscript PDFs | doing | 2 | notes/T82-locator-pdf-receipt-20261003.json | All3PDFs compile0undefined atpaperbb3190f; publicformal/librarylinkpins+matchingreceiptaccepted; releaseDOIcitationsremainpending |
 | T83 | Supplementary bundle (local) | todo | 0 | | |
 | T84 | Review handover | owner | 0 | | owner gate |
 | T90 | Release drafts | todo | 0 | | |
@@ -205,3 +205,5 @@ component; final README/status and Palomar package checks await proof acceptance
 - Final3128039 stopped at tooling only: required bubblewrap0.12.0, found0.8.0. Fresh public source, Lean pin, complete cache copy and source policy passed; no full verifier/comparator ran. Failure/drain archive retained. Luna repairs official bwrap inside isolated bootstrap; bounded resume of the same unchanged clean public clone skips only repeated fetch/copy, retains every proof/pin/comparator gate and separate receipts.
 
 - Official isolated bwrap repair3128465 passed exact version/sandbox probes and drained. Independently reviewed bounded resume3128526 kept original source45037fb byte/mode-identical; tooling,10pins,cache andEtaleprebuild passed. The first full verifier started14:57:12UTC. Prior tooling failure archived; no repeated full verifier or cluster work.
+
+- Finalpinnedmap519locators/108SameWitnessrows has zero unresolved sources; publicgenerator40967 check andactual57-cardChromium walk passed. Current111 manuscript-linked declarations match its manifest. Exact6sourceinputs and2PDFs passpublicationassetgate; deployable sitebuildpassed. Four399-name compiler groups remain afterfinalverifier; archive/citations/humanreviews are separate.

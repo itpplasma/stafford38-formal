@@ -1,0 +1,9 @@
+# Final pinned review map and browser receipt
+
+The final manuscript snapshot9fdeac1f1f432459b97e7f421937a1ee8b7e8d9f originates at paperbb3190f8b962f95a0d6ebe30bac0f80ea3ec1388, pushed to GitHub and Overleaf. It links to the unchanged accepted formal source45037fbc16329df7a208eb3de91aca31d720f03c and exact AlgebraicAnalysis/Mathlib pins. The public generator40967b6740c2ceaf515a2fb47a5ca9571be6495f checks the full map with zero warnings/errors. MapSHA2569af598b7646a181a532aafcb10a22ca0c4ae77db9fbd7af131cb1fb9497e42bb. The source locator inventory resolves519 references with no unresolved entry;108 SameWitness rows include99 public declarations and9 module-private source-only helpers.
+
+The actual Chromium guided Next walk visited57/57 visible cards, including both challenge comparison cards, with zero unresolved browser errors. Three explicit derivative/column record expansions place the full retained contracts beside their public producers. Existing standard-vocabulary expansion notices remain informational and include source links. The exact three guided runtime files from40967 are embedded in MAIN.
+
+The current PDF receipt matches every frozen manuscript input, both generated PDFs, and the exact formal/library hyperlink macros. All three latexmk builds exited0 with zero undefined citations, references or control sequences. The deployable publication build passed against public pins and includes both readable PDFs. Current111 manuscript-linked declarations exactly match the retained manifest; numeric locator corrections alter no mathematical prose.
+
+ArchiveSHA256: `b0354485f531dabb3343f5b6f4333ae462f74be20a4aaefd0f8a40fe73b8ce43`. Compiler name checks for the four isolated399-declaration groups remain pending after the active final verifier drains. The verifier and four Palomar comparisons are separate proof gates; whole-paper correspondence and Johanna’s and Max’s human reviews remain pending.
