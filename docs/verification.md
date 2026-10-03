@@ -1,6 +1,6 @@
 # Verification
 
-Source `f6915782d2281e3d3b51011b97ace866928053b9` passed the full verifier and
+Historical source `f6915782d2281e3d3b51011b97ace866928053b9` passed the full verifier and
 both Comparator configurations in an isolated clean checkout fetched from
 GitHub. Compiled caches were reused; this was not a cold rebuild. All 36
 endpoint reports, 17 literal consumers and 101 paper-linked declarations use
@@ -10,9 +10,10 @@ snapshot rendering check passed without warnings.
 
 The [receipt](verification-results.json), SHA-256 `a1cca54a8c46df89797b85dfa24359e3e0b640caa414bcac29c4fd3cc7a81f9d`, records exact
 commands, source pins, counts and [compressed logs](verification/f6915782/).
-Historical reports remain under `verification/history/`. Subsequent release
-metadata and the dossier do not change the tested Lean sources, dependency
-pins, Comparator configurations or verifier scripts. Independent AI reviews
+Historical reports remain under `verification/history/`. That receipt records
+its own source, dependencies, configurations and verifier scripts. The current
+rc3 package requires a new complete receipt after integration; fixture results
+do not qualify the Stafford proofs. Independent AI reviews
 are retained in [the review index](audits/manuscript-corollaries.md); human
 mathematical review remains open.
 
@@ -38,7 +39,8 @@ the imported route is recorded in the [proof guide](proof-guide.md) and
 
 ## Reproduction
 
-From the selected commit with Elan and the build tools installed:
+From the selected commit on Linux with Elan, Python 3.11 or newer, the build
+tools, and bubblewrap 0.12.0 installed:
 
 ```sh
 lake exe cache get
@@ -51,9 +53,9 @@ scripts/verify-palomar.sh comparator-fixed-source.json
 
 | Component | Pin |
 | --- | --- |
-| Project Lean | `leanprover/lean4:v4.33.0` |
-| Mathlib | `db584cd6d46c92f209a44c0f1c829460d327499d` (`v4.33.0`), on `master` |
-| AlgebraicAnalysis | `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8` (`v0.3.0`) from `v1.1.0`; `dfdd2da091a9d67e7a29cc7914f192d746a2400d` (`v0.2.0`) in the historical report |
+| Project Lean | `leanprover/lean4:v4.35.0-rc3`, commit `470d5ce1400764999581fd26d5d72b00d990b0f4` |
+| Mathlib | `c55e6e786f49471c72fbddbec5415808896aec1e`, using the same rc3 toolchain |
+| AlgebraicAnalysis | `bbbbf3fc358ca8100b158cec4cf47f336ab70163` (`v0.3.3`), using rc3 and the same Mathlib revision |
 
 AlgebraicAnalysis is fetched from its public Git repository. Its source is
 external to this package and subject to the same foundational-axiom boundary.
@@ -110,7 +112,7 @@ symplectic matrix. [`Solution.lean`](../Solution.lean) transports the proved
 Stafford theorem by an algebra equivalence.
 [`FixedSourceSolution.lean`](../FixedSourceSolution.lean) uses the
 [transport module](../Stafford38/FixedSourceChallengeTransport.lean), which
-repeats the Challenge definitions without importing the Challenge and proves
+uses the shared definitions without importing either Challenge and proves
 that the intrinsic ordered-word filtration and its least level coincide with
 the development's Bernstein filtration and checked PBW normal-form degree.
 
@@ -118,25 +120,44 @@ Comparator exports and compares `Stafford38Challenge.universalStatement`
 (`comparator.json`) and
 `Stafford38FixedSourceChallenge.universalFixedSourceStatement`
 (`comparator-fixed-source.json`) in separate environments, checks the
-permitted axioms, and submits the exported proofs to both NanoDa and Lean's
-default kernel. Its subprocesses use Landrun's restricted sandbox. The adapted
-[wrapper](../scripts/landrun-wrapper.sh) preserves a single outer command
-delimiter and rejects unrestricted flags. The adaptation and upstream license
-are recorded in [NOTICE](../NOTICE).
+permitted axioms, and submits the exported proofs to NanoDa, con-ron, and Lean's
+default kernel. The current runner uses the rc3 toolchain's bundled
+`lake comparator` with bubblewrap and a protected configuration naming both
+independent kernels. Submitted configurations cannot select their own kernels.
+
+Both selected Challenges inline the exact code from
+[`Stafford38/ChallengeDefinitions.lean`](../Stafford38/ChallengeDefinitions.lean)
+because current Palomar policy excludes project-local imports from the
+Challenge source closure. The Solutions keep that shared definition owner.
+The source gate checks the inlined code against the owner; Comparator must
+independently confirm every reached definition and the unchanged theorem type
+in separate environments. Max's review should check the Weyl relations,
+noncommutative factor order, characteristic-zero and rank hypotheses, and the
+intrinsic fixed-source degree in both Challenge copies and the shared owner.
 
 ## Verification tools
 
-| Tool | Source revision | Build toolchain |
-| --- | --- | --- |
-| Comparator | `575674928e239f5bc452aab72d1dd7b0f1326494` | Lean `4.34.0-rc1`, as fixed by its repository |
-| lean4export | `15f6055e299ad5b89345e533cc2192f4cc00f659` | Project Lean `4.33.1` |
-| NanoDa | `68d5ca9db226849b41a6fff59d796ff19d0a8840` | Rust, locked Cargo dependencies |
-| Landrun | `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4` | Go, readonly module resolution |
+The bootstrap records SHA-256 digests of bundled `lake`, `lean`, `leanexport`,
+`leanchecker`, `nanoda_bin`, and `con-ron`, plus the bubblewrap binary, under
+`.lake/palomar-tools/`. Historical receipts retain the earlier separate
+Comparator, lean4export, NanoDa, and Landrun pins at their original sources.
 
-The bootstrap builds these exact source revisions. Comparator's own Lean
-version differs from the project/exporter version because its kernel API
-requires that version. Palomar's documented stable-patch selection gives the
-listed exporter revision for project Lean `4.33.1`.
+The local source preflight vendors the exact source rules from
+[PalomarSubmission `65f0154`](https://github.com/PalomarRegistry/PalomarSubmission/tree/65f0154ed776cd26c224254aa57b379137f28b0d).
+It checks module headers, UTF-8, regular source files, the 10,000-line limit,
+dependency pins, and both Comparator configurations. Independent fixtures
+check matching statements, statement mismatches, and an unpermitted proof
+axiom; their logs remain under `.lake/verification/palomar-behavior/`.
+
+For the complete official mechanical preflight, dispatch
+[`palomar-preflight.yml`](../.github/workflows/palomar-preflight.yml) with the
+same full immutable source commit for both configurations. It calls the
+pinned PalomarSubmission workflow in full mode, including canonical Challenge
+source reconstruction, dependency authentication, metadata and archive
+checks, and kernel replay. Retrieve both `mechanical-report` artifacts before
+their 90-day expiry and retain them with the source receipt. The workflow
+provides advisory verification evidence; registration and editorial review
+remain separate Palomar operations.
 
 ## Source regression and review
 

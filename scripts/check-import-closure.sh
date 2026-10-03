@@ -29,8 +29,6 @@ if target in {'Solution', 'FixedSourceSolution'}:
 else:
     # Mathlib is Palomar's allowlisted root. Its committed dependency manifest
     # determines the allowed package closure; AlgebraicAnalysis is excluded.
-    # This one shared project module is a local exception: the same scan still
-    # rejects any other project-local dependency, so it must remain Mathlib-only.
     manifest = json.loads(Path('.lake/packages/mathlib/lake-manifest.json').read_text())
     packages = {'mathlib'} | {p['name'] for p in manifest['packages']}
     packages.discard('algebraicAnalysis')
@@ -41,7 +39,10 @@ else:
             relative = path.relative_to(root)
             if not any(part.startswith('.') for part in relative.parts):
                 allowed.add('.'.join(relative.with_suffix('').parts))
-    local_helpers = {'Stafford38.ChallengeDefinitions'}
+    # CorollaryChallenge is an internal consumer specification, not either
+    # selected Palomar challenge. The advertised challenges have no exception
+    # for a project-local definition owner.
+    local_helpers = {'Stafford38.ChallengeDefinitions'} if target == 'CorollaryChallenge' else set()
     forbidden = [n for n in names if n != target and n not in local_helpers
                  and n.split('.')[0] not in {'Init', 'Lean', 'Std'}
                  and n not in allowed]

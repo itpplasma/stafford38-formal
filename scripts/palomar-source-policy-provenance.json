@@ -1,0 +1,23 @@
+{
+  "purpose": "Exact vendored Lean-source requirement implementation used by the local preflight",
+  "official_policy_repository": "https://github.com/PalomarRegistry/PalomarSubmission",
+  "official_policy_commit": "65f0154ed776cd26c224254aa57b379137f28b0d",
+  "files": {
+    "scripts/source_requirements.py": "971950a45500ad8ba8c9061eb51716bc1c38f411ff877c447b6de527b23d2c6d",
+    "scripts/verification_errors.py": "ce58c4adc2f896a8ce69961d1f49ada7f571d86f9638a196f34197e3293cc776"
+  },
+  "contract": {
+    "module_required": true,
+    "maximum_lean_source_lines": 10000,
+    "physical_line_count": "LF-based; CRLF counts one physical line; unterminated final line counts",
+    "header_comments": "ordinary line/block comments accepted; doc comments are commands and do not count as header whitespace",
+    "lakefile_exemption": "basename lakefile.lean is exempt from module-header requirement only, not line cap",
+    "symlinks": "directories are not traversed; symlink .lean files are rejected",
+    "source_encoding": "UTF-8 required"
+  },
+  "upstream_license": {
+    "path": "LICENSE",
+    "sha256": "10321b0cca2b8025d4b5065dd20e22c1f74da2e872c12363e3601974e093bc21",
+    "vendored_copy": "scripts/palomar-policy-LICENSE"
+  }
+}

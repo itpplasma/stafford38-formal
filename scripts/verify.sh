@@ -10,52 +10,11 @@ mkdir -p "$log_dir"
 
 python3 scripts/check-layout.py >"$log_dir/layout.log" 2>&1
 
-python3 - <<'PY'
-import json
-import re
-import tomllib
-from pathlib import Path
-
-expected_toolchain = "leanprover/lean4:v4.33.0"
-expected_mathlib = "db584cd6d46c92f209a44c0f1c829460d327499d"
-expected_aa_url = "https://github.com/itpplasma/algebraic-analysis.git"
-expected_aa = "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8"
-
-toolchain = Path("lean-toolchain").read_text(encoding="utf-8").strip()
-if toolchain != expected_toolchain:
-    raise SystemExit(f"unexpected Lean toolchain: {toolchain!r}")
-
-with Path("lakefile.toml").open("rb") as handle:
-    lakefile = tomllib.load(handle)
-requires = {item["name"]: item for item in lakefile.get("require", [])}
-with Path("lake-manifest.json").open(encoding="utf-8") as handle:
-    manifest = json.load(handle)
-packages = {item["name"]: item for item in manifest.get("packages", [])}
-
-for name in ("mathlib", "algebraicAnalysis"):
-    if name not in requires or name not in packages:
-        raise SystemExit(f"missing required dependency: {name}")
-
-mathlib = packages["mathlib"]
-if requires["mathlib"].get("rev") != expected_mathlib:
-    raise SystemExit("lakefile.toml does not pin the expected Mathlib commit")
-if mathlib.get("rev") != expected_mathlib:
-    raise SystemExit(f"unexpected resolved Mathlib commit: {mathlib.get('rev')!r}")
-
-aa_request = requires["algebraicAnalysis"]
-aa_manifest = packages["algebraicAnalysis"]
-aa_rev = aa_request.get("rev", "")
-if aa_request.get("git") != expected_aa_url:
-    raise SystemExit(f"unexpected AlgebraicAnalysis URL: {aa_request.get('git')!r}")
-if not re.fullmatch(r"[0-9a-f]{40}", aa_rev):
-    raise SystemExit("AlgebraicAnalysis must be pinned by a full lowercase commit")
-if aa_rev != expected_aa:
-    raise SystemExit(f"unexpected AlgebraicAnalysis commit: {aa_rev!r}")
-if aa_manifest.get("rev") != aa_rev or aa_manifest.get("inputRev") != aa_rev:
-    raise SystemExit("AlgebraicAnalysis lakefile and manifest revisions differ")
-
-print(f"pins: Lean 4.33.0, Mathlib {expected_mathlib}, AlgebraicAnalysis {aa_rev}")
-PY
+python3 tests/palomar-source-requirements-behavior.py >"$log_dir/source-policy-behavior.log" 2>&1
+python3 tests/palomar-policy-pin-behavior.py >"$log_dir/policy-pin-behavior.log" 2>&1
+python3 scripts/check-palomar-policy.py
+bash scripts/bootstrap-palomar-tools.sh
+bash tests/palomar-comparator-behavior.sh >"$log_dir/palomar-behavior.log" 2>&1
 
 python3 tests/noncharacteristic_pages_oracle.py >"$log_dir/pages-oracle.log" 2>&1
 python3 tests/operator_projection_oracle.py >"$log_dir/pbw-oracle.log" 2>&1
@@ -157,8 +116,13 @@ challenge_code = code_without_comments_or_strings(challenge.read_text(encoding="
 challenge_holes = re.findall(r"\b(?:sorry|admit)\b", challenge_code)
 if challenge_holes != ["sorry"]:
     raise SystemExit("Challenge.lean must contain exactly one deliberate sorry and no admit")
-imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", challenge_code)
-expected_imports = ["Stafford38.ChallengeDefinitions"]
+imports = re.findall(r"(?m)^\s*(?:public\s+)?import\s+([^\s]+)\s*$", challenge_code)
+expected_imports = [
+    "Mathlib.Algebra.RingQuot",
+    "Mathlib.Algebra.FreeAlgebra",
+    "Mathlib.LinearAlgebra.SymplecticGroup",
+    "Mathlib.Order.Lattice.Nat",
+]
 if imports != expected_imports:
     raise SystemExit(f"unexpected Challenge imports: {imports!r}")
 
@@ -168,7 +132,7 @@ if not strong_challenge.is_file():
 strong_code = code_without_comments_or_strings(strong_challenge.read_text(encoding="utf-8"))
 if re.findall(r"\b(?:sorry|admit)\b", strong_code) != ["sorry"]:
     raise SystemExit("FixedSourceChallenge.lean must contain exactly one deliberate sorry and no admit")
-strong_imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", strong_code)
+strong_imports = re.findall(r"(?m)^\s*(?:public\s+)?import\s+([^\s]+)\s*$", strong_code)
 expected_strong_imports = expected_imports
 if strong_imports != expected_strong_imports:
     raise SystemExit(f"unexpected FixedSourceChallenge imports: {strong_imports!r}")
@@ -178,7 +142,7 @@ if strong_imports != expected_strong_imports:
 # the source audit includes it and rejects any proof placeholder or axiom.
 owner_code = code_without_comments_or_strings(
     Path("Stafford38/ChallengeDefinitions.lean").read_text(encoding="utf-8"))
-owner_imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", owner_code)
+owner_imports = re.findall(r"(?m)^\s*(?:public\s+)?import\s+([^\s]+)\s*$", owner_code)
 expected_owner_imports = [
     "Mathlib.Algebra.RingQuot",
     "Mathlib.Algebra.FreeAlgebra",
@@ -187,6 +151,16 @@ expected_owner_imports = [
 ]
 if owner_imports != expected_owner_imports:
     raise SystemExit(f"unexpected challenge definition owner imports: {owner_imports!r}")
+
+# The selected Challenge cannot import a project-local owner under current
+# Palomar policy. Keep its inlined definitions byte-for-byte equivalent at
+# the code level; Comparator independently checks the reached declarations.
+owner_definitions = owner_code[owner_code.index("namespace Stafford\n"):].strip()
+for label, code in (("Challenge.lean", challenge_code),
+                    ("FixedSourceChallenge.lean", strong_code)):
+    definitions_and_statement = code[code.index("namespace Stafford\n"):].strip()
+    if not definitions_and_statement.startswith(owner_definitions + "\n"):
+        raise SystemExit(f"{label} inlined definitions differ from the solution's definition owner")
 
 # The two intentional theorem placeholders are permitted, but neither
 # comparison input may introduce an additional project axiom.
@@ -203,7 +177,7 @@ for solution_name in ("Solution.lean", "FixedSourceSolution.lean"):
     if not solution.is_file():
         raise SystemExit(f"{solution_name} is missing")
     solution_code = code_without_comments_or_strings(solution.read_text(encoding="utf-8"))
-    solution_imports = re.findall(r"(?m)^\s*import\s+([^\s]+)\s*$", solution_code)
+    solution_imports = re.findall(r"(?m)^\s*(?:public\s+)?import\s+([^\s]+)\s*$", solution_code)
     if any(name.split(".")[0] in challenge_roots for name in solution_imports):
         raise SystemExit(f"{solution_name} must not import Challenge, FixedSourceChallenge, or a submodule")
 

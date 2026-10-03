@@ -44,9 +44,12 @@ sources:
     type: "original-proof"
     relationship: "other"
     note: >-
-      The manuscript and formal development are records of the same research
-      proof. The checked theorem is registered as PALOMAR-2026-09-05-000007,
-      version 2; newer archived auxiliary declarations are verified separately.
+      The formal development proves the manuscript's Stafford 3.8 statement.
+      Full correspondence with the manuscript's geometric proof route remains
+      under review; docs/paper-route-alignment.json records the remaining
+      bridges and their evidence. The registered theorem is
+      PALOMAR-2026-09-05-000007, version 2; later declarations and toolchain
+      changes require separate verification.
     license: "CC-BY-4.0"
     author_endorsement: "participated"
   - title: "Module structure of Weyl algebras"
