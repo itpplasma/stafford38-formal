@@ -22,8 +22,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T21 | Minimal tower reproducer | done | 1 | .lake/qwen/logs/T21-luna-2.log | Mathlib quotient and abstract hom towers compile; frozen negative probe captures oldTower/compHom action mismatch; guarded final exit0,10s; receipt in notes/T21-repro.md |
 | T22 | Ring-hom form of the endpoint | done | 2 | notes/T22-accepted-checks.tar.gz | Sol removed two redundant rfl tactics; module and trust0 consumer exit0,5s each,peak2009/1860MiB,three allowed axioms; statement unchanged; static audit reanchored PASS; WT commit e2ba158 |
 | T30 | Chart and away data | done | 1 | notes/T30-accepted-checks.tar.gz | Luna module/consumer exit0,7/3s,peak2.1/0.9GiB,three allowed axioms; existing numerator/chart owners retained; WT commit ef715e7; independent Linux check preparing |
-| T31 | Coordinate presentation | retry | 2 | notes/T31-linux-resume.md | Current source failure reproduced on guarded Mac: missing SourceDVR algebra/local-ring instances and row-index universe; Luna assessment returned, Sol repair assigned |
-| T32 | Maximal ideal and common open | doing | 1 | | Luna preparing common-open package with upstream/downstream field contracts; checks queued |
+| T31 | Coordinate presentation | done | 5 | notes/T31-sol-accepted-checks.tar.gz | Sol module exit0,16s,peak2183MiB; trust0 literal consumer exit0,10s,peak3144MiB,three permitted axioms; WT03c6915930e2 pushed; full-route verifier remains pending |
+| T32 | Maximal ideal and common open | retry | 2 | notes/T32-linux-resume.md | Guarded Luna module failed36s,peak2665MiB: first scalar-map equality mismatch and missing retained/localization instances; frozen log and patch sent to Sol |
 | T33 | Arc into Laurent series | doing | 1 | | Luna preparing canonical-ground arc transport in parallel; checks queued |
 | T34 | Columns, derivatives, numerator | retry | 2 | notes/T34-sol-resume.md | Luna exposed concrete scalar-action duplication; Sol moved transport to abstract maps and retained missing qPre equality; Lean checks pending |
 | T35 | Étale structure as ring homs | doing | 1 | | Luna preparing explicit étale map transport in parallel; checks queued |
