@@ -3,7 +3,8 @@
 ## Frozen candidate
 
 - Worktree base: `c3dccd4b3f93` (`campaign/paper-route-20261003`).
-- `Stafford38/Geometry/SameWitness/CommonOpen.lean`: SHA-256 `0d1c0cd2c03c91f352377cfdcc175c77d42c991ce51b4c753cf4203695594308`.
+- Initially reviewed `Stafford38/Geometry/SameWitness/CommonOpen.lean`: SHA-256 `0d1c0cd2c03c91f352377cfdcc175c77d42c991ce51b4c753cf4203695594308`.
+- Current bounded repair: SHA-256 `e11081bfe3d6031ece39445ca51756a23dd87646a0b2a1394d1be90d55ac6d4f`.
 - `tests/SameWitness/CommonOpenConsumer.lean`: SHA-256 `fdd4982c7e63eca36b5c1bd6eed51957dbec7f698fa1b74f576af64e8169d757`.
 - These hashes freeze the inspected saved candidate; no Lean check was run by this reviewer.
 
@@ -37,3 +38,7 @@ Do not execute on a login node or outside the controller's guarded allocation. V
 - `Stafford38.Geometry.SameWitness.CommonOpenData.qU` — same file — derives all projective columns in this package's common open from its `qQ` and localization maps.
 - `Stafford38.Geometry.SameWitness.CommonOpenData.qT` — same file — derives the retained columns in the point-local localization at this package's center.
 - `Stafford38.Geometry.SameWitness.CommonOpenData.φ` — same file — derives the original affine-chart map into this package's common open from its selected chart and center.
+
+## Finite-type certificate repair
+
+Static review from T34 found that the dependent formally-etale certificate must retain the existing finite-type evidence on `B` before deriving essential finite type over `R`. The four dependent contexts (`hEtM`, `havoid`, `hdata`, `hfactor`) now include `letI : Algebra.FiniteType k B := coords.hBfinite` immediately after the coefficient algebra. `Algebra.EssFiniteType.of_comp k R B` then uses that instance together with the existing `R`-algebra and scalar tower. The axis-lift producer already receives `coords.hBfinite`; this is not a new premise. Lean verification awaits the controller slot and repaired T31.

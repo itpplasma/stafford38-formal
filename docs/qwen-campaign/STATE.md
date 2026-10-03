@@ -25,13 +25,13 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T31 | Coordinate presentation | retry | 2 | notes/T31-linux-resume.md | Current source failure reproduced on guarded Mac: missing SourceDVR algebra/local-ring instances and row-index universe; Luna assessment returned, Sol repair assigned |
 | T32 | Maximal ideal and common open | doing | 1 | | Luna preparing common-open package with upstream/downstream field contracts; checks queued |
 | T33 | Arc into Laurent series | doing | 1 | | Luna preparing canonical-ground arc transport in parallel; checks queued |
-| T34 | Columns, derivatives, numerator | doing | 1 | | Luna preparing same-witness position/column/numerator derivations; checks queued |
+| T34 | Columns, derivatives, numerator | retry | 2 | notes/T34-sol-resume.md | Luna exposed concrete scalar-action duplication; Sol moved transport to abstract maps and retained missing qPre equality; Lean checks pending |
 | T35 | Étale structure as ring homs | doing | 1 | | Luna preparing explicit étale map transport in parallel; checks queued |
 | T36 | Same-witness closure theorem | doing | 1 | notes/T36-check.md | Luna prepared exact target and assembly; checks await accepted upstream declarations |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
 | T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |
 | T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |
-| T43 | Strict dependency guard | doing | 1 | | Existing 18 guard payloads match archive byte-for-byte; Luna resumes with verifier wiring and queued fixture checks; production waits for T42 |
+| T43 | Strict dependency guard | doing | 2 | notes/T43-guarded-fixtures-20261003.log.gz | Guarded Mac fixture oracle PASS, exit0,18s,peak595MiB; strict production traversal still awaits terminal build; prior unguarded diagnostic is not acceptance |
 | T44 | Literal route consumers | doing | 1 | | Luna preparing archived literal consumers/current names; checks await route modules |
 | T50 | Full library build | todo | 0 | | |
 | T51 | Repository verifier | todo | 0 | | |
@@ -61,6 +61,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 - All 578 candidate Lean/configuration source hashes matched the saved Mac WT before the first check. Manifest SHA-256 `181dc71c535a28f43a1bb7db37de14b6781cc7a1de2512cb76595d05b3285342`; this identifies candidates, not accepted proof evidence.
 - Mac guarded T31 check reproduced the saved failure in 22 seconds, peak 2163 MiB, two threads, 8 GiB cap. The first invocation failed before Lean because SSH lacked Lake in PATH; the corrected invocation supplied the installed rc3 bin path.
 - Local canonical cache is still 4.33 and must not be reused. A fresh Linux rc3 cache and local Linux resource guard are being prepared under the archived mailuefterl execution contract; final frozen replay remains a separate gate.
+- Local Linux guard accepted after Sol repaired foreign-process refusal, signal cleanup and descendant lock retention; synthetic behavioral suite passed without Lean. Fresh guarded dependency setup exited0 at peak2435MiB, followed by an explicit cache run exit0 at peak916MiB. Manifest bytes remained unchanged (SHA-256 `29658324d2c247fb161a35c9869ac7e3c43491614304343a81337c65fae5dcbc`) and all ten package HEADs matched their pinned revisions. Linux baseline module replay is running; this setup is not the final frozen replay.
 - Luna workers assessed disjoint T31–T44 and release inputs. T31 escalated to `gpt-6.1-sol` after its recorded failed task; downstream acceptance waits for checked prerequisites. No release or final email has been sent.
 - The active user instruction resumes the full campaign, authorizes regular commits/pushes and both releases, and requests the final review email after completion.
 - Workers use `gpt-6-luna`; failed bounded tasks escalate to Sol. No Qwen/Pi campaign driver is used in this resumed run.

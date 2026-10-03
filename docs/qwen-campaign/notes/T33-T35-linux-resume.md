@@ -41,8 +41,21 @@ uses; the T31 owner reports no planned signature changes.
 
 | File | SHA-256 |
 | --- | --- |
-| `Stafford38/Geometry/SameWitness/CommonOpenEtale.lean` | `92cd5a40d072fad48a65ae53dd0825dfbaee0c1cac368a30e3c1b6c9727cedd0` |
+| `Stafford38/Geometry/SameWitness/CommonOpenEtale.lean` | `604f82d5da0e13f9eb86b4a316911f92941e94d57b309abbe0c12b8a6ff336a9` |
 | `tests/SameWitness/CommonOpenEtaleConsumer.lean` | `04cf7171123196848753417fdffa3cdb3eb894fa2f2ca7b4ee8b584eae89131d` |
+
+## Bounded T35 repair
+
+A full projection audit found the private ground-map theorem had a stale
+`CommonOpenArcData hm P w setup` binder (missing `coords`) and the body treated
+arc data as though it directly exposed common-open fields. The package retains
+those fields under `arc.common`; the repair updates those projections and uses
+`arc.common.hbaseMap` for the Q-to-U identity while retaining the arc's own
+`arc.hbaseMap` for the k-to-U identity. The public endpoint and consumer
+statements are unchanged. The consumer remains byte-identical.
+
+Updated T35 source SHA-256: `604f82d5da0e13f9eb86b4a316911f92941e94d57b309abbe0c12b8a6ff336a9`.
+Static projection and forbidden-instance scans pass; Lean evidence is pending.
 
 ## Pending guarded evidence
 

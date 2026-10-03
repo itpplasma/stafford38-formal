@@ -21,7 +21,7 @@ Campaign folder (absolute): `/home/ert/proj/stafford38-formal/docs/qwen-campaign
 | `CAMP` | `$MAIN/docs/qwen-campaign` (this plan, `STATE.md`, `guard.sh`, notes) |
 | `ARCH` | `$MAIN/docs/audits/paused-2026-10-02` (archived failed candidates; read-only) |
 | `SCR` | `$WT/.lake/qwen` (scratch files, extracted archives and logs; never committed) |
-| `GUARD` | `$CAMP/guard.sh` |
+| `GUARD` | `$CAMP/guard.sh` on the Mac; `python3 $CAMP/linux-guard.py` on Linux |
 
 ## 0. How workers and controller operate
 
@@ -218,6 +218,14 @@ The old 60 GiB free-memory threshold and 64 GiB job cap are superseded.
   $GUARD check
   $GUARD run --timeout <seconds> --log $SCR/logs/<task-id>-<n>.log -- <command>
   ```
+
+  On Linux, invoke `python3 $CAMP/linux-guard.py check` and then
+  `python3 $CAMP/linux-guard.py run --timeout <seconds> --log <log>
+  --cwd $WT -- <command>`. The accepted local guard uses two-CPU affinity,
+  an 8 GiB aggregate RSS cap, an atomic host slot, Linux node RAM/PSI and
+  incremental swap safeguards, and 100/50 GiB disk thresholds. Existing
+  swap is the recorded baseline under the archived mailuefterl contract.
+  Its synthetic behavior receipt is `notes/linux-guard-sol-evidence.tar.gz`.
 
   The default Mac guard requires 12 GiB truly free RAM, normal kernel memory
   pressure, swap below 12 GiB and 100 GiB free disk. Its atomic host lock
