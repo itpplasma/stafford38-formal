@@ -26,11 +26,13 @@ module and literal trust-zero consumer checks. T32 is committed and pushed at
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
 T35 passed on scluster3113113 and is committed/pushed; see
 notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd.
-Columns remains the active blocker. Stage12 (scluster3120780) compiled the
-raw Laurent-derivative helper; only concrete certificate assembly reached the
-existing heartbeat limit. Sol914f1f62 moved that assembly into an abstract-ring
-helper. One scluster chain (3121032) checks its prefix, module and literal
-consumer, followed by Closure59b. T36's verbatim chart helper passed separately on
+Columns remains the active blocker. Stage13 (scluster3121032, source914f1f62)
+passed the generic prefix, including raw derivatives and abstract certificate
+assembly. The full module exceeded the unchanged 8 GiB aggregate RSS cap
+before a Lean diagnostic; all prerequisites were replayed from cache. One
+direct full-source diagnostic (3121593) uses progress markers to identify the
+remaining declaration cost. Consumer and Closure59b checks remain pending.
+T36's verbatim chart helper passed separately on
 acluster21805723 using the accepted Positions cache. Its frozen statement is
 unchanged. No full Columns or Closure acceptance is claimed.
 T35 passed independently on both clusters. The alternative geometry endpoint
