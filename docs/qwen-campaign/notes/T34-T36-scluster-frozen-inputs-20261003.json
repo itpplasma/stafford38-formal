@@ -1,0 +1,31 @@
+{
+  "wt_base_commit": "4c1678e",
+  "hashes": {
+    "Stafford38/Geometry/SameWitness/CommonOpenPositions.lean": "9417e1d0f95e9c1270022de786d3e56aa4f858d7b1fc061558861c1b5a07afec",
+    "Stafford38/Geometry/SameWitness/CommonOpenColumns.lean": "4685858d8412fbc097272121f437c8e67b4ca34da6ad746ebf2101366dcdcfc5",
+    "Stafford38/Geometry/SameWitness/AffineFibreClosure.lean": "59b8e4501d850b92347c27473fa99f1c5c98d618c43445a8d7b54dab6a88c95a",
+    "tests/SameWitness/CommonOpenPositionsConsumer.lean": "20d586839334f2552e67bdba86630691f95d3fcaecb35424d4bbc3262b039a97",
+    "tests/SameWitness/CommonOpenColumnsConsumer.lean": "818a355d4916a04925f998cb51a5fa74767eaca96fde671b82bccfc2921941a7",
+    "tests/SameWitness/AffineFibreClosureConsumer.lean": "abd7675321fc67fff024e800530810c9c17fa07b6334073fff6d2185d36c5f60"
+  },
+  "pairs": [
+    [
+      "Positions",
+      "Stafford38.Geometry.SameWitness.CommonOpenPositions",
+      "tests/SameWitness/CommonOpenPositionsConsumer.lean",
+      "commonOpenPositionData_of_arc_consumer"
+    ],
+    [
+      "Columns",
+      "Stafford38.Geometry.SameWitness.CommonOpenColumns",
+      "tests/SameWitness/CommonOpenColumnsConsumer.lean",
+      "Stafford38.Geometry.SameWitness.commonOpenColumnsData_consumer"
+    ],
+    [
+      "Closure",
+      "Stafford38.Geometry.SameWitness.AffineFibreClosure",
+      "tests/SameWitness/AffineFibreClosureConsumer.lean",
+      "Stafford38.Geometry.SameWitness.AffineFibreClosureConsumer.axis_in_original_affine_conormal_fibre_closure"
+    ]
+  ]
+}

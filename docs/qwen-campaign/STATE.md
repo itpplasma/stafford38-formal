@@ -9,13 +9,14 @@ no new Mac action is scheduled. Historical Mac receipts remain unchanged.
 T32’s frozen source passed its Linux module and unchanged trust-zero consumer
 checks. T33 and T35 passed Linux module and literal trust-zero consumers. T35's frozen
 sourcef30 passed on scluster3113113 with only three permitted axioms, zero
-pressure/swap growth and no survivors; committed at WT4c1678e. T34's fourth
-positions candidate runs as scluster3113857, with a distinct local prerequisite
-build under the same two-CPU/8GiB guard. T36's target remains byte-identical.
-Acluster bootstrap21805718 is finishing T32 before queued T35 job21805719.
-Scluster bootstrap3109567 passed exact pins and T32 consumer. Guard fixtures
-passed job3112916 and are committedWT17d138a; production traversal awaits
-completed proof. No guard or proof claim was weakened.
+pressure/swap growth and no survivors; committed at WT4c1678e. T34 positions passed module and literal trust-zero consumer and is committed
+WT1a3fcfd. The controller validated the exact private test-name report after
+a wrapper-name mismatch; corrected wrapper3115702 proceeds to columns and
+closure. T35 also passed independently on acluster21805719. Both cluster
+bootstraps passed exact pins and T32. Alternative geometry endpoint passed
+scluster3114679, committedWT71e966a; full alternative assembly/comparators
+remain required. Actual guard fixtures passed3112916. No guard or proof
+claim was weakened.
 Both clusters use reviewed two-CPU/8GiB allocation guards. See the scoped
 bootstrap/fixture receipt in notes/scluster-bootstrap-fixture-20261003.md.
 One delivery: finish the faithful proof, cut matching formal/supplementary
@@ -49,7 +50,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
-| T34 | Columns, derivatives, numerator | doing | 6 | notes/T34-sol-resume.md | Sol repairs retained coordinate/coercion/dependent transport; fourthpositionscheck scluster3113857; local missing prerequisite build active; columns57d await positions |
+| T34 | Columns, derivatives, numerator | doing | 9 | notes/T34-positions-linux-accepted-checks.md | Positions9417 module+literaltrust0consumer PASS, committedWT1a3fcfd; exact private consumer name independently validated; corrected scluster3115702 checks columns468 then closure59b |
 | T35 | Étale structure as ring homs | done | 6 | notes/T35-linux-accepted-checks.md | Scluster3113113 fullmodule+unchangedtrust0consumerPASS329.04s,peak7406MiB,three permitted axioms,zero PSI/swap/children; frozenf30 WT4c1678e committed/pushed; fullroute pending |
 | T36 | Same-witness closure theorem | doing | 3 | notes/T36-linux-resume.md | Generic retained chart candidate; stale positions call corrected, source59b8e450; frozen target unchanged; compile awaits T34/T35 |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
@@ -57,8 +58,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T42 | Rewire terminal geometric theorem | doing | 1 | | Luna preparing proof-only rewire; acceptance awaits completed closure and full terminal build |
 | T43 | Strict dependency guard | doing | 6 | notes/T43-linux-fixtures-accepted-20261003.md | Actual Linux compiled positive/negative route/body/axiom fixtures PASS, job3112916,371.62s,peak749MiB,zero PSI/swap/children; WT17d138a pushed; production strict traversal awaits final modules |
 | T44 | Literal route consumers | doing | 1 | | Luna preparing archived literal consumers/current names; checks await route modules |
-| T45 | Shared-challenge solution variants | doing | 1 | notes/T45-independent-variant-audit.md | Frozen seven-file assembly static audit PASS; exact shared challenge sources unchanged; compiler and declaration-route/comparator checks pending |
-| T46 | Tidy final package | doing | 1 | notes/T46-cleanup-resume.md | Initial reference audit found no safe Lean deletion; final front-door cleanup and status refresh await accepted routes |
+| T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry module83f PASS after namespace repair, WT71e966a; shared assembly static audit PASS; full compiler/route/comparator gates remain required |
+| T46 | Tidy final package | doing | 2 | notes/T46-final-cleanup-proposal.md | Obsolete four Mac/Pi wrappers and unused ignore file removed after reference audit; historical receipts/useful math preserved; final public status/Palomar package checks await route acceptance |
 | T50 | Full library build | todo | 0 | | |
 | T51 | Repository verifier | todo | 0 | | |
 | T52 | Status drafts | todo | 0 | | |

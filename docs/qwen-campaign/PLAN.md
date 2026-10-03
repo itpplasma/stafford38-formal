@@ -25,11 +25,13 @@ module and literal trust-zero consumer checks. T32 is committed and pushed at
 `da00639e7d2fd3cbb188f137d228c99d5cfcdbcd`; see its acceptance packet in
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
 T35 passed on scluster3113113 and is committed/pushed; see
-notes/T35-linux-accepted-checks.md. T34 remains the closure prerequisite;
-its fourth positions candidate runs as scluster3113857. T36's frozen statement
-is unchanged. No guard threshold is relaxed. Scluster bootstrap3109567 passed
-its exact pins and T32 module/consumer; acluster21805718 is completing the T32
-module before its queued T35 replay. Actual Linux guard fixtures passed on
+notes/T35-linux-accepted-checks.md. T34 positions passed and is committed at WT1a3fcfd; columns and closure now
+run sequentially as scluster3115702. T36's frozen statement is unchanged.
+T35 passed independently on both clusters. The alternative geometry endpoint
+also passed its Linux module at WT71e966a; full solution assembly/comparisons
+remain required. No guard threshold is relaxed. Both isolated cluster
+bootstraps passed exact pins and T32 module/consumer.
+Actual Linux guard fixtures passed on
 scluster3112916 after Sol repairs; production strict traversal still awaits the
 completed proof. See notes/T43-linux-fixtures-accepted-20261003.md.
 T45 has a frozen implementation and independent static audit, with compilation
