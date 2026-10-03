@@ -1,5 +1,11 @@
 # Qwen campaign state
 
+## Current review/release snapshot
+
+Owner update: formal R was submitted to Palomar at20:15:50Z; verification run37150915082 passed at20:55:53Z and automated review was active at20:57:39Z. Registration remains pending. The private submission capability link is excluded from public evidence. The owner requests supplementary v0.2.1 after the comparison-label correction.
+
+Formal v1.3.0 R `54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b` (DOI `10.5281/zenodo.23126868`) and supplementary v0.2.0 R31 `31aea05344c3fa35fb19a3ff35f7518d723e26ec` (DOI `10.5281/zenodo.23127103`) are published; their archives match all 1,163 and 24 tagged files respectively. The supplementary bundle is frozen at P4/S4. Current review input is P5 `75f79630141f2bbeedc4e154288978020c7f2e83` / public S5 `973fa2831cf7520fc42566587e3946b4b7444093`; P5 changes citations only; all three P5 PDFs compiled without undefined references and the source/PDF asset gate passed. Core C2 verification, all four local Palomar comparisons, 399 declaration checks and release/core byte congruence passed. Johanna and Max reviews remain pending; controller email delivery remains pending. The owner submitted formal R with comparator.json; mechanical verification passed and automated review is pending. Supplementary v0.2.1 will publish the corrected review labels and ledger as requested. Older task rows below are dated execution history; their interim “pending” notes are not current gates.
+
 Latest owner steering, 3 October 2026: finish the proof as the immediate
 priority, faithful to Johanna’s original manuscript proof with necessary
 corrections. Execute only on local Linux `mailuefterl` and Linux allocations
@@ -72,7 +78,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T46 | Tidy final package | done | 3 | README.md; STATUS.md; docs/verification.md | Retired wrappers/unusedfragments removed, usefulmath/history retained; main/variantstatus and4localPalomarcommands ready |
 | T50 | Full library build | done | 2 | finalC2-resume3131801 | Fresh exactC2 fullbuildPASS4475jobs (mtime16:41:29Z afterverifierstart16:32:53Z); historicalC1build retained; completeverifier acceptance separate |
 | T51 | Repository verifier | done | 3 | notes/T73-full-verifier-pass-retained-target-failure-3131801-20261003.tar.gz | ExactC2 fullverifierPASS3131801 at18:28:39Z;4475build/317consumer/111names/37axioms/allroutes. Laterdriver125 and remainingcomparisons/source-after gates are T73 |
-| T52 | Status drafts | doing | 2 | README.md; STATUS.md; docs/verification-results.json | ActualC2fullverifier/all4comparisons integrated with scoped humanreviewpending; archive publication pending |
+| T52 | Status drafts | done | 3 | README.md; STATUS.md; docs/paper-lean-audit/review-status.json | Formal checks and current P5/S5 review inputs recorded; Johanna/Max acceptance pending |
 | T53 | Integrate into main | done | 1 | notes/T42-four-assemblies-linux-accepted-20261003.md | Controllerintegrated55explicitproof/toolpaths afterboundedacceptance; authoritative docs and unrelateduntracked preserved |
 | T60 | Definition owners patch | done | 4 | notes/T80-399-public-names-linux-accepted-3139266-20261003.tar.gz | All399 publicowner/name checksPASS exactC2;11private+2Global source-only; humanreviewpending |
 | T61 | Paper map of new theorems | done | 4 | notes/T80-399-public-names-linux-accepted-3139266-20261003.tar.gz |57cards/519refs exactpins;399publicnamescompilerPASS; whole-papercorrespondence humanreviewpending |
@@ -81,19 +87,19 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T71 | Final Linux host preflight | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Prior3129931guard0/drained; empty userqueue/node20idle;3controlhashes exact; fresh source/receiptpaths absent |
 | T72 | Launch Linux driver | done | 6 | notes/T73-final-C2-resume4-submission-3137241-20261003.json | SoleS3137241 allocation-localdevice/cachelayout repair+4comps/finalintegrity exactC2; no completedcheck repeat |
 | T73 | Collect Linux result | done | 6 | notes/T73-four-Palomar-comparisons-linux-accepted-3137241-20261003.tar.gz | R1verifier/R2retained/R4all4comparatorsPASS; final1095filemanifest+10pins exact; guard0/no stops/children/swap |
-| T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
+| T74 | Palomar-ready owner handover | owner | 1 | GitHub verification run37150915082 | Owner submitted R54c4f0c/comparator.json; mechanical verification passed20:55:53Z; automated review pending20:57:39Z (owner report); no registration claimed |
 | T80 | Re-anchor review map | done | 4 | notes/T80-399-public-names-linux-accepted-3139266-20261003.tar.gz |393+2+2+2 actualnamechecksPASS;3139266guard0/no stops/children/swap; no proofchange |
-| T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Pinned40967renderer+C2/P3/S3refreshPASS519refs/0errorswarnings;57unchangedcards inherit actualbrowserwalk; PDFassetgatePASS; humanreviewpending |
-| T82 | Rebuild manuscript PDFs | doing | 2 | notes/T82-locator-pdf-receipt-20261003.json | All3PDFs compile0undefined atpapera5a703f/snapshot22b44d5/formal12ae3cc; matchingreceipt+assetgatePASS; releaseDOIcitationspending |
-| T83 | Supplementary bundle (local) | todo | 0 | | |
-| T84 | Review handover | owner | 0 | | owner gate |
-| T90 | Release drafts | doing | 1 | notes/T90-formal-v1.3.0-release-body.md | Formalnotes filledfrom actualreceipts; companionnotes awaitactualformalDOI/P4 |
-| T91 | Signed tag, release, Zenodo | doing | 1 | notes/T92-formal-v1.3.0-Zenodo-bytecheck-20261003.json | Formalv1.3.0 signed/published54c4f0c/DOI23126868; supplementaryv0.2.0 next |
-| T92 | Verify Zenodo archive | doing | 1 | notes/T92-formal-v1.3.0-Zenodo-bytecheck-20261003.json | Formal1,163files zero missing/extras/mismatches; supplementaryarchive pending |
-| T93 | Citation drafts | doing | 1 | paperP4=4d19a183 | ActualverifiedformalDOI cited; GitHub+Overleaf push0; companionDOI awaitsverifiedarchive |
+| T81 | Build review site | done | 2 | notes/T81-final-comparison-scope-20261003.json | Live P5/S5/R guided review deployed; corrected-text scope labels wrong0/none0/different0;57 cards; humanreviewpending |
+| T82 | Rebuild manuscript PDFs | done | 3 | notes/T82-P5-S5-PDF-build-20261003.tar.gz | All3 P5 PDFs compile0undefined; exact inputs match and source/PDF asset gatePASS |
+| T83 | Supplementary bundle (local) | doing | 2 | stafford38-supplementary v0.2.0 archived; v0.2.1 candidate | Owner requests patch release carrying corrected labels/current ledger; no proof or renderer changes |
+| T84 | Review handover | owner | 1 | docs/paper-lean-audit/review-status.json | Review package ready; Johanna marked proposals and Max all57 full correspondence checks remain pending |
+| T90 | Release drafts | doing | 2 | notes/T90-formal-v1.3.0-release-body.md | Formalv1.3.0 and supplementaryv0.2.0 published; corrected companionv0.2.1 pending |
+| T91 | Signed tag, release, Zenodo | doing | 2 | notes/T92-formal-v1.3.0-Zenodo-bytecheck-20261003.json | FormalR signed/published immutable for Palomar; supplementary patchv0.2.1 requested |
+| T92 | Verify Zenodo archive | doing | 2 | notes/T92-supplementary-v0.2.0-Zenodo-bytecheck-20261003.json | Formal1163 and supplementaryv02024 files allmatch; compare newv021 afterpublication |
+| T93 | Citation drafts | doing | 2 | paperP5=75f79630141f2bbeedc4e154288978020c7f2e83 | Both currentDOIs cited/pushedGitHub+Overleaf; citecorrectedcompanionDOI afterv021 archivecheck |
 | T94 | Final review emails | todo | 0 | | Send authorized Johanna/Max handovers only after releases, archive comparisons and citations; record delivery |
 
-## Current execution (resumed 2026-10-03 by owner)
+## Earlier execution history (resumed 2026-10-03 by owner)
 
 - Linux controller resume: MAIN `3214f5c8f336`, WT restored at `c3dccd4b3f93` on `campaign/paper-route-20261003`; unrelated untracked `cluster-guard.py` preserved. Authoritative documentation remains in MAIN.
 - All 578 candidate Lean/configuration source hashes matched the saved Mac WT before the first check. Manifest SHA-256 `181dc71c535a28f43a1bb7db37de14b6781cc7a1de2512cb76595d05b3285342`; this identifies candidates, not accepted proof evidence.

@@ -11,7 +11,7 @@
 | New cyclicity and noncharacteristic results | [Frozen AI reviews](../audits/manuscript-corollaries.md), [verification receipt](../verification-results.json) |
 | Mathematical dependency structure | [Proof graph](../proof-graph.yaml), [proof guide](../proof-guide.md) |
 | Complete AI display/source review | [Frozen reports and integration evidence](../audits/paper-lean-display/README.md) |
-| Human correspondence reviews | [Review records](reviews/README.md), [review generator](../../tools/paper_lean_audit/README.md) |
+| Human correspondence reviews | [Current ledger](review-status.json), [review records](reviews/README.md), [review generator](../../tools/paper_lean_audit/README.md) |
 
 AlgebraicAnalysis and Global Stafford have separate canonical repositories and
 immutable archive citations. Their exact source revisions are pinned in the

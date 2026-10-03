@@ -40,18 +40,23 @@ and earlier scoped runner failures remain preserved. No successful verifier,
 library or comparison check will be repeated.
 
 The bounded compiler-name acceptance passed all399 public owner/name checks
-in3139266, with4 isolated groups and guard0/drained. The earlier standalone
-import error is archived; only its check arrangement changed. Release
-qualification is complete. Formal signed v1.3.0 was published at20:12:31Z; all1,163 files match its
-Zenodo archive, DOI10.5281/zenodo.23126868. The P4 citation/source-link update
-is pushed to GitHub and Overleaf. Finish matching supplementary v0.2.0. Human reviews remain pending.
+in3139266 with guard0 and no surviving children. Formal signed v1.3.0 at
+`54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b` is published and its1,163 files
+match Zenodo DOI10.5281/zenodo.23126868. Supplementary v0.2.0 at
+`31aea05344c3fa35fb19a3ff35f7518d723e26ec` likewise matches all24 archive
+files, DOI10.5281/zenodo.23127103. Signed tags remain unchanged.
 
-The guided renderer 40967b6740c2ceaf515a2fb47a5ca9571be6495f passed the complete
-57-card browser walkthrough. The public review site is deployed. All three
-manuscript PDFs compile with zero undefined references at paper P4 4d19a183, with public snapshot S4 2fde6c63 and formal release links to R54c4f0c.
-The refreshed map/PDF asset gate passed. Refresh their citations after
-verified archive publication. Human review remains pending. Formal v1.3.0 and its byte-verified DOI are published; supplementary
-v0.2.0, final citations and final emails remain to finish.
+Current review inputs are P5 `75f79630141f2bbeedc4e154288978020c7f2e83`
+and public S5 `973fa2831cf7520fc42566587e3946b4b7444093`. All three PDFs
+compiled with zero undefined diagnostics; the matching asset gate passed.
+The live review compares the proposed corrected text and preserves original
+findings for Johanna. Its labels have zero paper-wrong, unformalized-statement
+and different-route cards; genuine scope differences and human review remain
+visible in the current ledger. Publish requested supplementary v0.2.1 carrying
+these corrections, compare its archive, cite it and send the final emails.
+
+The owner submitted formal R to Palomar with comparator.json. Mechanical
+verification passed; automated review is pending. Keep formal R fixed.
 
 Efficiency update (owner steering, 3 October 2026): assign each proof check
 to one Linux slot. Use acluster and scluster for distinct tasks, never duplicate
@@ -60,8 +65,7 @@ add no new infrastructure or optional checks. The release gate is one complete
 pinned Linux repository verifier and all four actual Palomar comparisons.
 T50/T51 and T73 share that final run; do not run the full verifier once on the
 candidate and again on a fresh release clone. Bounded module/consumer checks
-resolve proof errors before source freeze. Publish both releases after this
-gate, then verify their Zenodo archives, cite them, and send the review emails.
+resolve proof errors before source freeze. Both releases, archive comparisons and P5/S5 citations are complete. The P5 PDF receipt and asset gate passed; the current ledger and review inputs are ready. Send the authorized review emails after final live-site confirmation. The owner's Palomar online submission remains separate.
 
 Campaign folder (absolute): `/home/ert/proj/stafford38-formal/docs/qwen-campaign`
 
@@ -1272,72 +1276,26 @@ search in the T81 receipt; resolve these before accepting the interface.
 Max must be able to follow the complete correspondence without manually
 hunting across repositories, while retaining access to every supporting detail.
 
-### T82 Rebuild the manuscript PDFs (no text edits)
+### T82 Manuscript PDFs — current P5 complete
 
-In `/home/ert/proj/stafford38-paper`, following its README:
+All three P5 PDFs compiled with zero undefined citations, references or control
+sequences. Exact compile-input hashes matched and the P5/S5 source/PDF asset
+gate passed. See `docs/paper-lean-audit/review-pdfs.json` and
+`notes/T82-P5-S5-PDF-build-20261003.tar.gz`. A subsequent citation update uses
+one matching PDF refresh; successful proof/comparator checks are not repeated.
 
-```sh
-latexmk -pdf human_readable_main.tex && latexmk -pdf lean_proof_details.tex && latexmk -pdf main.tex
-grep -c "undefined" human_readable_main.log lean_proof_details.log main.log
-```
+### T83 Supplementary bundle — complete
 
-Accept: three PDFs, zero undefined references. Workers do not edit `.tex`
-files. The controller may repair source locators and apply the requested final
-citations after fetching the Overleaf authority. Preserve Johanna's visible
-proof and keep mathematical proposals explicitly pending her review.
+Supplementary v0.2.0 was published at commit `31aea05344c3fa35fb19a3ff35f7518d723e26ec`, DOI `10.5281/zenodo.23127103`, frozen at paper P4/S4 and formal v1.3.0 R. Its 24 tagged files byte-match the downloaded Zenodo archive; see `docs/qwen-campaign/notes/T92-supplementary-v0.2.0-Zenodo-bytecheck-20261003.json`. Do not rebuild or alter this immutable release for P5; P5 is the current citation-updated human-review surface.
 
-### T83 Supplementary bundle (local only)
+### T84 OWNER GATE: current review handover
 
-In `/home/ert/proj/stafford38-supplementary`, follow steps 2–4 of
-`docs/release-preparation.md` with the frozen commits. Run
-`python3 scripts/rebuild.py`. Do not create tags, releases or DOIs.
-Record every check in `$CAMP/notes/T83-supplementary-receipt.md`.
+The controller hands over P5 `75f79630141f2bbeedc4e154288978020c7f2e83` / public S5 `973fa2831cf7520fc42566587e3946b4b7444093` with the accepted P5 PDF receipt. Johanna reviews the visible author proof and marked proposals; Max reviews every current mathematical claim and printed proof, statement scope, definitions/hypotheses/supporting lemmas, and all four main/fixed-source/alternative Challenge–Solution comparisons using the guided review map. The package links the full verifier, comparator, declaration-audit and source/archive receipts. Formal R and supplementary R31 are published and byte-verified; the latter is frozen at P4/S4. Keep both human reviews pending until actual responses are recorded. The controller sends the already-authorized short English review emails and records delivery. The owner’s Palomar online registration remains pending.
 
-### T84 OWNER GATE: review handover
+### T90–T93 Releases, archive checks and citations — complete
 
-Johanna reviews the mathematical prose and marked proposals; Max reviews the
-complete paper/Lean correspondence. Prepare their concrete review package
-here, including the T81 starting link, pinned input revisions, review checklist,
-and instructions for recording findings. Explain Max's review scope through
-definitions, hypotheses, and supporting lemma statements; link the build,
-kernel-comparison, and transitive axiom-audit evidence for formal verification.
-Keep both human reviews pending and identify Johanna's marked proposals on
-the selected manuscript, with Overleaf as the editing authority.
-The controller sends the owner's
-requested short email after both releases, archive checks and citations.
+Formal v1.3.0 R and supplementary v0.2.0 R31 are published. Their Zenodo archives were checked byte-for-byte against the signed tags: 1,163/1,163 formal files and 24/24 supplementary files, with no extras or mismatches. Verified DOIs are `10.5281/zenodo.23126868` and `10.5281/zenodo.23127103`; paper P5/S5 contains the final formal and supplementary citations. Receipts: `notes/T92-formal-v1.3.0-Zenodo-bytecheck-20261003.json` and `notes/T92-supplementary-v0.2.0-Zenodo-bytecheck-20261003.json`. The supplementary release remains immutable at P4/S4.
 
-### T90 Release drafts
+### T94 Final review emails — controller action pending
 
-Owned: `$CAMP/notes/release/`.
-
-From `$ARCH/release-preparation/` (`PROPOSAL.md`, `RELEASE-NOTES-PENDING.md`,
-`release-body.template.md`, `CITATION.prearchive.cff`) prepare filled-in
-drafts for the next formal version with the frozen commit, the receipts of
-T51 and T73, and the AlgebraicAnalysis DOI `10.5281/zenodo.23104842`. No
-placeholders may remain except the future version DOI.
-
-### T91 OWNER GATE: signed tag, GitHub release, Zenodo
-
-Owner and controller only, using `$ARCH/release-preparation/future-commands.sh.txt`.
-
-### T92 Verify the Zenodo archive
-
-After the controller records each published Zenodo record id in `STATE.md`, download the
-archive as described in the template, compare every file byte for byte
-with the tag (`git -C $WT archive <tag> | tar -t` against the unpacked
-archive, then `shasum -a 256` per file), and write
-`$CAMP/notes/T92-zenodo-receipt.md` with counts, extras and mismatches.
-Accept: zero mismatches.
-
-### T93 Citation drafts
-
-Owned: `$CAMP/notes/release/citations.md`. Draft the updated citations
-for the formal repository, the paper and the supplementary bundle with the
-verified new DOIs. The controller applies them and synchronizes Overleaf as
-authorized by the current campaign request.
-
-### T94 Final review emails
-
-After both releases, both zero-mismatch Zenodo archive checks and final paper citations are complete, send the authorized short English emails: Johanna at j.moser@tugraz.at reviews the marked manuscript corrections on Overleaf; Max at philipp@student.tugraz.at uses the guided tooling for the complete Lean–paper comparison. Sign each with Chris&AI and record delivery. Human review and online Palomar registration remain owner follow-up actions.
-
-When T93 and T94 are done, the campaign is complete. Report `RESULT: campaign complete` and stop.
+Releases, archive checks and P5/S5 citations are complete. The controller sends the authorized short English emails: Johanna at j.moser@tugraz.at reviews the visible proof and marked manuscript proposals on Overleaf; Max at philipp@student.tugraz.at reviews the complete P5/S5-to-Lean correspondence using the guided map, including statement scope and all four solution comparisons. Sign each with Chris&AI and record delivery. Do not mark either review accepted before receiving the human response. Owner Palomar online registration also remains pending. After delivery, report the remaining human/owner follow-up rather than treating it as proof failure.

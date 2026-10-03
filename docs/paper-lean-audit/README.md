@@ -27,8 +27,10 @@ and provenance, rather than premises of the Lean theorem.
 Run the generator's source checks and inspect its HTML or PDF alongside the
 [verification evidence](../verification-results.json). Local browser reviews
 are exported as JSON. Place reviewed exports in `reviews/` with a signed Git
-commit. No automated review record is a human mathematical approval.
+commit. The [current source-pinned review ledger](review-status.json) records the active review inputs and scope; no automated review record is a human mathematical approval.
 
 The Palomar registry record certifies the theorem and source revision it names.
 The newer Zenodo archive also includes locally checked auxiliary declarations;
 publication of that archive does not resubmit the theorem to Palomar.
+
+The [current review ledger](review-status.json) records exact review inputs, completed formal checks, all57 review cards and pending human responsibilities. Classifications compare the proposed corrected text; the visible original and its historical findings remain available. Archived review ledgers keep their original source scope.

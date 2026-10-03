@@ -1,5 +1,7 @@
 # Whole publication correspondence review
 
+Historical review at the pins in the adjacent receipts. The [current review ledger](../../../paper-lean-audit/review-status.json) supersedes its task statuses and review queue; this archive is preserved as evidence.
+
 Max reviews all 49 current mathematical cards, including exact matches,
 definitions, appendix results and every printed proof. Six context/history
 cards remain outside the default queue. A different formal implementation
