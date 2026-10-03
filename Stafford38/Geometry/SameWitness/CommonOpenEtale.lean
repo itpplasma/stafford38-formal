@@ -16,8 +16,51 @@ namespace Stafford38.Geometry.SameWitness
 open Stafford38.Geometry.A0ChartFormalEtale
 open Stafford38.Geometry.EtaleGenericOpenTransport
 open Stafford38.Geometry.GeneralDivisorialVisibleFrame
+open Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale
+open Stafford38.Geometry.ProjectiveChartSameFieldOverlap
 
 universe u
+
+/-- Polynomial coordinates compose with a ground-compatible map to an open
+algebra without installing another scalar action. -/
+private def coordinateMapToOpen
+    {k R B U : Type u} [CommSemiring k] [Semiring R] [Semiring B] [Semiring U]
+    [Algebra k R] [Algebra k B] [Algebra k U]
+    (f : R →ₐ[k] B) (F : B →+* U)
+    (hF : F.comp (algebraMap k B) = algebraMap k U) : R →ₐ[k] U where
+  toRingHom := F.comp f.toRingHom
+  commutes' c := (congrArg F (f.commutes c)).trans (RingHom.congr_fun hF c)
+
+/-- Point-local formal étaleness transports to the explicit polynomial map
+on the common open (paper proof, common-open étale step). -/
+private theorem formallyEtale_coordinateMapToOpen
+    {k R B Q : Type u} [Field k] [CommRing R] [CommRing B] [CommRing Q]
+    [Algebra k R] [Algebra k B] [Algebra k Q] [Algebra Q B]
+    (fCoord : R →ₐ[k] B) (M : Ideal B) [M.IsPrime]
+    (hEtM : letI : Algebra R B := fCoord.toRingHom.toAlgebra
+      Algebra.FormallyEtale R (Localization.AtPrime M))
+    (f : Q) (e : Localization.Away f ≃ₐ[Q] Localization.Away (algebraMap Q B f))
+    (g : Q)
+    (hbase : (genericOpenExtraAwayBMap M f e g).comp (algebraMap k B) =
+      algebraMap k (genericOpenExtraAwayB M f e g)) :
+    @Algebra.FormallyEtale R (genericOpenExtraAwayB M f e g) _ _
+      (@RingHom.toAlgebra R (genericOpenExtraAwayB M f e g) inferInstance inferInstance
+        (coordinateMapToOpen fCoord (genericOpenExtraAwayBMap M f e g) hbase).toRingHom) := by
+  letI : Algebra R B := fCoord.toRingHom.toAlgebra
+  letI : Algebra.FormallyEtale R (Localization.AtPrime M) := hEtM
+  let Cq := genericOpenRing M f e
+  let U := genericOpenExtraAwayB M f e g
+  letI : Algebra R Cq := ((algebraMap B Cq).comp fCoord.toRingHom).toAlgebra
+  let rawAction : Algebra R U := Algebra.compHom U (algebraMap R Cq)
+  have hRaw : @Algebra.FormallyEtale R U _ _ rawAction :=
+    formallyEtale_genericOpenExtraAway_of_pointLocal M f e g
+  have hAction : rawAction =
+      (@RingHom.toAlgebra R (genericOpenExtraAwayB M f e g) inferInstance inferInstance
+        (coordinateMapToOpen fCoord (genericOpenExtraAwayBMap M f e g) hbase).toRingHom) := by
+    apply Algebra.algebra_ext
+    intro x
+    rfl
+  exact hAction ▸ hRaw
 
 /-- The original-chart map and selected polynomial coordinates are k-algebra
 maps on the same common open, with the formally-etale structures required by
@@ -30,18 +73,24 @@ structure CommonOpenEtaleData
     (setup : ChartSetup hm P w)
     (coords : CoordinatePresentation hm P w setup)
     (arc : CommonOpenArcData hm P w setup coords) where
-  φk : OriginalAffineChartQuotient (k := k) P →ₐ[k] arc.U
+  φk : OriginalAffineChartQuotient (k := k) P →ₐ[k] arc.common.U
   ψU : MvPolynomial (Option (Fin (@Fintype.card coords.t coords.htFinite))) k
-      →ₐ[k] arc.U
+      →ₐ[k] arc.common.U
+  hψAction :
+    letI : arc.common.M.IsMaximal := arc.common.hM
+    let B := actualSelectedNormalization P w
+    let R := MvPolynomial (Option (Fin (@Fintype.card coords.t coords.htFinite))) k
+    ((algebraMap arc.common.Cq arc.common.U).comp
+      ((algebraMap B arc.common.Cq).comp
+        (@AlgHom.toRingHom k R B inferInstance inferInstance inferInstance
+          inferInstance coords.coeff.toAlgebra coords.fFin))).toAlgebra =
+      (@RingHom.toAlgebra (MvPolynomial (Option (Fin (@Fintype.card coords.t coords.htFinite))) k) arc.common.U inferInstance inferInstance ψU.toRingHom)
   hφEtale : @Algebra.FormallyEtale
-    (OriginalAffineChartQuotient (k := k) P) arc.U _ _
-    φk.toRingHom.toAlgebra
+    (OriginalAffineChartQuotient (k := k) P) arc.common.U _ _
+    (@RingHom.toAlgebra (OriginalAffineChartQuotient (k := k) P) arc.common.U inferInstance inferInstance φk.toRingHom)
   hψEtale : @Algebra.FormallyEtale
     (MvPolynomial (Option (Fin (@Fintype.card coords.t coords.htFinite))) k)
-    arc.U _ _ ψU.toRingHom.toAlgebra
-  hψAction : ((algebraMap arc.Cq arc.U).comp
-      ((algebraMap (actualSelectedNormalization P w) arc.Cq).comp
-        coords.fFin.toRingHom)).toAlgebra = ψU.toRingHom.toAlgebra
+    arc.common.U _ _ (@RingHom.toAlgebra (MvPolynomial (Option (Fin (@Fintype.card coords.t coords.htFinite))) k) arc.common.U inferInstance inferInstance ψU.toRingHom)
 
 /-- The T13 ground-map identity extends to the inherited k-algebra structure
 on the common open by the actual normalization map (paper proof, common-open
@@ -53,46 +102,48 @@ private theorem originalChartToCommonOpen_groundMap_k
     (w : GeneralDivisorialVisibleFrameWitness hm P)
     (setup : ChartSetup hm P w)
     (coords : CoordinatePresentation hm P w setup)
-    (arc : CommonOpenArcData hm P w setup) :
-    arc.φ.comp
+    (arc : CommonOpenArcData hm P w setup coords) :
+    arc.common.φ.comp
       (algebraMap k (OriginalAffineChartQuotient (k := k) P)) =
-        algebraMap k arc.U := by
+        algebraMap k arc.common.U := by
+  letI : arc.common.M.IsMaximal := arc.common.hM
   let Q := actualSelectedChartAlgebra P w
   let B := actualSelectedNormalization P w
-  let qToU : Q →+* arc.U :=
-    (algebraMap arc.Cq arc.U).comp (algebraMap Q arc.Cq)
+  let qToU : Q →+* arc.common.U :=
+    (algebraMap arc.common.Cq arc.common.U).comp (algebraMap Q arc.common.Cq)
   have hφQ := originalAffineChartToCommonOpen_groundMap
-    P setup.j arc.hxj arc.hsel arc.M setup.f setup.e
-  have hφQ' : arc.φ.comp
+    P setup.j arc.common.hxj arc.common.hsel arc.common.M setup.f setup.e
+  have hφQ' : arc.common.φ.comp
       (algebraMap k (OriginalAffineChartQuotient (k := k) P)) =
         qToU.comp (algebraMap k Q) := by
-    change arc.φ.comp
+    change arc.common.φ.comp
       (algebraMap k (OriginalAffineChartQuotient (k := k) P)) =
         qToU.comp (algebraMap k Q) at hφQ
     exact hφQ
   have hcoeff : @algebraMap k B _ _ coords.coeff.toAlgebra =
       (algebraMap Q B).comp (algebraMap k Q) := by
+    rw [coords.hcoeff]
     apply RingHom.ext
     intro c
     rfl
   apply RingHom.ext
   intro c
-  have hφc := congrArg (fun f : k →+* arc.U => f c) hφQ'
-  have hQc := congrArg (fun f : Q →+* arc.U => f (algebraMap k Q c))
-    arc.toCommonOpenData.hbaseMap
-  have hkUc := congrArg (fun f : k →+* arc.U => f c) arc.hbaseMap
+  have hφc := congrArg (fun f : k →+* arc.common.U => f c) hφQ'
+  have hQc := congrArg (fun f : Q →+* arc.common.U => f (algebraMap k Q c))
+    arc.common.hbaseMap
+  have hkUc := congrArg (fun f : k →+* arc.common.U => f c) arc.hbaseMap
   have hcoeffc := congrArg (fun f : k →+* B => f c) hcoeff
   calc
-    arc.φ (algebraMap k (OriginalAffineChartQuotient (k := k) P) c) =
+    arc.common.φ (algebraMap k (OriginalAffineChartQuotient (k := k) P) c) =
         qToU (algebraMap k Q c) := hφc
-    _ = genericOpenExtraAwayBMap arc.M setup.f setup.e arc.g
+    _ = genericOpenExtraAwayBMap arc.common.M setup.f setup.e arc.common.g
         (algebraMap Q B (algebraMap k Q c)) := by
-          simpa only [RingHom.comp_apply] using hQc.symm
-    _ = genericOpenExtraAwayBMap arc.M setup.f setup.e arc.g
-        (algebraMap k B c) := by
-          exact congrArg (genericOpenExtraAwayBMap arc.M setup.f setup.e arc.g)
+          exact hQc.symm
+    _ = genericOpenExtraAwayBMap arc.common.M setup.f setup.e arc.common.g
+        (@algebraMap k B _ _ coords.coeff.toAlgebra c) := by
+          exact congrArg (genericOpenExtraAwayBMap arc.common.M setup.f setup.e arc.common.g)
             hcoeffc.symm
-    _ = algebraMap k arc.U c := hkUc
+    _ = algebraMap k arc.common.U c := hkUc
 
 /-- The common-open étale maps are obtained from the selected chart map and
 the retained ground-point formal-etale certificate. -/
@@ -106,45 +157,39 @@ theorem nonempty_commonOpenEtaleData
     (arc : CommonOpenArcData hm P w setup coords) :
     Nonempty (CommonOpenEtaleData hm P w setup coords arc) := by
   classical
+  letI : arc.common.M.IsMaximal := arc.common.hM
   let B := actualSelectedNormalization P w
   let Q := actualSelectedChartAlgebra P w
   let R := MvPolynomial (Option (Fin (@Fintype.card coords.t coords.htFinite))) k
-  let φk : OriginalAffineChartQuotient (k := k) P →ₐ[k] arc.U :=
-    { toRingHom := arc.φ
+  let fFin : R →+* B := @AlgHom.toRingHom k R B
+    inferInstance inferInstance inferInstance inferInstance coords.coeff.toAlgebra coords.fFin
+  let φk : OriginalAffineChartQuotient (k := k) P →ₐ[k] arc.common.U :=
+    { toRingHom := arc.common.φ
       commutes' := fun c =>
-        congrArg (fun f : k →+* arc.U => f c)
+        congrArg (fun f : k →+* arc.common.U => f c)
           (originalChartToCommonOpen_groundMap_k hm P w setup coords arc) }
-  let ψU : R →ₐ[k] arc.U :=
-    { toRingHom :=
-        (genericOpenExtraAwayBMap arc.M setup.f setup.e arc.g).comp
-          coords.fFin.toRingHom
-      commutes' := fun c => by
-        change genericOpenExtraAwayBMap arc.M setup.f setup.e arc.g
-          (coords.fFin (algebraMap k R c)) = algebraMap k arc.U c
-        rw [coords.fFin.commutes c]
-        exact congrArg (fun f : k →+* arc.U => f c) arc.hbaseMap }
+  let ψU : R →ₐ[k] arc.common.U := @coordinateMapToOpen k R B arc.common.U
+    inferInstance inferInstance inferInstance inferInstance inferInstance
+    coords.coeff.toAlgebra _ coords.fFin
+    (genericOpenExtraAwayBMap arc.common.M setup.f setup.e arc.common.g) arc.hbaseMap
   have hφEtale : @Algebra.FormallyEtale
-      (OriginalAffineChartQuotient (k := k) P) arc.U _ _
-      φk.toRingHom.toAlgebra := by
+      (OriginalAffineChartQuotient (k := k) P) arc.common.U _ _
+      (@RingHom.toAlgebra (OriginalAffineChartQuotient (k := k) P) arc.common.U inferInstance inferInstance φk.toRingHom) := by
     exact formallyEtale_originalAffineChartToCommonOpen
-      P setup.j arc.hxj arc.hsel arc.M setup.f setup.e
-  have hψAction : ((algebraMap arc.Cq arc.U).comp
-      ((algebraMap B arc.Cq).comp coords.fFin.toRingHom)).toAlgebra =
-        ψU.toRingHom.toAlgebra := by
+      P setup.j arc.common.hxj arc.common.hsel arc.common.M setup.f setup.e
+  have hψAction : ((algebraMap arc.common.Cq arc.common.U).comp
+      ((algebraMap B arc.common.Cq).comp fFin)).toAlgebra =
+        (@RingHom.toAlgebra (MvPolynomial (Option (Fin (@Fintype.card coords.t coords.htFinite))) k) arc.common.U inferInstance inferInstance ψU.toRingHom) := by
     apply Algebra.algebra_ext
     intro x
     rfl
-  have hψEtaleRaw : @Algebra.FormallyEtale R arc.U _ _
-      ((algebraMap arc.Cq arc.U).comp
-        ((algebraMap B arc.Cq).comp coords.fFin.toRingHom)).toAlgebra := by
-    exact @formallyEtale_genericOpenExtraAway_of_pointLocal
-      R _ Q _ B _ (inferInstance : Algebra Q B)
-      coords.fFin.toRingHom.toAlgebra arc.M (inferInstance : arc.M.IsPrime)
-      setup.f setup.e arc.g arc.hEtM
-  have hψEtale : @Algebra.FormallyEtale R arc.U _ _
-      ψU.toRingHom.toAlgebra := by
-    rw [← hψAction]
-    exact hψEtaleRaw
+  have hψEtale : @Algebra.FormallyEtale R arc.common.U _ _
+      (@RingHom.toAlgebra R arc.common.U inferInstance inferInstance ψU.toRingHom) := by
+    apply @formallyEtale_coordinateMapToOpen k R B Q
+      inferInstance inferInstance inferInstance inferInstance inferInstance
+      coords.coeff.toAlgebra inferInstance inferInstance coords.fFin
+      arc.common.M (inferInstance : arc.common.M.IsPrime) arc.common.hEtM
+      setup.f setup.e arc.common.g arc.hbaseMap
   exact ⟨{
     φk := φk
     ψU := ψU
