@@ -7,15 +7,15 @@ on `acluster`/`scluster`. Mac execution and candidate synchronization are no
 longer authorized. All campaign Mac checks had already ended at this steering;
 no new Mac action is scheduled. Historical Mac receipts remain unchanged.
 T32’s frozen source passed its Linux module and unchanged trust-zero consumer
-checks. T33 passed its Linux module and literal trust-zero consumer; T35 awaits a stable cluster slot after three local node-pressure stops;
-its generic transport probe passed, but the full module is not accepted.
-Acluster T35 job21805719 is queued after bootstrap21805718. Scluster bootstrap
-3109567 passed exact pins and the T32 module/literal trust-zero consumer.
-T34 positions retry3 is job3113094, followed by unchanged T35 source on
-scluster3113113. Guard fixture job3112916 passed after Sol repaired isolated
-Lean resolution, quotation-keyword collision and a Type-valued fixture
-kind. Fixture component is committed at WT17d138a; strict production
-traversal remains required. No guard or proof claim was weakened.
+checks. T33 and T35 passed Linux module and literal trust-zero consumers. T35's frozen
+sourcef30 passed on scluster3113113 with only three permitted axioms, zero
+pressure/swap growth and no survivors; committed at WT4c1678e. T34's fourth
+positions candidate runs as scluster3113857, with a distinct local prerequisite
+build under the same two-CPU/8GiB guard. T36's target remains byte-identical.
+Acluster bootstrap21805718 is finishing T32 before queued T35 job21805719.
+Scluster bootstrap3109567 passed exact pins and T32 consumer. Guard fixtures
+passed job3112916 and are committedWT17d138a; production traversal awaits
+completed proof. No guard or proof claim was weakened.
 Both clusters use reviewed two-CPU/8GiB allocation guards. See the scoped
 bootstrap/fixture receipt in notes/scluster-bootstrap-fixture-20261003.md.
 One delivery: finish the faithful proof, cut matching formal/supplementary
@@ -49,8 +49,8 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T31 | Coordinate presentation | done | 6 | notes/T31-reindex-accepted-checks.md | Canonical fFin accessor fixes missing map relation; Linux module/unchanged trust0 consumer pass,three permitted axioms; independent Mac module pass23s/2182MiB; WT8fa692f pushed; full-route verifier pending |
 | T32 | Maximal ideal and common open | done | 9 | notes/T32-linux-accepted-checks.md | Frozen8656c5e module/unchanged trust0 consumer passed on Linux210s/2.28s,peak3865/2745MiB,three permitted axioms; WTda00639 pushed; full-route review pending |
 | T33 | Arc into Laurent series | done | 4 | notes/T33-linux-accepted-checks.md | Sol module/unchanged-statement trust0 consumer passed41.01s/2.28s,peak4139/2746MiB,three permitted axioms; committed and pushed; full-route review pending |
-| T34 | Columns, derivatives, numerator | doing | 5 | notes/T34-sol-resume.md | Actual positions checks exposed instance scope, declaration-kind and dependent transport defects; Sol repairs run as scluster3113094; columns candidate refreshed, awaits T35 |
-| T35 | Étale structure as ring homs | doing | 5 | notes/T33-T35-sol-linux-resume.md | Generic action-transport trust0 probe passed; fullmodule4/5 and directsourcecheck stopped on node PSI pressure without proof diagnostics; frozenf30 queued acluster21805719(afterok21805718), no cap increase |
+| T34 | Columns, derivatives, numerator | doing | 6 | notes/T34-sol-resume.md | Sol repairs retained coordinate/coercion/dependent transport; fourthpositionscheck scluster3113857; local missing prerequisite build active; columns57d await positions |
+| T35 | Étale structure as ring homs | done | 6 | notes/T35-linux-accepted-checks.md | Scluster3113113 fullmodule+unchangedtrust0consumerPASS329.04s,peak7406MiB,three permitted axioms,zero PSI/swap/children; frozenf30 WT4c1678e committed/pushed; fullroute pending |
 | T36 | Same-witness closure theorem | doing | 3 | notes/T36-linux-resume.md | Generic retained chart candidate; stale positions call corrected, source59b8e450; frozen target unchanged; compile awaits T34/T35 |
 | T40 | Import-cycle check | doing | 1 | | Luna preparing source graph; final closure still required |
 | T41 | Original-prime wrapper | doing | 1 | | Luna preparing literal wrapper/consumer from frozen T36 declaration |

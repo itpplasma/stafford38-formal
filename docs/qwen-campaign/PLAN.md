@@ -20,19 +20,18 @@ marked proposals. Finish T34–T36 and T40–T51, then deliver matching formal a
 releases. Verify both Zenodo archives and cite them from the paper. This is
 one delivery, with proof and asset checks as its acceptance gates.
 
-Current checkpoint (3 October 2026): T22, T30, T31, T32 and T33 passed Linux
+Current checkpoint (3 October 2026): T22, T30, T31, T32, T33 and T35 passed Linux
 module and literal trust-zero consumer checks. T32 is committed and pushed at
 `da00639e7d2fd3cbb188f137d228c99d5cfcdbcd`; see its acceptance packet in
 `notes/T32-linux-accepted-checks.md`. T33 passed after Sol repair; see `notes/T33-linux-accepted-checks.md`.
-T35 awaits stable cluster validation after local node-pressure stops;
-T34–T44 remain unaccepted. No guard threshold is relaxed. Scluster bootstrap
-3109567 passed its exact pins and T32 module/consumer; acluster21805718 is
-finishing prerequisites before T35 job21805719. T34 positions job3112555
-runs after the accepted Linux guard fixture check. Guard fixtures passed
-on scluster3112916 after Sol repaired three compiler/runtime defects; see
-notes/T43-linux-fixtures-accepted-20261003.md. Production strict traversal
-still awaits the completed proof. T34 positions retry3 is job3113094,
-followed by the unchanged T35 candidate on scluster3113113.
+T35 passed on scluster3113113 and is committed/pushed; see
+notes/T35-linux-accepted-checks.md. T34 remains the closure prerequisite;
+its fourth positions candidate runs as scluster3113857. T36's frozen statement
+is unchanged. No guard threshold is relaxed. Scluster bootstrap3109567 passed
+its exact pins and T32 module/consumer; acluster21805718 is completing the T32
+module before its queued T35 replay. Actual Linux guard fixtures passed on
+scluster3112916 after Sol repairs; production strict traversal still awaits the
+completed proof. See notes/T43-linux-fixtures-accepted-20261003.md.
 T45 has a frozen implementation and independent static audit, with compilation
 and route comparisons pending. The public guided-review generator is committed
 at 40967b6740c2ceaf515a2fb47a5ca9571be6495f; the complete final map/site walkthrough
