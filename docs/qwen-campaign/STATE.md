@@ -70,17 +70,17 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T44 | Literal route consumers | doing | 1 | | Luna preparing archived literal consumers/current names; checks await route modules |
 | T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry83f and all4assembliesPASS3127814; sharedchallenges unchanged; finalroute/comparator gates pending |
 | T46 | Tidy final package | doing | 2 | notes/T46-final-cleanup-proposal.md | Obsolete four Mac/Pi wrappers and unused ignore file removed after reference audit; historical receipts/useful math preserved; final public status/Palomar package checks await route acceptance |
-| T50 | Full library build | todo | 0 | | Included in single final Linux verifier T51/T73; no separate repeated full build |
-| T51 | Repository verifier | todo | 0 | | Single frozen Linux run shared withT73 plus4 actualPalomar comparisons; no duplicated cluster verification |
+| T50 | Full library build | doing | 1 | final3128039 | SinglefinalLinuxverifier buildstage; exactpublic45037fb, no separatefullbuild |
+| T51 | Repository verifier | doing | 1 | final3128039 | Runningonepublic45037fb verifier+4actualcomparators onSnode20/2CPU8GiB |
 | T52 | Status drafts | todo | 0 | | |
 | T53 | Integrate into main | done | 1 | notes/T42-four-assemblies-linux-accepted-20261003.md | Controllerintegrated55explicitproof/toolpaths afterboundedacceptance; authoritative docs and unrelateduntracked preserved |
 | T60 | Definition owners patch | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol prepared14 retainedcontractowners, helpersexcluded; registry/compiler acceptance awaitsfinalsource |
 | T61 | Paper map of new theorems | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol repaired57cards/403resolvedrefs/100SameWitnessdeclarations; Nodeaudit+browserwalkpass; finalpins/compiler/humanreviewpending |
 | T62 | Unreachable/duplicate report | doing | 1 | | Luna preparing source-graph and duplicate-owner report; final route still required |
-| T70 | Frozen public commit | todo | 0 | | Authorized controller push before the single Linux/Palomar run |
-| T71 | Final Linux host preflight | todo | 0 | | Approved local/cluster route selected after T70; candidate bootstrap receipts do not replace final preflight |
-| T72 | Launch Linux driver | doing | 1 | notes/cluster-final-replay-independent-review-20261003.md | Cluster driver repaired by Sol and independently reviewed PASS with wrong-pin/failure/mutation/mode/root oracles; final launch awaits T70 and fresh allocation preflight |
-| T73 | Collect Linux result | todo | 0 | | |
+| T70 | Frozen public commit | done | 1 | final3128039 | Exactpublic45037fbc16329df7a208eb3de91aca31d720f03c pushedbeforelaunch |
+| T71 | Final Linux host preflight | done | 1 | final3128039 | Snode20idle, nootheruserjobs; stageddriver/guardhashesmatched, exactfrozenclone/Lean passed; actualguardactive |
+| T72 | Launch Linux driver | done | 2 | final3128039 | Revieweddriver launchedexactpublic45037fb onSnode20,2CPU8GiB; solefinalfullverifier and4comparators |
+| T73 | Collect Linux result | doing | 1 | final3128039 | Singlefinalrunactive; Luna monitors frozenreceipts, no other jobs |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
 | T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Guided generator navigation/resume browser oracle passed64tests; public commit40967b6 pushed; complete frozen-map walkthrough pending |
@@ -199,3 +199,5 @@ component; final README/status and Palomar package checks await proof acceptance
 - T41 accepted after3127001 drained: actual module and unchanged literal trust-zero consumer passed. Shared assembly failed its first actual adapter elaboration atExclusion44:19; Sol repairs that explicit field inference and rechecks only assembly. No completed wrapper/consumer rerun or duplicate cluster job. See notes/T41-original-prime-linux-accepted-checks-20261003.md.
 
 - All four main/alternative solution assemblies passed3127814 with the unchangedguard and no survivors. Controller integrated55 explicit proof/tooling paths, sameunchangedchallenges, registry owners and current release metadata. The one final public-source verifier and four actual comparators remain next; no duplicate whole-library check.
+
+- Final driver launched as scluster3128039 against immutable public45037fbc16329df7a208eb3de91aca31d720f03c. Staged driver SHAe9f19350e4f3dd6558abcbcbfb9ce2b93fae8cfc5cf0b78911c61c943942f4ac; Slurmguardca59b4b7c067851dca28aaff59b3919ec9224bda16a324fa2233d29d1c898506; Linuxguardcd072bba9e2dead893791503bb6115299ba0a65eb106b126a376a1ab948b7b87. Fresh sourcecheckout/Lean gates passed; accepted build-cache copy is active. The single full verifier and all four actual comparators still require completion.

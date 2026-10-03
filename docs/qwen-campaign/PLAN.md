@@ -1137,6 +1137,8 @@ the useful alternative route and all still-used proof/review interfaces.
 
 ### T70 OWNER GATE: frozen public commit
 
+Completed3October2026: immutable public45037fbc16329df7a208eb3de91aca31d720f03c pushed before finaljob3128039.
+
 After bounded proof module/consumer acceptance and integration, the controller
 pushes the candidate source for the single final Linux/Palomar verification
 and records its exact commit in `STATE.md` under "Frozen commit". Workers
@@ -1158,6 +1160,8 @@ two-CPU/8GiB guard, verified job/step placement, node RAM/PSI/swap/disk
 safeguards and a fresh source directory. Record the chosen host and reason.
 
 ### T72 Launch the frozen Linux driver
+
+Launched3October2026 as scluster3128039, soleapprovednode20 two-CPU/8GiB allocation, exactpublic45037fb. T50/T51/T73 share this one run plus four comparators. Luna monitors receipts; no duplicatecluster orcandidatewhole-verifier launch.
 
 Owned: fresh snapshot directory; host-specific replay contract; `STATE.md`.
 
