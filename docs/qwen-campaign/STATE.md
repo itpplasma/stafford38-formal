@@ -71,7 +71,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T45 | Shared-challenge solution variants | doing | 3 | notes/cluster-accepted-endpoints-20261003.md | Alternative geometry83f and all4assembliesPASS3127814; sharedchallenges unchanged; finalroute/comparator gates pending |
 | T46 | Tidy final package | doing | 2 | notes/T46-final-cleanup-proposal.md | Obsolete four Mac/Pi wrappers and unused ignore file removed after reference audit; historical receipts/useful math preserved; final public status/Palomar package checks await route acceptance |
 | T50 | Full library build | doing | 1 | final3128039 | SinglefinalLinuxverifier buildstage; exactpublic45037fb, no separatefullbuild |
-| T51 | Repository verifier | doing | 1 | final3128039 | 3128039 stoppedtoolingbeforeverifier; isolatedbwrap0.12repairactive, resumeusesunchangedpublic45037fb |
+| T51 | Repository verifier | doing | 1 | final3128039 | Running3128526 fullverifier onunchangedpublic45037fb; isolatedofficialbwraprepairPASS3128465, priorfailurepreserved |
 | T52 | Status drafts | todo | 0 | | |
 | T53 | Integrate into main | done | 1 | notes/T42-four-assemblies-linux-accepted-20261003.md | Controllerintegrated55explicitproof/toolpaths afterboundedacceptance; authoritative docs and unrelateduntracked preserved |
 | T60 | Definition owners patch | doing | 3 | notes/T60-T61-map-repair-sol-20261003.md | Sol prepared14 retainedcontractowners, helpersexcluded; registry/compiler acceptance awaitsfinalsource |
@@ -80,7 +80,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T70 | Frozen public commit | done | 1 | final3128039 | Exactpublic45037fbc16329df7a208eb3de91aca31d720f03c pushedbeforelaunch |
 | T71 | Final Linux host preflight | done | 1 | final3128039 | Snode20idle, nootheruserjobs; stageddriver/guardhashesmatched, exactfrozenclone/Lean passed; actualguardactive |
 | T72 | Launch Linux driver | done | 2 | final3128039 | Revieweddriver launchedexactpublic45037fb onSnode20,2CPU8GiB; solefinalfullverifier and4comparators |
-| T73 | Collect Linux result | doing | 1 | final3128039 | Original3128039 toolfailurearchived; noverifier/comparatorran. Luna repairsisolatedofficialbwrap; unchangedsource resumepending |
+| T73 | Collect Linux result | doing | 1 | final3128039 | 3128526 finalverifierrunning since14:57UTC; precedingtool/source/pins/cache/EtalestagesPASS;4comparatorspending |
 | T74 | Palomar-ready owner handover | owner | 0 | | Owner submits online; deliver unchanged challenges, solution variants and local comparator receipts |
 | T80 | Re-anchor review map | doing | 2 | notes/T60-T61-map-repair-sol-20261003.md | Paper locator-onlydaf4304 compiled; 113currentformalanchorsresolve; Sol repaired57cardmap withexistingrendererzeroerrors/warnings, finalpins pending |
 | T81 | Build review site | doing | 1 | notes/T81-guided-interface-resume.md | Guided generator navigation/resume browser oracle passed64tests; public commit40967b6 pushed; complete frozen-map walkthrough pending |
@@ -203,3 +203,5 @@ component; final README/status and Palomar package checks await proof acceptance
 - Final driver launched as scluster3128039 against immutable public45037fbc16329df7a208eb3de91aca31d720f03c. Staged driver SHAe9f19350e4f3dd6558abcbcbfb9ce2b93fae8cfc5cf0b78911c61c943942f4ac; Slurmguardca59b4b7c067851dca28aaff59b3919ec9224bda16a324fa2233d29d1c898506; Linuxguardcd072bba9e2dead893791503bb6115299ba0a65eb106b126a376a1ab948b7b87. Fresh sourcecheckout/Lean gates passed; accepted build-cache copy is active. The single full verifier and all four actual comparators still require completion.
 
 - Final3128039 stopped at tooling only: required bubblewrap0.12.0, found0.8.0. Fresh public source, Lean pin, complete cache copy and source policy passed; no full verifier/comparator ran. Failure/drain archive retained. Luna repairs official bwrap inside isolated bootstrap; bounded resume of the same unchanged clean public clone skips only repeated fetch/copy, retains every proof/pin/comparator gate and separate receipts.
+
+- Official isolated bwrap repair3128465 passed exact version/sandbox probes and drained. Independently reviewed bounded resume3128526 kept original source45037fb byte/mode-identical; tooling,10pins,cache andEtaleprebuild passed. The first full verifier started14:57:12UTC. Prior tooling failure archived; no repeated full verifier or cluster work.

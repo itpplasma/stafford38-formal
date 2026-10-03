@@ -1,0 +1,28 @@
+{
+  "paper_commit": "093527797b85f4547e7a5be03556fa9725b6077c",
+  "editing_authority": "Overleaf / itpplasma/stafford38-paper",
+  "pdfs": {
+    "human_readable_main.pdf": "6299c84959c8ea4a59688d18eb2a6fffa192d446d5c80f170b5c4a4bb544bbba",
+    "lean_proof_details.pdf": "ebaa365c139e283d7b5f909f113ec97f7c11479d4bfc64f6444ae003cc357658"
+  },
+  "source_files": [
+    "human_readable_main.tex",
+    "main.tex",
+    "ai_review.tex",
+    "lean_proof_details.tex",
+    "proof_map.tex",
+    "references.bib",
+    "LICENSE.txt"
+  ],
+  "retired_files": [
+    "lean_refs.tex",
+    "ai_annotations.tex",
+    "ai_workflow.tex",
+    "cyclicity.tex",
+    "global_stafford.tex",
+    "literature_extras.tex",
+    "lean_proof_details_main.tex"
+  ],
+  "human_acceptance": "pending; red text remains proposed; action boxes remain unresolved",
+  "verification": "Full Lean verifier, 104 exact paper declaration names and permitted axiom reports, both Palomar Comparator/NanoDa configurations, independent selected-proof correspondence reviews and original-author-prose preservation pass. The DOI-only refresh changes no proof steps. Human acceptance remains pending."
+}
