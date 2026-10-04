@@ -10,6 +10,10 @@ The current annotated review is paper P7 `760c68d2d79a8fd2c4b58f35f32dd909695913
 
 Formal core C2 `12ae3cc49152672a48a96f13994314b65ae38197` passed the complete pinned Linux verifier, retained proof targets, all four Palomar comparisons and the399 public-name check. Signed formal v1.3.1 `f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff`, DOI10.5281/zenodo.23127367, corrects historical report routing and stale replay status. All654 protected proof/tool files match C2; package-version and descriptor metadata exceptions are recorded separately. All 1,172 formal v1.3.1 and 16 supplementary v0.2.2 tagged files match their respective Zenodo archives. These source and archive receipts do not establish whole-paper correspondence. Max’s full comparison and Johanna’s manuscript/proposal review remain pending.
 
+Palomar [immutable version 3](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3) was registered on 4 October 2026 at source `0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1`, using `comparator.json` for `Stafford38Challenge.universalStatement`. Mechanical verification passed with Lean, nanoda and con-ron; automated review identified no problems. All 587 Lean/configuration files match formal v1.3.1 R131. Registration retains its exact source scope; see [the receipt](qwen-campaign/notes/T97-Palomar-v3-registration-and-citation-20261004.json).
+
+Paper commit `44e7189725ec52c20256babda76f24a669184b5b` updates only the bibliography to cite Palomar v3 and is pushed to GitHub and Overleaf. The paper compiles without unresolved references or citations. Supplementary v0.2.2 keeps its immutable P7/S7/R131 inputs and matching PDFs.
+
 ## Review responsibilities
 
 Max’s review of the complete paper proof and both Challenge/Solution comparisons, including statement scope and proof correspondence, remains pending. Johanna’s review of the selected visible manuscript and marked local proposals also remains pending; the proposals do not replace the visible author proof. Automated checks and AI review do not replace either human review.

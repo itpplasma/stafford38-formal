@@ -6,7 +6,7 @@ Formal v1.3.1 `f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff`, DOI10.5281/zenodo.2312
 
 Selected review source remains P7 `760c68d2d79a8fd2c4b58f35f32dd90969591300` / S7 `9f6ca3241edcf88da42a3a000f25514d105e2f30`, synchronized to GitHub and Overleaf. The immutable v0.2.2 companion freezes P7/S7/R131 and the matching PDFs. All 654 protected proof/tool files in formal v1.3.1 match C2; descriptor provenance and package-version exceptions are recorded. The complete C2 verifier, all four local Palomar comparisons and 399 public-name checks passed and were not repeated. T96 validates the changed reader: 71 generator tests passed; all 504 displayed Lean excerpts match their pinned source ranges; desktop/mobile/offline reading, formula annotations, notes and export passed. Both Pages deployments succeeded.
 
-The current ledger is `docs/paper-lean-audit/review-status.json`. It classifies proposed corrected review text, preserves original findings and records both human reviews pending. Current statement labels are exact21/equivalent11/Lean-stronger9/partial8/n/a8; routes same18/similar13/Lean-only1/n/a25. Paper-wrong, not-formalized and different-route counts are zero; the genuine scope limits remain visible. Final live HTTP source pins,57 cards and both PDF hashes passed; both authorized handovers were sent with mail-service sent=true. The campaign is complete. Johanna/Max reviews remain human follow-ups. The owner will resubmit corrected R131 with comparator.json; no new online acceptance is claimed.
+The current ledger is `docs/paper-lean-audit/review-status.json`. It classifies proposed corrected review text, preserves original findings and records both human reviews pending. Current statement labels are exact21/equivalent11/Lean-stronger9/partial8/n/a8; routes same18/similar13/Lean-only1/n/a25. Paper-wrong, not-formalized and different-route counts are zero; the genuine scope limits remain visible. Final live HTTP source pins,57 cards and both PDF hashes passed; both authorized handovers were sent with mail-service sent=true. The campaign is complete. Johanna/Max reviews remain human follow-ups. Palomar v3 registered source `0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1` on 4 October 2026 with comparator.json. Its 587 Lean/configuration files match R131; T97 records exact source scope and the paper’s updated v3 citation.
 
 Owner steering and earlier checkpoint history, 3 October 2026: finish the proof as the immediate
 priority, faithful to Johanna’s original manuscript proof with necessary
@@ -89,7 +89,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T71 | Final Linux host preflight | done | 2 | notes/T73-final-C2-submission-3131361-20261003.json | Prior3129931guard0/drained; empty userqueue/node20idle;3controlhashes exact; fresh source/receiptpaths absent |
 | T72 | Launch Linux driver | done | 6 | notes/T73-final-C2-resume4-submission-3137241-20261003.json | SoleS3137241 allocation-localdevice/cachelayout repair+4comps/finalintegrity exactC2; no completedcheck repeat |
 | T73 | Collect Linux result | done | 6 | notes/T73-four-Palomar-comparisons-linux-accepted-3137241-20261003.tar.gz | R1verifier/R2retained/R4all4comparatorsPASS; final1095filemanifest+10pins exact; guard0/no stops/children/swap |
-| T74 | Palomar-ready owner handover | owner | 2 | formalv1.3.1=f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff | v1.3.0 mechanicalverification passed; review flagged metadata routing. Corrected v1.3.1 published; owner resubmits comparator.json; new online acceptance pending |
+| T74 | Palomar registration | done | 2 | notes/T97-Palomar-v3-registration-and-citation-20261004.json | Immutable v3 registered at 0bb3aa9; main comparator passed all three kernels; automated review identified no problems; proof/configuration files match R131 |
 | T80 | Re-anchor review map | done | 4 | notes/T80-399-public-names-linux-accepted-3139266-20261003.tar.gz |393+2+2+2 actualnamechecksPASS;3139266guard0/no stops/children/swap; no proofchange |
 | T81 | Build review site | done | 3 | notes/T81-P7-S7-R131-final-live-receipt-20261003.json | Public HTTP200, exactP7/S7/R131 pins,57cards/currentlabels and both actualPDFhashes PASS; earlier57-card browserwalk inherited |
 | T82 | Rebuild manuscript PDFs | done | 5 | notes/T82-P7-S7-PDF-build-20261003.tar.gz | All3 P7 builds0undefined; actualsourcehashesmatch; source/PDF assetgatePASS and publicPDFhashesPASS |
@@ -100,6 +100,7 @@ to Sol. Historical Pi/Qwen records remain preserved.
 | T92 | Verify Zenodo archive | done | 4 | notes/T92-supplementary-v0.2.1-Zenodo-bytecheck-20261003.json | All1172formal and29supplementary tagged files byte-identical toZenodo; zero missing/extras/mismatches |
 | T93 | Citation drafts | done | 4 | paperP7=760c68d2d79a8fd2c4b58f35f32dd90969591300 | ActualverifiedDOIs23127367/23127468 cited; GitHub+Overleaf pushes0 |
 | T94 | Final review emails | done | 1 | notes/T94-final-review-email-receipt-20261003.json | Both authorized short English emails sent; work mail service sent=true; Chris&AI signatures; Johanna/Max human reviews remain pending |
+| T97 | Palomar v3 citation and registration records | done | 1 | notes/T97-Palomar-v3-registration-and-citation-20261004.json | Exact registered source and immutable citation recorded; paper compiled and pushed to GitHub and Overleaf; frozen companion unchanged |
 
 ## Earlier execution history (resumed 2026-10-03 by owner)
 
@@ -414,7 +415,7 @@ The owner supplied the Palomar review finding. The descriptor now links its hist
 
 ## Campaign completed
 
-Formalv1.3.1 and supplementaryv0.2.1 are signed, published and byte-verified. Final P7/S7 citations, PDFs and live guided review are accepted; both authorized review emails were sent. Johanna/Max reviews and the owner’s R131 Palomar resubmission/registration remain explicit human follow-ups. No new mathematical replay is claimed by the provenance patch or final handover records.
+Formalv1.3.1 and supplementaryv0.2.1 are signed, published and byte-verified. Final P7/S7 citations, PDFs and live guided review are accepted; both authorized review emails were sent. Johanna/Max reviews remain explicit human follow-ups. Palomar v3 registration completed on 4 October 2026 at source 0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1, whose Lean/configuration files match R131. No new mathematical replay is claimed by the provenance patch or final handover records.
 
 
 ## T96 Supplementary reader refresh
@@ -432,3 +433,18 @@ passages remain accessible; 504 displayed Lean source excerpts are exact.
 Generator tests: 71 passed, one historical fixture skipped. Current review
 ledgers point to the new reader; Johanna and Max remain pending. No mathematical
 source, formal release, cluster job or email changed during this UI refresh.
+
+## T97 Palomar v3 registration and citation
+
+Complete: [immutable v3](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3) registered at
+`0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1` on 4 October 2026. The mechanical
+report and preserved comparator hashes match; Lean, nanoda and con-ron accepted
+the solution. Automated review identified no problems. All 587 Lean/configuration
+files match R131. This receipt covers the named headline theorem and exact
+source; human manuscript and full correspondence reviews remain pending.
+
+Paper commit `44e7189725ec52c20256babda76f24a669184b5b` updates the existing
+citation key to v3, is pushed to GitHub and Overleaf and compiles without
+unresolved references or citations. Current ledgers record registration complete.
+Supplementary v0.2.2 retains its frozen P7/S7/R131 inputs and PDFs. Receipt:
+`notes/T97-Palomar-v3-registration-and-citation-20261004.json`.

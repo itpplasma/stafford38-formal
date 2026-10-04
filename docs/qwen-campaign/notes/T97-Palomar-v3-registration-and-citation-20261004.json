@@ -1,0 +1,110 @@
+{
+  "registry_record": "https://data.palomar-registry.org/entries/PALOMAR-2026-09-05-000007-v3.json",
+  "human_entry": "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3",
+  "id": "PALOMAR-2026-09-05-000007",
+  "version": 3,
+  "status": "registered",
+  "registered_at": "2026-10-04T06:15:21Z",
+  "source": {
+    "repository": "itpplasma/stafford38-formal",
+    "commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+    "tree_url": "https://github.com/itpplasma/stafford38-formal/tree/0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+    "preservation_repository": "PalomarArchive/itpplasma--stafford38-formal--e4b6caf6307d",
+    "preservation_ref": "refs/tags/palomar/PALOMAR-2026-09-05-000007-v3/0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+    "preserved_comparator_url": "https://raw.githubusercontent.com/PalomarArchive/itpplasma--stafford38-formal--e4b6caf6307d/refs/tags/palomar/PALOMAR-2026-09-05-000007-v3/0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1/comparator.json"
+  },
+  "comparator": {
+    "path": "comparator.json",
+    "sha256_recorded": "0ad546c50756e315500f85346baaa6bf85fb0138394b6d31ef6bb47dcd549a76",
+    "sha256_preserved_bytes": "0ad546c50756e315500f85346baaa6bf85fb0138394b6d31ef6bb47dcd549a76",
+    "matches_report": true,
+    "content": "{\n  \"challenge_module\": \"Challenge\",\n  \"solution_module\": \"Solution\",\n  \"theorem_names\": [\"Stafford38Challenge.universalStatement\"],\n  \"permitted_axioms\": [\"propext\", \"Quot.sound\", \"Classical.choice\"]\n}\n"
+  },
+  "mechanical_verification": {
+    "status": "pass",
+    "stage": "complete",
+    "phase": "verification",
+    "checked_at": "2026-10-03T21:52:03Z",
+    "report_url": "https://data.palomar-registry.org/evidence/PALOMAR-2026-09-05-000007-v3/41d9e5a70b549eff7c515c77692623a9ff0a72f703654b5aab5ecdd5d16e24b5/mechanical-report.json",
+    "sha256": "a6a0b24cffb6336e9b3869523c3c5cc126d836a469df8b831b391d440dc83a05",
+    "sha256_recorded": "a6a0b24cffb6336e9b3869523c3c5cc126d836a469df8b831b391d440dc83a05",
+    "hash_matches": true,
+    "run_id": 37154552023,
+    "workflow_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37154552023",
+    "workflow_commit": "65f0154ed776cd26c224254aa57b379137f28b0d",
+    "source_commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+    "comparator": {
+      "challenge_module": "Challenge",
+      "definition_names": [],
+      "path": "comparator.json",
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "sha256": "0ad546c50756e315500f85346baaa6bf85fb0138394b6d31ef6bb47dcd549a76",
+      "solution_module": "Solution",
+      "theorem_names": [
+        "Stafford38Challenge.universalStatement"
+      ]
+    },
+    "kernels": [
+      {
+        "argv": [
+          "/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/nanoda_bin"
+        ],
+        "name": "nanoda"
+      },
+      {
+        "argv": [
+          "/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc3/bin/con-ron"
+        ],
+        "name": "con-ron"
+      }
+    ],
+    "kernel_acceptance_summary": "The archived comparator log reports con-ron accepted 53,716 declarations and accepted the solution; nanoda and Lean default kernel each accepted the solution.",
+    "errors": [],
+    "warnings": []
+  },
+  "review": {
+    "outcome": "neutral",
+    "reviewed_at": "2026-10-03T22:29:55Z",
+    "warnings": [],
+    "report_sha256": "b1aad651545b4d795c153505ef0bbcefe0b7bda94cf1550d9030721de18f511b"
+  },
+  "preservation": {
+    "archived_at": "2026-10-04T06:15:46Z",
+    "receipt_sha256": "4dba4cc79ea05932939fae2c11dee7e6598fbaf8d1fce0d5a33680fa82546eef",
+    "formal_source_repository": "itpplasma/stafford38-formal",
+    "source_commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+    "fork_repository": "PalomarArchive/itpplasma--stafford38-formal--e4b6caf6307d",
+    "ref": "refs/tags/palomar/PALOMAR-2026-09-05-000007-v3/0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1"
+  },
+  "scope_note": "Palomar v3 is registered against formal repository commit 0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1 and comparator.json. Do not describe it as a run against formal release commit f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff. The record\u2019s comparator targets Stafford38Challenge.universalStatement under the listed permitted axioms.",
+  "checked_utc": "2026-10-04",
+  "release_source_congruence": {
+    "formal_release_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
+    "registered_source_commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+    "checked_Lean_and_configuration_files": 587,
+    "changed_files": [
+      "CITATION.cff",
+      "docs/paper-lean-audit/manuscript/ai_review.tex",
+      "docs/paper-lean-audit/manuscript/human_readable_main.tex",
+      "docs/paper-lean-audit/manuscript/provenance.json",
+      "docs/paper-lean-audit/manuscript/references.bib",
+      "docs/qwen-campaign/notes/T91-v1.3.1-code-congruence-20261003.json",
+      "docs/qwen-campaign/notes/T92-formal-v1.3.1-Zenodo-bytecheck-20261003.json"
+    ],
+    "proof_or_configuration_changes": []
+  },
+  "paper_citation": {
+    "commit": "44e7189725ec52c20256babda76f24a669184b5b",
+    "file": "references.bib",
+    "sha256": "6f58084d3a27f00c5331684d1e03b7d7b5a9d478da0cddac5b849079e05572b1",
+    "key": "Stafford38Palomar2026",
+    "pdf_compile": "passed",
+    "final_unresolved_diagnostics": 0,
+    "rendered_version_and_url": "version 3",
+    "pdf_sha256": "fe733266fcdc7959c6018b7472dd7246e5f349df2fc53836b4c53d5af10ebe1d"
+  }
+}

@@ -15,7 +15,7 @@ Mac branches and receipts remain historical provenance only.
 
 Delivery checkpoint,3October2026: the faithful same-witness proof and all four solution assemblies are complete. The unchanged main/fixed-source challenges support the paper route and labeled generic/Laurent alternatives. Complete pinned Linux verification passed at C2 `12ae3cc49152672a48a96f13994314b65ae38197`: 4,475-job build, strict four-root dependency inspections,116 consumers with317 required reports,111 paper-linked names,37 endpoint reports, retained proof modules and all four local Palomar comparisons. The 399 public-name check passed separately. These completed checks are not repeated.
 
-Formal v1.3.1 `f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff`, DOI 10.5281/zenodo.23127367, corrects historical report routing and the stale isolated-replay status. All 1,172 archived files match its signed tag. All 654 protected proof/tool files match C2; the descriptor and package-version metadata exceptions are explicit. The owner resubmits R131 with comparator.json; no new online registration is claimed.
+Formal v1.3.1 `f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff`, DOI 10.5281/zenodo.23127367, corrects historical report routing and the stale isolated-replay status. All 1,172 archived files match its signed tag. All 654 protected proof/tool files match C2; the descriptor and package-version metadata exceptions are explicit. Palomar [immutable v3](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3) is registered at source `0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1` with comparator.json. Its 587 Lean/configuration files match R131; exact registration scope is recorded in T97.
 
 Current supplementary v0.2.2 `a114b06749fb01cf352f8b13ad3fda8267293ac6`, DOI 10.5281/zenodo.23132562, is published and all 16 archive files match. It freezes P7/S7/R131 and matching PDFs with complete Lean proof bodies, clickable source links and a minimal reader. The README opens the live page directly and gives offline download instructions. Its exact-public-pin rebuild, 71 generator tests and desktop/mobile/offline review checks passed. T96 records the reader refresh; historical v0.2.1 and its P6/S6 receipts retain their original scope.
 
@@ -1249,9 +1249,9 @@ are `notes/T92-formal-v1.3.1-Zenodo-bytecheck-20261003.json` and
 
 T84 human review remains pending: Johanna accepts/revises marked manuscript
 proposals on Overleaf; Max uses the guided review and exports findings JSON.
-T74 online Palomar remains the owner’s action: resubmit formal R131 with
-comparator.json after the provenance fix. Existing online acceptance applies
-only to its named older source; none is claimed for R131 yet.
+T74 online Palomar is complete: immutable v3 was registered on 4 October 2026
+at source `0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1` with comparator.json.
+Its Lean/configuration files match R131; T97 records the exact scope.
 
 ### T94 Final review emails — complete
 
@@ -1260,8 +1260,8 @@ Chris&AI. Johanna reviews the original visible proof and marked proposals
 on Overleaf; Max compares the entire Lean/paper proof using all 57 guided
 cards and exports findings JSON. The mail service confirmed sent=true for
 both messages; see `notes/T94-final-review-email-receipt-20261003.json`.
-Human review acceptance remains pending. The owner resubmits formal R131
-with comparator.json and performs online registration.
+Human review acceptance remains pending. Palomar v3 registration completed
+on 4 October 2026; see T97 for its exact source and verification scope.
 
 RESULT: campaign complete
 
@@ -1287,3 +1287,18 @@ mobile, clean/annotated formulas, navigation, persistence and export passed.
 The existing formal review URL preserves claim fragments when opening the new
 reader. Mathematical sources and formal v1.3.1 remain unchanged. Receipt:
 `notes/T96-supplementary-v0.2.2-reader-release-20261004.json`.
+
+### T97 Palomar v3 registration and paper citation — complete
+
+[Immutable Palomar v3](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3) registered on 4 October 2026.
+The archived report and preserved comparator hashes match the registry. Lean,
+nanoda and con-ron accepted the named solution; automated review identified no
+problems. Registered source `0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1` has the same
+587 Lean/configuration files as R131. The record covers its named headline
+theorem; Johanna’s and Max’s reviews remain pending.
+
+Paper bibliography commit `44e7189725ec52c20256babda76f24a669184b5b` is pushed
+to GitHub and Overleaf and compiles without unresolved references or citations.
+The stable citation key now names v3. Supplementary v0.2.2 retains its frozen
+P7/S7/R131 inputs and PDFs. No mathematical source or release changed. Receipt:
+`notes/T97-Palomar-v3-registration-and-citation-20261004.json`.

@@ -162,8 +162,7 @@
   },
   "owner_followups": [
     "Johanna manuscript acceptance",
-    "Max complete correspondence review",
-    "Chris Palomar registration after automated review"
+    "Max complete correspondence review"
   ],
   "email_handover": {
     "status": "sent",
@@ -174,19 +173,40 @@
     "receipt": "docs/qwen-campaign/notes/T94-final-review-email-receipt-20261003.json"
   },
   "palomar_online": {
-    "source": "Owner report on2026-10-03",
-    "formal_commit": "54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b",
+    "registration": "registered",
+    "record_id": "PALOMAR-2026-09-05-000007",
+    "version": 3,
+    "url": "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3",
+    "registry_record": "https://data.palomar-registry.org/entries/PALOMAR-2026-09-05-000007-v3.json",
+    "registered_at": "2026-10-04T06:15:21Z",
+    "formal_commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
     "configuration": "comparator.json",
-    "submitted": "2026-10-03T20:15:50Z",
-    "verification_run": "37150915082",
-    "mechanical_verification": "passed at2026-10-03T20:55:53Z",
-    "automated_review": "Owner-reported review identified historical-report routing and stale replay status; v1.3.1 fixes both.",
-    "registration": "pending",
-    "next_submission": {
-      "formal_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
-      "configuration": "comparator.json",
-      "status": "Owner will resubmit after v1.3.1 provenance fix; no new online acceptance claimed."
-    }
+    "configuration_sha256": "0ad546c50756e315500f85346baaa6bf85fb0138394b6d31ef6bb47dcd549a76",
+    "mechanical_verification": "passed",
+    "checked_at": "2026-10-03T21:52:03Z",
+    "verification_run": "37154552023",
+    "mechanical_report": "https://data.palomar-registry.org/evidence/PALOMAR-2026-09-05-000007-v3/41d9e5a70b549eff7c515c77692623a9ff0a72f703654b5aab5ecdd5d16e24b5/mechanical-report.json",
+    "mechanical_report_sha256": "a6a0b24cffb6336e9b3869523c3c5cc126d836a469df8b831b391d440dc83a05",
+    "accepted_kernels": [
+      "Lean",
+      "nanoda",
+      "con-ron"
+    ],
+    "automated_review": "No problems identified",
+    "review_outcome": "neutral",
+    "reviewed_at": "2026-10-03T22:29:55Z",
+    "review_report_sha256": "b1aad651545b4d795c153505ef0bbcefe0b7bda94cf1550d9030721de18f511b",
+    "preservation": {
+      "archived_at": "2026-10-04T06:15:46Z",
+      "receipt_sha256": "4dba4cc79ea05932939fae2c11dee7e6598fbaf8d1fce0d5a33680fa82546eef",
+      "formal_source_repository": "itpplasma/stafford38-formal",
+      "source_commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+      "fork_repository": "PalomarArchive/itpplasma--stafford38-formal--e4b6caf6307d",
+      "ref": "refs/tags/palomar/PALOMAR-2026-09-05-000007-v3/0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1"
+    },
+    "scope": "Stafford38Challenge.universalStatement through comparator.json; statement dependencies Mathlib only. Human manuscript and whole-proof correspondence reviews remain pending.",
+    "release_source_congruence": "All 587 Lean/configuration files match formal v1.3.1 R131; registration names the distinct source commit above.",
+    "receipt": "docs/qwen-campaign/notes/T97-Palomar-v3-registration-and-citation-20261004.json"
   },
   "release_history": {
     "formal_v1.3.0": {
@@ -227,5 +247,33 @@
     "receipt": "docs/qwen-campaign/notes/T96-supplementary-v0.2.2-reader-release-20261004.json",
     "formal_version": "1.3.1",
     "source_scope": "P7/S7/R131; mathematical sources unchanged"
+  },
+  "palomar_history": {
+    "submission_2026_10_03_v1_3_0": {
+      "source": "Owner report on2026-10-03",
+      "formal_commit": "54c4f0c902bcd840e44eeba80686ef3fa0e7dc2b",
+      "configuration": "comparator.json",
+      "submitted": "2026-10-03T20:15:50Z",
+      "verification_run": "37150915082",
+      "mechanical_verification": "passed at2026-10-03T20:55:53Z",
+      "automated_review": "Owner-reported review identified historical-report routing and stale replay status; v1.3.1 fixes both.",
+      "registration": "pending",
+      "next_submission": {
+        "formal_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
+        "configuration": "comparator.json",
+        "status": "Owner will resubmit after v1.3.1 provenance fix; no new online acceptance claimed."
+      }
+    }
+  },
+  "paper_citation_update": {
+    "commit": "44e7189725ec52c20256babda76f24a669184b5b",
+    "file": "references.bib",
+    "key": "Stafford38Palomar2026",
+    "palomar_version": 3,
+    "url": "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3",
+    "pdf_compile": "passed; no unresolved references or citations in final log",
+    "source_change": "Bibliography only; manuscript proof and marked proposals unchanged.",
+    "frozen_review_packet": "Supplementary v0.2.2 retains P7/S7/R131 and its matching PDFs.",
+    "receipt": "docs/qwen-campaign/notes/T97-Palomar-v3-registration-and-citation-20261004.json"
   }
 }

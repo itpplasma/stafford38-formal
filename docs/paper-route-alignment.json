@@ -111,7 +111,7 @@
   },
   "release": {
     "status": "Formal v1.3.1 and supplementary v0.2.2 published and archives byte-verified; reader and PDFs checked online; human reviews pending",
-    "palomar": "Owner-reported v1.3.0 mechanical verification passed; automated review identified historical receipt routing. v1.3.1 corrects that metadata; owner will resubmit R131/comparator.json. No new online acceptance claimed.",
+    "palomar": "Immutable Palomar v3 registered on 4 October 2026 at source 0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1 with comparator.json. Mechanical verification passed; automated review identified no problems. All 587 Lean/configuration files match formal v1.3.1 R131; registration is scoped to its named theorem and exact source.",
     "supplementary_release_commit": "a114b06749fb01cf352f8b13ad3fda8267293ac6",
     "supplementary_version_doi": "10.5281/zenodo.23132562",
     "supplementary_archive_receipt": "docs/qwen-campaign/notes/T96-supplementary-v0.2.2-reader-release-20261004.json",
@@ -122,7 +122,14 @@
     "formal_release_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
     "formal_version_doi": "10.5281/zenodo.23127367",
     "formal_archive_receipt": "docs/qwen-campaign/notes/T92-formal-v1.3.1-Zenodo-bytecheck-20261003.json",
-    "supplementary_version": "v0.2.2"
+    "supplementary_version": "v0.2.2",
+    "palomar_record": {
+      "id": "PALOMAR-2026-09-05-000007",
+      "version": 3,
+      "url": "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3",
+      "source_commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
+      "receipt": "docs/qwen-campaign/notes/T97-Palomar-v3-registration-and-citation-20261004.json"
+    }
   },
   "current_review_ledger": "docs/paper-lean-audit/review-status.json",
   "comparison_scope": "Relations classify the current selected review text in human_readable_main.tex, including AIadd/AIreplace proposal text. Historical author-baseline text remains recorded under historical_issues; marked corrections and route replacements remain subject to human author review. This map does not treat a proposed correction as accepted publication text."
