@@ -1,5 +1,7 @@
 # Stafford 3.8 formal proof
 
+[Read the paper and Lean proof side by side →](https://itpplasma.github.io/stafford38-supplementary/)
+
 For every characteristic-zero field `k`, rank `n`, and nonzero element `d` of the `n`th Weyl algebra `A`, the development proves that there are `F`, `R`, and `S` in `A` such that
 
 ```text
@@ -51,4 +53,4 @@ Formal [v1.3.1](https://github.com/itpplasma/stafford38-formal/releases/tag/v1.3
 
 Christopher Albert is the recorded human author and maintainer. AI systems assisted research, formalization, counterexamples, and review under human direction. The formal code and documentation use Apache-2.0; the manuscript and supplements use CC BY 4.0. See `LICENSE`, `NOTICE`, and `CITATION.cff`. Historical release records remain attached to their original sources.
 
-The corrected [supplementary v0.2.1](https://doi.org/10.5281/zenodo.23127468) includes the current review ledger, matching P6/S6/R131 PDFs and corrected comparison labels. All 29 tagged files match its archive. Final P7/S7 cites both releases; the [current ledger](docs/paper-lean-audit/review-status.json) records the complete review scope and pending human approvals.
+[Supplementary v0.2.2](https://doi.org/10.5281/zenodo.23132562) contains the full paper/Lean comparison and matching P7/S7 PDFs in a minimal reader. All 16 tagged files match its Zenodo archive. The [current ledger](docs/paper-lean-audit/review-status.json) records the source scope and pending human reviews.

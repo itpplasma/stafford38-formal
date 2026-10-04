@@ -1,0 +1,130 @@
+{
+  "status": "passed",
+  "release": {
+    "version": "v0.2.2",
+    "commit": "a114b06749fb01cf352f8b13ad3fda8267293ac6",
+    "doi": "10.5281/zenodo.23132562",
+    "signed_tag_verified": true
+  },
+  "sources": {
+    "paper": {
+      "repo": "itpplasma/stafford38-formal",
+      "commit": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
+      "file": "docs/paper-lean-audit/manuscript/human_readable_main.tex",
+      "origin_repo": "itpplasma/stafford38-paper",
+      "origin_commit": "760c68d2d79a8fd2c4b58f35f32dd90969591300",
+      "sha256": "f5699fde5961488d41fd631f67c55a4442b55001e2ba8776ebbf12bd568f5bb6"
+    },
+    "formal": {
+      "repo": "itpplasma/stafford38-formal",
+      "commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff"
+    },
+    "library": {
+      "repo": "itpplasma/algebraic-analysis",
+      "commit": "bbbbf3fc358ca8100b158cec4cf47f336ab70163"
+    },
+    "global": {
+      "repo": "itpplasma/global-stafford-formal",
+      "commit": "e676caed1253e5d09fc6699d5dc683febbabf7bb",
+      "file": "GlobalStafford/Assembly/Closure.lean"
+    },
+    "mathlib": {
+      "repo": "leanprover-community/mathlib4",
+      "commit": "c55e6e786f49471c72fbddbec5415808896aec1e"
+    }
+  },
+  "generator": {
+    "commit": "065db3e1fbc9001071422e9c66db36c0ef7da394",
+    "version": "0.1.4"
+  },
+  "source_audit": {
+    "cards": 57,
+    "mapped_references": 423,
+    "theorem_and_lemma_references": 261,
+    "unresolved": 0,
+    "truncated_proof_excerpts": 0,
+    "displayed_excerpt_mismatches": 0
+  },
+  "tests": {
+    "passed": 71,
+    "failed": 0,
+    "skipped": 1,
+    "skip_scope": "Historical fixture only; selected public-pinned manuscript checked by release build"
+  },
+  "browser": {
+    "status": "passed",
+    "cards": 57,
+    "source_excerpts": 504,
+    "source_files": 170,
+    "offline_requests": 0,
+    "javascript_errors": [],
+    "review_export": true,
+    "notes_reload": true,
+    "search_and_guided_navigation": true,
+    "clean_and_annotated_math": true,
+    "desktop": 1440,
+    "mobile": 390,
+    "mobile_overflow": false
+  },
+  "live": {
+    "status": "passed",
+    "reader": "https://itpplasma.github.io/stafford38-supplementary/",
+    "assets": {
+      "index.html": {
+        "url": "https://itpplasma.github.io/stafford38-supplementary/",
+        "bytes": 6171703,
+        "sha256": "7dcabdbe958900737ea5c6d01e549da93b5131eee4de5d60e7c2825e1182d3d7",
+        "status": 200
+      },
+      "human_readable_main.pdf": {
+        "url": "https://itpplasma.github.io/stafford38-supplementary/human_readable_main.pdf",
+        "bytes": 833508,
+        "sha256": "7f3b5f3b2c498a1452a19cc2f4877638a48598a07f482daf9a166b44e764a32c",
+        "status": 200
+      },
+      "lean_proof_details.pdf": {
+        "url": "https://itpplasma.github.io/stafford38-supplementary/lean_proof_details.pdf",
+        "bytes": 406579,
+        "sha256": "a043efcace06d6fee04f2cbc205a93a53f0999c01cb9e45e4399a435215bd8de",
+        "status": 200
+      },
+      "version.json": {
+        "url": "https://itpplasma.github.io/stafford38-supplementary/version.json",
+        "bytes": 220,
+        "sha256": "83ffaf9d1585885ffb4281f813e06ab437e15fa222aab49e95029e109eed5ebc",
+        "status": 200
+      },
+      "download_html": {
+        "url": "https://github.com/itpplasma/stafford38-supplementary/releases/download/v0.2.2/stafford38-review.html",
+        "bytes": 6171703,
+        "sha256": "7dcabdbe958900737ea5c6d01e549da93b5131eee4de5d60e7c2825e1182d3d7",
+        "status": 200
+      }
+    },
+    "zenodo": {
+      "doi": "10.5281/zenodo.23132562",
+      "version": "v0.2.2",
+      "reader_link": true,
+      "offline_instructions": true
+    },
+    "old_reader_redirect": {
+      "status": 200,
+      "preserves_fragment": true,
+      "pdf_links_retained": true
+    }
+  },
+  "archive": {
+    "tag": "v0.2.2",
+    "release_commit": "a114b06749fb01cf352f8b13ad3fda8267293ac6",
+    "archive_sha256": "c7f16440656e5c201836ba998380a99c76458953a7775f0628ff7a9d9638bec7",
+    "archive_prefix": "itpplasma-stafford38-supplementary-cab03c8/",
+    "expected_files": 16,
+    "archived_files": 16,
+    "missing": [],
+    "extras": [],
+    "mismatches": [],
+    "result": "passed",
+    "comparison": "Every archived non-directory member compared byte for byte with the exact tagged Git blob; no extraction."
+  },
+  "scope": "Presentation and supplementary packaging only. Formal v1.3.1 and P7/S7 mathematical sources unchanged. Human manuscript and correspondence reviews remain pending."
+}

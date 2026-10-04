@@ -423,3 +423,12 @@ In progress: simplify the reader and package without changing formal v1.3.1.
 All 423 mapped references resolve at their exact pins; 261 theorem/lemma
 excerpts contain full proof bodies. User-facing process prose is removed.
 Publication and browser checks remain pending. No cluster or Lean work starts.
+
+
+T96 complete: supplementary v0.2.2 published at `a114b06749fb01cf352f8b13ad3fda8267293ac6`,
+DOI10.5281/zenodo.23132562, all 16 archive members byte-verified. The public
+reader and five online/download assets match the checked local files. All 57
+passages remain accessible; 504 displayed Lean source excerpts are exact.
+Generator tests: 71 passed, one historical fixture skipped. Current review
+ledgers point to the new reader; Johanna and Max remain pending. No mathematical
+source, formal release, cluster job or email changed during this UI refresh.

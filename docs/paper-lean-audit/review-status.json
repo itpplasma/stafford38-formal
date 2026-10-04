@@ -152,12 +152,12 @@
       "correction": "Historical report routing and completed replay scope; proofs unchanged."
     },
     "supplementary": {
-      "version": "v0.2.1",
-      "doi": "10.5281/zenodo.23127468",
-      "files": 29,
+      "version": "v0.2.2",
+      "doi": "10.5281/zenodo.23132562",
+      "files": 16,
       "archive_status": "byte-verified",
-      "release_commit": "6517aa94ac04dfc2cae3b8b89636d631da1cded6",
-      "review_freeze": "P6/S6/R131. Final live P7/S7 adds the verified companion citation only. Corrected statement/route classifications are unchanged."
+      "release_commit": "a114b06749fb01cf352f8b13ad3fda8267293ac6",
+      "review_freeze": "P7/S7/R131; source passages and mathematical proofs unchanged; full Lean proof bodies displayed with a minimal reader."
     }
   },
   "owner_followups": [
@@ -200,20 +200,31 @@
       "files": 24,
       "archive_status": "byte-verified",
       "review_freeze": "P4/S4/R; current P5/S5 updates citations only, and live classification labels distinguish proposed corrections from historical originals."
+    },
+    "supplementary_v0.2.1": {
+      "version": "v0.2.1",
+      "doi": "10.5281/zenodo.23127468",
+      "files": 29,
+      "archive_status": "byte-verified",
+      "release_commit": "6517aa94ac04dfc2cae3b8b89636d631da1cded6",
+      "review_freeze": "P6/S6/R131. Final live P7/S7 adds the verified companion citation only. Corrected statement/route classifications are unchanged."
     }
   },
-  "frozen_supplementary_ledger": "docs/current-review.json at signed supplementaryv0.2.1; final handover/deposition receipt is external to the immutable18-member ESM bundle.",
+  "frozen_supplementary_ledger": "manifest.json at signed supplementary v0.2.2; current human review responsibilities remain pending.",
   "live_review": {
     "status": "passed",
-    "receipt": "docs/qwen-campaign/notes/T81-P7-S7-R131-final-live-receipt-20261003.json",
+    "receipt": "docs/qwen-campaign/notes/T96-supplementary-v0.2.2-reader-release-20261004.json",
+    "url": "https://itpplasma.github.io/stafford38-supplementary/",
     "paper": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
     "formal": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
     "guided_cards": 57,
-    "PDF_hashes": "Both HTTP PDFs match actual final P7 build"
+    "PDF_hashes": "Both HTTP PDFs match the P7 build",
+    "source_excerpts": 504
   },
   "reader_refresh": {
     "version": "0.2.2",
-    "status": "in-progress",
+    "status": "passed",
+    "receipt": "docs/qwen-campaign/notes/T96-supplementary-v0.2.2-reader-release-20261004.json",
     "formal_version": "1.3.1",
     "source_scope": "P7/S7/R131; mathematical sources unchanged"
   }

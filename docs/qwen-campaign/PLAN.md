@@ -1266,7 +1266,7 @@ with comparator.json and performs online registration.
 RESULT: campaign complete
 
 
-### T96 Supplementary reading surface — in progress
+### T96 Supplementary reading surface — complete
 
 The owner requests a minimal paper/Lean reading page with full corresponding
 proofs and visible source links, deletion of obsolete supplementary files,
@@ -1277,3 +1277,13 @@ Acceptance: all 57 passages and exact mapped Lean proof bodies accessible,
 desktop/mobile/offline reading and review export validated, clean package,
 GitHub Pages deployed, signed supplementary v0.2.2 published and Zenodo bytes
 checked. Keep the existing review URL useful; update current ledgers and links.
+
+
+T96 result: signed supplementary v0.2.2 at `a114b06749fb01cf352f8b13ad3fda8267293ac6`,
+DOI [10.5281/zenodo.23132562](https://doi.org/10.5281/zenodo.23132562).
+All 16 Zenodo files match the tag. All 423 mapped references resolve and 504
+displayed Lean excerpts match their linked source ranges. Offline, desktop,
+mobile, clean/annotated formulas, navigation, persistence and export passed.
+The existing formal review URL preserves claim fragments when opening the new
+reader. Mathematical sources and formal v1.3.1 remain unchanged. Receipt:
+`notes/T96-supplementary-v0.2.2-reader-release-20261004.json`.

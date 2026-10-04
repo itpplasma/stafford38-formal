@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "status": "formal-v1.3.1-and-supplementary-v0.2.1-published-and-archive-byte-verified; final-paper-P7-S7; human-correspondence-review-pending",
+  "status": "formal-v1.3.1-and-supplementary-v0.2.2-published-and-archive-byte-verified; paper-P7-S7; human-correspondence-review-pending",
   "source_checkpoint": {
     "base": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
     "patch_sha256": "893e0eb740c57c426ce679f58439c79e62f8f25add53a5d4e7d1f17deea5731e",
@@ -41,7 +41,7 @@
     "current_review_commit": "760c68d2d79a8fd2c4b58f35f32dd90969591300",
     "current_review_sha256": "f5699fde5961488d41fd631f67c55a4442b55001e2ba8776ebbf12bd568f5bb6",
     "public_snapshot_commit": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
-    "frozen_supplementary_snapshot": "P6 33138378368fdc9f7bcb50947ccc9889f40cac43 / S6 0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1; signedv0.2.1 6517aa94ac04dfc2cae3b8b89636d631da1cded6 DOI10.5281/zenodo.23127468"
+    "frozen_supplementary_snapshot": "P7 760c68d2d79a8fd2c4b58f35f32dd90969591300 / S7 9f6ca3241edcf88da42a3a000f25514d105e2f30; signed v0.2.2 a114b06749fb01cf352f8b13ad3fda8267293ac6 DOI 10.5281/zenodo.23132562"
   },
   "same_witness_route": {
     "status": "closure and original-prime modules, literal consumers, shared solution assemblies, full verifier, and four Palomar comparisons passed on Linux at frozen source 12ae3cc49152672a48a96f13994314b65ae38197",
@@ -110,19 +110,19 @@
     "Johanna": "Review the preserved visible proof and marked local mathematical proposals."
   },
   "release": {
-    "status": "Formalv1.3.1 and corrected supplementaryv0.2.1 published and archives byte-verified; final P7/S7 citations synchronized; human reviews pending",
+    "status": "Formal v1.3.1 and supplementary v0.2.2 published and archives byte-verified; reader and PDFs checked online; human reviews pending",
     "palomar": "Owner-reported v1.3.0 mechanical verification passed; automated review identified historical receipt routing. v1.3.1 corrects that metadata; owner will resubmit R131/comparator.json. No new online acceptance claimed.",
-    "supplementary_release_commit": "6517aa94ac04dfc2cae3b8b89636d631da1cded6",
-    "supplementary_version_doi": "10.5281/zenodo.23127468",
-    "supplementary_archive_receipt": "docs/qwen-campaign/notes/T92-supplementary-v0.2.1-Zenodo-bytecheck-20261003.json",
+    "supplementary_release_commit": "a114b06749fb01cf352f8b13ad3fda8267293ac6",
+    "supplementary_version_doi": "10.5281/zenodo.23132562",
+    "supplementary_archive_receipt": "docs/qwen-campaign/notes/T96-supplementary-v0.2.2-reader-release-20261004.json",
     "formal_candidate_version": "v1.3.1",
-    "supplementary_candidate_version": "v0.2.1",
+    "supplementary_candidate_version": "v0.2.2",
     "algebraic_analysis": "0.3.3; pinned revision bbbbf3fc358ca8100b158cec4cf47f336ab70163; DOI 10.5281/zenodo.23104842",
     "formal_version": "v1.3.1",
     "formal_release_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
     "formal_version_doi": "10.5281/zenodo.23127367",
     "formal_archive_receipt": "docs/qwen-campaign/notes/T92-formal-v1.3.1-Zenodo-bytecheck-20261003.json",
-    "supplementary_version": "v0.2.1"
+    "supplementary_version": "v0.2.2"
   },
   "current_review_ledger": "docs/paper-lean-audit/review-status.json",
   "comparison_scope": "Relations classify the current selected review text in human_readable_main.tex, including AIadd/AIreplace proposal text. Historical author-baseline text remains recorded under historical_issues; marked corrections and route replacements remain subject to human author review. This map does not treat a proposed correction as accepted publication text."
