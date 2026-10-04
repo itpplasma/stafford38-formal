@@ -415,3 +415,11 @@ The owner supplied the Palomar review finding. The descriptor now links its hist
 ## Campaign completed
 
 Formalv1.3.1 and supplementaryv0.2.1 are signed, published and byte-verified. Final P7/S7 citations, PDFs and live guided review are accepted; both authorized review emails were sent. Johanna/Max reviews and the owner’s R131 Palomar resubmission/registration remain explicit human follow-ups. No new mathematical replay is claimed by the provenance patch or final handover records.
+
+
+## T96 Supplementary reader refresh
+
+In progress: simplify the reader and package without changing formal v1.3.1.
+All 423 mapped references resolve at their exact pins; 261 theorem/lemma
+excerpts contain full proof bodies. User-facing process prose is removed.
+Publication and browser checks remain pending. No cluster or Lean work starts.

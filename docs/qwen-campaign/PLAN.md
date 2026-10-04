@@ -1264,3 +1264,16 @@ Human review acceptance remains pending. The owner resubmits formal R131
 with comparator.json and performs online registration.
 
 RESULT: campaign complete
+
+
+### T96 Supplementary reading surface — in progress
+
+The owner requests a minimal paper/Lean reading page with full corresponding
+proofs and visible source links, deletion of obsolete supplementary files,
+a short README and a new supplementary release. Formal v1.3.1 remains pinned.
+The controller integrates; Luna workers audit source/display alignment and
+implement disjoint renderer changes. No proof verifier or cluster work repeats.
+Acceptance: all 57 passages and exact mapped Lean proof bodies accessible,
+desktop/mobile/offline reading and review export validated, clean package,
+GitHub Pages deployed, signed supplementary v0.2.2 published and Zenodo bytes
+checked. Keep the existing review URL useful; update current ledgers and links.

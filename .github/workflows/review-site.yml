@@ -25,14 +25,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-          cache-dependency-path: tools/paper_lean_audit/package-lock.json
       - uses: actions/configure-pages@v5
-      - run: npm ci --prefix tools/paper_lean_audit
-      - run: python3 scripts/build-review-site.py
+      - name: Prepare reader link and PDFs
+        run: |
+          mkdir public-review
+          cp docs/paper-lean-audit/reader.html public-review/index.html
+          cp docs/paper-lean-audit/human_readable_main.pdf public-review/
+          cp docs/paper-lean-audit/lean_proof_details.pdf public-review/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public-review

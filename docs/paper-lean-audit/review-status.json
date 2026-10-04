@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-03",
-  "review_url": "https://itpplasma.github.io/stafford38-formal/",
+  "updated": "2026-10-04",
+  "review_url": "https://itpplasma.github.io/stafford38-supplementary/",
   "paper_source": {
     "repo": "itpplasma/stafford38-formal",
     "commit": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
@@ -210,5 +210,11 @@
     "formal": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
     "guided_cards": 57,
     "PDF_hashes": "Both HTTP PDFs match actual final P7 build"
+  },
+  "reader_refresh": {
+    "version": "0.2.2",
+    "status": "in-progress",
+    "formal_version": "1.3.1",
+    "source_scope": "P7/S7/R131; mathematical sources unchanged"
   }
 }
