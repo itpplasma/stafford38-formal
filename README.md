@@ -1,56 +1,97 @@
 # Stafford 3.8 formal proof
 
-[Read the paper and Lean proof side by side →](https://itpplasma.github.io/stafford38-supplementary/)
+A Lean 4 and Mathlib formalization of Stafford's Conjecture 3.8 for Weyl
+algebras (J. T. Stafford, *Module structure of Weyl algebras*, J. London
+Math. Soc. (2) 18 (1978), 429-442, p. 438).
 
-For every characteristic-zero field `k`, rank `n`, and nonzero element `d` of the `n`th Weyl algebra `A`, the development proves that there are `F`, `R`, and `S` in `A` such that
+Status: the formal proof is complete; human review of the correspondence
+between the manuscript and the Lean proof is still pending.
+
+## The theorem
+
+For every field `k` of characteristic zero, every rank `n >= 0` and every
+nonzero `d` in the `n`th Weyl algebra `A = Aₙ(k)`, there are `F, R, S ∈ A`
+with
 
 ```text
 1 = d R + F d S.
 ```
 
-The order is part of the result: `1` lies in the right ideal `dA + FdA`. At rank zero the algebra is the field. The fixed-source theorem chooses `F` as a linear Weyl coordinate raised to the intrinsic Bernstein degree of `d`.
+The factor order is part of the statement: `1` lies in the right ideal
+`dA + FdA`. (The printed conjecture omits `d ≠ 0`, which the surrounding text
+assumes.) At rank zero `A` is the field. The fixed-source strengthening takes
+`F = ℓ^N` for a linear Weyl coordinate `ℓ` and `N` the Bernstein degree of
+`d`.
 
-## Formal proof
+## What is formalized
 
-The terminal proof first changes symplectic coordinates so that `d` is monic in one momentum variable. It studies the quotient by `dA + x^N dA`, where `x` is the paired coordinate and `N` is the Bernstein degree. An Euler identity gives surjectivity of right multiplication by `x`. Filtered support estimates and Poisson involutivity constrain the characteristic variety; the coisotropic-exclusion argument yields the contradiction. Scalar descent and quotient triviality assemble the ordered certificate.
+- `Stafford38Challenge.universalStatement` (`Challenge.lean`, proved in
+  `Solution.lean`): the theorem above, stated with Mathlib-only definitions.
+- `Stafford38FixedSourceChallenge.universalFixedSourceStatement`
+  (`FixedSourceChallenge.lean`, proved in `FixedSourceSolution.lean`): the
+  fixed-source form with the intrinsic Bernstein degree.
+- `AlternativeSolution.lean` and `AlternativeFixedSourceSolution.lean`: the
+  same two statements proved along an alternative route.
+- Related results in `Stafford38/`: right Ore localization, formal adjoints,
+  differential operators on polynomial localizations, evolutionary identities,
+  torsion-module cyclicity, and the tangent-limit, asymptotic-conormal and
+  coisotropic-exclusion theorems used by the proof.
 
-`ChallengeDefinitions` owns the problem statements and the single-element certificate predicate. The separate `Solution` modules prove those statements and do not import challenge placeholders. The fixed-source comparison connects intrinsic word degree to formal Bernstein degree. Derived results include right Ore localization, formal adjoints, localized differential operators, evolutionary identities, and torsion-module cyclicity.
+The project contains no `axiom` declarations. The only two `sorry`s are the
+intentional placeholders in `Challenge.lean` and `FixedSourceChallenge.lean`,
+which state the theorems for independent comparison against the solutions.
+The verifier checks that the solution endpoints depend only on `propext`,
+`Classical.choice` and `Quot.sound`, including through the AlgebraicAnalysis
+dependency.
 
-## Verification and scope
+The proof normalizes `d` to be monic in one momentum variable, studies the
+quotient `A/(dA + x^N dA)`, and excludes nonempty characteristic support using
+filtered length estimates, Poisson involutivity (a formal Gabber argument) and
+coisotropic geometry. The [proof guide](docs/proof-guide.md) gives the steps.
 
-Verification receipts apply to the exact source revisions and configurations they name. The prior terminal-proof checkpoint is linked from the [route record](docs/paper-route-alignment.json); it is not a verification claim about every later source edit, and its job counts are omitted here.
+## Building and checking
 
-The v1.3.0 proof source at source commit `12ae3cc49152672a48a96f13994314b65ae38197` passed the complete pinned Linux verifier and all four Palomar comparator configurations. The run included a 4,475-job Lake build and strict dependency inspection of all four terminal roots with zero forbidden or unavailable dependencies. The T34, T35, T36, and T41 modules, literal trust-zero consumers, and shared main and alternative solution assemblies also passed with only the three permitted axioms. Receipts apply only to this source and its pinned configuration; they do not establish whole-paper proof correspondence.
+Requires [elan](https://github.com/leanprover/elan). `lean-toolchain` pins
+`leanprover/lean4:v4.35.0-rc3`; `lakefile.toml` pins Mathlib and
+[AlgebraicAnalysis](https://github.com/itpplasma/algebraic-analysis).
 
-Formal release [v1.3.0](https://github.com/itpplasma/stafford38-formal/releases/tag/v1.3.0) is archived at [10.5281/zenodo.23126868](https://doi.org/10.5281/zenodo.23126868); all 1,163 tagged files matched its Zenodo archive byte for byte. Supplementary release [v0.2.0](https://github.com/itpplasma/stafford38-supplementary/releases/tag/v0.2.0), commit `31aea05344c3fa35fb19a3ff35f7518d723e26ec`, is archived at [10.5281/zenodo.23127103](https://doi.org/10.5281/zenodo.23127103); all 24 tagged files matched. Their detailed receipts are [formal](docs/qwen-campaign/notes/T92-formal-v1.3.0-Zenodo-bytecheck-20261003.json) and [supplementary](docs/qwen-campaign/notes/T92-supplementary-v0.2.0-Zenodo-bytecheck-20261003.json).
+```sh
+lake exe cache get
+lake build
+scripts/verify.sh
+```
 
-The current selected comparison surface is `human_readable_main.tex` at paper P7 `760c68d2d79a8fd2c4b58f35f32dd90969591300`, public snapshot S7 `9f6ca3241edcf88da42a3a000f25514d105e2f30` (SHA-256 `f5699fde5961488d41fd631f67c55a4442b55001e2ba8776ebbf12bd568f5bb6`). Formal source R131 is `f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff`; its provenance correction changes no mathematics. The visible author proof and marked proposals are preserved. Main roots `Solution` and `FixedSourceSolution` follow the selected paper construction; `AlternativeSolution` and `AlternativeFixedSourceSolution` share the unchanged challenges as labeled variants. Johanna’s manuscript review and Max’s complete proof-correspondence review remain pending. Palomar v3 registration is complete.
+`lake build` builds `Stafford38`, `Solution` and `FixedSourceSolution`.
+`scripts/verify.sh` builds every module and all solution roots and runs the
+dependency, axiom and consumer checks. Comparator replay of the four
+challenge/solution pairs is described in [docs/building.md](docs/building.md).
 
-## Source roles
+## Documentation
 
-The formal repository owns Lean declarations and verification records. Overleaf is the manuscript editing authority; pinned paper revisions provide review provenance. The archive retains development history. The Palomar entry [PALOMAR-2026-09-05-000007, version 3](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3) certifies its named theorem and source only.
+- [Proof guide](docs/proof-guide.md): structure of the formal proof.
+- [Definition owners](docs/definition-owners.md): where shared objects are
+  defined.
+- [Paper-route map](docs/paper-route-alignment.json): manuscript claims linked
+  to Lean declarations, with recorded route differences.
+- [Building and verification](docs/building.md) and the
+  [verification record](docs/verification.md).
+- [Literature](docs/literature.md).
+- [Paper and Lean side by side](https://itpplasma.github.io/stafford38-supplementary/)
+  ([stafford38-supplementary](https://github.com/itpplasma/stafford38-supplementary)).
 
-See the [proof guide](docs/proof-guide.md), [definition-owner registry](docs/definition-owners.md), [proof-source provenance](docs/proof-source-provenance.md), and [paper-route status](docs/paper-route-alignment.json) for proof structure, canonical owners, review inputs, and current scope. The [literature index](docs/literature.md) identifies sources used by the development.
+The theorem is registered in the Palomar registry as
+[PALOMAR-2026-09-05-000007](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3).
 
-## Reproducing the checkpoint
+## Related projects
 
-Use the source revision and toolchain named in the verification receipt. From that checkout:
+- [algebraic-analysis](https://github.com/itpplasma/algebraic-analysis):
+  Lean library this proof depends on.
+- [symplectic-stafford-formal](https://github.com/itpplasma/symplectic-stafford-formal):
+  generalization to simple filtered algebras.
 
-    lake exe cache get
-    lake build
-    scripts/verify.sh
-    scripts/bootstrap-palomar-tools.sh
-    scripts/verify-palomar.sh comparator.json
-    scripts/verify-palomar.sh comparator-fixed-source.json
-    scripts/verify-palomar.sh comparator-alternative.json
-    scripts/verify-palomar.sh comparator-alternative-fixed-source.json
+## Citing and license
 
-Historical terminal receipts used Lean `leanprover/lean4:v4.33.0`, Mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`, and AlgebraicAnalysis `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`. The v1.3.0 proof source pins Lean 4.35.0-rc3, Mathlib `c55e6e786f49471c72fbddbec5415808896aec1e`, and AlgebraicAnalysis `bbbbf3fc358ca8100b158cec4cf47f336ab70163`. The final candidate receipt bundle is recorded in [verification.md](docs/verification.md); each result applies only to its recorded source and configuration.
-
-Formal [v1.3.1](https://github.com/itpplasma/stafford38-formal/releases/tag/v1.3.1), DOI [10.5281/zenodo.23127367](https://doi.org/10.5281/zenodo.23127367), matches all 1,172 files in its Zenodo archive and corrects verification provenance: the historical cbb2396 fields now link to the matching archived report, and the later completed replays have separate source scope. The proof, statements and dependency pins are unchanged; see [release notes](docs/releases/v1.3.1.md). Palomar v3 registered source `0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1` on 4 October 2026. Its 587 Lean/configuration files match v1.3.1; the [registration and citation receipt](docs/qwen-campaign/notes/T97-Palomar-v3-registration-and-citation-20261004.json) records the exact scope.
-
-## Ownership and licenses
-
-Christopher Albert is the recorded human author and maintainer. AI systems assisted research, formalization, counterexamples, and review under human direction. The formal code and documentation use Apache-2.0; the manuscript and supplements use CC BY 4.0. See `LICENSE`, `NOTICE`, and `CITATION.cff`. Historical release records remain attached to their original sources.
-
-[Supplementary v0.2.2](https://doi.org/10.5281/zenodo.23132562) contains the full paper/Lean comparison and matching P7/S7 PDFs in a minimal reader. All 16 tagged files match its Zenodo archive. The [current ledger](docs/paper-lean-audit/review-status.json) records the source scope and pending human reviews.
+Release metadata and DOIs are in [CITATION.cff](CITATION.cff). Christopher
+Albert is the author and maintainer; AI systems assisted with research,
+formalization and review under his direction. Code and documentation are
+licensed under Apache-2.0 ([LICENSE](LICENSE), [NOTICE](NOTICE)).
