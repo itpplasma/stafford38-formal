@@ -1,6 +1,7 @@
 module
 
-public import Stafford38.Geometry.DivisorialVisibleFrameStageAssembly
+public import Stafford38.Geometry.DivisorialVisibleFrameCore
+public import Stafford38.Geometry.DivisorialVisibleFrameStage4
 
 @[expose] public section
 
@@ -95,43 +96,69 @@ theorem lemma_5_9 {k F : Type*} [Field k] [Field F] [Algebra k F] {n : ℕ}
   · rw [inv_div] at h
     exact (hjmax (show a ∈ S from ha) ⟨ha, h⟩).2
 
-/-- **Lemma 5.10.** For `q_i = x̄_i / x̄_j` from Lemma 5.9 there is a discrete
-valuation ring `K ⊆ V ⊊ F` (with `Frac V = F`, automatic for a valuation subring)
-such that (a) `q_i ∈ V`, `x̄_1 ∈ 𝔪_V` and `R ⊄ V`; (b) the residue field `κ` is
-algebraic over `K(res q_0, …, res q_n)`; (c) `Ω_{V/K}` is finitely generated.
+/-- The discrete valuation ring of Lemma 5.10 together with the construction
+`V = A_{𝔭_D}` of its proof: `A` is the integral closure in `F` of
+`C_0 = K[q_0, …, q_n, x̄_1]` and `𝔭_D` is a height-one prime of `A` containing
+`x̄_1`.  The fields `isDVR`, `q_mem`, `x_mem_p`, `residue_algebraic` and
+`kaehler_finite` are the conclusions (a)–(c) of the lemma; `R ⊄ V` is
+`Lemma510Place.not_R_le`. -/
+structure Lemma510Place (k : Type u) {F : Type u} [Field k] [Field F] [Algebra k F] {n : ℕ}
+    (x : Fin n → F) (i : Fin n) (j : Fin (n + 1)) where
+  A : Subalgebra k F
+  [finiteType : Algebra.FiniteType k A]
+  [fractionRing : IsFractionRing A F]
+  p : Ideal A
+  [isPrime : p.IsPrime]
+  place : ∀ z : F, z ∈ (placeSubalgebra A p).toSubring ∨
+    z⁻¹ ∈ (placeSubalgebra A p).toSubring
+  isDVR : IsDiscreteValuationRing (placeValuationSubring A p place).toSubring
+  q_mem : ∀ a, homogeneousCoordinates x a / homogeneousCoordinates x j ∈ A
+  x_mem : x i ∈ A
+  x_mem_p : (⟨x i, x_mem⟩ : A) ∈ p
+  residue_algebraic :
+    letI : Algebra k (placeValuationSubring A p place).toSubring :=
+      ((algebraMap k F).codRestrict (placeValuationSubring A p place).toSubring
+        (fun c ↦ ofField_mem_algebraMap_v A p place (algebraMap k A c))).toAlgebra
+    Algebra.IsAlgebraic
+      (IntermediateField.adjoin k
+        (Set.range fun a ↦ residue (placeValuationSubring A p place).toSubring
+          ⟨homogeneousCoordinates x a / homogeneousCoordinates x j,
+            ofField_mem_algebraMap_v A p place ⟨_, q_mem a⟩⟩) :
+        IntermediateField k (ResidueField (placeValuationSubring A p place).toSubring))
+      (ResidueField (placeValuationSubring A p place).toSubring)
+  kaehler_finite :
+    letI : Algebra k (placeValuationSubring A p place).toSubring :=
+      ((algebraMap k F).codRestrict (placeValuationSubring A p place).toSubring
+        (fun c ↦ ofField_mem_algebraMap_v A p place (algebraMap k A c))).toAlgebra
+    Module.Finite (placeValuationSubring A p place).toSubring
+      (Ω[(placeValuationSubring A p place).toSubring⁄k])
 
-The hypothesis `hunit` is `1 = ḡ x̄_1` with `ḡ ∈ R = K[x̄_1, …, x̄_n]`, which the
-paper derives from `Y ∩ H = ∅` by the Nullstellensatz. -/
-theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F] {n : ℕ}
-    (x : Fin n → F) (i : Fin n)
+attribute [instance] Lemma510Place.finiteType Lemma510Place.fractionRing Lemma510Place.isPrime
+
+/-- The discrete valuation ring `V` of Lemma 5.10. -/
+abbrev Lemma510Place.V {k F : Type u} [Field k] [Field F] [Algebra k F] {n : ℕ}
+    {x : Fin n → F} {i : Fin n} {j : Fin (n + 1)} (L : Lemma510Place k x i j) :
+    ValuationSubring F :=
+  placeValuationSubring L.A L.p L.place
+
+/-- **Lemma 5.10**, with the construction of its proof.  For `q_i = x̄_i / x̄_j`
+from Lemma 5.9 there is a discrete valuation ring `K ⊆ V ⊆ F` with
+`q_i ∈ V`, `x̄_1 ∈ 𝔪_V`, `κ` algebraic over `K(res q_0, …, res q_n)` and
+`Ω_{V/K}` finitely generated. -/
+theorem lemma_5_10_place {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
+    {n : ℕ} (x : Fin n → F) (i : Fin n)
     (hgen : IntermediateField.adjoin k (Set.range x) = ⊤)
-    (hunit : ∃ g ∈ Algebra.adjoin k (Set.range x), x i * g = 1)
+    (htrans : Transcendental k (x i))
     (W : ValuationSubring F) (j : Fin (n + 1))
     (hkW : ∀ c : k, algebraMap k F c ∈ W)
     (hxW : ∃ hx : x i ∈ W, (⟨x i, hx⟩ : W.toSubring) ∈ maximalIdeal W.toSubring)
     (hj : homogeneousCoordinates x j ≠ 0)
     (hqW : ∀ a, homogeneousCoordinates x a / homogeneousCoordinates x j ∈ W) :
-    ∃ (V : ValuationSubring F) (hkV : ∀ c : k, algebraMap k F c ∈ V.toSubring)
-      (hqV : ∀ a, homogeneousCoordinates x a / homogeneousCoordinates x j ∈ V.toSubring),
-      letI : Algebra k V.toSubring := ((algebraMap k F).codRestrict V.toSubring hkV).toAlgebra
-      IsDiscreteValuationRing V.toSubring ∧
-      ((∃ hx : x i ∈ V.toSubring, (⟨x i, hx⟩ : V.toSubring) ∈ maximalIdeal V.toSubring) ∧
-        ¬ (Algebra.adjoin k (Set.range x)).toSubring ≤ V.toSubring) ∧
-      Algebra.IsAlgebraic
-        (IntermediateField.adjoin k
-          (Set.range fun a ↦ residue V.toSubring
-            ⟨homogeneousCoordinates x a / homogeneousCoordinates x j, hqV a⟩) :
-          IntermediateField k (ResidueField V.toSubring))
-        (ResidueField V.toSubring) ∧
-      Module.Finite V.toSubring (Ω[V.toSubring⁄k]) := by
+    Nonempty (Lemma510Place k x i j) := by
   classical
   let Y := homogeneousCoordinates x
   obtain ⟨hxiW, hxmW⟩ := hxW
-  obtain ⟨g, hgR, hxg⟩ := hunit
-  have hy0 : x i ≠ 0 := left_ne_zero_of_mul_eq_one hxg
-  have hinvR : (x i)⁻¹ ∈ Algebra.adjoin k (Set.range x) := by
-    rw [← eq_inv_of_mul_eq_one_right hxg]
-    exact hgR
+  have hy0 : x i ≠ 0 := fun h ↦ htrans (h ▸ isAlgebraic_zero)
   have hxiInvW : (x i)⁻¹ ∉ W := by
     intro h
     rw [mem_maximalIdeal, mem_nonunits_iff] at hxmW
@@ -257,15 +284,8 @@ theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
   letI : IsScalarTower k V.toSubring F := IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
   have hxV : x i ∈ V.toSubring := hAV xA
   have hxm : (⟨x i, hxV⟩ : V.toSubring) ∈ maximalIdeal V.toSubring := (hpV xA).2 hxp
-  refine ⟨V, hkV, hqV, hVdvr, ⟨⟨hxV, hxm⟩, ?_⟩, ?_, ?_⟩
-  · -- `x̄_1 ∈ R^×`, so `R ⊆ V` would make `x̄_1` a unit of `V`.
-    intro hRV
-    have hinvV : (x i)⁻¹ ∈ V.toSubring := hRV hinvR
-    rw [mem_maximalIdeal, mem_nonunits_iff] at hxm
-    apply hxm
-    refine IsUnit.of_mul_eq_one (⟨(x i)⁻¹, hinvV⟩ : V.toSubring) ?_
-    apply Subtype.ext
-    simp [hy0]
+  have hqA : ∀ a, Y a / Y j ∈ A := fun a ↦ by simpa [s, div_eq_mul_inv] using hnormA a
+  refine ⟨Lemma510Place.mk A p hplace hVdvr hqA hyA hxp ?_ ?_⟩
   · -- (b) `A/𝔭_D` is integral over the image of `C_0`, whose residues are `res q_i`.
     let c' : (Fin (n + 1) ⊕ Unit) → F := fun a ↦
       match a with
@@ -285,7 +305,8 @@ theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
       · rintro (⟨b, rfl⟩ | hz)
         · exact ⟨Sum.inl b, rfl⟩
         · exact ⟨Sum.inr (), (Set.mem_singleton_iff.mp hz).symm⟩
-    have hBig := stage4_of_verified A p V hAV hpV hsurj c' hc'A (fun a ↦ by
+    have hBig := Stafford38.Geometry.DivisorialVisibleFrameStage4.stage4_residueField_isAlgebraic_of_isIntegral
+      A p V hAV hpV hsurj c' hc'A (fun a ↦ by
       rw [hset]
       exact haint a)
     have hyres : residue V.toSubring (⟨x i, hxV⟩ : V.toSubring) = 0 :=
@@ -319,7 +340,67 @@ theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
   · -- (c) `Ω_{A/K}` is finite and localizes to `Ω_{V/K}` (Hartshorne, Prop. II.8.2A).
     exact stage7_kaehler_finite_ofField A p hkV
 
+/-- `R ⊄ V` in Lemma 5.10(a): `x̄_1 ∈ R^×` since `1 = ḡ x̄_1` with `ḡ ∈ R`, while
+`x̄_1 ∈ 𝔪_V`.  The paper derives `1 = ḡ x̄_1` from `Y ∩ H = ∅` by the
+Nullstellensatz. -/
+theorem Lemma510Place.not_R_le {k F : Type u} [Field k] [Field F] [Algebra k F] {n : ℕ}
+    {x : Fin n → F} {i : Fin n} {j : Fin (n + 1)} (L : Lemma510Place k x i j)
+    (hunit : ∃ g ∈ Algebra.adjoin k (Set.range x), x i * g = 1) :
+    ¬ (Algebra.adjoin k (Set.range x)).toSubring ≤ L.V.toSubring := by
+  obtain ⟨g, hgR, hxg⟩ := hunit
+  have hy0 : x i ≠ 0 := left_ne_zero_of_mul_eq_one hxg
+  have hinvR : (x i)⁻¹ ∈ Algebra.adjoin k (Set.range x) := by
+    rw [← eq_inv_of_mul_eq_one_right hxg]
+    exact hgR
+  intro hRV
+  have hxV : x i ∈ L.V.toSubring := ofField_mem_algebraMap_v L.A L.p L.place ⟨_, L.x_mem⟩
+  have hxm : (⟨x i, hxV⟩ : L.V.toSubring) ∈ maximalIdeal L.V.toSubring :=
+    (ofField_mem_maximalIdeal_iff_v L.A L.p L.place ⟨_, L.x_mem⟩).2 L.x_mem_p
+  rw [mem_maximalIdeal, mem_nonunits_iff] at hxm
+  apply hxm
+  refine IsUnit.of_mul_eq_one (⟨(x i)⁻¹, hRV hinvR⟩ : L.V.toSubring) ?_
+  apply Subtype.ext
+  simp [hy0]
+
+/-- **Lemma 5.10.** For `q_i = x̄_i / x̄_j` from Lemma 5.9 there is a discrete
+valuation ring `K ⊆ V ⊊ F` (with `Frac V = F`, automatic for a valuation subring)
+such that (a) `q_i ∈ V`, `x̄_1 ∈ 𝔪_V` and `R ⊄ V`; (b) the residue field `κ` is
+algebraic over `K(res q_0, …, res q_n)`; (c) `Ω_{V/K}` is finitely generated.
+
+The hypothesis `hunit` is `1 = ḡ x̄_1` with `ḡ ∈ R = K[x̄_1, …, x̄_n]`, which the
+paper derives from `Y ∩ H = ∅` by the Nullstellensatz. -/
+theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F] {n : ℕ}
+    (x : Fin n → F) (i : Fin n)
+    (hgen : IntermediateField.adjoin k (Set.range x) = ⊤)
+    (htrans : Transcendental k (x i))
+    (hunit : ∃ g ∈ Algebra.adjoin k (Set.range x), x i * g = 1)
+    (W : ValuationSubring F) (j : Fin (n + 1))
+    (hkW : ∀ c : k, algebraMap k F c ∈ W)
+    (hxW : ∃ hx : x i ∈ W, (⟨x i, hx⟩ : W.toSubring) ∈ maximalIdeal W.toSubring)
+    (hj : homogeneousCoordinates x j ≠ 0)
+    (hqW : ∀ a, homogeneousCoordinates x a / homogeneousCoordinates x j ∈ W) :
+    ∃ (V : ValuationSubring F) (hkV : ∀ c : k, algebraMap k F c ∈ V.toSubring)
+      (hqV : ∀ a, homogeneousCoordinates x a / homogeneousCoordinates x j ∈ V.toSubring),
+      letI : Algebra k V.toSubring := ((algebraMap k F).codRestrict V.toSubring hkV).toAlgebra
+      IsDiscreteValuationRing V.toSubring ∧
+      ((∃ hx : x i ∈ V.toSubring, (⟨x i, hx⟩ : V.toSubring) ∈ maximalIdeal V.toSubring) ∧
+        ¬ (Algebra.adjoin k (Set.range x)).toSubring ≤ V.toSubring) ∧
+      Algebra.IsAlgebraic
+        (IntermediateField.adjoin k
+          (Set.range fun a ↦ residue V.toSubring
+            ⟨homogeneousCoordinates x a / homogeneousCoordinates x j, hqV a⟩) :
+          IntermediateField k (ResidueField V.toSubring))
+        (ResidueField V.toSubring) ∧
+      Module.Finite V.toSubring (Ω[V.toSubring⁄k]) := by
+  obtain ⟨L⟩ := lemma_5_10_place x i hgen htrans W j hkW hxW hj hqW
+  have hAV : ∀ a : L.A, (a : F) ∈ L.V.toSubring :=
+    fun a ↦ ofField_mem_algebraMap_v L.A L.p L.place a
+  exact ⟨L.V, fun c ↦ hAV (algebraMap k L.A c), fun a ↦ hAV ⟨_, L.q_mem a⟩, L.isDVR,
+    ⟨⟨hAV ⟨_, L.x_mem⟩, (ofField_mem_maximalIdeal_iff_v L.A L.p L.place _).2 L.x_mem_p⟩,
+      L.not_R_le hunit⟩, L.residue_algebraic, L.kaehler_finite⟩
+
 #print axioms lemma_5_9
+#print axioms lemma_5_10_place
 #print axioms lemma_5_10
 
 end
