@@ -10,6 +10,8 @@ Earlier proof acceptance: The v1.3.0 source `12ae3cc49152672a48a96f13994314b65ae
 
 The repository has historical verified checkpoints for the unchanged main Stafford 3.8 challenge and documented corollaries. The v1.3.0 source rewires the terminal asymptotic-conormal step through same-witness closure and the original-prime route; the generic/Laurent route remains a separately checked alternative. Full correspondence with Johanna’s preserved geometric argument remains subject to human review.
 
+Section 5.2 of the frozen paper has one Lean declaration per statement in `Stafford38/Paper/Section5.lean`: Lemmas 5.9–5.13 with the paper's hypotheses and conclusions, and Theorem 5.7 along the paper's generic/Laurent route. Two further theorems show that the valuation ring and Laurent column of that proof satisfy Lemmas 5.11–5.13.
+
 The candidate’s same-witness closure and original-prime modules, literal consumers, chart, ground-point, étale, column, and tangent components passed their scoped checks. The shared main and alternative solution assemblies and complete repository verifier also passed on Linux. Whole-paper correspondence remains a separate pending human review.
 
 The affine-fibre closure and original-prime wrapper passed their module and literal-consumer checks. The successful final C2 run verified frozen public source `12ae3cc49152672a48a96f13994314b65ae38197`; the earlier failed attempts remain preserved in the [campaign ledger](docs/qwen-campaign/STATE.md) and are not counted as successes.
