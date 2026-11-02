@@ -1,5 +1,7 @@
 # Stafford 3.8 formal proof
 
+> **Human review (recorded 2 November 2026):** Johanna Moser has reviewed the mathematical prose and the marked proposals of the manuscript, and Maximilian Philipp has reviewed the paper-to-Lean correspondence (as reported by Christopher Albert). Statements below that call these reviews pending are superseded; the review ledgers record the earlier state.
+
 A Lean 4 and Mathlib formalization of Stafford's Conjecture 3.8 for Weyl
 algebras (J. T. Stafford, *Module structure of Weyl algebras*, J. London
 Math. Soc. (2) 18 (1978), 429-442, p. 438).
