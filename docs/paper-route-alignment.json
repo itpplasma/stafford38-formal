@@ -102,19 +102,22 @@
     "verification_receipt": "docs/verification-results.json"
   },
   "section_5_paper_statements": {
-    "status": "Each statement of Section 5.2 of the frozen paper (commit 0dd6189) has a Lean declaration with the paper's hypotheses and conclusion; all use only propext, Classical.choice and Quot.sound.",
-    "module": "Stafford38/Paper/Section5.lean",
+    "status": "Each statement of Section 5.2 of the frozen paper (commit 0dd6189) has a Lean declaration with the paper's hypotheses and conclusion, and Theorem 5.7(i) is proved paragraph by paragraph from them; all use only propext, Classical.choice and Quot.sound.",
+    "module": "Stafford38/Paper/Section5.lean (aggregator); Section5/Place.lean, ResidueBasis.lean, TangentCone.lean, GenericTangentRank.lean (lemmas); Section5/Steps.lean (paragraphs between the lemmas); Section5/Proof.lean (Theorem 5.7(i))",
     "theorem_5_7": {
       "i": "Stafford38.Paper.Section5.theorem_5_7_i",
       "ii": "Stafford38.Paper.Section5.theorem_5_7_ii",
-      "route": "Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure (generic point and Laurent residue, as in the paper). The terminal theorem keeps the same-witness route of Stafford38.Geometry.GeneralAsymptoticConormal; both prove the same statement."
+      "proof": "Stafford38.Paper.Section5.theorem_5_7_i_paper",
+      "route": "theorem_5_7_i_paper follows the printed proof: algebraic case; the discrete valuation ring of Lemmas 5.9-5.10 (Stafford38.Geometry.LaneC.divisorialVisibleFrameExistence calls lemma_5_9 and lemma_5_10_place); step_orders; step_generic_point; Lemma 5.11 (witness_lemma_5_11); step_dual_derivations; step_lambda_tau; step_M_full_rank; Lemma 5.12(a) bound (witness_lemma_5_12_5_13); step_M_spans_cone (lemma_5_12_b, lemma_5_12_a_cone); step_lift_ell; step_ell_conormal (lemma_5_13); step_polynomial_limit. The terminal theorem keeps the same-witness route of Stafford38.Geometry.GeneralAsymptoticConormal; both prove the same statement and both build their place with lemma_5_9 and lemma_5_10_place."
     },
     "lemmas": {
       "5.9": [
         "Stafford38.Paper.Section5.lemma_5_9"
       ],
       "5.10": [
-        "Stafford38.Paper.Section5.lemma_5_10"
+        "Stafford38.Paper.Section5.lemma_5_10",
+        "Stafford38.Paper.Section5.lemma_5_10_place",
+        "Stafford38.Paper.Section5.Lemma510Place.not_R_le"
       ],
       "5.11": [
         "Stafford38.Paper.Section5.lemma_5_11",
@@ -135,7 +138,18 @@
         "Stafford38.Paper.Section5.witness_lemma_5_12_5_13"
       ]
     },
-    "witness_scope": "witness_lemma_5_11 and witness_lemma_5_12_5_13 prove the lemma conclusions for the discrete valuation ring and Laurent column of the formal proof of Theorem 5.7. Lemmas 5.9 and 5.10 are proved by the same stage lemmas (Stafford38.Geometry.LaneC) that build that ring; the formal proof does not call lemma_5_9 or lemma_5_10 themselves. The steps between the lemmas (\u03bb, \u03c4, M(t), the lift of \u2113) are in Stafford38.Geometry.PaperActualDivisorTangent.exists_regularizedOneRowConormalData_of_actual_columns."
+    "witness_scope": "The place of the formal proof is built by lemma_5_9 and lemma_5_10_place, followed by a coefficient field E over which the residue field is finite (the input to the coefficient field of the completion, Matsumura Thm. 28.3). Differences from the printed text: the unit minor and the lift of u are stated through a left inverse of M; the bound m <= d'+1 of Lemma 5.12(a) is proved through the Kaehler rank of the component field (component_field_rank_of_witness) rather than the second fundamental sequence and Nakayama.",
+    "paragraphs": {
+      "orders a, b": "Stafford38.Paper.Section5.step_orders",
+      "generic point y": "Stafford38.Paper.Section5.step_generic_point",
+      "dual derivations and Z": "Stafford38.Paper.Section5.step_dual_derivations",
+      "lambda, w, tau": "Stafford38.Paper.Section5.step_lambda_tau",
+      "M(0) full column rank": "Stafford38.Paper.Section5.step_M_full_rank",
+      "columns of M span C": "Stafford38.Paper.Section5.step_M_spans_cone",
+      "lift of u": "Stafford38.Paper.Section5.step_lift_ell",
+      "ell annihilates C": "Stafford38.Paper.Section5.step_ell_conormal",
+      "final paragraph": "Stafford38.Paper.Section5.step_polynomial_limit"
+    }
   },
   "canonical_definition_registry": {
     "path": "docs/definition-owners.md",
