@@ -6,8 +6,9 @@ A Lean 4 and Mathlib formalization of Stafford's Conjecture 3.8 for Weyl
 algebras (J. T. Stafford, *Module structure of Weyl algebras*, J. London
 Math. Soc. (2) 18 (1978), 429-442, p. 438).
 
-Status: the formal proof is complete; human review of the correspondence
-between the manuscript and the Lean proof is still pending.
+Status: the formal proof is complete; the human reviews of the manuscript
+(Johanna Moser) and of its correspondence with the Lean proof (Maximilian
+Philipp) are complete.
 
 ## The theorem
 
