@@ -101,6 +101,42 @@
     ],
     "verification_receipt": "docs/verification-results.json"
   },
+  "section_5_paper_statements": {
+    "status": "Each statement of Section 5.2 of the frozen paper (commit 0dd6189) has a Lean declaration with the paper's hypotheses and conclusion; all use only propext, Classical.choice and Quot.sound.",
+    "module": "Stafford38/Paper/Section5.lean",
+    "theorem_5_7": {
+      "i": "Stafford38.Paper.Section5.theorem_5_7_i",
+      "ii": "Stafford38.Paper.Section5.theorem_5_7_ii",
+      "route": "Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure (generic point and Laurent residue, as in the paper). The terminal theorem keeps the same-witness route of Stafford38.Geometry.GeneralAsymptoticConormal; both prove the same statement."
+    },
+    "lemmas": {
+      "5.9": [
+        "Stafford38.Paper.Section5.lemma_5_9"
+      ],
+      "5.10": [
+        "Stafford38.Paper.Section5.lemma_5_10"
+      ],
+      "5.11": [
+        "Stafford38.Paper.Section5.lemma_5_11",
+        "Stafford38.Paper.Section5.witness_lemma_5_11"
+      ],
+      "5.12(a)": [
+        "Stafford38.Paper.Section5.generic_tangent_finrank_eq_component_kaehler_finrank",
+        "Stafford38.Paper.Section5.component_kaehler_finrank_eq_trdeg",
+        "Stafford38.Paper.Section5.lemma_5_12_a_cone",
+        "Stafford38.Paper.Section5.witness_lemma_5_12_5_13"
+      ],
+      "5.12(b)": [
+        "Stafford38.Paper.Section5.lemma_5_12_b",
+        "Stafford38.Paper.Section5.witness_lemma_5_12_5_13"
+      ],
+      "5.13": [
+        "Stafford38.Paper.Section5.lemma_5_13",
+        "Stafford38.Paper.Section5.witness_lemma_5_12_5_13"
+      ]
+    },
+    "witness_scope": "witness_lemma_5_11 and witness_lemma_5_12_5_13 prove the lemma conclusions for the discrete valuation ring and Laurent column of the formal proof of Theorem 5.7. Lemmas 5.9 and 5.10 are proved by the same stage lemmas (Stafford38.Geometry.LaneC) that build that ring; the formal proof does not call lemma_5_9 or lemma_5_10 themselves. The steps between the lemmas (\u03bb, \u03c4, M(t), the lift of \u2113) are in Stafford38.Geometry.PaperActualDivisorTangent.exists_regularizedOneRowConormalData_of_actual_columns."
+  },
   "canonical_definition_registry": {
     "path": "docs/definition-owners.md",
     "scope": "Reviewed canonical owners, aliases, and checked transports; not an exhaustive proof that all semantic duplication in every dependency has been removed."
