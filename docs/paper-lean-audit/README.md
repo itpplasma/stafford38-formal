@@ -18,8 +18,9 @@ snapshot from Overleaf when editing the paper; do not edit two competing copies.
 The [bibliography](references.bib) records the paper's literature, software and
 proof-registry sources. The [workflow account](ai_workflow.tex) retains the
 short research history, models and representative prompt from its AI appendix.
-The [workflow evidence](workflow-evidence/README.md) retains historical skills,
-protocols, model-use records and reconstruction sources. These are exposition
+The [workflow evidence](workflow-evidence/README.md) retains historical
+protocols and reconstruction sources and points to the skills and model-use
+records in release v1.3.1. These are exposition
 and provenance, rather than premises of the Lean theorem.
 
 Inspect the reader and PDFs alongside the
