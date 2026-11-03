@@ -253,11 +253,21 @@ theorem linearImage_rel (k : Type*) [Field k] {n : ℕ}
       (show relation (Matrix.J (Fin n) k) _ _ from ⟨p, q, rfl, rfl⟩)
     simpa [generator, Stafford.freeWeylGenerator, map_sub, map_mul] using this
   have hg := (SymplecticGroup.mem_iff).mp g.2
+  -- Reversed simp lemmas (`← l`) would become helpers named after the compiling
+  -- module, so challenge and solution copies of this proof would differ.
+  have smul_def' : ∀ (c : k) (x : WeylAlg k n), algebraMap k (WeylAlg k n) c * x = c • x :=
+    fun c x => (Algebra.smul_def c x).symm
+  have sum_sub' : ∀ (s : Finset (PhaseVar n)) (f f' : PhaseVar n → WeylAlg k n),
+      ∑ p ∈ s, f p - ∑ p ∈ s, f' p = ∑ p ∈ s, (f p - f' p) :=
+    fun s f f' => (Finset.sum_sub_distrib f f').symm
+  have sum_algebraMap : ∀ (s : Finset (PhaseVar n)) (f : PhaseVar n → k),
+      ∑ p ∈ s, algebraMap k (WeylAlg k n) (f p) = algebraMap k (WeylAlg k n) (∑ p ∈ s, f p) :=
+    fun s f => (map_sum (algebraMap k (WeylAlg k n)) f s).symm
   simp only [map_sub, map_mul, FreeAlgebra.lift_ι_apply, AlgHom.commutes, linearImage,
-    Stafford.linearCombination, ← Algebra.smul_def, Finset.sum_mul, Finset.mul_sum,
+    Stafford.linearCombination, smul_def', Finset.sum_mul, Finset.mul_sum,
     smul_mul_smul_comm]
   rw [Finset.sum_comm, ← Finset.sum_sub_distrib]
-  simp_rw [← Finset.sum_sub_distrib]
+  simp_rw [sum_sub']
   have hterm : ∀ p q : PhaseVar n,
       ((g : Matrix _ _ k) i p * (g : Matrix _ _ k) j q) • (generator k n p * generator k n q) -
         ((g : Matrix _ _ k) j q * (g : Matrix _ _ k) i p) • (generator k n q * generator k n p) =
@@ -269,7 +279,7 @@ theorem linearImage_rel (k : Type*) [Field k] {n : ℕ}
       fun c x y => (smul_sub c x y).symm, hcomm, Algebra.smul_def, ← map_mul]
     congr 1
     ring
-  simp_rw [hterm, ← map_sum]
+  simp_rw [hterm, sum_algebraMap]
   congr 1
   conv_rhs => rw [← hg]
   simp only [Matrix.mul_apply, Matrix.transpose_apply, Finset.sum_mul]
