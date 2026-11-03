@@ -26,6 +26,11 @@ public import Stafford38.Paper.Section4.Vanishing
 * `Stafford38.Paper.Section4.StrictInequality`: Lemma 4.10.
 * `Stafford38.Paper.Section4.Vanishing`: Corollary 4.11.
 
+As in the paper, every statement from Lemma 4.2 on assumes `d̃` in the form
+(3.1) (`Section3.IsMonicNormalForm`, with `N ≥ 1` where the proof needs it), and
+Lemma 4.1 is stated for `x₁, ∂₁ ∈ A_n(k)`; the proofs pass to the PBW-monic
+consequence `Section3.isPBWMonicAt_of_isMonicNormalForm` internally.
+
 Each printed proof is assembled from `step_*` declarations, one per paragraph,
 and calls the paper declarations it cites: Proposition 4.3 uses Lemma 4.2 (which
 uses Lemma 4.1); Lemma 4.8 uses Lemma 4.7; Lemma 4.9 uses Lemma 4.8 and

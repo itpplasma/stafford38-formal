@@ -10,8 +10,8 @@ public import Mathlib.RingTheory.Nullstellensatz
 
 Definition 2.5 (the cotangent bundle `T^*X = Spec k[x, ξ]`, its closed points
 `(y, ξ)`, the projection and the fibres), Definition 2.6 (`Spec`, `V(J)`,
-`V_K(J)`, `I(S)`, `𝔪_a`), Definition 2.7 (the characteristic variety
-`Char(M) = V(Ann gr M)`) and Theorem 2.12 (Hilbert's Nullstellensatz).
+`V_K(J)`, `I(S)`, `𝔪_a`) and Theorem 2.12 (Hilbert's Nullstellensatz).
+Definition 2.7 is in `Stafford38.Paper.Section2.CharacteristicVariety`.
 
 Points of `K^{2n} = K^n × (K^n)^*` are functions `PhaseVar n → K`; `Sum.inl i`
 is the base coordinate `x_{i+1}`, `Sum.inr i` the fibre coordinate `ξ_{i+1}`.
@@ -165,13 +165,6 @@ def proj {K : Type v} {n : ℕ} (z : PhaseVar n → K) : Fin n → K :=
 /-- **Definition 2.5 (fibre).** `T^*_y X = π^{-1}(y) ≅ (K^n)^*`. -/
 def fibre {K : Type v} {n : ℕ} (y : Fin n → K) : Set (PhaseVar n → K) :=
   proj ⁻¹' {y}
-
-/-- **Definition 2.7 (characteristic variety)** of `M = A_n(k)/I` with the good
-order filtration `M_m = qF_m`: `Char(M) = V(Ann_{k[x,ξ]} gr M) ⊆ T^*X`.  The
-paper defines `Char` for every finitely generated module; Sections 3–7 use it
-only for such cyclic quotients. -/
-def Char {n : ℕ} (I : RightIdeal (PresentedWeyl k n)) : Set (CotangentBundle k n) :=
-  V (Module.annihilator (SymbolRing k n) (grCyclic k I))
 
 end
 

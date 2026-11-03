@@ -447,7 +447,7 @@ theorem step_6_2_vanishing {n N : ℕ} (dt : PresentedWeyl k (n + 1)) :
 theorem step_6_2_char {n N : ℕ} (dt : PresentedWeyl k (n + 1)) :
     Section2.Char K (idealI K N (dtK K dt)) =
       PrimeSpectrum.comap (σ k K n) ⁻¹' Section2.Char k (idealI k N dt) := by
-  rw [Section2.Char, Section2.Char, V, V, PrimeSpectrum.preimage_comap_zeroLocus,
+  rw [Section2.Char_eq, Section2.Char_eq, V, V, PrimeSpectrum.preimage_comap_zeroLocus,
     step_6_2_annihilator, Ideal.map, PrimeSpectrum.zeroLocus_span]
 
 /-- **Lemma 6.2.** Let `K/k` be a field extension, `𝓘_K = d̃A_n(K) + x₁^N d̃A_n(K)`

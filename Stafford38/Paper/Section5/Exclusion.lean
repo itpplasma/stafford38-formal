@@ -424,15 +424,21 @@ theorem step_P_vanishes_on_N (𝔮 : Ideal (MvPolynomial (Fin m) k)) (hprime : �
   intro ξ hξ
   simpa using (MvPolynomial.mem_vanishingIdeal_iff.1 hP) ξ hξ
 
-/-- Final sentence: `Y_0` is nonempty, closed, irreducible and avoids `H`, and
-`P` vanishes on `N(Y_0)`, so Theorem 5.7(i) gives `P(1, 0, …, 0) = 0`. -/
+/-- Final sentence: `Y_0` is nonempty, closed, irreducible (Definition 5.4(a),
+`I(Y_0) = 𝔮` prime) and avoids `H`, and `P` vanishes on `N(Y_0)`, so Theorem 5.7(i)
+gives `P(1, 0, …, 0) = 0`. -/
 theorem step_theorem_5_7_applies
     (hm : 0 < m) (𝔮 : Ideal (MvPolynomial (Fin m) k)) (hprime : 𝔮.IsPrime)
     (havoid : ∀ y ∈ MvPolynomial.zeroLocus k 𝔮, y ⟨0, hm⟩ ≠ 0)
     (P : MvPolynomial (Fin m) k)
     (hP : ∀ ξ ∈ conormalCone ⟨𝔮, hprime⟩, MvPolynomial.eval ξ P = 0) :
-    MvPolynomial.eval (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0) P = 0 :=
-  theorem_5_7_i_printed hm ⟨𝔮, hprime⟩ havoid P hP
+    MvPolynomial.eval (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0) P = 0 := by
+  -- `Y_0 = V_K(𝔮)` is nonempty, closed and irreducible, with `I(Y_0) = 𝔮`
+  obtain ⟨hne, hY, hpt⟩ := irreducibleClosed_zeroLocus_of_isPrime (k := k) 𝔮
+  refine theorem_5_7_i_printed hm _ hne hY ?_ P (hpt ▸ hP)
+  ext y
+  simp only [Set.mem_inter_iff, Set.mem_ofPred_eq, Set.mem_empty_iff_false, iff_false, not_and]
+  exact fun hy h0 => havoid y hy h0
 
 /-- **Theorem 5.8.** Let `K` be algebraically closed of characteristic zero and
 `W ⊆ T*X` Zariski closed, fibre-conical and involutive.  If

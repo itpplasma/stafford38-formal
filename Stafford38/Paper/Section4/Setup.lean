@@ -1,6 +1,7 @@
 module
 
 public import Stafford38.Characteristic.CanonicalKoszulContradiction
+public import Stafford38.Paper.Section3.Transport
 
 @[expose] public section
 

@@ -38,10 +38,11 @@ abbrev x₁Symbol (k : Type u) [Field k] (n : ℕ) : SymbolRing k (n + 1) :=
 abbrev Vx₁ (k : Type u) [Field k] (n : ℕ) : Set (CotangentBundle k (n + 1)) :=
   V (Ideal.span {x₁Symbol k n})
 
-/-- `M = gr Q` is finite over `k[x, ξ]` (it is cyclic, Proposition 3.6). -/
+/-- `M = gr Q` is finite over `k[x, ξ]`: the filtration `Q_m = qF_m` is good
+(Definition 2.4; Proposition 3.6). -/
 theorem step_6_1_finite {n N : ℕ} (dt : PresentedWeyl k (n + 1)) :
     Module.Finite (SymbolRing k (n + 1)) (grQ k N dt) :=
-  (step_3_6_generated k dt).2.1
+  grCyclic_finite_of_good k (idealI k N dt)
 
 /-- Since `M` is finite, `Supp(M/x₁M) = Supp(M) ∩ V(x₁)` (Stacks 00L3). -/
 theorem step_6_1_support_quotient {n N : ℕ} (dt : PresentedWeyl k (n + 1)) :
@@ -54,8 +55,7 @@ theorem step_6_1_support_quotient {n N : ℕ} (dt : PresentedWeyl k (n + 1)) :
 theorem step_6_1_support_avoids [CharZero k] {n N : ℕ} {dt : PresentedWeyl k (n + 1)}
     (hN : 0 < N) (hform : IsMonicNormalForm k N dt) :
     Module.support (SymbolRing k (n + 1)) (grQ k N dt) ∩ Vx₁ k n = ∅ := by
-  have hU := Stafford38.Paper.Section4.corollary_4_11_quotSMulTop (k := k) hN
-    (isPBWMonicAt_of_isMonicNormalForm k hform)
+  have hU := Stafford38.Paper.Section4.corollary_4_11_quotSMulTop (k := k) hN hform
   rw [← step_6_1_support_quotient]
   exact Module.support_eq_empty
 
@@ -64,7 +64,7 @@ theorem step_6_1_support_avoids [CharZero k] {n N : ℕ} {dt : PresentedWeyl k (
 theorem step_6_1_char_eq_support {n N : ℕ} (dt : PresentedWeyl k (n + 1)) :
     Section2.Char k (idealI k N dt) = Module.support (SymbolRing k (n + 1)) (grQ k N dt) := by
   have := step_6_1_finite (N := N) dt
-  rw [Section2.Char, Module.support_eq_zeroLocus]
+  rw [Section2.Char_eq, Module.support_eq_zeroLocus]
 
 /-- **Proposition 6.1.** `Char(Q) ∩ V(x₁) = ∅`, where `V(x₁) ⊆ Spec k[x, ξ]`
 is the set of primes containing `x₁`. -/

@@ -2,6 +2,7 @@ module
 
 public import Stafford38.Paper.Section4.Euler
 public import Stafford38.Paper.Section2.Weyl
+public import Stafford38.Paper.Section3.Transport
 
 @[expose] public section
 
@@ -84,10 +85,14 @@ theorem step_4_2_eval_products (x p : A) (N : ℕ) :
     refine List.map_congr_left fun r _ => ?_
     simp [eulerElement]
 
-/-- **First paragraph of the proof of Lemma 4.2.**  By Lemma 4.1 and the
-extended Euclidean algorithm in `ℚ[E]` there are `u, v ∈ ℚ[E]` with
+/-- **First paragraph of the proof of Lemma 4.2.**  By Lemma 4.1 (the
+hypothesis `h41`, the product identities for `m = N`) and the extended Euclidean
+algorithm in `ℚ[E]` there are `u, v ∈ ℚ[E]` with
 `p^N x₁^N u(E) + x₁^N p^N v(E) = 1`. -/
-theorem step_4_2_bezout (x p : A) (hweyl : p * x = x * p + 1) (N : ℕ) :
+theorem step_4_2_bezout (x p : A) (N : ℕ)
+    (h41 : 1 ≤ N →
+      x ^ N * p ^ N = ((List.range N).map fun i : ℕ => eulerElement x p - i).prod ∧
+        p ^ N * x ^ N = ((List.range' 1 N).map fun i : ℕ => eulerElement x p + i).prod) :
     ∃ u v : Polynomial ℚ,
       (p ^ N * x ^ N) * eulerPolynomialEval x p u +
         (x ^ N * p ^ N) * eulerPolynomialEval x p v = 1 := by
@@ -98,7 +103,7 @@ theorem step_4_2_bezout (x p : A) (hweyl : p * x = x * p + 1) (N : ℕ) :
   rw [map_add, map_mul, map_mul, map_one] at h
   rcases Nat.eq_zero_or_pos N with rfl | hN
   · simpa [add_comm] using h
-  obtain ⟨hminus, hplus, -, -⟩ := lemma_4_1 x p hweyl N hN
+  obtain ⟨hminus, hplus⟩ := h41 hN
   rw [(step_4_2_eval_products x p N).1, (step_4_2_eval_products x p N).2,
     ← hplus, ← hminus] at h
   exact h
@@ -151,16 +156,20 @@ theorem step_4_2_positive (C : Subring A) (x p sigma : A) (N : ℕ)
   rw [hright, hleft, mul_assoc, mul_assoc, hsu, hsv]
   noncomm_ring
 
-/-- Lemma 4.2 for a Weyl pair, assembled from the three paragraphs. -/
+/-- Lemma 4.2 for a Weyl pair, assembled from the three paragraphs, given the
+identities of Lemma 4.1 for `m = N`. -/
 theorem lemma_4_2_of_positive (C : Subring A) (x p d sigma : A) (N : ℕ)
     (hweyl : p * x = x * p + 1)
+    (h41 : 1 ≤ N →
+      x ^ N * p ^ N = ((List.range N).map fun i : ℕ => eulerElement x p - i).prod ∧
+        p ^ N * x ^ N = ((List.range' 1 N).map fun i : ℕ => eulerElement x p + i).prod)
     (hcomm : ∀ c : C, x * (c : A) = (c : A) * x)
     (hscalar : ∀ q : ℚ, algebraMap ℚ A q ∈ C)
     (hd : d = p ^ N + sigma)
     (U V : A) (hU : U ∈ nonnegativePart C x p) (hV : V ∈ nonnegativePart C x p)
     (hright : sigma * x ^ N = U * x) (hleft : x ^ N * sigma = V * x) :
     ∃ u₀ ∈ nonnegativePart C x p, 1 + u₀ * x ∈ canonicalRightIdeal x d N := by
-  obtain ⟨u, v, hbez⟩ := step_4_2_bezout x p hweyl N
+  obtain ⟨u, v, hbez⟩ := step_4_2_bezout x p N h41
   obtain ⟨-, hmem⟩ := step_4_2_residue x p d sigma N u v hd hbez
   obtain ⟨u₀, hu₀, hw⟩ :=
     step_4_2_positive C x p sigma N hweyl hcomm hscalar U V hU hV hright hleft u v
@@ -307,16 +316,21 @@ theorem step_4_2_presented_remainder {N : ℕ} {d : PresentedWeyl k (n + 1)}
     rw [hσ, fromIterated_coordinate] at h
     exact h
 
-/-- **Lemma 4.2.** There is `u₀ ∈ A_{≥0}` with `1 + u₀ x₁ ∈ 𝓘`. -/
+/-- **Lemma 4.2.** For `d̃` in the form (3.1) and `𝓘 = d̃A_n + x₁^N d̃A_n`
+(Equation (3.2)), there is `u₀ ∈ A_{≥0}` with `1 + u₀ x₁ ∈ 𝓘`.  The proof uses
+(3.1) only through its consequence `IsPBWMonicAt`
+(`Section3.isPBWMonicAt_of_isMonicNormalForm`), and cites Lemma 4.1 for `m = N`. -/
 theorem lemma_4_2 {N : ℕ} {d : PresentedWeyl k (n + 1)}
-    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+    (hform : Stafford38.Paper.Section3.IsMonicNormalForm k N d) :
     ∃ u₀ ∈ presentedNonnegativePart k n,
-      1 + u₀ * presentedCoordinate k n ∈ presentedCanonicalRightIdeal (k := k) n N d := by
+      1 + u₀ * presentedCoordinate k n ∈ Stafford38.Paper.Section3.idealI k N d := by
   let := presentedRatAlgebra k n
+  have hd := Stafford38.Paper.Section3.isPBWMonicAt_of_isMonicNormalForm k hform
   obtain ⟨U, hU, V, hV, hright, hleft⟩ := step_4_2_presented_remainder hd
   exact lemma_4_2_of_positive (transverse k n) (presentedCoordinate k n)
     (presentedMomentum k n) d (d - presentedMomentum k n ^ N) N
     (Stafford38.Paper.Section2.convention_2_2_relations k n).1
+    (fun hN => ⟨(lemma_4_1 k n N hN).1, (lemma_4_1 k n N hN).2.1⟩)
     (transverse_commutes_coordinate k n) (rat_mem_transverse k n) (by abel) U V hU hV hright hleft
 
 end Presented

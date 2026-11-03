@@ -32,6 +32,8 @@ open AlgebraicAnalysis.BaseLocalizationModuleComparison
 open AlgebraicAnalysis.LocalizedKernelCokernelEquivalences
 open AlgebraicAnalysis.LocalizedMinimalSupportAvoidance
 
+open Stafford38.Paper.Section3 (IsMonicNormalForm isPBWMonicAt_of_isMonicNormalForm)
+
 noncomputable section
 
 section Generic
@@ -377,8 +379,8 @@ theorem step_4_10_localized_avoid (hN : 0 < N)
 
 omit [Algebra ℚ k] in
 /-- **Lemma 4.10.** For every minimal prime `𝔮` of `Supp_T U`,
-`ℓ_{T_𝔮}(U_𝔮) > ℓ_{T_𝔮}(V_𝔮)`. -/
-theorem lemma_4_10 (hN : 0 < N) (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
+`ℓ_{T_𝔮}(U_𝔮) > ℓ_{T_𝔮}(V_𝔮)`, for `d̃` in the form (3.1) with `N ≥ 1`. -/
+theorem lemma_4_10 (hN : 0 < N) (hform : IsMonicNormalForm k N d)
     (q : PrimeSpectrum (Tangential k n))
     (hqmem : q ∈ Module.support (Tangential k n) (cokernelU k n N d))
     (hqmin : ∀ p ∈ Module.support (Tangential k n) (cokernelU k n N d),
@@ -388,7 +390,8 @@ theorem lemma_4_10 (hN : 0 < N) (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N 
       Module.length (Localization q.asIdeal.primeCompl)
         (LocalizedModule q.asIdeal.primeCompl (kernelV k n N d)) := by
   -- Lemma 4.8: `V_𝔮` has finite length
-  obtain ⟨-, -, -, hfin⟩ := lemma_4_8 hd
+  have hd := isPBWMonicAt_of_isMonicNormalForm k hform
+  obtain ⟨-, -, -, hfin⟩ := lemma_4_8 hform
   have h := step_4_10_localized (R := Tangential k n) (symbolCoordinate k n) q
     (by rw [setup_coordinateMap_eq]; exact hqmem)
     (by rw [setup_coordinateMap_eq]; exact (hfin q hqmem hqmin).2)

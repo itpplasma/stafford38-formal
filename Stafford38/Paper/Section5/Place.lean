@@ -2,6 +2,7 @@ module
 
 public import Stafford38.Geometry.DivisorialVisibleFrameCore
 public import Stafford38.Geometry.DivisorialVisibleFrameStage4
+public import Stafford38.Paper.Section5.Valuation
 
 @[expose] public section
 
@@ -57,8 +58,9 @@ theorem lemma_5_9 {k F : Type*} [Field k] [Field F] [Algebra k F] {n : ℕ}
   -- `W` dominates `K[x̄_1]` localized at `x̄_1` (Stacks, Tag 00IA).
   obtain ⟨W, hkW, hxW, hxinvW⟩ := stage1_exists_valuationSubring_of_transcendental (x i) htrans
   have hx0 : x i ≠ 0 := fun h ↦ htrans (h ▸ isAlgebraic_zero)
+  -- Definition 5.3(a): `𝔪_W = W ∖ W^×`
   have hxmax : (⟨x i, hxW⟩ : W.toSubring) ∈ maximalIdeal W.toSubring := by
-    rw [mem_maximalIdeal, mem_nonunits_iff]
+    rw [(definition_5_3.2.1 W).2]
     rintro ⟨u, hu⟩
     apply hxinvW
     have hmul : x i * ((u⁻¹ : W.toSubringˣ) : W.toSubring) = 1 := by
@@ -91,7 +93,8 @@ theorem lemma_5_9 {k F : Type*} [Field k] [Field F] [Algebra k F] {n : ℕ}
   · change Y a / Y j ∈ W
     rw [ha, zero_div]
     exact W.zero_mem
-  rcases W.mem_or_inv_mem (Y a / Y j) with h | h
+  -- Definition 5.3(a): `a/b ∈ W` or `b/a ∈ W` for nonzero `a, b`
+  rcases (definition_5_3.1 W.toSubring).2 ⟨W, rfl⟩ (Y a / Y j) (div_ne_zero ha hjS) with h | h
   · exact h
   · rw [inv_div] at h
     exact (hjmax (show a ∈ S from ha) ⟨ha, h⟩).2
@@ -164,7 +167,7 @@ theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
   have hy0 : x i ≠ 0 := fun h ↦ htrans (h ▸ isAlgebraic_zero)
   have hxiInvW : (x i)⁻¹ ∉ W := by
     intro h
-    rw [mem_maximalIdeal, mem_nonunits_iff] at hxmW
+    rw [(definition_5_3.2.1 W).2] at hxmW
     apply hxmW
     refine IsUnit.of_mul_eq_one (⟨(x i)⁻¹, h⟩ : W.toSubring) ?_
     apply Subtype.ext
@@ -263,14 +266,10 @@ theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
     exact z.2
   obtain ⟨p, hp, hpheight, hxp, hplace⟩ := stage3_exists_height_one_prime_valuation A xA hxA0 hxAu
   letI : p.IsPrime := hp
-  -- `V = A_{𝔭_D}` is a Noetherian local normal domain of dimension one, hence a DVR.
   let V : ValuationSubring F := placeValuationSubring A p hplace
   letI : IsLocalization.AtPrime (placeSubalgebra A p) p := by
     unfold placeSubalgebra
     infer_instance
-  have hVdvr : IsDiscreteValuationRing V.toSubring := by
-    change IsDiscreteValuationRing (placeSubalgebra A p).toSubring
-    exact isDiscreteValuationRing_of_isLocalization_atPrime p hpheight (placeSubalgebra A p)
   have hAV : ∀ a : A, (a : F) ∈ V.toSubring := fun a ↦ ofField_mem_algebraMap_v A p hplace a
   have hpV : ∀ a : A, (⟨a, hAV a⟩ : V.toSubring) ∈ maximalIdeal V.toSubring ↔ a ∈ p :=
     fun a ↦ ofField_mem_maximalIdeal_iff_v A p hplace a
@@ -287,6 +286,21 @@ theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
   letI : IsScalarTower k V.toSubring F := IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
   have hxV : x i ∈ V.toSubring := hAV xA
   have hxm : (⟨x i, hxV⟩ : V.toSubring) ∈ maximalIdeal V.toSubring := (hpV xA).2 hxp
+  -- `V = A_{𝔭_D}` is a Noetherian valuation ring, and `V ≠ F` because `x̄_1 ∈ 𝔪_V`;
+  -- by Definition 5.3(b) it is a discrete valuation ring.
+  have hVdvr : IsDiscreteValuationRing V.toSubring := by
+    have hN : IsNoetherianRing (placeSubalgebra A p) :=
+      IsLocalization.isNoetherianRing p.primeCompl (placeSubalgebra A p) inferInstance
+    refine (definition_5_3.2.2.1 V).2 ⟨hN, fun htop => ?_⟩
+    have hinvV : (x i)⁻¹ ∈ V.toSubring := by
+      change (x i)⁻¹ ∈ V
+      rw [htop]
+      exact ValuationSubring.mem_top _
+    rw [(definition_5_3.2.1 V).2] at hxm
+    apply hxm
+    refine IsUnit.of_mul_eq_one (⟨(x i)⁻¹, hinvV⟩ : V.toSubring) ?_
+    apply Subtype.ext
+    simp [hy0]
   have hqA : ∀ a, Y a / Y j ∈ A := fun a ↦ by simpa [s, div_eq_mul_inv] using hnormA a
   refine ⟨Lemma510Place.mk A p hplace hVdvr hqA hyA hxp ?_ ?_⟩
   · -- (b) `A/𝔭_D` is integral over the image of `C_0`, whose residues are `res q_i`.

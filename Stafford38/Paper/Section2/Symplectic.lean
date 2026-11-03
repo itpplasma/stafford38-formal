@@ -4,6 +4,7 @@ public import Stafford38.Paper.Section2.Geometry
 public import Stafford38.Characteristic.SymplecticCompletion
 public import Stafford38.Characteristic.PostScalarExtensionPoisson
 public import Stafford38.Paper.Support.Gabber
+public import Stafford38.Paper.Section2.CharacteristicVariety
 
 @[expose] public section
 
@@ -153,19 +154,19 @@ def IsInvolutiveSet {n : ℕ} (W : Set (PhaseVar n → k)) : Prop :=
 
 /-- **Theorem 2.11 (Gabber).** Let `K` be a field of characteristic zero and `M`
 a finitely generated right `A_n(K)`-module with a good order filtration `M_•`
-(Definition 2.4: compatible and exhaustive, `gr M` finitely generated over
-`K[x, ξ]`).  Then `J = √(Ann_{K[x,ξ]} gr M)` is involutive.  The cited result
+(Definition 2.4, `IsGoodFiltration`: compatible and exhaustive, `gr M` finitely
+generated over `K[x, ξ]`).  Then `J = √(Ann_{K[x,ξ]} gr M)` is involutive.  The cited result
 [Gab81] is proved in `Stafford38.Paper.Support.Gabber`, by reduction to cyclic
 modules and the repository's proof of the cyclic case. -/
 theorem theorem_2_11 (K : Type u) [Field K] [CharZero K] (n : ℕ)
     {M : Type w} [AddCommGroup M] [Module (Stafford38Challenge.WeylAlg K n)ᵐᵒᵖ M] [Module K M]
     [IsScalarTower K (Stafford38Challenge.WeylAlg K n)ᵐᵒᵖ M]
     [Module.Finite (Stafford38Challenge.WeylAlg K n)ᵐᵒᵖ M]
-    (Γ : ℕ → Submodule K M) (hΓ : IsCompatibleFiltration (orderFiltration K n) Γ)
-    (hgood : Module.Finite (SymbolRing K n) (Stafford38.Paper.Support.Gabber.GrModule Γ)) :
+    (Γ : ℕ → Submodule K M) (hgood : IsGoodFiltration K n Γ) :
     IsInvolutive K (Module.annihilator (SymbolRing K n)
       (Stafford38.Paper.Support.Gabber.GrModule Γ)).radical :=
-  (isInvolutive_iff K _).2 (Stafford38.Paper.Support.Gabber.theorem_2_11_general K n Γ hΓ hgood)
+  (isInvolutive_iff K _).2 (Stafford38.Paper.Support.Gabber.theorem_2_11_general K n Γ
+    hgood.compatible hgood.finite)
 
 /-- Theorem 2.11 for the cyclic module `M = A_n(K)/I` with `M_m = qF_m`, the case
 used in the proof of Theorem 1.1 (for `Q_K`): for this filtration `gr M` is
@@ -176,8 +177,7 @@ theorem theorem_2_11_cyclic (K : Type u) [Field K] [CharZero K] (n : ℕ)
   have : Module.Finite (PresentedWeyl K n)ᵐᵒᵖ (RightQuotient I) :=
     Stafford38.Paper.Support.Gabber.rightQuotient_finite I
   rw [← Stafford38.Paper.Support.Gabber.annihilator_qFilt]
-  exact theorem_2_11 K n (Stafford38.Paper.Support.Gabber.qFilt K I)
-    (cyclicFiltration_order_isCompatible K I) (Stafford38.Paper.Support.Gabber.qFilt_good K I)
+  exact theorem_2_11 K n (Stafford38.Paper.Support.Gabber.qFilt K I) (qFilt_isGoodFiltration K I)
 
 #print axioms theorem_2_11
 #print axioms theorem_2_11_cyclic
