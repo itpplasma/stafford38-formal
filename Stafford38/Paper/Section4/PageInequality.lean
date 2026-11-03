@@ -31,6 +31,7 @@ open Stafford38.EulerSurjectivity
 open Stafford38.WeylIteratedEquivalence
 open Stafford38.WeylPBWMonicBridge
 open Stafford38.WeylQuotientTransport
+open Stafford38.Paper.Section3 (IsMonicNormalForm isPBWMonicAt_of_isMonicNormalForm)
 
 noncomputable section
 
@@ -133,12 +134,12 @@ theorem step_4_9_pages (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
 
 /-- `f : Q → Q` of the filtered complex is onto: this is `Q = Qx₁`
 (Proposition 4.3). -/
-theorem step_4_9_f_surjective (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
-    Function.Surjective (complex k n N d hd).f := by
+theorem step_4_9_f_surjective (hform : IsMonicNormalForm k N d) :
+    Function.Surjective (complex k n N d (isPBWMonicAt_of_isMonicNormalForm k hform)).f := by
   intro q
   obtain ⟨z, rfl⟩ := Submodule.Quotient.mk_surjective
     (rightIdealKSubmodule k (presentedCanonicalRightIdeal (k := k) n N d)) q
-  obtain ⟨y, hy⟩ := proposition_4_3 hd (qmk (presentedCanonicalRightIdeal (k := k) n N d) z)
+  obtain ⟨y, hy⟩ := proposition_4_3 hform (qmk (presentedCanonicalRightIdeal (k := k) n N d) z)
   obtain ⟨y', hy'⟩ := Submodule.Quotient.mk_surjective
     (rightIdealKSubmodule k (presentedCanonicalRightIdeal (k := k) n N d)) y
   rw [← hy'] at hy
@@ -153,20 +154,23 @@ increasing kernels `K_r`.  A homogeneous class `z ∈ G^p` of `B_1` has a preima
 `z = wx₁` (Proposition 4.3) with `w ∈ G^s`, so `z` vanishes in `B_r` once
 `p − r + 1 ≤ s`; hence `⋃ K_r = (B_1)_𝔮`.  As `(B_1)_𝔮` is Noetherian the chain
 stabilizes at some `K_R = (B_1)_𝔮`, and `(B_R)_𝔮 = 0`. -/
-theorem step_4_9_exhaustion (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
+theorem step_4_9_exhaustion (hform : IsMonicNormalForm k N d)
     (S : Submonoid (Tangential k n))
-    [IsNoetherian (Localization S) (LocalizedModule S ((complex k n N d hd).TargetTotal 1))] :
-    ∃ R, Subsingleton (LocalizedModule S ((complex k n N d hd).TargetTotal (R + 1))) :=
+    [IsNoetherian (Localization S) (LocalizedModule S
+      ((complex k n N d (isPBWMonicAt_of_isMonicNormalForm k hform)).TargetTotal 1))] :
+    ∃ R, Subsingleton (LocalizedModule S
+      ((complex k n N d (isPBWMonicAt_of_isMonicNormalForm k hform)).TargetTotal (R + 1))) :=
+  let hd := isPBWMonicAt_of_isMonicNormalForm k hform
   AlgebraicAnalysis.exists_uniform_subsingleton_localized S
     (fun r => tangentialBoundaryMap k n N d hd r)
     (tangentialBoundaryMap_ker_mono k n N d hd)
     (fun z => (complex k n N d hd).totalBoundaryMap_eventually_zero
-      (canonicalOrderFiltration_exhaustive k _) (step_4_9_f_surjective hd) z)
+      (canonicalOrderFiltration_exhaustive k _) (step_4_9_f_surjective hform) z)
     (fun r => tangentialBoundaryMap_surjective k n N d hd r)
 
 /-- **Lemma 4.9.** For every minimal prime `𝔮` of `Supp_T U`,
-`ℓ_{T_𝔮}(U_𝔮) ≤ ℓ_{T_𝔮}(V_𝔮)`. -/
-theorem lemma_4_9 (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
+`ℓ_{T_𝔮}(U_𝔮) ≤ ℓ_{T_𝔮}(V_𝔮)`, for `d̃` in the form (3.1). -/
+theorem lemma_4_9 (hform : IsMonicNormalForm k N d)
     (q : PrimeSpectrum (Tangential k n))
     (hqmem : q ∈ Module.support (Tangential k n) (cokernelU k n N d))
     (hqmin : ∀ p ∈ Module.support (Tangential k n) (cokernelU k n N d),
@@ -175,6 +179,7 @@ theorem lemma_4_9 (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
         (LocalizedModule q.asIdeal.primeCompl (cokernelU k n N d)) ≤
       Module.length (Localization q.asIdeal.primeCompl)
         (LocalizedModule q.asIdeal.primeCompl (kernelV k n N d)) := by
+  have hd := isPBWMonicAt_of_isMonicNormalForm k hform
   let S := q.asIdeal.primeCompl
   let A : ℕ → Type _ := fun r => LocalizedModule S ((complex k n N d hd).SourceTotal r)
   let B : ℕ → Type _ := fun r => LocalizedModule S ((complex k n N d hd).TargetTotal r)
@@ -194,14 +199,14 @@ theorem lemma_4_9 (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
   let eU' : B 1 ≃ₗ[Localization S] LocalizedModule S (cokernelU k n N d) :=
     localizedEquiv S eU
   -- Lemma 4.8: `(A_1)_𝔮 = V_𝔮` and `(B_1)_𝔮 = U_𝔮` have finite length
-  obtain ⟨-, -, -, hfin⟩ := lemma_4_8 hd
+  obtain ⟨-, -, -, hfin⟩ := lemma_4_8 hform
   obtain ⟨hU, hV⟩ := hfin q hqmem hqmin
   have hfl := step_4_9_pages_finite_length dd es et (eV'.symm.isFiniteLength hV)
     (eU'.symm.isFiniteLength hU)
   -- exhaustion: `(B_R)_𝔮 = 0`
   let : IsNoetherian (Localization S) (B 1) :=
     (isFiniteLength_iff_isNoetherian_isArtinian.mp (hfl 1 le_rfl).2).1
-  obtain ⟨R', hR'⟩ := step_4_9_exhaustion hd S
+  obtain ⟨R', hR'⟩ := step_4_9_exhaustion hform S
   -- equation (additivity) and the telescoping sum
   have hlen := step_4_9_telescope
     (fun r => if 1 ≤ r then Module.length (Localization S) (A r) else 0)

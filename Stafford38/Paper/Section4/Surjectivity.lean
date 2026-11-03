@@ -215,13 +215,13 @@ theorem closure_transverseCoordinateAlgebra_momentum [Algebra ℚ k] :
 
 variable {k n}
 
-/-- **Proposition 4.3.** Right multiplication by `x₁` on `Q = A_n/𝓘` is
-surjective, i.e. `Q = Qx₁`. -/
+/-- **Proposition 4.3.** For `d̃` in the form (3.1), right multiplication by `x₁`
+on `Q = A_n/𝓘` (Equation (3.2)) is surjective, i.e. `Q = Qx₁`. -/
 theorem proposition_4_3 [Algebra ℚ k] {N : ℕ} {d : PresentedWeyl k (n + 1)}
-    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+    (hform : Stafford38.Paper.Section3.IsMonicNormalForm k N d) :
     Function.Surjective
-      (rightMul (presentedCanonicalRightIdeal (k := k) n N d) (presentedCoordinate k n)) := by
-  obtain ⟨u₀, hu₀, hres⟩ := lemma_4_2 hd
+      (rightMul (Stafford38.Paper.Section3.idealI k N d) (presentedCoordinate k n)) := by
+  obtain ⟨u₀, hu₀, hres⟩ := lemma_4_2 hform
   exact proposition_4_3_of (transverseCoordinateAlgebra k n)
     (presentedCoordinate k n) (presentedMomentum k n) u₀
     (coordinate_mem_eulerSubring _ _ _) (euler_mem_eulerSubring _ _ _)

@@ -59,7 +59,7 @@ theorem step_W_closed_points [IsAlgClosed K] {n N : ℕ} (dt : PresentedWeyl k (
     (∀ q, q ∈ W K N dt ↔ closedPoint K q ∈ Section2.Char K (idealI K N (dtK K dt))) ∧
       vanishingIdealOf K (W K N dt) =
         (Module.annihilator (SymbolRing K (n + 1)) (grQ K N (dtK K dt))).radical :=
-  ⟨(theorem_2_12 K _).1.2.2, (theorem_2_12 K _).2.2⟩
+  ⟨fun q => by rw [Section2.Char_eq]; exact (theorem_2_12 K _).1.2.2 q, (theorem_2_12 K _).2.2⟩
 
 /-- **Bullet 1.** `W` is Zariski closed, the zero set of an ideal. -/
 theorem step_W_closed {n N : ℕ} (dt : PresentedWeyl k (n + 1)) :

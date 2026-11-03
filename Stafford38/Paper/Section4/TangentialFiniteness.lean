@@ -21,6 +21,7 @@ open Stafford38.Characteristic
 open Stafford38.Characteristic.CanonicalOldTangentialFiniteness
 open Stafford38.WeylIteratedEquivalence
 open Stafford38.WeylPBWMonicBridge
+open Stafford38.Paper.Section3 (IsMonicNormalForm isPBWMonicAt_of_isMonicNormalForm)
 
 noncomputable section
 
@@ -153,8 +154,9 @@ theorem step_4_8_finite (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
 
 omit [Algebra ℚ k] in
 /-- **Lemma 4.8.** `U` and `V` are finite over `T`, `Supp_T V ⊆ Supp_T U`, and at a
-minimal prime `𝔮` of `Supp_T U`, `U_𝔮` and `V_𝔮` have finite length over `T_𝔮`. -/
-theorem lemma_4_8 (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+minimal prime `𝔮` of `Supp_T U`, `U_𝔮` and `V_𝔮` have finite length over `T_𝔮`.
+Here `d̃` is in the form (3.1), used through `IsPBWMonicAt`. -/
+theorem lemma_4_8 (hform : IsMonicNormalForm k N d) :
     Module.Finite (Tangential k n) (cokernelU k n N d) ∧
       Module.Finite (Tangential k n) (kernelV k n N d) ∧
       Module.support (Tangential k n) (kernelV k n N d) ⊆
@@ -166,6 +168,7 @@ theorem lemma_4_8 (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
             (LocalizedModule q.asIdeal.primeCompl (cokernelU k n N d)) ∧
           IsFiniteLength (Localization q.asIdeal.primeCompl)
             (LocalizedModule q.asIdeal.primeCompl (kernelV k n N d)) := by
+  have hd := isPBWMonicAt_of_isMonicNormalForm k hform
   obtain ⟨hU, hV⟩ := step_4_8_finite hd
   have hsupp : Module.support (Tangential k n) (kernelV k n N d) ⊆
       Module.support (Tangential k n) (cokernelU k n N d) := by

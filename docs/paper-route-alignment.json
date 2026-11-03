@@ -120,7 +120,12 @@
       "i": "Stafford38.Paper.Section5.theorem_5_7_i",
       "ii": "Stafford38.Paper.Section5.theorem_5_7_ii",
       "proof": "Stafford38.Paper.Section5.theorem_5_7_i_paper",
-      "route": "theorem_5_7_i_paper follows the printed proof: algebraic case; the discrete valuation ring of Lemmas 5.9-5.10 (Stafford38.Geometry.LaneC.divisorialVisibleFrameExistence calls lemma_5_9 and lemma_5_10); step_orders; step_generic_point; Lemma 5.11 (witness_lemma_5_11); step_dual_derivations; step_lambda_w_tau; step_M_minor; Lemma 5.12(a) bound (witness_lemma_5_12_5_13_paper, witness_lemma_5_12_a_bound); step_M_spans_cone (lemma_5_12_b, lemma_5_12_a_cone); step_lift_ell_minor; step_ell_conormal (lemma_5_13); step_polynomial_limit. The terminal theorem keeps the same-witness route of Stafford38.Geometry.GeneralAsymptoticConormal; both prove the same statement and both build their place with lemma_5_9 and lemma_5_10."
+      "route": "theorem_5_7_i_paper follows the printed proof: algebraic case; the discrete valuation ring of Lemmas 5.9-5.10 (Stafford38.Geometry.LaneC.divisorialVisibleFrameExistence calls lemma_5_9 and lemma_5_10); step_orders; step_generic_point; Lemma 5.11 (witness_lemma_5_11); step_dual_derivations; step_lambda_w_tau; step_M_minor; Lemma 5.12(a) bound (witness_lemma_5_12_5_13_paper, witness_lemma_5_12_a_bound); step_M_spans_cone (lemma_5_12_b, lemma_5_12_a_cone); step_lift_ell_minor; step_ell_conormal (lemma_5_13); step_polynomial_limit. The terminal theorem keeps the same-witness route of Stafford38.Geometry.GeneralAsymptoticConormal; both prove the same statement and both build their place with lemma_5_9 and lemma_5_10.",
+      "printed": {
+        "i": "Stafford38.Paper.Section5.theorem_5_7_i_printed",
+        "ii": "Stafford38.Paper.Section5.theorem_5_7_ii_printed",
+        "scope": "Stated for a nonempty, Zariski-closed, irreducible Y in K^n (Definition 5.4(a): Stafford38.Paper.Section5.IsIrreducibleClosed, equivalent to I(Y) prime by definition_5_4_a) with Y and H disjoint, and N(Y), Dir(Y) over the Jacobian smooth locus; derived from the prime-ideal forms theorem_5_7_i_prime and theorem_5_7_ii_prime with I(Y) = idealPoint Y. Theorem 5.8 applies theorem_5_7_i_printed to Y_0 = V_K(q) (step_theorem_5_7_applies)."
+      }
     },
     "lemmas": {
       "5.9": [
@@ -161,6 +166,12 @@
       "lift of u": "Stafford38.Paper.Section5.step_lift_ell_minor",
       "ell annihilates C": "Stafford38.Paper.Section5.step_ell_conormal",
       "final paragraph": "Stafford38.Paper.Section5.step_polynomial_limit"
+    },
+    "definitions": {
+      "5.1 closing sentence": "Stafford38.Paper.Section5.definition_5_1_closing (used in lemma_5_11)",
+      "5.2(c) correspondence": "Stafford38.Paper.Section5.definition_5_2_c_correspondence (used in definition_5_2_c)",
+      "5.3": "Stafford38.Paper.Section5.definition_5_3 (used in lemma_5_9 and lemma_5_10)",
+      "5.4(a)": "Stafford38.Paper.Section5.IsIrreducibleClosed, Stafford38.Paper.Section5.definition_5_4_a"
     }
   },
   "canonical_definition_registry": {

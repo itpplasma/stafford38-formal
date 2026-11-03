@@ -3,6 +3,7 @@ module
 public import Stafford38.Weyl.QuotientTransport
 public import Stafford38.Weyl.EulerRemainder
 public import Stafford38.Weyl.EulerSubring
+public import Stafford38.Paper.Section2.Weyl
 
 @[expose] public section
 
@@ -182,12 +183,12 @@ theorem step_4_1_rising_succ (x p : A) (hweyl : p * x = x * p + 1) (m : ℕ)
           push_cast
           rw [add_assoc _ 1, ← add_assoc 1 1, one_add_one_eq_two]
 
-/-- **Lemma 4.1.** For every `m ≥ 1`,
-`x₁^m p^m = ∏_{i=0}^{m-1}(E−i)` and `p^m x₁^m = ∏_{i=1}^{m}(E+i)`, the factors in
-each product commuting with one another.  The products are taken in the
-listed order of `i` (`A` is not commutative); by the last two clauses the order
+/-- Lemma 4.1 for any ring with elements `x, p` satisfying `p x = x p + 1`:
+for every `m ≥ 1`, `x^m p^m = ∏_{i=0}^{m-1}(E−i)` and `p^m x^m = ∏_{i=1}^{m}(E+i)`
+with `E = x p`, the factors in each product commuting with one another.  The
+products are taken in the listed order of `i`; by the last two clauses the order
 does not matter. -/
-theorem lemma_4_1 (x p : A) (hweyl : p * x = x * p + 1) (m : ℕ) (hm : 1 ≤ m) :
+theorem lemma_4_1_of_weylPair (x p : A) (hweyl : p * x = x * p + 1) (m : ℕ) (hm : 1 ≤ m) :
     x ^ m * p ^ m = ((List.range m).map fun i : ℕ => eulerElement x p - i).prod ∧
       p ^ m * x ^ m = ((List.range' 1 m).map fun i : ℕ => eulerElement x p + i).prod ∧
       (∀ i j : ℕ, Commute (eulerElement x p - i) (eulerElement x p - j)) ∧
@@ -203,8 +204,26 @@ theorem lemma_4_1 (x p : A) (hweyl : p * x = x * p + 1) (m : ℕ) (hm : 1 ≤ m)
 
 end Lemma41
 
+open Stafford38.Paper.Section2 in
+/-- **Lemma 4.1.** For `x₁, p = ∂₁ ∈ A_n(k)` and `E = x₁p`, for every `m ≥ 1`,
+`x₁^m p^m = ∏_{i=0}^{m-1}(E−i)` and `p^m x₁^m = ∏_{i=1}^{m}(E+i)`, the factors in
+each product commuting with one another.  The products are taken in the listed
+order of `i` (`A_n(k)` is not commutative); by the last two clauses the order
+does not matter.  Paper `n` is Lean `n + 1`. -/
+theorem lemma_4_1 (k : Type*) [Field k] (n m : ℕ) (hm : 1 ≤ m) :
+    x₁ k n ^ m * p k n ^ m =
+        ((List.range m).map fun i : ℕ => eulerElement (x₁ k n) (p k n) - i).prod ∧
+      p k n ^ m * x₁ k n ^ m =
+        ((List.range' 1 m).map fun i : ℕ => eulerElement (x₁ k n) (p k n) + i).prod ∧
+      (∀ i j : ℕ, Commute (eulerElement (x₁ k n) (p k n) - i)
+        (eulerElement (x₁ k n) (p k n) - j)) ∧
+      ∀ i j : ℕ, Commute (eulerElement (x₁ k n) (p k n) + i)
+        (eulerElement (x₁ k n) (p k n) + j) :=
+  lemma_4_1_of_weylPair _ _ (convention_2_2_relations k n).1 m hm
+
 #print axioms eq_nonnegative_pbw
 #print axioms step_coordinate_normal
+#print axioms lemma_4_1_of_weylPair
 #print axioms lemma_4_1
 
 end

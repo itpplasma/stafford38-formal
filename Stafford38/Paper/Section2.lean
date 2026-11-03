@@ -3,6 +3,7 @@ module
 public import Stafford38.Paper.Section2.Weyl
 public import Stafford38.Paper.Section2.Filtration
 public import Stafford38.Paper.Section2.Geometry
+public import Stafford38.Paper.Section2.CharacteristicVariety
 public import Stafford38.Paper.Section2.Symplectic
 
 @[expose] public section
@@ -21,7 +22,10 @@ public import Stafford38.Paper.Section2.Symplectic
   identifies `grCyclic` with `gr` of `Q_m = qF_m`).
 * `Stafford38.Paper.Section2.Geometry`: Definitions 2.5–2.7
   (`CotangentBundle`, `proj`, `fibre`; `V`, `VK`, `vanishingIdealOf`,
-  `maxIdealAt`; `Char`) and Theorem 2.12 (`theorem_2_12`).
+  `maxIdealAt`) and Theorem 2.12 (`theorem_2_12`).
+* `Stafford38.Paper.Section2.CharacteristicVariety`: Definitions 2.4 and 2.7 for
+  every module (`IsGoodFiltration`, `CharOf`, independence of the good filtration
+  `definition_2_7_independent`) and the cyclic case `Char`.
 * `Stafford38.Paper.Section2.Symplectic`: Definitions 2.8–2.10
   (`IsSymplectic`, `gramMatrix`, `IsSymplecticBasis`, `omega`; `poisson`;
   `IsInvolutive`, `IsInvolutiveSet`) and Theorem 2.11 (`theorem_2_11`, general

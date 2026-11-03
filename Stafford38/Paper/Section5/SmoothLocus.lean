@@ -31,7 +31,9 @@ proves that the two loci coincide (the Jacobian criterion).
 
 Hence the printed conormal cone `N(Y)` is the Lean one (`conormalCone_paper_eq`),
 the printed `Dir(Y)` is the Lean direction closure (`definition_5_5`), and
-`theorem_5_7_i_printed`, `theorem_5_7_ii_printed` are Theorem 5.7 for them.
+`theorem_5_7_i_printed`, `theorem_5_7_ii_printed` are Theorem 5.7 for a nonempty
+irreducible closed `Y ⊆ K^n` (Definition 5.4(a)), derived from the prime-ideal forms
+`theorem_5_7_i_prime`, `theorem_5_7_ii_prime` with `𝔭 = I(Y)`.
 
 The last section binds the printed Definitions 5.1–5.3 to the Mathlib notions
 where the wording differs.
@@ -593,10 +595,10 @@ section Theorem57
 
 open Stafford38.Geometry.ProjectiveConormalDirections
 
-/-- **Theorem 5.7(i), as printed.** Let `Y = V(𝔭)` be irreducible with `Y ∩ H = ∅`, and
-let `N(Y)` be the conormal cone over the Jacobian smooth locus.  Every polynomial
-`P ∈ K[ξ_1, …, ξ_n]` vanishing on `N(Y)` satisfies `P(1, 0, …, 0) = 0`. -/
-theorem theorem_5_7_i_printed
+/-- Theorem 5.7(i) for `Y = V(𝔭)` with `𝔭 = I(Y)` prime: every polynomial
+`P ∈ K[ξ_1, …, ξ_n]` vanishing on the conormal cone `N(Y)` over the Jacobian smooth
+locus satisfies `P(1, 0, …, 0) = 0`.  `theorem_5_7_i_printed` is the printed form. -/
+theorem theorem_5_7_i_prime
     {k : Type u} [Field k] [IsAlgClosed k] [CharZero k]
     {m : ℕ} (hm : 0 < m)
     (I : PrimeSpectrum (MvPolynomial (Fin m) k))
@@ -608,8 +610,9 @@ theorem theorem_5_7_i_printed
     simpa using hQ
   simpa using (MvPolynomial.mem_zeroLocus_iff.1 (theorem_5_7_i hm I havoid)) Q hQ'
 
-/-- **Theorem 5.7(ii), as printed.** `[dx_1] ∈ Dir(Y)`. -/
-theorem theorem_5_7_ii_printed
+/-- Theorem 5.7(ii) for `Y = V(𝔭)` with `𝔭` prime: `[dx_1] ∈ Dir(Y)`.
+`theorem_5_7_ii_printed` is the printed form. -/
+theorem theorem_5_7_ii_prime
     {k : Type u} [Field k] [IsAlgClosed k] [CharZero k]
     {m : ℕ} (hm : 0 < m)
     (I : PrimeSpectrum (MvPolynomial (Fin m) k))
@@ -620,6 +623,59 @@ theorem theorem_5_7_ii_printed
       conormalDirections I := by
   rw [definition_5_5]
   exact theorem_5_7_ii hm I havoid
+
+/-- For a prime `𝔭`, `Y = V_K(𝔭)` is nonempty, closed and irreducible
+(Definition 5.4(a)), with `I(Y) = 𝔭` (Nullstellensatz). -/
+theorem irreducibleClosed_zeroLocus_of_isPrime
+    {k : Type u} [Field k] [IsAlgClosed k] {m : ℕ}
+    (𝔭 : Ideal (MvPolynomial (Fin m) k)) [h𝔭 : 𝔭.IsPrime] :
+    ∃ (hne : (MvPolynomial.zeroLocus k 𝔭).Nonempty)
+      (hY : IsIrreducibleClosed (MvPolynomial.zeroLocus k 𝔭)),
+      idealPoint (MvPolynomial.zeroLocus k 𝔭) hne hY = ⟨𝔭, h𝔭⟩ := by
+  have hI : MvPolynomial.vanishingIdeal k (MvPolynomial.zeroLocus k 𝔭) = 𝔭 :=
+    MvPolynomial.IsPrime.vanishingIdeal_zeroLocus 𝔭
+  have hne : (MvPolynomial.zeroLocus k 𝔭).Nonempty := by
+    rw [Set.nonempty_iff_ne_empty]
+    intro h0
+    rw [h0, MvPolynomial.vanishingIdeal_empty] at hI
+    exact h𝔭.ne_top hI.symm
+  have hY : IsIrreducibleClosed (MvPolynomial.zeroLocus k 𝔭) :=
+    (definition_5_4_a hne ⟨𝔭, rfl⟩).2 (by rw [hI]; exact h𝔭)
+  exact ⟨hne, hY, PrimeSpectrum.ext hI⟩
+
+/-- **Theorem 5.7(i).** Let `Y ⊆ X = K^n` be nonempty, closed and irreducible
+(Definition 5.4(a)) with `Y ∩ H = ∅`, `H = {x_1 = 0}`, and let
+`N(Y) = ⋃_{y ∈ Y_sm} N*_y Y` be the conormal cone over the smooth locus.  Every
+polynomial `P ∈ K[ξ_1, …, ξ_n]` vanishing on `N(Y)` satisfies `P(1, 0, …, 0) = 0`.
+Derived from `theorem_5_7_i_prime` with `𝔭 = I(Y)`. -/
+theorem theorem_5_7_i_printed
+    {k : Type u} [Field k] [IsAlgClosed k] [CharZero k]
+    {m : ℕ} (hm : 0 < m)
+    (Y : Set (Fin m → k)) (hne : Y.Nonempty) (hY : IsIrreducibleClosed Y)
+    (hH : Y ∩ {y | y ⟨0, hm⟩ = 0} = ∅)
+    (P : MvPolynomial (Fin m) k)
+    (hP : ∀ ξ ∈ conormalCone (idealPoint Y hne hY), MvPolynomial.eval ξ P = 0) :
+    MvPolynomial.eval (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0) P = 0 := by
+  refine theorem_5_7_i_prime hm (idealPoint Y hne hY) (fun y hy h0 => ?_) P hP
+  change y ∈ MvPolynomial.zeroLocus k (MvPolynomial.vanishingIdeal k Y) at hy
+  rw [zeroLocus_vanishingIdeal_of_isZariskiClosed hY.1] at hy
+  exact (Set.eq_empty_iff_forall_notMem.mp hH) y ⟨hy, h0⟩
+
+/-- **Theorem 5.7(ii).** For `Y` as in (i), `[dx_1] ∈ Dir(Y)`.  Derived from
+`theorem_5_7_ii_prime` with `𝔭 = I(Y)`. -/
+theorem theorem_5_7_ii_printed
+    {k : Type u} [Field k] [IsAlgClosed k] [CharZero k]
+    {m : ℕ} (hm : 0 < m)
+    (Y : Set (Fin m → k)) (hne : Y.Nonempty) (hY : IsIrreducibleClosed Y)
+    (hH : Y ∩ {y | y ⟨0, hm⟩ = 0} = ∅) :
+    Projectivization.mk k
+        (fun i : Fin m => if i = ⟨0, hm⟩ then (1 : k) else 0)
+        (by intro h; have := congrFun h ⟨0, hm⟩; simp at this) ∈
+      conormalDirections (idealPoint Y hne hY) := by
+  refine theorem_5_7_ii_prime hm (idealPoint Y hne hY) (fun y hy h0 => ?_)
+  change y ∈ MvPolynomial.zeroLocus k (MvPolynomial.vanishingIdeal k Y) at hy
+  rw [zeroLocus_vanishingIdeal_of_isZariskiClosed hY.1] at hy
+  exact (Set.eq_empty_iff_forall_notMem.mp hH) y ⟨hy, h0⟩
 
 end Theorem57
 
@@ -640,6 +696,9 @@ end
 #print axioms conormalCone_paper_eq
 #print axioms projectivizedDirectionSet_smoothConormalDirectionSet
 #print axioms definition_5_5
+#print axioms theorem_5_7_i_prime
+#print axioms theorem_5_7_ii_prime
+#print axioms irreducibleClosed_zeroLocus_of_isPrime
 #print axioms theorem_5_7_i_printed
 #print axioms theorem_5_7_ii_printed
 
