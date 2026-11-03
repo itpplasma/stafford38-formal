@@ -13,7 +13,7 @@ public import Stafford38.Geometry.GeneralCoordinateAvoidance
 
 The proof below follows Section 5.2 of the paper.  Each block names the
 paragraph it formalizes and calls the declaration that states it:
-Lemmas 5.9–5.10 with `Ω_{V/K}` finitely generated
+the case `x̄_1` algebraic (`step_coordinate_algebraic`), Lemmas 5.9–5.10 with `Ω_{V/K}` finitely generated
 (`GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameWithKaehlerFinite`), `V̂ ≅ κ[[t]]` (`step_completion`), the orders
 `a`, `b` (`step_orders`), the generic point (`step_generic_point`), Lemma 5.11
 (`witness_lemma_5_11`, via `lemma_5_11`), the dual derivations and `Z`
@@ -74,11 +74,10 @@ theorem theorem_5_7_i_paper
   classical
   intro Pol hPol
   by_cases halg : IsAlgebraic k (componentCoordinate I ⟨0, hm⟩)
-  · -- First paragraph: `x̄_1` algebraic, so `x_1 − c ∈ 𝔭` and
-    -- `(1, 0, …, 0) = dx_1` is conormal at points of `Y`.
-    obtain ⟨c, y, -, -, hmem⟩ := exists_constant_coordinate_equation_and_pure_axis hm I halg
-    have h := fibreLift_mem_vanishingIdeal_equationConormal I.asIdeal I.isPrime Pol hPol _ hmem
-    simpa [fibreLift, MvPolynomial.eval_rename, Function.comp_def] using h
+  · -- First paragraph: `x̄_1` algebraic, so `x_1 − c ∈ 𝔭` with `c ≠ 0`, and
+    -- `(1, 0, …, 0) = dx_1` is conormal at a smooth point of `Y`, so lies in `N(Y)`.
+    obtain ⟨-, -, -, hN⟩ := step_coordinate_algebraic hm I havoid halg
+    exact hPol _ hN
   -- `x̄_1` transcendental.  `Y ∩ H = ∅` makes `x̄_1` a unit of `R`.
   have hunit := exists_coordinate_inverse_of_avoidance I.asIdeal ⟨0, hm⟩ havoid
   -- Lemmas 5.9–5.10: the discrete valuation ring `V` of `F` at infinity, the

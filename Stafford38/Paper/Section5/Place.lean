@@ -15,9 +15,10 @@ coordinate images `x̄_1, …, x̄_n` and `x̄_0 := 1`.  Here `F` is any field o
 
 Both proofs use the checked stages of the formal construction
 (`Stafford38.Geometry.LaneC`): Stage 1 is the dominating valuation ring, Stage 2
-the normalization `A` of `C_0`, Stage 3 the height-one prime `𝔭_D` and Stage 4
-the residue algebraicity.  The discrete valuation ring of Lemma 5.10 is the
-same localization `A_{𝔭_D}` as in that construction.
+the normalization `A` of `C_0` and Stage 4 the residue algebraicity.  The proof
+of Lemma 5.10 takes a prime `𝔭_D` minimal over `x̄_1`, of height one by Krull's
+principal ideal theorem, and shows that `V = A_{𝔭_D}` is a discrete valuation
+ring as a Noetherian local normal domain of dimension one.
 -/
 
 namespace Stafford38.Paper.Section5
@@ -264,12 +265,53 @@ theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
     apply hinvA
     rw [show (x i)⁻¹ = (z : F) by simpa using congrArg Inv.inv (eq_inv_of_mul_eq_one_left hzK)]
     exact z.2
-  obtain ⟨p, hp, hpheight, hxp, hplace⟩ := stage3_exists_height_one_prime_valuation A xA hxA0 hxAu
-  letI : p.IsPrime := hp
-  let V : ValuationSubring F := placeValuationSubring A p hplace
-  letI : IsLocalization.AtPrime (placeSubalgebra A p) p := by
-    unfold placeSubalgebra
+  -- `𝔭_D` is minimal among the primes containing `x̄_1`; by Krull's principal ideal
+  -- theorem `ht 𝔭_D ≤ 1`, and `ht 𝔭_D = 1` because `(0)` is the only prime of height `0`.
+  obtain ⟨p, hpmin⟩ := (Ideal.span {xA}).nonempty_minimalPrimes
+    (by simpa [Ideal.span_singleton_eq_top] using hxAu)
+  letI : p.IsPrime := hpmin.isPrime
+  have hxp : xA ∈ p := hpmin.1.2 (Ideal.mem_span_singleton_self xA)
+  have hpheight : p.height = 1 := by
+    refine le_antisymm (Ideal.height_le_one_of_isPrincipal_of_mem_minimalPrimes _ _ hpmin) ?_
+    have hpne : p ≠ ⊥ := fun h ↦ hxA0 (by simpa [h] using hxp)
+    rw [Order.one_le_iff_ne_zero]
+    simpa [Ideal.height_eq_zero_iff_eq_bot] using hpne
+  -- `V := A_{𝔭_D}` is a Noetherian local domain.
+  let S := placeSubalgebra A p
+  letI : IsLocalization.AtPrime S p := by
+    unfold S placeSubalgebra
     infer_instance
+  letI : IsLocalRing S := IsLocalization.AtPrime.isLocalRing S p
+  letI : IsNoetherianRing S := IsLocalization.isNoetherianRing p.primeCompl S inferInstance
+  -- It is normal, as a localization of an integrally closed domain (A–M, Prop. 5.12),
+  letI : IsIntegrallyClosed S :=
+    isIntegrallyClosed_of_isLocalization S p.primeCompl p.primeCompl_le_nonZeroDivisors
+  -- and its dimension is `ht 𝔭_D = 1`.
+  have hdim : ringKrullDim S = 1 := by
+    rw [IsLocalization.AtPrime.ringKrullDim_eq_height p S, hpheight]
+    rfl
+  -- A Noetherian local normal domain of dimension one is a DVR (Matsumura, Thm. 11.2).
+  have hSdvr : IsDiscreteValuationRing S := by
+    have hnf : ¬ IsField S := fun hf ↦ by
+      letI := hf.toField
+      rw [ringKrullDim_eq_zero_of_isField hf] at hdim
+      exact zero_ne_one hdim
+    have h3 : IsIntegrallyClosed S ∧ ∃! P : Ideal S, P ≠ ⊥ ∧ P.IsPrime := by
+      refine ⟨inferInstance, IsLocalRing.maximalIdeal _,
+        ⟨IsLocalRing.isField_iff_maximalIdeal_eq.not.mp hnf, inferInstance⟩, ?_⟩
+      have hkd : Ring.KrullDimLE 1 S := by
+        rw [Ring.krullDimLE_iff, hdim]
+        norm_num
+      rintro P ⟨hPb, hPp⟩
+      exact IsLocalRing.eq_maximalIdeal (hPp.isMaximal_of_ne_bot hPb)
+    exact ((IsDiscreteValuationRing.TFAE S hnf).out 4 1).mp h3
+  -- In particular `V` is a valuation ring of `F`.
+  have hplace : ∀ z : F, z ∈ S.toSubring ∨ z⁻¹ ∈ S.toSubring := by
+    intro z
+    rcases ValuationRing.isInteger_or_isInteger S z with ⟨s, hs⟩ | ⟨s, hs⟩
+    · left; rw [← hs]; exact s.2
+    · right; rw [← hs]; exact s.2
+  let V : ValuationSubring F := placeValuationSubring A p hplace
   have hAV : ∀ a : A, (a : F) ∈ V.toSubring := fun a ↦ ofField_mem_algebraMap_v A p hplace a
   have hpV : ∀ a : A, (⟨a, hAV a⟩ : V.toSubring) ∈ maximalIdeal V.toSubring ↔ a ∈ p :=
     fun a ↦ ofField_mem_maximalIdeal_iff_v A p hplace a
@@ -282,25 +324,15 @@ theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
     exact hAV (algebraMap k A c)
   have hqV : ∀ a, Y a / Y j ∈ V.toSubring := fun a ↦ by
     simpa [s, div_eq_mul_inv] using hAV ⟨Y a * s, hnormA a⟩
+  -- `Frac V = F`, since `A ⊆ V ⊆ F` and `Frac A = F`.
+  have _hfracV : IsFractionRing V.toSubring F := IsFractionRing.of_field V.toSubring F fun z ↦ by
+    obtain ⟨a, b, hb, hab⟩ := IsFractionRing.div_surjective A z
+    exact ⟨⟨a, hAV a⟩, ⟨b, hAV b⟩, hab.symm⟩
   letI : Algebra k V.toSubring := ((algebraMap k F).codRestrict V.toSubring hkV).toAlgebra
   letI : IsScalarTower k V.toSubring F := IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
   have hxV : x i ∈ V.toSubring := hAV xA
   have hxm : (⟨x i, hxV⟩ : V.toSubring) ∈ maximalIdeal V.toSubring := (hpV xA).2 hxp
-  -- `V = A_{𝔭_D}` is a Noetherian valuation ring, and `V ≠ F` because `x̄_1 ∈ 𝔪_V`;
-  -- by Definition 5.3(b) it is a discrete valuation ring.
-  have hVdvr : IsDiscreteValuationRing V.toSubring := by
-    have hN : IsNoetherianRing (placeSubalgebra A p) :=
-      IsLocalization.isNoetherianRing p.primeCompl (placeSubalgebra A p) inferInstance
-    refine (definition_5_3.2.2.1 V).2 ⟨hN, fun htop => ?_⟩
-    have hinvV : (x i)⁻¹ ∈ V.toSubring := by
-      change (x i)⁻¹ ∈ V
-      rw [htop]
-      exact ValuationSubring.mem_top _
-    rw [(definition_5_3.2.1 V).2] at hxm
-    apply hxm
-    refine IsUnit.of_mul_eq_one (⟨(x i)⁻¹, hinvV⟩ : V.toSubring) ?_
-    apply Subtype.ext
-    simp [hy0]
+  have hVdvr : IsDiscreteValuationRing V.toSubring := hSdvr
   have hqA : ∀ a, Y a / Y j ∈ A := fun a ↦ by simpa [s, div_eq_mul_inv] using hnormA a
   refine ⟨Lemma510Place.mk A p hplace hVdvr hqA hyA hxp ?_ ?_⟩
   · -- (b) `A/𝔭_D` is integral over the image of `C_0`, whose residues are `res q_i`.

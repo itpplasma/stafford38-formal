@@ -70,8 +70,8 @@ theorem generalDivisorialVisibleFrameWithKaehlerFinite
       Module.Finite V (Ω[V⁄k]) := by
   let i : Fin m := ⟨0, hm⟩
   let K := ComponentFractionField P
-  obtain ⟨E, V, hEV, hVdvr, hxV, htransE, hxm, hEfin, hkaehler, halgAll⟩ :=
-    Stafford38.Geometry.LaneC.divisorialVisibleFrameExistence
+  obtain ⟨E, V, hEV, hVdvr, hxV, htransE, hxm, hEfin, hkaehler, halgAll, j, hj, hqV⟩ :=
+    Stafford38.Geometry.LaneC.divisorialVisibleFrameExistenceWithChart
       k K m (componentCoordinate P) i
         (componentCoordinate_adjoin_eq_top P) htrans
   letI : IsLocalRing V.toSubring := hVdvr.toIsLocalRing
@@ -92,11 +92,15 @@ theorem generalDivisorialVisibleFrameWithKaehlerFinite
     W.ambientAlgebra
   letI : IsScalarTower W.coefficientField
       (CoordinateZeroLocalRing W.coefficientField) K := W.coefficientTower
-  obtain ⟨chart, qraw, scale, hscale, hchartRaw, hqraw⟩ :=
-    exists_normalized_projective_lift V (componentProjectivePoint P)
-      ⟨0, by
-        simpa only [componentProjectivePoint_eq_finCases, Fin.cases_zero] using
-          (one_ne_zero : (1 : ComponentFractionField P) ≠ 0)⟩
+  -- The column `q_a = x̄_a / x̄_j` with the chart `j` of Lemma 5.9.
+  obtain ⟨chart, qraw, scale, hscale, hchartRaw, hqraw⟩ :
+      ∃ (chart : Fin (m + 1)) (q : Fin (m + 1) → V) (scale : K),
+        scale ≠ 0 ∧ q chart = 1 ∧ ∀ a, (q a : K) = scale * componentProjectivePoint P a := by
+    simp only [componentProjectivePoint_eq_finCases]
+    refine ⟨j, fun a ↦ ⟨_, hqV a⟩, (Fin.cases 1 (componentCoordinate P) j : K)⁻¹,
+      inv_ne_zero hj, Subtype.ext (div_self hj), fun a ↦ ?_⟩
+    change (Fin.cases 1 (componentCoordinate P) a : K) / _ = _
+    rw [div_eq_inv_mul]
   let q : Fin (m + 1) → V.toSubring := fun a =>
     ⟨qraw a, (qraw a).property⟩
   have hchart : q chart = 1 := by

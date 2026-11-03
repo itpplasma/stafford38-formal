@@ -454,15 +454,9 @@ theorem map_le_map_span_of_jacobian (𝔓 : PrimeSpectrum (MvPolynomial (Fin n) 
     have h1 := trdeg_quotient_toNat_lt (K := k) hlt
     have h2 := finrank_genericTangent_le 𝔯 y (h𝔯𝔓.trans h𝔓y) f hf𝔯 hli
     let R0 : PrimeSpectrum (MvPolynomial (Fin n) k) := ⟨𝔯, inferInstance⟩
-    have hgen : IntermediateField.adjoin k (Set.range (GenericPointKaehlerConormal.genericPoint 𝔯
-        (FractionRing (MvPolynomial (Fin n) k ⧸ 𝔯)))) = ⊤ := by
-      have : GenericPointKaehlerConormal.genericPoint 𝔯
-          (FractionRing (MvPolynomial (Fin n) k ⧸ 𝔯)) =
-          AffineComponentCoordinateSplit.componentCoordinate R0 := funext fun _ ↦ rfl
-      rw [this]
-      exact ExactDivisorialVisibleFrameExistence.componentCoordinate_adjoin_eq_top R0
     have h512 := generic_tangent_finrank_eq_component_kaehler_finrank
-      (E := FractionRing (MvPolynomial (Fin n) k ⧸ 𝔯)) (I := 𝔯) hgen
+      (F := FractionRing (MvPolynomial (Fin n) k ⧸ 𝔯))
+      (E := FractionRing (MvPolynomial (Fin n) k ⧸ 𝔯)) (I := 𝔯)
     simp only [Algebra.algebraMap_self, RingHom.id_apply] at h512
     have htr := (component_kaehler_finrank_eq_trdeg (k := k)
       (AffineComponentCoordinateSplit.componentCoordinate R0)

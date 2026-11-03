@@ -476,14 +476,8 @@ theorem finrank_zariskiTangentSpace_of_smoothAffinePoint
         (Localization.AtPrime 𝔪) F 𝔪.primeCompl (nonZeroDivisors A)
         (Ideal.primeCompl_le_nonZeroDivisors 𝔪)
     exact finrank_zariskiTangentSpace_eq_finrank_localizedKaehler (L := F) 𝔪
-  have hgen : IntermediateField.adjoin k
-      (Set.range (GenericPointKaehlerConormal.genericPoint P.asIdeal F)) = ⊤ := by
-    have : GenericPointKaehlerConormal.genericPoint P.asIdeal F =
-        AffineComponentCoordinateSplit.componentCoordinate P := funext fun _ ↦ rfl
-    rw [this]
-    exact ExactDivisorialVisibleFrameExistence.componentCoordinate_adjoin_eq_top P
-  have h512 := generic_tangent_finrank_eq_component_kaehler_finrank (E := F)
-    (I := P.asIdeal) hgen
+  have h512 := generic_tangent_finrank_eq_component_kaehler_finrank (F := F) (E := F)
+    (I := P.asIdeal)
   simp only [Algebra.algebraMap_self, RingHom.id_apply] at h512
   rw [hK, ← hF, ← h512]
 

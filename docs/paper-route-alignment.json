@@ -92,7 +92,7 @@
       "i": "Stafford38.Paper.Section5.theorem_5_7_i",
       "ii": "Stafford38.Paper.Section5.theorem_5_7_ii",
       "proof": "Stafford38.Paper.Section5.theorem_5_7_i_paper",
-      "route": "theorem_5_7_i_paper follows the printed proof: algebraic case; the discrete valuation ring of Lemmas 5.9-5.10 (Stafford38.Geometry.LaneC.divisorialVisibleFrameExistence calls lemma_5_9 and lemma_5_10); step_orders; step_generic_point; Lemma 5.11 (witness_lemma_5_11); step_dual_derivations; step_lambda_w_tau; step_M_minor; Lemma 5.12(a) bound (witness_lemma_5_12_5_13_paper, witness_lemma_5_12_a_bound); step_M_spans_cone (lemma_5_12_b, lemma_5_12_a_cone); step_lift_ell_minor; step_ell_conormal (lemma_5_13); step_polynomial_limit. The terminal theorem keeps the same-witness route of Stafford38.Geometry.GeneralAsymptoticConormal; both prove the same statement and both build their place with lemma_5_9 and lemma_5_10.",
+      "route": "theorem_5_7_i_paper follows the printed proof: algebraic case (step_coordinate_algebraic); the discrete valuation ring of Lemmas 5.9-5.10 (Stafford38.Geometry.LaneC.divisorialVisibleFrameExistence calls lemma_5_9 and lemma_5_10); step_orders; step_generic_point; Lemma 5.11 (witness_lemma_5_11); step_dual_derivations; step_lambda_w_tau; step_M_minor; Lemma 5.12(a) bound (witness_lemma_5_12_5_13_paper, witness_lemma_5_12_a_bound); step_M_spans_cone (lemma_5_12_b, lemma_5_12_a_cone); step_lift_ell_minor; step_ell_conormal (lemma_5_13); step_polynomial_limit. The terminal theorem keeps the same-witness route of Stafford38.Geometry.GeneralAsymptoticConormal; both prove the same statement and both build their place with lemma_5_9 and lemma_5_10.",
       "printed": {
         "i": "Stafford38.Paper.Section5.theorem_5_7_i_printed",
         "ii": "Stafford38.Paper.Section5.theorem_5_7_ii_printed",
@@ -112,6 +112,8 @@
         "Stafford38.Paper.Section5.witness_lemma_5_11"
       ],
       "5.12(a)": [
+        "Stafford38.Paper.Section5.quotientKaehlerMap_exact",
+        "Stafford38.Paper.Section5.fieldKaehlerMap_exact",
         "Stafford38.Paper.Section5.generic_tangent_finrank_eq_component_kaehler_finrank",
         "Stafford38.Paper.Section5.component_kaehler_finrank_eq_trdeg",
         "Stafford38.Paper.Section5.lemma_5_12_a_cone",
@@ -126,8 +128,9 @@
         "Stafford38.Paper.Section5.witness_lemma_5_12_5_13_paper"
       ]
     },
-    "witness_scope": "The place of the formal proof is built by lemma_5_9 and lemma_5_10, followed by a coefficient field E over which the residue field is finite (the input to the coefficient field of the completion, Matsumura Thm. 28.3), and keeps Lemma 5.10(c) (Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameWithKaehlerFinite). The proof uses the printed constructions: a > 0 from Lemma 5.10(a) (step_a_pos, lemma_5_10_a_not_R_le), the unit minor M_iota (step_M_minor), the lift ell_iota = -u_upsilon M_upsilon M_iota^-1 (step_lift_ell_minor), and the bound m <= d'+1 of Lemma 5.12(a) by the second fundamental sequence and Nakayama (witness_lemma_5_12_a_bound).",
+    "witness_scope": "The place of the formal proof is built by lemma_5_9 and lemma_5_10, with the column q_a = x̄_a / x̄_j for the chart j of lemma_5_9 (Stafford38.Geometry.LaneC.divisorialVisibleFrameExistenceWithChart), followed by a coefficient field E over which the residue field is finite (the input to the coefficient field of the completion, Matsumura Thm. 28.3), and keeps Lemma 5.10(c) (Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameWithKaehlerFinite). The proof uses the printed constructions: a > 0 from Lemma 5.10(a) (step_a_pos, lemma_5_10_a_not_R_le), the unit minor M_iota (step_M_minor), the lift ell_iota = -u_upsilon M_upsilon M_iota^-1 (step_lift_ell_minor), and the bound m <= d'+1 of Lemma 5.12(a) by the second fundamental sequence and Nakayama (witness_lemma_5_12_a_bound).",
     "paragraphs": {
+      "x1 algebraic": "Stafford38.Paper.Section5.step_coordinate_algebraic",
       "orders a, b": "Stafford38.Paper.Section5.step_orders",
       "a > 0 (Lemma 5.10(a))": "Stafford38.Paper.Section5.step_a_pos",
       "generic point y": "Stafford38.Paper.Section5.step_generic_point",
