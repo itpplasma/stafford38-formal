@@ -37,9 +37,7 @@ order-quotient filtration is good; and the right-module convention costs
 nothing, because `A/I` is a left `Aᵒᵖ`-module, `gr(Aᵒᵖ) ≅ (gr A)ᵒᵖ = S` since
 `S` is commutative, and the induced bracket only changes sign.
 
-That this Lean proposition really says what the cited theorem says is a human
-review obligation recorded in `docs/literature-assumptions.yaml`, not
-something this file establishes.  In particular it rests on the repository's
+The correspondence with the cited theorem rests on the repository's
 own identification of `OrderAssociatedGradedModule` with `gr(A/I)` for the
 differential-order filtration.
 
