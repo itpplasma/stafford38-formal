@@ -3,6 +3,7 @@ module
 public import Stafford38.Geometry.PaperGenericTangentRank
 public import Stafford38.Geometry.KaehlerTranscendenceBasis
 public import Stafford38.Geometry.PowerSeriesArcTangency
+public import Stafford38.Paper.Section5.Definitions
 
 @[expose] public section
 
@@ -224,7 +225,7 @@ theorem component_kaehler_finrank_eq_trdeg
     kaehlerFinrankOfTranscendenceBasis k F t (↑) ht
   have hcard : (Fintype.card t : Cardinal) = Algebra.trdeg k F := by
     rw [← Cardinal.mk_fintype]
-    exact ht.cardinalMk_eq_trdeg
+    exact (definition_5_1_g_h ht).2
   refine ⟨by rw [hrank, hcard], ?_⟩
   rw [← hcard, Cardinal.toNat_natCast, hrank]
 

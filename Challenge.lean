@@ -225,8 +225,107 @@ end Stafford38.TorsionCyclicity
 
 namespace Stafford38Challenge
 
+universe u v
+
+/-- The generator `x₁` of `A_n(k)`, `n ≥ 1`. -/
+abbrev x₁ (k : Type*) [Field k] {n : ℕ} (hn : 0 < n) : WeylAlg k n :=
+  generator k n (.inl ⟨0, hn⟩)
+
+/-- The linear map `g` on the generator space `V = span(x_1, …, ∂_n)`, given by
+the rows of its matrix: `g(u_i) = ∑_j g_ij u_j`. -/
+abbrev linearImage (k : Type*) [Field k] {n : ℕ}
+    (g : Matrix (PhaseVar n) (PhaseVar n) k) (i : PhaseVar n) : WeylAlg k n :=
+  Stafford.linearCombination g (generator k n) i
+
+/-- An `ω`-preserving `g` (`g J gᵀ = J`) preserves the Weyl relations
+`[u_i, u_j] = J_ij`. -/
+theorem linearImage_rel (k : Type*) [Field k] {n : ℕ}
+    (g : Matrix.symplecticGroup (Fin n) k) ⦃a b : FreeAlgebra k (PhaseVar n)⦄
+    (h : relation (Matrix.J (Fin n) k) a b) :
+    FreeAlgebra.lift k (linearImage k (g : Matrix (PhaseVar n) (PhaseVar n) k)) a =
+      FreeAlgebra.lift k (linearImage k (g : Matrix (PhaseVar n) (PhaseVar n) k)) b := by
+  obtain ⟨i, j, rfl, rfl⟩ := h
+  have hcomm : ∀ p q : PhaseVar n,
+      generator k n p * generator k n q - generator k n q * generator k n p =
+        algebraMap k (WeylAlg k n) (Matrix.J (Fin n) k p q) := by
+    intro p q
+    have := RingQuot.mkAlgHom_rel k
+      (show relation (Matrix.J (Fin n) k) _ _ from ⟨p, q, rfl, rfl⟩)
+    simpa [generator, Stafford.freeWeylGenerator, map_sub, map_mul] using this
+  have hg := (SymplecticGroup.mem_iff).mp g.2
+  simp only [map_sub, map_mul, FreeAlgebra.lift_ι_apply, AlgHom.commutes, linearImage,
+    Stafford.linearCombination, ← Algebra.smul_def, Finset.sum_mul, Finset.mul_sum,
+    smul_mul_smul_comm]
+  rw [Finset.sum_comm, ← Finset.sum_sub_distrib]
+  simp_rw [← Finset.sum_sub_distrib]
+  have hterm : ∀ p q : PhaseVar n,
+      ((g : Matrix _ _ k) i p * (g : Matrix _ _ k) j q) • (generator k n p * generator k n q) -
+        ((g : Matrix _ _ k) j q * (g : Matrix _ _ k) i p) • (generator k n q * generator k n p) =
+      algebraMap k (WeylAlg k n)
+        ((g : Matrix _ _ k) i p * Matrix.J (Fin n) k p q * (g : Matrix _ _ k) j q) := by
+    intro p q
+    rw [mul_comm ((g : Matrix _ _ k) j q)]
+    rw [show ∀ (c : k) (x y : WeylAlg k n), c • x - c • y = c • (x - y) from
+      fun c x y => (smul_sub c x y).symm, hcomm, Algebra.smul_def, ← map_mul]
+    congr 1
+    ring
+  simp_rw [hterm, ← map_sum]
+  congr 1
+  conv_rhs => rw [← hg]
+  simp only [Matrix.mul_apply, Matrix.transpose_apply, Finset.sum_mul]
+  rw [Finset.sum_comm]
+
+/-- **`Φ_g`**: for a linear `ω`-preserving automorphism `g` of the generator
+space (`g J gᵀ = J`, i.e. `g ∈ Sp(2n, k)`), the algebra automorphism of
+`A_n(k)` extending `u_i ↦ g(u_i) = ∑_j g_ij u_j`.  Its inverse is
+`Φ_g⁻¹ = Φ_{g⁻¹}`. -/
+noncomputable def phiG (k : Type*) [Field k] (n : ℕ) (g : Matrix.symplecticGroup (Fin n) k) :
+    WeylAlg k n →ₐ[k] WeylAlg k n :=
+  RingQuot.liftAlgHom k
+    ⟨FreeAlgebra.lift k (linearImage k (g : Matrix (PhaseVar n) (PhaseVar n) k)),
+      fun _ _ h => linearImage_rel k g h⟩
+
+/-- A right module `M` is cyclic: `M = mA` for some `m ∈ M`. -/
+def IsCyclicModule (A : Type u) (M : Type v) [Ring A] [AddCommGroup M] [Module Aᵐᵒᵖ M] :
+    Prop :=
+  ∃ m : M, ∀ x : M, ∃ a : A, x = MulOpposite.op a • m
+
+/-- **Theorem 1.1.**  For every field of characteristic zero `k`, every `n ≥ 0`
+and every nonzero `d ∈ A_n(k)`, there exists an `F ∈ A_n(k)` such that
+`A_n(k) = dA_n(k) + FdA_n(k)`, or equivalently, there exist `F, S, R ∈ A_n(k)`
+such that `1 = dR + FdS`.  Moreover, if `n ≥ 1`, one may choose
+`F = Φ_g^{-1}(x₁)^{deg_B d}` for a linear `ω`-preserving automorphism `g`. -/
+def PaperTheorem_1_1 : Prop :=
+  ∀ (k : Type u) [Field k] [CharZero k] (n : ℕ) (d : WeylAlg k n), d ≠ 0 →
+    (∃ F : WeylAlg k n, (⊤ : Submodule (WeylAlg k n)ᵐᵒᵖ (WeylAlg k n)) =
+        Submodule.span (WeylAlg k n)ᵐᵒᵖ {d} ⊔ Submodule.span (WeylAlg k n)ᵐᵒᵖ {F * d}) ∧
+      (∃ F S R : WeylAlg k n, (1 : WeylAlg k n) = d * R + F * d * S) ∧
+      (∀ hn : 1 ≤ n, ∃ g : Matrix.symplecticGroup (Fin n) k, ∃ R S : WeylAlg k n,
+        (1 : WeylAlg k n) = d * R +
+          phiG k n g⁻¹ (x₁ k hn) ^ Stafford38FixedSourceChallenge.bernsteinDegree k d * d * S)
+
+/-- **Corollary 6.3** (Stafford 1978).  Every finitely generated torsion right
+`A_n(k)`-module is cyclic. -/
+def PaperCorollary_6_3 : Prop :=
+  ∀ (k : Type u) [Field k] [CharZero k] (n : ℕ) (M : Type v) [AddCommGroup M]
+    [Module (WeylAlg k n)ᵐᵒᵖ M] [Module.Finite (WeylAlg k n)ᵐᵒᵖ M],
+    Stafford38.TorsionCyclicity.IsRightTorsion (A := WeylAlg k n) (M := M) →
+      IsCyclicModule (WeylAlg k n) M
+
+end Stafford38Challenge
+
+namespace Stafford38Challenge
+
 /-- The compared theorem. The proof is supplied by `Solution.lean`. -/
 theorem universalStatement : UniversalStatement := by
+  sorry
+
+/-- Theorem 1.1 of the paper, as printed. The proof is supplied by `Solution.lean`. -/
+theorem theorem_1_1 : PaperTheorem_1_1 := by
+  sorry
+
+/-- Corollary 6.3 of the paper, as printed. The proof is supplied by `Solution.lean`. -/
+theorem corollary_6_3 : PaperCorollary_6_3 := by
   sorry
 
 end Stafford38Challenge

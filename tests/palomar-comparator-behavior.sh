@@ -50,6 +50,12 @@ namespace Stafford38Challenge
 theorem universalStatement : True := by
   trivial
 
+theorem theorem_1_1 : True := by
+  trivial
+
+theorem corollary_6_3 : True := by
+  trivial
+
 end Stafford38Challenge
 EOF
 cat >"$tmp_root/Solution.lean" <<'EOF'
@@ -60,6 +66,12 @@ module
 namespace Stafford38Challenge
 
 theorem universalStatement : True := by
+  trivial
+
+theorem theorem_1_1 : True := by
+  trivial
+
+theorem corollary_6_3 : True := by
   trivial
 
 end Stafford38Challenge
@@ -94,7 +106,7 @@ cat >"$tmp_root/comparator.json" <<'EOF'
 {
   "challenge_module": "Challenge",
   "solution_module": "Solution",
-  "theorem_names": ["Stafford38Challenge.universalStatement"],
+  "theorem_names": ["Stafford38Challenge.universalStatement", "Stafford38Challenge.theorem_1_1", "Stafford38Challenge.corollary_6_3"],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
 }
 EOF
@@ -110,7 +122,7 @@ cat >"$tmp_root/comparator-alternative.json" <<'EOF'
 {
   "challenge_module": "Challenge",
   "solution_module": "AlternativeSolution",
-  "theorem_names": ["Stafford38Challenge.universalStatement"],
+  "theorem_names": ["Stafford38Challenge.universalStatement", "Stafford38Challenge.theorem_1_1", "Stafford38Challenge.corollary_6_3"],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
 }
 EOF
@@ -144,6 +156,12 @@ namespace Stafford38Challenge
 theorem universalStatement : True ∧ True := by
   constructor <;> trivial
 
+theorem theorem_1_1 : True := by
+  trivial
+
+theorem corollary_6_3 : True := by
+  trivial
+
 end Stafford38Challenge
 EOF
   if bash scripts/run-palomar-comparator.sh comparator.json .lake/verification/wrong.log >wrong-run.log 2>&1; then
@@ -162,6 +180,12 @@ namespace Stafford38Challenge
 axiom rogue : False
 
 theorem universalStatement : True := False.elim rogue
+
+theorem theorem_1_1 : True := by
+  trivial
+
+theorem corollary_6_3 : True := by
+  trivial
 
 end Stafford38Challenge
 EOF

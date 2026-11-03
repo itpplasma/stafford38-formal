@@ -498,6 +498,12 @@
        "name": "Stafford38Challenge.UniversalStatement",
        "role": "definition",
        "line": 78
+      },
+      {
+       "file": "Stafford38/Paper/Main.lean",
+       "name": "Stafford38.Paper.theorem_1_1",
+       "role": "paper-route-proof",
+       "line": 24
       }
      ]
     }
@@ -659,13 +665,19 @@
      "file": "AlternativeFixedSourceSolution.lean",
      "role": "alternative-proof-entry",
      "name": "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
-     "line": 20,
+     "line": 17,
      "expands": [
       {
        "file": "Stafford38/ChallengeDefinitions.lean",
        "name": "Stafford38FixedSourceChallenge.UniversalFixedSourceStatement",
        "role": "definition",
        "line": 193
+      },
+      {
+       "file": "Stafford38/Paper/Main.lean",
+       "name": "Stafford38.Paper.theorem_1_1_fixedSource",
+       "role": "paper-route-proof",
+       "line": 29
       }
      ]
     }

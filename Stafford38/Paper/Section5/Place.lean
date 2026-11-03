@@ -100,8 +100,8 @@ theorem lemma_5_9 {k F : Type*} [Field k] [Field F] [Algebra k F] {n : ℕ}
 `V = A_{𝔭_D}` of its proof: `A` is the integral closure in `F` of
 `C_0 = K[q_0, …, q_n, x̄_1]` and `𝔭_D` is a height-one prime of `A` containing
 `x̄_1`.  The fields `isDVR`, `q_mem`, `x_mem_p`, `residue_algebraic` and
-`kaehler_finite` are the conclusions (a)–(c) of the lemma; `R ⊄ V` is
-`Lemma510Place.not_R_le`. -/
+`kaehler_finite` are the conclusions (a)–(c) of the lemma; the clause `R ⊄ V`
+of (a) is `lemma_5_10_a_not_R_le`. -/
 structure Lemma510Place (k : Type u) {F : Type u} [Field k] [Field F] [Algebra k F] {n : ℕ}
     (x : Fin n → F) (i : Fin n) (j : Fin (n + 1)) where
   A : Subalgebra k F
@@ -141,11 +141,14 @@ abbrev Lemma510Place.V {k F : Type u} [Field k] [Field F] [Algebra k F] {n : ℕ
     ValuationSubring F :=
   placeValuationSubring L.A L.p L.place
 
-/-- **Lemma 5.10**, with the construction of its proof.  For `q_i = x̄_i / x̄_j`
-from Lemma 5.9 there is a discrete valuation ring `K ⊆ V ⊆ F` with
-`q_i ∈ V`, `x̄_1 ∈ 𝔪_V`, `κ` algebraic over `K(res q_0, …, res q_n)` and
-`Ω_{V/K}` finitely generated. -/
-theorem lemma_5_10_place {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
+/-- **Lemma 5.10.**  For `q_i = x̄_i / x̄_j` from Lemma 5.9 there is a discrete
+valuation ring `K ⊆ V ⊊ F` (`Frac V = F` holds for every valuation subring) with
+(a) `q_i ∈ V` and `x̄_1 ∈ 𝔪_V`, (b) `κ` algebraic over `K(res q_0, …, res q_n)`,
+(c) `Ω_{V/K}` finitely generated; the conclusions are the fields of
+`Lemma510Place`, which also records `V = A_{𝔭_D}` from the proof.  The clause
+`R ⊄ V` of (a) is `lemma_5_10_a_not_R_le`, stated for every valuation ring with
+`x̄_1 ∈ 𝔪_V`, which is how the proof of Theorem 5.7 uses it. -/
+theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F]
     {n : ℕ} (x : Fin n → F) (i : Fin n)
     (hgen : IntermediateField.adjoin k (Set.range x) = ⊤)
     (htrans : Transcendental k (x i))
@@ -340,68 +343,29 @@ theorem lemma_5_10_place {k F : Type u} [Field k] [CharZero k] [Field F] [Algebr
   · -- (c) `Ω_{A/K}` is finite and localizes to `Ω_{V/K}` (Hartshorne, Prop. II.8.2A).
     exact stage7_kaehler_finite_ofField A p hkV
 
-/-- `R ⊄ V` in Lemma 5.10(a): `x̄_1 ∈ R^×` since `1 = ḡ x̄_1` with `ḡ ∈ R`, while
-`x̄_1 ∈ 𝔪_V`.  The paper derives `1 = ḡ x̄_1` from `Y ∩ H = ∅` by the
+/-- **Lemma 5.10(a), `R ⊄ V`.**  For any valuation ring `V` of `F` with
+`x̄_1 ∈ 𝔪_V`: `x̄_1 ∈ R^×` since `1 = ḡ x̄_1` with `ḡ ∈ R`, while `x̄_1 ∈ 𝔪_V`, so
+`R ⊄ V`.  The paper derives `1 = ḡ x̄_1` from `Y ∩ H = ∅` by the
 Nullstellensatz. -/
-theorem Lemma510Place.not_R_le {k F : Type u} [Field k] [Field F] [Algebra k F] {n : ℕ}
-    {x : Fin n → F} {i : Fin n} {j : Fin (n + 1)} (L : Lemma510Place k x i j)
+theorem lemma_5_10_a_not_R_le {k F : Type*} [Field k] [Field F] [Algebra k F] {n : ℕ}
+    (x : Fin n → F) (i : Fin n) (V : ValuationSubring F) (hxV : x i ∈ V.toSubring)
+    (hxm : (⟨x i, hxV⟩ : V.toSubring) ∈ maximalIdeal V.toSubring)
     (hunit : ∃ g ∈ Algebra.adjoin k (Set.range x), x i * g = 1) :
-    ¬ (Algebra.adjoin k (Set.range x)).toSubring ≤ L.V.toSubring := by
+    ¬ (Algebra.adjoin k (Set.range x)).toSubring ≤ V.toSubring := by
   obtain ⟨g, hgR, hxg⟩ := hunit
   have hy0 : x i ≠ 0 := left_ne_zero_of_mul_eq_one hxg
   have hinvR : (x i)⁻¹ ∈ Algebra.adjoin k (Set.range x) := by
     rw [← eq_inv_of_mul_eq_one_right hxg]
     exact hgR
   intro hRV
-  have hxV : x i ∈ L.V.toSubring := ofField_mem_algebraMap_v L.A L.p L.place ⟨_, L.x_mem⟩
-  have hxm : (⟨x i, hxV⟩ : L.V.toSubring) ∈ maximalIdeal L.V.toSubring :=
-    (ofField_mem_maximalIdeal_iff_v L.A L.p L.place ⟨_, L.x_mem⟩).2 L.x_mem_p
   rw [mem_maximalIdeal, mem_nonunits_iff] at hxm
   apply hxm
-  refine IsUnit.of_mul_eq_one (⟨(x i)⁻¹, hRV hinvR⟩ : L.V.toSubring) ?_
+  refine IsUnit.of_mul_eq_one (⟨(x i)⁻¹, hRV hinvR⟩ : V.toSubring) ?_
   apply Subtype.ext
   simp [hy0]
 
-/-- **Lemma 5.10.** For `q_i = x̄_i / x̄_j` from Lemma 5.9 there is a discrete
-valuation ring `K ⊆ V ⊊ F` (with `Frac V = F`, automatic for a valuation subring)
-such that (a) `q_i ∈ V`, `x̄_1 ∈ 𝔪_V` and `R ⊄ V`; (b) the residue field `κ` is
-algebraic over `K(res q_0, …, res q_n)`; (c) `Ω_{V/K}` is finitely generated.
-
-The hypothesis `hunit` is `1 = ḡ x̄_1` with `ḡ ∈ R = K[x̄_1, …, x̄_n]`, which the
-paper derives from `Y ∩ H = ∅` by the Nullstellensatz. -/
-theorem lemma_5_10 {k F : Type u} [Field k] [CharZero k] [Field F] [Algebra k F] {n : ℕ}
-    (x : Fin n → F) (i : Fin n)
-    (hgen : IntermediateField.adjoin k (Set.range x) = ⊤)
-    (htrans : Transcendental k (x i))
-    (hunit : ∃ g ∈ Algebra.adjoin k (Set.range x), x i * g = 1)
-    (W : ValuationSubring F) (j : Fin (n + 1))
-    (hkW : ∀ c : k, algebraMap k F c ∈ W)
-    (hxW : ∃ hx : x i ∈ W, (⟨x i, hx⟩ : W.toSubring) ∈ maximalIdeal W.toSubring)
-    (hj : homogeneousCoordinates x j ≠ 0)
-    (hqW : ∀ a, homogeneousCoordinates x a / homogeneousCoordinates x j ∈ W) :
-    ∃ (V : ValuationSubring F) (hkV : ∀ c : k, algebraMap k F c ∈ V.toSubring)
-      (hqV : ∀ a, homogeneousCoordinates x a / homogeneousCoordinates x j ∈ V.toSubring),
-      letI : Algebra k V.toSubring := ((algebraMap k F).codRestrict V.toSubring hkV).toAlgebra
-      IsDiscreteValuationRing V.toSubring ∧
-      ((∃ hx : x i ∈ V.toSubring, (⟨x i, hx⟩ : V.toSubring) ∈ maximalIdeal V.toSubring) ∧
-        ¬ (Algebra.adjoin k (Set.range x)).toSubring ≤ V.toSubring) ∧
-      Algebra.IsAlgebraic
-        (IntermediateField.adjoin k
-          (Set.range fun a ↦ residue V.toSubring
-            ⟨homogeneousCoordinates x a / homogeneousCoordinates x j, hqV a⟩) :
-          IntermediateField k (ResidueField V.toSubring))
-        (ResidueField V.toSubring) ∧
-      Module.Finite V.toSubring (Ω[V.toSubring⁄k]) := by
-  obtain ⟨L⟩ := lemma_5_10_place x i hgen htrans W j hkW hxW hj hqW
-  have hAV : ∀ a : L.A, (a : F) ∈ L.V.toSubring :=
-    fun a ↦ ofField_mem_algebraMap_v L.A L.p L.place a
-  exact ⟨L.V, fun c ↦ hAV (algebraMap k L.A c), fun a ↦ hAV ⟨_, L.q_mem a⟩, L.isDVR,
-    ⟨⟨hAV ⟨_, L.x_mem⟩, (ofField_mem_maximalIdeal_iff_v L.A L.p L.place _).2 L.x_mem_p⟩,
-      L.not_R_le hunit⟩, L.residue_algebraic, L.kaehler_finite⟩
-
-#print axioms lemma_5_9
-#print axioms lemma_5_10_place
 #print axioms lemma_5_10
+#print axioms lemma_5_10_a_not_R_le
 
 end
 

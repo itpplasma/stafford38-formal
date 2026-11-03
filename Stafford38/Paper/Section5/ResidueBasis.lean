@@ -2,6 +2,7 @@ module
 
 public import Stafford38.Geometry.KaehlerTranscendenceBasis
 public import Stafford38.Geometry.KaehlerDVRVisibility
+public import Stafford38.Paper.Section5.Definitions
 
 @[expose] public section
 
@@ -72,7 +73,7 @@ theorem lemma_5_11
   have hspanT : Submodule.span κ
       (Set.range fun x : t ↦ KaehlerDifferential.D k κ (x : κ)) = ⊤ :=
     Stafford38.Geometry.KaehlerDVRVisibility.kaehler_span_of_isAlgebraic_adjoin
-      (fun x : t ↦ (x : κ)) (by simpa using ht.isAlgebraic_field)
+      (fun x : t ↦ (x : κ)) (by simpa using (definition_5_1_g_h ht).1)
   -- Index the basis elements by residues `q_i(0)` with `i ∉ {0, 1, j}`.
   have hpre : ∀ x : t, ∃ a ∈ good, r a = x := fun x ↦ htS x.2
   choose idx hidx hridx using hpre

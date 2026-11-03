@@ -28,21 +28,36 @@ assumes.) At rank zero `A` is the field. The fixed-source strengthening takes
 
 ## What is formalized
 
-- `Stafford38Challenge.universalStatement` (`Challenge.lean`, proved in
-  `Solution.lean`): the theorem above, stated with Mathlib-only definitions.
+- `Challenge.lean` states, with Mathlib-only definitions
+  (`Stafford38/ChallengeDefinitions.lean`), the paper's results as printed:
+  `Stafford38Challenge.theorem_1_1 : PaperTheorem_1_1` (Theorem 1.1:
+  `Aₙ(k) = dAₙ(k) + FdAₙ(k)`, equivalently `1 = dR + FdS`, and for `n ≥ 1`
+  `F = Φ_g⁻¹(x₁)^{deg_B d}` for a linear `ω`-preserving `g`),
+  `Stafford38Challenge.corollary_6_3 : PaperCorollary_6_3` (every finitely
+  generated torsion right `Aₙ(k)`-module is cyclic), and the identity form
+  `Stafford38Challenge.universalStatement` above.
 - `Stafford38FixedSourceChallenge.universalFixedSourceStatement`
-  (`FixedSourceChallenge.lean`, proved in `FixedSourceSolution.lean`): the
-  fixed-source form with the intrinsic Bernstein degree.
-- `AlternativeSolution.lean` and `AlternativeFixedSourceSolution.lean`: the
-  same two statements proved along an alternative route.
+  (`FixedSourceChallenge.lean`): the fixed-source form with the intrinsic
+  Bernstein degree.
+- `Solution.lean` and `FixedSourceSolution.lean` prove these through
+  `Stafford38.Paper.theorem_1_1`, `Stafford38.Paper.theorem_1_1_fixedSource`
+  and `Stafford38.Paper.corollary_6_3` (`Stafford38/Paper/Main.lean`): the
+  proof along the paper's Sections 2–6, one Lean declaration per numbered
+  statement and per paragraph of its printed proof.
+- `AlternativeSolution.lean` and `AlternativeFixedSourceSolution.lean` prove
+  the same statements through the earlier route (`Stafford38.universalStatement`,
+  `Stafford38.universalFixedSourceStatement`,
+  `Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion`).
+  Both use the equivalences of `Stafford38/ChallengeBridge.lean`.
 - Related results in `Stafford38/`: right Ore localization, formal adjoints,
   differential operators on polynomial localizations, evolutionary identities,
   torsion-module cyclicity, and the tangent-limit, asymptotic-conormal and
   coisotropic-exclusion theorems used by the proof.
 
-The project contains no `axiom` declarations. The only two `sorry`s are the
-intentional placeholders in `Challenge.lean` and `FixedSourceChallenge.lean`,
-which state the theorems for independent comparison against the solutions.
+The project contains no `axiom` declarations. The only `sorry`s are the
+intentional placeholders in `Challenge.lean` (three) and
+`FixedSourceChallenge.lean` (one), which state the theorems for independent
+comparison against the solutions.
 The verifier checks that the solution endpoints depend only on `propext`,
 `Classical.choice` and `Quot.sound`, including through the AlgebraicAnalysis
 dependency.

@@ -149,16 +149,14 @@ elab_rules : command
       throwError m!"route dependency inspection did not reach required endpoint {requiredDecl.getId}"
     logInfo m!"dependency route passed: {root.getId} reaches {requiredDecl.getId} and excludes {producer.getId}"
 
-syntax (name := auditStaffordTerminalDeps) "#auditStaffordTerminalDeps" : command
+private meta def defaultTerminalRoots : Array Name := #[
+  `Stafford38.universalStatement,
+  `Stafford38Challenge.universalStatement,
+  `Stafford38.universalFixedSourceStatement,
+  `Stafford38FixedSourceChallenge.universalFixedSourceStatement]
 
-elab_rules : command
-  | `(#auditStaffordTerminalDeps) => do
+private meta def auditTerminalRoots (targets : Array Name) : CommandElabM Unit := do
     let env ← getEnv
-    let targets : Array Name := #[
-      `Stafford38.universalStatement,
-      `Stafford38Challenge.universalStatement,
-      `Stafford38.universalFixedSourceStatement,
-      `Stafford38FixedSourceChallenge.universalFixedSourceStatement]
     let oldOwner := `Stafford38.Geometry.GeneralAsymptoticLaurentAxis
     let bannedNames : Array Name := #[
       `Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental,
@@ -184,5 +182,15 @@ elab_rules : command
       logWarning m!"explicit --allow-old-route diagnostic mode; strict guard would fail: {strictFailures}"
     else
       throwError m!"strict dependency guard rejected old producer dependencies: {strictFailures}"
+
+syntax (name := auditStaffordTerminalDeps) "#auditStaffordTerminalDeps" : command
+
+elab_rules : command
+  | `(#auditStaffordTerminalDeps) => auditTerminalRoots defaultTerminalRoots
+
+syntax (name := auditStaffordTerminalRoots) "#auditStaffordTerminalRoots" (ppSpace ident)+ : command
+
+elab_rules : command
+  | `(#auditStaffordTerminalRoots $roots*) => auditTerminalRoots (roots.map (·.getId))
 
 end DependencyClosureCore
