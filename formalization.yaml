@@ -48,7 +48,8 @@ sources:
       statement of Sections 2-6 is a declaration in Stafford38/Paper that
       states the printed claim, each printed proof is assembled paragraph by
       paragraph, and the compared theorems are proved through
-      Stafford38.Paper.theorem_1_1 and Stafford38.Paper.corollary_6_3
+      Stafford38.Paper.theorem_1_1 and Stafford38.Paper.corollary_6_3, the
+      Section 7 consequences through Stafford38.Paper.Section7
       (docs/paper-route-alignment.json). Version 3 of
       PALOMAR-2026-09-05-000007 registered the identity at an earlier source;
       later declarations and toolchain changes require separate verification.
@@ -129,6 +130,51 @@ status:
       literature_dependencies: []
     - declaration: "Stafford38.Paper.corollary_6_3"
       file: "Stafford38/Paper/Main.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "Stafford38.Paper.corollary_6_3_stablyCyclic"
+      file: "Stafford38/Paper/Main.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "Stafford38.Paper.Section7.leftHandedIdentity"
+      file: "Stafford38/Paper/Section7.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "Stafford38.Paper.Section7.corollary_6_3_left"
+      file: "Stafford38/Paper/Section7.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "Stafford38.Paper.Section7.localizedDifferentialIdentity"
+      file: "Stafford38/Paper/Section7.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "Stafford38.Paper.Section7.evolutionaryIdentity"
+      file: "Stafford38/Paper/Section7.lean"
       sorry_count: 0
       axioms:
         - "propext"
@@ -235,6 +281,48 @@ alignment:
       note: >-
         Compared as Stafford38Challenge.corollary_6_3: every finitely
         generated torsion right A_n(k)-module is cyclic.
+    - source: "Manuscript, Corollary 6.3, stable cyclicity (closing paragraph of the proof)"
+      lean: "Stafford38.Paper.corollary_6_3_stablyCyclic"
+      module: "Stafford38.Paper.Main"
+      status: "proved"
+      note: >-
+        Compared as Stafford38Challenge.corollary_6_3_stablyCyclic: every
+        finitely generated torsion right A_n(k)-module is stably cyclic in
+        Stafford's sense.
+    - source: "Manuscript, Section 7: left-handed identity 1 = Rd + SdF"
+      lean: "Stafford38.Paper.Section7.leftHandedIdentity"
+      module: "Stafford38.Paper.Section7"
+      status: "proved"
+      note: >-
+        Compared as Stafford38Challenge.leftHandedIdentity. No printed proof;
+        the Lean proof transposes Theorem 1.1 for the transpose of d.
+    - source: "Manuscript, Section 7: Corollary 6.3 for left torsion modules"
+      lean: "Stafford38.Paper.Section7.corollary_6_3_left"
+      module: "Stafford38.Paper.Section7"
+      status: "proved"
+      note: >-
+        Compared as Stafford38Challenge.corollary_6_3_left. No printed proof;
+        the Lean proof makes the left module a right module through the
+        transpose and applies Corollary 6.3.
+    - source: "Manuscript, Section 7: the identity for differential operators on localizations of k[x_1, ..., x_n]"
+      lean: "Stafford38.Paper.Section7.localizedDifferentialIdentity"
+      module: "Stafford38.Paper.Section7"
+      status: "proved"
+      note: >-
+        Compared as Stafford38Challenge.localizedDifferentialIdentity and, for
+        principal opens, Laurent-polynomial coefficients and the fraction
+        field, as principalOpenDifferentialIdentity,
+        laurentDifferentialIdentity and fractionFieldDifferentialIdentity.
+        No printed proof; the Lean proof clears a left denominator of each
+        operator and applies Theorem 1.1 in A_n(k).
+    - source: "Manuscript, Section 7: the identity with F = x^r for d = p^r - sum a_j x^(m_j)"
+      lean: "Stafford38.Paper.Section7.evolutionaryIdentity"
+      module: "Stafford38.Paper.Section7"
+      status: "proved"
+      note: >-
+        Compared as Stafford38Challenge.evolutionaryIdentity. No printed proof;
+        the Lean proof is an explicit Euler-root certificate and does not use
+        Theorem 1.1.
     - source: "Original proof: universal Stafford 3.8 theorem"
       lean: "Stafford38.universalStatement"
       module: "Stafford38.FoundationClosure"

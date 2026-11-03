@@ -13,7 +13,12 @@
     "main_statement": "Stafford38Challenge.UniversalStatement",
     "paper_statements": [
       "Stafford38Challenge.PaperTheorem_1_1",
-      "Stafford38Challenge.PaperCorollary_6_3"
+      "Stafford38Challenge.PaperCorollary_6_3",
+      "Stafford38Challenge.PaperCorollary_6_3_stablyCyclic",
+      "Stafford38Challenge.LeftHandedIdentity",
+      "Stafford38Challenge.LeftCorollary_6_3",
+      "Stafford38Challenge.LocalizedDifferentialIdentity",
+      "Stafford38Challenge.EvolutionaryIdentity"
     ],
     "fixed_source_statement": "Stafford38FixedSourceChallenge.UniversalFixedSourceStatement",
     "single_element_certificate": "Stafford.Reduction.Stafford38",
@@ -23,6 +28,7 @@
     ],
     "route": [
       "Stafford38.Paper.Main",
+      "Stafford38.Paper.Section7",
       "Stafford38.ChallengeBridge"
     ],
     "alternative_solution_modules": [
