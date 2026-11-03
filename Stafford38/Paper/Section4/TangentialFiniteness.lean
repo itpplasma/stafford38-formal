@@ -3,6 +3,7 @@ module
 public import Stafford38.Paper.Section4.Support
 public import Stafford38.Paper.Section4.Setup
 public import AlgebraicAnalysis.Module.MinimalPrimeFiniteLengthLocalization
+public import Stafford38.Paper.Section3.OrderSymbol
 
 @[expose] public section
 
@@ -143,14 +144,18 @@ attribute [local instance] Characteristic.CanonicalKoszulContradiction.gradedMod
 
 omit [Algebra ℚ k] in
 /-- **First paragraph: `U` and `V` are finite over `T`.**  `M = gr Q` is finite
-over `T[x₁]` because `P` annihilates `M` and is monic of degree `N` in `ξ₁`
-(`canonical_orderAssociatedGradedModule_finite_normalCoeffRing`); `V` and `U` are
-then finite over `T[x₁]` and, being killed by `x₁`, over `T`
-(`canonical_finite_old_coordinate_kernel_cokernel`). -/
-theorem step_4_8_finite (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+over `k[x,ξ] = T[x₁,ξ₁]` (cyclic generator `q̄`).  Since `P` annihilates `M`
+(Proposition 3.6) and is monic of degree `N` in `ξ₁`, `M` is finite over `T[x₁]`
+(`canonical_orderAssociatedGradedModule_finite_normalCoeffRing_of_mem_annihilator`);
+`V` and `U` are then finite over the Noetherian `T[x₁]` and, being killed by `x₁`,
+over `T` (`canonical_finite_old_coordinate_kernel_cokernel_of_mem_annihilator`). -/
+theorem step_4_8_finite (hform : IsMonicNormalForm k N d) :
     Module.Finite (Tangential k n) (cokernelU k n N d) ∧
       Module.Finite (Tangential k n) (kernelV k n N d) :=
-  (canonical_finite_old_coordinate_kernel_cokernel hd).symm
+  (canonical_finite_old_coordinate_kernel_cokernel_of_mem_annihilator
+    (isPBWMonicAt_of_isMonicNormalForm k hform)
+    (Stafford38.Paper.Section3.proposition_3_6 k hform
+      (Stafford38.Paper.Section3.bernsteinDegree_eq_of_isMonicNormalForm k hform))).symm
 
 omit [Algebra ℚ k] in
 /-- **Lemma 4.8.** `U` and `V` are finite over `T`, `Supp_T V ⊆ Supp_T U`, and at a
@@ -168,8 +173,7 @@ theorem lemma_4_8 (hform : IsMonicNormalForm k N d) :
             (LocalizedModule q.asIdeal.primeCompl (cokernelU k n N d)) ∧
           IsFiniteLength (Localization q.asIdeal.primeCompl)
             (LocalizedModule q.asIdeal.primeCompl (kernelV k n N d)) := by
-  have hd := isPBWMonicAt_of_isMonicNormalForm k hform
-  obtain ⟨hU, hV⟩ := step_4_8_finite hd
+  obtain ⟨hU, hV⟩ := step_4_8_finite hform
   have hsupp : Module.support (Tangential k n) (kernelV k n N d) ⊆
       Module.support (Tangential k n) (cokernelU k n N d) := by
     have h := step_4_8_support_inclusion (R := Tangential k n)

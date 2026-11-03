@@ -15,6 +15,9 @@ open Stafford38.WeylIteratedEquivalence
 open Stafford38.WeylPBWMonicBridge
 open Stafford38.WeylPBW
 open Stafford38.WeylEulerResidue
+open Stafford38.CharacteristicInitialIdeal
+open Stafford38.WeylLeadingSymbol
+open Stafford38.WeylFiltration
 
 noncomputable section
 variable {k : Type*} [Field k]
@@ -70,9 +73,12 @@ theorem oldCoeffModule_oldSymbol_X_action
   rw [tangentialCoeffActionHom_oldSymbol_X]
 
 set_option maxHeartbeats 800000 in
-theorem canonical_finite_old_coordinate_kernel_cokernel
+theorem canonical_finite_old_coordinate_kernel_cokernel_of_mem_annihilator
     {n N : ℕ} {d : PresentedWeyl k (n + 1)}
-    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
+    (hP : presentedPrincipalComponent k orderWeight N d ∈
+      Module.annihilator (SymbolRing k (n + 1))
+        (OrderAssociatedGradedModule k (canonicalRightIdeal (presentedCoordinate k n) d N))) :
     let E := OrderAssociatedGradedModule k
       (canonicalRightIdeal (presentedCoordinate k n) d N)
     Module.Finite (oldTangentialCoeffRing (k := k) n)
@@ -101,7 +107,8 @@ theorem canonical_finite_old_coordinate_kernel_cokernel
   have hf : oldCoordinateMap (k := k) n E = f.restrictScalars T := by
     ext z
     exact (oldCoordinateMap_apply n E z).trans (tangentialCoordinateMap_apply n E z).symm
-  have hfinite := canonical_orderAssociatedGradedModule_finite_tangential_coordinate hd
+  have hfinite :=
+    canonical_orderAssociatedGradedModule_finite_tangential_coordinate_of_mem_annihilator hd hP
   haveI : Module.Finite C f.ker := hfinite.1
   haveI : Module.Finite C (E ⧸ f.range) := hfinite.2
   haveI : Module.Finite T f.ker := Module.Finite.trans C f.ker
@@ -114,6 +121,21 @@ theorem canonical_finite_old_coordinate_kernel_cokernel
       ((Submodule.restrictScalarsEquiv (R := C) (M := E) T f.ker).restrictScalars T).symm
   · exact Module.Finite.equiv (Submodule.Quotient.restrictScalarsEquiv T f.range).symm
 
+/-- Kernel and cokernel of `x₁` on the canonical quotient are finite over `T`. -/
+theorem canonical_finite_old_coordinate_kernel_cokernel
+    {n N : ℕ} {d : PresentedWeyl k (n + 1)}
+    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+    let E := OrderAssociatedGradedModule k
+      (canonicalRightIdeal (presentedCoordinate k n) d N)
+    Module.Finite (oldTangentialCoeffRing (k := k) n)
+        (LinearMap.ker (oldCoordinateMap (k := k) n E)) ∧
+      Module.Finite (oldTangentialCoeffRing (k := k) n)
+        (E ⧸ LinearMap.range (oldCoordinateMap (k := k) n E)) :=
+  canonical_finite_old_coordinate_kernel_cokernel_of_mem_annihilator hd (by
+    rw [annihilator_orderAssociatedGradedModule]
+    exact canonical_orderPrincipalComponent_mem_initialIdeal k n N hd)
+
+#print axioms canonical_finite_old_coordinate_kernel_cokernel_of_mem_annihilator
 #print axioms canonical_finite_old_coordinate_kernel_cokernel
 
 end

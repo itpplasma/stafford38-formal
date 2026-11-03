@@ -187,6 +187,20 @@ theorem isPBWMonicAt_of_isMonicNormalForm {n N : ℕ} {dt : PresentedWeyl k (n +
   simp at this
   omega
 
+/-- In (3.1), `N = deg_B d̃`: `d̃ ∈ B_N` and its Bernstein symbol has the
+coefficient `1` at `ξ₁^N`. -/
+theorem bernsteinDegree_eq_of_isMonicNormalForm {n N : ℕ} {dt : PresentedWeyl k (n + 1)}
+    (h : IsMonicNormalForm k N dt) : bernsteinDegree k dt = N := by
+  have hd := isPBWMonicAt_of_isMonicNormalForm k h
+  refine bernsteinDegree_eq_of_principal_ne_zero k hd.1 fun h0 => ?_
+  have hc : AddMonoidAlgebra.coeff
+      (presentedPrincipalComponent k (@bernsteinWeight (n + 1)) N dt)
+      (Finsupp.single (.inr (0 : Fin (n + 1))) N) = 1 := by
+    rw [coeff_presentedPrincipalComponent, ite_eq_left (by simp [monomialWeight, bernsteinWeight])]
+    exact hd.2
+  rw [h0] at hc
+  exact zero_ne_one hc
+
 end
 
 end Stafford38.Paper.Section3
