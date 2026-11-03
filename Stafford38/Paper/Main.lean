@@ -73,9 +73,24 @@ theorem corollary_6_3 (k : Type u) [Field k] [CharZero k] (n : ℕ)
     (fun d hd => theorem_1_1 k n d hd) hT
     (Section6.stafford_1978_theorem_3_7 k n T hT)).1
 
+/-- **Corollary 6.3, stable cyclicity** (closing paragraph of the printed
+proof, tex 1619).  Every finitely generated torsion right `A_n(k)`-module is
+stably cyclic: for `l = 1` take `f₁ = -F`, for `l ≥ 2` use the stable
+two-generation of the cited [Sta78, Thm. 3.7]
+(`Section6.corollary_6_3_of`, second component). -/
+theorem corollary_6_3_stablyCyclic (k : Type u) [Field k] [CharZero k] (n : ℕ)
+    (T : Type v) [AddCommGroup T] [Module (Stafford38Challenge.WeylAlg k n)ᵐᵒᵖ T]
+    [Module.Finite (Stafford38Challenge.WeylAlg k n)ᵐᵒᵖ T]
+    (hT : Section2.IsTorsion (Stafford38Challenge.WeylAlg k n) T) :
+    Section6.IsStablyGenerated (Stafford38Challenge.WeylAlg k n) T 1 :=
+  (Section6.corollary_6_3_of (Section6.weyl_rightOreCondition (k := k) n)
+    (fun d hd => theorem_1_1 k n d hd) hT
+    (Section6.stafford_1978_theorem_3_7 k n T hT)).2
+
 #print axioms theorem_1_1
 #print axioms theorem_1_1_fixedSource
 #print axioms corollary_6_3
+#print axioms corollary_6_3_stablyCyclic
 #print axioms Section6.stafford_1978_theorem_3_7
 
 end Stafford38.Paper

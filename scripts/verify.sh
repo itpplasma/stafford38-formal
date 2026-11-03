@@ -38,6 +38,8 @@ lake build "${retained_modules[@]}" \
   Stafford38.LeftHandedCorollary \
   Stafford38.LocalizedDifferentialCorollaries \
   Stafford38.EvolutionaryCorollary \
+  Stafford38.PaperClaimDefinitions \
+  Stafford38.Paper.Section7 \
   Stafford38.Geometry.GeneralTangentLimitCriterion \
   Stafford38.Geometry.GeneralAsymptoticConormal \
   Stafford38.Geometry.GeneralCoisotropicSets \
@@ -51,19 +53,35 @@ python3 scripts/dependency-guard/run_guard.py \
   --base-module AlternativeFixedSourceSolution \
   >"$log_dir/terminal-dependency-guard.log" 2>&1
 
-python3 scripts/dependency-guard/run_guard.py \
+# Stafford38Challenge.evolutionaryIdentity is left out of the two guards below:
+# its certificate reaches Mathlib's complex analysis, whose bodies the guard
+# cannot load within its time cap. It does not use Theorem 1.1, and the axiom
+# audit and Comparator cover it. The added roots import more owner modules in
+# each body-loading round, so these two guards run with a longer cap.
+python3 scripts/dependency-guard/run_guard.py --timeout-seconds 1500 \
   --base-module Solution \
   --base-module FixedSourceSolution \
   --terminal-root Stafford38.Paper.theorem_1_1 \
   --terminal-root Stafford38.Paper.theorem_1_1_fixedSource \
   --terminal-root Stafford38.Paper.corollary_6_3 \
+  --terminal-root Stafford38.Paper.corollary_6_3_stablyCyclic \
+  --terminal-root Stafford38.Paper.Section7.leftHandedIdentity \
+  --terminal-root Stafford38.Paper.Section7.corollary_6_3_left \
+  --terminal-root Stafford38.Paper.Section7.localizedDifferentialIdentity \
   --terminal-root Stafford38Challenge.universalStatement \
   --terminal-root Stafford38Challenge.theorem_1_1 \
   --terminal-root Stafford38Challenge.corollary_6_3 \
+  --terminal-root Stafford38Challenge.corollary_6_3_stablyCyclic \
+  --terminal-root Stafford38Challenge.leftHandedIdentity \
+  --terminal-root Stafford38Challenge.corollary_6_3_left \
+  --terminal-root Stafford38Challenge.localizedDifferentialIdentity \
+  --terminal-root Stafford38Challenge.principalOpenDifferentialIdentity \
+  --terminal-root Stafford38Challenge.laurentDifferentialIdentity \
+  --terminal-root Stafford38Challenge.fractionFieldDifferentialIdentity \
   --terminal-root Stafford38FixedSourceChallenge.universalFixedSourceStatement \
   >"$log_dir/paper-terminal-dependency-guard.log" 2>&1
 
-python3 scripts/dependency-guard/run_guard.py \
+python3 scripts/dependency-guard/run_guard.py --timeout-seconds 1500 \
   --base-module Solution \
   --base-module FixedSourceSolution \
   --route Stafford38Challenge.universalStatement Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
@@ -72,6 +90,27 @@ python3 scripts/dependency-guard/run_guard.py \
   --route Stafford38Challenge.theorem_1_1 Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure \
   --route Stafford38FixedSourceChallenge.universalFixedSourceStatement Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
   --route Stafford38FixedSourceChallenge.universalFixedSourceStatement Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.universalStatement Stafford38.Paper.theorem_1_1 Stafford38.universalStatement \
+  --route Stafford38Challenge.theorem_1_1 Stafford38.Paper.theorem_1_1 Stafford38.universalStatement \
+  --route Stafford38Challenge.corollary_6_3 Stafford38.Paper.theorem_1_1 Stafford38.universalStatement \
+  --route Stafford38Challenge.corollary_6_3_stablyCyclic Stafford38.Paper.theorem_1_1 Stafford38.universalStatement \
+  --route Stafford38Challenge.leftHandedIdentity Stafford38.Paper.theorem_1_1 Stafford38.universalStatement \
+  --route Stafford38Challenge.corollary_6_3_left Stafford38.Paper.theorem_1_1 Stafford38.universalStatement \
+  --route Stafford38Challenge.localizedDifferentialIdentity Stafford38.Paper.theorem_1_1 Stafford38.universalStatement \
+  --route Stafford38Challenge.principalOpenDifferentialIdentity Stafford38.Paper.theorem_1_1 Stafford38.universalStatement \
+  --route Stafford38Challenge.laurentDifferentialIdentity Stafford38.Paper.theorem_1_1 Stafford38.universalStatement \
+  --route Stafford38Challenge.fractionFieldDifferentialIdentity Stafford38.Paper.theorem_1_1 Stafford38.universalStatement \
+  --route Stafford38Challenge.corollary_6_3 Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.corollary_6_3_stablyCyclic Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.leftHandedIdentity Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.corollary_6_3_left Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.localizedDifferentialIdentity Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.principalOpenDifferentialIdentity Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.laurentDifferentialIdentity Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.fractionFieldDifferentialIdentity Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.corollary_6_3 Stafford38.Paper.Section6.corollary_6_3_of Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion \
+  --route Stafford38Challenge.corollary_6_3_stablyCyclic Stafford38.Paper.Section6.corollary_6_3_of Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion \
+  --route Stafford38Challenge.corollary_6_3_left Stafford38.Paper.Section6.corollary_6_3_of Stafford38.TorsionCyclicity.weyl_isCyclic_of_isRightTorsion \
   >"$log_dir/main-solution-dependency-routes.log" 2>&1
 
 python3 scripts/dependency-guard/run_guard.py \
@@ -155,8 +194,8 @@ if not challenge.is_file():
 
 challenge_code = code_without_comments_or_strings(challenge.read_text(encoding="utf-8"))
 challenge_holes = re.findall(r"\b(?:sorry|admit)\b", challenge_code)
-if challenge_holes != ["sorry", "sorry", "sorry"]:
-    raise SystemExit("Challenge.lean must contain exactly three deliberate sorries and no admit")
+if challenge_holes != ["sorry"] * 11:
+    raise SystemExit("Challenge.lean must contain exactly eleven deliberate sorries and no admit")
 imports = re.findall(r"(?m)^\s*(?:public\s+)?import\s+([^\s]+)\s*$", challenge_code)
 expected_imports = [
     "Mathlib.Algebra.RingQuot",
@@ -164,7 +203,11 @@ expected_imports = [
     "Mathlib.LinearAlgebra.SymplecticGroup",
     "Mathlib.Order.Lattice.Nat",
 ]
-if imports != expected_imports:
+expected_challenge_imports = expected_imports + [
+    "Mathlib.RingTheory.Localization.FractionRing",
+    "Mathlib.RingTheory.Localization.Away.Basic",
+]
+if imports != expected_challenge_imports:
     raise SystemExit(f"unexpected Challenge imports: {imports!r}")
 
 strong_challenge = Path("FixedSourceChallenge.lean")
@@ -197,6 +240,21 @@ if owner_imports != expected_owner_imports:
 # Palomar policy. Keep its inlined definitions byte-for-byte equivalent at
 # the code level; Comparator independently checks the reached declarations.
 owner_definitions = owner_code[owner_code.index("namespace Stafford\n"):].strip()
+# The further paper claims have a second owner, repeated in Challenge.lean
+# right after the first.
+claims_code = code_without_comments_or_strings(
+    Path("Stafford38/PaperClaimDefinitions.lean").read_text(encoding="utf-8"))
+claims_imports = re.findall(r"(?m)^\s*(?:public\s+)?import\s+([^\s]+)\s*$", claims_code)
+if claims_imports != ["Stafford38.ChallengeDefinitions",
+                      "Mathlib.RingTheory.Localization.FractionRing",
+                      "Mathlib.RingTheory.Localization.Away.Basic"]:
+    raise SystemExit(f"unexpected paper-claim definition owner imports: {claims_imports!r}")
+claims_definitions = claims_code[claims_code.index("namespace Stafford38Challenge\n"):].strip()
+challenge_rest = challenge_code[challenge_code.index("namespace Stafford\n"):].strip()
+if not challenge_rest.startswith(owner_definitions + "\n"):
+    raise SystemExit("Challenge.lean inlined definitions differ from the solution's definition owner")
+if not challenge_rest[len(owner_definitions):].strip().startswith(claims_definitions + "\n"):
+    raise SystemExit("Challenge.lean inlined paper-claim definitions differ from Stafford38.PaperClaimDefinitions")
 for label, code in (("Challenge.lean", challenge_code),
                     ("FixedSourceChallenge.lean", strong_code)):
     definitions_and_statement = code[code.index("namespace Stafford\n"):].strip()
@@ -271,6 +329,11 @@ import Stafford38.Geometry.GeneralTangentLimitCriterionTest
 #print axioms Stafford38.Paper.theorem_1_1
 #print axioms Stafford38.Paper.theorem_1_1_fixedSource
 #print axioms Stafford38.Paper.corollary_6_3
+#print axioms Stafford38.Paper.corollary_6_3_stablyCyclic
+#print axioms Stafford38.Paper.Section7.leftHandedIdentity
+#print axioms Stafford38.Paper.Section7.corollary_6_3_left
+#print axioms Stafford38.Paper.Section7.localizedDifferentialIdentity
+#print axioms Stafford38.Paper.Section7.evolutionaryIdentity
 #print axioms Stafford38.LocalizationCorollaries.s38_rightOreLocalization
 #print axioms Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement
 #print axioms Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential
@@ -323,6 +386,11 @@ expected = {
     "Stafford38.Paper.theorem_1_1",
     "Stafford38.Paper.theorem_1_1_fixedSource",
     "Stafford38.Paper.corollary_6_3",
+    "Stafford38.Paper.corollary_6_3_stablyCyclic",
+    "Stafford38.Paper.Section7.leftHandedIdentity",
+    "Stafford38.Paper.Section7.corollary_6_3_left",
+    "Stafford38.Paper.Section7.localizedDifferentialIdentity",
+    "Stafford38.Paper.Section7.evolutionaryIdentity",
     "Stafford38.LocalizationCorollaries.s38_rightOreLocalization",
     "Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement",
     "Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential",

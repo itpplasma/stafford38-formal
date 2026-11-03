@@ -56,6 +56,30 @@ theorem theorem_1_1 : True := by
 theorem corollary_6_3 : True := by
   trivial
 
+theorem corollary_6_3_stablyCyclic : True := by
+  trivial
+
+theorem leftHandedIdentity : True := by
+  trivial
+
+theorem corollary_6_3_left : True := by
+  trivial
+
+theorem localizedDifferentialIdentity : True := by
+  trivial
+
+theorem principalOpenDifferentialIdentity : True := by
+  trivial
+
+theorem laurentDifferentialIdentity : True := by
+  trivial
+
+theorem fractionFieldDifferentialIdentity : True := by
+  trivial
+
+theorem evolutionaryIdentity : True := by
+  trivial
+
 end Stafford38Challenge
 EOF
 cat >"$tmp_root/Solution.lean" <<'EOF'
@@ -72,6 +96,30 @@ theorem theorem_1_1 : True := by
   trivial
 
 theorem corollary_6_3 : True := by
+  trivial
+
+theorem corollary_6_3_stablyCyclic : True := by
+  trivial
+
+theorem leftHandedIdentity : True := by
+  trivial
+
+theorem corollary_6_3_left : True := by
+  trivial
+
+theorem localizedDifferentialIdentity : True := by
+  trivial
+
+theorem principalOpenDifferentialIdentity : True := by
+  trivial
+
+theorem laurentDifferentialIdentity : True := by
+  trivial
+
+theorem fractionFieldDifferentialIdentity : True := by
+  trivial
+
+theorem evolutionaryIdentity : True := by
   trivial
 
 end Stafford38Challenge
@@ -106,7 +154,7 @@ cat >"$tmp_root/comparator.json" <<'EOF'
 {
   "challenge_module": "Challenge",
   "solution_module": "Solution",
-  "theorem_names": ["Stafford38Challenge.universalStatement", "Stafford38Challenge.theorem_1_1", "Stafford38Challenge.corollary_6_3"],
+  "theorem_names": ["Stafford38Challenge.universalStatement", "Stafford38Challenge.theorem_1_1", "Stafford38Challenge.corollary_6_3", "Stafford38Challenge.corollary_6_3_stablyCyclic", "Stafford38Challenge.leftHandedIdentity", "Stafford38Challenge.corollary_6_3_left", "Stafford38Challenge.localizedDifferentialIdentity", "Stafford38Challenge.principalOpenDifferentialIdentity", "Stafford38Challenge.laurentDifferentialIdentity", "Stafford38Challenge.fractionFieldDifferentialIdentity", "Stafford38Challenge.evolutionaryIdentity"],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
 }
 EOF
@@ -162,6 +210,30 @@ theorem theorem_1_1 : True := by
 theorem corollary_6_3 : True := by
   trivial
 
+theorem corollary_6_3_stablyCyclic : True := by
+  trivial
+
+theorem leftHandedIdentity : True := by
+  trivial
+
+theorem corollary_6_3_left : True := by
+  trivial
+
+theorem localizedDifferentialIdentity : True := by
+  trivial
+
+theorem principalOpenDifferentialIdentity : True := by
+  trivial
+
+theorem laurentDifferentialIdentity : True := by
+  trivial
+
+theorem fractionFieldDifferentialIdentity : True := by
+  trivial
+
+theorem evolutionaryIdentity : True := by
+  trivial
+
 end Stafford38Challenge
 EOF
   if bash scripts/run-palomar-comparator.sh comparator.json .lake/verification/wrong.log >wrong-run.log 2>&1; then
@@ -185,6 +257,30 @@ theorem theorem_1_1 : True := by
   trivial
 
 theorem corollary_6_3 : True := by
+  trivial
+
+theorem corollary_6_3_stablyCyclic : True := by
+  trivial
+
+theorem leftHandedIdentity : True := by
+  trivial
+
+theorem corollary_6_3_left : True := by
+  trivial
+
+theorem localizedDifferentialIdentity : True := by
+  trivial
+
+theorem principalOpenDifferentialIdentity : True := by
+  trivial
+
+theorem laurentDifferentialIdentity : True := by
+  trivial
+
+theorem fractionFieldDifferentialIdentity : True := by
+  trivial
+
+theorem evolutionaryIdentity : True := by
   trivial
 
 end Stafford38Challenge
