@@ -14,7 +14,7 @@ For positive rank, the fixed-source result uses F = ell^N for a linear Weyl coor
 
 ## Terminal theorem route
 
-The verified terminal proof proceeds as follows.
+The terminal proof proceeds as follows.
 
 1. The top Bernstein symbol of a non-scalar operator is a nonzero homogeneous polynomial on phase space. A direction where it is nonzero extends to a symplectic basis, and the associated Weyl automorphism makes the operator monic in one momentum coordinate. The monic degree is the Bernstein degree.
 2. For normalized d and paired coordinate x, form the right quotient Q = A/(dA + x^N dA). The Euler-product identity, negative-weight divisibility, and right normal form show that right multiplication by x on Q is surjective.
@@ -23,11 +23,11 @@ The verified terminal proof proceeds as follows.
 5. Fibre conicality, Poisson stability, and asymptotic conormal geometry imply that nonempty support would meet the selected coordinate hyperplane. This contradicts support avoidance.
 6. Scalar descent carries empty support back from an algebraic closure. The quotient becomes trivial, yielding the ordered certificate; the symplectic coordinate change is then undone. At rank zero, inversion in the field gives the result.
 
-The declaration dependencies for this route are in proof-graph.yaml. The receipt in verification-results.json applies to source revision f6915782d2281e3d3b51011b97ace866928053b9.
+The declaration dependencies for this route are in [proof-graph.yaml](proof-graph.yaml).
 
 ## Manuscript correspondence
 
-The paper-route review tracks the visible divisor, local-frame, and cyclicity arguments. The [paper-route map](paper-route-alignment.json) links printed claims to Lean statements, hypotheses, and constructions, and records where the proof routes differ. A shared terminal theorem alone does not establish full correspondence. The [definition-owner registry](definition-owners.md) describes the shared mathematical objects. Review inputs and responsibilities are in [proof-source provenance](proof-source-provenance.md).
+The [paper-route map](paper-route-alignment.json) links printed claims to Lean statements, hypotheses, and constructions, and records where the proof routes differ. The [statement correspondence](paper-lean-specification.md) relates the paper's objects to their Lean definitions. The [definition-owner registry](definition-owners.md) describes the shared mathematical objects.
 
 ## Other formalized results
 

@@ -1,6 +1,6 @@
 # Definition owners and derived presentations
 
-This registry identifies the reviewed owner for each listed formal concept and records its compatibility names, specializations, or checked transports. It distinguishes genuinely different mathematical objects and scopes. The list records reviewed ownership decisions; it is not an exhaustive claim that every dependency is free of semantic duplication.
+This registry identifies the owner of each listed formal concept and records its compatibility names, specializations, or checked transports. It distinguishes genuinely different mathematical objects and scopes. It lists the concepts shared across modules; it does not claim that every dependency is free of semantic duplication.
 
 | Concept | Canonical owner | Other presentations and their justification |
 | --- | --- | --- |
@@ -78,6 +78,6 @@ This registry identifies the reviewed owner for each listed formal concept and r
 
 A tangent space defined by all equations differs from one defined by a chosen Jacobian; their comparison is a theorem. A locus differs from its Zariski closure, and a reduced ideal differs from the original ideal. Tangent inclusion differs from tangent equality. The base-field finite-gradient certificate is the `K = k` specialization of the residue-extension owner, while a conormal-space witness has a different type and requires a checked conversion.
 
-The point-local, finite-birational, and extra-away localizations are distinct presentations connected by checked maps. A denominator inverted in a common-open ring is not thereby known to lie outside the selected maximal ideal. The same-witness chart and axis-lift outputs are assembled by `SameWitness.AffineFibreClosure`; its unconditional closure theorem and original-prime endpoint have passed module and literal trust-zero consumer checks. The earlier conditional adapters retain their stated contracts.
+The point-local, finite-birational, and extra-away localizations are distinct presentations connected by checked maps. A denominator inverted in a common-open ring is not thereby known to lie outside the selected maximal ideal. The same-witness chart and axis-lift outputs are assembled by `SameWitness.AffineFibreClosure`; `scripts/check-consumers.sh` checks literal consumers of its unconditional closure theorem and original-prime endpoint. The earlier conditional adapters retain their stated contracts.
 
-`ChallengeDefinitions` imports Mathlib only. Solution entry points do not import Challenge modules containing proof placeholders. Review responsibilities are recorded in `proof-source-provenance.md`.
+`ChallengeDefinitions` imports Mathlib only. Solution entry points do not import Challenge modules containing proof placeholders.

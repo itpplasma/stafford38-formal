@@ -3,8 +3,7 @@
 The [literature and source index](literature.md) maps published sources and
 project constructions to the proof modules described here.
 
-This maps the manuscript assertions to the formal statements. It is a
-preparation snapshot; final replay and human correspondence review are pending.
+This maps the manuscript assertions to the formal statements.
 
 ## Main theorem
 
@@ -46,12 +45,9 @@ must be read with its stated order, not identified termwise with that API.
 
 ## Geometric manuscript scope
 
-The manuscript comparison uses paper mirror revision
-`56533c8d71c28d2c6bac002331c4b49f184d5a6a`; Overleaf remains authoritative.
-
 | Paper assertion | Formal correspondence required |
 | --- | --- |
-| `lem:tangent-limit` | `GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand` takes the actual complemented tangent lattice and formal projective arc, constructs split matrices internally, proves the tangent-chart dictionaries and yields the projective conormal direction. The exact statement passed its independent correspondence review. This is an auxiliary manuscript lemma, not an imported step of the terminal asymptotic-conormal proof. |
+| `lem:tangent-limit` | `GeneralTangentLimitCriterion.tangent_limit_criterion_of_directSummand` takes the actual complemented tangent lattice and formal projective arc, constructs split matrices internally, proves the tangent-chart dictionaries and yields the projective conormal direction. This is an auxiliary manuscript lemma, not an imported step of the terminal asymptotic-conormal proof. |
 | `thm:asymptotic-conormal` | `GeneralAsymptoticConormal.coordinate_axis_mem_projective_conormal_directions` for arbitrary prime affine ideals, genuine smooth points, and homogeneous-polynomial projective closure. This does not itself prove the separate tangent-limit lemma. |
 | Component conormal containment | `GeneralCoisotropicSets.smoothConormalClosure_minimalPrime_subset_of_isFibreConical` proves the smooth conormal closure of every minimal prime of the base contraction lies in the original closed fibre-conical set. |
 | `thm:coisotropic-exclusion` | `GeneralCoisotropicSets.exists_zero_base_coordinate_of_isFibreConical` uses arbitrary closed fibre-conical sets with self-involutive vanishing ideal. Its exact complex consumer derives the interface from ordinary scaling, both bracket memberships and pointwise fibre-polynomial vanishing. |
@@ -63,13 +59,11 @@ complex-field consumer uses ordinary fibre scaling, pointwise vanishing
 of the fibre polynomial and brackets between two vanishing-ideal elements.
 The zero-section ideal `(xi)` is checked to be self-involutive and not a
 Poisson ideal, so this hypothesis distinction has an independent negative
-control. `scripts/verify.sh` audits the geometry consumers and endpoint axioms.
+control. `scripts/verify.sh` checks the geometry consumers and endpoint axioms.
 
 The separate `cyclicity.tex` draft is not included by the main paper or
 proof-map supplement. It has an incomplete equivalence argument and no Lean
-counterpart; it is not an advertised result of this formal release. Its source
-remains under paper ownership. Any later inclusion reopens the full theorem
-coverage gate rather than inheriting the main theorem's status.
+counterpart; it is not a result of this formalization.
 
 ## Corollary scope
 
@@ -109,12 +103,7 @@ tangential symbol ring.
 `canonical_isNoncharacteristic_annihilator` proves it for the canonical
 quotient, and `canonicalSupport_conormal_subset_zeroSection` proves the
 pointwise normal-covariable consequence. Their hypotheses retain the actual
-PBW monicity condition. The source-to-paper audit lists the declarations,
-statement relations, proof routes and remaining review issues at pinned revisions.
-
-The existing Palomar record checks its registered universal theorem. The
-archive's additional declarations are verified locally; this release makes
-no new Palomar submission or claim that the registry rechecked them.
+PBW monicity condition.
 
 `Stafford38.NoncharacteristicHypersurface.canonical_principal_hypersurface_finite`
 also proves the intermediate finite projection for the actual principal-symbol

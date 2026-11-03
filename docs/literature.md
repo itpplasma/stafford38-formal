@@ -11,9 +11,7 @@ Start with Stafford’s Conjecture 3.8 [Sta78], then the two
 [formal statements](../Stafford38/FixedSourceStatement.lean), the
 [proof guide](proof-guide.md), and the [proof graph](proof-graph.yaml).
 The [correspondence](paper-lean-specification.md) relates the internal exposition
-to Lean. The [dossier PDF](dossier/stafford38-challenge-dossier.pdf) includes the
-clickable map and a bibliography. Internal manuscript drafts are records of
-this research development, not separately published literature.
+to Lean. Internal manuscript drafts are not separately published literature.
 
 ## Sources mapped to the proof
 
@@ -26,7 +24,7 @@ this research development, not separately published literature.
 | Visible frame → finite-gradient certificate → conormal axis | Project geometry; conormal context [HTT08](#htt08) | [ExactDivisorialVisibleFrameExistence](../Stafford38/Geometry/ExactDivisorialVisibleFrameExistence.lean), [FiniteGradientResidueExtension](../Stafford38/Geometry/FiniteGradientResidueExtension.lean), [GeneralConormalAxis](../Stafford38/Geometry/GeneralConormalAxis.lean) |
 | Coisotropic exclusion and certificate extraction | Consumes the proved involutivity and project geometry above | [GeneralCoisotropicCanonicalAdapter](../Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean), [CanonicalCertificate](../Stafford38/Characteristic/CanonicalCertificate.lean) |
 | Intrinsic differential-operator corollaries | Definition background [StacksD](#stacksd) | [LocalizedDifferentialCorollaries](../Stafford38/LocalizedDifferentialCorollaries.lean) |
-| Status and constructive neighboring results | [Bel26](#bel26), [Ley04](#ley04) | Context only; no import edge |
+| State of the art and constructive neighboring results | [Bel26](#bel26), [Ley04](#ley04) | Context only; no import edge |
 
 The tangent-limit criterion is a separately checked auxiliary result. It has
 no edge into the terminal visible-frame/finite-gradient route. The graph marks
@@ -36,12 +34,10 @@ to a textbook merely because its vocabulary is standard.
 
 ## Formal foundations
 
-The manifest pins Mathlib at `db584cd6d46c92f209a44c0f1c829460d327499d`
-and AlgebraicAnalysis at `4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`.
+`lake-manifest.json` pins Mathlib and AlgebraicAnalysis.
 See the [AlgebraicAnalysis source index](https://github.com/itpplasma/algebraic-analysis/blob/main/docs/literature.md)
-for the Ore/PBW, filtered-module, localization and differential-operator APIs,
-and [provenance](provenance.md) for extraction history. Documentation on main
-can evolve; the manifest and verification report determine the consumed code.
+for the Ore/PBW, filtered-module, localization and differential-operator APIs.
+Documentation on main can evolve; the manifest determines the consumed code.
 
 ## Bibliography
 

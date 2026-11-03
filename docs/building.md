@@ -46,11 +46,3 @@ scripts/verify-palomar.sh comparator-fixed-source.json
 scripts/verify-palomar.sh comparator-alternative.json
 scripts/verify-palomar.sh comparator-alternative-fixed-source.json
 ```
-
-## Earlier releases
-
-Earlier releases used Lean `v4.33.0`, Mathlib
-`db584cd6d46c92f209a44c0f1c829460d327499d` and AlgebraicAnalysis
-`4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8`. To reproduce a recorded result,
-check out the source revision named in [verification.md](verification.md) and
-use the pins of that checkout. Release notes are in [releases/](releases/).
