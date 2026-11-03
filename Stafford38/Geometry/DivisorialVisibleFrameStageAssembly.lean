@@ -37,8 +37,33 @@ theorem stage5_of_verified : Stage5Obligation.{u} := by
 ring and chart of Lemma 5.9, the discrete valuation ring `V = A_{𝔭_D}` of
 Lemma 5.10, and a coefficient field `E` over which `κ` is finite (the input to
 the coefficient field of the completion, Matsumura Thm. 28.3). -/
-theorem divisorialVisibleFrameExistence : DivisorialVisibleFrameExistence.{u} := by
-  intro k K _ _ _ _ r y i hgen hx
+theorem divisorialVisibleFrameExistenceWithChart
+    (k K : Type u) [Field k] [CharZero k] [Field K] [Algebra k K]
+    (r : ℕ) (y : Fin r → K) (i : Fin r)
+    (hgen : IntermediateField.adjoin k (Set.range y) = ⊤)
+    (hx : Transcendental k (y i)) :
+    ∃ (E : IntermediateField k K) (V : ValuationSubring K)
+      (hEV : ∀ z : E, (z : K) ∈ V.toSubring)
+      (hVdvr : IsDiscreteValuationRing V.toSubring)
+      (hxV : y i ∈ V.toSubring),
+      letI : IsLocalRing V.toSubring := hVdvr.toIsLocalRing
+      letI : Algebra E V.toSubring := (coeffHom E V hEV).toAlgebra
+      letI : Algebra k V.toSubring := (groundHom E V hEV).toAlgebra
+      Transcendental E (y i) ∧
+      (⟨y i, hxV⟩ : V.toSubring) ∈ maximalIdeal V.toSubring ∧
+      Module.Finite E (ResidueField V.toSubring) ∧
+      Module.Finite V.toSubring (Ω[V.toSubring⁄k]) ∧
+      (∀ (s : K) (q : Fin (r + 1) → V.toSubring),
+        (∀ a, (q a : K) = s * Fin.cases 1 y a) →
+        (∃ j, q j = 1) → ¬ IsUnit (q 0) →
+        Algebra.IsAlgebraic
+          (IntermediateField.adjoin k
+            (Set.range fun j : Fin r ↦ residue V.toSubring (q (Fin.succ j))) :
+            IntermediateField k (ResidueField V.toSubring))
+          (ResidueField V.toSubring)) ∧
+      -- The chart `j` of Lemma 5.9, with `q_a = x̄_a / x̄_j ∈ V` (Lemma 5.10(a)).
+      ∃ j, (Fin.cases 1 y j : K) ≠ 0 ∧
+        ∀ a, (Fin.cases 1 y a : K) / Fin.cases 1 y j ∈ V.toSubring := by
   -- Lemma 5.9.
   obtain ⟨W, j, hkW, -, hxW, hj, hqW⟩ := Stafford38.Paper.Section5.lemma_5_9 y i hx
   -- Lemma 5.10.
@@ -98,7 +123,7 @@ theorem divisorialVisibleFrameExistence : DivisorialVisibleFrameExistence.{u} :=
       (ResidueField V.toSubring)) at h
     rw [hcod_ground] at h
     exact h
-  refine ⟨E, V, hEV, hVdvr, hxV, htrans, hxm, hEfin, hkaehler, ?_⟩
+  refine ⟨E, V, hEV, hVdvr, hxV, htrans, hxm, hEfin, hkaehler, ?_, j, hj, fun a ↦ (c a).2⟩
   intro s' q hq hq1 hq0
   by_cases hj0 : j = 0
   · obtain ⟨j', hj'⟩ := hq1
@@ -121,6 +146,14 @@ theorem divisorialVisibleFrameExistence : DivisorialVisibleFrameExistence.{u} :=
       V y j hj0 s c hc hcj halg
       s' q hq hq1 hq0
 
+/-- `divisorialVisibleFrameExistenceWithChart` without its chart. -/
+theorem divisorialVisibleFrameExistence : DivisorialVisibleFrameExistence.{u} := by
+  intro k K _ _ _ _ r y i hgen hx
+  obtain ⟨E, V, hEV, hVdvr, hxV, h₁, h₂, h₃, h₄, h₅, -⟩ :=
+    divisorialVisibleFrameExistenceWithChart k K r y i hgen hx
+  exact ⟨E, V, hEV, hVdvr, hxV, h₁, h₂, h₃, h₄, h₅⟩
+
 end Stafford38.Geometry.LaneC
 
+#print axioms Stafford38.Geometry.LaneC.divisorialVisibleFrameExistenceWithChart
 #print axioms Stafford38.Geometry.LaneC.divisorialVisibleFrameExistence

@@ -81,6 +81,122 @@ set_option synthInstance.maxHeartbeats 500000
 
 universe u
 
+/-! ## The case `x̄_1` algebraic -/
+
+section AlgebraicCoordinate
+
+open Stafford38.Geometry.AffineConormalClosure
+open Stafford38.Geometry.ConormalPrincipalOpenDensity
+open Stafford38.Geometry.SmoothAffineConormal
+open Stafford38.Geometry.CoisotropicTranslation
+
+/-- `Y = V(𝔭)` is nonempty for a prime `𝔭` (Nullstellensatz). -/
+theorem exists_mem_zeroLocus_of_isPrime {k : Type*} [Field k] [IsAlgClosed k] {n : ℕ}
+    (I : PrimeSpectrum (MvPolynomial (Fin n) k)) :
+    ∃ y : Fin n → k, y ∈ MvPolynomial.zeroLocus k I.asIdeal := by
+  obtain ⟨M, hMmax, hPM⟩ := Ideal.exists_le_maximal I.asIdeal I.isPrime.ne_top
+  obtain ⟨y, hMy⟩ := MvPolynomial.isMaximal_iff_eq_vanishingIdeal_singleton.mp hMmax
+  refine ⟨y, fun f hf ↦ ?_⟩
+  have hfM : f ∈ M := hPM hf
+  rw [hMy, MvPolynomial.mem_vanishingIdeal_singleton_iff] at hfM
+  exact hfM
+
+/-- The smooth locus `Y_sm` of a nonempty `Y = V(𝔭)` is nonempty (it is dense in `Y`,
+Definition 5.4(b)). -/
+theorem exists_smoothAffinePoint {k : Type*} [Field k] [IsAlgClosed k] {n : ℕ}
+    (I : PrimeSpectrum (MvPolynomial (Fin n) k)) :
+    ∃ y : Fin n → k, SmoothAffinePoint I.asIdeal y := by
+  classical
+  by_contra hnone
+  push Not at hnone
+  obtain ⟨y, hy⟩ := exists_mem_zeroLocus_of_isPrime I
+  have hmem : (Sum.elim y 0 : Fin n ⊕ Fin n → k) ∈ equationConormalClosure I.asIdeal := by
+    intro f hf
+    refine hf _ ⟨fun g hg ↦ by simpa using hy g hg, ?_⟩
+    have h0 : coordinateCovector
+        (fun i : Fin n ↦ (Sum.elim y 0 : Fin n ⊕ Fin n → k) (.inr i)) = 0 := by
+      apply LinearMap.ext
+      intro v
+      simp [coordinateCovector_apply]
+    rw [h0]
+    exact Submodule.zero_mem _
+  rw [← equationConormalClosure_smoothAffine_eq I.asIdeal I.isPrime] at hmem
+  have hempty :
+      restrictedEquationConormalLocus I.asIdeal {y | SmoothAffinePoint I.asIdeal y} = ∅ := by
+    ext q
+    simp only [Set.mem_empty_iff_false, iff_false]
+    exact fun hq ↦ hnone _ hq.2
+  have h1 : (1 : MvPolynomial (Fin n ⊕ Fin n) k) ∈ MvPolynomial.vanishingIdeal k
+      (restrictedEquationConormalLocus I.asIdeal {y | SmoothAffinePoint I.asIdeal y}) := by
+    rw [hempty, MvPolynomial.mem_vanishingIdeal_iff]
+    intro x hx
+    exact absurd hx (Set.notMem_empty x)
+  simpa using hmem 1 h1
+
+/-- **First paragraph of the proof of Theorem 5.7 (`x̄_1` algebraic).**  A nonzero
+`g` with `g(x̄_1) = 0` gives `g(x_1) ∈ 𝔭`; over the algebraically closed `K`,
+`g(x_1) = λ ∏ (x_1 − c_i)` with `λ ∈ K^×`, and since `𝔭` is prime some factor
+`x_1 − c` lies in `𝔭`.  Thus `x_1 = c` on `Y`, and `Y ≠ ∅`, `Y ∩ H = ∅` give
+`c ≠ 0`.  The equation `f = x_1 − c` has `df_y = dx_1` at every smooth point `y`,
+and `Y_sm ≠ ∅`, so `(1, 0, …, 0) ∈ N(Y)`. -/
+theorem step_coordinate_algebraic {k : Type u} [Field k] [IsAlgClosed k] {m : ℕ} (hm : 0 < m)
+    (I : PrimeSpectrum (MvPolynomial (Fin m) k))
+    (havoid : ∀ y ∈ MvPolynomial.zeroLocus k I.asIdeal, y ⟨0, hm⟩ ≠ 0)
+    (halg : IsAlgebraic k (componentCoordinate I ⟨0, hm⟩)) :
+    ∃ c : k, MvPolynomial.X ⟨0, hm⟩ - MvPolynomial.C c ∈ I.asIdeal ∧ c ≠ 0 ∧
+      (fun i : Fin m ↦ if i = ⟨0, hm⟩ then (1 : k) else 0) ∈
+        smoothConormalFibreProjection I.asIdeal := by
+  classical
+  let i₀ : Fin m := ⟨0, hm⟩
+  let x₁ : MvPolynomial (Fin m) k := MvPolynomial.X i₀
+  -- A nonzero `g` with `g(x̄_1) = 0`, hence `g(x_1) ∈ 𝔭`.
+  obtain ⟨g, hg0, hgx⟩ := halg
+  have hgmem : Polynomial.aeval x₁ g ∈ I.asIdeal := by
+    have hcomp : componentCoordinate I i₀ =
+        ((IsScalarTower.toAlgHom k (MvPolynomial (Fin m) k ⧸ I.asIdeal)
+          (FractionRing (MvPolynomial (Fin m) k ⧸ I.asIdeal))).comp
+          (Ideal.Quotient.mkₐ k I.asIdeal)) x₁ := rfl
+    rw [hcomp, Polynomial.aeval_algHom_apply] at hgx
+    rw [← Ideal.Quotient.eq_zero_iff_mem]
+    apply IsFractionRing.injective (MvPolynomial (Fin m) k ⧸ I.asIdeal)
+      (FractionRing (MvPolynomial (Fin m) k ⧸ I.asIdeal))
+    rw [map_zero, ← hgx]
+    rfl
+  -- `K` algebraically closed: `g(x_1) = λ ∏ (x_1 − c_i)`, `λ ∈ K^×`.
+  have hfac := Polynomial.C_leadingCoeff_mul_prod_multiset_X_sub_C
+    (IsAlgClosed.card_roots_eq_natDegree (p := g))
+  have hlc : g.leadingCoeff ≠ 0 := Polynomial.leadingCoeff_ne_zero.mpr hg0
+  rw [← hfac, map_mul, Polynomial.aeval_C, map_multiset_prod, Multiset.map_map] at hgmem
+  -- `𝔭` is prime, so some factor `x_1 − c` lies in `𝔭`.
+  rcases I.isPrime.mem_or_mem hgmem with hC | hprod
+  · exact absurd (I.isPrime.ne_top ((Ideal.eq_top_iff_one _).mpr (by
+      have := Ideal.mul_mem_left _ (MvPolynomial.C g.leadingCoeff⁻¹) hC
+      simpa [MvPolynomial.algebraMap_eq, ← MvPolynomial.C_mul, inv_mul_cancel₀ hlc] using this)))
+      (by simp)
+  obtain ⟨_, hmem, hc⟩ := (I.isPrime.multiset_prod_mem_iff_exists_mem _).mp hprod
+  obtain ⟨c, -, rfl⟩ := Multiset.mem_map.mp hmem
+  have hc' : x₁ - MvPolynomial.C c ∈ I.asIdeal := by
+    simpa [x₁, Polynomial.aeval_X, MvPolynomial.algebraMap_eq] using hc
+  -- `x_1 = c` on `Y`; `Y ≠ ∅` and `Y ∩ H = ∅` give `c ≠ 0`.
+  obtain ⟨y, hy⟩ := exists_mem_zeroLocus_of_isPrime I
+  have hyc : y i₀ = c := by
+    have := hy _ hc'
+    simpa [x₁, sub_eq_zero] using this
+  have hc0 : c ≠ 0 := hyc ▸ havoid y hy
+  -- `f = x_1 − c ∈ 𝔭` has `df_y = dx_1` at a smooth point `y`, so `dx_1 ∈ N*_y Y ⊆ N(Y)`.
+  obtain ⟨y', hy'⟩ := exists_smoothAffinePoint I
+  refine ⟨c, hc', hc0, (definition_5_4_d I.asIdeal _).2 ⟨y', hy', ?_⟩⟩
+  have hdf : differentialAt y' (x₁ - MvPolynomial.C c) =
+      fun i : Fin m ↦ if i = i₀ then (1 : k) else 0 := by
+    funext i
+    by_cases hi : i = i₀
+    · subst hi; simp [differentialAt, x₁]
+    · simp [differentialAt, x₁, hi, MvPolynomial.pderiv_X, Ne.symm hi]
+  rw [← hdf]
+  exact Submodule.subset_span ⟨⟨_, hc'⟩, rfl⟩
+
+end AlgebraicCoordinate
+
 /-! ## Paragraphs over `κ[[t]]` -/
 
 section PowerSeriesSteps
@@ -215,11 +331,15 @@ theorem step_lambda_w_tau {m d : ℕ} (hm : 0 < m)
       PowerSeries.constantCoeff (tau (Fin.succ ⟨0, hm⟩)) = 0 ∧
       tau j = 0 := by
   classical
-  obtain ⟨lambda, c, tau, -, -, -, hsel, htauj, htaurows, hc, hfactor, hprim, htau1,
-      -, -, -, -⟩ :=
-    exists_formalDivisorAxisLift q Z rows j 0 (Fin.succ ⟨0, hm⟩) a b u₀ u₁ hqj hZj ha hab
-      hq0 hu₀ hZ0 hq1 hZ1 (by rw [hminor]; exact one_ne_zero)
-  -- `Z̃(0) = 1`, so `Z̃` is a unit and `Z̃ λ = (q'_{i_l})` has one solution.
+  have hminor0 : PowerSeries.constantCoeff (selectedMinor Z rows).det ≠ 0 := by
+    rw [hminor]; exact one_ne_zero
+  -- `Z̃(0)` is the identity, so `Z̃` is invertible over `κ[[t]]` and
+  -- `λ = Z̃⁻¹ (q'_{i_1}, …, q'_{i_{d'}})` solves `Z̃ λ = (q'_{i_l})`.
+  let v : Fin (m + 1) → PowerSeries κ := fun i ↦ PowerSeries.derivative (R := κ) (q i)
+  let lambda : Fin d → PowerSeries κ := correctionCoefficients Z rows v
+  have hsel : ∀ l, PowerSeries.derivative (R := κ) (q (rows l)) = Z.mulVec lambda (rows l) :=
+    fun l ↦ sub_eq_zero.mp (correctedVector_selectedRow_eq_zero Z rows v hminor0 l)
+  -- The solution is unique.
   have huniq : ∀ lambda' : Fin d → PowerSeries κ,
       (∀ l, PowerSeries.derivative (R := κ) (q (rows l)) = Z.mulVec lambda' (rows l)) →
         lambda' = lambda := by
@@ -231,30 +351,63 @@ theorem step_lambda_w_tau {m d : ℕ} (hm : 0 < m)
     funext l
     change Z.mulVec lambda' (rows l) = Z.mulVec lambda (rows l)
     rw [← h', hsel]
-  -- `ord w_0 = a − 1`: the coefficient `a u_0(0)` of `t^{a-1}` is nonzero.
+  -- `w = q' − Zλ` has `w_{i_l} = 0`.
+  let w : Fin (m + 1) → PowerSeries κ := fun i ↦
+    PowerSeries.derivative (R := κ) (q i) - Z.mulVec lambda i
+  have hwrows : ∀ l, w (rows l) = 0 := fun l ↦ sub_eq_zero.mpr (hsel l)
+  -- `ord w_0 = a − 1`: `q'_0` has order exactly `a − 1` (its coefficient `a u_0(0)` of
+  -- `t^{a-1}` is nonzero in characteristic zero), while `Z_{0•} λ` has order `≥ a`.
   obtain ⟨r₀, hr₀, hr₀c⟩ := derivative_sub_mulVec_eq_X_pow_mul q Z lambda 0 a ha u₀ hq0 hZ0
-  have hw0 : (PowerSeries.derivative (R := κ) (q 0) - Z.mulVec lambda 0).order = (a - 1 : ℕ) := by
-    rw [hr₀]
-    apply order_X_pow_mul_of_constantCoeff_ne_zero
+  have hr₀ne : PowerSeries.constantCoeff r₀ ≠ 0 := by
     rw [hr₀c]
     exact mul_ne_zero (Nat.cast_ne_zero.mpr ha.ne') hu₀
-  -- `ord w_1 ≥ b − 1`, so `ord τ_1 ≥ b − 1 − c ≥ b − a`.
+  have hw0 : (PowerSeries.derivative (R := κ) (q 0) - Z.mulVec lambda 0).order = (a - 1 : ℕ) := by
+    rw [hr₀]
+    exact order_X_pow_mul_of_constantCoeff_ne_zero _ _ hr₀ne
+  -- `c` is the minimal order among the entries of `w`; then `c ≤ a − 1`, and
+  -- `τ = t^{-c} w` lies in `κ[[t]]^{n+1}` with `τ(0) ≠ 0`.
+  have hcoeff : PowerSeries.coeff (a - 1) (w 0) ≠ 0 := by
+    change PowerSeries.coeff (a - 1)
+      (PowerSeries.derivative (R := κ) (q 0) - Z.mulVec lambda 0) ≠ 0
+    rw [hr₀]
+    simpa [PowerSeries.coeff_zero_eq_constantCoeff_apply] using
+      (show PowerSeries.coeff (0 + (a - 1)) ((PowerSeries.X : PowerSeries κ) ^ (a - 1) * r₀) ≠ 0 by
+        rw [PowerSeries.coeff_X_pow_mul]
+        simpa [PowerSeries.coeff_zero_eq_constantCoeff_apply] using hr₀ne)
+  obtain ⟨c, hc, tau, hfactor, hprim⟩ :=
+    exists_primitive_commonPower_of_coeff_ne_zero w 0 (a - 1) hcoeff
+  have hfactor' : ∀ i, PowerSeries.derivative (R := κ) (q i) - Z.mulVec lambda i =
+      (PowerSeries.X : PowerSeries κ) ^ c * tau i := hfactor
+  have htau_of_w : ∀ i, w i = 0 → tau i = 0 := fun i hi ↦
+    (mul_eq_zero.mp ((hfactor i).symm.trans hi)).resolve_left
+      (pow_ne_zero c PowerSeries.X_ne_zero)
+  have htaurows : ∀ l, tau (rows l) = 0 := fun l ↦ htau_of_w _ (hwrows l)
+  -- In row `1`, `q'_1` and `Z_{1•} λ` have order `≥ b − 1`, so `ord τ_1 ≥ b − 1 − c ≥ b − a`.
   obtain ⟨r₁, hr₁, -⟩ :=
     derivative_sub_mulVec_eq_X_pow_mul q Z lambda _ b (ha.trans hab) u₁ hq1 hZ1
   have htau1' : tau (Fin.succ ⟨0, hm⟩) =
       (PowerSeries.X : PowerSeries κ) ^ (b - a) *
         ((PowerSeries.X : PowerSeries κ) ^ (a - 1 - c) * r₁) := by
     apply mul_left_cancel₀ (pow_ne_zero c (PowerSeries.X_ne_zero (R := κ)))
-    rw [← hfactor, hr₁, ← mul_assoc, ← mul_assoc, ← pow_add, ← pow_add]
+    rw [← hfactor', hr₁, ← mul_assoc, ← mul_assoc, ← pow_add, ← pow_add]
     congr 2
     omega
-  refine ⟨lambda, c, tau, hsel, huniq, fun l ↦ sub_eq_zero.mpr (hsel l), hw0, ?_, ?_, hc,
-    hfactor, hprim, htaurows, ⟨_, htau1'⟩, htau1, htauj⟩
+  have htau1 : PowerSeries.constantCoeff (tau (Fin.succ ⟨0, hm⟩)) = 0 := by
+    rw [htau1', map_mul, map_pow, PowerSeries.constantCoeff_X,
+      zero_pow (Nat.sub_ne_zero_of_lt hab), zero_mul]
+  -- `q'_j = 0` and `Z_{j•} = 0` (as `q_j = 1`), so `τ_j = 0`.
+  have htauj : tau j = 0 := by
+    apply htau_of_w
+    change PowerSeries.derivative (R := κ) (q j) - Z.mulVec lambda j = 0
+    rw [hqj, Derivation.map_one_eq_zero, zero_sub, neg_eq_zero]
+    simp [Matrix.mulVec, dotProduct, hZj]
+  refine ⟨lambda, c, tau, hsel, huniq, hwrows, hw0, ?_, ?_, hc,
+    hfactor', hprim, htaurows, ⟨_, htau1'⟩, htau1, htauj⟩
   · intro i
-    rw [hfactor i, PowerSeries.order_mul, PowerSeries.order_X_pow]
+    rw [hfactor' i, PowerSeries.order_mul, PowerSeries.order_X_pow]
     exact le_self_add
   · obtain ⟨i, hi⟩ := hprim
-    exact ⟨i, by rw [hfactor i]; exact order_X_pow_mul_of_constantCoeff_ne_zero c _ hi⟩
+    exact ⟨i, by rw [hfactor' i]; exact order_X_pow_mul_of_constantCoeff_ne_zero c _ hi⟩
 
 omit [CharZero κ] in
 /-- If some square minor `M_ι` of `M` has `det M_ι(0) ≠ 0`, then `det M_ι` is a
@@ -994,23 +1147,13 @@ theorem witness_lemma_5_12_5_13_of_bound
     have h := congrArg (fun f : k →+* E ↦ f c) hground
     change (groundLaurentMap (k := k) (K := κ)) c = ell (algebraMap k F c)
     exact h.symm
-  have hgenPoint : IntermediateField.adjoin k
-      (Set.range (Stafford38.Geometry.GenericPointKaehlerConormal.genericPoint P.asIdeal F)) =
-        ⊤ := by
-    have hcoordinates :
-        Stafford38.Geometry.GenericPointKaehlerConormal.genericPoint P.asIdeal F =
-          componentCoordinate P := by
-      funext j
-      rfl
-    rw [hcoordinates]
-    exact componentCoordinate_adjoin_eq_top P
   have hchartPoint : (fun j : Fin m ↦ algebraMap F E
       (Stafford38.Geometry.GenericPointKaehlerConormal.genericPoint P.asIdeal F j)) =
         dehomogenizedPoint q := by
     funext j
     exact congrFun hpoint j
-  have hdim := generic_tangent_finrank_eq_component_kaehler_finrank (E := E)
-    (I := P.asIdeal) hgenPoint
+  have hdim := generic_tangent_finrank_eq_component_kaehler_finrank (F := F) (E := E)
+    (I := P.asIdeal)
   rw [hchartPoint] at hdim
   have htr := (component_kaehler_finrank_eq_trdeg (k := k) (componentCoordinate P)
     (componentCoordinate_adjoin_eq_top P)).1
@@ -1066,6 +1209,9 @@ theorem witness_lemma_5_12_5_13_paper
 
 end Place
 
+#print axioms exists_mem_zeroLocus_of_isPrime
+#print axioms exists_smoothAffinePoint
+#print axioms step_coordinate_algebraic
 #print axioms step_dual_derivations
 #print axioms step_lambda_w_tau
 #print axioms step_M_minor
