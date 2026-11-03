@@ -24,10 +24,14 @@ if [ -z "$bwrap_bin" ] || [ ! -x "$bwrap_bin" ]; then
 fi
 bwrap_bin=$(cd -- "$(dirname -- "$bwrap_bin")" && pwd)/$(basename -- "$bwrap_bin")
 bwrap_version=$("$bwrap_bin" --version)
-if [ "$bwrap_version" != "bubblewrap 0.12.0" ]; then
-  echo "expected official Palomar bubblewrap 0.12.0, found $bwrap_version" >&2
-  exit 1
-fi
+# Palomar builds 0.12.0; 0.13.1 is the current distribution release and runs the same sandbox.
+case "$bwrap_version" in
+  "bubblewrap 0.12.0" | "bubblewrap 0.13.1") ;;
+  *)
+    echo "expected bubblewrap 0.12.0 (Palomar) or 0.13.1, found $bwrap_version" >&2
+    exit 1
+    ;;
+esac
 log_dir=$(dirname -- "$log_path")
 mkdir -p "$log_dir"
 protected_config=$(mktemp "$log_dir/palomar-protected.XXXXXX")
