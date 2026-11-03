@@ -22,8 +22,8 @@ repository:
   url: "https://github.com/itpplasma/stafford38-formal"
   registration_status: "registered"
   palomar_id: "PALOMAR-2026-09-05-000007"
-  palomar_version: 2
-  palomar_url: "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=2"
+  palomar_version: 3
+  palomar_url: "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3"
   note: >-
     This public repository is the canonical substantive Stafford-specific
     formal development. The Palomar record checks its registered universal
@@ -44,12 +44,14 @@ sources:
     type: "original-proof"
     relationship: "other"
     note: >-
-      The formal development proves the manuscript's Stafford 3.8 statement.
-      Full correspondence with the manuscript's geometric proof route remains
-      under review; docs/paper-route-alignment.json records the selected route,
-      formal evidence and pending human reviews. The registered theorem is
-      PALOMAR-2026-09-05-000007, version 2; later declarations and toolchain
-      changes require separate verification.
+      The formal development follows the manuscript's proof: each numbered
+      statement of Sections 2-6 is a declaration in Stafford38/Paper that
+      states the printed claim, each printed proof is assembled paragraph by
+      paragraph, and the compared theorems are proved through
+      Stafford38.Paper.theorem_1_1 and Stafford38.Paper.corollary_6_3
+      (docs/paper-route-alignment.json). Version 3 of
+      PALOMAR-2026-09-05-000007 registered the identity at an earlier source;
+      later declarations and toolchain changes require separate verification.
     license: "CC-BY-4.0"
     author_endorsement: "participated"
   - title: "Module structure of Weyl algebras"
@@ -116,6 +118,24 @@ status:
     - "Quot.sound"
     - "Classical.choice"
   main_results:
+    - declaration: "Stafford38.Paper.theorem_1_1"
+      file: "Stafford38/Paper/Main.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "Stafford38.Paper.corollary_6_3"
+      file: "Stafford38/Paper/Main.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator.json"
+      literature_dependencies: []
     - declaration: "Stafford38.universalStatement"
       file: "Stafford38/FoundationClosure.lean"
       sorry_count: 0
@@ -198,6 +218,23 @@ review:
 alignment:
   namespace: "Stafford38"
   statements:
+    - source: "Manuscript, Theorem 1.1"
+      lean: "Stafford38.Paper.theorem_1_1"
+      module: "Stafford38.Paper.Main"
+      status: "proved"
+      note: >-
+        Compared as Stafford38Challenge.theorem_1_1, whose statement
+        Stafford38Challenge.PaperTheorem_1_1 in Challenge.lean is Theorem 1.1
+        as printed: the ideal form, the identity 1 = dR + FdS, and for n >= 1
+        the source F = Phi_g^{-1}(x_1)^{deg_B d} for a linear
+        omega-preserving g.
+    - source: "Manuscript, Corollary 6.3 (Stafford 1978, Theorem 3.7)"
+      lean: "Stafford38.Paper.corollary_6_3"
+      module: "Stafford38.Paper.Main"
+      status: "proved"
+      note: >-
+        Compared as Stafford38Challenge.corollary_6_3: every finitely
+        generated torsion right A_n(k)-module is cyclic.
     - source: "Original proof: universal Stafford 3.8 theorem"
       lean: "Stafford38.universalStatement"
       module: "Stafford38.FoundationClosure"
