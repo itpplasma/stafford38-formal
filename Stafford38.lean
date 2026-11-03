@@ -17,6 +17,7 @@ public import Stafford38.Geometry.GeneralTangentLatticePresentation
 public import Stafford38.Geometry.GeneralCoisotropicSetsTest
 public import Stafford38.Geometry.GeneralTangentLimitCriterionTest
 public import Stafford38.Paper.Section5
+public import Stafford38.Paper.Main
 
 @[expose] public section
 

@@ -1,8 +1,10 @@
 module
 
 public import Stafford38.Paper.Section5.ResidueBasis
+public import Stafford38.Paper.Section5.Place
 public import Stafford38.Paper.Section5.TangentCone
 public import Stafford38.Paper.Section5.GenericTangentRank
+public import Stafford38.Paper.Section5.Completion
 public import Stafford38.Geometry.ActualWitnessConormalAssembly
 public import Stafford38.Geometry.ConormalScalarExtensionVanishing
 public import Stafford38.Geometry.ExactDivisorialVisibleFrameExistence
@@ -114,18 +116,9 @@ theorem step_dual_derivations {m d : ℕ} (hm : 0 < m)
           (PowerSeries.X : PowerSeries κ) ^ b * w) := by
   classical
   let B : Module.Basis (Fin d) κ (Ω[κ⁄k]) := Module.Basis.mk hli hspan.ge
-  -- Definition 5.2(c): `D_k = B^*_k ∘ d`.
-  let D : Fin d → Derivation k κ κ := fun k' ↦ (B.coord k').compDer (KaehlerDifferential.D k κ)
-  have hdual : ∀ k' l, D k' (PowerSeries.constantCoeff (q (rows l))) =
-      if k' = l then 1 else 0 := by
-    intro k' l
-    have hB : B l = KaehlerDifferential.D k κ (PowerSeries.constantCoeff (q (rows l))) :=
-      Module.Basis.mk_apply _ _ _
-    change B.coord k' (KaehlerDifferential.D k κ _) = _
-    rw [← hB, Module.Basis.coord_apply, Module.Basis.repr_self, Finsupp.single_apply]
-    by_cases h : k' = l
-    · subst h; simp
-    · simp [h, Ne.symm h]
+  -- Definition 5.2(c): the dual derivations `D_k` of the basis `dβ_l`.
+  obtain ⟨D, hdual⟩ := definition_5_2_c (K := k) (L := κ)
+    (fun l ↦ PowerSeries.constantCoeff (q (rows l))) B (fun l ↦ Module.Basis.mk_apply _ _ _)
   have hentry : ∀ l k', PowerSeries.constantCoeff (coefficientwiseTangentMatrix q D (rows l) k') =
       if l = k' then 1 else 0 := by
     intro l k'
@@ -153,12 +146,46 @@ theorem step_dual_derivations {m d : ℕ} (hm : 0 < m)
     rw [coefficientwiseTangentMatrix, hq1]
     exact coefficientwiseDerivation_X_pow_mul (D k') b u₁
 
-/-- **Paragraph defining `λ`, `w` and `τ`.**  The selected minor `Z̃` is
-invertible over `κ[[t]]`, so some `λ` solves `Z̃ λ = (q'_{i_l})`.  With
-`w = q' − Zλ`, the minimal order `c` of the entries of `w` is at most `a − 1`,
-and `τ = t^{-c} w` lies over `κ[[t]]` with `τ(0) ≠ 0`, `τ_{i_l} = 0`, `τ_j = 0`
-and `τ_1(0) = 0`.  Stated as `q' − Zλ = t^c τ`. -/
-theorem step_lambda_tau {m d : ℕ} (hm : 0 < m)
+omit [CharZero κ] in
+/-- A series `t^n r` with `r(0) ≠ 0` has order exactly `n`. -/
+theorem order_X_pow_mul_of_constantCoeff_ne_zero (n : ℕ) (r : PowerSeries κ)
+    (hr : PowerSeries.constantCoeff r ≠ 0) :
+    ((PowerSeries.X : PowerSeries κ) ^ n * r).order = n := by
+  rw [PowerSeries.order_mul, PowerSeries.order_X_pow,
+    PowerSeries.order_zero_of_isUnit (PowerSeries.isUnit_iff_constantCoeff.mpr (IsUnit.mk0 _ hr)),
+    add_zero]
+
+omit [CharZero κ] in
+/-- If `q_i = t^n u` and every entry of row `i` of `Z` is divisible by `t^n`
+(`n ≥ 1`), then `q'_i − (Zλ)_i = t^{n-1} r` with `r(0) = n u(0)`. -/
+theorem derivative_sub_mulVec_eq_X_pow_mul {ι' : Type*} {d : ℕ} (q : ι' → PowerSeries κ)
+    (Z : Matrix ι' (Fin d) (PowerSeries κ)) (lambda : Fin d → PowerSeries κ) (i : ι') (n : ℕ)
+    (hn : 0 < n) (u : PowerSeries κ) (hq : q i = (PowerSeries.X : PowerSeries κ) ^ n * u)
+    (hZ : ∀ k', ∃ w : PowerSeries κ, Z i k' = (PowerSeries.X : PowerSeries κ) ^ n * w) :
+    ∃ r : PowerSeries κ,
+      PowerSeries.derivative (R := κ) (q i) - Z.mulVec lambda i =
+        (PowerSeries.X : PowerSeries κ) ^ (n - 1) * r ∧
+      PowerSeries.constantCoeff r = n * PowerSeries.constantCoeff u := by
+  choose w hw using hZ
+  let S := ∑ k', w k' * lambda k'
+  have hXn : (PowerSeries.X : PowerSeries κ) ^ n = PowerSeries.X ^ (n - 1) * PowerSeries.X := by
+    rw [← pow_succ, Nat.sub_add_cancel hn]
+  refine ⟨(n : PowerSeries κ) * u + PowerSeries.X * (PowerSeries.derivative (R := κ) u - S), ?_, ?_⟩
+  · have hmv : Z.mulVec lambda i = PowerSeries.X ^ n * S := by
+      simp only [Matrix.mulVec, dotProduct, hw, S, Finset.mul_sum, mul_assoc]
+    rw [hq, hmv, Derivation.leibniz, PowerSeries.derivative_pow, PowerSeries.derivative_X, hXn]
+    simp only [smul_eq_mul]
+    ring
+  · simp [S]
+
+/-- **Paragraph defining `λ`, `w` and `τ`.**  `Z̃(0)` is the identity, so `Z̃`
+is invertible over `κ[[t]]` and there is a unique `λ` with
+`Z̃ λ = (q'_{i_1}, …, q'_{i_{d'}})`.  For `w = q' − Zλ`: `w_{i_l} = 0`;
+`ord w_0 = a − 1` exactly; `c`, the minimal order of the entries of `w`,
+satisfies `c ≤ a − 1`; `τ = t^{-c} w` lies in `κ[[t]]^{n+1}` (stated as
+`w = t^c τ`) with `τ(0) ≠ 0`, `τ_{i_l} = 0`, `ord τ_1 ≥ b − a > 0` (so
+`τ_1(0) = 0`) and `τ_j = 0`. -/
+theorem step_lambda_w_tau {m d : ℕ} (hm : 0 < m)
     (q : Fin (m + 1) → PowerSeries κ) (Z : Matrix (Fin (m + 1)) (Fin d) (PowerSeries κ))
     (rows : Fin d ↪ Fin (m + 1)) (j : Fin (m + 1)) (a b : ℕ) (u₀ u₁ : PowerSeries κ)
     (hqj : q j = 1) (hZj : ∀ k', Z j k' = 0) (ha : 0 < a) (hab : a < b)
@@ -171,26 +198,104 @@ theorem step_lambda_tau {m d : ℕ} (hm : 0 < m)
     (hminor : PowerSeries.constantCoeff (selectedMinor Z rows).det = 1) :
     ∃ (lambda : Fin d → PowerSeries κ) (c : ℕ) (tau : Fin (m + 1) → PowerSeries κ),
       (∀ l, PowerSeries.derivative (R := κ) (q (rows l)) = Z.mulVec lambda (rows l)) ∧
+      (∀ lambda' : Fin d → PowerSeries κ,
+        (∀ l, PowerSeries.derivative (R := κ) (q (rows l)) = Z.mulVec lambda' (rows l)) →
+          lambda' = lambda) ∧
+      (∀ l, PowerSeries.derivative (R := κ) (q (rows l)) - Z.mulVec lambda (rows l) = 0) ∧
+      (PowerSeries.derivative (R := κ) (q 0) - Z.mulVec lambda 0).order = (a - 1 : ℕ) ∧
+      (∀ i, (c : ℕ∞) ≤ (PowerSeries.derivative (R := κ) (q i) - Z.mulVec lambda i).order) ∧
+      (∃ i, (PowerSeries.derivative (R := κ) (q i) - Z.mulVec lambda i).order = c) ∧
       c ≤ a - 1 ∧
       (∀ i, PowerSeries.derivative (R := κ) (q i) - Z.mulVec lambda i =
         (PowerSeries.X : PowerSeries κ) ^ c * tau i) ∧
       (∃ i, PowerSeries.constantCoeff (tau i) ≠ 0) ∧
-      (∀ l, tau (rows l) = 0) ∧ tau j = 0 ∧
-      PowerSeries.constantCoeff (tau (Fin.succ ⟨0, hm⟩)) = 0 := by
+      (∀ l, tau (rows l) = 0) ∧
+      (∃ s : PowerSeries κ,
+        tau (Fin.succ ⟨0, hm⟩) = (PowerSeries.X : PowerSeries κ) ^ (b - a) * s) ∧
+      PowerSeries.constantCoeff (tau (Fin.succ ⟨0, hm⟩)) = 0 ∧
+      tau j = 0 := by
   classical
   obtain ⟨lambda, c, tau, -, -, -, hsel, htauj, htaurows, hc, hfactor, hprim, htau1,
       -, -, -, -⟩ :=
     exists_formalDivisorAxisLift q Z rows j 0 (Fin.succ ⟨0, hm⟩) a b u₀ u₁ hqj hZj ha hab
       hq0 hu₀ hZ0 hq1 hZ1 (by rw [hminor]; exact one_ne_zero)
-  exact ⟨lambda, c, tau, hsel, hc, hfactor, hprim, htaurows, htauj, htau1⟩
+  -- `Z̃(0) = 1`, so `Z̃` is a unit and `Z̃ λ = (q'_{i_l})` has one solution.
+  have huniq : ∀ lambda' : Fin d → PowerSeries κ,
+      (∀ l, PowerSeries.derivative (R := κ) (q (rows l)) = Z.mulVec lambda' (rows l)) →
+        lambda' = lambda := by
+    intro lambda' h'
+    have hunit : IsUnit (selectedMinor Z rows) :=
+      (Matrix.isUnit_iff_isUnit_det _).mpr
+        (PowerSeries.isUnit_iff_constantCoeff.mpr (by rw [hminor]; exact isUnit_one))
+    apply Matrix.mulVec_injective_of_isUnit hunit
+    funext l
+    change Z.mulVec lambda' (rows l) = Z.mulVec lambda (rows l)
+    rw [← h', hsel]
+  -- `ord w_0 = a − 1`: the coefficient `a u_0(0)` of `t^{a-1}` is nonzero.
+  obtain ⟨r₀, hr₀, hr₀c⟩ := derivative_sub_mulVec_eq_X_pow_mul q Z lambda 0 a ha u₀ hq0 hZ0
+  have hw0 : (PowerSeries.derivative (R := κ) (q 0) - Z.mulVec lambda 0).order = (a - 1 : ℕ) := by
+    rw [hr₀]
+    apply order_X_pow_mul_of_constantCoeff_ne_zero
+    rw [hr₀c]
+    exact mul_ne_zero (Nat.cast_ne_zero.mpr ha.ne') hu₀
+  -- `ord w_1 ≥ b − 1`, so `ord τ_1 ≥ b − 1 − c ≥ b − a`.
+  obtain ⟨r₁, hr₁, -⟩ :=
+    derivative_sub_mulVec_eq_X_pow_mul q Z lambda _ b (ha.trans hab) u₁ hq1 hZ1
+  have htau1' : tau (Fin.succ ⟨0, hm⟩) =
+      (PowerSeries.X : PowerSeries κ) ^ (b - a) *
+        ((PowerSeries.X : PowerSeries κ) ^ (a - 1 - c) * r₁) := by
+    apply mul_left_cancel₀ (pow_ne_zero c (PowerSeries.X_ne_zero (R := κ)))
+    rw [← hfactor, hr₁, ← mul_assoc, ← mul_assoc, ← pow_add, ← pow_add]
+    congr 2
+    omega
+  refine ⟨lambda, c, tau, hsel, huniq, fun l ↦ sub_eq_zero.mpr (hsel l), hw0, ?_, ?_, hc,
+    hfactor, hprim, htaurows, ⟨_, htau1'⟩, htau1, htauj⟩
+  · intro i
+    rw [hfactor i, PowerSeries.order_mul, PowerSeries.order_X_pow]
+    exact le_self_add
+  · obtain ⟨i, hi⟩ := hprim
+    exact ⟨i, by rw [hfactor i]; exact order_X_pow_mul_of_constantCoeff_ne_zero c _ hi⟩
+
+omit [CharZero κ] in
+/-- If some square minor `M_ι` of `M` has `det M_ι(0) ≠ 0`, then `det M_ι` is a
+unit of `κ[[t]]` and the columns of `M` are linearly independent over
+`κ((t))`. -/
+theorem linearIndependent_laurent_of_selectedMinor {R ι : Type*} [Fintype R] [Fintype ι]
+    [DecidableEq ι] (M : Matrix R ι (PowerSeries κ)) (rowsι : ι ↪ R)
+    (h0 : PowerSeries.constantCoeff (selectedMinor M rowsι).det ≠ 0) :
+    IsUnit (selectedMinor M rowsι).det ∧
+      LinearIndependent (LaurentSeries κ)
+        (fun col i ↦ algebraMap (PowerSeries κ) (LaurentSeries κ) (M i col)) := by
+  classical
+  have hunit : IsUnit (selectedMinor M rowsι).det :=
+    PowerSeries.isUnit_iff_constantCoeff.mpr (IsUnit.mk0 _ h0)
+  refine ⟨hunit, ?_⟩
+  let f := algebraMap (PowerSeries κ) (LaurentSeries κ)
+  let A := (selectedMinor M rowsι).map f
+  have hA : IsUnit A := by
+    rw [Matrix.isUnit_iff_isUnit_det]
+    change IsUnit (f.mapMatrix (selectedMinor M rowsι)).det
+    rw [← RingHom.map_det]
+    exact hunit.map f
+  rw [Fintype.linearIndependent_iff]
+  intro g hg
+  have hmv : A.mulVec g = 0 := by
+    funext c
+    have hi := congrFun hg (rowsι c)
+    simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, Pi.zero_apply] at hi
+    rw [Pi.zero_apply, ← hi]
+    simp only [Matrix.mulVec, dotProduct, A, Matrix.map_apply, selectedMinor]
+    exact Finset.sum_congr rfl fun col _ ↦ mul_comm _ _
+  have := Matrix.mulVec_injective_of_isUnit hA (hmv.trans (Matrix.mulVec_zero A).symm)
+  exact fun col ↦ congrFun this col
 
 /-- **Paragraph "`M(0)` has full column rank".**  For
-`M = (q, Z_{•1}, …, Z_{•d'}, τ)`, the reduction `M(0)` is injective (row `j`,
-the identity block on the rows `i_l`, and `τ(0) ≠ 0`), so `M` has a left
-inverse over `κ[[t]]`; this is the paper's unit `(d'+2)`-minor, packaged as a
-left inverse.  The columns of `M` are linearly independent over `κ((t))`, and
-every column of `M(0)` has vanishing `1`-coordinate. -/
-theorem step_M_full_rank {m d : ℕ} (hm : 0 < m)
+`M = (q, Z_{•1}, …, Z_{•d'}, τ)`: `M(0)` has full column rank (row `j`, the
+identity block on the rows `i_l`, and `τ(0) ≠ 0`); so some
+`(d'+2) × (d'+2)` minor `M_ι(0)` is nonzero, the corresponding minor of `M(t)`
+is a unit of `κ[[t]]`, and the columns of `M(t)` are linearly independent over
+`κ((t))`.  Every column of `M(0)` has vanishing `1`-coordinate. -/
+theorem step_M_minor {m d : ℕ} (hm : 0 < m)
     (q : Fin (m + 1) → PowerSeries κ) (Z : Matrix (Fin (m + 1)) (Fin d) (PowerSeries κ))
     (tau : Fin (m + 1) → PowerSeries κ) (rows : Fin d ↪ Fin (m + 1)) (j : Fin (m + 1))
     (b : ℕ) (u₁ : PowerSeries κ)
@@ -202,8 +307,10 @@ theorem step_M_full_rank {m d : ℕ} (hm : 0 < m)
     (hZ1 : ∀ k', ∃ w : PowerSeries κ,
       Z (Fin.succ ⟨0, hm⟩) k' = (PowerSeries.X : PowerSeries κ) ^ b * w)
     (htau1 : PowerSeries.constantCoeff (tau (Fin.succ ⟨0, hm⟩)) = 0) :
-    ∃ Cinv : Matrix (FormalTangentColumn (Fin d)) (Fin (m + 1)) (PowerSeries κ),
-      Cinv * formalTangentMatrix q Z tau = 1 ∧
+    Function.Injective (residueMatrix (formalTangentMatrix q Z tau)).mulVec ∧
+      (∃ rowsι : FormalTangentColumn (Fin d) ↪ Fin (m + 1),
+        PowerSeries.constantCoeff (selectedMinor (formalTangentMatrix q Z tau) rowsι).det ≠ 0 ∧
+        IsUnit (selectedMinor (formalTangentMatrix q Z tau) rowsι).det) ∧
       LinearIndependent (LaurentSeries κ)
         (fun col i ↦ algebraMap (PowerSeries κ) (LaurentSeries κ)
           (formalTangentMatrix q Z tau i col)) ∧
@@ -212,30 +319,11 @@ theorem step_M_full_rank {m d : ℕ} (hm : 0 < m)
   classical
   have hinj := residue_formalTangentMatrix_mulVec_injective q Z tau rows j hqj hZj htauj
     htaurows (by rw [hminor]; exact one_ne_zero) hprim
-  obtain ⟨Cinv, hCM⟩ := powerSeries_exists_leftInverse_of_residue_mulVec_injective _ hinj
-  refine ⟨Cinv, hCM, ?_,
+  obtain ⟨rowsι, hρ⟩ :=
+    powerSeries_exists_selectedMinor_constantCoeff_ne_zero_of_residue_mulVec_injective _ hinj
+  obtain ⟨hunit, hli⟩ := linearIndependent_laurent_of_selectedMinor _ rowsι hρ
+  exact ⟨hinj, ⟨rowsι, hρ, hunit⟩, hli,
     constantCoeff_formalTangentMatrix_axis_eq_zero q Z tau _ b u₁ hb hq1 hZ1 htau1⟩
-  let f := algebraMap (PowerSeries κ) (LaurentSeries κ)
-  let ML := (formalTangentMatrix q Z tau).map f
-  let CL := Cinv.map f
-  have hCL : CL * ML = 1 := by
-    have h := congrArg (fun A ↦ A.map f) hCM
-    simpa [CL, ML, Matrix.map_mul] using h
-  rw [Fintype.linearIndependent_iff]
-  intro g hg
-  have hmv : ML.mulVec g = 0 := by
-    funext i
-    have hi := congrFun hg i
-    simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, Pi.zero_apply] at hi
-    rw [Pi.zero_apply, ← hi]
-    simp only [Matrix.mulVec, dotProduct, ML, Matrix.map_apply]
-    exact Finset.sum_congr rfl fun col _ ↦ mul_comm _ _
-  have hg0 : g = CL.mulVec (ML.mulVec g) := by
-    rw [Matrix.mulVec_mulVec, hCL, Matrix.one_mulVec]
-  rw [hmv, Matrix.mulVec_zero] at hg0
-  intro col
-  rw [hg0]
-  rfl
 
 omit [CharZero k] [CharZero κ] in
 /-- **Paragraph "the columns of `M` span `𝒞`".**  The columns `q`, `Z_{•k}`
@@ -323,25 +411,106 @@ theorem step_M_spans_cone {m d : ℕ}
   simp only [Fintype.card_sum, Fintype.card_unit, Fintype.card_fin]
   omega
 
+/-- The row `u_υ`: the entries of `u` in the rows outside `ι`, and `0` on `ι`. -/
+def complementRow {R ι : Type*} [DecidableEq R] [Fintype ι] (rowsι : ι ↪ R) (u : R → κ) :
+    R → PowerSeries κ :=
+  fun i ↦ if ∃ c, rowsι c = i then 0 else PowerSeries.C (u i)
+
+/-- The block `ℓ_ι = −u_υ M_υ M_ι⁻¹`. -/
+def liftBlock {R ι : Type*} [Fintype R] [Fintype ι] [DecidableEq R] [DecidableEq ι]
+    (M : Matrix R ι (PowerSeries κ)) (rowsι : ι ↪ R) (u : R → κ) : ι → PowerSeries κ :=
+  -Matrix.vecMul (rowMul (complementRow rowsι u) M) (selectedMinor M rowsι)⁻¹
+
+/-- The paper's lift `ℓ` of `u`: `ℓ_υ = u_υ` and `ℓ_ι = −u_υ M_υ M_ι⁻¹`. -/
+def liftRow {R ι : Type*} [Fintype R] [Fintype ι] [DecidableEq R] [DecidableEq ι]
+    (M : Matrix R ι (PowerSeries κ)) (rowsι : ι ↪ R) (u : R → κ) : R → PowerSeries κ :=
+  fun i ↦ complementRow rowsι u i + ∑ c, if rowsι c = i then liftBlock M rowsι u c else 0
+
 omit [CharZero κ] in
-/-- **Paragraph lifting `u`.**  Since `M(0)` has vanishing `1`-coordinate in
-every column, `u M(0) = 0` for `u = (0, 1, 0, …, 0)`; using the left inverse of
-`M`, `u` lifts to `ℓ ∈ κ[[t]]^{n+1}` with `ℓ M = 0` and `ℓ(0) = u`.  The paper
-writes the lift with an invertible square block `M_ι`; the left inverse plays
-that role. -/
-theorem step_lift_ell {m : ℕ} {ι : Type*} [Fintype ι] [DecidableEq ι]
-    (M : Matrix (Fin (m + 1)) ι (PowerSeries κ))
-    (Cinv : Matrix ι (Fin (m + 1)) (PowerSeries κ)) (hCM : Cinv * M = 1)
-    (axis : Fin (m + 1)) (haxis : ∀ col, PowerSeries.constantCoeff (M axis col) = 0) :
-    ∃ ell : Fin (m + 1) → PowerSeries κ,
-      rowMul ell M = 0 ∧ residueColumn ell = axisRow (k := κ) axis := by
+theorem liftRow_apply_of_not_mem {R ι : Type*} [Fintype R] [Fintype ι] [DecidableEq R]
+    [DecidableEq ι] (M : Matrix R ι (PowerSeries κ)) (rowsι : ι ↪ R) (u : R → κ) (i : R)
+    (hi : ¬ ∃ c, rowsι c = i) : liftRow M rowsι u i = PowerSeries.C (u i) := by
+  have hc : ∀ c, rowsι c ≠ i := fun c h ↦ hi ⟨c, h⟩
+  simp [liftRow, complementRow, hc]
+
+omit [CharZero κ] in
+theorem liftRow_apply_rows {R ι : Type*} [Fintype R] [Fintype ι] [DecidableEq R]
+    [DecidableEq ι] (M : Matrix R ι (PowerSeries κ)) (rowsι : ι ↪ R) (u : R → κ) (c : ι) :
+    liftRow M rowsι u (rowsι c) = liftBlock M rowsι u c := by
+  simp [liftRow, complementRow, rowsι.injective.eq_iff]
+
+omit [CharZero κ] in
+/-- **Paragraph lifting `u`.**  Let `M(0)` have full column rank and
+`u M(0) = 0`.  There is a set `ι` of row indices with `M_ι(0)` invertible;
+then `det M_ι` has nonzero constant term, so `M_ι` is invertible over
+`κ[[t]]`, and `ℓ_υ = u_υ`, `ℓ_ι = −u_υ M_υ M_ι⁻¹` satisfies `ℓ M = 0` and
+`ℓ(0) = u`. -/
+theorem step_lift_ell_minor {R ι : Type*} [Fintype R] [Fintype ι] [DecidableEq R]
+    [DecidableEq ι] (M : Matrix R ι (PowerSeries κ))
+    (hinj : Function.Injective (residueMatrix M).mulVec) (u : R → κ)
+    (hu : rowMul u (residueMatrix M) = 0) :
+    ∃ rowsι : ι ↪ R,
+      (selectedMinor (residueMatrix M) rowsι).det ≠ 0 ∧
+      IsUnit (selectedMinor M rowsι).det ∧
+      (∀ i, (¬ ∃ c, rowsι c = i) → liftRow M rowsι u i = PowerSeries.C (u i)) ∧
+      (∀ c, liftRow M rowsι u (rowsι c) = liftBlock M rowsι u c) ∧
+      rowMul (liftRow M rowsι u) M = 0 ∧
+      residueColumn (liftRow M rowsι u) = u := by
   classical
-  have h₀ : rowMul (axisRow (k := κ) axis)
-      (fun i col ↦ PowerSeries.constantCoeff (M i col)) = 0 := by
+  obtain ⟨rowsι, h0⟩ := exists_selectedMinor_det_ne_zero_of_mulVec_injective _ hinj
+  have h0' : PowerSeries.constantCoeff (selectedMinor M rowsι).det ≠ 0 := by
+    rwa [constantCoeff_selectedMinor_det]
+  have hunit : IsUnit (selectedMinor M rowsι).det :=
+    PowerSeries.isUnit_iff_constantCoeff.mpr (IsUnit.mk0 _ h0')
+  set ℓ := liftRow M rowsι u
+  -- `ℓ M = ℓ_ι M_ι + ℓ_υ M_υ = −u_υ M_υ + u_υ M_υ = 0`.
+  have hblock : Matrix.vecMul (liftBlock M rowsι u) (selectedMinor M rowsι) =
+      -rowMul (complementRow rowsι u) M := by
+    rw [liftBlock, Matrix.neg_vecMul, Matrix.vecMul_vecMul,
+      Matrix.nonsing_inv_mul _ hunit, Matrix.vecMul_one]
+  have hell : rowMul ℓ M = 0 := by
     funext col
-    simp [rowMul, axisRow, haxis col]
-  exact ⟨_, powerSeries_annihilatorLift_spec (constantColumn (axisRow (k := κ) axis)) _ M Cinv
-    hCM (residueColumn_constantColumn _) h₀⟩
+    have h := congrFun hblock col
+    simp only [Matrix.vecMul, dotProduct, selectedMinor, Pi.neg_apply] at h
+    have hsplit : rowMul ℓ M col = rowMul (complementRow rowsι u) M col +
+        ∑ c, liftBlock M rowsι u c * M (rowsι c) col := by
+      simp only [ℓ, liftRow, rowMul, add_mul, Finset.sum_add_distrib, Finset.sum_mul]
+      congr 1
+      rw [Finset.sum_comm]
+      refine Finset.sum_congr rfl fun c _ ↦ ?_
+      simp only [ite_mul, zero_mul]
+      rw [Finset.sum_ite_eq]
+      simp
+    rw [hsplit, h, Pi.zero_apply, add_neg_cancel]
+  refine ⟨rowsι, h0, hunit, liftRow_apply_of_not_mem M rowsι u, liftRow_apply_rows M rowsι u,
+    hell, ?_⟩
+  -- `ℓ(0) − u` vanishes off `ι` and is killed by `M(0)`, hence vanishes on `ι`.
+  let δ : R → κ := residueColumn ℓ - u
+  have hoff : ∀ i, (¬ ∃ c, rowsι c = i) → δ i = 0 := by
+    intro i hi
+    simp [δ, residueColumn, ℓ, liftRow_apply_of_not_mem M rowsι u i hi]
+  have hδ : Matrix.vecMul (fun c ↦ δ (rowsι c)) (selectedMinor (residueMatrix M) rowsι) = 0 := by
+    funext col
+    have hℓ := congrArg PowerSeries.constantCoeff (congrFun hell col)
+    have hu' := congrFun hu col
+    simp only [rowMul, map_sum, map_mul, Pi.zero_apply, map_zero] at hℓ hu'
+    have hsum : ∑ i, δ i * residueMatrix M i col = 0 := by
+      simp only [δ, Pi.sub_apply, sub_mul, Finset.sum_sub_distrib]
+      rw [hu', sub_zero]
+      exact hℓ
+    rw [Pi.zero_apply, ← hsum]
+    simp only [Matrix.vecMul, dotProduct, selectedMinor]
+    refine Fintype.sum_of_injective rowsι rowsι.injective _ _ ?_ fun c ↦ rfl
+    intro i hi
+    rw [hoff i (by simpa using hi), zero_mul]
+  have hA : IsUnit (selectedMinor (residueMatrix M) rowsι) :=
+    (Matrix.isUnit_iff_isUnit_det _).mpr (IsUnit.mk0 _ h0)
+  have hzero := Matrix.vecMul_injective_of_isUnit hA (hδ.trans (Matrix.zero_vecMul _).symm)
+  funext i
+  by_cases hi : ∃ c, rowsι c = i
+  · obtain ⟨c, rfl⟩ := hi
+    exact sub_eq_zero.mp (congrFun hzero c)
+  · exact sub_eq_zero.mp (hoff i hi)
 
 omit [CharZero k] [CharZero κ] in
 /-- **Paragraph "`ℓ` annihilates `𝒞`".**  If the columns of `M` span `𝒞` and
@@ -466,11 +635,91 @@ end PolynomialLimit
 
 section Place
 
+/-- **Paragraph "`a = ord q_0`", `a > 0`.**  If `a = 0`, then `q_0` is a unit of
+`V`, hence all `x̄_i = q_i/q_0` lie in `V`, so `R ⊆ V` since also `K ⊆ V`,
+contradicting Lemma 5.10(a) (`lemma_5_10_a_not_R_le`).  So `q_0 ∉ V^×`. -/
+theorem step_a_pos {k : Type u} [Field k] [CharZero k] {m : ℕ} (hm : 0 < m)
+    (P : PrimeSpectrum (MvPolynomial (Fin m) k))
+    (w : GeneralDivisorialVisibleFrameWitness hm P)
+    (hunit : ∃ g : MvPolynomial (Fin m) k,
+      MvPolynomial.X ⟨0, hm⟩ * g - 1 ∈ P.asIdeal) :
+    letI : Algebra (CoordinateZeroLocalRing w.column.W.coefficientField)
+      (ComponentFractionField P) := w.column.W.ambientAlgebra
+    ¬ IsUnit (w.column.q 0) := by
+  let C := w.column
+  let W := C.W
+  let K := ComponentFractionField P
+  letI : Algebra (CoordinateZeroLocalRing W.coefficientField) K := W.ambientAlgebra
+  let V := W.place.valuation
+  letI : IsDiscreteValuationRing V.toSubring := W.place.isDiscrete
+  let x : Fin m → K := fun j ↦ componentCoordinate P j
+  -- `1 = ḡ x̄_1` with `ḡ ∈ R = K[x̄_1, …, x̄_n]`.
+  obtain ⟨g, hg⟩ := hunit
+  let phi : MvPolynomial (Fin m) k →+* K :=
+    (algebraMap (MvPolynomial (Fin m) k ⧸ P.asIdeal) K).comp (Ideal.Quotient.mk P.asIdeal)
+  have hphiC : phi.comp MvPolynomial.C = algebraMap k K := by
+    ext c
+    exact IsScalarTower.algebraMap_apply k (MvPolynomial (Fin m) k ⧸ P.asIdeal) K c
+  have hpoly : phi g = MvPolynomial.eval₂ (algebraMap k K) x g := by
+    rw [MvPolynomial.map_mvPolynomial_eq_eval₂ phi g]
+    change MvPolynomial.eval₂Hom (phi.comp MvPolynomial.C) (fun j ↦ phi (MvPolynomial.X j)) g =
+      MvPolynomial.eval₂Hom (algebraMap k K) x g
+    exact MvPolynomial.eval₂Hom_congr hphiC rfl rfl
+  have hinverse : x ⟨0, hm⟩ * MvPolynomial.eval₂ (algebraMap k K) x g = 1 := by
+    have hzero : phi (MvPolynomial.X ⟨0, hm⟩ * g - 1) = 0 := by
+      have hmk : Ideal.Quotient.mk P.asIdeal (MvPolynomial.X ⟨0, hm⟩ * g - 1) = 0 :=
+        Ideal.Quotient.eq_zero_iff_mem.mpr hg
+      simpa [phi] using congrArg (algebraMap (MvPolynomial (Fin m) k ⧸ P.asIdeal) K) hmk
+    rw [map_sub, map_mul, map_one, sub_eq_zero, hpoly] at hzero
+    exact hzero
+  have hgR : MvPolynomial.eval₂ (algebraMap k K) x g ∈ Algebra.adjoin k (Set.range x) := by
+    rw [← MvPolynomial.aeval_def, Algebra.adjoin_range_eq_range_aeval]
+    exact ⟨g, rfl⟩
+  -- `x̄_1 = ϖ ∈ 𝔪_V`.
+  have hxV : x ⟨0, hm⟩ ∈ V.toSubring := by
+    change componentCoordinate P ⟨0, hm⟩ ∈ V.toSubring
+    rw [← W.parameter_eq_coordinate]
+    exact W.place.parameter.2
+  have hxm : (⟨x ⟨0, hm⟩, hxV⟩ : V.toSubring) ∈ maximalIdeal V.toSubring := by
+    have : (⟨x ⟨0, hm⟩, hxV⟩ : V.toSubring) = W.place.parameter :=
+      Subtype.ext W.parameter_eq_coordinate.symm
+    rw [this, mem_maximalIdeal, mem_nonunits_iff]
+    exact W.place.parameter_nonunit
+  have hR := lemma_5_10_a_not_R_le x ⟨0, hm⟩ V hxV hxm ⟨_, hgR, hinverse⟩
+  rintro ⟨u, hu⟩
+  apply hR
+  -- `q_0 ∈ V^×` puts every `x̄_i = q_i/q_0` in `V`.
+  have hq0 : (C.q 0 : K) = C.scale := by
+    simpa [componentProjectivePoint] using C.q_commonScale 0
+  have hxjV : ∀ j, x j ∈ V.toSubring := by
+    intro j
+    have hqj : (C.q (Fin.succ j) : K) = C.scale * x j := by
+      simpa [componentProjectivePoint] using C.q_commonScale (Fin.succ j)
+    have hscale : ((u : V.toSubring) : K) = C.scale := by rw [hu]; exact hq0
+    have hu1 : ((u : V.toSubring) : K) * ((↑(u⁻¹) : V.toSubring) : K) = 1 := by
+      rw [← Subring.coe_mul, Units.mul_inv]
+      rfl
+    have : x j = (C.q (Fin.succ j) : K) * ((↑(u⁻¹) : V.toSubring) : K) := by
+      rw [hqj, ← hscale, mul_comm ((u : V.toSubring) : K), mul_assoc, hu1, mul_one]
+    rw [this]
+    exact V.toSubring.mul_mem (C.q _).2 (↑(u⁻¹) : V.toSubring).2
+  intro z hz
+  induction hz using Algebra.adjoin_induction with
+  | mem z hz =>
+      obtain ⟨j, rfl⟩ := hz
+      exact hxjV j
+  | algebraMap c =>
+      rw [← C.groundCoeff_commutes]
+      exact (C.groundCoeff c).2
+  | add a b _ _ ha hb => exact V.toSubring.add_mem ha hb
+  | mul a b _ _ ha hb => exact V.toSubring.mul_mem ha hb
+
 /-- **Paragraph "`a = ord q_0`, `b = ord q_1`".**  For the column
 `q_i = x̄_i / x̄_j` of the discrete valuation ring of Lemmas 5.9–5.10, read in
 `κ[[t]]`: `q_0 = t^a u_0` and `q_1 = t^b u_1` with `u_0(0) ≠ 0 ≠ u_1(0)` and
-`0 < a < b`; hence `q_j = 1` forces `j ∉ {0, 1}`.  The hypothesis `hunit`
-(`x̄_1` is a unit of `R`) is the consequence of `Y ∩ H = ∅` that gives `a > 0`. -/
+`0 < a < b` (`a > 0` by `step_a_pos`, from Lemma 5.10(a)); hence `q_j = 1`
+forces `j ∉ {0, 1}`.  The hypothesis `hunit` (`x̄_1` is a unit of `R`) is the
+consequence of `Y ∩ H = ∅`. -/
 theorem step_orders {k : Type u} [Field k] [CharZero k] {m : ℕ} (hm : 0 < m)
     (P : PrimeSpectrum (MvPolynomial (Fin m) k))
     (w : GeneralDivisorialVisibleFrameWitness hm P)
@@ -499,7 +748,20 @@ theorem step_orders {k : Type u} [Field k] [CharZero k] {m : ℕ} (hm : 0 < m)
   letI : IsDiscreteValuationRing V := W.place.isDiscrete
   letI : Algebra W.coefficientField V :=
     (relativeCoefficientMap W.coefficientField W.place).toAlgebra
-  obtain ⟨a, b', u₀, u₁', ha, hab', hq0, hu₀, hq1'⟩ := order_gap_of_actual_witness hm P w hunit
+  -- `a > 0` (`step_a_pos`, by Lemma 5.10(a)) and `b - a = ord x̄_1 > 0`.
+  have hq₀max : C.q 0 ∈ maximalIdeal V := by
+    rw [mem_maximalIdeal, mem_nonunits_iff]
+    exact step_a_pos hm P w hunit
+  have hparammax : W.place.parameter ∈ maximalIdeal V := by
+    rw [mem_maximalIdeal, mem_nonunits_iff]
+    exact W.place.parameter_nonunit
+  obtain ⟨a, b', u₀, u₁', ha, hab', hq0, hu₀, hq1'⟩ := completed_order_gap
+    (retainedToCompletedPowerSeries W)
+    (Stafford38.Geometry.CompletedDVRPowerSeries.chosenUniformizer V)
+    (retainedToCompletedPowerSeries_chosenUniformizer W)
+    (Stafford38.Geometry.CompletedDVRPowerSeries.chosenUniformizer_irreducible V)
+    (C.q 0) W.place.parameter (C.q (Fin.succ ⟨0, hm⟩)) C.q0_ne
+    W.place.parameter_ne hq₀max hparammax C.q_parameter
   have hqj : q C.chart = 1 :=
     (congrArg (retainedToCompletedPowerSeries W) C.chart_one).trans (map_one _)
   -- `q_1 = q_0 x̄_1 ≠ 0`, so `b = ord q_1` is finite.
@@ -636,15 +898,27 @@ theorem witness_lemma_5_11
     lemma_5_11 hm (fun a ↦ residue V (C.q a)) C.chart hr0 hr1 hrj halg⟩
 
 /-- **Lemmas 5.12(a), 5.12(b) and 5.13 at the Laurent generic point of the
-formal proof.**  For the column `q(t)` of `witness_lemma_5_11`, with
-`y = q/q_0 ∈ κ((t))^n`: `dim Θ_y = dim_F Ω_{F/K}`, this equals
-`trdeg_K F = m`, and `m ≤ d' + 1`; `dim 𝒞 = dim Θ_y + 1`; `δq ∈ 𝒞` for every
-`K`-derivation `δ` of `κ((t))` and `q ∈ 𝒞`; and every row annihilating `𝒞` has
-conormal affine part. -/
-theorem witness_lemma_5_12_5_13
+formal proof, given the bound `m ≤ d' + 1`.**  For the column `q(t)` of
+`witness_lemma_5_11`, with `y = q/q_0 ∈ κ((t))^n`: `dim Θ_y = dim_F Ω_{F/K}`,
+this equals `trdeg_K F = m`, and `m ≤ d' + 1` (the hypothesis `hfieldRank`);
+`dim 𝒞 = dim Θ_y + 1`; `δq ∈ 𝒞` for every `K`-derivation `δ` of `κ((t))` and
+`q ∈ 𝒞`; and every row annihilating `𝒞` has conormal affine part. -/
+theorem witness_lemma_5_12_5_13_of_bound
     {k : Type u} [Field k] [CharZero k] {m : ℕ} (hm : 0 < m)
     (P : PrimeSpectrum (MvPolynomial (Fin m) k))
-    (w : GeneralDivisorialVisibleFrameWitness hm P) :
+    (w : GeneralDivisorialVisibleFrameWitness hm P)
+    (hfieldRank :
+      let C := w.column
+      let W := C.W
+      let F := ComponentFractionField P
+      letI : Algebra (CoordinateZeroLocalRing W.coefficientField) F := W.ambientAlgebra
+      let V := W.place.valuation.toSubring
+      letI : IsDiscreteValuationRing V := W.place.isDiscrete
+      letI : Algebra W.coefficientField V :=
+        (relativeCoefficientMap W.coefficientField W.place).toAlgebra
+      let κ := ResidueField V
+      letI : Algebra k κ := retainedResidueGroundAlgebra P ⟨0, hm⟩ W
+      Module.finrank F (Ω[F⁄k]) ≤ Module.finrank κ (Ω[κ⁄k]) + 1) :
     let C := w.column
     let W := C.W
     let F := ComponentFractionField P
@@ -740,23 +1014,71 @@ theorem witness_lemma_5_12_5_13
   rw [hchartPoint] at hdim
   have htr := (component_kaehler_finrank_eq_trdeg (k := k) (componentCoordinate P)
     (componentCoordinate_adjoin_eq_top P)).1
-  have hfieldRank : Module.finrank F (Ω[F⁄k]) ≤ Module.finrank κ (Ω[κ⁄k]) + 1 :=
-    component_field_rank_of_witness hm P w
   exact ⟨⟨hdim, htr, hfieldRank, hcone⟩, hb, h13⟩
+
+/-- **Lemmas 5.12(a), 5.12(b) and 5.13 at the Laurent generic point of the
+formal proof.**  For the column `q(t)` of `witness_lemma_5_11`, with
+`y = q/q_0 ∈ κ((t))^n`: `dim Θ_y = dim_F Ω_{F/K}`, this equals
+`trdeg_K F = m`, and `m ≤ d' + 1` by the printed argument
+(`witness_lemma_5_12_a_bound`: second fundamental exact sequence for `V → κ`,
+Nakayama with `Ω_{V/K}` finitely generated by Lemma 5.10(c), and
+`F ⊗_V Ω_{V/K} = Ω_{F/K}`); `dim 𝒞 = dim Θ_y + 1`; `δq ∈ 𝒞` for every
+`K`-derivation `δ` of `κ((t))` and `q ∈ 𝒞`; and every row annihilating `𝒞` has
+conormal affine part. -/
+theorem witness_lemma_5_12_5_13_paper
+    {k : Type u} [Field k] [CharZero k] {m : ℕ} (hm : 0 < m)
+    (P : PrimeSpectrum (MvPolynomial (Fin m) k))
+    (w : GeneralDivisorialVisibleFrameWitness hm P)
+    (hfin :
+      letI : Algebra (CoordinateZeroLocalRing w.column.W.coefficientField)
+        (ComponentFractionField P) := w.column.W.ambientAlgebra
+      let V := w.column.W.place.valuation.toSubring
+      letI : Algebra k V := w.column.groundCoeff.toAlgebra
+      Module.Finite V (Ω[V⁄k])) :
+    let C := w.column
+    let W := C.W
+    let F := ComponentFractionField P
+    letI : Algebra (CoordinateZeroLocalRing W.coefficientField) F := W.ambientAlgebra
+    let V := W.place.valuation.toSubring
+    letI : IsDiscreteValuationRing V := W.place.isDiscrete
+    letI : Algebra W.coefficientField V :=
+      (relativeCoefficientMap W.coefficientField W.place).toAlgebra
+    let κ := ResidueField V
+    letI : Algebra k κ := retainedResidueGroundAlgebra P ⟨0, hm⟩ W
+    let E := LaurentSeries κ
+    letI : Algebra k E := (groundLaurentMap (k := k) (K := κ)).toAlgebra
+    letI : SMul k E := (inferInstance : Algebra k E).toSMul
+    letI : Module k E := (inferInstance : Algebra k E).toModule
+    let q : Fin (m + 1) → E :=
+      laurentColumn fun a ↦ retainedToCompletedPowerSeries W (C.q a)
+    (Module.finrank E (tangentSpaceAt q P.asIdeal) = Module.finrank F (Ω[F⁄k]) ∧
+      (Module.finrank F (Ω[F⁄k]) : Cardinal) = Algebra.trdeg k F ∧
+      Module.finrank F (Ω[F⁄k]) ≤ Module.finrank κ (Ω[κ⁄k]) + 1 ∧
+      Module.finrank E (tangentCone q P.asIdeal) =
+        Module.finrank E (tangentSpaceAt q P.asIdeal) + 1) ∧
+    ((∀ δ : Derivation k E E, (fun a ↦ δ (q a)) ∈ tangentCone q P.asIdeal) ∧
+      q ∈ tangentCone q P.asIdeal) ∧
+    (∀ ell : Fin (m + 1) → E, (∀ v ∈ tangentCone q P.asIdeal, ∑ a, ell a * v a = 0) →
+      coordinateCovector (fun i : Fin m ↦ ell i.succ) ∈
+        equationCovectorSpan (dehomogenizedPoint q)
+          (P.asIdeal.map (MvPolynomial.map (algebraMap k E)))) :=
+  witness_lemma_5_12_5_13_of_bound hm P w (witness_lemma_5_12_a_bound hm P w hfin)
 
 end Place
 
 #print axioms step_dual_derivations
-#print axioms step_lambda_tau
-#print axioms step_M_full_rank
+#print axioms step_lambda_w_tau
+#print axioms step_M_minor
 #print axioms step_M_spans_cone
-#print axioms step_lift_ell
+#print axioms step_lift_ell_minor
 #print axioms step_ell_conormal
 #print axioms step_polynomial_limit
+#print axioms step_a_pos
 #print axioms step_orders
 #print axioms step_generic_point
 #print axioms witness_lemma_5_11
-#print axioms witness_lemma_5_12_5_13
+#print axioms witness_lemma_5_12_5_13_of_bound
+#print axioms witness_lemma_5_12_5_13_paper
 
 end
 

@@ -55,7 +55,11 @@ def check_config(path: Path) -> None:
         "comparator.json": {
             "challenge_module": "Challenge",
             "solution_module": "Solution",
-            "theorem_names": ["Stafford38Challenge.universalStatement"],
+            "theorem_names": [
+                "Stafford38Challenge.universalStatement",
+                "Stafford38Challenge.theorem_1_1",
+                "Stafford38Challenge.corollary_6_3",
+            ],
             "permitted_axioms": AXIOMS,
         },
         "comparator-fixed-source.json": {
@@ -67,7 +71,11 @@ def check_config(path: Path) -> None:
         "comparator-alternative.json": {
             "challenge_module": "Challenge",
             "solution_module": "AlternativeSolution",
-            "theorem_names": ["Stafford38Challenge.universalStatement"],
+            "theorem_names": [
+                "Stafford38Challenge.universalStatement",
+                "Stafford38Challenge.theorem_1_1",
+                "Stafford38Challenge.corollary_6_3",
+            ],
             "permitted_axioms": AXIOMS,
         },
         "comparator-alternative-fixed-source.json": {

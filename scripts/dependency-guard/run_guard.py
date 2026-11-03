@@ -78,7 +78,8 @@ def find_project_root() -> Path:
 
 def make_header(base_modules: list[str], extra_modules: list[str], *, fixture: bool, root_name: str | None,
                 forbidden_name: str | None, production_fixture: bool,
-                route_checks: list[tuple[str, str, str]] | None = None) -> str:
+                route_checks: list[tuple[str, str, str]] | None = None,
+                terminal_roots: list[str] | None = None) -> str:
     lines = ["module", "public import DependencyClosureCore", "import all DependencyClosureCore"]
     for module in base_modules:
         lines.extend((f"public import {module}", f"import all {module}"))
@@ -93,6 +94,8 @@ def make_header(base_modules: list[str], extra_modules: list[str], *, fixture: b
     elif fixture:
         assert root_name is not None and forbidden_name is not None
         lines.append(f"#auditDependencyClosure {root_name} forbidden {forbidden_name}")
+    elif terminal_roots:
+        lines.append("#auditStaffordTerminalRoots " + " ".join(terminal_roots))
     else:
         lines.append("#auditStaffordTerminalDeps")
     return "\n".join(lines) + "\n"
@@ -128,6 +131,8 @@ def main() -> int:
     parser.add_argument("--required-name", help=argparse.SUPPRESS)
     parser.add_argument("--route", action="append", nargs=3, metavar=("ROOT", "REQUIRED", "FORBIDDEN"),
                         help="check that ROOT reaches REQUIRED and excludes FORBIDDEN")
+    parser.add_argument("--terminal-root", action="append", default=[],
+                        help="terminal theorem to audit instead of the default roots (repeatable)")
     parser.add_argument("--base-module", action="append", default=[], help=argparse.SUPPRESS)
     parser.add_argument("--extra-lean-path", action="append", default=[], type=Path, help=argparse.SUPPRESS)
     args = parser.parse_args()
@@ -214,7 +219,8 @@ def main() -> int:
                             root_name=args.fixture_root_name,
                             forbidden_name=args.forbidden_name,
                             production_fixture=production_fixture,
-                            route_checks=route_checks),
+                            route_checks=route_checks,
+                            terminal_roots=args.terminal_root),
                 encoding="utf-8",
             )
             try:

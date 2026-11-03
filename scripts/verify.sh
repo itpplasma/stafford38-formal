@@ -47,20 +47,38 @@ lake build "${retained_modules[@]}" \
   >"$log_dir/build.log" 2>&1
 
 python3 scripts/dependency-guard/run_guard.py \
+  --base-module AlternativeSolution \
+  --base-module AlternativeFixedSourceSolution \
   >"$log_dir/terminal-dependency-guard.log" 2>&1
 
 python3 scripts/dependency-guard/run_guard.py \
   --base-module Solution \
   --base-module FixedSourceSolution \
-  --route Stafford38Challenge.universalStatement Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure \
-  --route Stafford38FixedSourceChallenge.universalFixedSourceStatement Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure \
+  --terminal-root Stafford38.Paper.theorem_1_1 \
+  --terminal-root Stafford38.Paper.theorem_1_1_fixedSource \
+  --terminal-root Stafford38.Paper.corollary_6_3 \
+  --terminal-root Stafford38Challenge.universalStatement \
+  --terminal-root Stafford38Challenge.theorem_1_1 \
+  --terminal-root Stafford38Challenge.corollary_6_3 \
+  --terminal-root Stafford38FixedSourceChallenge.universalFixedSourceStatement \
+  >"$log_dir/paper-terminal-dependency-guard.log" 2>&1
+
+python3 scripts/dependency-guard/run_guard.py \
+  --base-module Solution \
+  --base-module FixedSourceSolution \
+  --route Stafford38Challenge.universalStatement Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.universalStatement Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.theorem_1_1 Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.theorem_1_1 Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38FixedSourceChallenge.universalFixedSourceStatement Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38FixedSourceChallenge.universalFixedSourceStatement Stafford38.Paper.Section5.theorem_5_8 Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure \
   >"$log_dir/main-solution-dependency-routes.log" 2>&1
 
 python3 scripts/dependency-guard/run_guard.py \
   --base-module AlternativeSolution \
   --base-module AlternativeFixedSourceSolution \
-  --route Stafford38Challenge.universalStatement Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
-  --route Stafford38FixedSourceChallenge.universalFixedSourceStatement Stafford38.Geometry.AlternativeAsymptoticConormal.coordinate_axis_mem_smooth_fibre_closure Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure \
+  --route Stafford38Challenge.universalStatement Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure Stafford38.Paper.Section5.theorem_5_8 \
+  --route Stafford38FixedSourceChallenge.universalFixedSourceStatement Stafford38.Geometry.SameWitness.coordinate_axis_mem_smooth_fibre_closure Stafford38.Paper.Section5.theorem_5_8 \
   >"$log_dir/alternative-solution-dependency-routes.log" 2>&1
 
 lake env lean --trust=0 tests/PaperAdaptersConsumer.lean >"$log_dir/paper-adapters.log" 2>&1
@@ -137,8 +155,8 @@ if not challenge.is_file():
 
 challenge_code = code_without_comments_or_strings(challenge.read_text(encoding="utf-8"))
 challenge_holes = re.findall(r"\b(?:sorry|admit)\b", challenge_code)
-if challenge_holes != ["sorry"]:
-    raise SystemExit("Challenge.lean must contain exactly one deliberate sorry and no admit")
+if challenge_holes != ["sorry", "sorry", "sorry"]:
+    raise SystemExit("Challenge.lean must contain exactly three deliberate sorries and no admit")
 imports = re.findall(r"(?m)^\s*(?:public\s+)?import\s+([^\s]+)\s*$", challenge_code)
 expected_imports = [
     "Mathlib.Algebra.RingQuot",
@@ -218,7 +236,7 @@ for path in Path(".").rglob("*.lean"):
         line = code.count("\n", 0, axiom.start()) + 1
         raise SystemExit(f"project axiom declaration in {path}:{line}")
 
-print("source audit: one deliberate placeholder in each Challenge; neither Solution imports either Challenge; no other sorry, admit, or axiom declaration")
+print("source audit: only the deliberate placeholders of the compared theorems in each Challenge; neither Solution imports either Challenge; no other sorry, admit, or axiom declaration")
 PY
 
 cat >"$log_dir/AxiomAudit.lean" <<'LEAN'
@@ -250,6 +268,9 @@ import Stafford38.Geometry.GeneralTangentLimitCriterionTest
 #print axioms Stafford38.universalStatement
 #print axioms Stafford38.universalFixedSourceStatement
 #print axioms Stafford38FixedSourceChallenge.universalFixedSourceStatement
+#print axioms Stafford38.Paper.theorem_1_1
+#print axioms Stafford38.Paper.theorem_1_1_fixedSource
+#print axioms Stafford38.Paper.corollary_6_3
 #print axioms Stafford38.LocalizationCorollaries.s38_rightOreLocalization
 #print axioms Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement
 #print axioms Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential
@@ -299,6 +320,9 @@ expected = {
     "Stafford38.universalStatement",
     "Stafford38.universalFixedSourceStatement",
     "Stafford38FixedSourceChallenge.universalFixedSourceStatement",
+    "Stafford38.Paper.theorem_1_1",
+    "Stafford38.Paper.theorem_1_1_fixedSource",
+    "Stafford38.Paper.corollary_6_3",
     "Stafford38.LocalizationCorollaries.s38_rightOreLocalization",
     "Stafford38.LeftHandedCorollary.leftHanded_of_universalStatement",
     "Stafford38.LocalizedDifferentialCorollaries.s38_unconditional_localized_differential",

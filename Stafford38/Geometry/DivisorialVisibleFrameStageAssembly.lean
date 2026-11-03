@@ -42,7 +42,7 @@ theorem divisorialVisibleFrameExistence : DivisorialVisibleFrameExistence.{u} :=
   -- Lemma 5.9.
   obtain ⟨W, j, hkW, -, hxW, hj, hqW⟩ := Stafford38.Paper.Section5.lemma_5_9 y i hx
   -- Lemma 5.10.
-  obtain ⟨L⟩ := Stafford38.Paper.Section5.lemma_5_10_place y i hgen hx W j hkW hxW hj hqW
+  obtain ⟨L⟩ := Stafford38.Paper.Section5.lemma_5_10 y i hgen hx W j hkW hxW hj hqW
   let A := L.A
   let p := L.p
   let V : ValuationSubring K := L.V

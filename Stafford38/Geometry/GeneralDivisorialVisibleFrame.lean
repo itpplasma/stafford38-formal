@@ -49,10 +49,12 @@ universe u
 set_option maxHeartbeats 4000000 in
 
 /-- The general divisorial producer with its actual Lane-C residue
-algebraicity retained.  The algebraicity is for the same normalized column
-and the same visible frame, under the ground algebra structure induced by the
-retained coefficient map. -/
-theorem generalDivisorialVisibleFrameWithResidueAlgebraicity
+algebraicity retained, together with Lemma 5.10(c): `Ω_{V/k}` is a finitely
+generated `V`-module for the place `V` of the witness (used for Nakayama's
+lemma in the proof of Lemma 5.12(a)).  The algebraicity is for the same
+normalized column and the same visible frame, under the ground algebra
+structure induced by the retained coefficient map. -/
+theorem generalDivisorialVisibleFrameWithKaehlerFinite
     {k : Type u} [Field k] [CharZero k]
     {m : ℕ} (hm : 0 < m)
     (P : PrimeSpectrum (MvPolynomial (Fin m) k))
@@ -60,7 +62,12 @@ theorem generalDivisorialVisibleFrameWithResidueAlgebraicity
       MvPolynomial.X ⟨0, hm⟩ * g - 1 ∈ P.asIdeal)
     (htrans : Transcendental k
       (componentCoordinate P ⟨0, hm⟩)) :
-    Nonempty (GeneralDivisorialVisibleFrameWitness hm P) := by
+    ∃ w : GeneralDivisorialVisibleFrameWitness hm P,
+      letI : Algebra (CoordinateZeroLocalRing w.column.W.coefficientField)
+        (ComponentFractionField P) := w.column.W.ambientAlgebra
+      let V := w.column.W.place.valuation.toSubring
+      letI : Algebra k V := w.column.groundCoeff.toAlgebra
+      Module.Finite V (Ω[V⁄k]) := by
   let i : Fin m := ⟨0, hm⟩
   let K := ComponentFractionField P
   obtain ⟨E, V, hEV, hVdvr, hxV, htransE, hxm, hEfin, hkaehler, halgAll⟩ :=
@@ -333,7 +340,20 @@ theorem generalDivisorialVisibleFrameWithResidueAlgebraicity
     differential := F
     retainedGroundMap := RingHom.algebraMap_toAlgebra _
     halg := halg
-  }⟩
+  }, hkaehler⟩
+
+/-- The witness alone. -/
+theorem generalDivisorialVisibleFrameWithResidueAlgebraicity
+    {k : Type u} [Field k] [CharZero k]
+    {m : ℕ} (hm : 0 < m)
+    (P : PrimeSpectrum (MvPolynomial (Fin m) k))
+    (hunit : ∃ g : MvPolynomial (Fin m) k,
+      MvPolynomial.X ⟨0, hm⟩ * g - 1 ∈ P.asIdeal)
+    (htrans : Transcendental k
+      (componentCoordinate P ⟨0, hm⟩)) :
+    Nonempty (GeneralDivisorialVisibleFrameWitness hm P) :=
+  let ⟨w, _⟩ := generalDivisorialVisibleFrameWithKaehlerFinite hm P hunit htrans
+  ⟨w⟩
 
 /-- The original interface is the projection of the richer Lane-C witness. -/
 theorem generalDivisorialVisibleFrameExistence
@@ -356,6 +376,8 @@ theorem generalDivisorialVisibleFrameExistence
   exact ⟨C.W, C.chart, C.q, C.scale, C.scale_ne, C.chart_one, C.q0_ne,
     C.q_commonScale, C.q_parameter,
     ⟨F.D, F.D_Q0, F.D_Q1, F.D_Q⟩⟩
+
+#print axioms generalDivisorialVisibleFrameWithKaehlerFinite
 
 #print axioms generalDivisorialVisibleFrameWithResidueAlgebraicity
 
