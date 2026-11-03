@@ -1,1 +1,0 @@
-`CoordinatePresentation` — `Stafford38/Geometry/SameWitness/CoordinatePresentation.lean` — packages the finite option-coordinate algebra map, its row correspondence, and the retained ground-point chart output; no existing definition owns this complete same-witness data package.

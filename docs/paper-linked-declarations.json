@@ -1,10 +1,6 @@
 {
-  "schema_version": 1,
-  "paper_commit": "bd913a381b714fd8f909159a33fe845b5373ba0f",
-  "paper_worktree_patch_sha256": "22d88fcf3df0551faa703500f572fd7e46fd9cca82d035e8ad8f982ae476da32",
-  "formal_source_commit": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
-  "source_scope": "Manuscript names at the frozen base and patch digest; the formal base is provenance, not a claim that uncommitted additions occur in that commit. Verifier input receipts freeze the actual Lean worktree.",
-  "library_commit": "4aae47967f6ba02ffe2f639ab06564c9a9d1ecc8",
+  "schema_version": 2,
+  "paper": "https://github.com/itpplasma/stafford38-paper",
   "declarations": [
     {
       "repo": "formal",
@@ -561,9 +557,5 @@
       "file": "AlgebraicAnalysis/Module/UniformBoundaryVanishing.lean",
       "name": "AlgebraicAnalysis.exists_uniform_subsingleton_localized"
     }
-  ],
-  "paper_files": [
-    "human_readable_main.tex",
-    "lean_proof_details.tex"
   ]
 }

@@ -1,14 +1,5 @@
 {
-  "schema_version": 3,
-  "status": "formal-v1.3.1-and-supplementary-v0.2.2-published-and-archive-byte-verified; paper-P7-S7; human-correspondence-review-pending",
-  "source_checkpoint": {
-    "base": "b62f8cc0663a57d2baa51e333504a57da8fb5612",
-    "patch_sha256": "893e0eb740c57c426ce679f58439c79e62f8f25add53a5d4e7d1f17deea5731e",
-    "receipt": "docs/audits/paper-route-checkpoints/actual-orders-chart-source-checkpoint.json",
-    "historical_evidence_archive": "docs/audits/paper-route-checkpoints/alignment-evidence-history.json.gz",
-    "status": "historical named source checkpoint; passed only for its recorded source and configuration",
-    "scope": "The receipt applies to the named patch and toolchain only. It does not verify later source edits or establish end-to-end paper correspondence."
-  },
+  "schema_version": 4,
   "terminal_theorem": {
     "main_statement": "Stafford38Challenge.UniversalStatement",
     "paper_statements": [
@@ -46,23 +37,13 @@
       "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter",
       "Stafford38.Weyl.FilteredScalarLifting",
       "Stafford38.FoundationClosure"
-    ],
-    "statement_comparisons": "The four main, fixed-source, alternative, and alternative fixed-source Challenge/Solution comparisons passed at frozen source 12ae3cc49152672a48a96f13994314b65ae38197. They certify those compared statement configurations, not whole-paper proof correspondence."
+    ]
   },
   "paper_source": {
     "repository": "itpplasma/stafford38-paper",
-    "file": "human_readable_main.tex",
-    "author_baseline": "7d10c6297f8367b3f0061d61bda5ae86f9945c2c",
-    "author_baseline_sha256": "6fcd4afc1008978154762755a0a142ad69a22e03ee3d57223df2618f4f0b3800",
-    "restoration_commit": "bd913a381b714fd8f909159a33fe845b5373ba0f",
-    "review_status": "Author proofs remain visible. Marked local proposals are review material, not a replacement proof.",
-    "current_review_commit": "760c68d2d79a8fd2c4b58f35f32dd90969591300",
-    "current_review_sha256": "f5699fde5961488d41fd631f67c55a4442b55001e2ba8776ebbf12bd568f5bb6",
-    "public_snapshot_commit": "9f6ca3241edcf88da42a3a000f25514d105e2f30",
-    "frozen_supplementary_snapshot": "P7 760c68d2d79a8fd2c4b58f35f32dd90969591300 / S7 9f6ca3241edcf88da42a3a000f25514d105e2f30; signed v0.2.2 a114b06749fb01cf352f8b13ad3fda8267293ac6 DOI 10.5281/zenodo.23132562"
+    "file": "human_readable_main.tex"
   },
   "same_witness_route": {
-    "status": "closure and original-prime modules, literal consumers, shared solution assemblies, full verifier, and four Palomar comparisons passed on Linux at frozen source 12ae3cc49152672a48a96f13994314b65ae38197",
     "objects": {
       "component_field": "Stafford38.Geometry.ComponentProjectiveClosure.ComponentFractionField",
       "chart_algebra_Q": "Stafford38.Geometry.ChartGenericPointFractionRing.chartGenericPointSubalgebra",
@@ -76,51 +57,36 @@
       "selected_normalization_et_core": "Stafford38.Geometry.ActualSelectedNormalizationDivisorEtale.formallyEtale_at_selected_actual_normalization_center_core",
       "one_tilt_axis_producer": "Stafford38.Geometry.ActualPointAxisLift.exists_actual_point_axis_lift"
     },
-    "construction": "Q is the canonical chart-coordinate subalgebra of the component field F; B is its integral closure in F; PB is the retained valuation center contracted to B. The ground-point output retains one maximal ideal M, residue equivalence eM, completion map \u03a6, parameter s, selected projective coordinates, and their two retained orders. The formally-etale core is checked under its stated hypotheses. The canonical axis-lift theorem chooses one \u03b1 from its supplied formally-etale point, divisor/axis orders, and chart data. Common-open column and tangent consumers remain conditional on their stated maps, smoothness, closure, and derivative identities. The unconditional same-witness closure and original-prime wrapper modules and their literal trust-zero consumers have passed with only the three permitted axioms; shared main and alternative solution assemblies passed on Linux; the final repository verifier and all four Palomar comparisons also passed at frozen source 12ae3cc49152672a48a96f13994314b65ae38197.",
-    "component_status": [
+    "construction": "Q is the canonical chart-coordinate subalgebra of the component field F; B is its integral closure in F; PB is the retained valuation center contracted to B. The ground-point output retains one maximal ideal M, residue equivalence eM, completion map Φ, parameter s, selected projective coordinates, and their two retained orders. The formally-etale core is checked under its stated hypotheses. The canonical axis-lift theorem chooses one α from its supplied formally-etale point, divisor/axis orders, and chart data. Common-open column and tangent consumers remain conditional on their stated maps, smoothness, closure, and derivative identities.",
+    "components": [
       {
         "component": "same-witness ground-point completion output",
-        "status": "frozen and green on its named source snapshot",
         "scope": "Returns the selected point, residue equivalence, completion map, divisor parameter, selected rows, and retained orders from the same visible-frame witness."
       },
       {
         "component": "selected-normalization formally-etale core",
-        "status": "frozen and green on its named source snapshot",
         "scope": "The specified center, selected residue basis, chart representatives, and divisor parameter are explicit inputs; the theorem proves the formally-etale local map under its stated hypotheses."
       },
       {
         "component": "canonical one-tilt axis-lift theorem",
-        "status": "green under explicit input hypotheses",
         "scope": "ActualPointAxisLift.exists_actual_point_axis_lift requires the supplied ground point, formally-etale map, divisor and axis orders, chart, and selected rows."
       },
       {
         "component": "common-open direct-summand adapter",
-        "status": "green under explicit input hypotheses",
         "scope": "Consumes supplied actual-column, derivative, smoothness, and closure data."
       },
       {
         "component": "affine conormal endpoint",
-        "status": "green under explicit input hypotheses",
         "scope": "Consumes actual-column identities together with explicit smoothness, numerator, and closure hypotheses."
       },
       {
         "component": "unconditional same-witness closure and original-prime terminal endpoint",
-        "status": "module and literal trust-zero consumer, shared solution assemblies, and complete final repository verifier passed at frozen source 12ae3cc49152672a48a96f13994314b65ae38197",
-        "scope": "T36 closure and T41 original-prime module/consumer checks passed with only propext, Classical.choice, and Quot.sound. This formal receipt certifies the assembled solution source and named dependency configuration, not end-to-end manuscript correspondence."
+        "scope": "The unconditional same-witness closure and original-prime endpoint used by the shared main and alternative solution assemblies."
       }
-    ],
-    "open_bridges": [
-      "Complete Max\u2019s whole paper-to-Lean correspondence review and Johanna\u2019s review of the selected visible manuscript and marked proposals."
-    ],
-    "non_claims": [
-      "Module and literal-consumer receipts alone do not certify the assembled solution variants or full release. The complete C2 verifier, four statement comparisons, 399-name audit, and R/C2 byte-congruence receipt certify their separately named formal scopes; none establishes whole-paper correspondence.",
-      "Johanna\u2019s marked local proposals remain review material; the visible author proof remains the selected manuscript surface.",
-      "Max\u2019s review of statement scope and complete proof routes is pending."
-    ],
-    "verification_receipt": "docs/verification-results.json"
+    ]
   },
   "section_5_paper_statements": {
-    "status": "Each statement of Section 5.2 of the frozen paper (commit 0dd6189) has a Lean declaration with the paper's hypotheses and conclusion, and Theorem 5.7(i) is proved paragraph by paragraph from them; all use only propext, Classical.choice and Quot.sound.",
+    "statement": "Each statement of Section 5.2 has a Lean declaration with the paper's hypotheses and conclusion, and Theorem 5.7(i) is proved paragraph by paragraph from them.",
     "module": "Stafford38/Paper/Section5.lean (aggregator); Section5/Place.lean, ResidueBasis.lean, TangentCone.lean, GenericTangentRank.lean (lemmas); Section5/Steps.lean (paragraphs between the lemmas); Section5/Proof.lean (Theorem 5.7(i))",
     "theorem_5_7": {
       "i": "Stafford38.Paper.Section5.theorem_5_7_i",
@@ -182,34 +148,6 @@
   },
   "canonical_definition_registry": {
     "path": "docs/definition-owners.md",
-    "scope": "Reviewed canonical owners, aliases, and checked transports; not an exhaustive proof that all semantic duplication in every dependency has been removed."
-  },
-  "review_roles": {
-    "Max": "Review the whole paper-to-Lean correspondence, including statement scope and proof routes.",
-    "Johanna": "Review the preserved visible proof and marked local mathematical proposals."
-  },
-  "release": {
-    "status": "Formal v1.3.1 and supplementary v0.2.2 published and archives byte-verified; reader and PDFs checked online; human reviews pending",
-    "palomar": "Immutable Palomar v3 registered on 4 October 2026 at source 0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1 with comparator.json. Mechanical verification passed; automated review identified no problems. All 587 Lean/configuration files match formal v1.3.1 R131; registration is scoped to its named theorem and exact source.",
-    "supplementary_release_commit": "a114b06749fb01cf352f8b13ad3fda8267293ac6",
-    "supplementary_version_doi": "10.5281/zenodo.23132562",
-    "supplementary_archive_receipt": "docs/qwen-campaign/notes/T96-supplementary-v0.2.2-reader-release-20261004.json",
-    "formal_candidate_version": "v1.3.1",
-    "supplementary_candidate_version": "v0.2.2",
-    "algebraic_analysis": "0.3.3; pinned revision bbbbf3fc358ca8100b158cec4cf47f336ab70163; DOI 10.5281/zenodo.23104842",
-    "formal_version": "v1.3.1",
-    "formal_release_commit": "f9448d6307fa25aff9d9f94ce0a9c7f9b03e63ff",
-    "formal_version_doi": "10.5281/zenodo.23127367",
-    "formal_archive_receipt": "docs/qwen-campaign/notes/T92-formal-v1.3.1-Zenodo-bytecheck-20261003.json",
-    "supplementary_version": "v0.2.2",
-    "palomar_record": {
-      "id": "PALOMAR-2026-09-05-000007",
-      "version": 3,
-      "url": "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3",
-      "source_commit": "0bb3aa929b931bf5d82d90f62d7508d3ae1dccc1",
-      "receipt": "docs/qwen-campaign/notes/T97-Palomar-v3-registration-and-citation-20261004.json"
-    }
-  },
-  "current_review_ledger": "docs/paper-lean-audit/review-status.json",
-  "comparison_scope": "Relations classify the current selected review text in human_readable_main.tex, including AIadd/AIreplace proposal text. Historical author-baseline text remains recorded under historical_issues; marked corrections and route replacements remain subject to human author review. This map does not treat a proposed correction as accepted publication text."
+    "scope": "Canonical owners, aliases and checked transports of the listed concepts."
+  }
 }

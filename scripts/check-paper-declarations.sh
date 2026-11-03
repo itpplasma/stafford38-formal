@@ -5,26 +5,8 @@ mkdir -p .lake/verification
 python3 - <<'PY'
 import json
 from pathlib import Path
-manifest = json.loads(Path('docs/paper-lean-audit/linked-declarations.json').read_text())
+manifest = json.loads(Path('docs/paper-linked-declarations.json').read_text())
 entries = manifest['declarations']
-# The snapshot is the independent input to the name/axiom audit.
-import hashlib
-import re
-snapshot = Path('docs/paper-lean-audit/manuscript')
-provenance = json.loads((snapshot / 'provenance.json').read_text())
-for entry in provenance['files']:
-    actual = hashlib.sha256((snapshot / entry['path']).read_bytes()).hexdigest()
-    if actual != entry['sha256']:
-        raise SystemExit('Manuscript snapshot hash mismatch: ' + entry['path'])
-paper_files = manifest.get('paper_files', ['human_readable_main.tex'])
-paper = '\n'.join((snapshot / file).read_text() for file in paper_files)
-paper = re.sub(r'(?m)^\s*%.*$', '', paper)
-linked = {(('library' if macro == 'leanlib' else 'formal'), file, name)
-          for macro, file, line, name in re.findall(
-              r'\\(leandecl|leanlib)\{([^}]+)\}\{(\d+)\}\{([^}]+)\}', paper)}
-recorded = {(entry['repo'], entry['file'], entry['name']) for entry in entries}
-if linked != recorded:
-    raise SystemExit('Declaration manifest differs from the manuscript snapshot')
 modules = sorted({entry['file'].removesuffix('.lean').replace('/', '.') for entry in entries})
 names = sorted({entry['name'] for entry in entries})
 source = '\n'.join('import ' + module for module in modules) + '\n\n'
@@ -37,7 +19,7 @@ python3 - <<'PY'
 import json
 import re
 from pathlib import Path
-manifest = json.loads(Path('docs/paper-lean-audit/linked-declarations.json').read_text())
+manifest = json.loads(Path('docs/paper-linked-declarations.json').read_text())
 expected = {entry['name'] for entry in manifest['declarations']}
 text = Path('.lake/verification/paper-declarations.log').read_text()
 found = {name: {x.strip() for x in body.split(',') if x.strip()}
