@@ -14,6 +14,7 @@ open Stafford38.WeylIteratedEquivalence
 open Stafford38.WeylLeadingSymbol
 open Stafford38.WeylFiltration
 open Stafford38.WeylEulerResidue
+open Stafford38.CharacteristicInitialIdeal
 open Stafford38.WeylPBWMonicBridge
 
 noncomputable section
@@ -110,12 +111,16 @@ theorem tangentialCoordinateMap_apply (n : ℕ) (E : Type*)
   exact (normalSymbolAlgEquiv_otherVariable (k := k) n
     (Sum.inl (0 : Fin (n + 1))) (by simp)).symm
 
-/-- Kernel and cokernel of the actual distinguished coordinate symbol on the
-canonical associated graded quotient are finite over the ring omitting both
-that coordinate and the normal covariable. -/
-theorem canonical_orderAssociatedGradedModule_finite_tangential_coordinate
+/-- Kernel and cokernel of the distinguished coordinate symbol on the canonical
+associated graded quotient are finite over the ring omitting both that
+coordinate and the normal covariable, once the monic order symbol annihilates
+the quotient. -/
+theorem canonical_orderAssociatedGradedModule_finite_tangential_coordinate_of_mem_annihilator
     {n N : ℕ} {d : PresentedWeyl k (n + 1)}
-    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
+    (hP : presentedPrincipalComponent k orderWeight N d ∈
+      Module.annihilator (SymbolRing k (n + 1))
+        (OrderAssociatedGradedModule k (canonicalRightIdeal (presentedCoordinate k n) d N))) :
     let E := OrderAssociatedGradedModule k
       (canonicalRightIdeal (presentedCoordinate k n) d N)
     @Module.Finite (tangentialCoeffRing (k := k) n)
@@ -131,7 +136,7 @@ theorem canonical_orderAssociatedGradedModule_finite_tangential_coordinate
   let e := normalCoeffTangentialAlgEquiv (k := k) n
   letI : Module R E := normalCoeffModule (k := k) n E
   haveI hR : Module.Finite R E :=
-    canonical_orderAssociatedGradedModule_finite_normalCoeffRing hd
+    canonical_orderAssociatedGradedModule_finite_normalCoeffRing_of_mem_annihilator hd hP
   letI : Module (Polynomial T) E := tangentialPolynomialModule (k := k) n E
   letI : Module T E := tangentialCoeffModule (k := k) n E
   letI : IsScalarTower T (Polynomial T) E :=
@@ -170,6 +175,25 @@ theorem canonical_orderAssociatedGradedModule_finite_tangential_coordinate
   rw [hf]
   exact finite_kernel_and_cokernel_variable (R := T) (E := E)
 
+/-- Kernel and cokernel of the actual distinguished coordinate symbol on the
+canonical associated graded quotient are finite over the ring omitting both
+that coordinate and the normal covariable. -/
+theorem canonical_orderAssociatedGradedModule_finite_tangential_coordinate
+    {n N : ℕ} {d : PresentedWeyl k (n + 1)}
+    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+    let E := OrderAssociatedGradedModule k
+      (canonicalRightIdeal (presentedCoordinate k n) d N)
+    @Module.Finite (tangentialCoeffRing (k := k) n)
+      (LinearMap.ker (tangentialCoordinateMap (k := k) n E)) _ _
+        (inferInstance) ∧
+    @Module.Finite (tangentialCoeffRing (k := k) n)
+      (E ⧸ LinearMap.range (tangentialCoordinateMap (k := k) n E)) _ _
+        (inferInstance) :=
+  canonical_orderAssociatedGradedModule_finite_tangential_coordinate_of_mem_annihilator hd (by
+    rw [annihilator_orderAssociatedGradedModule]
+    exact canonical_orderPrincipalComponent_mem_initialIdeal k n N hd)
+
+#print axioms canonical_orderAssociatedGradedModule_finite_tangential_coordinate_of_mem_annihilator
 #print axioms canonical_orderAssociatedGradedModule_finite_tangential_coordinate
 
 end

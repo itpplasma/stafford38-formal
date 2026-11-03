@@ -115,25 +115,17 @@ private theorem iterPderiv_eq_factorial_of_homogeneous
   rw [hzeroCoeff, hcoeff N 0]
   simp [Nat.zero_add, Nat.descFactorial_self, hc]
 
-theorem canonical_minimalPrime_mem_of_normalCoordinate_false
+/-- The bracket argument: an involutive prime `P` containing the order symbol
+of a `ξ₁`-monic `d` of degree `N` omits `x₁`, since otherwise the `N`-th bracket
+`{x₁, …{x₁, σ(d)}}` is the constant `N! ≠ 0` and lies in `P`. -/
+theorem normalCoordinate_not_mem_of_isInvolutive
     (d : PresentedWeyl k (n + 1))
-    (hN : 0 < N) (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
-    {P : Ideal (SymbolRing k (n + 1))} (hP : P ∈
-      (Module.annihilator (SymbolRing k (n + 1))
-        (OrderAssociatedGradedModule k
-      (canonicalRightIdeal (presentedCoordinate k n) d N))).minimalPrimes) :
+    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
+    (P : Ideal (SymbolRing k (n + 1))) [P.IsPrime] (hInv : IsInvolutive P)
+    (hf : presentedPrincipalComponent k orderWeight N d ∈ P) :
     MvPolynomial.X (.inl (0 : Fin (n + 1))) ∉ P := by
-  have hPorder : P ∈ (orderInitialIdeal k
-      (canonicalRightIdeal (presentedCoordinate k n) d N)).minimalPrimes := by
-    simpa [annihilator_orderAssociatedGradedModule] using hP
-  letI : P.IsPrime := hP.1.1
-  have hInv : IsInvolutive P := minimalPrime_isInvolutive k
-    (canonicalRightIdeal (presentedCoordinate k n) d N) P hP
   intro hx
   let f := presentedPrincipalComponent k orderWeight N d
-  have hf : f ∈ P := by
-    apply hPorder.1.2
-    exact canonical_orderPrincipalComponent_mem_initialIdeal k n N hd
   have hderiv := iterPderiv_mem_of_involutive P hInv
     (0 : Fin (n + 1)) hx f hf N
   have hfac : MvPolynomial.C (N.factorial : k) ∈ P := by
@@ -148,7 +140,23 @@ theorem canonical_minimalPrime_mem_of_normalCoordinate_false
     have hm := P.mul_mem_left (MvPolynomial.C ((N.factorial : k)⁻¹)) hfac
     rw [← MvPolynomial.C_mul, inv_mul_cancel₀ hfac0] at hm
     simpa using hm
-  exact hP.1.1.ne_top ((Ideal.eq_top_iff_one P).mpr hone)
+  exact (inferInstance : P.IsPrime).ne_top ((Ideal.eq_top_iff_one P).mpr hone)
+
+theorem canonical_minimalPrime_mem_of_normalCoordinate_false
+    (d : PresentedWeyl k (n + 1))
+    (hN : 0 < N) (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
+    {P : Ideal (SymbolRing k (n + 1))} (hP : P ∈
+      (Module.annihilator (SymbolRing k (n + 1))
+        (OrderAssociatedGradedModule k
+      (canonicalRightIdeal (presentedCoordinate k n) d N))).minimalPrimes) :
+    MvPolynomial.X (.inl (0 : Fin (n + 1))) ∉ P := by
+  have hPorder : P ∈ (orderInitialIdeal k
+      (canonicalRightIdeal (presentedCoordinate k n) d N)).minimalPrimes := by
+    simpa [annihilator_orderAssociatedGradedModule] using hP
+  letI : P.IsPrime := hP.1.1
+  exact normalCoordinate_not_mem_of_isInvolutive d hd P
+    (minimalPrime_isInvolutive k (canonicalRightIdeal (presentedCoordinate k n) d N) P hP)
+    (hPorder.1.2 (canonical_orderPrincipalComponent_mem_initialIdeal k n N hd))
 
 end
 end Stafford38.Characteristic.NoncharacteristicMinimalPrime

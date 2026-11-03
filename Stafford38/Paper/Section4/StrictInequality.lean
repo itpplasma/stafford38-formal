@@ -2,14 +2,18 @@ module
 
 public import Stafford38.Paper.Section4.TangentialFiniteness
 public import AlgebraicAnalysis.Module.BaseLocalizedKoszulPositivity
+public import Stafford38.Paper.Section2.Symplectic
+public import Stafford38.Paper.Section3.OrderSymbol
+public import Stafford38.Characteristic.PaperLocalizedInvolutivity
 
 @[expose] public section
 
 /-!
 # Lemma 4.10: the strict inequality `ℓ(U_𝔮) > ℓ(V_𝔮)`
 
-Paragraphs of the printed proof: Gabber's theorem keeps `x₁` out of the minimal
-primes of `J = √Ann M`; this persists after localizing at `S = T∖𝔮`; the stable
+Paragraphs of the printed proof: Gabber's theorem (Theorem 2.11) makes
+`J = √Ann M` involutive, hence its minimal primes [HTT D.3.4], and the bracket
+argument keeps `x₁` out of them; this persists after localizing at `S = T∖𝔮`; the stable
 power kernel `K_∞`; its two elementary facts; `ℓ(K_∞/x₁K_∞) = ℓ(V_𝔮)`; the split
 `ℓ(U_𝔮) = ℓ(V_𝔮) + ℓ(Ẽ/x₁Ẽ)` with `Ẽ = M_𝔮/K_∞`; `Ẽ/x₁Ẽ ≠ 0` by Nakayama.
 
@@ -357,30 +361,48 @@ attribute [local instance] Characteristic.CanonicalKoszulContradiction.gradedMod
   Characteristic.CanonicalKoszulContradiction.coefficientTower
 
 omit [Algebra ℚ k] in
-/-- **Gabber paragraph.**  `J = √Ann M` is involutive (Gabber), so are its minimal
-primes `𝔭`; if `x₁ ∈ 𝔭`, the iterated brackets `{x₁, …{x₁, P}}` are the
-`ξ₁`-derivatives of `P ∈ 𝔭` and the `N`-th is `N! ≠ 0`, so `x₁ ∉ 𝔭`. -/
-theorem step_4_10_gabber (hN : 0 < N) (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+/-- `M = gr Q` is the module `gr(A_n/𝓘)` of Theorem 2.11 for the cyclic right
+module `A_n/𝓘`, so Gabber's theorem applies to it: `J = √Ann M` is involutive. -/
+theorem step_4_10_radical_isInvolutive :
+    PostScalarExtensionPoisson.IsInvolutive
+      (Module.annihilator (Symbol k n) (GrQ k n N d)).radical :=
+  (Stafford38.Paper.Section2.isInvolutive_iff k _).1
+    (Stafford38.Paper.Section2.theorem_2_11_cyclic k (n + 1)
+      (Stafford38.WeylQuotientTransport.presentedCanonicalRightIdeal (k := k) n N d))
+
+omit [Algebra ℚ k] in
+/-- **Gabber paragraph.**  `J = √Ann M` is involutive (Theorem 2.11), so are its
+minimal primes `𝔭` [HTT D.3.4]; `P ∈ Ann M ⊆ 𝔭` (Proposition 3.6), and if
+`x₁ ∈ 𝔭`, the iterated brackets `{x₁, …{x₁, P}}` are the `ξ₁`-derivatives of
+`P` and the `N`-th is `N! ≠ 0`, so `x₁ ∉ 𝔭`. -/
+theorem step_4_10_gabber (hform : IsMonicNormalForm k N d) :
     ∀ P ∈ (Module.annihilator (Symbol k n) (GrQ k n N d)).minimalPrimes,
-      symbolCoordinate k n ∉ P :=
-  fun _ hP => canonical_minimalPrime_mem_of_normalCoordinate_false d hN hd hP
+      symbolCoordinate k n ∉ P := by
+  intro P hP
+  let : P.IsPrime := hP.1.1
+  have hPinv : PostScalarExtensionPoisson.IsInvolutive P :=
+    PaperLocalizedInvolutivity.minimalPrimes_isInvolutive_of_radical_isInvolutive_viaLocalization
+      _ step_4_10_radical_isInvolutive P hP
+  exact normalCoordinate_not_mem_of_isInvolutive d (isPBWMonicAt_of_isMonicNormalForm k hform)
+    P hPinv (hP.1.2 (Stafford38.Paper.Section3.proposition_3_6 k hform
+      (Stafford38.Paper.Section3.bernsteinDegree_eq_of_isMonicNormalForm k hform)))
 
 omit [Algebra ℚ k] in
 /-- **Localization paragraph.**  With `S = T∖𝔮` and `k[x,ξ]_𝔮 = S⁻¹k[x,ξ]`, the
 minimal primes of `Ann(M_𝔮) = S⁻¹Ann(M)` are `S⁻¹𝔭` for minimal primes `𝔭` of
 `J`, so they do not contain `x₁`. -/
-theorem step_4_10_localized_avoid (hN : 0 < N)
-    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) (S : Submonoid (Tangential k n)) :
+theorem step_4_10_localized_avoid (hform : IsMonicNormalForm k N d)
+    (S : Submonoid (Tangential k n)) :
     ∀ Q ∈ (Module.annihilator (Localization (Algebra.algebraMapSubmonoid (Symbol k n) S))
         (LocalizedModule (Algebra.algebraMapSubmonoid (Symbol k n) S) (GrQ k n N d))).minimalPrimes,
       algebraMap (Symbol k n) (Localization (Algebra.algebraMapSubmonoid (Symbol k n) S))
         (symbolCoordinate k n) ∉ Q :=
-  localized_minimalPrime_avoids _ _ (step_4_10_gabber hN hd)
+  localized_minimalPrime_avoids _ _ (step_4_10_gabber hform)
 
 omit [Algebra ℚ k] in
 /-- **Lemma 4.10.** For every minimal prime `𝔮` of `Supp_T U`,
 `ℓ_{T_𝔮}(U_𝔮) > ℓ_{T_𝔮}(V_𝔮)`, for `d̃` in the form (3.1) with `N ≥ 1`. -/
-theorem lemma_4_10 (hN : 0 < N) (hform : IsMonicNormalForm k N d)
+theorem lemma_4_10 (_hN : 0 < N) (hform : IsMonicNormalForm k N d)
     (q : PrimeSpectrum (Tangential k n))
     (hqmem : q ∈ Module.support (Tangential k n) (cokernelU k n N d))
     (hqmin : ∀ p ∈ Module.support (Tangential k n) (cokernelU k n N d),
@@ -390,12 +412,11 @@ theorem lemma_4_10 (hN : 0 < N) (hform : IsMonicNormalForm k N d)
       Module.length (Localization q.asIdeal.primeCompl)
         (LocalizedModule q.asIdeal.primeCompl (kernelV k n N d)) := by
   -- Lemma 4.8: `V_𝔮` has finite length
-  have hd := isPBWMonicAt_of_isMonicNormalForm k hform
   obtain ⟨-, -, -, hfin⟩ := lemma_4_8 hform
   have h := step_4_10_localized (R := Tangential k n) (symbolCoordinate k n) q
     (by rw [setup_coordinateMap_eq]; exact hqmem)
     (by rw [setup_coordinateMap_eq]; exact (hfin q hqmem hqmin).2)
-    (step_4_10_localized_avoid hN hd q.asIdeal.primeCompl)
+    (step_4_10_localized_avoid hform q.asIdeal.primeCompl)
   rwa [setup_coordinateMap_eq] at h
 
 end Canonical
@@ -407,6 +428,7 @@ end Canonical
 #print axioms step_4_10_residual_nonzero
 #print axioms step_4_10_core
 #print axioms step_4_10_localized
+#print axioms step_4_10_radical_isInvolutive
 #print axioms step_4_10_gabber
 #print axioms step_4_10_localized_avoid
 #print axioms lemma_4_10

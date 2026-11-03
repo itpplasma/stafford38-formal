@@ -42,11 +42,15 @@ across the normal-variable equivalence. -/
   Module.compHom E
     ((normalPolynomialActionHom (k := k) n).comp Polynomial.C)
 
-/-- The actual canonical order-associated graded module is finite over the
-polynomial ring in all symbols except the distinguished normal covariable. -/
-theorem canonical_orderAssociatedGradedModule_finite_normalCoeffRing
+/-- The canonical order-associated graded module is finite over the polynomial
+ring in all symbols except the normal covariable, once the monic order symbol
+annihilates it. -/
+theorem canonical_orderAssociatedGradedModule_finite_normalCoeffRing_of_mem_annihilator
     {n N : ℕ} {d : PresentedWeyl k (n + 1)}
-    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d)
+    (hP : presentedPrincipalComponent k orderWeight N d ∈
+      Module.annihilator (SymbolRing k (n + 1))
+        (OrderAssociatedGradedModule k (canonicalRightIdeal (presentedCoordinate k n) d N))) :
     @Module.Finite (normalCoeffRing (k := k) n)
       (OrderAssociatedGradedModule k
         (canonicalRightIdeal (presentedCoordinate k n) d N))
@@ -83,13 +87,26 @@ theorem canonical_orderAssociatedGradedModule_finite_normalCoeffRing
   · intro z
     change e.symm g • z = 0
     apply Module.mem_annihilator.mp
-    rw [annihilator_orderAssociatedGradedModule]
     change (normalSymbolAlgEquiv (k := k) n).symm
       (canonicalNormalPolynomial (k := k) (n := n) (N := N) d) ∈ _
     rw [canonicalNormalPolynomial,
       (normalSymbolAlgEquiv (k := k) n).symm_apply_apply]
-    exact canonical_orderPrincipalComponent_mem_initialIdeal k n N hd
+    exact hP
 
+/-- The actual canonical order-associated graded module is finite over the
+polynomial ring in all symbols except the distinguished normal covariable. -/
+theorem canonical_orderAssociatedGradedModule_finite_normalCoeffRing
+    {n N : ℕ} {d : PresentedWeyl k (n + 1)}
+    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+    @Module.Finite (normalCoeffRing (k := k) n)
+      (OrderAssociatedGradedModule k
+        (canonicalRightIdeal (presentedCoordinate k n) d N))
+      _ _ (normalCoeffModule (k := k) n _) :=
+  canonical_orderAssociatedGradedModule_finite_normalCoeffRing_of_mem_annihilator hd (by
+    rw [annihilator_orderAssociatedGradedModule]
+    exact canonical_orderPrincipalComponent_mem_initialIdeal k n N hd)
+
+#print axioms canonical_orderAssociatedGradedModule_finite_normalCoeffRing_of_mem_annihilator
 #print axioms canonical_orderAssociatedGradedModule_finite_normalCoeffRing
 
 end
