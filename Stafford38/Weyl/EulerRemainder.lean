@@ -366,18 +366,14 @@ local instance (n : ℕ) :
     Algebra ℚ (PairStage (B := IteratedPairStage k n)) :=
   pairStageAlgebra
 
-/-- The concrete remainder of a normalized presented Weyl operator satisfies
-both positive-coordinate factorizations. -/
-theorem presentedRemainder_hasPositiveCoordinateFactor
+/-- The outer momentum exponents of the remainder `d - p^N` of a normalized
+presented Weyl operator are below `N`. -/
+theorem presentedRemainder_outer_support_lt
     (n N : ℕ) {d : PresentedWeyl k (n + 1)}
     (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
-    HasPositiveCoordinateFactor (IteratedPairStage k n) N
-      (presentedToIterated k (n + 1) d - stageMomentum k n ^ N) := by
+    ∀ j ∈ ((normalFormAddEquiv (coordinateDerivation (B := IteratedPairStage k n))).symm
+      (presentedToIterated k (n + 1) d - stageMomentum k n ^ N)).support, j < N := by
   let H := presentedOuterPolynomial k n d
-  have hpositive := normalForm_sub_X_pow_hasPositiveCoordinateFactor
-    (IteratedPairStage k n) H N
-    (outer_coeff_eq_one_at_bound k n N hd)
-    (fun j hj => outer_coeff_eq_zero_of_exponent_gt k n N hd hj)
   have hnormal :
       normalForm (coordinateDerivation (B := IteratedPairStage k n))
           (H - Polynomial.X ^ N) =
@@ -397,8 +393,26 @@ theorem presentedRemainder_hasPositiveCoordinateFactor
     change pairMomentum (B := IteratedPairStage k n) ^ N =
       stageMomentum k n ^ N
     rfl
-  rw [hnormal] at hpositive
-  exact hpositive
+  rw [← hnormal]
+  intro j hj
+  change j ∈ ((normalFormAddEquiv (coordinateDerivation (B := IteratedPairStage k n))).symm
+    ((normalFormAddEquiv (coordinateDerivation (B := IteratedPairStage k n)))
+      (H - Polynomial.X ^ N))).support at hj
+  rw [(normalFormAddEquiv (coordinateDerivation (B := IteratedPairStage k n))).symm_apply_apply]
+    at hj
+  exact support_sub_X_pow_lt (IteratedPairStage k n) H N
+    (outer_coeff_eq_one_at_bound k n N hd)
+    (fun j hj => outer_coeff_eq_zero_of_exponent_gt k n N hd hj) j hj
+
+/-- The concrete remainder of a normalized presented Weyl operator satisfies
+both positive-coordinate factorizations. -/
+theorem presentedRemainder_hasPositiveCoordinateFactor
+    (n N : ℕ) {d : PresentedWeyl k (n + 1)}
+    (hd : IsPBWMonicAt k (.inr (0 : Fin (n + 1))) N d) :
+    HasPositiveCoordinateFactor (IteratedPairStage k n) N
+      (presentedToIterated k (n + 1) d - stageMomentum k n ^ N) :=
+  hasPositiveCoordinateFactor_of_outer_support (IteratedPairStage k n) _ N
+    (presentedRemainder_outer_support_lt k n N hd)
 
 /-- The normalized presented operator has the exact positive Euler residue in
 its literal canonical right ideal. -/
@@ -445,6 +459,7 @@ theorem presentedCanonicalQuotient_rightMul_coordinate_surjective
     exact closure_pairOldSubring_union_coordinate_momentum_eq_top
       (IteratedPairStage k n)
 
+#print axioms presentedRemainder_outer_support_lt
 #print axioms presentedRemainder_hasPositiveCoordinateFactor
 #print axioms presentedPositiveEulerResidue
 #print axioms presentedCanonicalQuotient_rightMul_coordinate_surjective

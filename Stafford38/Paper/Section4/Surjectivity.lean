@@ -177,11 +177,14 @@ abbrev transverseCoordinateAlgebra : Subring (PresentedWeyl k (n + 1)) :=
 /-- `C ⊆ A_{≥0}`: no element of `C` contains `p`. -/
 theorem transverseCoordinateAlgebra_le :
     transverseCoordinateAlgebra k n ≤ presentedNonnegativePart k n := by
+  have hweyl := (Stafford38.Paper.Section2.convention_2_2_relations k n).1
   apply Subring.closure_le.2
   rintro a (ha | ha)
-  · exact coefficient_mem_eulerSubring _ _ _ ⟨a, ha⟩
+  · exact eulerSubring_le_nonnegativePart _ _ _ hweyl
+      (fun c hc => (Stafford38.Paper.Section2.convention_2_2_relations k n).2.2 c hc)
+      (coefficient_mem_eulerSubring _ _ _ ⟨a, ha⟩)
   · rw [Set.mem_singleton_iff.mp ha]
-    exact coordinate_mem_eulerSubring _ _ _
+    exact coordinate_mem_nonnegativePart hweyl
 
 /-- `C` and `p` together generate `A_n`. -/
 theorem closure_transverseCoordinateAlgebra_momentum [Algebra ℚ k] :
@@ -224,10 +227,10 @@ theorem proposition_4_3 [Algebra ℚ k] {N : ℕ} {d : PresentedWeyl k (n + 1)}
   obtain ⟨u₀, hu₀, hres⟩ := lemma_4_2 hform
   exact proposition_4_3_of (transverseCoordinateAlgebra k n)
     (presentedCoordinate k n) (presentedMomentum k n) u₀
-    (coordinate_mem_eulerSubring _ _ _) (euler_mem_eulerSubring _ _ _)
+    (coordinate_mem_nonnegativePart (Stafford38.Paper.Section2.convention_2_2_relations k n).1)
+    (euler_mem_nonnegativePart _ _)
     (transverseCoordinateAlgebra_le k n)
-    (step_coordinate_normal _ _ _ (Stafford38.Paper.Section2.convention_2_2_relations k n).1
-      (transverse_commutes_coordinate k n))
+    (presented_coordinate_normal k n)
     hu₀ hres (closure_transverseCoordinateAlgebra_momentum k n)
 
 end Presented
