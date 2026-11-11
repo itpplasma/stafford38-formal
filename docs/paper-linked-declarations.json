@@ -10,12 +10,32 @@
     {
       "repo": "formal",
       "file": "Stafford38/ChallengeDefinitions.lean",
+      "name": "Stafford38Challenge.PaperCorollary_6_3"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/ChallengeDefinitions.lean",
+      "name": "Stafford38Challenge.PaperTheorem_1_1"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/ChallengeDefinitions.lean",
       "name": "Stafford38Challenge.UniversalStatement"
     },
     {
       "repo": "formal",
       "file": "Stafford38/ChallengeDefinitions.lean",
+      "name": "Stafford38FixedSourceChallenge.IsLinearWeylCoordinate"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/ChallengeDefinitions.lean",
       "name": "Stafford38FixedSourceChallenge.UniversalFixedSourceStatement"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/ChallengeDefinitions.lean",
+      "name": "Stafford38FixedSourceChallenge.bernsteinDegree"
     },
     {
       "repo": "formal",
@@ -139,16 +159,6 @@
     },
     {
       "repo": "formal",
-      "file": "Stafford38/Characteristic/PaperSymplecticBasis.lean",
-      "name": "Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis"
-    },
-    {
-      "repo": "formal",
-      "file": "Stafford38/Characteristic/PaperSymplecticBasis.lean",
-      "name": "Stafford38.CharacteristicPaperSymplecticBasis.exists_symplectic_basis_with_pair"
-    },
-    {
-      "repo": "formal",
       "file": "Stafford38/Characteristic/Polynomial.lean",
       "name": "Stafford38.Characteristic.SymbolRing"
     },
@@ -254,11 +264,6 @@
     },
     {
       "repo": "formal",
-      "file": "Stafford38/Geometry/GeneralAsymptoticLaurentAxis.lean",
-      "name": "Stafford38.Geometry.GeneralAsymptoticLaurentAxis.exists_groundConormalAxis_of_prime_coordinate_avoidance"
-    },
-    {
-      "repo": "formal",
       "file": "Stafford38/Geometry/GeneralCoisotropicCanonicalAdapter.lean",
       "name": "Stafford38.Geometry.GeneralCoisotropicCanonicalAdapter.algebraicallyClosedCanonicalSupportVanishing_of_generalCoisotropic"
     },
@@ -289,18 +294,8 @@
     },
     {
       "repo": "formal",
-      "file": "Stafford38/Geometry/GeneralConormalAxis.lean",
-      "name": "Stafford38.Geometry.GeneralConormalAxis.exists_groundConormalAxis_of_minimalPrime_unit_transcendental"
-    },
-    {
-      "repo": "formal",
       "file": "Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean",
       "name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameExistence"
-    },
-    {
-      "repo": "formal",
-      "file": "Stafford38/Geometry/GeneralDivisorialVisibleFrame.lean",
-      "name": "Stafford38.Geometry.GeneralDivisorialVisibleFrame.generalDivisorialVisibleFrameWithResidueAlgebraicity"
     },
     {
       "repo": "formal",
@@ -316,16 +311,6 @@
       "repo": "formal",
       "file": "Stafford38/Geometry/LaurentConormalDirection.lean",
       "name": "Stafford38.Geometry.LaurentConormalDirection.residue_mem_extensionFibreClosure_of_laurent_generic"
-    },
-    {
-      "repo": "formal",
-      "file": "Stafford38/Geometry/PaperActualWitnessConormalData.lean",
-      "name": "Stafford38.Geometry.PaperActualWitnessConormalData.exists_regularizedOneRowConormalData_of_actual_witness"
-    },
-    {
-      "repo": "formal",
-      "file": "Stafford38/Geometry/PaperSameWitnessTangentDimension.lean",
-      "name": "Stafford38.Geometry.PaperSameWitnessTangentDimension.tangent_finrank_le_residue_add_one_of_witness"
     },
     {
       "repo": "formal",
@@ -379,6 +364,401 @@
     },
     {
       "repo": "formal",
+      "file": "Stafford38/Paper/Main.lean",
+      "name": "Stafford38.Paper.corollary_6_3"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Main.lean",
+      "name": "Stafford38.Paper.corollary_6_3_stablyCyclic"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Main.lean",
+      "name": "Stafford38.Paper.theorem_1_1"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Main.lean",
+      "name": "Stafford38.Paper.theorem_1_1_fixedSource"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/CharacteristicVariety.lean",
+      "name": "Stafford38.Paper.Section2.Char"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/CharacteristicVariety.lean",
+      "name": "Stafford38.Paper.Section2.CharOf"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/CharacteristicVariety.lean",
+      "name": "Stafford38.Paper.Section2.Char_eq"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/CharacteristicVariety.lean",
+      "name": "Stafford38.Paper.Section2.definition_2_7_independent"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Filtration.lean",
+      "name": "Stafford38.Paper.Section2.IsFiltration"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Filtration.lean",
+      "name": "Stafford38.Paper.Section2.bernsteinDegree"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Filtration.lean",
+      "name": "Stafford38.Paper.Section2.bernsteinFiltration"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Filtration.lean",
+      "name": "Stafford38.Paper.Section2.filtrationDegree"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Filtration.lean",
+      "name": "Stafford38.Paper.Section2.gr"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Filtration.lean",
+      "name": "Stafford38.Paper.Section2.grEquivSymbolRing"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Filtration.lean",
+      "name": "Stafford38.Paper.Section2.orderFiltration"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Filtration.lean",
+      "name": "Stafford38.Paper.Section2.symbol"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Geometry.lean",
+      "name": "Stafford38.Paper.Section2.CotangentBundle"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Geometry.lean",
+      "name": "Stafford38.Paper.Section2.fibre"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Geometry.lean",
+      "name": "Stafford38.Paper.Section2.proj"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Symplectic.lean",
+      "name": "Stafford38.Paper.Section2.IsInvolutive"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Symplectic.lean",
+      "name": "Stafford38.Paper.Section2.IsInvolutiveSet"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Symplectic.lean",
+      "name": "Stafford38.Paper.Section2.isInvolutive_iff"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Symplectic.lean",
+      "name": "Stafford38.Paper.Section2.poisson"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Symplectic.lean",
+      "name": "Stafford38.Paper.Section2.poisson_eq"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Symplectic.lean",
+      "name": "Stafford38.Paper.Section2.theorem_2_11"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Symplectic.lean",
+      "name": "Stafford38.Paper.Section2.theorem_2_11_cyclic"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Weyl.lean",
+      "name": "Stafford38.Paper.Section2.C"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Weyl.lean",
+      "name": "Stafford38.Paper.Section2.convention_2_2_exists"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Weyl.lean",
+      "name": "Stafford38.Paper.Section2.convention_2_2_relations"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Weyl.lean",
+      "name": "Stafford38.Paper.Section2.convention_2_2_unique"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section2/Weyl.lean",
+      "name": "Stafford38.Paper.Section2.transverse"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/Monic.lean",
+      "name": "Stafford38.Paper.Section3.proposition_3_2"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/MonicForm.lean",
+      "name": "Stafford38.Paper.Section3.IsMonicNormalForm"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/OrderSymbol.lean",
+      "name": "Stafford38.Paper.Section3.IsMonicInXi1"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/OrderSymbol.lean",
+      "name": "Stafford38.Paper.Section3.lemma_3_5"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/OrderSymbol.lean",
+      "name": "Stafford38.Paper.Section3.proposition_3_6"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/PhiG.lean",
+      "name": "Stafford38.Paper.Section3.phiG"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/PhiG.lean",
+      "name": "Stafford38.Paper.Section3.step_phi_g"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/Symplectic.lean",
+      "name": "Stafford38.Paper.Section3.lemma_3_1"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/Transport.lean",
+      "name": "Stafford38.Paper.Section3.Q"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/Transport.lean",
+      "name": "Stafford38.Paper.Section3.idealI"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/Transport.lean",
+      "name": "Stafford38.Paper.Section3.remark_3_3"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section3/Transport.lean",
+      "name": "Stafford38.Paper.Section3.remark_3_3_of_Q_eq_zero"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Euler.lean",
+      "name": "Stafford38.Paper.Section4.eulerDegree"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Euler.lean",
+      "name": "Stafford38.Paper.Section4.lemma_4_1"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Euler.lean",
+      "name": "Stafford38.Paper.Section4.nonnegativePart"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Euler.lean",
+      "name": "Stafford38.Paper.Section4.positivePart"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Euler.lean",
+      "name": "Stafford38.Paper.Section4.step_coordinate_normal"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Euler.lean",
+      "name": "Stafford38.Paper.Section4.step_nonnegative_pbw"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/PageInequality.lean",
+      "name": "Stafford38.Paper.Section4.lemma_4_9"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Residue.lean",
+      "name": "Stafford38.Paper.Section4.lemma_4_2"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/StrictInequality.lean",
+      "name": "Stafford38.Paper.Section4.lemma_4_10"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Support.lean",
+      "name": "Stafford38.Paper.Section4.definition_4_6"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Support.lean",
+      "name": "Stafford38.Paper.Section4.lemma_4_7"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Surjectivity.lean",
+      "name": "Stafford38.Paper.Section4.proposition_4_3"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/TangentialFiniteness.lean",
+      "name": "Stafford38.Paper.Section4.lemma_4_8"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section4/Vanishing.lean",
+      "name": "Stafford38.Paper.Section4.corollary_4_11"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5.lean",
+      "name": "Stafford38.Paper.Section5.theorem_5_7_i"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/Exclusion.lean",
+      "name": "Stafford38.Paper.Section5.theorem_5_8"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/KaehlerRankBound.lean",
+      "name": "Stafford38.Paper.Section5.lemma_5_12_a_bound"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/Place.lean",
+      "name": "Stafford38.Paper.Section5.lemma_5_10"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/Place.lean",
+      "name": "Stafford38.Paper.Section5.lemma_5_9"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/Proof.lean",
+      "name": "Stafford38.Paper.Section5.theorem_5_7_i_paper"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/ResidueBasis.lean",
+      "name": "Stafford38.Paper.Section5.lemma_5_11"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/SmoothLocus.lean",
+      "name": "Stafford38.Paper.Section5.theorem_5_7_i_printed"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/SmoothLocus.lean",
+      "name": "Stafford38.Paper.Section5.theorem_5_7_ii_printed"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/TangentCone.lean",
+      "name": "Stafford38.Paper.Section5.lemma_5_12_a_cone"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/TangentCone.lean",
+      "name": "Stafford38.Paper.Section5.lemma_5_12_b"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section5/TangentCone.lean",
+      "name": "Stafford38.Paper.Section5.lemma_5_13"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section6/Avoidance.lean",
+      "name": "Stafford38.Paper.Section6.proposition_6_1"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section6/BaseChange.lean",
+      "name": "Stafford38.Paper.Section6.lemma_6_2"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section6/Cyclicity.lean",
+      "name": "Stafford38.Paper.Section6.corollary_6_3_of"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section6/Proof.lean",
+      "name": "Stafford38.Paper.Section6.theorem_1_1_paper"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section6/Proof.lean",
+      "name": "Stafford38.Paper.Section6.theorem_6_Q_eq_zero"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section7.lean",
+      "name": "Stafford38.Paper.Section7.corollary_6_3_left"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section7.lean",
+      "name": "Stafford38.Paper.Section7.evolutionaryIdentity"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section7.lean",
+      "name": "Stafford38.Paper.Section7.leftHandedIdentity"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/Paper/Section7.lean",
+      "name": "Stafford38.Paper.Section7.localizedDifferentialIdentity"
+    },
+    {
+      "repo": "formal",
+      "file": "Stafford38/PaperClaimDefinitions.lean",
+      "name": "Stafford38Challenge.PaperCorollary_6_3_stablyCyclic"
+    },
+    {
+      "repo": "formal",
       "file": "Stafford38/Quotient/EulerSurjectivity.lean",
       "name": "Stafford38.EulerSurjectivity.rightMul_surjective_of_euler_normal"
     },
@@ -386,11 +766,6 @@
       "repo": "formal",
       "file": "Stafford38/Statement.lean",
       "name": "Stafford38.UniversalStatement"
-    },
-    {
-      "repo": "formal",
-      "file": "Stafford38/TorsionCyclicity.lean",
-      "name": "Stafford38.TorsionCyclicity.exists_span_adjusted_pair"
     },
     {
       "repo": "formal",
@@ -465,11 +840,6 @@
     {
       "repo": "formal",
       "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
-      "name": "Stafford38.Weyl.FilteredScalarLifting.presentedWeylScalarExtension_map_orderInitialIdeal_eq"
-    },
-    {
-      "repo": "formal",
-      "file": "Stafford38/Weyl/FilteredScalarLifting.lean",
       "name": "Stafford38.Weyl.FilteredScalarLifting.target_orderInitialIdeal_le_map_source_orderInitialIdeal"
     },
     {
@@ -506,11 +876,6 @@
       "repo": "formal",
       "file": "Stafford38/Weyl/PBWMonicBridge.lean",
       "name": "Stafford38.WeylPBWMonicBridge.IsPBWMonicAt"
-    },
-    {
-      "repo": "formal",
-      "file": "Stafford38/Weyl/PaperRightMonic.lean",
-      "name": "Stafford38.WeylPaperRightMonic.presentedOuter_right_monic_decomposition"
     },
     {
       "repo": "formal",
