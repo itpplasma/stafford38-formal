@@ -101,7 +101,7 @@ challenge/solution pairs is described in [docs/building.md](docs/building.md).
   ([stafford38-supplementary](https://github.com/itpplasma/stafford38-supplementary)).
 
 The theorem is in the Palomar registry as
-[PALOMAR-2026-09-05-000007](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3).
+[PALOMAR-2026-09-05-000007](https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007).
 
 ## Related projects
 

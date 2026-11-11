@@ -22,8 +22,8 @@ repository:
   url: "https://github.com/itpplasma/stafford38-formal"
   registration_status: "registered"
   palomar_id: "PALOMAR-2026-09-05-000007"
-  palomar_version: 3
-  palomar_url: "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3"
+  palomar_version: 4
+  palomar_url: "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=4"
 
 classification:
   arxiv:

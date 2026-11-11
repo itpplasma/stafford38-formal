@@ -1,7 +1,7 @@
 {
   "title": "Stafford's Conjecture 3.8 for Weyl algebras: Lean 4 formalization",
   "upload_type": "software",
-  "description": "Lean 4 formalization of Stafford's Conjecture 3.8 for Weyl algebras over every characteristic-zero field and every rank, including rank zero. For each nonzero d, the main theorem proves the existence of F, R, and S with the ordered identity 1 = dR + FdS. At positive rank, the fixed-source theorem uses a linear symplectic coordinate to the intrinsic Bernstein degree of d. The formal proof proceeds through symplectic monicization, the canonical right-ideal quotient and Euler identity, filtered support estimates, Poisson involutivity, coisotropic geometry, scalar descent, and certificate extraction. Mathlib-only Challenge modules define the main and fixed-source statements independently of their proofs; separate Solution modules prove them. The repository includes a proof map, Comparator configurations and consumer checks. The main solution follows the proof of the manuscript; a second solution proves the same statements along an earlier route. This software is Apache-2.0. Release v1.3.1 pins Lean 4.35.0-rc3, Mathlib c55e6e786f49471c72fbddbec5415808896aec1e, and AlgebraicAnalysis 0.3.3 at bbbbf3fc358ca8100b158cec4cf47f336ab70163 (DOI 10.5281/zenodo.23104842).",
+  "description": "Lean 4 formalization of Stafford's Conjecture 3.8 for Weyl algebras over every characteristic-zero field and every rank, including rank zero. For each nonzero d, the main theorem proves the existence of F, R, and S with the ordered identity 1 = dR + FdS. At positive rank, the fixed-source theorem uses a linear symplectic coordinate to the intrinsic Bernstein degree of d. The formal proof proceeds through symplectic monicization, the canonical right-ideal quotient and Euler identity, filtered support estimates, Poisson involutivity, coisotropic geometry, scalar descent, and certificate extraction. Mathlib-only Challenge modules define the main and fixed-source statements independently of their proofs; separate Solution modules prove them. The repository includes a proof map, Comparator configurations and consumer checks. The main solution follows the proof of the manuscript; a second solution proves the same statements along an earlier route. This software is Apache-2.0. Release v1.4.0 pins Lean 4.35.0-rc3, Mathlib c55e6e786f49471c72fbddbec5415808896aec1e, and AlgebraicAnalysis 0.3.3 at bbbbf3fc358ca8100b158cec4cf47f336ab70163 (DOI 10.5281/zenodo.23104842).",
   "creators": [
     {
       "name": "Albert, Christopher",
@@ -57,7 +57,7 @@
       "relation": "cites"
     },
     {
-      "identifier": "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007&version=3",
+      "identifier": "https://palomar-registry.org/entry?id=PALOMAR-2026-09-05-000007",
       "relation": "references"
     },
     {
@@ -67,5 +67,5 @@
     }
   ],
   "notes": "Kernel-checked Lean proof. Every compared theorem depends only on the axioms propext, Classical.choice and Quot.sound.",
-  "version": "v1.3.1"
+  "version": "v1.4.0"
 }
